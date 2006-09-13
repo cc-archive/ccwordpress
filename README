@@ -1,0 +1,39 @@
+Creative Commons (ccpress) 3.0 Theme
+2006 - Alex Roberts
+
+FILES
+ * cc3/  - theme data; place in wp-content/themes
+ * plugins/* - plugins required for use; place in wp-content/plugins
+
+INSTALLATION NOTES
+ * Make sure .htaccess is writable, and update permalink structure 
+   with custom string "/%category%/%year%/%monthnum%/%postname%/"
+
+ * Theme relies on category structure:
+   1. Blog
+   3. - Lessig Letters
+   4. - Featured Commoners (slug: featured-commoners)
+   5. - Press
+   2. Featured Content
+   7. Commoners
+   8. - Audio
+   9. - Education
+  10. - Video
+  11. - Text
+  12. - Education
+  (This is due to old-blog import taking up cat ids 2-5, and a reshuffle of 
+moving "Blog" to id 1. What's really important is making sure "Blog" is id 1
+and "Featured Content" is id 2. If you have issue with that, make sure "category-1.php" is named after the Blog cat id number, and "category-2.php" named after the Featured Content cat id)
+
+
+USAGE NOTES
+ * Featured Content and Commoners require an image upload for their post.
+ * Featured Content requires the url for the content peice to be in the post 
+   Excerpt textarea.
+ 
+
+BUGS
+ * RSS feeds for Featured Content don't work properly, some hacking of the feed
+   output via filters may be required.
+
+
