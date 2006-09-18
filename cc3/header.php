@@ -23,27 +23,12 @@
   
   <style type="text/css">
     @import "<?php bloginfo('stylesheet_directory'); ?>/style.css";
-    
-    #header-wrapper {
-      background: url('<?php bloginfo('stylesheet_directory'); ?>/images/header-main-b.png') repeat-x bottom left;
-      background-color: #486d00;
-    }
-    #splash {
-    /*  background: no-repeat 125% -20px;
-      background-color: #0f2700;*/
-    }
-    
-    #footer {
-      background: url('<?php bloginfo('stylesheet_directory'); ?>/images/bg-std.png') repeat-x top left;
-    }
-    
-    a.cc-actions:hover {
-      background: url('<?php bloginfo('stylesheet_directory'); ?>/images/header-main-hover-b.png') repeat-x bottom left;
-    }
   </style>
-	<!--[if IE]><link rel="stylesheet" type="text/css" media="screen" href="<?php bloginfo('stylesheet_directory'); ?>/style-ie.css" /><![endif]-->
-	
-  <script src="<?php bloginfo('stylesheet_directory'); ?>/random.js" type="text/javascript" charset="utf-8"></script>
+  <!--[if IE]><link rel="stylesheet" type="text/css" media="screen" href="<?php bloginfo('stylesheet_directory'); ?>/style-ie.css" />
+   <style type="text/css">
+    img { behavior: url("<?php bloginfo('stylesheet_directory'); ?>/pngie.htc.php?path=<?= TEMPLATEPATH?>"); }
+   </style>	
+  <![endif]-->
   
   <?php wp_get_archives('type=monthly&format=link'); ?>
   <?php wp_head(); ?>

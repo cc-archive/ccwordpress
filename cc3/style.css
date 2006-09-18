@@ -28,6 +28,7 @@ body {
   width: 900px;
 }
   #header-wrapper {
+	background: url('images/header-main-b.png') repeat-x bottom left;
     background-color: #486d00;
   }
   #header-main {
@@ -120,6 +121,7 @@ body {
       }
 
     #footer {
+      background: url('images/bg-std.png') repeat-x top left;
       clear: both;
       margin-top: 20px;
       padding: 10px 10px;
@@ -220,6 +222,7 @@ blockquote {
 }
 
 a.cc-actions:hover {
+	background: url('images/header-main-hover-b.png') repeat-x bottom left;
   text-decoration: none;
 }
 
