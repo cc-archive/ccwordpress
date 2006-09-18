@@ -41,6 +41,8 @@
       background: url('<?php bloginfo('stylesheet_directory'); ?>/images/header-main-hover-b.png') repeat-x bottom left;
     }
   </style>
+	<!--[if IE]><link rel="stylesheet" type="text/css" media="screen" href="<?php bloginfo('stylesheet_directory'); ?>/style-ie.css" /><![endif]-->
+	
   <script src="<?php bloginfo('stylesheet_directory'); ?>/random.js" type="text/javascript" charset="utf-8"></script>
   
   <?php wp_get_archives('type=monthly&format=link'); ?>

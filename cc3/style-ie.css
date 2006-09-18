@@ -1,0 +1,33 @@
+/*
+ * Creative Commons 
+ * 3.0 - 2006-09
+ * 
+ * IE related fixes/hacks
+ *
+ */
+
+
+/* Transparent png's */
+/* Apply to all images, who knows if they'll be PNGs. */
+/* May add some overhead to IE, but fuck 'em. */ 
+img {
+	behavior: url("pngie.htc");
+}
+
+
+#splash {
+	font-weight: bold;
+
+}
+
+#blog {
+	width: 63%;
+}
+
+#features {
+	width: 26%;
+}
+
+#page {
+	width: 92%;
+}

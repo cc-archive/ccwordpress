@@ -25,7 +25,7 @@
               <? } ?>
               <h1 class="title"><a href="<?php the_permalink() ?>"><?php the_title();?></a></h1>
               <h4 class="meta"><?php the_author() ?>, <?php the_time('F jS, Y')?></h4>
-              <?php the_content("Read More..."); ?>
+              <?php the_excerpt(); ?>
               <?php edit_post_link('Edit', '', ''); ?>
             </div>
 <?php } }?>
