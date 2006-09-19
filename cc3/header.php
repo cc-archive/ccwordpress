@@ -36,7 +36,7 @@
  <body onload="">
     <div id="header-wrapper">
       <div id="header-main">
-        <a href="<?php echo get_settings('home'); ?>/publish" class="cc-actions"><img src="<?php bloginfo('stylesheet_directory'); ?>/images/publish.png" border="0" class="publish"/> <h4>Publish</h4></a>
+        <a href="<?php echo get_settings('home'); ?>/license/" class="cc-actions"><img src="<?php bloginfo('stylesheet_directory'); ?>/images/publish.png" border="0" class="publish"/> <h4>Publish</h4></a>
         <a href="http://search.creativecommons.org/" class="cc-actions"><img src="<?php bloginfo('stylesheet_directory'); ?>/images/find.png" border="0"/> <h4>Find</h4></a>
         <a href="<?php echo get_settings('home'); ?>"><img src="<?php bloginfo('stylesheet_directory'); ?>/images/cc-title.png" alt="creative commons" id="cc-title" border="0"/></a>
       </div>
@@ -47,23 +47,7 @@
       <h4>Worldwide&nbsp;</h4>
       <select name="sortby" onchange="orderby(this)">
         <option value="">Select a jurisdiction</option>
-        <option value="http://creativecommons.org/worldwide/ar/">Argentina</option>
-        <option value="http://www.creativecommons.at">Austria</option>
-        <option value="http://www.creativecommons.org.au">Australia</option>
-        <option value="http://creativecommons.org/worldwide/be/">Belgium</option>
-        <option value="http://creativecommons.org/worldwide/bg/">Bulgaria</option>
-        <option value="http://creativecommons.org/worldwide/br/">Brazil</option>
-        <option value="http://creativecommons.ca">Canada</option>
-        <option value="http://creativecommons.org/worldwide/ch/">Switzerland</option>
-        <option value="http://creativecommons.cl">Chile</option>
-        <option value="http://cn.creativecommons.org">Mainland China</option>
-        <option value="http://creativecommons.org/worldwide/co/">Colombia</option>
-        <option value="http://de.creativecommons.org">Germany</option>
-        <option value="http://creativecommons.org/worldwide/dk/">Denmark</option>
-        <option value="http://es.creativecommons.org/">Spain</option>
-        <option value="http://creativecommons.fi">Finland</option>
-        <option value="http://fr.creativecommons.org">France</option>
-        <option value="http://creativecommons.org/worldwide/hr/">Croatia</option>
+        <script type="text/javascript" src="http://api.creativecommons.org/rest/1.5/support/jurisdictions.js"></script>
       </select>
     </div>
     <div class="clear">&nbsp;</div>
