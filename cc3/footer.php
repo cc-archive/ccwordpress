@@ -27,7 +27,9 @@
         <div class="clear">&nbsp;</div>
       </div>
       <p>
-        Unless where otherwise noted, all content on this site is licensed attribution 2.5
+<a rel="license" href="http://creativecommons.org/licenses/by/2.5/"><img src="http://i.creativecommons.org/l/by/2.5/88x31.png" alt="Creative Commons License" style="border: medium none ;" height="31" width="88"></a><br>
+Except where otherwise <a class="subfoot" href="/policies#license">noted</a>, content on this site is<br/>
+licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/2.5/" class="subfoot">Creative Commons Attribution 2.5 License</a>
       <p>
     </div>
   </div>
