@@ -1,0 +1,6 @@
+ccwordpress/vendor
+
+This module contains vendor branches of software used for the CC website.
+See the Subversion book, http://svnbook.red-bean.com/en/1.1/ch07s05.html,
+for details on managing vendor branches in Subversion.
+
