@@ -1627,6 +1627,24 @@ class WP {
 		@header("Last-Modified: $wp_last_modified");
 		@header("ETag: $wp_etag");
 
+		// Support for Conditional GET
+		if (isset($_SERVER['HTTP_IF_NONE_MATCH'])) $client_etag = stripslashes($_SERVER['HTTP_IF_NONE_MATCH']);
+		else $client_etag = false;
+
+		$client_last_modified = trim( $_SERVER['HTTP_IF_MODIFIED_SINCE']);
+		// If string is empty, return 0. If not, attempt to parse into a timestamp
+		$client_modified_timestamp = $client_last_modified ? strtotime($client_last_modified) : 0;
+
+		// Make a timestamp for our most recent modification...	
+		$wp_modified_timestamp = strtotime($wp_last_modified);
+
+		if ( ($client_last_modified && $client_etag) ?
+				 (($client_modified_timestamp >= $wp_modified_timestamp) && ($client_etag == $wp_etag)) :
+				 (($client_modified_timestamp >= $wp_modified_timestamp) || ($client_etag == $wp_etag)) ) {
+			status_header( 304 );
+			exit;
+		}
+
 		if ( is_user_logged_in() )
 			nocache_headers();
 		if ( !empty($this->query_vars['error']) && '404' == $this->query_vars['error'] ) {
@@ -1636,26 +1654,7 @@ class WP {
 			@header('Content-type: ' . get_option('html_type') . '; charset=' . get_option('blog_charset'));
 		} else if ( empty($this->query_vars['feed']) ) {
 			@header('Content-type: ' . get_option('html_type') . '; charset=' . get_option('blog_charset'));
-		} else {
-
-			// Support for Conditional GET
-			if (isset($_SERVER['HTTP_IF_NONE_MATCH'])) $client_etag = stripslashes($_SERVER['HTTP_IF_NONE_MATCH']);
-			else $client_etag = false;
-
-			$client_last_modified = trim( $_SERVER['HTTP_IF_MODIFIED_SINCE']);
-			// If string is empty, return 0. If not, attempt to parse into a timestamp
-			$client_modified_timestamp = $client_last_modified ? strtotime($client_last_modified) : 0;
-
-			// Make a timestamp for our most recent modification...	
-			$wp_modified_timestamp = strtotime($wp_last_modified);
-
-			if ( ($client_last_modified && $client_etag) ?
-					 (($client_modified_timestamp >= $wp_modified_timestamp) && ($client_etag == $wp_etag)) :
-					 (($client_modified_timestamp >= $wp_modified_timestamp) || ($client_etag == $wp_etag)) ) {
-				status_header( 304 );
-				exit;
-			}
-		}
+		} 
 	}
 
 	function build_query_string() {
