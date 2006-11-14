@@ -1617,6 +1617,16 @@ class WP {
 
 	function send_headers() {
 		@header('X-Pingback: '. get_bloginfo('pingback_url'));
+
+		// always emit a Last-Modified header
+		if ( $this->query_vars['withcomments'] )
+			$wp_last_modified = mysql2date('D, d M Y H:i:s', get_lastcommentmodified('GMT'), 0).' GMT';
+		else 
+			$wp_last_modified = mysql2date('D, d M Y H:i:s', get_lastpostmodified('GMT'), 0).' GMT';
+		$wp_etag = '"' . md5($wp_last_modified) . '"';
+		@header("Last-Modified: $wp_last_modified");
+		@header("ETag: $wp_etag");
+
 		if ( is_user_logged_in() )
 			nocache_headers();
 		if ( !empty($this->query_vars['error']) && '404' == $this->query_vars['error'] ) {
@@ -1627,14 +1637,6 @@ class WP {
 		} else if ( empty($this->query_vars['feed']) ) {
 			@header('Content-type: ' . get_option('html_type') . '; charset=' . get_option('blog_charset'));
 		} else {
-			// We're showing a feed, so WP is indeed the only thing that last changed
-			if ( $this->query_vars['withcomments'] )
-				$wp_last_modified = mysql2date('D, d M Y H:i:s', get_lastcommentmodified('GMT'), 0).' GMT';
-			else 
-				$wp_last_modified = mysql2date('D, d M Y H:i:s', get_lastpostmodified('GMT'), 0).' GMT';
-			$wp_etag = '"' . md5($wp_last_modified) . '"';
-			@header("Last-Modified: $wp_last_modified");
-			@header("ETag: $wp_etag");
 
 			// Support for Conditional GET
 			if (isset($_SERVER['HTTP_IF_NONE_MATCH'])) $client_etag = stripslashes($_SERVER['HTTP_IF_NONE_MATCH']);
