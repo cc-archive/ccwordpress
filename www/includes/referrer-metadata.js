@@ -4,7 +4,7 @@ function makeRequest(url) {
     if (window.XMLHttpRequest) { // Mozilla, Safari, ...
         http_request = new XMLHttpRequest();
         if (http_request.overrideMimeType) {
-            http_request.overrideMimeType('text/xml');
+            http_request.overrideMimeType('text/plain');
             // See note below about this line
         }
     } else if (window.ActiveXObject) { // IE
@@ -31,28 +31,35 @@ function makeRequest(url) {
 function processResponse(http_request) {
     if (http_request.readyState == 4) {
         if (http_request.status == 200) {
-            injectReferrerMetadata(http_request.responseXML);
+            injectReferrerMetadata(http_request.responseText);
         } else {
             //alert('There was a problem with the request.');
         }
     }
 }
 
-function injectReferrerMetadata(somexml) {
-    //if (sometext != '')
-    //    document.getElementById('referrer-metadata-container').innerHTML = sometext;
-    var attributionName = somexml.getElementsByTagName('attributionName').item(0).firstChild.data;
-    var attributionURL = somexml.getElementsByTagName('attributionURL').item(0).firstChild.data;
-    document.getElementById('attribution-container').innerHTML = "You must attribute this work to <strong><a href='" + attributionURL + "'>" + attributionName + "</a></strong> (with link). <a onclick=\"window.open('http://mirrors.creativecommons.org/demo3/by-popup.html', 'attribution_help', 'width=375,height=300,scrollbars=yes,resizable=yes,toolbar=no,directories=no,location=yes,menubar=no,status=yes');return false;\" href=''>Find out how.</a>";
+function injectReferrerMetadata(response) {
 
-    var morePermissionsURL = somexml.getElementsByTagName('morePermissionsURL').item(0).firstChild.data;
-    var morePermissionsDomain = somexml.getElementsByTagName('morePermissionsDomain').item(0).firstChild.data;
+    metadata = eval(response);
 
-    document.getElementById('more-container').innerHTML = "<li class='license more'><strong>Permissions beyond</strong> the scope of this public license are available at <strong><a href='" + morePermissionsURL + "'>" + morePermissionsDomain + "</a></strong>.</li>";
-}
+    var attributionName = metadata.attributionName;
+    var attributionUrl = metadata.attributionUrl;
+
+    if (attributionName && attributionUrl) {
+	document.getElementById('attribution-container').innerHTML = "You must attribute this work to <strong><a href='" + attributionUrl + "'>" + attributionName + "</a></strong> (with link). <a onclick=\"window.open('http://mirrors.creativecommons.org/demo3/by-popup.html', 'attribution_help', 'width=375,height=300,scrollbars=yes,resizable=yes,toolbar=no,directories=no,location=yes,menubar=no,status=yes');return false;\" href=''>Find out how.</a>";
+    }
+
+    var morePermissionsURL = metadata.morePermissions;
+    var morePermissionsDomain = metadata.morePermissionsDomain;
+
+    if (morePermissionsURL && morePermissionsDomain) {
+	document.getElementById('more-container').innerHTML = "<li class='license more'><strong>Permissions beyond</strong> the scope of this public license are available at <strong><a href='" + morePermissionsURL + "'>" + morePermissionsDomain + "</a></strong>.</li>";
+    }
+
+} // injectReferrerMetadata
 
 function referrerMetadata() {
     r = document.referrer;
-    if (r.match('^http://')) makeRequest('/cgi/referrer-metadata.cgi?r='+r);
+    if (r.match('^http://')) makeRequest('/apps/scrape?url='+r);
 }
 
