@@ -34,8 +34,8 @@
           </div>
 
           <div id="features">
-            <h4>Featured Content</h4>
-<?php $my_query = new WP_Query('category_name=featured-content&showposts=3'); ?>
+            <h4>Featured Projects</h4>
+<?php $my_query = new WP_Query('category_name=featured-projects&showposts=3'); ?>
 <?php while ($my_query->have_posts()) { $my_query->the_post(); ?>
             <div class="post">
   <?php if ($attach = cc_get_attachment ($post->ID)) { ?>

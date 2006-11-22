@@ -10,19 +10,19 @@
         </div>
         <div class="ccExtras">
           <h2><a href="http://wiki.creativecommons.org/Developers">Developers</a></h2>
-          Help put Creative Commons into your applications in our developers section.
+          Help put Creative Commons into your applications.
         </div>
         <div class="ccExtras">
-          <h2><a href="http://wiki.creativecommons.org/">Wiki</a></h2>
-          Something interesting about the wiki here.
+          <h2><a href="http://creativecommons.org/discuss">Discuss</a></h2>
+          Join our discussion lists. Read and contribute to our <a href="http://wiki.creativecommons.org/">wiki</a>.
         </div>
         <div class="ccExtras">
-          <h2>Discuss</h2>
-          Get involved with Creative Commons. Join our discussion lists.
+          <h2>Events</h2>
+          Join us at the next Creative Commons event.
         </div>
         <div class="ccExtras">
-          <h2><a href="http://wiki.creativecommons.org/Salon">Salon</a></h2>
-          Monthly party.
+          <h2><a href="/featured-content">Featured Content</a></h2>
+          Read about people and projects that use CC.
         </div> 
         <div class="clear">&nbsp;</div>
       </div>

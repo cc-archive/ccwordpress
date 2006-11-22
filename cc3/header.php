@@ -36,8 +36,8 @@
  <body onload="">
     <div id="header-wrapper">
       <div id="header-main">
-        <a href="<?php echo get_settings('home'); ?>/license/" class="cc-actions"><img src="<?php bloginfo('stylesheet_directory'); ?>/images/publish.png" border="0" class="publish"/> <h4>Publish</h4></a>
-        <a href="http://search.creativecommons.org/" class="cc-actions"><img src="<?php bloginfo('stylesheet_directory'); ?>/images/find.png" border="0"/> <h4>Find</h4></a>
+        <a href="<?php echo get_settings('home'); ?>/license/" class="cc-actions"><img src="<?php bloginfo('stylesheet_directory'); ?>/images/publish.png" border="0" class="publish"/> <h4>License</h4>Your Work</a>
+        <a href="http://search.creativecommons.org/" class="cc-actions"><img src="<?php bloginfo('stylesheet_directory'); ?>/images/find.png" border="0"/> <h4>Find</h4>CC Licensed Work</a>
         <a href="<?php echo get_settings('home'); ?>"><img src="<?php bloginfo('stylesheet_directory'); ?>/images/cc-title.png" alt="creative commons" id="cc-title" border="0"/></a>
       </div>
     </div>
