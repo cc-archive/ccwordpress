@@ -117,11 +117,11 @@
 			padding: 0;
 		}
 		
-		#deed-foot a {
+		a {
 			color: #fffc09;
 			text-decoration: none;
 		}
-		#deed-foot a:hover {
+		a:hover {
 			text-decoration: underline;
 		}
 		
@@ -167,4 +167,23 @@
 		li.nd {
 					background: url("/images/deed/nd.png") 0 0 no-repeat;
 		}
+	        li.sampling, li.samplingplus{
+                                        background: url("/images/deed/sampling.png") 0 0 no-repeat;
+                }	
+		li.more {
+					background: url("/images/deed/more.png") 0 0 no-repeat;
+		}
 		
+		li a {
+			color: #0000ff;
+			text-decoration: none;
+		}
+                #referrer-metadata {
+                        padding: 20px;
+                        border-style: dotted;
+                }
+		#referrer-metadata a {
+			color: #0000FF;
+			text-decoration: none;
+		}
+
