@@ -5,8 +5,9 @@
     the_post(); ?>
 
     <?php
-     // check if this single is a commoner
+     // check if this single is a commoner or blog post
      in_category(7) ? $is_commoner = true : $is_commoner = false;
+     in_category(1) ? $is_blog = true : $is_blog = false;
     ?>
   
     <div id="body">
@@ -41,6 +42,7 @@
             <div class="post" id="post-<?php the_ID(); ?>">
               <h4 class="meta"><?php the_author() ?>, <?php the_time('F jS, Y')?></h4>
               <?php the_content(); ?>
+              <div class="comments"><?php if ($is_blog) comments_template(); ?></div>
             </div>
           
           <? if ($is_commoner) { ?>

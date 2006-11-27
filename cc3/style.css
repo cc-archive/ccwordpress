@@ -315,6 +315,10 @@ a.cc-actions:hover {
   margin-bottom: 15px;
 }
 
+.post .comments {
+  margin: 35px 0;
+}
+
 
 /* Archives */
 ul.archives {
