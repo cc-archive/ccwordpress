@@ -53,4 +53,65 @@ function cc_footer_links() {
 	
 }
 
+
+function cc_intro_blurb() {
+  return stripslashes (get_option ('cc_intro_blurb'));
+}
+
+function cc_current_feature() {
+  return stripslashes (get_option ('cc_current_feature'));
+}
+
+/* theme options page */
+add_action ('admin_menu', 'cc_theme_menu');
+
+function cc_theme_menu() {
+  add_theme_page('Customize CC', 'Customize CC', 5, basename(__FILE__), 'cc_theme_options');
+}
+
+function cc_theme_options() {
+  
+  if ($_POST['cc_blurb']) {
+    update_option ('cc_intro_blurb', $_POST['cc_blurb']);
+    $message = "Intro blurb updated!";
+  }
+  if ($_POST['cc_feature']) {
+    update_option ('cc_current_feature', $_POST['cc_feature']);
+    $message = "Current feature updated!";
+  }
+  
+  // display feedback that something happened
+  if ($message) {
+    ?>
+    <div class="wrap"><?= $message ?></div>
+    <?php    
+  }
+  ?>
+  
+  <div class="wrap">
+   <h2>Home Page Intro Blurb</h2>
+   <form action="<?php echo $_SERVER['REQUEST_URI']; ?>" name="blurb" method="post" accept-charset="utf-8">
+    <textarea name="cc_blurb" rows="8" cols="60"><?= cc_intro_blurb() ?></textarea>
+
+    <p><input type="submit" value="Update &rarr;" /></p>
+   </form>
+   
+   <h2>Current Feature</h2>
+   <p><small>Item at top of index, above Blog.</small></p>
+   <form action="<?php echo $_SERVER['REQUEST_URI']; ?>" name="feature" method="post" accept-charset="utf-8">
+     <textarea name="cc_feature" rows="8" cols="60"><?= cc_current_feature() ?></textarea>
+
+     <p><input type="submit" value="Update &rarr;" /></p>
+    </form>
+  </div>
+  <?php
+}
+
+// set up theme defaults
+if (!get_option('cc_intro_blurb')) {
+  add_option ('cc_intro_blurb', "Creative Commons", "Informational introduction text at head of the home page.");
+}
+if (!get_option('cc_current_feature')) {
+  add_option ('cc_current_feature', "Creative Commons", "Current featured CC project, above blog.");
+}
 ?>

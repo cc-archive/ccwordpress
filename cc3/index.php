@@ -2,7 +2,8 @@
 
     <div id="body">
       <div id="splash">
-        <h2><?php bloginfo('description'); ?><br/>&nbsp;</h2>
+        <h2><?php bloginfo('description'); ?></h2>
+        <div id="blurb"><?= cc_intro_blurb() ?></div>
         <div id="splash-menu">
           <h3><a href="<?php echo get_settings('home'); ?>/about/">Learn More</a></h3>
           <h3>Support CC</h3>
@@ -12,6 +13,10 @@
       <div id="content">
         <div id="main-content">
           <div id="blog">
+            <h4>Currently</h4>
+            <div class="post feature">
+              <p><?= cc_current_feature(); ?></p>
+            </div>
             <h4>Latest News</h4>
 <?php // Get the last 5 posts in the blog category. ?>
 <?php // FIXME: perhaps make this configurable in theme settings...? ?>

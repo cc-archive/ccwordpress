@@ -57,6 +57,13 @@ body {
       color: #999;
       margin: 7px 0 3px 0;
     }
+			#splash #blurb {
+				margin: 0 0 25px 0;
+				padding-left: 15px;
+				font-size: 65%;
+				color: #404040;
+			}
+			
       #splash-menu {
         font-size: 60%;
         background-color: #0f1c00;
@@ -236,7 +243,7 @@ a.cc-actions:hover {
 }
 
 #splash h2, #splash h1 {
-  padding: 22px 15px 14px 15px;
+  padding: 22px 15px 10px 15px;
 }
 #splash h3.category {
   font-size: 110%;
@@ -313,6 +320,12 @@ a.cc-actions:hover {
 .post ul {
   margin-left: 20px;
   margin-bottom: 15px;
+}
+
+#blog .feature {
+	border-bottom:  1px solid #ddd;
+	padding-bottom:  25px;
+	margin-bottom: 35px;
 }
 
 .post .comments {
