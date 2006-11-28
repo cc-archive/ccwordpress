@@ -54,14 +54,15 @@ body {
       font-size: 170%;
       
       background-color: /*#0f2700*/ #fff;
-      color: #999;
+      color: #909090;
       margin: 7px 0 3px 0;
+			padding-bottom:  16px;
     }
 			#splash #blurb {
-				margin: 0 0 25px 0;
-				padding-left: 15px;
+				margin: 0 0 28px 0;
+				padding: 0 15px;
 				font-size: 65%;
-				color: #404040;
+				color: #505050;
 			}
 			
       #splash-menu {
@@ -72,6 +73,7 @@ body {
         
         text-align: left;
         padding: 2px 3px 4px 12px;
+				margin-top:  10px;
       }
 
     #content {
@@ -243,7 +245,7 @@ a.cc-actions:hover {
 }
 
 #splash h2, #splash h1 {
-  padding: 22px 15px 10px 15px;
+  padding: 12px 15px 10px 15px;
 }
 #splash h3.category {
   font-size: 110%;
@@ -264,7 +266,7 @@ a.cc-actions:hover {
 
 #splash-menu h3 {
   display: inline;
-  margin-right: 5%;
+  margin: 0 25px 0 0;
 }
 
 #sidebar ul,  #features ul {
@@ -326,6 +328,14 @@ a.cc-actions:hover {
 	border-bottom:  1px solid #ddd;
 	padding-bottom:  25px;
 	margin-bottom: 35px;
+}
+
+.feature img {
+	margin-right: 5px;
+}
+
+.feature h1 {
+	margin-bottom:  5px;
 }
 
 .post .excerpt {

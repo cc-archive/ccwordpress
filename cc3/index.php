@@ -13,9 +13,8 @@
       <div id="content">
         <div id="main-content">
           <div id="blog">
-            <h4>Currently</h4>
             <div class="post feature">
-              <p><?= cc_current_feature(); ?></p>
+              <?= cc_current_feature(); ?>
             </div>
             <h4>Latest News</h4>
 <?php // Get the last 5 posts in the blog category. ?>
