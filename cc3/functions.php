@@ -106,7 +106,7 @@ function cc_theme_options() {
   </div>
   <?php
 }
-
+/*
 // set up theme defaults
 if (!get_option('cc_intro_blurb')) {
   add_option ('cc_intro_blurb', "Creative Commons", "Informational introduction text at head of the home page.");
@@ -114,4 +114,5 @@ if (!get_option('cc_intro_blurb')) {
 if (!get_option('cc_current_feature')) {
   add_option ('cc_current_feature', "Creative Commons", "Current featured CC project, above blog.");
 }
+*/
 ?>
