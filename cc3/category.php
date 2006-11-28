@@ -23,10 +23,12 @@
                 <? if ($attach = cc_get_attachment ($post->ID)) { ?>
               <img align="left" src="<?= $attach->uri ?>" alt="<?= $post->post_title ?>" title="<?= $post->post_title ?>" class="commoner" border="0"/>
               <? } ?>
-              <h1 class="title"><a href="<?php the_permalink() ?>"><?php the_title();?></a></h1>
-              <h4 class="meta"><?php the_author() ?>, <?php the_time('F jS, Y')?></h4>
-              <?php the_excerpt(); ?>
-              <?php edit_post_link('Edit', '', ''); ?>
+              <div class="excerpt">
+                <h1 class="title"><a href="<?php the_permalink() ?>"><?php the_title();?></a></h1>
+                <h4 class="meta"><?php the_author() ?>, <?php the_time('F jS, Y')?></h4>
+                <?php the_excerpt(); ?>
+                <?php edit_post_link('Edit', '', ''); ?>
+              </div>
             </div>
 <?php } }?>
             <?php posts_nav_link(' &mdash; ', 'previous page', 'next page'); ?>

@@ -328,6 +328,10 @@ a.cc-actions:hover {
 	margin-bottom: 35px;
 }
 
+.post .excerpt {
+	margin-left:  150px;
+}
+
 .post .comments {
   margin: 35px 0;
 }
