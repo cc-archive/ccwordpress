@@ -7,7 +7,7 @@
 
 var supported = /MSIE (5\.5)|[6789]/.test(navigator.userAgent) && navigator.platform == "Win32";
 var realSrc;
-var blankSrc = "transparent.gif";
+var blankSrc = "/images/transparent.gif";
 
 if (supported) fixImage();
 
@@ -24,7 +24,7 @@ function propertyChanged() {
 function fixImage() {
    // get src
    var src = element.src;
-
+   
    // check for real change
    if (src == realSrc) {
       element.src = blankSrc;

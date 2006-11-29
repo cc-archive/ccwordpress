@@ -26,7 +26,7 @@
   </style>
   <!--[if IE]><link rel="stylesheet" type="text/css" media="screen" href="<?php bloginfo('stylesheet_directory'); ?>/style-ie.css" />
    <style type="text/css">
-    img { behavior: url("<?php bloginfo('stylesheet_directory'); ?>/pngie.htc.php?path=<?= TEMPLATEPATH?>"); }
+    img { behavior: url("<?php bloginfo('stylesheet_directory'); ?>/pngie.htc"); }
    </style>	
   <![endif]-->
   
