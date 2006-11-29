@@ -137,12 +137,13 @@ add_filter ("mm_item_link", "cc_fix_menu_links", 10, 2);
    We now just go to the first category that isn't the "commoenrs" parent, regardless if there is a third cat,
    since there's no real other way to check what the author intended. */
 function cc_fix_permalink($content, $post){
-	if (strstr($content, "press-releases")) {
-		return get_settings('home') . "/press-releases/entry/" . $post->ID;
-	}
-	if (strstr($content, "/blog")) {
+	if (strstr($content, "/weblog")) {
+	        if (strstr($content, "press-releases")) {
+	                return get_settings('home') . "/press-releases/entry/" . $post->ID;
+        	}
+
 		return get_settings('home') . "/weblog/entry/" . $post->ID;
-  }
+  	}
 	if (strstr($content, "/commoners/")) {
 		$cats = get_the_category($post->ID);
 		foreach ($cats as $cat) {
@@ -158,8 +159,8 @@ add_filter ("post_link", "cc_fix_permalink", 11, 2);
 
 /* Filter for page title modifications */
 function cc_page_title($title, $sep) {
-	if (strstr($title, "Blog")) {
-		return str_replace ("Blog", "Weblog", $title);
+	if (strstr($title, "Weblog")) {
+		return str_replace ("Weblog", "CC News", $title);
 	}
 	return $title;
 }
