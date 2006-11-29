@@ -17,7 +17,7 @@
           Join our discussion lists. Read and contribute to our <a href="http://wiki.creativecommons.org/">wiki</a>.
         </div>
         <div class="ccExtras">
-          <h2>Events</h2>
+          <h2><a href="http://wiki.creativecommons.org/Events">Events</a></h2>
           Join us at the next Creative Commons event.
         </div>
         <div class="ccExtras">
