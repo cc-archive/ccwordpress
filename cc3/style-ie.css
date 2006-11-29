@@ -29,13 +29,11 @@ margin-top: 0;
 
 }
 
-#blog {
-	width: 63%;
-}
 
 #features {
 	width: 26.5%;
 	overflow: hidden;
+	padding-left: 10px;
 }
 
 

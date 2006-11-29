@@ -25,7 +25,8 @@ body {
 #wrapper {
   text-align: left;
   margin: 0 auto;
-  width: 900px;
+  width: 930px;
+
 }
   #header-wrapper {
 	background: url('/images/header-main-b.png') repeat-x bottom left;
@@ -98,6 +99,7 @@ body {
         }
 
         #features {
+	  background: url(images/stripe.gif);
           float: left;
           width: 24%;
           margin-right: 1%;
@@ -156,6 +158,10 @@ body {
 
 #blog .post {
   margin-bottom: 50px;
+}
+
+#features .post {
+  padding-right: 10px;
 }
 
 a.cc-actions, a.cc-actions:link {
@@ -340,7 +346,7 @@ a.cc-actions:hover {
 }
 
 .post .excerpt {
-	margin-left:  150px;
+	margin-left:  170px;
 }
 
 .post .comments {
