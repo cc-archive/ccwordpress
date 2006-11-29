@@ -137,6 +137,9 @@ add_filter ("mm_item_link", "cc_fix_menu_links", 10, 2);
    We now just go to the first category that isn't the "commoenrs" parent, regardless if there is a third cat,
    since there's no real other way to check what the author intended. */
 function cc_fix_permalink($content, $post){
+	if (strstr($content, "press-releases")) {
+		return get_settings('home') . "/press-releases/entry/" . $post->ID;
+	}
 	if (strstr($content, "/blog")) {
 		return get_settings('home') . "/weblog/entry/" . $post->ID;
   }
