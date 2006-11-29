@@ -46,6 +46,7 @@
   <?php if ($attach = cc_get_attachment ($post->ID)) { ?>
               <a href="<?= get_post_meta ($post->ID, "url", TRUE)?>"><img src="<?= $attach->uri ?>" alt="<?= $post->post_title ?>" title="<?= $post->post_title ?>" border="0" /></a>
   <?php } ?>
+	      <strong><a href="<?= get_post_meta ($post->ID, "url", TRUE)?>"><?= $post->post_title ?></a></strong>
               <?php the_content(); ?>
               <?php edit_post_link('Edit', '', ''); ?>
             </div>

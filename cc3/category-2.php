@@ -1,3 +1,5 @@
+<?php /* Featured Projects category page */ ?>
+
 <?php get_header(); ?>
 
     <div id="body">
@@ -5,11 +7,11 @@
         <!--img src="images/info.png" align="left"/-->
         <h2>
         <? if (is_month() || is_year()) { ?> 
-          <a href="<?php echo get_settings('home') . "/"?>featured-content/">
-            Featured Content
+          <a href="<?php echo get_settings('home') . "/"?>featured-projects/">
+            Featured Projects 
           </a>
         <? } else { ?>
-          Featured Content
+          Featured Projects
         <? } ?>
         <br/>&nbsp;</h2>
         <div id="splash-menu">
@@ -22,10 +24,10 @@
 <?php if (have_posts())  { ?>
 <?php while (have_posts()) { the_post(); ?>
             <div class="post" id="post-<?php the_ID(); ?>">
-              <h4 class="meta"><?php the_time('F jS, Y')?></h4>
+              <h4 class="meta"><?php the_time('F jS, Y')?></h4><h3><a href="<?= get_post_meta ($post->ID, "url", TRUE)?>"><?= $post->post_title ?></a></h3>
               <div class="clearer"></div>
               <? if ($attach = cc_get_attachment ($post->ID)) { ?>
-                <a href="<?= $post->post_excerpt ?>"><img src="<?= $attach->uri ?>" alt="<?= $post->post_title ?>" title="<?= $post->post_title ?>" border="0" align="left" style="margin-bottom: 30px; margin-right: 10px;"/></a>
+                <a href="<?= get_post_meta ($post->ID, "url", TRUE)?>"><img src="<?= $attach->uri ?>" alt="<?= $post->post_title ?>" title="<?= $post->post_title ?>" border="0" align="left" style="margin-bottom: 30px; margin-right: 10px;"/></a>
               <? } ?>
               <?php the_content("Read More..."); ?>
               <?php edit_post_link('Edit', '', ''); ?>
