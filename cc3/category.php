@@ -21,7 +21,9 @@
 <?php while (have_posts()) { the_post(); ?>
             <div class="post" id="post-<?php the_ID(); ?>">
                 <? if ($attach = cc_get_attachment ($post->ID)) { ?>
-              <img align="left" src="<?= $attach->uri ?>" alt="<?= $post->post_title ?>" title="<?= $post->post_title ?>" class="commoner" border="0"/>
+              <a href="<?php the_permalink() ?>">
+		<img align="left" src="<?= $attach->uri ?>" alt="<?= $post->post_title ?>" title="<?= $post->post_title ?>" class="commoner" border="0"/>
+              </a>
               <? } ?>
               <div class="excerpt">
                 <h1 class="title"><a href="<?php the_permalink() ?>"><?php the_title();?></a></h1>
