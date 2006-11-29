@@ -19,13 +19,20 @@
               <? $cat = get_the_category(); $cat = $cat[1]; echo $cat->cat_name; ?>
             </a>
           </h3>
-        <? } else if ($category_name == "blog") { ?>
+        <? } else if ($category_name == "weblog") { ?>
           <h3 class="category">
             <a href="<?php echo get_settings('home') . "/" ?>weblog/">
               weblog
             </a>
           </h3>
+        <? } else if ($category_name == "press-releases") { ?>
+          <h3 class="category">
+            <a href="<?php echo get_settings('home') . "/" ?>press-releases/">
+              press-releases 
+            </a>
+          </h3>
         <? } ?>
+
         <h2> <?php the_title(); ?><br/>&nbsp;</h2>
         <div id="splash-menu">
         </div>

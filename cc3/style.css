@@ -99,7 +99,7 @@ body {
         }
 
         #features {
-	  background: url(images/stripe.gif);
+	  background: url(/images/stripe.gif);
           float: left;
           width: 24%;
           margin-right: 1%;

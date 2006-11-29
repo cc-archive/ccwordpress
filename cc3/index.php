@@ -19,7 +19,7 @@
             <h4>Latest News</h4>
 <?php // Get the last 5 posts in the blog category. ?>
 <?php // FIXME: perhaps make this configurable in theme settings...? ?>
-<?php query_posts('category_name=blog&showposts=4'); ?>
+<?php query_posts('category_name=weblog&showposts=4'); ?>
 <?php if (have_posts())  { 
   while (have_posts()) { the_post(); ?>
             <div class="post" id="post-<?php the_ID(); ?>">
