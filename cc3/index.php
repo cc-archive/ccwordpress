@@ -40,7 +40,7 @@
 
           <div id="features">
             <h4>Featured Projects</h4>
-<?php $my_query = new WP_Query('category_name=featured-projects&showposts=4'); ?>
+<?php $my_query = new WP_Query('category_name=featured-projects&showposts=2'); ?>
 <?php while ($my_query->have_posts()) { $my_query->the_post(); ?>
             <div class="post">
   <?php if ($attach = cc_get_attachment ($post->ID)) { ?>
@@ -51,7 +51,7 @@
               <?php edit_post_link('Edit', '', ''); ?>
             </div>
 <?php } ?>
-            <div class="content-foot"><a href="<?php echo get_settings('home'); ?>/featured-content"><em>More...</em></a></div>
+            <div class="content-foot"><a href="<?php echo get_settings('home'); ?>/featured-projects"><em>More...</em></a></div>
 
             <h4>Featured Commoners</h4>
 <?php $my_query = new WP_Query('category_name=commoners&showposts=2'); ?>
