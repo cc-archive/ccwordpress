@@ -44,7 +44,7 @@
     <div id="wrapper">
     
     <div class="jurisdictions">
-      <h4>Worldwide&nbsp;</h4>
+      <h4><a href="/worldwide">Worldwide</a>&nbsp;</h4>
       <select name="sortby" onchange="orderby(this)">
         <option value="">Select a jurisdiction</option>
         <script type="text/javascript" src="http://api.creativecommons.org/rest/1.5/support/jurisdictions.js"></script>

@@ -201,7 +201,7 @@ h2 {
   margin-top: 25px;
 }
 
-h4 {
+h4, .jurisdiction a:link {
   color: #773;
   font-size: 105%;
   font-weight: bold;
