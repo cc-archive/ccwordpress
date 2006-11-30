@@ -24,3 +24,9 @@ div.ifloat p {
 	border:1px solid #ccc;
 	padding:6px;
   }
+
+#splash img {
+	border: 1px solid #666;
+	padding: 0 !important;
+	margin-right: 15px;
+}
