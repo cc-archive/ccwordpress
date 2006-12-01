@@ -35,6 +35,7 @@
 
         <h2> <?php the_title(); ?><br/>&nbsp;</h2>
         <div id="splash-menu">
+         <?php edit_post_link('<h5>Edit this article</h5>', '', ''); ?>
         </div>
       </div>
 
