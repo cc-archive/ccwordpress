@@ -8,7 +8,11 @@
           </a>
         </h3>
         <? }?>
-        <h2><?php wp_title(''); ?><br/>&nbsp;</h2>
+        <h2>
+          <img src="/images/categories/<?= $category_name ?>.png" alt="[ <?= $category_name ?> ]" border="0" class="category-icon"/>
+          <?php wp_title(''); ?>
+        </h2>
+        <div id="blurb"><?php echo category_description() ?></div>
         <div id="splash-menu">
           
         </div>
@@ -39,7 +43,10 @@
             <h4>Archives</h4>
             <ul class="archives">
             <?php cc_get_cat_archives(cc_cat_to_id($category_name), 'monthly', '', 'html', '', '', TRUE); ?>
-            </ul>            
+            </ul>
+
+            <?php include ("featured/$category_name.php"); ?>
+            
           </div>
         </div>  
 <?php get_sidebar(); ?>

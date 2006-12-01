@@ -33,9 +33,8 @@
               <?php edit_post_link('Edit', '', ''); ?>
             </div>
 <?php } }?>
-            <h4><a href="weblog/archive/">Archives</a></h4>
-            <ul class="archives"><?php cc_get_cat_archives(1, 'postbypost','5','custom','<li>','</li>', FALSE, '5'); ?>
-            <li style="text-align:right;"><a href="/weblog/archives"><em>More...</em></a></li></ul>
+            <ul class="archives">
+            <li><h3><a href="/weblog/archives">Weblog Archives</a></h3></li></ul>
           </div>
 
           <div id="features">
