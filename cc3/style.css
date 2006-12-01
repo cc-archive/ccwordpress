@@ -340,6 +340,10 @@ a.cc-actions:hover {
   border: 1px solid #ccc;
 }
 
+#blog .blogged img {
+  margin: 0 5px;
+}
+
 #blog .feature {
 	border-bottom:  1px solid #ddd;
 	padding-bottom:  25px;

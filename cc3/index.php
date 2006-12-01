@@ -22,7 +22,7 @@
 <?php query_posts('category_name=weblog&showposts=4'); ?>
 <?php if (have_posts())  { 
   while (have_posts()) { the_post(); ?>
-            <div class="post" id="post-<?php the_ID(); ?>">
+            <div class="post blogged" id="post-<?php the_ID(); ?>">
               <h1 class="title">
                 <a href="<?php the_permalink() ?>">
                   <?php the_title(); ?>
