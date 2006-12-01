@@ -25,7 +25,7 @@ body {
 #wrapper {
   text-align: left;
   margin: 0 auto;
-  width: 930px;
+  width: 940px;
 
 }
   #header-wrapper {
@@ -84,7 +84,7 @@ body {
 
       #main-content {
         float: left;
-        width: 84%;
+        width: 84.5%;
       }
 
         #blog {
@@ -101,7 +101,7 @@ body {
         #features {
 	  background: url(/images/stripe.gif);
           float: left;
-          width: 24%;
+          width: 24.5%;
           margin-right: 1%;
           padding-left: 4%;
           overflow: hidden;
@@ -115,6 +115,7 @@ body {
           width: 97%;
           margin-right: 1%;
           padding-left: 1.5%;
+	  padding-right: 0.5%;
           overflow: hidden;
           
           padding-top: 15px;
@@ -123,9 +124,9 @@ body {
 
       #sidebar {
         float: left;
-        width: 14%;
+        width: 13%;
         padding-left: 1%;
-        
+        margin-left: 1.5%;
         padding-top: 15px;
         border-top: 1px solid #ddd;
       }
@@ -329,6 +330,14 @@ a.cc-actions:hover {
 .post ul {
   margin-left: 20px;
   margin-bottom: 15px;
+}
+
+.post .publish-pics {
+  float: left;
+  margin-right: 10px;
+  margin-bottom: 25px;
+  padding: 3px;
+  border: 1px solid #ccc;
 }
 
 #blog .feature {

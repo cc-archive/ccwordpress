@@ -5,8 +5,8 @@
         <h2><?php bloginfo('description'); ?></h2>
         <div id="blurb"><?= cc_intro_blurb() ?></div>
         <div id="splash-menu">
-          <h3><a href="<?php echo get_settings('home'); ?>/about/">Learn More</a></h3>
-          <h3>Support CC</h3>
+          <h3><a href="/learnmore/">Learn More</a></h3>
+          <h3><a href="/support/">Support CC</a></h3>
         </div>
       </div>
 
