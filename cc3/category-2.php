@@ -27,10 +27,12 @@
               <h4 class="meta"><?php the_time('F jS, Y')?></h4><h3><a href="<?= get_post_meta ($post->ID, "url", TRUE)?>"><?= $post->post_title ?></a></h3>
               <div class="clearer"></div>
               <? if ($attach = cc_get_attachment ($post->ID)) { ?>
-                <a href="<?= get_post_meta ($post->ID, "url", TRUE)?>"><img src="<?= $attach->uri ?>" alt="<?= $post->post_title ?>" title="<?= $post->post_title ?>" border="0" align="left" style="margin-bottom: 30px; margin-right: 10px;"/></a>
+                <a href="<?= get_post_meta ($post->ID, "url", TRUE)?>"><img src="<?= $attach->uri ?>" alt="<?= $post->post_title ?>" title="<?= $post->post_title ?>" border="0" align="left" style="margin-bottom: 30px; margin-right: 10px;" width="160" /></a>
               <? } ?>
+<div class="excerpt">
               <?php the_content("Read More..."); ?>
               <?php edit_post_link('Edit', '', ''); ?>
+</div>
             </div>
 <?php } }?>
             <?php posts_nav_link(' &mdash; ', 'previous page', 'next page'); ?>
