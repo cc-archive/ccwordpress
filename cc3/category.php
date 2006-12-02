@@ -4,7 +4,7 @@
         <? if (is_month() || is_year()) { ?> 
         <h3 class="category">
           <a href="<?php echo get_settings('home') . "/" . $category_name; ?>">
-            <?= $category_name ?>
+            <?= ucfirst($category_name) ?>
           </a>
         </h3>
         <? }?>

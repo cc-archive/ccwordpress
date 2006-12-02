@@ -11,8 +11,8 @@
         <? }?>
         <h2><? wp_title('') ?><br/>&nbsp;</h2>
         <div id="splash-menu">
-          <h3><a href="<?php echo get_settings('home'); ?>/about/">Learn More</a></h3>
-          <h3>Support CC</h3>
+          <h3><a href="<?php echo get_settings('home'); ?>/learnmore/">Learn More</a></h3>
+          <h3><a href="/support/">Support CC</a></h3>
         </div>
       </div>
 
