@@ -2,7 +2,7 @@
 
     <div id="body">
       <div id="splash">
-        <h2><?php bloginfo('description'); ?></h2>
+        <h2 class="tagline"><?php bloginfo('description'); ?></h2>
         <div id="blurb"><?= cc_intro_blurb() ?></div>
         <div id="splash-menu">
           <h3><a href="/learnmore/">Learn More</a></h3>
@@ -34,7 +34,7 @@
             </div>
 <?php } }?>
             <ul class="archives">
-            <li><h3><a href="/weblog/archives">Weblog Archives</a></h3></li></ul>
+            <li><h3><a href="/weblog/archive">Weblog Archives</a></h3></li></ul>
           </div>
 
           <div id="features">
