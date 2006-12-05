@@ -126,15 +126,15 @@
 		}
 		
 		.red #deed-foot {
-			background: url("/images/deed/deed-foot-red.png") 0 0 no-repeat;
+			background: url("/images/deed/deed-foot-red.png") 0 0;
 		}
 		
 		.yellow #deed-foot {
-			background: url("/images/deed/deed-foot-yellow.png") 0 0 no-repeat;
+			background: url("/images/deed/deed-foot-yellow.png") 0 0;
 		}
 		
 		.green #deed-foot {
-			background: url("/images/deed/deed-foot-green.png") 0 0 no-repeat;
+			background: url("/images/deed/deed-foot-green.png") 0 0;
 		}
 		
 		#disclaimer {
@@ -160,6 +160,12 @@
 		}
 		li.nc {
 					background: url("/images/deed/nc.png") 0 0 no-repeat;
+		}
+		li.nc-jp {
+					background: url("/images/deed/nc-jp.png") 0 0 no-repeat;
+		}
+		li.nc-eu {
+					background: url("/images/deed/nc-eu.png") 0 0 no-repeat;
 		}
 		li.sa {
 					background: url("/images/deed/sa.png") 0 0 no-repeat;
