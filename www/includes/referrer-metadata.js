@@ -38,6 +38,19 @@ function processResponse(http_request) {
     }
 }
 
+function addQSParameter(url, key, value) {
+    var url_nohash = url;
+    var hash = '';
+    var hash_index = (url.indexOf('#'));
+    if (hash_index != -1) {
+        url_nohash = url.substring(0, hash_index);
+        hash = url.substring(hash_index);
+    }
+    url_nohash += (url.indexOf('?') == -1) ? '?' : '&';
+    url_nohash += key + '=' + value;
+    return url_nohash + hash;
+}
+
 function injectReferrerMetadata(response) {
 
     metadata = eval(response);
@@ -46,11 +59,13 @@ function injectReferrerMetadata(response) {
     var attributionUrl = metadata.attributionUrl;
 
     if (attributionName && attributionUrl) {
-	document.getElementById('attribution-container').innerHTML = "You must attribute this work to <strong><a href='" + attributionUrl + "'>" + attributionName + "</a></strong> (with link). <a onclick=\"window.open('http://mirrors.creativecommons.org/demo3/by-popup.html', 'attribution_help', 'width=375,height=300,scrollbars=yes,resizable=yes,toolbar=no,directories=no,location=yes,menubar=no,status=yes');return false;\" href=''>Find out how.</a>";
+	document.getElementById('attribution-container').innerHTML = "You must attribute this work to <strong><a href='" + attributionUrl + "'>" + attributionName + "</a></strong> (with link)."; // <a onclick=\"window.open('/includes/by-popup.html', 'attribution_help', 'width=375,height=300,scrollbars=yes,resizable=yes,toolbar=no,directories=no,location=yes,menubar=no,status=yes');return false;\" href=''>Find out how.</a>";
     }
 
     var morePermissionsURL = metadata.morePermissions;
     var morePermissionsDomain = metadata.morePermissionsDomain;
+
+    morePermissionsURL = addQSParameter(morePermissionsURL, 'cc-referrer', document.referrer);
 
     if (morePermissionsURL && morePermissionsDomain) {
 	document.getElementById('more-container').innerHTML = "<li class='license more'><strong>Permissions beyond</strong> the scope of this public license are available at <strong><a href='" + morePermissionsURL + "'>" + morePermissionsDomain + "</a></strong>.</li>";
