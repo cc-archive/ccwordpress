@@ -148,7 +148,7 @@ function cc_fix_permalink($content, $post){
 		$cats = get_the_category($post->ID);
 		foreach ($cats as $cat) {
 			if($cat->category_nicename != "commoners"){
-				return str_replace ("/commoners/", "/" . $cat->category_nicename . "/", $content);
+				return "/" . $cat->category_nicename . "/" . $post->post_name; 
 			}
 		}
 	}
