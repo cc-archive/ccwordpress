@@ -58,7 +58,7 @@ body {
       background-color: /*#0f2700*/ #fff;
       color: #707070;
       margin: 7px 0 3px 0;
-			padding-bottom:  16px;
+			padding-bottom:  6px;
     }
 			#splash #blurb {
 				margin: 0 0 28px 0;
@@ -68,13 +68,13 @@ body {
 			}
 			
       #splash-menu {
-        font-size: 60%;
+        font-size: 40%;
         background-color: #0f1c00;
         background-color: #fff;
         border-top: 4px solid #0f2700;
         
         text-align: left;
-        padding: 2px 3px 4px 12px;
+        padding: 5px 3px 4px 12px;
 				margin-top:  10px;
       }
 
@@ -274,12 +274,20 @@ a.cc-actions:hover {
 }
 
 #splash h2.tagline { 
-  color: #92534e;
+/*  color: #92534e;
+*/ color: #b82e00;
 }
 
 #splash-menu h3 {
   display: inline;
   margin: 0 25px 0 0;
+}
+
+#splash-menu h3 a {
+  color: #212950;
+}
+#splash-menu h3 a:hover {
+  color: #00b;
 }
 
 #sidebar ul,  #features ul {
