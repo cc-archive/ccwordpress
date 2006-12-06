@@ -42,7 +42,7 @@
         <a href="<?php echo get_settings('home'); ?>"><img src="<?php bloginfo('stylesheet_directory'); ?>/images/cc-title.png" alt="creative commons" id="cc-title" border="0"/></a>
       </div>
     </div>
-    <div id="wrapper">
+    <div id="wrapper"><div id="wrapper-ie">
     
     <div class="jurisdictions">
       <h4><a href="/worldwide">Worldwide</a>&nbsp;</h4>

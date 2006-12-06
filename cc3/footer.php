@@ -1,7 +1,7 @@
       </div>
       <div class="clear">&nbsp;</div>
     </div>
-    </div>
+    </div></div>
     <div id="footer">
       <div id="sub-footer">
         <div class="ccExtras">

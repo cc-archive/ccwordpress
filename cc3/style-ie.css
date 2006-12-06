@@ -14,14 +14,38 @@ img {
 	behavior: url("pngie.htc");
 }
 
+#wrapper {
+
+	/* min-width */
+	width: expression( 
+	    document.body.clientWidth < 600 ? "600px" : "94%"
+	);
+
+	
+}
+
+#wrapper-ie {
+	
+	/* max-width */
+	width: expression( 
+	    document.body.clientWidth > 1100 ? "1100px" : "auto"
+	);
+	
+}
+
 #header-wrapper {
 margin-top: 0;
 	background-color: #426000;
-	height: 60px;
+	height: 80px;
 }
 
 #header-main {
 	margin-top: 0;
+	
+	/* min-width */
+	width: expression( 
+	    document.body.clientWidth < 700 ? "700px" : "90%"
+	);
 }
 
 #splash {
