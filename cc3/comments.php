@@ -61,8 +61,6 @@
 <?php endif; ?>
 
 
-<?php /* ** Disable comment posting for now ** *
-
 <?php if ('open' == $post->comment_status) : ?>
 
 <h3 id="respond">Leave a Reply</h3>
@@ -105,5 +103,3 @@
 
 <?php endif; // if you delete this the sky will fall on your head ?>
 
-<?php */ ?>
- 
