@@ -34,7 +34,8 @@
             </div>
 <?php } }?>
             <ul class="archives">
-            <li><h3><a href="/weblog/archive">Weblog Archives</a></h3></li></ul>
+            <li><h3><a href="/weblog/archive">Weblog Archives</a></h3></li>
+	    <li><h3><a href="/weblog/rss">RSS Feed</a></h3></li></ul>
           </div>
 
           <div id="features">

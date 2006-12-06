@@ -33,6 +33,7 @@
             <?php posts_nav_link(' &mdash; ', 'previous page', 'next page'); ?>
           </div>
           <div id="features">
+	    <strong><a href="/weblog/rss">Subscribe to RSS</a></strong><br/><br/>
             <h4>Archives</h4>
             <ul class="archives">
             <?php cc_get_cat_archives(1, 'monthly', '', 'html', '', '', TRUE); ?>
