@@ -73,12 +73,11 @@
 		}
 		#deed-license h2 {
 			margin: 0;
-			font-size: 1.58em;
+			font-size: 1.46em;
 			padding-top: 100px;
 		}
-		#deed-license img {
+		#deed-main img {
 			float: right;
-			margin-top: -25px;
 			border: 1px solid #353;
 		}
 		
