@@ -3,13 +3,13 @@
 }
 #box {
 	margin-top: 25px;
-	 width: 850px;
-	float: right;
+/*	 width: 850px;
+	float: right; */
 }
 
 #box-content {
   width: 535px;
-  float: left;
+/*  float: left;*/
 }
 
 #box-content.index {
@@ -62,14 +62,14 @@
 }
 
 #support-menu {
-  width: 825px;
+  width: 750px;
   margin: 0;
   margin-top: 25px;
   margin-bottom: 100px;
 }
 
 div.support-menu-item {
-  width: 255px;
+  width: 230px;
   margin: 10px;
   float: left;
 }
@@ -82,7 +82,7 @@ div.support-menu-item {
 #support-menu div.ex {
   color: #6f6f6f;
   margin-top: 30px;
-  width: 510px !important;
+  width: 410px !important;
 }
 .hi {
   color: #555;
@@ -207,4 +207,8 @@ ul#blogs {
 ul#blogs li {
 	border-bottom: 1px solid #d0d0d0;
 	padding: 5px;
-} 
+}
+
+ol.letters ol {
+	margin-left: 15px;
+}
