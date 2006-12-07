@@ -4,7 +4,7 @@
 			background-color: #2d2d2d;
 			font: 12px/16px arial, verdana, sans-serif;
 			text-align: center;
-			color: #333;
+			color: #ccc;
 		}
 		
 		h3 {
@@ -19,7 +19,7 @@
 			background: url("/images/deed/deed-bg-head.png") 0 0 no-repeat #424242;
 			width: 768px;
 			padding: 10px 0;
-			
+			color: #333;
 			margin: 20px auto;
 			text-align: center;
 		}
