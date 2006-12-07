@@ -68,7 +68,13 @@ function injectReferrerMetadata(response) {
     morePermissionsURL = addQSParameter(morePermissionsURL, 'cc-referrer', document.referrer);
 
     if (morePermissionsURL && morePermissionsDomain) {
-	document.getElementById('more-container').innerHTML = "<li class='license more'><strong>Permissions beyond</strong> the scope of this public license are available at <strong><a href='" + morePermissionsURL + "'>" + morePermissionsDomain + "</a></strong>.</li>";
+
+	var more_perms = "<strong>Permissions beyond</strong> the scope of this public license are available at <strong><a href='";
+	more_perms += morePermissionsURL;
+	more_perms += "'>" + morePermissionsDomain + "</a></strong>.</li>";
+
+	document.getElementById('more-container').innerHTML = more_perms;
+	document.getElementById('more-container').setAttribute("class", "license more");
     }
 
 } // injectReferrerMetadata

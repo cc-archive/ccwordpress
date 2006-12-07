@@ -153,6 +153,9 @@
 			padding-top: 10px;
 			width: 415px;
 		}
+		li.license-hidden {
+			list-style: none;
+		}
 		
 		li.by {
 					background: url("/images/deed/by.png") 0 0 no-repeat;
