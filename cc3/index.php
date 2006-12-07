@@ -44,7 +44,7 @@
 <?php while ($my_query->have_posts()) { $my_query->the_post(); ?>
             <div class="post">
   <?php if ($attach = cc_get_attachment ($post->ID)) { ?>
-              <a href="<?= get_post_meta ($post->ID, "url", TRUE)?>"><img src="<?= $attach->uri ?>" alt="<?= $post->post_title ?>" title="<?= $post->post_title ?>" border="0" /></a>
+              <a href="<?= get_post_meta ($post->ID, "url", TRUE)?>"><img src="<?= $attach->uri ?>" alt="<?= $post->post_title ?>" title="<?= $post->post_title ?>" border="0" /></a><br/>
   <?php } ?>
 	      <strong><a href="<?= get_post_meta ($post->ID, "url", TRUE)?>"><?= $post->post_title ?></a></strong>
               <?php the_content(); ?>
