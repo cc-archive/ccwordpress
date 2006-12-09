@@ -81,6 +81,6 @@ function injectReferrerMetadata(response) {
 
 function referrerMetadata() {
     r = document.referrer;
-    if (r.match('^http://')) makeRequest('/apps/scrape?url='+r);
+    if (r.match('^http://')) makeRequest('/apps/scrape?url='+encodeURIComponent(r));
 }
 
