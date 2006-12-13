@@ -48,7 +48,7 @@
       <h4><a href="/worldwide">Worldwide</a>&nbsp;</h4>
       <select name="sortby" onchange="orderby(this)">
         <option value="">Select a jurisdiction</option>
-        <script type="text/javascript" src="http://api.creativecommons.org/rest/1.5/support/jurisdictions.js"></script>
+        <script type="text/javascript" src="/includes/jurisdictions.js"></script>
       </select>
     </div>
     <div class="clear">&nbsp;</div>
