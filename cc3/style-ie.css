@@ -18,7 +18,7 @@ img {
 
 	/* min-width */
 	width: expression( 
-	    document.body.clientWidth < 600 ? "600px" : "94%"
+	    document.body.clientWidth < 850 ? "850px" : "94%"
 	);
 
 	
@@ -28,7 +28,7 @@ img {
 	
 	/* max-width */
 	width: expression( 
-	    document.body.clientWidth > 1100 ? "1100px" : "auto"
+	    document.body.clientWidth > 1000 ? "1000px" : "auto"
 	);
 	
 }
@@ -36,7 +36,7 @@ img {
 #header-wrapper {
 margin-top: 0;
 	background-color: #426000;
-	height: 80px;
+	height: 94px;
 }
 
 #header-main {
@@ -44,7 +44,7 @@ margin-top: 0;
 	
 	/* min-width */
 	width: expression( 
-	    document.body.clientWidth < 700 ? "700px" : "90%"
+	    document.body.clientWidth < 850 ? "850px" : "90%"
 	);
 }
 
@@ -53,6 +53,9 @@ margin-top: 0;
 
 }
 
+#main-content {
+	width: 83%;
+}
 
 #features {
 	width: 26.5%;
