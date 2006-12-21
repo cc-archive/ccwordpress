@@ -173,6 +173,12 @@ body {
   text-align: left;
 }
 
+
+.smalldates {
+  color: #aaa;
+  font-size: 90%;
+}
+
 /* -- elements */
 
 h1, h2, h3 {
