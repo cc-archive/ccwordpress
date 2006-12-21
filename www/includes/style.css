@@ -173,6 +173,9 @@ body {
   text-align: left;
 }
 
+img.mugshot {
+	margin: 0 10px 10px 0;
+}
 
 .smalldates {
   color: #aaa;
