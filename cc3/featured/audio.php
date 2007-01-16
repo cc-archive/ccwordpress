@@ -9,12 +9,11 @@
 	Inspired by the Electronic Frontier Foundation's <a href="http://www.eff.org/bloggers/lg/">Legal Guide for Bloggers</a>, the Podcasting Legal Guide is designed to outline both legal and practical issues that are specifically relevant for podcasters, such as using music and video in a podcast.
 
 </p><br clear="all"/>
+
+<p><a href="http://pumpaudio.com"><strong>Pump Audio</strong></a><br/>
+<a href="http://pumpaudio.com">Pump Audio</a> works with independent musicians to get their music licensed in commercial media projects. You submit your work to Pump, and if they can find someone who wants to use it in their project, Pump will handle the arrangements and pay you 50% of the resulting licensing fees and/or royalties. Pump offers a variety of Creative Commons license options on their site for musicians who want to allow non-commercial use of their work.
+</p>
 	
-<p><a href="http://www.diesel-u-music.com/"><strong>Diesel-U-Music</strong></a><br/>
-
-The 2006 edition of this international music contest was open to unsigned artists playing rock, urban/hip-hop, and electronic music. This year's entries are licensed to the public under the <a href="http://creativecommons.org/licenses/by-nc/2.5/">CC Attribution-NonCommercial 2.5 license</a>. </p>
-
-
 <p><a href="http://www.jamendo.com/"><strong>Jamendo</strong></a><br/>
 Provides an archive of CC-licensed music that's available for download via P2P. Jamendo features tags, user reviews and personalized recommendations, so you can easily find new tunes that suit your tastes. </p>
 
@@ -46,6 +45,12 @@ Thousands of licensed music files are <a href="http://www.soundclick.com/genres/
 
 <p><a href="http://freesound.iua.upf.edu"><strong>Freesound</strong></a><br/>
 A collaborative database of Creative Commons licensed sounds.</p>
+
+
+<p><a href="http://www.diesel-u-music.com/"><strong>Diesel-U-Music</strong></a><br/>
+
+The 2006 edition of this international music contest was open to unsigned artists playing rock, urban/hip-hop, and electronic music. This year's entries are licensed to the public under the <a href="http://creativecommons.org/licenses/by-nc/2.5/">CC Attribution-NonCommercial 2.5 license</a>. </p>
+
 
 <h4>Featured Audio Works</h4>
 <ul>
