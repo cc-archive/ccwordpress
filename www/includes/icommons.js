@@ -5,3 +5,9 @@ function orderby(sel) {
   }
   location.href = url;
 }
+function swapbutton(buttonurl) {
+  //document.getElementById('licensebutton').setAttribute('src',buttonurl);
+  codetocopy = document.getElementById('codetocopy').innerHTML;
+  newcodetocopy = codetocopy.replace(/src=".*?"/, 'src="'+buttonurl+'"');
+  document.getElementById('codetocopy').innerHTML = newcodetocopy;
+}
