@@ -188,6 +188,12 @@ h1, h2, h3 {
   line-height: 117%;
   font-size: 150%;
   font-family: Georgia, serif;
+  margin-top: 25px;
+}
+
+h3 {
+  margin-top: 15px;
+  font-size: 125%;
 }
 
 h4 {
