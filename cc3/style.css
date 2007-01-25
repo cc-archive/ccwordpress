@@ -205,6 +205,12 @@ a.cc-actions, a.cc-actions:link {
   text-align: left;
 }
 
+.mugshot {
+	border: 2px solid #ccc;
+	margin-right: 10px;
+	margin-bottom: 10px;
+}
+
 /* -- elements */
 
 h1, h2, h3 {
