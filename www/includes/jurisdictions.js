@@ -16,6 +16,7 @@ document.write('<option value="http://creativecommons.fi">Finland</option>');
 document.write('<option value="http://fr.creativecommons.org">France</option>');
 document.write('<option value="http://de.creativecommons.org">Germany</option>');
 document.write('<option value="http://creativecommons.org.il">Israel</option>');
+document.write('<option value="http://cc-india.org">India</option>');
 document.write('<option value="http://www.creativecommons.it">Italy</option>');
 document.write('<option value="http://www.creativecommons.jp">Japan</option>');
 document.write('<option value="http://www.creativecommons.or.kr/">Korea</option>');
