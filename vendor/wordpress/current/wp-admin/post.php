@@ -81,7 +81,7 @@ case 'edit':
 	?>
 	<div id='preview' class='wrap'>
 	<h2 id="preview-post"><?php _e('Post Preview (updated when post is saved)'); ?> <small class="quickjump"><a href="#write-post"><?php _e('edit &uarr;'); ?></a></small></h2>
-		<iframe src="<?php echo wp_specialchars(apply_filters('preview_post_link', add_query_arg('preview', 'true', get_permalink($post->ID)))); ?>" width="100%" height="600" ></iframe>
+		<iframe src="<?php echo attribute_escape(apply_filters('preview_post_link', add_query_arg('preview', 'true', get_permalink($post->ID)))); ?>" width="100%" height="600" ></iframe>
 	</div>
 	<?php
 	break;
@@ -138,10 +138,13 @@ case 'editpost':
 
 case 'delete':
 	$post_id = (isset($_GET['post']))  ? intval($_GET['post']) : intval($_POST['post_ID']);
-	check_admin_referer('delete-post_' . $post_id);
 
 	$post = & get_post($post_id);
-	
+	if ( 'static' == $post->post_status )
+		check_admin_referer('delete-page_' . $post_id);
+	else
+		check_admin_referer('delete-post_' . $post_id);
+
 	if ( !current_user_can('edit_post', $post_id) )	
 		die( __('You are not allowed to delete this post.') );
 
@@ -154,9 +157,12 @@ case 'delete':
 	}
 
 	$sendback = wp_get_referer();
-	if (strstr($sendback, 'post.php')) $sendback = get_settings('siteurl') .'/wp-admin/post.php';
-	elseif (strstr($sendback, 'attachments.php')) $sendback = get_settings('siteurl') .'/wp-admin/attachments.php';
-	$sendback = preg_replace('|[^a-z0-9-~+_.?#=&;,/:]|i', '', $sendback);
+	if ( 'static' == $post->post_status )
+		$sendback = get_option('siteurl') . '/wp-admin/edit-pages.php';
+	elseif ( strstr($sendback, 'post.php') )
+		$sendback = get_option('siteurl') .'/wp-admin/post.php';
+	elseif ( strstr($sendback, 'attachments.php') )
+		$sendback = get_option('siteurl') .'/wp-admin/attachments.php';
 	wp_redirect($sendback);
 	break;
 
@@ -338,7 +344,7 @@ case 'editedcomment':
 	$location = ( empty($_POST['referredby']) ? "edit.php?p=$comment_post_ID&c=1" : $_POST['referredby'] ) . '#comment-' . $comment_ID;
 	$location = apply_filters('comment_edit_redirect', $location, $comment_ID);
 	wp_redirect($location);
-
+	exit();
 	break;
 
 default:

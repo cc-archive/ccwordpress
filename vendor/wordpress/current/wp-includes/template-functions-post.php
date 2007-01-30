@@ -158,7 +158,7 @@ function link_pages($before='<br />', $after='<br />', $next_or_number='number',
 					if ( '' == get_settings('permalink_structure') )
 						echo '<a href="' . get_permalink() . '&amp;page=' . $i . '">';
 					else
-						echo '<a href="' . trailingslashit( get_permalink() ) . $i . '/">';
+						echo '<a href="' . trailingslashit(get_permalink()) . $i . '/">';
 				}
 				echo $j;
 				if ( ($i != $page) || ((!$more) && ($page==1)) )
@@ -173,14 +173,14 @@ function link_pages($before='<br />', $after='<br />', $next_or_number='number',
 					if ( '' == get_settings('permalink_structure') )
 						echo '<a href="' . get_permalink() . '&amp;page=' . $i . '">'.$previouspagelink.'</a>';
 					else
-						echo '<a href="' . get_permalink() . $i . '/">'.$previouspagelink.'</a>';
+						echo '<a href="' . get_permalink() . $i . '/">' . $previouspagelink . '</a>';
 				}
 				$i = $page + 1;
 				if ( $i <= $numpages && $more ) {
 					if ( '' == get_settings('permalink_structure') )
-						echo '<a href="'.get_permalink() . '&amp;page=' . $i . '">'.$nextpagelink.'</a>';
+						echo '<a href="' . get_permalink() . '&amp;page=' . $i . '">' . $nextpagelink . '</a>';
 					else
-						echo '<a href="'.get_permalink().$i.'/">'.$nextpagelink.'</a>';
+						echo '<a href="' . trailingslashit(get_permalink()) . $i . '/">' . $nextpagelink . '</a>';
 				}
 				echo $after;
 			}
@@ -418,7 +418,7 @@ function _page_level_out($parent, $page_tree, $args, $depth = 0, $echo = true) {
 
 	foreach ( $page_tree[$parent]['children'] as $page_id ) {
 		$cur_page = $page_tree[$page_id];
-		$title = wp_specialchars($cur_page['title']);
+		$title = attribute_escape($cur_page['title']);
 
 		$css_class = 'page_item';
 		if ( $page_id == $queried_obj->ID )

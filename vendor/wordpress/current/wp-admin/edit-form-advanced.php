@@ -211,11 +211,11 @@ if ('publish' != $post->post_status || 0 == $post_ID) {
 ?>
 <input name="referredby" type="hidden" id="referredby" value="<?php 
 if ( !empty($_REQUEST['popupurl']) )
-	echo wp_specialchars($_REQUEST['popupurl']);
-else if ( url_to_postid(wp_get_referer()) == $post_ID )
+	echo attribute_escape(stripslashes($_REQUEST['popupurl']));
+else if ( url_to_postid(stripslashes(wp_get_referer())) == $post_ID )
 	echo 'redo';
 else
-	echo wp_specialchars(wp_get_referer());
+	echo attribute_escape(stripslashes(wp_get_referer()));
 ?>" /></p>
 
 <?php do_action('edit_form_advanced'); ?>
@@ -232,23 +232,23 @@ if (current_user_can('upload_files')) {
 
 <div id="advancedstuff" class="dbx-group" >
 
-<div class="dbx-box-wrapper">
+<div class="dbx-b-ox-wrapper">
 <fieldset id="postexcerpt" class="dbx-box">
-<div class="dbx-handle-wrapper">
+<div class="dbx-h-andle-wrapper">
 <h3 class="dbx-handle"><?php _e('Optional Excerpt') ?></h3>
 </div>
-<div class="dbx-content-wrapper">
+<div class="dbx-c-ontent-wrapper">
 <div class="dbx-content"><textarea rows="1" cols="40" name="excerpt" tabindex="6" id="excerpt"><?php echo $post->post_excerpt ?></textarea></div>
 </div>
 </fieldset>
 </div>
 
-<div class="dbx-box-wrapper">
+<div class="dbx-b-ox-wrapper">
 <fieldset id="trackbacksdiv" class="dbx-box">
-<div class="dbx-handle-wrapper">
+<div class="dbx-h-andle-wrapper">
 <h3 class="dbx-handle"><?php _e('Trackbacks') ?></h3>
 </div>
-<div class="dbx-content-wrapper">
+<div class="dbx-c-ontent-wrapper">
 <div class="dbx-content"><?php _e('Send trackbacks to'); ?>: <?php echo $form_trackback; ?> (<?php _e('Separate multiple URIs with spaces'); ?>)
 <?php 
 if ( ! empty($pings) )
@@ -259,12 +259,12 @@ if ( ! empty($pings) )
 </fieldset>
 </div>
 
-<div class="dbx-box-wrapper">
+<div class="dbx-b-ox-wrapper">
 <fieldset id="postcustom" class="dbx-box">
-<div class="dbx-handle-wrapper">
+<div class="dbx-h-andle-wrapper">
 <h3 class="dbx-handle"><?php _e('Custom Fields') ?></h3>
 </div>
-<div class="dbx-content-wrapper">
+<div class="dbx-c-ontent-wrapper">
 <div id="postcustomstuff" class="dbx-content">
 <?php 
 if($metadata = has_meta($post_ID)) {

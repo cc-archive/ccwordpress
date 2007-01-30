@@ -213,17 +213,6 @@ function wp_delete_comment($comment_id) {
 	return true;
 }
 
-function clean_url( $url ) {
-	if ('' == $url) return $url;
-	$url = preg_replace('|[^a-z0-9-~+_.?#=&;,/:%]|i', '', $url);
-	$strip = array('%0d', '%0a');
-	$url = str_replace($strip, '', $url);
-	$url = str_replace(';//', '://', $url);
-	$url = (!strstr($url, '://')) ? 'http://'.$url : $url;
-	$url = preg_replace('/&([^#])(?![a-z]{2,8};)/', '&#038;$1', $url);
-	return $url;
-}
-
 function get_comments_number( $post_id = 0 ) {
 	global $wpdb, $comment_count_cache, $id;
 	$post_id = (int) $post_id;
@@ -315,7 +304,7 @@ function comments_popup_link($zero='No Comments', $one='1 Comment', $more='% Com
 		if (!empty($CSSclass)) {
 			echo ' class="'.$CSSclass.'"';
 		}
-		$title = wp_specialchars(apply_filters('the_title', get_the_title()), true);
+		$title = attribute_escape(apply_filters('the_title', get_the_title()));
 		echo ' title="' . sprintf( __('Comment on %s'), $title ) .'">';
 		comments_number($zero, $one, $more, $number);
 		echo '</a>';
@@ -897,21 +886,21 @@ function sanitize_comment_cookies() {
 	if ( isset($_COOKIE['comment_author_'.COOKIEHASH]) ) {
 		$comment_author = apply_filters('pre_comment_author_name', $_COOKIE['comment_author_'.COOKIEHASH]);
 		$comment_author = stripslashes($comment_author);
-		$comment_author = wp_specialchars($comment_author, true);
+		$comment_author = attribute_escape($comment_author);
 		$_COOKIE['comment_author_'.COOKIEHASH] = $comment_author;
 	}
 
 	if ( isset($_COOKIE['comment_author_email_'.COOKIEHASH]) ) {
 		$comment_author_email = apply_filters('pre_comment_author_email', $_COOKIE['comment_author_email_'.COOKIEHASH]);
 		$comment_author_email = stripslashes($comment_author_email);
-		$comment_author_email = wp_specialchars($comment_author_email, true);	
+		$comment_author_email = attribute_escape($comment_author_email);	
 		$_COOKIE['comment_author_email_'.COOKIEHASH] = $comment_author_email;
 	}
 
 	if ( isset($_COOKIE['comment_author_url_'.COOKIEHASH]) ) {
 		$comment_author_url = apply_filters('pre_comment_author_url', $_COOKIE['comment_author_url_'.COOKIEHASH]);
 		$comment_author_url = stripslashes($comment_author_url);
-		$comment_author_url = wp_specialchars($comment_author_url, true);
+		$comment_author_url = attribute_escape($comment_author_url);
 		$_COOKIE['comment_author_url_'.COOKIEHASH] = $comment_author_url;
 	}
 }
