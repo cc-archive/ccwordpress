@@ -26,7 +26,7 @@ function cc_list_pages($pageid, $sep = "&raquo;", $before = "<h3>", $after = "</
 /* retrieve url of uploaded resource from its title */
 function cc_get_attachment ($id) {
 	global $wpdb;
- 	return $wpdb->get_row("SELECT guid AS uri, post_content AS descr FROM $wpdb->posts WHERE post_parent=$id AND post_status='attachment';");
+ 	return $wpdb->get_row("SELECT guid AS uri, post_content AS descr FROM $wpdb->posts WHERE post_parent=$id AND post_status='inherit';");
 }
 
 function cc_get_attachment_desc ($title) {
