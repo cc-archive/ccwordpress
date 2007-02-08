@@ -7,7 +7,8 @@ function orderby(sel) {
 }
 function swapbutton(buttonurl) {
   //document.getElementById('licensebutton').setAttribute('src',buttonurl);
-  codetocopy = document.getElementById('codetocopy').innerHTML;
-  newcodetocopy = codetocopy.replace(/src=".*?"/, 'src="'+buttonurl+'"');
-  document.getElementById('codetocopy').innerHTML = newcodetocopy;
+  e = document.getElementById('codetocopy');
+  var codetocopy = e.value;
+  var newcodetocopy = codetocopy.replace(/src=".*?"/, 'src="'+buttonurl+'"');
+  e.value = newcodetocopy;  
 }
