@@ -21,9 +21,11 @@ INSTALLATION NOTES
   10. - Video
   11. - Text
   12. - Education
-  (This is due to old-blog import taking up cat ids 2-5, and a reshuffle of 
-moving "Blog" to id 1. What's really important is making sure "Blog" is id 1
-and "Featured Content" is id 2. If you have issue with that, make sure "category-1.php" is named after the Blog cat id number, and "category-2.php" named after the Featured Content cat id)
+  (This is due to old-blog import taking up cat ids 2-5, and a reshuffle
+  of moving "Blog" to id 1. What's really important is making sure
+  "Blog" is id 1 and "Featured Content" is id 2. If you have issue with
+  that, make sure "category-1.php" is named after the Blog cat id
+  number, and "category-2.php" named after the Featured Content cat id)
 
 
 USAGE NOTES
