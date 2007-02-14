@@ -11,6 +11,8 @@
 			font-size: 1.45em;
 		}
 		
+		#cc-logo { display: none; }
+		
 		#deed-bg {
 
 		}
@@ -53,15 +55,20 @@
 		#deed-main {
 			background-color: #fff;
 			
-			/* "!important" box-model hack for IE */
-			width: 710px !important;
-			width: 750px;
+	/* "!important" box-model hack for IE */
+			width: 750px !important;
+	/*width: 780px;*/
 			
-			padding: 20px;
+			padding: 20px 0;
 			margin: 0 auto;
 			text-align: left;
 			
 			border-bottom: 1px solid #505050;
+		}
+		
+		#deed-main-content {
+			margin: 0 15px;
+		
 		}
 		
 		#deed-license {
@@ -78,16 +85,19 @@
 		}
 		#deed-main img {
 			float: right;
-			border: 1px solid #353;
+			border: 1px solid #888;
+			margin-bottom:  5px;
 		}
 		
 		#deed-rights {
-			border-bottom: 1px solid #d9e8c8;
-			padding-bottom: 15px;
+			background:  url("/images/deed/freedoms-header.png") 0 0 no-repeat;
+			padding: 0 10px;
 			margin-bottom: 20px;
 		}
 		
 		#deed-conditions {
+			background:  url("/images/deed/limitations-header.png") 0 0 no-repeat;
+			padding: 0 10px;
 			margin-bottom: 33px;
 		}
 
@@ -108,7 +118,7 @@
 			padding: 15px;
 			margin-top: 25px;
 		}
-		#deed-newer a {
+		#deed-newer a, #deed-main a {
 			color: #111;
 			font-weight: bold;
 		}
@@ -161,12 +171,24 @@
 			padding-bottom: 25px;
 			padding-left: 70px;
 			padding-top: 10px;
-			width: 415px;
+			width: 420px;
+		}
+		li.license p {
+			margin: 0;
+			padding: 0;
 		}
 		li.license-hidden {
 			list-style: none;
 		}
-		
+	
+                li.share {
+                                        background: url("/images/deed/share.png") 0 0 no-repeat;
+                }
+	
+                li.remix {
+                                        background: url("/images/deed/remix.png") 0 0 no-repeat;
+                }
+
 		li.by {
 					background: url("/images/deed/by.png") 0 0 no-repeat;
 		}
@@ -205,3 +227,16 @@
 			text-decoration: none;
 		}
 
+
+		blockquote {
+			padding:  8px;
+			background-color:  #eee;
+			margin:  15px 0;
+			clear: both;
+		}
+
+		h3 {
+			padding-top: 10px;
+			margin-top:  1.75em;
+			margin-bottom:  0.7em;
+		}
