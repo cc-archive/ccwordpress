@@ -6,7 +6,7 @@ body {
 	font: 10pt/12pt Arial, "Trebuchet MS", Verdana, sans-serif;
 	background-color: #fff;
 	color: #000;
-	margin-top: 0.25in;
+	margin-top: 0.35in;
 	}
 
 #header, #footer {
@@ -20,20 +20,20 @@ body {
 #cc-logo img {
 	width: 0.8in;
 	height: 0.8in;
-	padding-top: 0.06in;
+	padding-top: 0.01in;
 	margin-right: 0.1in;
 }
 
 #deed {
 	width: 6.5in;
 	margin: 0 auto;
-	padding-top: 0.01in;
 	text-align: left;
 }
 
 #deed-head h1 {
-	margin-left: 0.73in;
+	margin-left: 0.9in;
 	font-size: 15pt;
+	padding-top: 0.02in;
 	padding-bottom: 0.06in;
 	border-bottom: 0.05in solid #000;
 }
