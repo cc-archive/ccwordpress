@@ -39,6 +39,8 @@
           </div>
 
           <div id="features">
+            <div style="text-align:center;"><a href="/support"><img src="/images/support/2007/support-btn-big.png" border="0" alt="support cc"/></a></div>
+            <div class="content-foot">&nbsp;</div>
             <h4>Featured Projects</h4>
 <?php $my_query = new WP_Query('category_name=featured-projects&showposts=2'); ?>
 <?php while ($my_query->have_posts()) { $my_query->the_post(); ?>
