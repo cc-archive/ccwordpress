@@ -8,6 +8,19 @@
      // check if this single is a commoner or blog post
      in_category(7) ? $is_commoner = true : $is_commoner = false;
      in_category(1) ? $is_blog = true : $is_blog = false;
+
+     // check worldwide categories
+     in_category(17) ? $is_worldwide = true : $is_worldwide = false;
+     in_category(62) ? $is_worldwide_completed = true : $is_worldwide_completed = false;
+     in_category(63) ? $is_worldwide_in_progress = true : $is_worldwide_in_progress = false;
+     in_category(64) ? $is_worldwide_upcoming = true : $is_worldwide_upcoming = false;
+
+     foreach ((get_the_category()) as $cat) {
+       if ($cat->category_parent == 17) {
+         $jurisdiction_name = $cat->cat_name;
+         $jurisdiction_code = $cat->category_nicename;
+       }
+     }
     ?>
   
     <div id="body">
@@ -18,7 +31,13 @@
             <a href="<?php echo get_settings('home') . "/" . $category_name; ?>">
               <? $cat = get_the_category(); $cat = $cat[1]; echo $cat->cat_name; ?>
             </a>
-          </h3>
+	  </h3>
+	<? } else if ($is_worldwide) { ?>
+	  <h3 class="category">
+	    <a href="<?php echo get_settings('home') . "/" ?>worldwide?">
+	      Creative Commons Worldwide
+            </a>
+	  </h3>
         <? } else if ($category_name == "weblog") { ?>
           <h3 class="category">
             <a href="<?php echo get_settings('home') . "/" ?>weblog/">
@@ -33,7 +52,14 @@
           </h3>
         <? } ?>
 
+	<? if ($is_worldwide) { ?>
+        <h2> 
+          <img src="/images/international/<?php echo $jurisdiction_code ?>.png" /><?php 
+          the_title(); ?><br/>&nbsp;
+        </h2>
+	<? } else { ?>
         <h2> <?php the_title(); ?><br/>&nbsp;</h2>
+	<? } ?>
         <div id="splash-menu">
          <?php edit_post_link('<h3>Edit this article</h3>', '', ''); ?>
         </div>
@@ -48,7 +74,29 @@
           <? } ?>
     
             <div class="post" id="post-<?php the_ID(); ?>">
+              <? if (!$is_worldwide) { ?>
               <h4 class="meta"><?php the_author() ?>, <?php the_time('F jS, Y')?></h4>
+              <? } ?>
+
+              <? if ($is_worldwide_completed) { ?>
+              <div class="licensebox" style="margin:14px;">
+                <p>The <span><? echo $jurisdiction_name ?></span> license has now been integrated 
+                into <a href="/license/?jurisdiction=<?php echo $jurisdiction_code ?>">the Creative 
+                Commons licensing process</a>, so you are able to license your works under this 
+                jurisdiction's law. </p> 
+                <p>The latest version of the licenses available for this jurisdiction are:</p>
+                <ul>
+                  <li>
+                    TBD
+                  </li>
+                </ul>
+                <p>Many thanks to all who contributed to the license-porting process. This page 
+                remains for reference.</p>
+                <p>Please take a look at the mailing-list archive if you are interested in the 
+                academic discussion leading to the <span><?php echo $jurisdiction_name ?></span> 
+                final license.</p>
+              </div>
+              <? } ?>
               <?php the_content(); ?>
               <div class="comments"><?php if ($is_blog) comments_template(); ?></div>
             </div>
