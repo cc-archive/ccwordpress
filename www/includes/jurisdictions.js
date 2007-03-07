@@ -1,4 +1,3 @@
-document.write('<option value="http://creativecommons.org">Generic</option>');
 document.write('<option value="http://creativecommons.org/worldwide/ar/">Argentina</option>');
 document.write('<option value="http://www.creativecommons.org.au">Australia</option>');
 document.write('<option value="http://www.creativecommons.at">Austria</option>');
