@@ -91,11 +91,12 @@
                       $license_fname = "../license_xsl/licenses.xml";
                       if (! file_exists($license_fname)) {
                           echo "<li>Unknown</li>\n";
-                      }
-                      $license_xml = new LicenseXml($license_fname);
-                      $licenses = $license_xml->getLicensesCurrent($jurisdiction);
-                      foreach ($licenses as $l) {
-                          echo "<li><a href='$l[uri]'>$l['id'] $l['version']</a></li>\n";
+                      } else {
+                          $license_xml = new LicenseXml($license_fname);
+                          $licenses = $license_xml->getLicensesCurrent($jurisdiction);
+                          foreach ($licenses as $l) {
+                              echo "<li><a href='$l[uri]'>$l['id'] $l['version']</a></li>\n";
+                          }
                       } ?>
                   TBD
                   </li>
