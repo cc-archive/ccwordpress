@@ -54,10 +54,24 @@ function get_permalink($id = 0) {
 
 		$category = '';
 		if ( strstr($permalink, '%category%') ) {
-			$cats = get_the_category($post->ID);
-			$category = $cats[0]->category_nicename;
-			if ( $parent=$cats[0]->category_parent )
-				$category = get_category_parents($parent, FALSE, '/', TRUE) . $category;
+                        $cat_id=0;
+                        $cats = get_the_category($post->ID);
+
+                        # Skip over license-status categories
+                        while ($cat_id < count($cats)) {
+                            if ($cats[$cat_id]->category_parent != "license-status") {
+                                break;
+                            }
+                            $cat_id++;
+                        }
+
+                        $category = $cats[$cat_id]->category_nicename;
+                        if ( $parent=$cats[$cat_id]->category_parent ) {
+                            $category = get_category_parents($parent, FALSE, '/', TRUE) . $category;
+                        }
+                        if ($parent == 'license-status') {
+                            $category = '';
+                        }
 		}
 
 		$authordata = get_userdata($post->post_author);
