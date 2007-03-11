@@ -11,9 +11,9 @@
 
      // check worldwide categories
      in_category(17) ? $is_worldwide = true : $is_worldwide = false;
-     in_category(62) ? $is_worldwide_completed = true : $is_worldwide_completed = false;
-     in_category(63) ? $is_worldwide_in_progress = true : $is_worldwide_in_progress = false;
-     in_category(64) ? $is_worldwide_upcoming = true : $is_worldwide_upcoming = false;
+     in_category(18) ? $is_worldwide_upcoming = true : $is_worldwide_upcoming = false;
+     in_category(19) ? $is_worldwide_in_progress = true : $is_worldwide_in_progress = false;
+     in_category(20) ? $is_worldwide_completed = true : $is_worldwide_completed = false;
 
      foreach ((get_the_category()) as $cat) {
        if ($cat->category_parent == 17) {
@@ -95,7 +95,7 @@
                           $license_xml = new LicenseXml($license_fname);
                           $licenses = $license_xml->getLicensesCurrent($jurisdiction);
                           foreach ($licenses as $l) {
-                              echo "<li><a href='$l[uri]'>$l['id'] $l['version']</a></li>\n";
+                              echo "<li><a href='$l[uri]'>$l[id] $l[version]</a></li>\n";
                           }
                       } ?>
                   TBD
