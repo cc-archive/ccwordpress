@@ -88,7 +88,7 @@
                 <ul>
                   <li>
                   <?php
-                      $license_fname = "../license_xsl/licenses.xml";
+                      $license_fname = "./licenses.xml";
                       if (! file_exists($license_fname)) {
                           echo "<li>Unknown</li>\n";
                       } else {
