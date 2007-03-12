@@ -116,7 +116,6 @@ class LicenseXML
  *  $ php licenses.php licenses
  *  $ php licenses.php licenses_current
  * 
-*/
 $command = $argv[1];
 
 #$license_xml = new LicenseXml(ABSPATH . WPINC . "/licenses.xml");
@@ -149,7 +148,6 @@ switch($command) {
 }
 
 exit(0);
-/*
 ***/
 
 ?>
