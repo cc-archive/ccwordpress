@@ -2,10 +2,10 @@
 
 class LicenseXML
 {
-    private $dom;
+    var $dom;
 
     # Loads licenses.xml
-    function __construct($license_xml_filename) {
+    function LicenseXML($license_xml_filename) {
         $this->dom = domxml_open_file($license_xml_filename);
         $this->dom->xpath_init();
     }
@@ -15,6 +15,9 @@ class LicenseXML
     function getJurisdictions($launched="") {
         $jurisdictions = array();
 
+	if (! $this->dom) {
+	    print "Invalid DOM object\n";
+	}
         $xpath = $this->dom->xpath_new_context();
         if ($launched == "" or $launched == "all") {
             $result = $xpath->xpath_eval("//license-info/jurisdictions/jurisdiction-info");
@@ -22,16 +25,16 @@ class LicenseXML
             $result = $xpath->xpath_eval("//license-info/jurisdictions/jurisdiction-info[@launched='$launched']");
         }
 
-        foreach ($result as $j) {
+        foreach ($result->nodeset as $j) {
             $jurisdiction = array();
             $jurisdiction_id = $j->get_attribute('id');
             $jurisdiction['id'] = $jurisdiction_id;
 
             foreach ($j->child_nodes() as $child) {
                 if ($child->node_name() == 'languages') {
-                    $jurisdiction['languages'] = $child->node_value();
+                     $jurisdiction['languages'] = $child->get_content();
                 } else if ($child->node_name() == 'uri') {
-                    $jurisdiction['uri'] = $child->node_value();
+                    $jurisdiction['uri'] = $child->get_content();
                 }
             }
 
@@ -53,7 +56,7 @@ class LicenseXML
             $result = $xpath->xpath_eval("//licenseclass[@id='$licenseclass']/license");
         }
 
-        foreach ($result as $l) {
+        foreach ($result->nodeset as $l) {
             $license = array();
             $license_id = $l->get_attribute('id');
             $license['id'] = $license_id;
@@ -89,7 +92,7 @@ class LicenseXML
             } else {
                 $versions = $xpath->xpath_eval("//licenseclass[@id='$licenseclass']/license[@id='$license_id']/jurisdiction[@id='$jurisdiction']/version");
             }
-            foreach ($versions as $version) {
+            foreach ($versions->nodeset as $version) {
                 $version_id = $version->get_attribute("id");
                 if ($version_id > $license['version']) {
                     $license['version'] = $version_id;
@@ -113,9 +116,11 @@ class LicenseXML
  *  $ php licenses.php licenses
  *  $ php licenses.php licenses_current
  * 
+*/
 $command = $argv[1];
 
-$license_xml = new LicenseXml("../license_xsl/licenses.xml");
+#$license_xml = new LicenseXml(ABSPATH . WPINC . "/licenses.xml");
+$license_xml = new LicenseXml("licenses.xml");
 
 switch($command) {
     case "jurisdictions":
@@ -129,13 +134,13 @@ switch($command) {
         foreach ($licenses as $license) {
             printf("%-12s %s\n", $license['id'], join(",", $license['jurisdictions']));
         }
-        $license_xml->printLicenses("all");
         break;
     case "licenses_current":
         $jurisdiction="-";
         $licenseclass="standard";
         print("Jurisdiction: $jurisdiction\n");
-        foreach ($license_xml->getLicensesCurrent($jurisdiction, $licenseclass) as $license) {
+        $licenses = $license_xml->getLicensesCurrent($jurisdiction, $licenseclass);
+        foreach ($licenses as $license) {
             printf("  %-12s %-12s %s\n", $license['id'], $license['version'], $license['uri']);
         }
         break;
@@ -144,7 +149,7 @@ switch($command) {
 }
 
 exit(0);
-
+/*
 ***/
 
 ?>
