@@ -1,4 +1,5 @@
 <?php get_header(); ?>
+<?php require(ABSPATH . WPINC . "/licenses.php"); ?>
 
 <?php if (have_posts())  { ?>
   <?php while (have_posts()) { 
@@ -88,7 +89,7 @@
                 <ul>
                   <li>
                   <?php
-                      $license_fname = ABSPATH . WPINC . "licenses.xml";
+                      $license_fname = ABSPATH . WPINC . "/licenses.xml";
                       if (! file_exists($license_fname)) {
                           echo "<li>Unknown</li>\n";
                       } else {
@@ -98,7 +99,6 @@
                               echo "<li><a href='$l[uri]'>$l[id] $l[version]</a></li>\n";
                           }
                       } ?>
-                  TBD
                   </li>
                 </ul>
                 <p>Many thanks to all who contributed to the license-porting process. This page 
