@@ -3,9 +3,15 @@
 class LicenseXML
 {
     private $dom;
+    private $name_dom;
+
+    # Configuration
+    private $cc_api_root      = "http://api.creativecommons.org/rest/1.5";
+    private $license_name_cmd = "details?license-uri";
 
     # Loads licenses.xml
     function __construct($license_xml_filename) {
+        $this->name_dom = new DomDocument();
         $this->dom = new DomDocument();
         $this->dom->load($license_xml_filename);
     }
@@ -102,6 +108,19 @@ class LicenseXML
         }
         return $current_licenses;     
     }
+
+    function getLicenseName($uri) {
+        $url = $this->cc_api_root . "/" . $this->license_name_cmd . "=$uri";
+        $xml = file_get_contents($url);
+
+        $this->name_dom->loadXML($xml);
+
+        $xpath = new Domxpath($this->name_dom);
+        $xpath = $dom->xpath_new_context();
+        $result = $xpath->xpath_eval("//result/license-name");
+        return $result->nodeset[0]->get_content();
+    }
+
 }
 
 /***
