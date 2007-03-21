@@ -2,12 +2,12 @@
 
 class LicenseXML
 {
-    var $dom;
+    private $dom;
 
     # Loads licenses.xml
-    function LicenseXML($license_xml_filename) {
-        $this->dom = domxml_open_file($license_xml_filename);
-        $this->dom->xpath_init();
+    function __construct($license_xml_filename) {
+        $this->dom = new DomDocument();
+        $this->dom->load($license_xml_filename);
     }
 
     # Returns an array of jurisdiction arrays.
@@ -15,26 +15,23 @@ class LicenseXML
     function getJurisdictions($launched="") {
         $jurisdictions = array();
 
-	if (! $this->dom) {
-	    print "Invalid DOM object\n";
-	}
-        $xpath = $this->dom->xpath_new_context();
+        $xpath = new Domxpath($this->dom);
         if ($launched == "" or $launched == "all") {
-            $result = $xpath->xpath_eval("//license-info/jurisdictions/jurisdiction-info");
+            $result = $xpath->query("//license-info/jurisdictions/jurisdiction-info");
         } else {
-            $result = $xpath->xpath_eval("//license-info/jurisdictions/jurisdiction-info[@launched='$launched']");
+            $result = $xpath->query("//license-info/jurisdictions/jurisdiction-info[@launched='$launched']");
         }
 
-        foreach ($result->nodeset as $j) {
+        foreach ($result as $j) {
             $jurisdiction = array();
-            $jurisdiction_id = $j->get_attribute('id');
+            $jurisdiction_id = $j->getAttribute('id');
             $jurisdiction['id'] = $jurisdiction_id;
 
-            foreach ($j->child_nodes() as $child) {
-                if ($child->node_name() == 'languages') {
-                     $jurisdiction['languages'] = $child->get_content();
-                } else if ($child->node_name() == 'uri') {
-                    $jurisdiction['uri'] = $child->get_content();
+            foreach ($j->childNodes as $child) {
+                if ($child->nodeName == 'languages') {
+                    $jurisdiction['languages'] = $child->nodeValue;
+                } else if ($child->nodeName == 'uri') {
+                    $jurisdiction['uri'] = $child->nodeValue;
                 }
             }
 
@@ -49,22 +46,22 @@ class LicenseXML
         $licenses = array();
 
         # Query document
-        $xpath = $this->dom->xpath_new_context();
+        $xpath = new Domxpath($this->dom);
         if ($licenseclass == '' or $licenseclass=='all') {
-            $result = $xpath->xpath_eval("//licenseclass/license");
+            $result = $xpath->query("//licenseclass/license");
         } else {
-            $result = $xpath->xpath_eval("//licenseclass[@id='$licenseclass']/license");
+            $result = $xpath->query("//licenseclass[@id='$licenseclass']/license");
         }
 
-        foreach ($result->nodeset as $l) {
+        foreach ($result as $l) {
             $license = array();
-            $license_id = $l->get_attribute('id');
+            $license_id = $l->getAttribute('id');
             $license['id'] = $license_id;
 
             $jurisdictions = array();
-            foreach ($l->child_nodes() as $j) {
-                if ($j->node_name() == 'jurisdiction') {
-                    $jurisdiction_id = $j->get_attribute('id');
+            foreach ($l->childNodes as $j) {
+                if ($j->nodeName == 'jurisdiction') {
+                    $jurisdiction_id = $j->getAttribute('id');
                     if ($jurisdiction_id != '') {
                         array_push($jurisdictions, $jurisdiction_id);
                     }
@@ -86,24 +83,24 @@ class LicenseXML
             $license_id = $license['id'];
 
             $current_version = 0;
-            $xpath = $this->dom->xpath_new_context();
+            $xpath = new Domxpath($this->dom);
             if ($jurisdiction == '' or $jurisdiction == 'all') {
-                $versions = $xpath->xpath_eval("//licenseclass/license[@id='$license_id']/jurisdiction/version");
+                $versions = $xpath->query("//licenseclass/license[@id='$license_id']/jurisdiction/version");
             } else {
-                $versions = $xpath->xpath_eval("//licenseclass[@id='$licenseclass']/license[@id='$license_id']/jurisdiction[@id='$jurisdiction']/version");
+                $versions = $xpath->query("//licenseclass[@id='$licenseclass']/license[@id='$license_id']/jurisdiction[@id='$jurisdiction']/version");
             }
-            foreach ($versions->nodeset as $version) {
-                $version_id = $version->get_attribute("id");
+            foreach ($versions as $version) {
+                $version_id = $version->getAttribute("id");
                 if ($version_id > $license['version']) {
                     $license['version'] = $version_id;
-                    $license['uri'] = $version->get_attribute("uri");
+                    $license['uri'] = $version->getAttribute("uri");
                 }
             }
             if ($license['version'] > 0) {
                 $current_licenses[$license_id] = $license;
             }
         }
-        return $current_licenses;
+        return $current_licenses;     
     }
 }
 
@@ -118,8 +115,7 @@ class LicenseXML
  * 
 $command = $argv[1];
 
-#$license_xml = new LicenseXml(ABSPATH . WPINC . "/licenses.xml");
-$license_xml = new LicenseXml("licenses.xml");
+$license_xml = new LicenseXml("../license_xsl/licenses.xml");
 
 switch($command) {
     case "jurisdictions":
@@ -133,13 +129,13 @@ switch($command) {
         foreach ($licenses as $license) {
             printf("%-12s %s\n", $license['id'], join(",", $license['jurisdictions']));
         }
+        $license_xml->printLicenses("all");
         break;
     case "licenses_current":
         $jurisdiction="-";
         $licenseclass="standard";
         print("Jurisdiction: $jurisdiction\n");
-        $licenses = $license_xml->getLicensesCurrent($jurisdiction, $licenseclass);
-        foreach ($licenses as $license) {
+        foreach ($license_xml->getLicensesCurrent($jurisdiction, $licenseclass) as $license) {
             printf("  %-12s %-12s %s\n", $license['id'], $license['version'], $license['uri']);
         }
         break;
@@ -148,6 +144,7 @@ switch($command) {
 }
 
 exit(0);
+
 ***/
 
 ?>
