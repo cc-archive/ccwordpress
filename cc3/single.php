@@ -11,13 +11,13 @@
      in_category(1) ? $is_blog = true : $is_blog = false;
 
      // check worldwide categories
-     in_category(17) ? $is_worldwide = true : $is_worldwide = false;
      in_category(18) ? $is_worldwide_upcoming = true : $is_worldwide_upcoming = false;
      in_category(19) ? $is_worldwide_in_progress = true : $is_worldwide_in_progress = false;
      in_category(20) ? $is_worldwide_completed = true : $is_worldwide_completed = false;
+     in_category(21) ? $is_worldwide = true : $is_worldwide = false;
 
      foreach ((get_the_category()) as $cat) {
-       if ($cat->category_parent == 17) {
+       if ($cat->category_parent == 21) {
          $jurisdiction_name = $cat->cat_name;
          $jurisdiction_code = $cat->category_nicename;
        }
