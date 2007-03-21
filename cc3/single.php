@@ -95,8 +95,9 @@
                       } else {
                           $license_xml = new LicenseXml($license_fname);
                           $licenses = $license_xml->getLicensesCurrent($jurisdiction);
+                          $l[name] = $license_xml->getLicenseName($l[uri]);
                           foreach ($licenses as $l) {
-                              echo "<li><a href='$l[uri]'>$l[id] $l[version]</a></li>\n";
+                              echo "<li><a href='$l[uri]'>$l[name]</a></li>\n";
                           }
                       } ?>
                   </li>
