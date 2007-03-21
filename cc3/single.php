@@ -87,20 +87,18 @@
                 jurisdiction's law. </p> 
                 <p>The latest version of the licenses available for this jurisdiction are:</p>
                 <ul>
-                  <li>
                   <?php
                       $license_fname = ABSPATH . WPINC . "/licenses.xml";
                       if (! file_exists($license_fname)) {
                           echo "<li>Unknown</li>\n";
                       } else {
                           $license_xml = new LicenseXml($license_fname);
-                          $licenses = $license_xml->getLicensesCurrent($jurisdiction);
-                          $l[name] = $license_xml->getLicenseName($l[uri]);
+                          $licenses = $license_xml->getLicensesCurrent($jurisdiction_code);
                           foreach ($licenses as $l) {
+                              $l[name] = $license_xml->getLicenseName($l[uri]);
                               echo "<li><a href='$l[uri]'>$l[name]</a></li>\n";
                           }
                       } ?>
-                  </li>
                 </ul>
                 <p>Many thanks to all who contributed to the license-porting process. This page 
                 remains for reference.</p>
