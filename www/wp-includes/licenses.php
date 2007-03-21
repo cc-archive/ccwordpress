@@ -116,9 +116,8 @@ class LicenseXML
         $this->name_dom->loadXML($xml);
 
         $xpath = new Domxpath($this->name_dom);
-        $xpath = $dom->xpath_new_context();
-        $result = $xpath->xpath_eval("//result/license-name");
-        return $result->nodeset[0]->get_content();
+        $result = $xpath->query("//result/license-name");
+        return $result->nodeValue;
     }
 
 }
