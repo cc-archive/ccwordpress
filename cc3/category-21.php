@@ -9,9 +9,6 @@
            $jurisdiction->code = $cat->category_nicename;
            $jurisdiction->name = $cat->cat_name;
        }
-       if ( $cat->category_parent == 17 ) {
-           $jurisdiction->status = $cat->category_nicename;
-       }
        if ( $cat->cat_ID == 18 ) {
            $jurisdiction->status = 'upcoming';
        } else if ( $cat->cat_ID == 19 ) {
@@ -46,7 +43,13 @@
 <?php while (have_posts()) { the_post();  
     $jurisdiction = get_the_jurisdiction($post->ID);
 
-    if ($jurisdiction->code == '' || $jurisdiction->status != 'completed') {
+    if ($jurisdiction->code == '') {
+       continue;
+    } else if ($jurisdiction->status == '') {
+       // Store post content for placement elsewhere in site
+       $block_content[$post->name] = $post->content;
+       continue;
+    } else if ($jurisdiction->status != 'completed') {
        continue;
     }
     $url = get_post_meta ($post->ID, "url", TRUE);
@@ -76,6 +79,8 @@
 <br clear="all" />
 <a name="more"></a>
 
+<?php echo $block_content['more-information']; ?>
+
           </div>
           <div id="features">
             <h4>Upcoming Project Jurisdictions</h4>
@@ -86,17 +91,16 @@
        continue;
     }
 ?>
-              <li><strong><?= $jurisdiction->name ?></strong>: $jurisdiction->excerpt</li>
+              <li><strong><?= $jurisdiction->name ?></strong>: <?= $jurisdiction->excerpt ?></li>
 <?php } ?>
             </ul>
             <br />
 
-            <h4>Upcoming Launch Dates</h4>
-            <ul>
-              <li>Various:  TBD</li>
-            </ul>
+            <?php echo $block_content['upcoming-launch-dates']; ?>
+
           </div>
         </div>  
 <?php } ?>
+
 <?php get_sidebar(); ?>
 <?php get_footer(); ?>
