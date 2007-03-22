@@ -14,10 +14,7 @@ RewriteBase /
 RewriteCond %{REQUEST_FILENAME} -f [OR]
 RewriteCond %{REQUEST_FILENAME} -d
 RewriteRule ^.*$ - [S=81]
-
 RewriteRule ^weblog/worldwide/ /index.php?category_name=worldwide [L,P]
-RewriteRule ^weblog/worldwide/(.+)/ /index.php?category_name=worldwide&pagename=$1 [L,P]
-
 RewriteRule ^(weblog|press-releases)/entry/([0-9]+)/? /index.php?category_name=$1&p=$2 [L,P]
 RewriteRule ^(weblog|press-releases)/archive/([0-9]{4})/([0-9]{1,2})/page/?([0-9]{1,}) /index.php?category_name=$1&year=$2&monthnum=$3&paged=$4 [QSA,L]
 RewriteRule ^(weblog|press-releases)/archive/([0-9]{4})/([0-9]{1,2}) /index.php?category_name=$1&year=$2&monthnum=$3 [QSA,L]
