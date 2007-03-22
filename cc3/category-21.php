@@ -4,6 +4,7 @@
     $cats = get_the_category($post_id);
     $jurisdiction->code = '';
     $jurisdiction->status = '';
+    $jurisdiction->name = '';
     foreach ( $cats as $cat ) {
        if ( $cat->category_parent == 21 ) {
            $jurisdiction->code = $cat->category_nicename;
@@ -36,18 +37,16 @@
             <h3>Completed Licenses</h3>
             <p>We have completed the process and developed licenses for the following jurisdictions:</p>
 <?php 
-    query_posts("orderby=title&order=ASC&posts_per_page=-1");
+    query_posts("cat=21&orderby=title&order=ASC&posts_per_page=-1");
     if (have_posts())  { ?>
             <div class="icontainer">
 
 <?php while (have_posts()) { the_post();  
     $jurisdiction = get_the_jurisdiction($post->ID);
 
-    if ($jurisdiction->code == '') {
-       continue;
-    } else if ($jurisdiction->status == '') {
+    if ($jurisdiction->code == '' || $jurisdiction->status == '') {
        // Store post content for placement elsewhere in site
-       $block_content[$post->name] = $post->content;
+       $block_content[$post->post_name] = $post->post_content;
        continue;
     } else if ($jurisdiction->status != 'completed') {
        continue;
@@ -68,7 +67,7 @@
 <?php rewind_posts(); while (have_posts()) { the_post();
     $jurisdiction = get_the_jurisdiction($post->ID);
     if ($jurisdiction->code == '' || $jurisdiction->status != 'in-progress') {
-       continue;
+        continue;
     }
     $url = get_post_meta ($post->ID, "url", TRUE);
     $img = "/images/international/$jurisdiction->code.png";
@@ -91,7 +90,7 @@
        continue;
     }
 ?>
-              <li><strong><?= $jurisdiction->name ?></strong>: <?= $jurisdiction->excerpt ?></li>
+              <li><strong><?= $jurisdiction->name ?></strong>: <?= $post->post_excerpt ?></li>
 <?php } ?>
             </ul>
             <br />
