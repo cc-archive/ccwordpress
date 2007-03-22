@@ -51,10 +51,9 @@
     } else if ($jurisdiction->status != 'completed') {
        continue;
     }
-    $url = get_post_meta ($post->ID, "url", TRUE);
     $img = "/images/international/$jurisdiction->code.png";
 ?>
-              <div class="ifloat"><a href="<?= $url ?>"><img border="1" src="<?= $img ?>" alt="<?= $jurisdiction->name ?>" style="border:1px solid black'" /></a><br /><p><a href="<?= $url ?>"><?= $jurisdiction->name ?></a></p></div>
+              <div class="ifloat"><a href="/worldwide/$jurisdiction->code/"><img border="1" src="<?= $img ?>" alt="<?= $jurisdiction->name ?>" style="border:1px solid black'" /></a><br /><p><a href="/worldwide/$jurisdiction->code"><?= $jurisdiction->name ?></a></p></div>
 <?php } ?>
             </div>
             <br clear="all" />
@@ -69,10 +68,9 @@
     if ($jurisdiction->code == '' || $jurisdiction->status != 'in-progress') {
         continue;
     }
-    $url = get_post_meta ($post->ID, "url", TRUE);
     $img = "/images/international/$jurisdiction->code.png";
 ?>
-              <div class="ifloat"><a href="<?= $url ?>"><img border="1" src="<?= $img ?>" alt="<?= $jurisdiction->name ?>" style="border:1px solid black'" /></a><br /><p><a href="<?= $url ?>"><?= $jurisdiction->name ?></a></p></div>
+              <div class="ifloat"><a href="/worldwide/$jurisdiction->code"><img border="1" src="<?= $img ?>" alt="<?= $jurisdiction->name ?>" style="border:1px solid black'" /></a><br /><p><a href="/worldwide/$jurisdiction->code"><?= $jurisdiction->name ?></a></p></div>
 <?php } ?>
             </div>
 <br clear="all" />

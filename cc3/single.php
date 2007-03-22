@@ -55,7 +55,8 @@
 
 	<? if ($is_worldwide) { ?>
         <h2> 
-          <img src="/images/international/<?php echo $jurisdiction_code ?>.png" /><?php 
+          <img src="/images/international/<?php echo $jurisdiction_code ?>.png" 
+               alt="<?php $jurisdiction_code ?> flag" /><?php 
           the_title(); ?><br/>&nbsp;
         </h2>
 	<? } else { ?>
