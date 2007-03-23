@@ -148,8 +148,9 @@ body {
       color: #888;
     }
 			#sub-footer {
-				width:  940px;
-				margin:  0 auto;
+			  margin: 0 3%;
+			  width:  94%;
+				min-width: 600px;
 				text-align:  left;
 			}
 
