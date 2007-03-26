@@ -45,6 +45,7 @@
     <div id="wrapper"><div id="wrapper-ie">
     
     <div class="jurisdictions">
+      <h4><a href="/sitemap">Search Site</a>&nbsp;&nbsp;&nbsp;&nbsp;</h4><strong>|</strong>&nbsp;&nbsp;&nbsp;&nbsp;
       <h4><a href="/worldwide">Worldwide</a>&nbsp;</h4>
       <select name="sortby" onchange="orderby(this)">
         <option value="">Select a jurisdiction</option>
