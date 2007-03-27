@@ -1,6 +1,7 @@
 <div class="content-foot">&nbsp;</div>
 
 <h4>Featured Image Sites</h4>
+<div class="post">
 
 <p><a href="http://openphoto.net/"><strong>OpenPhoto</strong></a><br />
 Hundreds of stock photos licensed for free commercial and non-commercial use
@@ -11,8 +12,12 @@ Licensed stock photos from the University of North Texas</p> -->
 
 <p><a href="http://www.flickr.com/creativecommons/"><strong>Flickr's Creative Commons pool</strong></a><br />
 Searchable and browseable database of licensed photos from this photo sharing service</p>
+</div>
+
+<div class="content-foot">&nbsp;</div>
 
 <h4>Featured Image Works</h4>
+<div class="post">
 <ul>
 <li><a href="http://creativecommons.org/weblog/entry/4377">Learning Photo</a></li>
 <li><a href="http://creativecommons.org/weblog/entry/4275">SpaceShipOne event recollections</a></li>
@@ -33,3 +38,5 @@ Searchable and browseable database of licensed photos from this photo sharing se
 
 <li><a href="http://creativecommons.org/weblog/entry/3718">lightningfield.com</a></li>
 </ul>
+</div>
+

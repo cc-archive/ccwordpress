@@ -1,7 +1,7 @@
 <div class="content-foot">&nbsp;</div>
 
 <h4>Featured Audio Sites</h4>
-
+<div class="post">
 <p><!-- a href="http://wiki.creativecommons.org/Welcome_To_The_Podcasting_Legal_Guide" -->
 	<a href="/podcasting">
 	<img src="/images/podcasting/podder.jpg" alt="PLG" border="0" align="left" hspace="7" style="margin-right: 5px;"/>
@@ -50,9 +50,12 @@ A collaborative database of Creative Commons licensed sounds.</p>
 <p><a href="http://www.diesel-u-music.com/"><strong>Diesel-U-Music</strong></a><br/>
 
 The 2006 edition of this international music contest was open to unsigned artists playing rock, urban/hip-hop, and electronic music. This year's entries are licensed to the public under the <a href="http://creativecommons.org/licenses/by-nc/2.5/">CC Attribution-NonCommercial 2.5 license</a>. </p>
+</div>
 
+<div class="content-foot">&nbsp;</div>
 
 <h4>Featured Audio Works</h4>
+<div class="post">
 <ul>
 <li><a href="http://creativecommons.org/weblog/entry/4225">This week in amateur radio</a></li>
 <li><a href="http://creativecommons.org/weblog/entry/4161">The Metaphysician</a></li>
@@ -70,3 +73,5 @@ The 2006 edition of this international music contest was open to unsigned artist
 
 <li><a href="http://creativecommons.org/weblog/entry/3700">Erik Ostrom</a></li>
 </ul>
+</div>
+

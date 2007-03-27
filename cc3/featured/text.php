@@ -1,17 +1,19 @@
 <div class="content-foot">&nbsp;</div>
 
 <h4>Featured Text Sites</h4>
-
+<div class="post">
 <p><a href="http://wiki.creativecommons.org/Books"><strong>CC Licensed Books</strong></a><br/>
 A growing list of Creative Commons-licensed books.</p>
 
 <p><a href="http://www.ibiblio.org/eldritch/"><strong>Eldritch Press</strong></a><br />
 Full text of public domain books
 </p>
-
+</div>
 <div class="content-foot">&nbsp;</div>
 
+
 <h4>Featured Text Works</h4>
+<div class="post">
 <ul class="archive">
 
 <li><a href="http://creativecommons.org/weblog/entry/4366">Live Modern</a></li>
@@ -35,4 +37,5 @@ Full text of public domain books
 <li><a href="http://creativecommons.org/weblog/entry/3711">VentureBlog and Bag and Baggage</a></li>
 
 </ul>
+</div>
 

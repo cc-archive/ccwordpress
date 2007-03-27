@@ -1,7 +1,7 @@
 <div class="content-foot">&nbsp;</div>
 
 <h4>Featured Education Sites</h4>
-
+<div class="post">
 <p><a href="http://ocw.mit.edu/"><strong>MIT OpenCourseWare</strong></a><br />
 Selected course notes, assignments, and syllabi from MIT courses
 </p>
@@ -18,8 +18,12 @@ Rice University's course material available for distribution and reuse
 <a href="http://www.berkleeshares.com/"><strong>Berklee Shares</strong></a><br />
 Music lessons from the premier institution for the study of contemporary music
 </p>
+</div>
+
+<div class="content-foot">&nbsp;</div>
 
 <h4>Featured Education Works</h4>
+<div class="post">
 <ul>
 <li><a href="http://creativecommons.org/weblog/entry/3815">The Textmapping Project</a></li>
 <li><a href="http://creativecommons.org/weblog/entry/3862">Youth Media Distribution</a></li>
@@ -29,4 +33,5 @@ Music lessons from the premier institution for the study of contemporary music
 <li><a href="http://creativecommons.org/weblog/entry/3759">Physics Textbooks</a></li>
 <li><a href="http://creativecommons.org/weblog/entry/3771">ItrainOnline's Training Kit</a></li>
 </ul>
+</div>
 
