@@ -307,6 +307,7 @@ a.cc-actions:hover {
 
 #splash img {
   padding-right: 15px;
+  border: none !important;
 }
 
 #splash h2.tagline { 
