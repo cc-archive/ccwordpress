@@ -33,7 +33,7 @@ if ( defined('WP_USE_THEMES') && constant('WP_USE_THEMES') ) {
 		include($template);
 		exit;
         # Workaround to make /worldwide/xx/ get the right template
-	} else if ( in_category(21) && $template = get_single_template() ) {
+	} else if ( !is_category("worldwide") && in_category(21) && $template = get_single_template() ) {
 		# Category #21 is "worldwide"
 		include($template);
 		exit;
