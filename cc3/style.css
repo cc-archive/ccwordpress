@@ -306,7 +306,9 @@ a.cc-actions:hover {
 }
 
 #splash img {
-  padding-right: 15px;
+  border: 1px solid #666;
+  padding: 0 !important;
+  margin-right: 15px;
   border: none !important;
 }
 
@@ -451,27 +453,20 @@ div.ifloat {
   }
 
 div.ifloat p {
-   text-align: center;
-   }
-
- div.icontainer {
-	margin:14px;
-   text-align: center;
-  }
-
-  div.ispacer {
-  clear: both;
-  }
-
-  .licensebox {
-  	background:#eee;
-	border:1px solid #ccc;
-	padding:6px;
-  }
-
-#splash img {
-	border: 1px solid #666;
-	padding: 0 !important;
-	margin-right: 15px;
+  text-align: center;
 }
 
+div.icontainer {
+  margin:14px;
+  text-align: center;
+}
+
+div.ispacer {
+  clear: both;
+}
+
+.licensebox {
+  background:#eee;
+  border:1px solid #ccc;
+  padding:6px;
+}
