@@ -79,9 +79,9 @@
               <h4 class="meta"><?php the_author() ?>, <?php the_time('F jS, Y')?></h4>
               <? } ?>
 
-              <? if ($is_worldwide_completed) { ?>
+              <? if ($is_worldwide_completed && $jurisdiction_code != "us") { ?>
               <div class="licensebox" style="margin:14px;">
-                <p>The <span><? echo $jurisdiction_name ?></span> license has now been integrated 
+                <p>The <? echo $jurisdiction_name ?> license has now been integrated 
                 into <a href="/license/?jurisdiction=<?php echo $jurisdiction_code ?>">the Creative 
                 Commons licensing process</a>, so you are able to license your works under this 
                 jurisdiction's law. </p> 
