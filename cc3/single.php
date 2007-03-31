@@ -53,8 +53,8 @@
           </h3>
         <? } ?>
 
-	<? if ($is_worldwide) { ?>
-        <h2> 
+	<? if ($is_worldwide && $jurisdiction_code != '') { ?>
+        <h2>
           <img src="/images/international/<?php echo $jurisdiction_code ?>.png" alt="<?php echo $jurisdiction_code ?> flag" style="border:1px solid black'" /><?php 
           the_title(); ?><br/>&nbsp;
         </h2>
