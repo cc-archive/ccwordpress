@@ -209,7 +209,7 @@ class wp_xmlrpc_server extends IXR_Server {
 
 		$this->escape($args);
 
-		$post_ID    = $args[1];
+		$post_ID    = (int) $args[1];
 		$user_login = $args[2];
 		$user_pass  = $args[3];
 
@@ -244,7 +244,7 @@ class wp_xmlrpc_server extends IXR_Server {
 
 		$this->escape($args);
 
-		$blog_ID    = $args[1]; /* though we don't use it yet */
+		$blog_ID    = (int) $args[1]; /* though we don't use it yet */
 		$user_login = $args[2];
 		$user_pass  = $args[3];
 		$num_posts  = $args[4];
@@ -292,7 +292,7 @@ class wp_xmlrpc_server extends IXR_Server {
 
 		$this->escape($args);
 
-	  $blog_ID    = $args[1];
+	  $blog_ID    = (int) $args[1];
 	  $user_login = $args[2];
 	  $user_pass  = $args[3];
 	  $template   = $args[4]; /* could be 'main' or 'archiveIndex', but we don't use it */
@@ -326,7 +326,7 @@ class wp_xmlrpc_server extends IXR_Server {
 
 		$this->escape($args);
 
-	  $blog_ID    = $args[1];
+	  $blog_ID    = (int) $args[1];
 	  $user_login = $args[2];
 	  $user_pass  = $args[3];
 	  $content    = $args[4];
@@ -363,7 +363,7 @@ class wp_xmlrpc_server extends IXR_Server {
 
 		$this->escape($args);
 
-	  $blog_ID    = $args[1]; /* though we don't use it yet */
+	  $blog_ID    = (int) $args[1]; /* though we don't use it yet */
 	  $user_login = $args[2];
 	  $user_pass  = $args[3];
 	  $content    = $args[4];
@@ -411,7 +411,7 @@ class wp_xmlrpc_server extends IXR_Server {
 
 		$this->escape($args);
 
-	  $post_ID     = $args[1];
+	  $post_ID     = (int) $args[1];
 	  $user_login  = $args[2];
 	  $user_pass   = $args[3];
 	  $content     = $args[4];
@@ -434,6 +434,9 @@ class wp_xmlrpc_server extends IXR_Server {
 	    return new IXR_Error(401, 'Sorry, you do not have the right to edit this post.');
 
 	  extract($actual_post);
+
+	  if ( ('publish' == $post_status) && !current_user_can('publish_posts') )
+	  	return new IXR_Error(401, 'Sorry, you do not have the right to publish this post.');
 
 	  $post_title = xmlrpc_getposttitle($content);
 	  $post_category = xmlrpc_getpostcategory($content);
@@ -459,7 +462,7 @@ class wp_xmlrpc_server extends IXR_Server {
 
 		$this->escape($args);
 
-	  $post_ID     = $args[1];
+	  $post_ID     = (int) $args[1];
 	  $user_login  = $args[2];
 	  $user_pass   = $args[3];
 	  $publish     = $args[4];
@@ -500,7 +503,7 @@ class wp_xmlrpc_server extends IXR_Server {
 
 		$this->escape($args);
 
-	  $blog_ID     = $args[0]; // we will support this in the near future
+	  $blog_ID     = (int) $args[0]; // we will support this in the near future
 	  $user_login  = $args[1];
 	  $user_pass   = $args[2];
 	  $content_struct = $args[3];
@@ -535,7 +538,9 @@ class wp_xmlrpc_server extends IXR_Server {
 	    $post_content = $post_content . "\n<!--more-->\n" . $post_more;
 	  }
 
-		$to_ping = $content_struct['mt_tb_ping_urls'];
+	  $to_ping = $content_struct['mt_tb_ping_urls'];
+	  if ( is_array($to_ping) )
+	  	$to_ping = implode(' ', $to_ping);
 
 	  // Do some timestamp voodoo
 	  $dateCreatedd = $content_struct['dateCreated'];
@@ -595,7 +600,7 @@ class wp_xmlrpc_server extends IXR_Server {
 
 		$this->escape($args);
 
-	  $post_ID     = $args[0];
+	  $post_ID     = (int) $args[0];
 	  $user_login  = $args[1];
 	  $user_pass   = $args[2];
 	  $content_struct = $args[3];
@@ -629,12 +634,18 @@ class wp_xmlrpc_server extends IXR_Server {
 	  $post_more = $content_struct['mt_text_more'];
 	  $post_status = $publish ? 'publish' : 'draft';
 
+
+	  if ( ('publish' == $post_status) && !current_user_can('publish_posts') )
+	  	return new IXR_Error(401, 'Sorry, you do not have the right to publish this post.');
+
 	  if ($post_more) {
 	    $post_content = $post_content . "\n<!--more-->\n" . $post_more;
 	  }
 
-		$to_ping = $content_struct['mt_tb_ping_urls'];
-
+	  $to_ping = $content_struct['mt_tb_ping_urls'];
+	  if ( is_array($to_ping) )
+	  	$to_ping = implode(' ', $to_ping);
+	  
 	  $comment_status = (empty($content_struct['mt_allow_comments'])) ?
 	    get_option('default_comment_status')
 	    : $content_struct['mt_allow_comments'];
@@ -676,7 +687,7 @@ class wp_xmlrpc_server extends IXR_Server {
 
 		$this->escape($args);
 
-	  $post_ID     = $args[0];
+	  $post_ID     = (int) $args[0];
 	  $user_login  = $args[1];
 	  $user_pass   = $args[2];
 
@@ -731,10 +742,10 @@ class wp_xmlrpc_server extends IXR_Server {
 
 		$this->escape($args);
 
-		$blog_ID     = $args[0];
+		$blog_ID     = (int) $args[0];
 		$user_login  = $args[1];
 		$user_pass   = $args[2];
-		$num_posts   = $args[3];
+		$num_posts   = (int) $args[3];
 
 		if (!$this->login_pass_ok($user_login, $user_pass)) {
 			return $this->error;
@@ -797,7 +808,7 @@ class wp_xmlrpc_server extends IXR_Server {
 
 		$this->escape($args);
 
-		$blog_ID     = $args[0];
+		$blog_ID     = (int) $args[0];
 		$user_login  = $args[1];
 		$user_pass   = $args[2];
 
@@ -831,7 +842,7 @@ class wp_xmlrpc_server extends IXR_Server {
 
 		global $wpdb;
 
-		$blog_ID     = $wpdb->escape($args[0]);
+		$blog_ID     = (int) $args[0];
 		$user_login  = $wpdb->escape($args[1]);
 		$user_pass   = $wpdb->escape($args[2]);
 		$data        = $args[3];
@@ -857,8 +868,9 @@ class wp_xmlrpc_server extends IXR_Server {
 
 		$upload = wp_upload_bits($name, $type, $bits);
 		if ( ! empty($upload['error']) ) {
-			logIO('O', '(MW) Could not write file '.$name);
-			return new IXR_Error(500, 'Could not write file '.$name);
+			$errorString = 'Could not write file ' . $name . ' (' . $upload['error'] . ')';
+			logIO('O', '(MW) ' . $errorString);
+			return new IXR_Error(500, $errorString);
 		}
 		// Construct the attachment array
 		// attach to post_id -1
@@ -888,10 +900,10 @@ class wp_xmlrpc_server extends IXR_Server {
 
 		$this->escape($args);
 
-		$blog_ID     = $args[0];
+		$blog_ID     = (int) $args[0];
 		$user_login  = $args[1];
 		$user_pass   = $args[2];
-		$num_posts   = $args[3];
+		$num_posts   = (int) $args[3];
 
 		if (!$this->login_pass_ok($user_login, $user_pass)) {
 			return $this->error;
@@ -933,7 +945,7 @@ class wp_xmlrpc_server extends IXR_Server {
 
 		$this->escape($args);
 
-		$blog_ID     = $args[0];
+		$blog_ID     = (int) $args[0];
 		$user_login  = $args[1];
 		$user_pass   = $args[2];
 
@@ -962,7 +974,7 @@ class wp_xmlrpc_server extends IXR_Server {
 
 		$this->escape($args);
 
-		$post_ID     = $args[0];
+		$post_ID     = (int) $args[0];
 		$user_login  = $args[1];
 		$user_pass   = $args[2];
 
@@ -977,7 +989,7 @@ class wp_xmlrpc_server extends IXR_Server {
 		foreach($catids as $catid) {
 			$categories[] = array(
 				'categoryName' => get_cat_name($catid),
-				'categoryId' => $catid,
+				'categoryId' => (string) $catid,
 				'isPrimary' => $isPrimary
 			);
 			$isPrimary = false;
@@ -992,7 +1004,7 @@ class wp_xmlrpc_server extends IXR_Server {
 
 		$this->escape($args);
 
-		$post_ID     = $args[0];
+		$post_ID     = (int) $args[0];
 		$user_login  = $args[1];
 		$user_pass   = $args[2];
 		$categories  = $args[3];
@@ -1075,7 +1087,7 @@ class wp_xmlrpc_server extends IXR_Server {
 
 		$this->escape($args);
 
-		$post_ID     = $args[0];
+		$post_ID     = (int) $args[0];
 		$user_login  = $args[1];
 		$user_pass   = $args[2];
 
@@ -1137,18 +1149,18 @@ class wp_xmlrpc_server extends IXR_Server {
 		} elseif (preg_match('#p/[0-9]{1,}#', $urltest['path'], $match)) {
 			// the path defines the post_ID (archives/p/XXXX)
 			$blah = explode('/', $match[0]);
-			$post_ID = $blah[1];
+			$post_ID = (int) $blah[1];
 			$way = 'from the path';
 		} elseif (preg_match('#p=[0-9]{1,}#', $urltest['query'], $match)) {
 			// the querystring defines the post_ID (?p=XXXX)
 			$blah = explode('=', $match[0]);
-			$post_ID = $blah[1];
+			$post_ID = (int) $blah[1];
 			$way = 'from the querystring';
 		} elseif (isset($urltest['fragment'])) {
 			// an #anchor is there, it's either...
 			if (intval($urltest['fragment'])) {
 				// ...an integer #XXXX (simpliest case)
-				$post_ID = $urltest['fragment'];
+				$post_ID = (int) $urltest['fragment'];
 				$way = 'from the fragment (numeric)';
 			} elseif (preg_match('/post-[0-9]+/',$urltest['fragment'])) {
 				// ...a post id in the form 'post-###'

@@ -96,7 +96,7 @@ function get_links($category = -1,
 			$output .= get_option('links_recently_updated_prepend');
 		$the_link = '#';
 		if ( !empty($row->link_url) )
-			$the_link = wp_specialchars($row->link_url);
+			$the_link = clean_url($row->link_url);
 		$rel = $row->link_rel;
 		if ( '' != $rel )
 			$rel = ' rel="' . $rel . '"';
@@ -165,7 +165,7 @@ function get_linkcatname($id = 0) {
 	if ( empty($cats) || ! is_array($cats) )
 		return '';
 
-	$cat_id = $cats[0]; // Take the first cat.
+	$cat_id = (int) $cats[0]; // Take the first cat.
 
 	$cat = get_category($cat_id);
 	return $cat->cat_name;
@@ -260,7 +260,7 @@ function _walk_bookmarks($bookmarks, $args = '' ) {
 
 		$the_link = '#';
 		if ( !empty($bookmark->link_url) )
-			$the_link = wp_specialchars($bookmark->link_url);
+			$the_link = clean_url($bookmark->link_url);
 
 		$rel = $bookmark->link_rel;
 		if ( '' != $rel )
@@ -344,10 +344,14 @@ function wp_list_bookmarks($args = '') {
 		$bookmarks = get_bookmarks("limit=$limit&category=$category&show_updated=$show_updated&orderby=$orderby&order=$order&hide_invisible=$hide_invisible&show_updated=$show_updated");
 		
 		if ( !empty($bookmarks) ) {
-			$output .= str_replace(array('%id', '%class'), array("linkuncat", $class), $category_before);
-			$output .= "$title_before$title_li$title_after\n\t<ul>\n";
-			$output .= _walk_bookmarks($bookmarks, $r);
-			$output .= "\n\t</ul>\n$category_after\n";
+			if ( !empty( $title_li ) ){
+				$output .= str_replace(array('%id', '%class'), array("linkcat-$category", $class), $category_before);
+				$output .= "$title_before$title_li$title_after\n\t<ul>\n";
+				$output .= _walk_bookmarks($bookmarks, $r);
+				$output .= "\n\t</ul>\n$category_after\n";
+			} else {
+				$output .= _walk_bookmarks($bookmarks, $r);
+			}
 		}
 	}
 

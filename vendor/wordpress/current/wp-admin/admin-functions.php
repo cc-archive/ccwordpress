@@ -139,19 +139,19 @@ function fix_attachment_links( $post_ID ) {
 
 	$post = & get_post( $post_ID, ARRAY_A );
 
-	$search = "#<a[^>]+rel=('|\" )[^'\"]*attachment[^>]*>#ie";
+	$search = "#<a[^>]+rel=('|\")[^'\"]*attachment[^>]*>#ie";
 
 	// See if we have any rel="attachment" links
 	if ( 0 == preg_match_all( $search, $post['post_content'], $anchor_matches, PREG_PATTERN_ORDER ) )
 		return;
 
 	$i = 0;
-	$search = "#[\s]+rel=(\"|' )(.*? )wp-att-(\d+ )\\1#i";
+	$search = "#[\s]+rel=(\"|')(.*?)wp-att-(\d+)\\1#i";
 	foreach ( $anchor_matches[0] as $anchor ) {
 		if ( 0 == preg_match( $search, $anchor, $id_matches ) )
 			continue;
 
-		$id = $id_matches[3];
+		$id = (int) $id_matches[3];
 
 		// While we have the attachment ID, let's adopt any orphans.
 		$attachment = & get_post( $id, ARRAY_A );
@@ -358,7 +358,7 @@ function get_default_post_to_edit() {
 	else if ( !empty( $post_title ) ) {
 		$text       = wp_specialchars( stripslashes( urldecode( $_REQUEST['text'] ) ) );
 		$text       = funky_javascript_fix( $text);
-		$popupurl   = attribute_escape($_REQUEST['popupurl']);
+		$popupurl   = clean_url($_REQUEST['popupurl']);
         $post_content = '<a href="'.$popupurl.'">'.$post_title.'</a>'."\n$text";
     }
 
@@ -417,7 +417,7 @@ function get_user_to_edit( $user_id ) {
 	$user = new WP_User( $user_id );
 	$user->user_login   = attribute_escape($user->user_login);
 	$user->user_email   = attribute_escape($user->user_email);
-	$user->user_url     = attribute_escape($user->user_url);
+	$user->user_url     = clean_url($user->user_url);
 	$user->first_name   = attribute_escape($user->first_name);
 	$user->last_name    = attribute_escape($user->last_name);
 	$user->display_name = attribute_escape($user->display_name);
@@ -435,7 +435,7 @@ function get_user_to_edit( $user_id ) {
 function add_user() {
 	if ( func_num_args() ) { // The hackiest hack that ever did hack
 		global $current_user, $wp_roles;
-		$user_id = func_get_arg( 0 );
+		$user_id = (int) func_get_arg( 0 );
 
 		if ( isset( $_POST['role'] ) ) {
 			if( $user_id != $current_user->id || $wp_roles->role_objects[$_POST['role']]->has_cap( 'edit_users' ) ) {
@@ -453,7 +453,7 @@ function edit_user( $user_id = 0 ) {
 	global $current_user, $wp_roles, $wpdb;
 	if ( $user_id != 0 ) {
 		$update = true;
-		$user->ID = $user_id;
+		$user->ID = (int) $user_id;
 		$userdata = get_userdata( $user_id );
 		$user->user_login = $wpdb->escape( $userdata->user_login );
 	} else {
@@ -478,7 +478,7 @@ function edit_user( $user_id = 0 ) {
 	if ( isset( $_POST['email'] ))
 		$user->user_email = wp_specialchars( trim( $_POST['email'] ));
 	if ( isset( $_POST['url'] ) ) {
-		$user->user_url = wp_specialchars( trim( $_POST['url'] ));
+		$user->user_url = clean_url( trim( $_POST['url'] ));
 		$user->user_url = preg_match('/^(https?|ftps?|mailto|news|irc|gopher|nntp|feed|telnet):/is', $user->user_url) ? $user->user_url : 'http://'.$user->user_url;
 	}
 	if ( isset( $_POST['first_name'] ))
@@ -562,11 +562,11 @@ function edit_user( $user_id = 0 ) {
 function get_link_to_edit( $link_id ) {
 	$link = get_link( $link_id );
 
-	$link->link_url         = attribute_escape($link->link_url);
+	$link->link_url         = clean_url($link->link_url);
 	$link->link_name        = attribute_escape($link->link_name);
 	$link->link_image       = attribute_escape($link->link_image);
 	$link->link_description = attribute_escape($link->link_description);
-	$link->link_rss         = attribute_escape($link->link_rss);
+	$link->link_rss         = clean_url($link->link_rss);
 	$link->link_rel         = attribute_escape($link->link_rel);
 	$link->link_notes       =  wp_specialchars($link->link_notes);
 	$link->post_category    = $link->link_category;
@@ -576,7 +576,7 @@ function get_link_to_edit( $link_id ) {
 
 function get_default_link_to_edit() {
 	if ( isset( $_GET['linkurl'] ) )
-		$link->link_url = attribute_escape( $_GET['linkurl']);
+		$link->link_url = clean_url( $_GET['linkurl']);
 	else
 		$link->link_url = '';
 
@@ -599,10 +599,10 @@ function edit_link( $link_id = '' ) {
 		wp_die( __( 'Cheatin&#8217; uh?' ));
 
 	$_POST['link_url'] = wp_specialchars( $_POST['link_url'] );
-	$_POST['link_url'] = preg_match('/^(https?|ftps?|mailto|news|irc|gopher|nntp|feed|telnet):/is', $_POST['link_url']) ? $_POST['link_url'] : 'http://' . $_POST['link_url'];
+	$_POST['link_url'] = clean_url($_POST['link_url']);
 	$_POST['link_name'] = wp_specialchars( $_POST['link_name'] );
 	$_POST['link_image'] = wp_specialchars( $_POST['link_image'] );
-	$_POST['link_rss'] = wp_specialchars( $_POST['link_rss'] );
+	$_POST['link_rss'] = clean_url($_POST['link_rss']);
 	$_POST['link_category'] = $_POST['post_category'];
 
 	if ( !empty( $link_id ) ) {
@@ -781,8 +781,8 @@ function _cat_row( $category, $level, $name_override = false ) {
 	$pad = str_repeat( '&#8212; ', $level );
 	if ( current_user_can( 'manage_categories' ) ) {
 		$edit = "<a href='categories.php?action=edit&amp;cat_ID=$category->cat_ID' class='edit'>".__( 'Edit' )."</a></td>";
-		$default_cat_id = get_option( 'default_category' );
-		$default_link_cat_id = get_option( 'default_link_category' );
+		$default_cat_id = (int) get_option( 'default_category' );
+		$default_link_cat_id = (int) get_option( 'default_link_category' );
 
 		if ( ($category->cat_ID != $default_cat_id ) && ($category->cat_ID != $default_link_cat_id ) )
 			$edit .= "<td><a href='" . wp_nonce_url( "categories.php?action=delete&amp;cat_ID=$category->cat_ID", 'delete-category_' . $category->cat_ID ) . "' onclick=\"return deleteSomething( 'cat', $category->cat_ID, '" . js_escape(sprintf( __("You are about to delete the category '%s'.\nAll of its posts will go into the default category of '%s'\nAll of its bookmarks will go into the default category of '%s'.\n'OK' to delete, 'Cancel' to stop." ), $category->cat_name, get_catname( $default_cat_id ), get_catname( $default_link_cat_id ) )) . "' );\" class='delete'>".__( 'Delete' )."</a>";
@@ -821,7 +821,7 @@ function page_rows( $parent = 0, $level = 0, $pages = 0, $hierarchy = true ) {
 
 		$post->post_title = wp_specialchars( $post->post_title );
 		$pad = str_repeat( '&#8212; ', $level );
-		$id = $post->ID;
+		$id = (int) $post->ID;
 		$class = ('alternate' == $class ) ? '' : 'alternate';
 ?>
   <tr id='page-<?php echo $id; ?>' class='<?php echo $class; ?>'> 
@@ -830,7 +830,7 @@ function page_rows( $parent = 0, $level = 0, $pages = 0, $hierarchy = true ) {
       <?php echo $pad; ?><?php the_title() ?>
     </td> 
     <td><?php the_author() ?></td>
-    <td><?php if ( '0000-00-00 00:00:00' ==$post->post_modified ) _e('Unpublished'); else echo mysql2date( 'Y-m-d g:i a', $post->post_modified ); ?></td> 
+    <td><?php if ( '0000-00-00 00:00:00' ==$post->post_modified ) _e('Unpublished'); else echo mysql2date( __('Y-m-d g:i a'), $post->post_modified ); ?></td> 
 	<td><a href="<?php the_permalink(); ?>" rel="permalink" class="edit"><?php _e( 'View' ); ?></a></td>
     <td><?php if ( current_user_can( 'edit_page', $id ) ) { echo "<a href='page.php?action=edit&amp;post=$id' class='edit'>" . __( 'Edit' ) . "</a>"; } ?></td> 
     <td><?php if ( current_user_can( 'delete_page', $id ) ) { echo "<a href='" . wp_nonce_url( "page.php?action=delete&amp;post=$id", 'delete-page_' . $id ) .  "' class='delete' onclick=\"return deleteSomething( 'page', " . $id . ", '" . js_escape(sprintf( __("You are about to delete the '%s' page.\n'OK' to delete, 'Cancel' to stop." ), get_the_title() ) ) . "' );\">" . __( 'Delete' ) . "</a>"; } ?></td> 
@@ -867,7 +867,7 @@ function user_row( $user_object, $style = '' ) {
 	}
 	$r .= "</td>\n\t\t<td>";
 	if ( current_user_can( 'edit_user', $user_object->ID ) ) {
-		$edit_link = attribute_escape( add_query_arg( 'wp_http_referer', urlencode( stripslashes( $_SERVER['REQUEST_URI'] ) ), "user-edit.php?user_id=$user_object->ID" ));
+		$edit_link = add_query_arg( 'wp_http_referer', urlencode( clean_url( stripslashes( $_SERVER['REQUEST_URI'] ) ) ), "user-edit.php?user_id=$user_object->ID" );
 		$r .= "<a href='$edit_link' class='edit'>".__( 'Edit' )."</a>";
 	}
 	$r .= "</td>\n\t</tr>";
@@ -1269,7 +1269,7 @@ function parent_dropdown( $default = 0, $parent = 0, $level = 0 ) {
 
 	if ( $items ) {
 		foreach ( $items as $item ) {
-			// A page cannot be it's own parent.
+			// A page cannot be its own parent.
 			if (!empty ( $post_ID ) ) {
 				if ( $item->ID == $post_ID ) {
 					continue;
@@ -1533,6 +1533,14 @@ function add_theme_page( $page_title, $menu_title, $access_level, $file, $functi
 	return add_submenu_page( 'themes.php', $page_title, $menu_title, $access_level, $file, $function );
 }
 
+function add_users_page( $page_title, $menu_title, $access_level, $file, $function = '' ) {
+	if ( current_user_can('edit_users') )
+		$parent = 'users.php';
+	else
+		$parent = 'profile.php';
+	return add_submenu_page( $parent, $page_title, $menu_title, $access_level, $file, $function );
+}
+
 function validate_file( $file, $allowed_files = '' ) {
 	if ( false !== strpos( $file, './' ))
 		return 1;
@@ -1602,7 +1610,7 @@ function get_file_description( $file ) {
 	}
 	elseif ( file_exists( ABSPATH . $file ) && is_file( ABSPATH . $file ) ) {
 		$template_data = implode( '', file( ABSPATH . $file ) );
-		if ( preg_match( "|Template Name:(.* )|i", $template_data, $name ))
+		if ( preg_match( "|Template Name:(.*)|i", $template_data, $name ))
 			return $name[1];
 	}
 
@@ -1914,7 +1922,7 @@ function wp_import_upload_form( $action ) {
 	if ( strstr( $size, 'g' ) )
 		$bytes = $size * 1024 * 1024 * 1024;
 ?>
-<form enctype="multipart/form-data" id="import-upload-form" method="post" action="<?php echo $action ?>">
+<form enctype="multipart/form-data" id="import-upload-form" method="post" action="<?php echo attribute_escape($action) ?>">
 <p>
 <label for="upload"><?php _e( 'Choose a file from your computer:' ); ?></label> (<?php printf( __('Maximum size: %s' ), $size ); ?> )
 <input type="file" id="upload" name="import" size="25" />
@@ -2190,7 +2198,7 @@ function wp_create_thumbnail( $file, $max_side, $effect = '' ) {
 
 			$thumbpath = str_replace( basename( $file ), $thumb, $file );
 
-			// move the thumbnail to it's final destination
+			// move the thumbnail to its final destination
 			if ( $type[2] == 1 ) {
 				if (!imagegif( $thumbnail, $thumbpath ) ) {
 					$error = __( "Thumbnail path invalid" );
@@ -2215,8 +2223,7 @@ function wp_create_thumbnail( $file, $max_side, $effect = '' ) {
 	if (!empty ( $error ) ) {
 		return $error;
 	} else {
-		apply_filters( 'wp_create_thumbnail', $thumbpath );
-		return $thumbpath;
+		return apply_filters( 'wp_create_thumbnail', $thumbpath );
 	}
 }
 

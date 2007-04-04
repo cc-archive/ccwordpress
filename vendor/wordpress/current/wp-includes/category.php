@@ -33,7 +33,7 @@ function &get_categories($args = '') {
 	$key = md5( serialize( $r ) );
 	if ( $cache = wp_cache_get( 'get_categories', 'category' ) )
 		if ( isset( $cache[ $key ] ) )
-			return $cache[ $key ];
+			return apply_filters('get_categories', $cache[$key], $r);
 
 	$where = 'cat_ID > 0';
 	$inclusions = '';
@@ -146,6 +146,7 @@ function &get_category(&$category, $output = OBJECT) {
 		wp_cache_add($category->cat_ID, $category, 'category');
 		$_category = $category;
 	} else {
+		$category = (int) $category;
 		if ( ! $_category = wp_cache_get($category, 'category') ) {
 			$_category = $wpdb->get_row("SELECT * FROM $wpdb->categories WHERE cat_ID = '$category' LIMIT 1");
 			wp_cache_set($category, $_category, 'category');
