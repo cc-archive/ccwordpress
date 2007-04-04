@@ -829,7 +829,7 @@ function status_header( $header ) {
 		$text = 'Gone';
 
 	if ( version_compare(phpversion(), '4.3.0', '>=') )
-		@header($_SERVER{"SERVER_PROTOCOL]." ".$header." ".$text, true, $header);
+		@header($_SERVER["SERVER_PROTOCOL"]." ".$header." ".$text, true, $header);
 	else
 		@header("HTTP/1.1 $header $text");
 }
