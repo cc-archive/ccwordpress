@@ -155,7 +155,7 @@ case 'add-meta' :
 	if ( !current_user_can( 'edit_post', $id ) )
 		die('-1');
 	if ( $id < 0 ) {
-		$now = current_time('timestamp');
+		$now = current_time('timestamp', 1);
 		if ( $pid = wp_insert_post( array(
 			'post_title' => sprintf('Draft created on %s at %s', date(get_option('date_format'), $now), date(get_option('time_format'), $now))
 		) ) )
@@ -231,7 +231,7 @@ case 'autosave' : // The name of this action is hardcoded in edit_post()
 	if($_POST['post_ID'] < 0) {
 		$_POST['temp_ID'] = $_POST['post_ID'];
 		$id = wp_write_post();
-		if(is_wp_error($id))
+		if( is_wp_error($id) )
 			die($id->get_error_message());
 		else
 			die("$id");
