@@ -53,7 +53,7 @@
     }
     $img = "/images/international/$jurisdiction->code.png";
 ?>
-              <div class="ifloat"><a href="/worldwide/<?= $jurisdiction->code ?>/"><img border="1" src="<?= $img ?>" alt="<?= $jurisdiction->name ?>" style="border:1px solid black'" /></a><br /><p><a href="/worldwide/<?= $jurisdiction->code ?>/"><?= $jurisdiction->name ?></a></p></div>
+              <div class="ifloat"><a href="/worldwide/<?= $jurisdiction->code ?>/"><img class="flag" src="<?= $img ?>" alt="<?= $jurisdiction->name ?>"  /></a><br /><p><a href="/worldwide/<?= $jurisdiction->code ?>/"><?= $jurisdiction->name ?></a></p></div>
 <?php } ?>
             </div>
             <br clear="all" />
@@ -70,7 +70,7 @@
     }
     $img = "/images/international/$jurisdiction->code.png";
 ?>
-              <div class="ifloat"><a href="/worldwide/<?= $jurisdiction->code ?>/"><img border="1" src="<?= $img ?>" alt="<?= $jurisdiction->name ?>" style="border:1px solid black'" /></a><br /><p><a href="/worldwide/<?= $jurisdiction->code ?>/"><?= $jurisdiction->name ?></a></p></div>
+              <div class="ifloat"><a href="/worldwide/<?= $jurisdiction->code ?>/"><img class="flag" src="<?= $img ?>" alt="<?= $jurisdiction->name ?>" /></a><br /><p><a href="/worldwide/<?= $jurisdiction->code ?>/"><?= $jurisdiction->name ?></a></p></div>
 <?php } ?>
             </div>
 <br clear="all" />
