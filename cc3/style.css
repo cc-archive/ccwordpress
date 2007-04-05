@@ -451,6 +451,10 @@ div.ifloat {
   padding: 10px;
   }
 
+div.ifloat .flag, .flag {
+  border: 1px solid #333; 
+}
+
 div.ifloat p {
   text-align: center;
 }
