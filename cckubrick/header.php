@@ -19,7 +19,7 @@
 
 <!--[if IE]>
    <style type="text/css">
-    img { behavior: url("/includes/pngie.htc"); }
+    img { behavior: url("<?php bloginfo('stylesheet_directory'); ?>/pngie.htc"); }
    </style>	
   <![endif]-->
 
