@@ -17,6 +17,12 @@
 <link rel="alternate" type="application/rss+xml" title="<?php bloginfo('name'); ?> RSS Feed" href="<?php bloginfo('rss2_url'); ?>" />
 <link rel="pingback" href="<?php bloginfo('pingback_url'); ?>" />
 
+<!--[if IE]>
+   <style type="text/css">
+    img { behavior: url("/includes/pngie.htc"); }
+   </style>	
+  <![endif]-->
+
 <?php wp_head(); ?>
 </head>
 <body>
