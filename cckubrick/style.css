@@ -63,7 +63,7 @@ body {
 
 #sidebar, #content {
 	border-top: 1px solid #d0d0d0;
-	margin-top: 30px;
+	margin-top: 0px;
 }
 
 #footer {
@@ -227,7 +227,34 @@ body {
 	
 	#header 	{ margin: 0 !important; margin: 0 0 0 10px !important; padding: 1px; height: 85px; width: 738px; }
 
-	#headerimg 	{ margin: 12px 22px 0; height: 75px; width: 700px;}
+	#headerimg 	{ margin: 12px 18px 0; height: 75px; width: 700px;}
+
+	#headerimg img.cclogo {
+		float: left;
+		margin-right: 5px;
+		padding-top: 5px;
+		border: none;
+	}
+	
+#cctools {
+	text-align: right;
+	padding: 13px 10px;
+	height: 17px;
+}
+
+#cctools .tool {
+	float: right;
+	margin-left: 15px;
+}
+
+#cctools img {
+	float: left;
+	padding-right: 3px;
+}
+
+#content {
+	clear: both;
+}
 
 .narrowcolumn{
 	width: 460px;
@@ -245,7 +272,7 @@ body {
 
 .widecolumn {
 	padding: 10px 50px 20px 25px;
-	margin: 5px 0 0 10px;
+	margin: 0 0 0 10px;
 	}
 	
 .post {

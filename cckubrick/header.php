@@ -25,8 +25,17 @@
 
 <div id="header">
 	<div id="headerimg">
+		<a href="<?php echo get_option('home'); ?>/"><img src="<?php bloginfo('stylesheet_directory'); ?>/images/cc-logo.png" alt="[ (cc) ]" class="cclogo"/></a>
 		<h1><a href="<?php echo get_option('home'); ?>/"><?php bloginfo('name'); ?></a></h1>
 		<div class="description"><?php bloginfo('description'); ?></div>
 	</div>
+</div>
+<div id="cctools">
+  <div class="tool">
+    <a href="http://creativecommons.org/license/"><img src="<?php bloginfo('stylesheet_directory'); ?>/images/publish.png"/> License Your Work</a>
+  </div>
+  <div class="tool">  
+    <a href="http://search.creativecommons.org/"><img src="<?php bloginfo('stylesheet_directory'); ?>/images/find.png"/> Find CC Licensed Work</a>
+  </div>
 </div>
 <hr />
