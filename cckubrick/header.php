@@ -32,8 +32,12 @@
 <div id="header">
 	<div id="headerimg">
 		<a href="<?php echo get_option('home'); ?>/"><img src="<?php bloginfo('stylesheet_directory'); ?>/images/cc-logo.png" alt="[ (cc) ]" class="cclogo"/></a>
+		<?php if (!($descr = get_bloginfo('description'))) { ?>
+		<h1 class="nodesc"><a href="<?php echo get_option('home'); ?>/"><?php bloginfo('name'); ?></a></h1>
+		<?php } else { ?>
 		<h1><a href="<?php echo get_option('home'); ?>/"><?php bloginfo('name'); ?></a></h1>
-		<div class="description"><?php bloginfo('description'); ?></div>
+		<div class="description"><?= $descr ?></div>
+		<?php } ?>
 	</div>
 </div>
 <div id="cctools">
