@@ -16,6 +16,11 @@
 <!-- Gorgeous design by Michael Heilemann - http://binarybonsai.com/kubrick/ -->
 <?php /* "Just what do you think you're doing Dave?" */ ?>
 
+<a href="<?=licenseUri()?>">
+<img src="<?php bloginfo('stylesheet_directory'); ?>/images/somerights20.png" alt="some rights reserved" /></a><br/>
+Except where otherwise <a href="http://creativecommons.org/policies">noted</a>,
+content on this site is<br/>
+licensed under a <a rel="license" href="<?=licenseUri()?>">Creative Commons License</a>.
 		<?php wp_footer(); ?>
 </body>
 </html>
