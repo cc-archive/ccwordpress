@@ -321,6 +321,10 @@ body {
 	padding: 20px 0;
 	text-align: center;
 	}
+
+.license_block {
+	margin-bottom: 30px;
+	}
 /* End Structure */
 
 
@@ -420,7 +424,7 @@ html>body .entry li {
 	}
 
 .entry ul li:before, #sidebar ul ul li:before {
-	/*content: "\00BB \0020";*/
+	content: "\00BB \0020";
 	}
 
 .entry ol {
