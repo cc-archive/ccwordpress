@@ -24,7 +24,7 @@
   the_post(); ?>
             <div class="post" id="post-<?php the_ID(); ?>">
               <h1 class="title"><a href="<? the_permalink() ?>"><?the_title()?></a></h1>
-              <h4 class="meta"><?php the_time('F jS, Y')?></h4>
+              <h4 class="meta"><?php the_author() ?>, <?php the_time('F jS, Y')?></h4>
               <div class="clearer"></div>
               <?php the_content("Read More..."); ?>
               <?php edit_post_link('Edit', '',''); ?>
