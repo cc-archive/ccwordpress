@@ -27,10 +27,10 @@ img {
 #wrapper-ie {
 	
 	/* max-width */
-	width: expression( 
+/*	width: expression( 
 	    document.body.clientWidth > 1000 ? "1000px" : "auto"
 	);
-	
+*/	
 }
 
 #header-wrapper {
@@ -43,10 +43,10 @@ margin-top: 0;
 	margin-top: 0;
 	
 	/* min-width */
-	width: expression( 
+/*	width: expression( 
 	    document.body.clientWidth < 850 ? "850px" : "90%"
 	);
-}
+*/}
 
 #splash {
 	font-weight: bold;
@@ -54,8 +54,8 @@ margin-top: 0;
 }
 
 #main-content {
-	width: 83%;
-}
+/*	width: 83%;
+*/}
 
 #features {
 	width: 26.5%;
@@ -65,5 +65,9 @@ margin-top: 0;
 
 
 #page {
-	width: 92%;
+/*	width: 92%;
+*/}
+
+.cc-actions {
+	margin-top: 5px !important;
 }
