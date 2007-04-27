@@ -1,3 +1,19 @@
+<?php
+
+// total raised
+$campaign['total'] = file_get_contents('/web/a2/therm_total/total.txt');
+
+// real total including matched funding
+($campaign['total'] < 20000) ? 
+	$campaign['matched'] = $campaign['total'] * 2 :
+	$campaign['matched'] = $campaign['total'] + 20000;
+
+// figure out value for progress meter
+$campaign['css'] = ceil( ($campaign['matched'] / 50000) * 200 );
+
+?>
+
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html>
@@ -42,6 +58,20 @@
         <a href="<?php echo get_settings('home'); ?>"><img src="<?php bloginfo('stylesheet_directory'); ?>/images/cc-title.png" alt="creative commons" id="cc-title" border="0"/></a>
       </div>
     </div>
+
+ <div style="background-color: #333d33; border-bottom: 1px solid #436400; padding: 5px 38px;  color: #ddd; height: 1.8em; text-align:left;">
+   <div style="margin: 0 auto; width: 50em;">
+     <div style="float: left; margin-top: 2px;">
+	<a style="color: #fff;" href="http://support.creativecommons.org/"><strong>CCi Scholarship Funding Campaign</strong></a>
+     </div>
+
+     <div style="cursor:pointer; margin-left: 10px; margin-top: 2px; width: 203px; padding: 0 2px; background-color: #ddd; float: left;  " onclick="window.location = 'http://support.creativecommons.org';">
+      <span style="padding-right: <?= $campaign['css'] ?>px; margin: 0; background-color: #a3aaa3;">&nbsp;</span>
+     </div> 
+    <div style="float: left; margin-top: 2px; margin-left: 7px;"><a style="color:#fff;"  href="http://support.creativecommons.org">$<?= $campaign['matched'] ?> / $50,000</a></div>
+   </div>
+ </div>
+
     <div id="wrapper"><div id="wrapper-ie">
     
     <div class="jurisdictions">
