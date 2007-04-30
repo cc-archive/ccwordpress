@@ -42,7 +42,11 @@
 </div>
 <div id="cctools">
   <div class="tool">
-    <a href="http://creativecommons.org/license/"><img src="<?php bloginfo('stylesheet_directory'); ?>/images/publish.png"/> License Your Work</a>
+    <a href="http://creativecommons.org/license/<?php 
+    $pieces = explode('.', parse_url(get_bloginfo('url'), PHP_URL_HOST));
+    $output = (strlen($pieces[0]) == 2) ? ("?jurisdiction=".$pieces[0]) : (""); 
+    echo $output; 
+    	?>"><img src="<?php bloginfo('stylesheet_directory'); ?>/images/publish.png"/> License Your Work</a>
   </div>
   <div class="tool">  
     <a href="http://search.creativecommons.org/"><img src="<?php bloginfo('stylesheet_directory'); ?>/images/find.png"/> Find CC Licensed Work</a>
