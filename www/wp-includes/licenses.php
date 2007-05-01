@@ -102,11 +102,20 @@ class LicenseXML
                     $license['uri'] = $version->getAttribute("uri");
                 }
             }
-            if ($license['version'] > 0) {
+            if ( ($license['version'] > 0) && 
+                 (strstr($license['uri'], 'by') != false) ) {
                 $current_licenses[$license_id] = $license;
             }
         }
-        return $current_licenses;     
+
+        // and finally, a lame check to avoid duplicating by-nc-nd as by-nd-nc
+        if ( (isset($current_licenses["by-nc-nd"]))  && 
+             (isset($current_licenses["by-nd-nc"])) ) {
+            unset($current_licenses['by-nd-nc']);
+        }
+
+        sort($current_licenses);
+        return $current_licenses;
     }
 
     function getLicenseName($uri) {
