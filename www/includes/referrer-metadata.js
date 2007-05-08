@@ -75,6 +75,13 @@ function injectReferrerMetadata(response) {
 
 	document.getElementById('more-container').innerHTML = more_perms;
 	document.getElementById('more-container').setAttribute("class", "license more");
+
+    }
+
+    var noncomm_ads = metadata.allowAdvertising;
+    if (document.getElementById('nc-more-container') && noncomm_ads) {
+	// this is a non-comm license
+	document.getElementById('nc-more-container').innerHTML = noncomm_ads;
     }
 
 } // injectReferrerMetadata
