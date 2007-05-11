@@ -111,6 +111,10 @@ li.remix {
 	list-style-image: url("/images/deed/remix.png");
 	list-style-position: outside;
 }
+li.devnations {
+	list-style-image: url("/images/deed/devnations.png");
+	list-style-position: outside;
+}
 li.by {
 	list-style-image: url("/images/deed/by.png");
 	list-style-position: outside;  
