@@ -181,6 +181,9 @@
 			list-style: none;
 		}
 	
+                li.free {
+                                        background: url("http://mirrors.creativecommons.org/tmp/freedomdefined-50x50.png") 0 0 no-repeat;
+                }
                 li.share {
                                         background: url("/images/deed/share.png") 0 0 no-repeat;
                 }
@@ -188,6 +191,10 @@
                 li.remix {
                                         background: url("/images/deed/remix.png") 0 0 no-repeat;
                 }
+
+		li.devnations {
+					background: url("/images/deed/devnations.png") 0 0 no-repeat;
+		}
 
 		li.by {
 					background: url("/images/deed/by.png") 0 0 no-repeat;
