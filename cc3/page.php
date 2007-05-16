@@ -33,7 +33,7 @@
         <? if (!$is_single_col) { ?>
           <div id="features">
             <ul>
-          <? cc_list_pages($post->ID, "", "<li>", "</li>"); ?>  
+          <? wp_list_pages ("title_li=&depth=2"); ?>  
             </ul>
           </div>
         <? } ?>
