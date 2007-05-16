@@ -8,19 +8,26 @@
 function cc_list_pages($pageid, $sep = "&raquo;", $before = "<h3>", $after = "</h3>") {
 	global $wpdb;
 	
-	$pages = $wpdb->get_results ("SELECT * FROM $wpdb->posts WHERE post_status = 'static' AND (post_parent = $pageid OR id = $pageid) ORDER BY post_parent ASC");
-	
+	$pages = $wpdb->get_results ("SELECT * FROM $wpdb->posts WHERE post_status = 'publish' AND post_type='page' AND post_parent=0 OR post_parent=2");
 	foreach ($pages as $page) {
-		if (($page->post_parent != $pageid) && ($page->post_parent != 0)) {
-			cc_list_pages ($page->post_parent, $sep, $before, $after);
-			break;
-		}
-		if (($page->ID == $pageid) && ($page->post_parent == 0)) {
-			echo $before . '<a href="' . get_page_link($page->ID) . '">' . $page->post_title . '</a>' . "&nbsp;&nbsp;" . $sep . $after;
-		} else {
+//		if (($page->ID == $pageid)) {
+//			echo $before .  $page->post_title . $after;
+//		} else {
 			echo $before . '<a href="' . get_page_link($page->ID) . '">' . $page->post_title . '</a>' . $after;
-		}
+//		}
 	} 
+}
+
+function cc_page_parent ($page) {
+  global $wpdb;
+  $path = "";
+    
+  $parent = $wpdb->get_row ("SELECT * FROM $wpdb->posts WHERE id = $page->post_parent");
+  
+  if ($parent)
+    return $parent;
+  else
+    return null;
 }
 
 /* retrieve url of uploaded resource from its title */
