@@ -119,7 +119,7 @@ function wpfm_create($menu_name, $current_class = true, $type = 'list', $no_ul =
 	}
 			
 	$wpfm_isfirst = true;
-	$menu_array = wpfm_set_current($menu_array);
+	//$menu_array = wpfm_set_current($menu_array);
 	
 	if($type == 'select'){
 		if(!$wpfm_insertscript){
@@ -1025,7 +1025,7 @@ function wpfm_pages() {
 	From 
 	$wpdb->posts AS posts 
 	Where 
-	posts.post_status = 'static'
+	posts.post_type = 'page'
 	");
 	
 	if(!empty($results)) {
