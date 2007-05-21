@@ -5,6 +5,7 @@ document.write('<option value="http://creativecommons.org/worldwide/be/">Belgium
 document.write('<option value="http://creativecommons.org/worldwide/br/">Brazil</option>');
 document.write('<option value="http://creativecommons.org/worldwide/bg/">Bulgaria</option>');
 document.write('<option value="http://creativecommons.ca">Canada</option>');
+document.write('<option value="http://creativecommons.org/worldwide/ch/">Switzerland</option>');
 document.write('<option value="http://creativecommons.cl">Chile</option>');
 document.write('<option value="http://cn.creativecommons.org">China Mainland</option>');
 document.write('<option value="http://creativecommons.org/worldwide/co/">Colombia</option>');
