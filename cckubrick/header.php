@@ -41,6 +41,12 @@
 	</div>
 </div>
 <div id="cctools">
+  <div class="tool options">
+    <select name="sortby" onchange="orderby(this)">
+      <option value="">Select a jurisdiction</option>
+      <script type="text/javascript" src="http://api.creativecommons.org/rest/dev/support/jurisdictions.js"></script>
+    </select>
+  </div>
   <div class="tool">
     <a href="http://creativecommons.org/license/<?php 
     $pieces = explode('.', parse_url(get_bloginfo('url'), PHP_URL_HOST));

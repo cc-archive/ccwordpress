@@ -119,6 +119,7 @@ h3 {
 
 h2, h3, .post h2 a {
 	color: #333;
+	text-align: left !important;
 	}
 
 h2 a, h2 a:visited, h3, h3 a, h3 a:visited, .page h2 a {
@@ -250,6 +251,15 @@ body {
 #cctools img {
 	float: left;
 	padding-right: 3px;
+}
+
+#cctools .options {
+	border-left: 1px solid #d0d0d0;
+	padding-left: 10px;
+}
+
+#cctools select {
+	margin-top: -3px;
 }
 
 #content {
@@ -415,12 +425,11 @@ html>body .entry ul {
 	margin-left: 0px;
 	padding: 0 0 0 30px;
 	list-style: none;
-	padding-left: 10px;
 	text-indent: -10px;
 	} 
 
-html>body .entry li {
-	margin: 7px 0 8px 10px;
+html>body .entry li, .entry li {
+	margin: 7px 0 2px 5px;
 	}
 
 .entry ul li:before, #sidebar ul ul li:before {
@@ -466,7 +475,7 @@ html>body .entry li {
 	margin: 0 0 0 10px;
 	}
 
-ol li, #sidebar ul ol li {
+#sidebar ul ol li {
 	list-style: decimal outside;
 	}
 
@@ -496,10 +505,6 @@ ol li, #sidebar ul ol li {
 
 .entry form { /* This is mainly for password protected posts, makes them look better. */
 	text-align:center;
-	}
-
-select {
-	width: 130px;
 	}
 
 #commentform input {
