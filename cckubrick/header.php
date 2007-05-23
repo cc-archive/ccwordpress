@@ -17,6 +17,8 @@
 <link rel="alternate" type="application/rss+xml" title="<?php bloginfo('name'); ?> RSS Feed" href="<?php bloginfo('rss2_url'); ?>" />
 <link rel="pingback" href="<?php bloginfo('pingback_url'); ?>" />
 
+<script src="http://www.creativecommons.org/includes/icommons.js" type="text/javascript"></script>
+
 <!--[if IE]>
    <style type="text/css">
     img { behavior: url("<?php bloginfo('stylesheet_directory'); ?>/pngie.htc"); }
@@ -44,7 +46,7 @@
   <div class="tool options">
     <select name="sortby" onchange="orderby(this)">
       <option value="">Select a jurisdiction</option>
-      <script type="text/javascript" src="http://api.creativecommons.org/rest/dev/support/jurisdictions.js"></script>
+      <script type="text/javascript" src="http://www.creativecommons.org/includes/jurisdictions.js"></script>
     </select>
   </div>
   <div class="tool">
