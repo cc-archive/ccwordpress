@@ -196,6 +196,9 @@
 					background: url("/images/deed/devnations.png") 0 0 no-repeat;
 		}
 
+		li.no-endorse{
+					background: url("/images/deed/no-endorse.png") 0 0 no-repeat;
+		}
 		li.by {
 					background: url("/images/deed/by.png") 0 0 no-repeat;
 		}
