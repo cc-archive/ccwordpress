@@ -11,12 +11,12 @@
          <? if ($post->post_parent) { 
            $parent = cc_page_parent ($post); ?> 
           <h3 class="category">
-            <a href="../">
+            <a href="./../">
               <?= $parent->post_title ?>
             </a>
           </h3>
           <? }?>
-        <h2><?php the_title(); ?><br/>&nbsp;</h2>
+        <h1><?php the_title(); ?></h1>
         <div id="splash-menu">
           <? /*cc_list_pages($post->ID);*/ ?>
         </div>
@@ -24,16 +24,17 @@
 
       <div id="content">
         <div id="main-content">
-          <div id="<?= ($is_single_col) ? 'page' : 'blog' ?>">
+          <div id="<? /*($is_single_col && 0) ? 'page' : 'blog'*/ ?>page">
             <div class="post" id="post-<?php the_ID(); ?>">
               <?php the_content("Read More..."); ?>
             </div>
 <?php } }?>
           </div>
-        <? if (!$is_single_col) { ?>
+        <? if (!$is_single_col && 0) { ?>
           <div id="features">
             <ul>
-          <? wp_list_pages ("title_li=&depth=2"); ?>  
+          <? /*wp_list_pages ("title_li=&depth=2");*/ ?>
+	<?php echo wpfm_create("elsewhere",true,'list',true); ?>  
             </ul>
           </div>
         <? } ?>
