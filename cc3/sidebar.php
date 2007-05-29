@@ -1,14 +1,9 @@
 <div id="sidebar">
-<ul>
-  <li><strong><a href="/">Home</a></strong></li>
-  <li><strong><a href="/weblog">Weblog</a></strong></li>
-  <li><strong><a href="/about">About</a></strong></li>
-  <li><strong><a href="/faq">FAQ</a></strong></li>
-  <li><strong><a href="/contact">Contact</a></strong></li>
-  <li><strong><a href="/presskit">Press Kit</a></strong></li>
-  <li><strong><a href="/policies">Policies</a></strong></li>
-  <li><strong><a href="/privacy">Privacy</a></strong></li>
-  <li><strong><a href="/sitemap">Sitemap</a></strong></li>
+<ul class="nav">
+  <li><a href="/">Home</a></li>
+  <li><a href="/weblog/">Weblog</a></li>
+  <li><a href="/faq/">FAQ</a></li>
+ <?php echo wpfm_create("elsewhere",true,'list',true); ?>  
 </ul>
 <br/>
 <h4>Explore</h4>

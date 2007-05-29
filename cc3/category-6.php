@@ -9,10 +9,8 @@
           </a>
         </h3>
         <? }?>
-        <h2><? wp_title('') ?><br/>&nbsp;</h2>
+        <h1><? wp_title('') ?></h1>
         <div id="splash-menu">
-          <h3><a href="<?php echo get_settings('home'); ?>/about/">Learn More</a></h3>
-          <h3>Support CC</h3>
         </div>
       </div>
 

@@ -1,5 +1,5 @@
 <?php
-
+/* keep around for future progress emeter usage
 // total raised
 $campaign['total'] = file_get_contents('/web/a2/therm_total/total.txt');
 
@@ -10,7 +10,7 @@ $campaign['total'] = file_get_contents('/web/a2/therm_total/total.txt');
 
 // figure out value for progress meter
 $campaign['css'] = ceil( ($campaign['matched'] / 50000) * 200 );
-
+*/
 ?>
 
 
@@ -59,6 +59,7 @@ $campaign['css'] = ceil( ($campaign['matched'] / 50000) * 200 );
       </div>
     </div>
 
+<?php /*
  <div style="background-color: #333d33; border-bottom: 1px solid #436400; padding: 5px 38px;  color: #ddd; height: 1.8em; text-align:left;">
    <div style="margin: 0 auto; width: 50em;">
      <div style="float: left; margin-top: 2px;">
@@ -71,6 +72,7 @@ $campaign['css'] = ceil( ($campaign['matched'] / 50000) * 200 );
     <div style="float: left; margin-top: 2px; margin-left: 7px;"><a style="color:#fff;"  href="http://support.creativecommons.org">$<?= $campaign['matched'] ?> / $50,000</a></div>
    </div>
  </div>
+*/ ?>
 
     <div id="wrapper"><div id="wrapper-ie">
     

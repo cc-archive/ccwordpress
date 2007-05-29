@@ -5,7 +5,7 @@
     <div id="body">
       <div id="splash">
         <!--img src="images/info.png" align="left"/-->
-        <h2>
+        <h1>
         <? if (is_month() || is_year()) { ?> 
           <a href="<?php echo get_settings('home') . "/"?>featured-projects/">
             Featured Projects 
@@ -13,7 +13,7 @@
         <? } else { ?>
           Featured Projects
         <? } ?>
-        <br/>&nbsp;</h2>
+        </h1>
         <div id="splash-menu">
         </div>
       </div>

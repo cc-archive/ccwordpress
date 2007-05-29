@@ -5,8 +5,6 @@
         <h2 class="tagline"><?php bloginfo('description'); ?></h2>
         <div id="blurb"><?= cc_intro_blurb() ?></div>
         <div id="splash-menu">
-          <h3><a href="/learnmore/">Learn More</a></h3>
-          <h3><a href="/support/">Support CC</a></h3>
         </div>
       </div>
 
@@ -41,6 +39,7 @@
           <div id="features">
             <div style="text-align:center;"><a href="/support"><img src="/images/support/2007/support-btn-big.png" border="0" alt="support cc"/></a></div>
             <div class="content-foot">&nbsp;</div>
+
             <h4>Featured Projects</h4>
 <?php $my_query = new WP_Query('category_name=featured-projects&showposts=2'); ?>
 <?php while ($my_query->have_posts()) { $my_query->the_post(); ?>

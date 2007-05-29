@@ -8,10 +8,10 @@
           </a>
         </h3>
         <? }?>
-        <h2>
+        <h1>
           <img src="/images/categories/<?= $category_name ?>.png" alt="[ <?= $category_name ?> ]" border="0" class="category-icon"/>
           <?php wp_title(''); ?>
-        </h2>
+        </h1>
         <div id="blurb"><?php echo category_description() ?></div>
         <div id="splash-menu">
           

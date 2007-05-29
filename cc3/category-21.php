@@ -25,7 +25,7 @@
 
     <div id="body">
       <div id="splash">
-        <h2>Worldwide<br />&nbsp;</h2>
+        <h1>Worldwide</h1>
         <div id="splash-menu">
         </div>
       </div>
@@ -53,7 +53,7 @@
     }
     $img = "/images/international/$jurisdiction->code.png";
 ?>
-              <div class="ifloat"><a href="/worldwide/<?= $jurisdiction->code ?>/"><img class="flag" src="<?= $img ?>" alt="<?= $jurisdiction->name ?>"  /></a><br /><p><a href="/worldwide/<?= $jurisdiction->code ?>/"><?= $jurisdiction->name ?></a></p></div>
+              <div class="ifloat"><a href="/worldwide/<?= $jurisdiction->code ?>/"><img class="flag" border="1" src="<?= $img ?>" alt="<?= $jurisdiction->name ?>"  /></a><br /><p><a href="/worldwide/<?= $jurisdiction->code ?>/"><?= $jurisdiction->name ?></a></p></div>
 <?php } ?>
             </div>
             <br clear="all" />
@@ -70,7 +70,7 @@
     }
     $img = "/images/international/$jurisdiction->code.png";
 ?>
-              <div class="ifloat"><a href="/worldwide/<?= $jurisdiction->code ?>/"><img class="flag" src="<?= $img ?>" alt="<?= $jurisdiction->name ?>" /></a><br /><p><a href="/worldwide/<?= $jurisdiction->code ?>/"><?= $jurisdiction->name ?></a></p></div>
+              <div class="ifloat"><a href="/worldwide/<?= $jurisdiction->code ?>/"><img class="flag" border="1" src="<?= $img ?>" alt="<?= $jurisdiction->name ?>" /></a><br /><p><a href="/worldwide/<?= $jurisdiction->code ?>/"><?= $jurisdiction->name ?></a></p></div>
 <?php } ?>
             </div>
 <br clear="all" />

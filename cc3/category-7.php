@@ -65,9 +65,9 @@ $commoners = $wpdb->get_results( "SELECT * FROM wp_posts, wp_post2cat WHERE wp_p
 
     <div id="body">
       <div id="splash">
-        <h2>
+        <h1>
          Creative Commoners
-        </h2>
+        </h1>
         <div id="blurb"><?php echo category_description() ?></div>
         <div id="splash-menu">
           

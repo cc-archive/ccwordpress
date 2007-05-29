@@ -69,6 +69,20 @@ function cc_current_feature() {
   return stripslashes (get_option ('cc_current_feature'));
 }
 
+// Removes over-zealously placed <br/>'s and </p>'s from commented out html, and RDF blocks
+// Also removes <br/>'s from the end of </li>'s
+function cc_post_content_process($content) {
+  $wrong_br = array("/(<\!--.*)?<(br\s+\/|\/p)>/", "/(<\!--.*)?<p>\&\#8211;>/", "/<\/li><br\s+\/>/");
+  $fixed = array("$1", "$1 -->", "</li>");
+  
+  $content = preg_replace($wrong_br, $fixed, $content);
+
+  return $content;
+}
+
+add_filter('the_content', 'cc_post_content_process');
+
+
 /* theme options page */
 add_action ('admin_menu', 'cc_theme_menu');
 

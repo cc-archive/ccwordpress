@@ -54,12 +54,12 @@
         <? } ?>
 
 	<? if ($is_worldwide && $jurisdiction_code != '') { ?>
-        <h2>
+        <h1>
           <img src="/images/international/<?php echo $jurisdiction_code ?>.png" alt="<?php echo $jurisdiction_code ?> flag" class="flag" /><?php 
-          the_title(); ?><br/>&nbsp;
-        </h2>
+          the_title(); ?>
+        </h1>
 	<? } else { ?>
-        <h2> <?php the_title(); ?><br/>&nbsp;</h2>
+        <h1> <?php the_title(); ?></h1>
 	<? } ?>
         <div id="splash-menu">
          <?php edit_post_link('<h3>Edit this article</h3>', '', ''); ?>
