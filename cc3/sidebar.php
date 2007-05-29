@@ -3,7 +3,7 @@
   <li><a href="/">Home</a></li>
   <li><a href="/weblog/">Weblog</a></li>
   <li><a href="/faq/">FAQ</a></li>
- <?php echo wpfm_create("elsewhere",true,'list',true); ?>  
+ <?php echo wpfm_create("pages",true,'list',true); ?>  
 </ul>
 <br/>
 <h4>Explore</h4>
