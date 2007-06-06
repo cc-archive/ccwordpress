@@ -33,5 +33,8 @@ licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/3
       <p>
     </div>
   </div>
+
+<script src="http://www.google-analytics.com/urchin.js" type="text/javascript"></script>
+<script type="text/javascript">_uacct = "UA-2010376-1"; urchinTracker();</script>
 </body>
 </html>
