@@ -25,6 +25,8 @@ $campaign['css'] = ceil( ($campaign['matched'] / 50000) * 200 );
   <title><?php wp_title(''); ?> - Creative Commons</title>
   <? }?>
   <meta name="generator" content="WordPress <?php bloginfo('version'); ?>" />
+  <meta name="keywords" content="creative commons, commons, free culture, open source, attribution, non-commercial, share-alike, no derivatives, lessig" />
+  <meta name="description" content="Creative Commons licenses provide a flexible range of protections and freedoms for authors, artists, and educators." />
   
   
   <? if (is_home() || ($category_name == "weblog")) { ?>
@@ -41,9 +43,6 @@ $campaign['css'] = ceil( ($campaign['matched'] / 50000) * 200 );
     @import "<?php bloginfo('stylesheet_directory'); ?>/style.css";
   </style>
   <!--[if IE]><link rel="stylesheet" type="text/css" media="screen" href="<?php bloginfo('stylesheet_directory'); ?>/style-ie.css" />
-   <style type="text/css">
-    img { behavior: url("<?php bloginfo('stylesheet_directory'); ?>/pngie.htc"); }
-   </style>	
   <![endif]-->
   
   <?php /* wp_get_archives('type=monthly&format=link'); */ ?>
@@ -53,9 +52,24 @@ $campaign['css'] = ceil( ($campaign['matched'] / 50000) * 200 );
  <body onload="">
     <div id="header-wrapper">
       <div id="header-main">
-        <a href="<?php echo get_settings('home'); ?>/license/" class="cc-actions"><img src="<?php bloginfo('stylesheet_directory'); ?>/images/publish.png" border="0" class="publish"/> <h4>License</h4>Your Work</a>
-        <a href="http://search.creativecommons.org/" class="cc-actions"><img src="<?php bloginfo('stylesheet_directory'); ?>/images/find.png" border="0"/> <h4>Find</h4>CC Licensed Work</a>
-        <a href="<?php echo get_settings('home'); ?>"><img src="<?php bloginfo('stylesheet_directory'); ?>/images/cc-title.png" alt="creative commons" id="cc-title" border="0"/></a>
+        <span class="publish">
+          <a href="<?php echo get_settings('home'); ?>/license/" class="cc-actions">
+            <span class="img">
+              <img src="<?php bloginfo('stylesheet_directory'); ?>/images/publish-8.png" border="0" class="publish"/>
+            </span> 
+            <span class="option">License</span>Your Work
+          </a>
+        </span>
+        <span class="find">
+          <a href="http://search.creativecommons.org/" class="cc-actions">
+            <span class="img">
+              <img src="<?php bloginfo('stylesheet_directory'); ?>/images/find-8.png" border="0"/>
+            </span>
+            <span class="option">Find</span>CC Licensed Work
+          </a>
+        </span>
+        
+        <span class="logo"><a href="<?php echo get_settings('home'); ?>"><span><img src="<?php bloginfo('stylesheet_directory'); ?>/images/cc-title-8.png" alt="creative commons" id="cc-title" border="0"/></span></a></span>
       </div>
     </div>
 

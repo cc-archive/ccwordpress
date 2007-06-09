@@ -46,6 +46,36 @@ body {
     text-align: left;
     font-size: 11px !important;
   }
+  
+  #header-main .logo a:before {
+    display: block;
+    content: url('/images/cc-title.png');
+  }
+  html>body #header-main .logo span {
+    display: none;
+  }
+  
+  /* only visible to FF */
+  html>body #header-main .find span.img {
+    display: block;
+    float: left;
+    margin-right: 10px;
+    width: 70px;
+    height: 50px;
+    background: url('/images/find.png') no-repeat top left;
+  }
+  html>body #header-main .publish span.img {
+    display: block;
+    float: left;
+    margin-right: 10px;
+    width: 70px;
+    height: 50px;
+    background: url('/images/publish.png') no-repeat top left;
+  }
+  html>body #header-main span.img img {
+    display: none;
+  }
+  
   #cc-title {
     padding: 0 0px 5px 0px;
   }
@@ -273,12 +303,13 @@ blockquote {
   margin: 5px;
 }
 
-.cc-actions h4 {
+.cc-actions span.option {
   color: #fff;
   font-size: 170%;
   margin-top: 15px;
   margin-bottom: 0 !important;
   padding: 0 !important;
+  display: block;
 }
 
 .cc-actions img {
