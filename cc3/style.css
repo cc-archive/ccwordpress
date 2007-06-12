@@ -15,7 +15,7 @@ Version: 3.5
 body {
   background-color: #fff;
   color: #333;
-  font: 0.74em/145% "Lucida Grande", verdana, sans-serif;
+  font: 75%/145% "Lucida Grande", verdana, sans-serif;
   padding: 0;
   margin: 0;
   text-align: center;
@@ -190,6 +190,7 @@ body {
   clear: both;
   float: right;
   padding: 10px 3px 0 1%;
+  font-size: 0.9em;
 	width: 50%;
 	text-align: right;
 }
