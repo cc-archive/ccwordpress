@@ -15,7 +15,7 @@ Version: 3.5
 body {
   background-color: #fff;
   color: #333;
-  font: 0.74em/145% "Lucida Grande", verdana, sans-serif;
+  font: 75%/145% "Lucida Grande", verdana, sans-serif;
   padding: 0;
   margin: 0;
   text-align: center;
@@ -46,6 +46,36 @@ body {
     text-align: left;
     font-size: 11px !important;
   }
+  
+  #header-main .logo a:before {
+    display: block;
+    content: url('/images/cc-title.png');
+  }
+  html>body #header-main .logo span {
+    display: none;
+  }
+  
+  /* only visible to FF */
+  html>body #header-main .find span.img {
+    display: block;
+    float: left;
+    margin-right: 10px;
+    width: 70px;
+    height: 50px;
+    background: url('/images/find.png') no-repeat top left;
+  }
+  html>body #header-main .publish span.img {
+    display: block;
+    float: left;
+    margin-right: 10px;
+    width: 70px;
+    height: 50px;
+    background: url('/images/publish.png') no-repeat top left;
+  }
+  html>body #header-main span.img img {
+    display: none;
+  }
+  
   #cc-title {
     padding: 0 0px 5px 0px;
   }
@@ -89,7 +119,7 @@ body {
 
       #main-content {
         float: left;
-        width: 85.33%;
+        width: 84%;
       }
 
         #blog {
@@ -127,7 +157,8 @@ body {
 
       #sidebar {
         float: left;
-        width: 13.67%;
+        font-size: 0.85em;
+        width: 14%;
         padding-left: 1%;
 /*        margin-left: 1.5%;*/
         padding-top: 15px;
@@ -159,6 +190,7 @@ body {
   clear: both;
   float: right;
   padding: 10px 3px 0 1%;
+  font-size: 0.9em;
 	width: 50%;
 	text-align: right;
 }
@@ -273,12 +305,14 @@ blockquote {
   margin: 5px;
 }
 
-.cc-actions h4 {
+.cc-actions span.option {
   color: #fff;
   font-size: 170%;
+  font-weight: bold;
   margin-top: 15px;
   margin-bottom: 0 !important;
   padding: 0 !important;
+  display: block;
 }
 
 .cc-actions img {
