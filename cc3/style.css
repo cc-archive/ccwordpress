@@ -119,7 +119,7 @@ body {
 
       #main-content {
         float: left;
-        width: 85.33%;
+        width: 84%;
       }
 
         #blog {
@@ -157,7 +157,8 @@ body {
 
       #sidebar {
         float: left;
-        width: 13.67%;
+        font-size: 0.85em;
+        width: 14%;
         padding-left: 1%;
 /*        margin-left: 1.5%;*/
         padding-top: 15px;
@@ -306,6 +307,7 @@ blockquote {
 .cc-actions span.option {
   color: #fff;
   font-size: 170%;
+  font-weight: bold;
   margin-top: 15px;
   margin-bottom: 0 !important;
   padding: 0 !important;
