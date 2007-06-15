@@ -120,6 +120,7 @@
 		}
 		#deed-newer a, #deed-main a {
 			color: #111;
+ 			text-decoration:underline;
 			font-weight: bold;
 		}
 		
