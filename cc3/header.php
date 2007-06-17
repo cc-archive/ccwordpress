@@ -55,7 +55,7 @@ $campaign['css'] = ceil( ($campaign['matched'] / 50000) * 200 );
         <span class="publish">
           <a href="<?php echo get_settings('home'); ?>/license/" class="cc-actions">
             <span class="img">
-              <img src="<?php bloginfo('stylesheet_directory'); ?>/images/publish-8.png" border="0" class="publish"/>
+              <img src="<?php bloginfo('stylesheet_directory'); ?>/images/license-8.png" border="0" class="publish"/>
             </span> 
             <span class="option">License</span>Your Work
           </a>

@@ -72,7 +72,7 @@ body {
     margin-right: 10px;
     width: 70px;
     height: 50px;
-    background: url('/images/publish.png') no-repeat top left;
+    background: url('/images/license.png') no-repeat top left;
   }
   html>body #header-main span.img img {
     display: none;
