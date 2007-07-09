@@ -51,6 +51,7 @@
 		<?php } } ?>
 	</div>
 </div>
+<? if (cc_show_worldwide()) { ?>
 <div id="cctools">
   <div class="tool options">
     <select name="sortby" onchange="orderby(this)">
@@ -69,4 +70,5 @@
     <a href="http://search.creativecommons.org/"><img src="<?php bloginfo('stylesheet_directory'); ?>/images/find.png"/> Find CC Licensed Work</a>
   </div>
 </div>
+<? } ?>
 <hr />

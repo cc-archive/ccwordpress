@@ -3,11 +3,19 @@
 if ( function_exists('register_sidebars') )
 	register_sidebars(1);
 
+if (get_option('cc_header_show_worldwide') == NULL) {
+   add_option('cc_header_show_worldwide', true);
+}
+
 /* theme options page */
 add_action ('admin_menu', 'cc_theme_menu');
 
 function cc_header_image() {
   return stripslashes (get_option ('cc_header_image'));
+}
+
+function cc_show_worldwide() {
+  return get_option('cc_header_show_worldwide');
 }
 
 function cc_theme_menu() {
@@ -21,6 +29,18 @@ function cc_theme_options() {
     update_option ('cc_header_image', $_POST['cc_header_image']);
     $message = "Header image location updated!";
   }
+
+  if ($_POST['cc_show_worldwide_submitted']) {
+
+    if ($_POST['cc_show_worldwide']) {
+       update_option('cc_header_show_worldwide', true);
+    } else {
+       update_option('cc_header_show_worldwide', false);
+    }
+
+    $message = "Toolbar display updated.";
+  }
+
 
   // display feedback that something happened
   if ($message) {
@@ -38,6 +58,17 @@ function cc_theme_options() {
     <p><input type="submit" value="Update &rarr;" /></p>
    </form>
   </div>
+
+  <div class="wrap">
+   <h2>Header Toolbar</h2>
+   <p>Display the header toolbar (including worldwide, publish and find links) ?</p>
+   <form action="<?php echo $_SERVER['REQUEST_URI']; ?>" name="i18n" method="post" accept-charset="utf-8">
+    <input type="checkbox" name="cc_show_worldwide" size="45" id="cc_show_worldwide" <?=cc_show_worldwide()?'checked':''?> />
+    <input type="hidden" name="cc_show_worldwide_submitted" value="true" />
+    <p><input type="submit" value="Update &rarr;" /></p>
+   </form>
+  </div>
+
   <?php
 }
 
