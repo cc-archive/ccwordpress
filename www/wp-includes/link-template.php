@@ -76,23 +76,12 @@ function get_permalink($id = 0) {
 
 		$category = '';
 		if (strpos($permalink, '%category%') !== false) {
-                        $cat_id=0;
-                        $cats = get_the_category($post->ID);
-
-                        while ($cat_id < count($cats)) {
-                            $category = $cats[$cat_id]->category_nicename;
-                            $parent=$cats[$cat_id]->category_parent;
-                            if ( $parent ) {
-                                $parent_category = get_category_parents($parent, FALSE, '/', TRUE);
-                                # Skip over license-status categories
-                                if ($parent_category != "license-status/") {
-                                    $category = $parent_category . $category;
-                                    break;
-                                }
-                            }
-                            $cat_id++;
-                        }
-
+			$cats = get_the_category($post->ID);
+			if ( $cats )
+				usort($cats, '_get_the_category_usort_by_ID'); // order by ID
+			$category = $cats[0]->category_nicename;
+			if ( $parent=$cats[0]->category_parent )
+				$category = get_category_parents($parent, FALSE, '/', TRUE) . $category;
 		}
 
 		$authordata = get_userdata($post->post_author);
@@ -493,7 +482,6 @@ function get_pagenum_link($pagenum = 1) {
 	$qstr = preg_replace('|^/+|', '', $qstr);
 	if ( $permalink )
 		$qstr = user_trailingslashit($qstr, 'paged');
-	$qstr = preg_replace('/&([^#])(?![a-z]{1,8};)/', '&#038;$1', trailingslashit( get_option('home') ) . $qstr );
 
 	// showing /page/1/ or ?paged=1 is redundant
 	if ( 1 === $pagenum ) {
@@ -501,6 +489,9 @@ function get_pagenum_link($pagenum = 1) {
 		$qstr = str_replace(user_trailingslashit('page/1', 'paged'), '', $qstr); // for mod_rewrite style
 		$qstr = remove_query_arg('paged', $qstr); // for query style
 	}
+
+	$qstr = preg_replace('/&([^#])(?![a-z]{1,8};)/', '&#038;$1', trailingslashit( get_option('home') ) . $qstr );
+
 	return $qstr;
 }
 

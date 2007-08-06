@@ -48,8 +48,8 @@ $PHP_SELF = $_SERVER['PHP_SELF'];
 if ( empty($PHP_SELF) )
 	$_SERVER['PHP_SELF'] = $PHP_SELF = preg_replace("/(\?.*)?$/",'',$_SERVER["REQUEST_URI"]);
 
-if ( !(phpversion() >= '4.1') )
-	die( 'Your server is running PHP version ' . phpversion() . ' but WordPress requires at least 4.1' );
+if ( !(phpversion() >= '4.2') )
+	die( 'Your server is running PHP version ' . phpversion() . ' but WordPress requires at least 4.2.' );
 
 if ( !extension_loaded('mysql') && !file_exists(ABSPATH . 'wp-content/db.php') )
 	die( 'Your PHP installation appears to be missing the MySQL which is required for WordPress.' );
@@ -81,7 +81,7 @@ error_reporting(E_ALL ^ E_NOTICE);
 
 // For an advanced caching plugin to use, static because you would only want one
 if ( defined('WP_CACHE') )
-	require (ABSPATH . 'wp-content/advanced-cache.php');
+	@include ABSPATH . 'wp-content/advanced-cache.php';
 
 define('WPINC', 'wp-includes');
 

@@ -203,6 +203,7 @@ function is_serialized_string($data) {
 
 /* Options functions */
 
+// expects $setting to already be SQL-escaped
 function get_option($setting) {
 	global $wpdb;
 
@@ -302,16 +303,19 @@ function wp_load_alloptions() {
 	return $alloptions;
 }
 
+// expects $option_name to NOT be SQL-escaped
 function update_option($option_name, $newvalue) {
 	global $wpdb;
 
 	wp_protect_special_option($option_name);
 
+	$safe_option_name = $wpdb->escape($option_name);
+
 	if ( is_string($newvalue) )
 		$newvalue = trim($newvalue);
 
 	// If the new and old values are the same, no need to update.
-	$oldvalue = get_option($option_name);
+	$oldvalue = get_option($safe_option_name);
 	if ( $newvalue === $oldvalue ) {
 		return false;
 	}
@@ -322,7 +326,7 @@ function update_option($option_name, $newvalue) {
 	}
 
 	$notoptions = wp_cache_get('notoptions', 'options');
-	if ( isset($notoptions[$option_name]) ) {
+	if ( is_array($notoptions) && isset($notoptions[$option_name]) ) {
 		unset($notoptions[$option_name]);
 		wp_cache_set('notoptions', $notoptions, 'options');
 	}
@@ -349,21 +353,21 @@ function update_option($option_name, $newvalue) {
 }
 
 // thx Alex Stapleton, http://alex.vort-x.net/blog/
+// expects $name to NOT be SQL-escaped
 function add_option($name, $value = '', $description = '', $autoload = 'yes') {
 	global $wpdb;
 
 	wp_protect_special_option($name);
+	$safe_name = $wpdb->escape($name);
 
-	// Make sure the option doesn't already exist we can check the cache before we ask for a db query
+	// Make sure the option doesn't already exist. We can check the 'notoptions' cache before we ask for a db query
 	$notoptions = wp_cache_get('notoptions', 'options');
-	if ( isset($notoptions[$name]) ) {
-		unset($notoptions[$name]);
-		wp_cache_set('notoptions', $notoptions, 'options');
-	} elseif ( false !== get_option($name) ) {
+	if ( !is_array($notoptions) || !isset($notoptions[$name]) )
+		if ( false !== get_option($safe_name) )
 			return;
-	}
 
 	$value = maybe_serialize($value);
+	$autoload = ( 'no' === $autoload ) ? 'no' : 'yes';
 
 	if ( 'yes' == $autoload ) {
 		$alloptions = wp_load_alloptions();
@@ -371,6 +375,13 @@ function add_option($name, $value = '', $description = '', $autoload = 'yes') {
 		wp_cache_set('alloptions', $alloptions, 'options');
 	} else {
 		wp_cache_set($name, $value, 'options');
+	}
+
+	// This option exists now
+	$notoptions = wp_cache_get('notoptions', 'options'); // yes, again... we need it to be fresh
+	if ( is_array($notoptions) && isset($notoptions[$name]) ) {
+		unset($notoptions[$name]);
+		wp_cache_set('notoptions', $notoptions, 'options');
 	}
 
 	$name = $wpdb->escape($name);
@@ -761,12 +772,12 @@ add_query_arg(associative_array, oldquery_or_uri)
 function add_query_arg() {
 	$ret = '';
 	if ( is_array(func_get_arg(0)) ) {
-		if ( @func_num_args() < 2 || '' == @func_get_arg(1) )
+		if ( @func_num_args() < 2 || false === @func_get_arg(1) )
 			$uri = $_SERVER['REQUEST_URI'];
 		else
 			$uri = @func_get_arg(1);
 	} else {
-		if ( @func_num_args() < 3 || '' == @func_get_arg(2) )
+		if ( @func_num_args() < 3 || false === @func_get_arg(2) )
 			$uri = $_SERVER['REQUEST_URI'];
 		else
 			$uri = @func_get_arg(2);
@@ -801,9 +812,7 @@ function add_query_arg() {
 		$query = $uri;
 	}
 
-	parse_str($query, $qs);
-	if ( get_magic_quotes_gpc() )
-		$qs = stripslashes_deep($qs); // parse_str() adds slashes if magicquotes is on.  See: http://php.net/parse_str
+	wp_parse_str($query, $qs);
 	$qs = urlencode_deep($qs);
 	if ( is_array(func_get_arg(0)) ) {
 		$kayvees = func_get_arg(0);
@@ -824,7 +833,7 @@ function add_query_arg() {
 	}
 	$ret = trim($ret, '?');
 	$ret = $protocol . $base . $ret . $frag;
-	$ret = trim($ret, '?');
+	$ret = rtrim($ret, '?');
 	return $ret;
 }
 
@@ -838,7 +847,7 @@ remove_query_arg(removekey, [oldquery_or_uri]) or
 remove_query_arg(removekeyarray, [oldquery_or_uri])
 */
 
-function remove_query_arg($key, $query='') {
+function remove_query_arg($key, $query=FALSE) {
 	if ( is_array($key) ) { // removing multiple keys
 		foreach ( (array) $key as $k )
 			$query = add_query_arg($k, FALSE, $query);
@@ -1317,7 +1326,7 @@ function wp_nonce_ays($action) {
 function wp_die( $message, $title = '' ) {
 	global $wp_locale;
 
-	if ( is_wp_error( $message ) ) {
+	if ( function_exists( 'is_wp_error' ) && is_wp_error( $message ) ) {
 		if ( empty($title) ) {
 			$error_data = $message->get_error_data();
 			if ( is_array($error_data) && isset($error_data['title']) )
@@ -1481,21 +1490,15 @@ function smilies_init() {
 }
 
 function wp_parse_args( $args, $defaults = '' ) {
-	if ( is_array($args) ) :
+	if ( is_array( $args ) )
 		$r =& $args;
-	else :
-		parse_str( $args, $r );
-		if ( get_magic_quotes_gpc() )
-			$r = stripslashes_deep( $r );
-	endif;
+	else
+		wp_parse_str( $args, $r );
 
-	if ( is_array($defaults) ) :
-		extract($defaults);
-		extract($r);
-		return compact(array_keys($defaults)); // only those options defined in $defaults
-	else :
+	if ( is_array( $defaults ) )
+		return array_merge( $defaults, $r );
+	else
 		return $r;
-	endif;
 }
 
 function wp_maybe_load_widgets() {
@@ -1507,7 +1510,7 @@ function wp_maybe_load_widgets() {
 
 function wp_widgets_add_menu() {
 	global $submenu;
-	$submenu['themes.php'][7] = array( __( 'Widgets' ), 'edit_themes', 'widgets.php' );
+	$submenu['themes.php'][7] = array( __( 'Widgets' ), 'switch_themes', 'widgets.php' );
 	ksort($submenu['themes.php'], SORT_NUMERIC);
 }
 
