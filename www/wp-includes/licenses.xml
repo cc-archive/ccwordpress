@@ -94,12 +94,17 @@
       <uri>http://www.creativecommons.or.kr/</uri>
       <languages>ko</languages>
     </jurisdiction-info>
+    <jurisdiction-info id="mk" launched="true">
+      <uri>http://creativecommons.org/worldwide/mk/</uri>
+      <languages>mk</languages>
+    </jurisdiction-info>
     <jurisdiction-info id="my" launched="true">
       <uri>http://creativecommons.org/worldwide/my/</uri>
       <languages>ms</languages>
     </jurisdiction-info>
     <jurisdiction-info id="mt" launched="true">
       <uri>http://creativecommons.org/worldwide/mt/</uri>
+      <languages>en</languages>
     </jurisdiction-info>
     <jurisdiction-info id="mx" launched="true">
       <uri>http://creativecommons.org.mx</uri>
@@ -124,7 +129,7 @@
       <languages>pl</languages>
     </jurisdiction-info>
     <jurisdiction-info id="pt" launched="true">
-      <uri>http://creativecommons.org/worldwide/pt/</uri>
+      <uri>http://pt.creativecommons.org</uri>
       <languages>pt_PT</languages>
     </jurisdiction-info>
     <jurisdiction-info id="si" launched="true">
@@ -141,9 +146,9 @@
     </jurisdiction-info>
     <jurisdiction-info id="se" launched="true">
       <uri>http://creativecommons.org/worldwide/se/</uri>
-      <languages>se</languages>
+      <languages>sv</languages>
     </jurisdiction-info>
-    <jurisdiction-info id="ch" launched="false">
+    <jurisdiction-info id="ch" launched="true">
       <uri>http://creativecommons.org/worldwide/ch/</uri>
       <languages>de_CH fr_CH it_CH</languages>
     </jurisdiction-info>
@@ -189,7 +194,8 @@
           <version id="1.0" uri="http://creativecommons.org/licenses/by-nc/1.0/nl/"/>
           <version id="2.0" uri="http://creativecommons.org/licenses/by-nc/2.0/nl/"/>
           <version id="2.5" uri="http://creativecommons.org/licenses/by-nc/2.5/nl/"/>
-        </jurisdiction>
+        <version id="3.0" uri="http://creativecommons.org/licenses/by-nc/3.0/nl/"/>
+</jurisdiction>
         <jurisdiction id="hr">
           <version id="2.0" uri="http://creativecommons.org/licenses/by-nc/2.0/hr/"/>
        <version id="2.5" uri="http://creativecommons.org/licenses/by-nc/2.5/hr/"/>
@@ -289,6 +295,8 @@
 <version id="2.5" uri="http://creativecommons.org/licenses/by-nc/2.5/ch/"/>
 </jurisdiction><jurisdiction id="us">
 <version id="3.0" uri="http://creativecommons.org/licenses/by-nc/3.0/us/"/>
+</jurisdiction><jurisdiction id="mk">
+<version id="2.5" uri="http://creativecommons.org/licenses/by-nc/2.5/mk/"/>
 </jurisdiction></license>
       <license id="by-nd-nc">
         <jurisdiction id="jp">
@@ -349,6 +357,7 @@
           <version id="1.0" uri="http://creativecommons.org/licenses/by-sa/1.0/nl/"/>
           <version id="2.0" uri="http://creativecommons.org/licenses/by-sa/2.0/nl/"/>
        <version id="2.5" uri="http://creativecommons.org/licenses/by-sa/2.5/nl/"/>
+<version id="3.0" uri="http://creativecommons.org/licenses/by-sa/3.0/nl/"/>
 </jurisdiction>
        <jurisdiction id="-">
           <version id="1.0" uri="http://creativecommons.org/licenses/by-sa/1.0/"/>
@@ -455,6 +464,8 @@
 <version id="2.5" uri="http://creativecommons.org/licenses/by-sa/2.5/ch/"/>
 </jurisdiction><jurisdiction id="us">
 <version id="3.0" uri="http://creativecommons.org/licenses/by-sa/3.0/us/"/>
+</jurisdiction><jurisdiction id="mk">
+<version id="2.5" uri="http://creativecommons.org/licenses/by-sa/2.5/mk/"/>
 </jurisdiction></license>
       <license id="by">
         <jurisdiction id="be">
@@ -470,6 +481,7 @@
           <version id="1.0" uri="http://creativecommons.org/licenses/by/1.0/nl/"/>
           <version id="2.0" uri="http://creativecommons.org/licenses/by/2.0/nl/"/>
        <version id="2.5" uri="http://creativecommons.org/licenses/by/2.5/nl/"/>
+<version id="3.0" uri="http://creativecommons.org/licenses/by/3.0/nl/"/>
 </jurisdiction>
        <jurisdiction id="-">
           <version id="1.0" uri="http://creativecommons.org/licenses/by/1.0/"/>
@@ -576,6 +588,8 @@
 <version id="2.5" uri="http://creativecommons.org/licenses/by/2.5/ch/"/>
 </jurisdiction><jurisdiction id="us">
 <version id="3.0" uri="http://creativecommons.org/licenses/by/3.0/us/"/>
+</jurisdiction><jurisdiction id="mk">
+<version id="2.5" uri="http://creativecommons.org/licenses/by/2.5/mk/"/>
 </jurisdiction></license>
       <license id="nc-sa">
         <jurisdiction id="jp">
@@ -604,6 +618,7 @@
        <jurisdiction id="nl">
           <version id="2.0" uri="http://creativecommons.org/licenses/by-nc-nd/2.0/nl/"/>
        <version id="2.5" uri="http://creativecommons.org/licenses/by-nc-nd/2.5/nl/"/>
+<version id="3.0" uri="http://creativecommons.org/licenses/by-nc-nd/3.0/nl/"/>
 </jurisdiction>
        <jurisdiction id="-">
           <version id="2.0" uri="http://creativecommons.org/licenses/by-nc-nd/2.0/"/>
@@ -704,6 +719,8 @@
 <version id="2.5" uri="http://creativecommons.org/licenses/by-nc-nd/2.5/il/"/>
 </jurisdiction><jurisdiction id="us">
 <version id="3.0" uri="http://creativecommons.org/licenses/by-nc-nd/3.0/us/"/>
+</jurisdiction><jurisdiction id="mk">
+<version id="2.5" uri="http://creativecommons.org/licenses/by-nc-nd/2.5/mk/"/>
 </jurisdiction></license>
       <license id="nd-nc">
         <jurisdiction id="jp">
@@ -747,6 +764,7 @@
           <version id="1.0" uri="http://creativecommons.org/licenses/by-nd/1.0/nl/"/>
           <version id="2.0" uri="http://creativecommons.org/licenses/by-nd/2.0/nl/"/>
        <version id="2.5" uri="http://creativecommons.org/licenses/by-nd/2.5/nl/"/>
+<version id="3.0" uri="http://creativecommons.org/licenses/by-nd/3.0/nl/"/>
 </jurisdiction>
        <jurisdiction id="-">
           <version id="1.0" uri="http://creativecommons.org/licenses/by-nd/1.0/"/>
@@ -853,6 +871,8 @@
 <version id="2.5" uri="http://creativecommons.org/licenses/by-nd/2.5/ch/"/>
 </jurisdiction><jurisdiction id="us">
 <version id="3.0" uri="http://creativecommons.org/licenses/by-nd/3.0/us/"/>
+</jurisdiction><jurisdiction id="mk">
+<version id="2.5" uri="http://creativecommons.org/licenses/by-nd/2.5/mk/"/>
 </jurisdiction></license>
       <license id="by-nc-sa">
         <jurisdiction id="be">
@@ -868,6 +888,7 @@
           <version id="1.0" uri="http://creativecommons.org/licenses/by-nc-sa/1.0/nl/"/>
           <version id="2.0" uri="http://creativecommons.org/licenses/by-nc-sa/2.0/nl/"/>
        <version id="2.5" uri="http://creativecommons.org/licenses/by-nc-sa/2.5/nl/"/>
+<version id="3.0" uri="http://creativecommons.org/licenses/by-nc-sa/3.0/nl/"/>
 </jurisdiction>
        <jurisdiction id="-">
           <version id="1.0" uri="http://creativecommons.org/licenses/by-nc-sa/1.0/"/>
@@ -974,6 +995,8 @@
 <version id="2.5" uri="http://creativecommons.org/licenses/by-nc-sa/2.5/ch/"/>
 </jurisdiction><jurisdiction id="us">
 <version id="3.0" uri="http://creativecommons.org/licenses/by-nc-sa/3.0/us/"/>
+</jurisdiction><jurisdiction id="mk">
+<version id="2.5" uri="http://creativecommons.org/licenses/by-nc-sa/2.5/mk/"/>
 </jurisdiction></license>
     </licenseclass>
     <licenseclass id="sampling">
