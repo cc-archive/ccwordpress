@@ -82,7 +82,7 @@ function get_nonauthor_user_ids() {
 function wp_insert_category($catarr) {
 	global $wpdb;
 
-	extract($catarr);
+	extract($catarr, EXTR_SKIP);
 
 	if( trim( $cat_name ) == '' )
 		return 0;
@@ -297,7 +297,7 @@ function wp_revoke_user($id) {
 function wp_insert_link($linkdata) {
 	global $wpdb, $current_user;
 
-	extract($linkdata);
+	extract($linkdata, EXTR_SKIP);
 
 	$update = false;
 
@@ -419,9 +419,11 @@ function wp_delete_link($link_id) {
 	}
 
 	$wpdb->query("DELETE FROM $wpdb->link2cat WHERE link_id = '$link_id'");
-	return $wpdb->query("DELETE FROM $wpdb->links WHERE link_id = '$link_id'");
+	$wpdb->query("DELETE FROM $wpdb->links WHERE link_id = '$link_id'");
 	
 	do_action('deleted_link', $link_id);
+
+	return true;
 }
 
 function wp_get_link_cats($link_ID = 0) {
