@@ -1,5 +1,5 @@
 <?php get_header(); ?>
-<?php require(ABSPATH . WPINC . "/licenses.php"); ?>
+<?php /* require(ABSPATH . WPINC . "/licenses.php"); */ ?>
 
 <?php if (have_posts())  { ?>
   <?php while (have_posts()) { 
@@ -26,44 +26,8 @@
   
     <div id="body">
       <div id="splash">
-        <!--img src="images/info.png" align="left"/-->
-        <? if ($is_commoner) {?>
-          <h3 class="category">
-            <a href="<?php echo get_settings('home') . "/" . $category_name; ?>">
-              <? $cat = get_the_category(); $cat = $cat[1]; echo $cat->cat_name; ?>
-            </a>
-	  </h3>
-	<? } else if ($is_worldwide) { ?>
-	  <h3 class="category">
-	    <a href="<?php echo get_settings('home') . "/" ?>worldwide?">
-	      Creative Commons Worldwide
-            </a>
-	  </h3>
-        <? } else if ($category_name == "weblog") { ?>
-          <h3 class="category">
-            <a href="<?php echo get_settings('home') . "/" ?>weblog/">
-              weblog
-            </a>
-          </h3>
-        <? } else if ($category_name == "press-releases") { ?>
-          <h3 class="category">
-            <a href="<?php echo get_settings('home') . "/" ?>press-releases/">
-              press-releases 
-            </a>
-          </h3>
-        <? } ?>
 
-	<? if ($is_worldwide && $jurisdiction_code != '') { ?>
-        <h1>
-          <img src="/images/international/<?php echo $jurisdiction_code ?>.png" alt="<?php echo $jurisdiction_code ?> flag" class="flag" /><?php 
-          the_title(); ?>
-        </h1>
-	<? } else { ?>
-        <h1> <?php the_title(); ?></h1>
-	<? } ?>
-        <div id="splash-menu">
-         <?php edit_post_link('<h3>Edit this article</h3>', '', ''); ?>
-        </div>
+         <?php edit_post_link('<small><strong>Edit this article</strong></small>', '', ''); ?>
       </div>
 
       <div id="content">
@@ -74,12 +38,50 @@
           <div id="blog">
           <? } ?>
     
-            <div class="post" id="post-<?php the_ID(); ?>">
-              <? if (!$is_worldwide) { ?>
-              <h4 class="meta"><?php the_author() ?>, <?php the_time('F jS, Y')?></h4>
-              <? } ?>
+    			<div class="post title">
+						<!--img src="images/info.png" align="left"/-->
+<? if ($is_commoner) {?>
+						<h3 class="category">
+							<a href="<?php echo get_settings('home') . "/" . $category_name; ?>">
+								<? $cat = get_the_category(); $cat = $cat[1]; echo $cat->cat_name; ?>
+							</a>
+						</h3>
+<? } else if ($is_worldwide) { ?>
+						<h3 class="category">
+							<a href="<?php echo get_settings('home') . "/" ?>worldwide?">
+								Creative Commons Worldwide
+							</a>
+						</h3>
+<? } else if ($category_name == "weblog") { ?>
+						<h3 class="category">
+							<a href="<?php echo get_settings('home') . "/" ?>weblog/">
+								weblog
+							</a>
+						</h3>
+<? } else if ($category_name == "press-releases") { ?>
+						<h3 class="category">
+							<a href="<?php echo get_settings('home') . "/" ?>press-releases/">
+								press-releases 
+							</a>
+						</h3>
+<? } ?>
 
-              <? if ($is_worldwide_completed && $jurisdiction_code != "us") { ?>
+<? if ($is_worldwide && $jurisdiction_code != '') { ?>
+						<h2>
+							<img src="/images/international/<?php echo $jurisdiction_code ?>.png" alt="<?php echo $jurisdiction_code ?> flag" class="flag" /><?php 
+								the_title(); ?>
+							</h2>
+<? } else { ?>
+						<h2> <?php the_title(); ?></h2>
+<? } ?>
+					</div>
+    
+            <div class="post" id="post-<?php the_ID(); ?>">
+<? if (!$is_worldwide) { ?>
+              <h4 class="meta"><?php the_author() ?>, <?php the_time('F jS, Y')?></h4>
+<? } ?>
+
+<? if ($is_worldwide_completed && $jurisdiction_code != "us") { ?>
               <div class="licensebox" style="margin:14px;">
                 <p>The <? echo $jurisdiction_name ?> license has now been integrated 
                 into <a href="/license/?jurisdiction=<?php echo $jurisdiction_code ?>">the Creative 

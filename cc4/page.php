@@ -8,15 +8,7 @@
   
     <div id="body">
       <div id="splash">
-         <? if ($post->post_parent) { 
-           $parent = cc_page_parent ($post); ?> 
-          <h3 class="category">
-            <a href="./../">
-              <?= $parent->post_title ?>
-            </a>
-          </h3>
-          <? }?>
-        <h1><?php the_title(); ?></h1>
+        
         <div id="splash-menu">
           <? /*cc_list_pages($post->ID);*/ ?>
         </div>
@@ -25,6 +17,17 @@
       <div id="content">
         <div id="main-content">
           <div id="<? /*($is_single_col && 0) ? 'page' : 'blog'*/ ?>page">
+          	<div class="post title">
+			        <? if ($post->post_parent) { 
+			        $parent = cc_page_parent ($post); ?> 
+			        <h3 class="category">
+			          <a href="./../">
+			           <?= $parent->post_title ?>
+			          </a>
+			        </h3>
+			        <? }?>
+			        <h2><?php the_title(); ?></h2>
+        		</div>
             <div class="post" id="post-<?php the_ID(); ?>">
               <?php the_content("Read More..."); ?>
             </div>
