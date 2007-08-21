@@ -2,7 +2,7 @@
       <h4><a href="http://creativecommons.org/worldwide">International</a></h4>
       <select id="international" name="sortby" onchange="orderby(this)">
         <option value="">Select a jurisdiction</option>
-        <script type="text/javascript" src="ccindex_files/jurisdictions.js"></script>
+        <script type="text/javascript" src="http://api.creativecommons.org/rest/dev/support/jurisdictions.js"></script>
       </select>
       <span class="international"><a href="/worldwide">More information</a></span>
 
