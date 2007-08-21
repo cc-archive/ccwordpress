@@ -2,21 +2,24 @@
 
     <div id="body">
       <div id="splash">
-        <? if (is_month() || is_year()) { ?> 
-        <h3 class="category">
-          <a href="<?php echo get_settings('home') . "/" ?>press-releases/">
-           press releases 
-          </a>
-        </h3>
-        <? }?>
-        <h1><? wp_title('') ?></h1>
+
         <div id="splash-menu">
         </div>
       </div>
 
       <div id="content">
+        <div class="post" id="title">
+          <? if (is_month() || is_year()) { ?> 
+          <h3 class="category">
+            <a href="<?php echo get_settings('home') . "/" ?>press-releases/">
+             press releases 
+            </a>
+          </h3>
+          <? }?>
+          <h2><? wp_title('') ?></h2>
+        </div>
         <div id="main-content">
-          <div id="blog">
+          <div id="blog" class="content-box">
 <?php if (have_posts())  { ?>
 <?php while (have_posts()) { 
   the_post(); ?>
@@ -31,7 +34,7 @@
 <?php } }?>
             <?php posts_nav_link(' &mdash; ', 'previous page', 'next page'); ?>
           </div>
-          <div id="features">
+          <div id="features" class="content-box">
             <h4>Archives</h4>
             <ul class="archives">
             <?php cc_get_cat_archives(6, 'monthly', '', 'html', '', '', TRUE); ?>

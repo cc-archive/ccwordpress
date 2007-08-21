@@ -38,7 +38,7 @@
           <div id="blog">
           <? } ?>
     
-    			<div class="post title">
+    			<div class="post" id="title">
 						<!--img src="images/info.png" align="left"/-->
 <? if ($is_commoner) {?>
 						<h3 class="category">

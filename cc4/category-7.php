@@ -65,10 +65,7 @@ $commoners = $wpdb->get_results( "SELECT * FROM wp_posts, wp_post2cat WHERE wp_p
 
     <div id="body">
       <div id="splash">
-        <h1>
-         Creative Commoners
-        </h1>
-        <div id="blurb"><?php echo category_description() ?></div>
+
         <div id="splash-menu">
           
         </div>
@@ -76,7 +73,13 @@ $commoners = $wpdb->get_results( "SELECT * FROM wp_posts, wp_post2cat WHERE wp_p
 
       <div id="content">
         <div id="main-content">
-          <div id="page">
+          <div id="title" class="post">
+            <h2>
+             Creative Commoners
+            </h2>
+            <div id="blurb"><?php echo category_description() ?></div>
+          </div>
+          <div id="page" class="content-box">
 <?php if ($commoners)  { ?>
 <?php foreach ($commoners as $post) { ?>
             <div class="commoner">

@@ -56,7 +56,7 @@ body { background-color: #fff; color: #333; font: 75%/145% verdana, sans-serif; 
 #splash #blurb { margin: 0 0 28px 0; padding: 0 15px; font-size: 65%; color: #505050; }
 #content { padding: 5px 0; margin-bottom: 20px;}
 #main-content { float: left; width: 83%; padding-bottom: 35px; }
-  #blog { width: 68%; } /* + .content-box */
+  #blog { width: 67%;} /* + .content-box */
   #features { width: 29%; margin-left: 0.5%;} /* + .content-box */
   #page {  width: 99%; } /* + .content-box */
 #sidebar { font-size: 0.85em; width: 12%; margin-right: 0 !important; padding-left: 5%; padding-bottom: 30px; background-color: #f9faf9; } /* + .content-box */
@@ -85,12 +85,7 @@ blockquote { padding: 5px; margin: 5px; }
 a.cc-actions, a.cc-actions:link { display: block; float: right; width: 227px; margin: 0 0 0 0; padding: 10px 0 11px 10px; color: #fff; text-decoration: none; }
 a.cc-actions:hover { background: url('/images/header-main-hover-b.png') repeat-x bottom left; text-decoration: none; }
 
-#splash h1 { margin-top: 15px; }
-#splash h2, #splash h1 { padding: 12px 15px 10px 15px; }
-#splash h2.tagline { /*  color: #92534e;*/ color: #b82e00; }
-#splash h3.category { font-size: 110%; display: block; padding-top: 22px; margin: 0px 0px -15px 15px; }
-#splash h1.splash-title { padding-bottom: 0px; color: #777; font-size: 300%; }
-#splash img {  border: 1px solid #666; padding: 0 !important; margin-right: 15px; }
+
 #splash-menu h3 { display: inline; margin: 0 25px 0 0; }
 #splash-menu h3 a { color: #212950; }
 #splash-menu h3 a:hover { color: #00b;}
@@ -104,12 +99,21 @@ a.cc-actions:hover { background: url('/images/header-main-hover-b.png') repeat-x
 
 #blog h4, #page h4, #features h4 { padding-left: 2%; }
 
-.post { clear: both; margin-bottom: 35px; padding-left: 2%; }
+.post { clear: both; margin-bottom: 35px; padding-left: 1%; }
 
 #blog .post { margin-bottom: 33px; }
 #features .post { padding: 0 5px; }
 
-.post .title, #splash .title, .title { font-size: 175%; }
+#title { border-bottom: 1px solid #eee; margin-right: 15px; }
+#title h1 { margin-top: 15px; }
+#title h2, .title h1 { padding: 5px 15px 10px 0px;  margin: 0;}
+#title h2.tagline { /*  color: #92534e;*/ color: #b82e00;}
+#title h3.category { font-size: 90%; display: block; padding-top: 22px; margin: 0px 0px; }
+#title h1.splash-title { padding-bottom: 0px; color: #777; font-size: 300%; }
+#title img {  border: 1px solid #666; padding: 0 !important; margin-right: 15px; }
+#title #blurb { font-size: 80%; margin-bottom: 15px; }
+
+.post .title, #title { font-size: 175%; }
 .post .title a:link, .post .title a:visited { color: #383838; }
 .post h4.meta { color: #aaa; margin-bottom: 7px; font-variant: normal; font-size: 105%; padding-left: 0 !important; }
 .post img { border: 0; }

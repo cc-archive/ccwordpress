@@ -4,23 +4,26 @@
 
     <div id="body">
       <div id="splash">
-        <!--img src="images/info.png" align="left"/-->
-        <h1>
-        <? if (is_month() || is_year()) { ?> 
-          <a href="<?php echo get_settings('home') . "/"?>featured-projects/">
-            Featured Projects 
-          </a>
-        <? } else { ?>
-          Featured Projects
-        <? } ?>
-        </h1>
+       
         <div id="splash-menu">
         </div>
       </div>
 
       <div id="content">
         <div id="main-content">
-          <div id="blog">
+          <div class="post" id="title">
+           <!--img src="images/info.png" align="left"/-->
+            <h2>
+            <? if (is_month() || is_year()) { ?> 
+              <a href="<?php echo get_settings('home') . "/"?>featured-projects/">
+                Featured Projects 
+              </a>
+            <? } else { ?>
+              Featured Projects
+            <? } ?>
+            </h2>
+          </div>
+          <div id="blog" class="content-box">
 <?php if (have_posts())  { ?>
 <?php while (have_posts()) { the_post(); ?>
             <div class="post" id="post-<?php the_ID(); ?>">
@@ -37,7 +40,7 @@
 <?php } }?>
             <?php posts_nav_link(' &mdash; ', 'previous page', 'next page'); ?>
           </div>
-          <div id="features">
+          <div id="features" class="content-box">
             <h4>Archives</h4>
             <ul class="archives">
               <?php cc_get_cat_archives(2, 'monthly', '', 'html', '', '', TRUE); ?>

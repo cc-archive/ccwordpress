@@ -17,7 +17,7 @@
       <div id="content">
         <div id="main-content">
           <div id="<? /*($is_single_col && 0) ? 'page' : 'blog'*/ ?>page">
-          	<div class="post title">
+          	<div class="post" id="title">
 			        <? if ($post->post_parent) { 
 			        $parent = cc_page_parent ($post); ?> 
 			        <h3 class="category">
