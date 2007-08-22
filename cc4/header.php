@@ -42,9 +42,7 @@ $campaign['css'] = ceil( ($campaign['matched'] / 50000) * 200 );
   <link href="<?php bloginfo('stylesheet_directory'); ?>/style.css?4.0" rel="stylesheet" type="text/css" />
   
   <style type="text/css">
-  
-    
-    #campaign {
+     #campaign {
 background-color: #333d33; 
 border-bottom: 1px solid #436400; 
 padding: 5px 38px;  
@@ -116,6 +114,7 @@ margin-left: 7px;
   <?php wp_head(); ?>
  </head>
  <body onload="">
+  <a name="top"></a>
     <div id="header-wrapper">
       <div id="header-main" class="box">
         <span class="publish">
