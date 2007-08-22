@@ -3,7 +3,7 @@
 $nav = array (
   array("name" => "Home",           "path" => get_option('home')),
   array("name" => "About",          "path" => "/about/"),
-  array("name" => "Blog",           "path" => "/weblog/"),
+//  array("name" => "Blog",           "path" => "/weblog/"),
   array("name" => "Projects",       "path" => "/projects/"),
   array("name" => "Support",        "path" => "http://support.creativecommons.org"),
   array("name" => "Participate",    "path" => "/participate/"),
@@ -29,7 +29,7 @@ $nav = array (
             if (in_category(21) and $item["name"] == "International") $klass = "active";
             
             // blog [post] detection
-            if ((is_category(1) or (in_category(1) and is_single())) and $item["name"] == "Blog" and !is_home() and !is_page()) $klass = "active";
+  //          if ((is_category(1) or (in_category(1) and is_single())) and $item["name"] == "Blog" and !is_home() and !is_page()) $klass = "active";
           }
           
           print '      <li class="'.$klass.'"><a href="'.$item["path"].'" title="'.$item["name"].'">'.$item["name"].'</a></li>';

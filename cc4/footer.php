@@ -7,6 +7,7 @@
         <ul>
           <li><a href="#top">Top</a>&nbsp;&nbsp;&nbsp;&nbsp;</li>
           <li><a href="http://support.creativecommons.org/">Support</a></li>
+          <li><a href="/weblog">Blog</a></li>
           <li><a href="/policies">Policies</a></li>
           <li><a href="/privacy">Privacy</a></li>
           <li><a href="http://wiki.creativecommons.org/Developers">Developers</a></li>
