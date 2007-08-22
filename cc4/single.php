@@ -1,10 +1,15 @@
+<?php 
+// "Single" template will always, by definition, have a single post.
+// I'm quite sure this will not change, except on opposites day, perhaps.
+if (have_posts())  {
+    the_post(); 
+} else {
+  require (TEMPLATEPATH . '404.php');
+  exit();
+} ?>
+
 <?php get_header(); ?>
 <?php /* require(ABSPATH . WPINC . "/licenses.php"); */ ?>
-
-<?php if (have_posts())  { ?>
-  <?php while (have_posts()) { 
-    the_post(); ?>
-
     <?php
      // check if this single is a commoner or blog post
      in_category(7) ? $is_commoner = true : $is_commoner = false;
@@ -116,7 +121,6 @@
             <h3><?= the_title() ?></h3>
             <? } ?>
           <? }?>
-<?php } }?>
           </div>
         </div>  
 <?php get_sidebar(); ?>
