@@ -4,27 +4,16 @@
     </div></div>
     <div id="footer">
       <div id="sub-footer" class="box">
-        <div class="ccExtras">
-          <h2><a href="http://wiki.creativecommons.org/Tools">Tools</a></h2>
-          Publish from your desktop, browse with mozCC, and more...
-        </div>
-        <div class="ccExtras">
-          <h2><a href="http://wiki.creativecommons.org/Developers">Developers</a></h2>
-          Help put Creative Commons into your applications.
-        </div>
-        <div class="ccExtras">
-          <h2><a href="http://creativecommons.org/discuss">Discuss</a></h2>
-          Join our discussion lists. Read and contribute to our <a href="http://wiki.creativecommons.org/">wiki</a>.
-        </div>
-        <div class="ccExtras">
-          <h2><a href="http://wiki.creativecommons.org/Events">Events</a></h2>
-          Join us at the next Creative Commons event.
-        </div>
-        <div class="ccExtras">
-          <h2><a href="/featured-projects">Featured Projects</a></h2>
-          Read about people and projects that use CC.
-        </div> 
-        <div class="clear">&nbsp;</div>
+        <ul>
+          <li><a href="#top">Top</a>&nbsp;&nbsp;&nbsp;&nbsp;</li>
+          <li><a href="#top">Support</a></li>
+          <li><a href="#top">Policies</a></li>
+          <li><a href="#top">Privacy</a></li>
+          <li><a href="#top">Developers</a></li>
+          <li><a href="#top">Events</a></li>
+          <li><a href="#top">Sitemap</a></li>
+          <li><a href="#top">Contact</a></li>
+        </ul>
       </div>
       <div id="license"><p class="box">
 <a rel="license" href="http://creativecommons.org/licenses/by/3.0/"><img src="http://i.creativecommons.org/l/by/3.0/88x31.png" alt="Creative Commons License" style="border: medium none ;" height="31" width="88"></a>
