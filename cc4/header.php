@@ -137,7 +137,7 @@ margin-left: 7px;
         
         <span class="logo"><a href="<?php echo get_option('home'); ?>"><span><img src="<?php bloginfo('stylesheet_directory'); ?>/images/cc-title-8.png" alt="creative commons" id="cc-title" border="0"/></span></a></span>
         
-        <div id="strap">Share, Remix, Reuse &mdash; Legally</div>
+<?/*        <div id="strap">Share, Remix, Reuse &mdash; Legally</div> */?>
       </div>
     </div>
 

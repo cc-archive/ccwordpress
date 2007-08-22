@@ -9,14 +9,14 @@
 
       <div id="content">
         <div id="main-content">
-          <div id="page" class="content-box">
-            <div class="post feature">
+          <div class="post" id="title">
 <!--              <? /* cc_current_feature(); ?>
-              
-              <h2><?php bloginfo('description'); ?></h2> */?> -->
-              <div id="blurb"><?= cc_intro_blurb() ?></div>
-              
-            </div>
+            
+            <h2><?php bloginfo('description'); ?></h2> */?> -->
+            <div id="blurb"><?= cc_intro_blurb() ?></div>
+            
+          </div>
+          <div id="page" class="content-box">
             <h4>Latest News</h4>
 <?php // Get the last 5 posts in the blog category. ?>
 <?php // FIXME: perhaps make this configurable in theme settings...? ?>
