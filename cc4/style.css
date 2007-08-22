@@ -126,6 +126,19 @@ a.cc-actions:hover { background: url('/images/header-main-hover-b.png') repeat-x
 .post .excerpt { margin-left:  170px; }
 .post .comments { margin: 35px 0; }
 
+.hero {
+  background-color: #f4f4f4;
+  /*border: 1px solid #ddd !important;*/
+  border: none !important;
+  padding-bottom: 17px;
+}
+
+.hero h4 {
+  border-bottom: 1px solid #ddd !important;
+  margin: 0 10px 6px 0;
+  padding-bottom: 2px;
+}
+
 ul.archives { list-style: none; margin: 0 15px 15px 8px; }
 ul.archives li { border-bottom: 1px solid #e9e9e9; padding: 5px 0 3px 5px; position: relative; }
 ul.archives li .posted { position: absolute; top: 6px; right: 6px; }

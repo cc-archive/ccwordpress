@@ -9,7 +9,7 @@
 
       <div id="content">
         <div id="main-content">
-          <div class="post" id="title">
+          <div class="post hero" id="title">
 <!--              <? /* cc_current_feature(); ?>
             
             <h2><?php bloginfo('description'); ?></h2> */?> -->
