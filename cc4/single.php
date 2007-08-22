@@ -25,12 +25,7 @@
     ?>
   
     <div id="body">
-      <div id="splash">
-
-         <?php edit_post_link('<small><strong>Edit this article</strong></small>', '', ''); ?>
-      </div>
-
-      <div id="content">
+       <div id="content">
         <div id="main-content">
           <? if (!$is_commoner) {?>
           <div id="page">
@@ -76,7 +71,7 @@
 <? } ?>
 					</div>
     
-            <div class="post" id="post-<?php the_ID(); ?>">
+            <div class="post <? if ($is_worldwide) { ?>international<? } ?>" id="post-<?php the_ID(); ?>">
 <? if (!$is_worldwide) { ?>
               <h4 class="meta"><?php the_author() ?>, <?php the_time('F jS, Y')?></h4>
 <? } ?>

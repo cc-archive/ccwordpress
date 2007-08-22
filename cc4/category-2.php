@@ -3,12 +3,6 @@
 <?php get_header(); ?>
 
     <div id="body">
-      <div id="splash">
-       
-        <div id="splash-menu">
-        </div>
-      </div>
-
       <div id="content">
         <div id="main-content">
           <div class="post" id="title">

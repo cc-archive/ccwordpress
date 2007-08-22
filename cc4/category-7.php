@@ -64,13 +64,6 @@ $commoners = $wpdb->get_results( "SELECT * FROM wp_posts, wp_post2cat WHERE wp_p
 </script>
 
     <div id="body">
-      <div id="splash">
-
-        <div id="splash-menu">
-          
-        </div>
-      </div>
-
       <div id="content">
         <div id="main-content">
           <div id="title" class="post">

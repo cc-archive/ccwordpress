@@ -1,13 +1,7 @@
 <?php get_header(); ?>
 
     <div id="body">
-      <div id="splash">
-
-        <div id="splash-menu">
-        </div>
-      </div>
-
-      <div id="content">
+       <div id="content">
         <div class="post" id="title">
           <? if (is_month() || is_year()) { ?> 
           <h3 class="category">

@@ -7,13 +7,6 @@
   $is_single_col = get_post_meta ($post->ID, "single_col", TRUE); ?>
   
     <div id="body">
-      <div id="splash">
-        
-        <div id="splash-menu">
-          <? /*cc_list_pages($post->ID);*/ ?>
-        </div>
-      </div>
-
       <div id="content">
         <div id="main-content">
           <div id="<? /*($is_single_col && 0) ? 'page' : 'blog'*/ ?>page">

@@ -52,7 +52,7 @@ body { background-color: #fff; color: #333; font: 75%/145% verdana, sans-serif; 
   }
 
 #body { margin: 4px 0 0 0; /* border-top: 1px solid #ddd;*/ }
-#splash { font-size: 170%; position: relative; background-color: /*#0f2700*/ #fff; color: #707070; margin: 7px 0 3px 0; padding-bottom:  6px; overflow: hidden;}
+#splash {  position: relative; background-color: /*#0f2700*/ #fff; color: #707070; margin: 7px 0 3px 0; padding-bottom:  6px; overflow: hidden;}
 #splash #blurb { margin: 0 0 28px 0; padding: 0 15px; font-size: 65%; color: #505050; }
 #content { padding: 5px 0; margin-bottom: 20px;}
 #main-content { float: left; width: 83%; padding-bottom: 35px; }
@@ -138,6 +138,18 @@ a.cc-actions:hover { background: url('/images/header-main-hover-b.png') repeat-x
 .post .excerpt { margin-left:  170px; }
 .post .comments { margin: 35px 0; }
 
+.international ul {
+  padding: 10px;
+  list-style: none;
+  margin: 0;
+  width: 90%;
+}
+.international ul li {
+  background-color: #f7f7f7;
+  margin: 0 0 10px 0;
+  padding: 5px;
+}
+
 .hero {
   background-color: #f4f4f4;
   /*border: 1px solid #ddd !important;*/
@@ -167,10 +179,11 @@ ul.archives li .posted { position: absolute; top: 6px; right: 6px; }
 #mainmenu {	position: relative; padding-top: 1em; border-bottom: 1px solid #ccc; background: url("http://search.creativecommons.org/images/tab-bg.png") repeat-x bottom left; background-color: #383e32 /*fafffa*/; height: 2.1em; }
 ul#navbar { list-style-type: none;padding-bottom: 24px;}
 ul#navbar li {float: left; height: 2em; background: url("http://search.creativecommons.org/images/tab-bg.png") repeat-x bottom left #f0f4f1; margin: 2px 2px 0 2px;}
+ul#navbar li.edit { background-color: #efe2e2; margin-left: 15px; }
 ul#navbar li.active { background-image: none; background-color: #fff; padding-bottom: 0.5em; margin-top: -0.2em; font-weight: bold;}
 ul#navbar a {display: block; color: #333; padding: 0.5em 1.4em 0.2em; padding-top: 0.4em;}
 ul#navbar a:hover {text-decoration: none; color: #333; background-color: #fff; margin-bottom: 15px;}
-	
+
 
 
 #splash img {

@@ -33,7 +33,11 @@ $nav = array (
           }
           
           print '      <li class="'.$klass.'"><a href="'.$item["path"].'" title="'.$item["name"].'">'.$item["name"].'</a></li>';
-        } ?>
+        } 
+        
+        if (is_page() or is_single()) edit_post_link('Edit this article', '<li class="edit">', '</li>');
+        ?>
+        
     </ul>
   </div>
  
