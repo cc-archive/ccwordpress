@@ -1,12 +1,10 @@
 <?php get_header(); ?>
 
     <div id="body">
-      <div id="splash">
-        <h1>404</h1>
-      </div>
 
       <div id="content">
         <div id="main-content">
+          <div class="post" id="title"><h2>Sorry...</h2></div>
           <div id="page">
     
             <div class="post">

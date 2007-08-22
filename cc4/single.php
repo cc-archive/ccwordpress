@@ -4,7 +4,7 @@
 if (have_posts())  {
     the_post(); 
 } else {
-  require (TEMPLATEPATH . '404.php');
+  require (TEMPLATEPATH . '/404.php');
   exit();
 } ?>
 
