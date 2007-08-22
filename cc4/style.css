@@ -91,7 +91,6 @@ blockquote { padding: 5px; margin: 5px; }
 }
 
 .content-foot { border-bottom: 1px solid #ddd; margin-bottom: 15px; padding-bottom: 5px; text-align: right; }
-.ccExtras { width: 13.67%; padding: 0 1% 4% 0; margin-right: 1%; float: left; text-align: left; }
 
 .cc-actions span.option { color: #fff; font-size: 170%; font-weight: bold; margin-top: 15px; margin-bottom: 0 !important; padding: 0 !important; display: block; }
 .cc-actions img { margin-right: 10px; float: left; }

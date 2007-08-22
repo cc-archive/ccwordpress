@@ -6,13 +6,13 @@
       <div id="sub-footer" class="box">
         <ul>
           <li><a href="#top">Top</a>&nbsp;&nbsp;&nbsp;&nbsp;</li>
-          <li><a href="#top">Support</a></li>
-          <li><a href="#top">Policies</a></li>
-          <li><a href="#top">Privacy</a></li>
-          <li><a href="#top">Developers</a></li>
-          <li><a href="#top">Events</a></li>
-          <li><a href="#top">Sitemap</a></li>
-          <li><a href="#top">Contact</a></li>
+          <li><a href="http://support.creativecommons.org/">Support</a></li>
+          <li><a href="/policies">Policies</a></li>
+          <li><a href="/privacy">Privacy</a></li>
+          <li><a href="http://wiki.creativecommons.org/Developers">Developers</a></li>
+          <li><a href="http://wiki.creativecommons.org/Events">Events</a></li>
+          <li><a href="/sitemap">Sitemap</a></li>
+          <li><a href="/contact">Contact</a></li>
         </ul>
       </div>
       <div id="license"><p class="box">
