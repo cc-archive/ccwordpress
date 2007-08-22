@@ -16,8 +16,10 @@ YAHOO.cc.help.init_help_item = function(help_anchor) { // link_id, help_id) {
 {close: false, visible: false, draggable: false, width:200,
  effect:{effect:YAHOO.widget.ContainerEffect.FADE,duration:0.35} } ); 
 
-    var link_xy = YAHOO.util.Dom.getXY(link_id);
-    new_panel.cfg.setProperty('xy',[link_xy[0] + 15, link_xy[1]] );
+    var link_region = YAHOO.util.Dom.getRegion(link_id);
+    if (!link_region) return;
+
+    new_panel.cfg.setProperty('xy',[link_region.right + 5, link_region.top] );
     var item_idx = YAHOO.cc.help.help_panels.push(new_panel) - 1;
 
     YAHOO.cc.help.help_panels[item_idx].render();
@@ -26,7 +28,7 @@ YAHOO.cc.help.init_help_item = function(help_anchor) { // link_id, help_id) {
     YAHOO.util.Event.addListener(link_id, "mouseover", 
 				 function(e) {YAHOO.cc.help.help_panels[item_idx].show();});
     YAHOO.util.Event.addListener(link_id, "mouseout", 
-				function(e) {window.setTimeout("YAHOO.cc.help.help_panels[" + item_idx + "].hide();", 1000);});
+    			function(e) {window.setTimeout("YAHOO.cc.help.help_panels[" + item_idx + "].hide();", 1000);});
 
     // disable clicks
     YAHOO.util.Event.addListener(link_id, 'click', function(e){YAHOO.util.Event.preventDefault(e);});
