@@ -1,7 +1,7 @@
 YAHOO.namespace("cc.help");
 
 // convenience function for creating help tool tips
-YAHOO.cc.help.init_help_item = function(help_anchor) { // link_id, help_id) {
+YAHOO.cc.help.init_help_item = function(help_anchor) { 
 
     var link_id = help_anchor.id;
     var help_id = 'help_' + link_id;
@@ -17,9 +17,11 @@ YAHOO.cc.help.init_help_item = function(help_anchor) { // link_id, help_id) {
  effect:{effect:YAHOO.widget.ContainerEffect.FADE,duration:0.35} } ); 
 
     var link_region = YAHOO.util.Dom.getRegion(link_id);
-    if (!link_region) return;
+    if (link_region) {
+       new_panel.cfg.setProperty('xy',
+		[link_region.right + 5, link_region.top] );
+    }
 
-    new_panel.cfg.setProperty('xy',[link_region.right + 5, link_region.top] );
     var item_idx = YAHOO.cc.help.help_panels.push(new_panel) - 1;
 
     YAHOO.cc.help.help_panels[item_idx].render();
