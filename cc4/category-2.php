@@ -17,7 +17,7 @@
             <? } ?>
             </h2>
           </div>
-          <div id="blog" class="content-box">
+          <div id="alpha" class="content-box">
 <?php if (have_posts())  { ?>
 <?php while (have_posts()) { the_post(); ?>
             <div class="post" id="post-<?php the_ID(); ?>">
@@ -34,7 +34,7 @@
 <?php } }?>
             <?php posts_nav_link(' &mdash; ', 'previous page', 'next page'); ?>
           </div>
-          <div id="features" class="content-box">
+          <div id="beta" class="content-box">
             <h4>Archives</h4>
             <ul class="archives">
               <?php cc_get_cat_archives(2, 'monthly', '', 'html', '', '', TRUE); ?>

@@ -33,7 +33,7 @@ if (have_posts())  {
        <div id="content">
         <div id="main-content">
           <? if ($is_commoner) {?>
-          <div id="blog" class="content-box">
+          <div id="alpha" class="content-box">
           <? } ?>
     
     			<div class="post" id="title">
@@ -112,7 +112,7 @@ if (have_posts())  {
           </div>
           <? if ($is_commoner) { ?>
           </div>
-          <div id="features" class="content-box">
+          <div id="beta" class="content-box">
             <? if ($attach = cc_get_attachment ($post->ID)) { ?>
             <img src="<?= $attach->uri ?>" alt="<?= $post->post_title ?>" title="<?= $post->post_title ?>" border="0"/><br/>
             <h3><?= the_title() ?></h3>

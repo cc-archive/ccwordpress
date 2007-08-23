@@ -13,7 +13,7 @@
             <? }?>
             <h2><? wp_title('') ?></h2>
           </div>
-          <div id="blog" class="content-box">
+          <div id="alpha" class="content-box">
 <?php if (have_posts())  { ?>
 <?php while (have_posts()) { 
   the_post(); ?>
@@ -27,7 +27,7 @@
 <?php } }?>
             <?php posts_nav_link(' &mdash; ', 'previous page', 'next page'); ?>
           </div>
-          <div id="features" class="content-box">
+          <div id="beta" class="content-box">
 	    <strong><a href="/weblog/rss">Subscribe to RSS</a></strong><br/><br/>
             <h4>Archives</h4>
             <ul class="archives">
