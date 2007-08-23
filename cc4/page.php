@@ -21,7 +21,7 @@
 			        <? }?>
 			        <h2><?php the_title(); ?></h2>
         		</div>
-            <div class="post" id="post-<?php the_ID(); ?>">
+            <div class="post page" id="post-<?php the_ID(); ?>">
               <?php the_content("Read More..."); ?>
             </div>
 <?php } }?>
