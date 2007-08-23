@@ -112,8 +112,8 @@ a.cc-actions:hover { background: url('/images/header-main-hover-b.png') repeat-x
 
 .block { clear: both; margin-bottom: 35px; padding-left: 1%; padding-right: 10%; }
 
-#alpha .block { margin-bottom: 33px; }
-#beta .block { padding: 0 5px; }
+#blog .block, #alpha .block { margin-bottom: 33px; }
+#features .block, #beta .block { padding: 0 5px; }
 
 #title { border-bottom: 1px solid #eee; margin-right: 15px; margin-top: 15px; }
 #title h1 { margin-top: 15px; }
@@ -139,7 +139,7 @@ a.cc-actions:hover { background: url('/images/header-main-hover-b.png') repeat-x
 
 .page { padding-right: 5% !important; }
 
-#alpha .block, #alpha .page { padding-right: 2% !important; }
+#blog .block, #features .page, #alpha .block, #alpha .page { padding-right: 2% !important; }
 
 .international ul {
   padding: 10px;
