@@ -74,7 +74,6 @@ h4 a:link, h4 a:visited { color: #773; }
 p { margin-bottom: 10px; }
 blockquote { padding: 5px; margin: 5px; }
 
-#page p { width: 93%; }
 #footer p { margin-top: 30px; }
 
 #sub-footer ul {
@@ -109,9 +108,9 @@ a.cc-actions:hover { background: url('/images/header-main-hover-b.png') repeat-x
 #blog .blogged img { margin: 0 5px; }
 #blog .feature, #page .feature { border-bottom:  1px solid #ddd; padding-bottom:  30px; margin-bottom: 25px; }
 
-#blog h4, #page h4, #features h4 { padding-left: 2%; }
+#blog h4, #page h4, #features h4 { padding-left: 1%; }
 
-.post { clear: both; margin-bottom: 35px; padding-left: 1%; }
+.post { clear: both; margin-bottom: 35px; padding-left: 1%; padding-right: 10%; }
 
 #blog .post { margin-bottom: 33px; }
 #features .post { padding: 0 5px; }
@@ -155,6 +154,7 @@ a.cc-actions:hover { background: url('/images/header-main-hover-b.png') repeat-x
   /*border: 1px solid #ddd !important;*/
   border: none !important;
   padding-bottom: 17px;
+  padding-right: 0 !important;
 }
 
 .hero h4 {
