@@ -9,7 +9,6 @@
     <div id="body">
       <div id="content">
         <div id="main-content">
-          <div id="<? /*($is_single_col && 0) ? 'page' : 'blog'*/ ?>page">
           	<div class="post" id="title">
 			        <? if ($post->post_parent) { 
 			        $parent = cc_page_parent ($post); ?> 
@@ -25,15 +24,6 @@
               <?php the_content("Read More..."); ?>
             </div>
 <?php } }?>
-          </div>
-        <? if (!$is_single_col && 0) { ?>
-          <div id="features">
-            <ul>
-          <? /*wp_list_pages ("title_li=&depth=2");*/ ?>
-	<?php echo wpfm_create("elsewhere",true,'list',true); ?>  
-            </ul>
-          </div>
-        <? } ?>
         </div>  
 <?php get_sidebar(); ?>
 <?php get_footer(); ?>

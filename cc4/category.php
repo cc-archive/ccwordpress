@@ -1,18 +1,7 @@
 <?php get_header(); ?>
     <div id="body">
       <div id="splash">
-        <? if (is_month() || is_year()) { ?> 
-        <h3 class="category">
-          <a href="<?php echo get_settings('home') . "/" . $category_name; ?>">
-            <?= ucfirst($category_name) ?>
-          </a>
-        </h3>
-        <? }?>
-        <h1>
-          <img src="/images/categories/<?= $category_name ?>.png" alt="[ <?= $category_name ?> ]" border="0" class="category-icon"/>
-          <?php wp_title(''); ?>
-        </h1>
-        <div id="blurb"><?php echo category_description() ?></div>
+
         <div id="splash-menu">
           
         </div>
@@ -20,7 +9,21 @@
 
       <div id="content">
         <div id="main-content">
-          <div id="blog">
+          <div class="post" id="title">
+        <? if (is_month() || is_year()) { ?> 
+        <h3 class="category">
+          <a href="<?php echo get_settings('home') . "/" . $category_name; ?>">
+            <?= ucfirst($category_name) ?>
+          </a>
+        </h3>
+        <? }?>
+        <h2>
+          <img src="/images/categories/<?= $category_name ?>.png" alt="[ <?= $category_name ?> ]" border="0" class="category-icon"/>
+          <?php wp_title(''); ?>
+        </h2>
+        <div id="blurb"><?php echo category_description() ?></div>
+          </div>
+          <div id="blog" class="content-box">
 <?php if (have_posts())  { ?>
 <?php while (have_posts()) { the_post(); ?>
             <div class="post" id="post-<?php the_ID(); ?>">
@@ -39,7 +42,7 @@
 <?php } }?>
             <?php posts_nav_link(' &mdash; ', 'previous page', 'next page'); ?>
           </div>
-          <div id="features">
+          <div id="features" class="content-box">
             <h4>Archives</h4>
             <ul class="archives">
             <?php cc_get_cat_archives(cc_cat_to_id($category_name), 'monthly', '', 'html', '', '', TRUE); ?>

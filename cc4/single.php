@@ -32,10 +32,8 @@ if (have_posts())  {
     <div id="body">
        <div id="content">
         <div id="main-content">
-          <? if (!$is_commoner) {?>
-          <div id="page">
-          <? } else { ?>
-          <div id="blog">
+          <? if ($is_commoner) {?>
+          <div id="blog" class="content-box">
           <? } ?>
     
     			<div class="post" id="title">
@@ -111,17 +109,18 @@ if (have_posts())  {
               <? } ?>
               <?php the_content(); ?>
               <div class="comments"><?php if ($is_blog) comments_template(); ?></div>
-            </div>
-          
+          </div>
           <? if ($is_commoner) { ?>
           </div>
-          <div id="features">
+          <div id="features" class="content-box">
             <? if ($attach = cc_get_attachment ($post->ID)) { ?>
             <img src="<?= $attach->uri ?>" alt="<?= $post->post_title ?>" title="<?= $post->post_title ?>" border="0"/><br/>
             <h3><?= the_title() ?></h3>
             <? } ?>
-          <? }?>
           </div>
-        </div>  
+          </div>
+          <? }?>
+</div>
+
 <?php get_sidebar(); ?>
 <?php get_footer(); ?>

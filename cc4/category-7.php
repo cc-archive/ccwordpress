@@ -72,7 +72,6 @@ $commoners = $wpdb->get_results( "SELECT * FROM wp_posts, wp_post2cat WHERE wp_p
             </h2>
             <div id="blurb"><?php echo category_description() ?></div>
           </div>
-          <div id="page" class="content-box">
 <?php if ($commoners)  { ?>
 <?php foreach ($commoners as $post) { ?>
             <div class="commoner">
@@ -86,7 +85,6 @@ $commoners = $wpdb->get_results( "SELECT * FROM wp_posts, wp_post2cat WHERE wp_p
               </div>
             </div>
 <?php } }?>
-          </div>
         </div>  
 <?php get_sidebar(); ?>
 <?php get_footer(); ?>

@@ -59,6 +59,7 @@ body { background-color: #fff; color: #333; font: 75%/145% verdana, sans-serif; 
   #blog { width: 67%;} /* + .content-box */
   #features { width: 29%; margin-left: 0.5%;} /* + .content-box */
   #page {  width: 99%; } /* + .content-box */
+
 #sidebar { font-size: 0.85em; width: 12%; margin-right: 0 !important; padding-left: 5%; padding-bottom: 30px; background-color: #f9faf9; } /* + .content-box */
 #footer { background-color: #f2f4f2; clear: both; margin-top: 40px; padding: 10px 0; color: #555; font-size: 90%; }
 #sub-footer { } /* + .box */
@@ -108,7 +109,7 @@ a.cc-actions:hover { background: url('/images/header-main-hover-b.png') repeat-x
 #blog .blogged img { margin: 0 5px; }
 #blog .feature, #page .feature { border-bottom:  1px solid #ddd; padding-bottom:  30px; margin-bottom: 25px; }
 
-#blog h4, #page h4, #features h4 { padding-left: 1%; }
+#main-content h4 { padding-left: 1%; }
 
 .post { clear: both; margin-bottom: 35px; padding-left: 1%; padding-right: 10%; }
 
@@ -139,6 +140,8 @@ a.cc-actions:hover { background: url('/images/header-main-hover-b.png') repeat-x
 
 .page { padding-right: 5% !important; }
 
+#blog .post, #blog .page { padding-right: 2% !important; }
+
 .international ul {
   padding: 10px;
   list-style: none;
@@ -164,6 +167,7 @@ a.cc-actions:hover { background: url('/images/header-main-hover-b.png') repeat-x
   border-bottom: 1px solid #ddd !important;
   margin: 0 10px 6px 0;
   padding-bottom: 2px;
+  padding-left: 0 !important;
 }
 
 ul.archives { list-style: none; margin: 0 15px 15px 8px; }

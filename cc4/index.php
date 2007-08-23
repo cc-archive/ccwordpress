@@ -16,7 +16,6 @@
             <div id="blurb"><?= cc_intro_blurb() ?></div>
             
           </div>
-          <div id="page" class="content-box">
             <h4>Latest News</h4>
 <?php // Get the last 5 posts in the blog category. ?>
 <?php // FIXME: perhaps make this configurable in theme settings...? ?>
@@ -39,6 +38,6 @@
 	    <li><h3><a href="/weblog/rss">RSS Feed</a></h3></li></ul>
           </div>
 
-        </div>  
+
 <?php get_sidebar(); ?>
 <?php get_footer(); ?>

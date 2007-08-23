@@ -34,7 +34,7 @@ $is_international = true;
         		<h2>Worldwide</h2>
         	</div>
           <div id="blog" class="content-box">
-           <div class="post">
+           <div class="post page">
             <p>We are excited to announce Creative Commons International &mdash; an offshoot of our licensing project dedicated to the drafting and eventual adoption of jurisdiction-specific licenses. Creative Commons International is being lead by <a href="http://creativecommons.org/about/people#65">Catharina Maracke</a> (<a href="mailto:catharina@creativecommons.org">email</a>), with help from member jurisdictions.</p>
             <h3>Completed Licenses</h3>
             <p>We have completed the process and developed licenses for the following jurisdictions:</p>
