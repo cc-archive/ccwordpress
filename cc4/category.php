@@ -9,7 +9,7 @@
 
       <div id="content">
         <div id="main-content">
-          <div class="post" id="title">
+          <div class="block" id="title">
         <? if (is_month() || is_year()) { ?> 
         <h3 class="category">
           <a href="<?php echo get_settings('home') . "/" . $category_name; ?>">
@@ -23,10 +23,10 @@
         </h2>
         <div id="blurb"><?php echo category_description() ?></div>
           </div>
-          <div id="blog" class="content-box">
+          <div id="alpha" class="content-box">
 <?php if (have_posts())  { ?>
 <?php while (have_posts()) { the_post(); ?>
-            <div class="post" id="post-<?php the_ID(); ?>">
+            <div class="block" id="post-<?php the_ID(); ?>">
                 <? if ($attach = cc_get_attachment ($post->ID)) { ?>
               <a href="<?php the_permalink() ?>">
 		<img align="left" src="<?= $attach->uri ?>" alt="<?= $post->post_title ?>" title="<?= $post->post_title ?>" class="commoner" border="0"/>
@@ -42,7 +42,7 @@
 <?php } }?>
             <?php posts_nav_link(' &mdash; ', 'previous page', 'next page'); ?>
           </div>
-          <div id="features" class="content-box">
+          <div id="beta" class="content-box">
             <h4>Archives</h4>
             <ul class="archives">
             <?php cc_get_cat_archives(cc_cat_to_id($category_name), 'monthly', '', 'html', '', '', TRUE); ?>

@@ -9,7 +9,7 @@
     <div id="body">
       <div id="content">
         <div id="main-content">
-          	<div class="post" id="title">
+          	<div class="block" id="title">
 			        <? if ($post->post_parent) { 
 			        $parent = cc_page_parent ($post); ?> 
 			        <h3 class="category">
@@ -20,7 +20,7 @@
 			        <? }?>
 			        <h2><?php the_title(); ?></h2>
         		</div>
-            <div class="post page" id="post-<?php the_ID(); ?>">
+            <div class="block page" id="post-<?php the_ID(); ?>">
               <?php the_content("Read More..."); ?>
             </div>
 <?php } }?>

@@ -4,8 +4,8 @@
 
       <div id="content">
         <div id="main-content">
-          <div class="post" id="title"><h2>Sorry...</h2></div>
-            <div class="post">
+          <div class="block" id="title"><h2>Sorry...</h2></div>
+            <div class="block">
               <p>The page you were looking for was not found.<br/>&nbsp;</p>
               <h4>Other Content</h4>
               <ul class="archives">

@@ -9,7 +9,7 @@
 
       <div id="content">
         <div id="main-content">
-          <div class="post hero" id="title">
+          <div class="block hero" id="title">
 <!--              <? /* cc_current_feature(); ?>
             
             <h2><?php bloginfo('description'); ?></h2> */?> -->
@@ -22,7 +22,7 @@
 <?php query_posts('category_name=weblog&showposts=4'); ?>
 <?php if (have_posts())  { 
   while (have_posts()) { the_post(); ?>
-            <div class="post blogged" id="post-<?php the_ID(); ?>">
+            <div class="block blogged" id="post-<?php the_ID(); ?>">
               <h1 class="title">
                 <a href="<?php the_permalink() ?>">
                   <?php the_title(); ?>

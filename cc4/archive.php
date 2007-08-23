@@ -9,7 +9,7 @@
         <div id="main-content">
           <div id="page">
     
-            <div class="post">
+            <div class="block">
               <strong>Deprecated</strong>: Not used.
             </div>
           </div>

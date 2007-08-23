@@ -5,7 +5,7 @@
     <div id="body">
       <div id="content">
         <div id="main-content">
-          <div class="post" id="title">
+          <div class="block" id="title">
            <!--img src="images/info.png" align="left"/-->
             <h2>
             <? if (is_month() || is_year()) { ?> 
@@ -20,7 +20,7 @@
           <div id="alpha" class="content-box">
 <?php if (have_posts())  { ?>
 <?php while (have_posts()) { the_post(); ?>
-            <div class="post" id="post-<?php the_ID(); ?>">
+            <div class="block" id="post-<?php the_ID(); ?>">
               <h4 class="meta"><?php the_time('F jS, Y')?></h4><h3><a href="<?= get_post_meta ($post->ID, "url", TRUE)?>"><?= $post->post_title ?></a></h3>
               <div class="clearer"></div>
               <? if ($attach = cc_get_attachment ($post->ID)) { ?>

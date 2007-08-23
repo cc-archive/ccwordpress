@@ -3,7 +3,7 @@
     <div id="body">
       <div id="content">
         <div id="main-content">
-          <div class="post" id="title">
+          <div class="block" id="title">
             <? if (is_month() || is_year()) { ?> 
             <h3 class="category">
               <a href="<?php echo get_settings('home') . "/" ?>weblog/">
@@ -17,7 +17,7 @@
 <?php if (have_posts())  { ?>
 <?php while (have_posts()) { 
   the_post(); ?>
-            <div class="post" id="post-<?php the_ID(); ?>">
+            <div class="block" id="post-<?php the_ID(); ?>">
               <h1 class="title"><a href="<? the_permalink() ?>"><?the_title()?></a></h1>
               <h4 class="meta"><?php the_author() ?>, <?php the_time('F jS, Y')?></h4>
               <div class="clearer"></div>

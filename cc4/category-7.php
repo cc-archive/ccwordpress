@@ -66,7 +66,7 @@ $commoners = $wpdb->get_results( "SELECT * FROM wp_posts, wp_post2cat WHERE wp_p
     <div id="body">
       <div id="content">
         <div id="main-content">
-          <div id="title" class="post">
+          <div id="title" class="block">
             <h2>
              Creative Commoners
             </h2>

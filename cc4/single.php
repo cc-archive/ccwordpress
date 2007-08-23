@@ -36,7 +36,7 @@ if (have_posts())  {
           <div id="alpha" class="content-box">
           <? } ?>
     
-    			<div class="post" id="title">
+    			<div class="block" id="title">
 						<!--img src="images/info.png" align="left"/-->
 <? if ($is_commoner) {?>
 						<h3 class="category">
@@ -74,7 +74,7 @@ if (have_posts())  {
 <? } ?>
 					</div>
     
-            <div class="post <? if ($is_worldwide) { ?>international<? } ?>" id="post-<?php the_ID(); ?>">
+            <div class="block <? if ($is_worldwide) { ?>international<? } ?>" id="post-<?php the_ID(); ?>">
 <? if (!$is_worldwide) { ?>
               <h4 class="meta"><?php the_author() ?>, <?php the_time('F jS, Y')?></h4>
 <? } ?>
