@@ -68,6 +68,8 @@ margin-top: 0;
 /*	width: 92%;
 */}
 
+#sidebar { padding-left: 5px; }
+
 .cc-actions {
 	margin-top: 5px !important;
 }
