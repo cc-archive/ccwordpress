@@ -40,74 +40,11 @@ $campaign['css'] = ceil( ($campaign['matched'] / 50000) * 200 );
   <?php } ?>
   
   <link href="<?php bloginfo('stylesheet_directory'); ?>/style.css?4.0" rel="stylesheet" type="text/css" />
-  
-  <style type="text/css">
-     #campaign {
-background-color: #333d33; 
-border-bottom: 1px solid #436400; 
-padding: 5px 38px;  
-color: #ddd; 
-height: 1.8em; 
-text-align:left;
-}
+  <? if (is_home()) { ?>
+  <link href="<?php bloginfo('stylesheet_directory'); ?>/support.css?4.0" rel="stylesheet" type="text/css" />
+  <? } ?>
 
-#campaign .box {
-margin: 0 auto;
-width: 37em;
-}
-
-#campaign .box .title {
-float: left; 
-margin-top: 2px;
-}
-
-#campaign .box .title a {
-color: #fff;
-}
-
-#campaign .box .progress {
-position: relative;
-cursor:pointer; 
-margin-left: 10px; 
-margin-top: 2px; 
-width: 203px; 
-height: 20px;
-padding: 0 2px; 
-background-color: #ddd; 
-float: left;  
-}
-
-#campaign .box .progress span {
-display: block;
-position: absolute;
-top: 1px;
-left: 1px;
-height: 18px;
-margin: 0; 
-background-color: #a3aaa3;
-background: url('/images/progress.png');
-}
-
-#campaign .box .results {
-font-size: 0.9em;
-position: absolute;
-top: 1px;
-left: 16px;
-/*
-float: left; 
-margin-top: 2px; 
-margin-left: 7px;
-*/
-}
-
-#campaign .box .results a {
-	color: #131313;
-}
-
-    
-  </style>
-  <!--[if IE]><link rel="stylesheet" type="text/css" media="screen" href="<?php bloginfo('stylesheet_directory'); ?>/style-ie.css" />
-  <![endif]-->
+  <!--[if IE]><link rel="stylesheet" type="text/css" media="screen" href="<?php bloginfo('stylesheet_directory'); ?>/style-ie.css" /><![endif]-->
   
   <?php /* wp_get_archives('type=monthly&format=link'); */ ?>
   <script src="/includes/icommons.js" type="text/javascript"></script>
