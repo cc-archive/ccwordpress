@@ -67,7 +67,7 @@ $campaign['css'] = ceil( ($campaign['matched'] / 50000) * 200 );
             <span class="img">
               <img src="<?php bloginfo('stylesheet_directory'); ?>/images/find-8.png" border="0"/>
             </span>
-            <span class="option">Find</span>CC Licensed Work
+            <span class="option">Search</span>CC Licensed Work
           </a>
         </span>
         

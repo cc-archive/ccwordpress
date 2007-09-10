@@ -25,14 +25,15 @@
           		 	</ul>
           		</div>
           		<div class="shome thermo">
+            			<a href="http://ccidonor-dev.civicactions.net/"><img src="/images/support/campaign.png" border="0"/></a>
           			<div id="campaign">
 	          			<div class="progress" onclick="window.location = 'http://ccidonor-dev.civicactions.net';">
 							     <span style="padding-right: 47%;">&nbsp;</span>
 
 							    </div>
-								   <div class="results"><a href="http://ccidonor-dev.civicactions.net/">$250,000 / $500,000</a></div>
+								   <div class="results"><a href="http://ccidonor-dev.civicactions.net/">$250,000 / $500,000 by Dec 31</a></div>
 							   </div>
-							   <ul><li><strong>Help us meet our goal</strong> of raising $500,000 before December 31st.</li></ul>
+						<!--	   <ul><li><strong>Help us meet our goal</strong> of raising $500,000 before December 31st.</li></ul> -->
            		</div>
           		<div class="shome index-last">
           		 <ul>
