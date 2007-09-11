@@ -94,7 +94,7 @@ blockquote { padding: 5px; margin: 5px; }
 
 .cc-actions span.option { color: #fff; font-size: 170%; font-weight: bold; margin-top: 15px; margin-bottom: 0 !important; padding: 0 !important; display: block; }
 .cc-actions img { margin-right: 10px; float: left; }
-a.cc-actions, a.cc-actions:link { display: block; float: right; width: 227px; margin: 0 0 0 0; padding: 10px 0 11px 10px; color: #fff; text-decoration: none; }
+a.cc-actions, a.cc-actions:link { display: block; float: right; width: 227px; margin: 0; padding: 10px 0 11px 10px; color: #fff; text-decoration: none; }
 a.cc-actions:hover { background: url('/images/header-main-hover-b.png') repeat-x bottom left; text-decoration: none; }
 
 
@@ -182,13 +182,25 @@ ul.archives li .blocked { position: absolute; top: 6px; right: 6px; }
 .licensebox { background:#eee; border:1px solid #ccc; padding:6px; }
 
 /* nav tab-bar */
-#mainmenu {	position: relative; padding-top: 1em; border-bottom: 1px solid #ccc; background: url("http://search.creativecommons.org/images/tab-bg.png") repeat-x bottom left; background-color: #383e32 /*fafffa*/; height: 2.1em; }
+#mainmenu {	position: relative; padding-top: 0.8em; border-bottom: 1px solid #ccc; background: url("/images/tabbar-bg.png") repeat-x bottom left #383e32 /*fafffa*/; height: 2.3em; }
 ul#navbar { list-style-type: none;padding-bottom: 24px;}
-ul#navbar li {float: left; height: 2em; background: url("http://search.creativecommons.org/images/tab-bg.png") repeat-x bottom left #f0f4f1; margin: 2px 2px 0 2px;}
-ul#navbar li.edit { background-color: #efe2e2; margin-left: 15px; }
-ul#navbar li.active { background-image: none; background-color: #fff; padding-bottom: 0.5em; margin-top: -0.2em; font-weight: bold;}
-ul#navbar a {display: block; color: #333; padding: 0.5em 1.4em 0.2em; padding-top: 0.4em;}
-ul#navbar a:hover {text-decoration: none; color: #333; background-color: #fff; margin-bottom: 15px;}
+ul#navbar li {float: left; height: 2.4em;  margin: 0px 2px 0 2px;}
+ul#navbar li.edit { margin-left: 15px; }
+ul#navbar li.active { background: url("/images/tab-head-lit.png") repeat-x top left #fff; padding-bottom: 0.5em; margin-top: -0.2em; font-weight: bold;}
+
+ul#navbar a {display: block; color: #333; background: url("/images/tab-body-dark.png") no-repeat top right #f0f4f1;  }
+ul#navbar a span { display: block; padding: 0.5em 1.4em 0.2em; padding-top: 0.7em; background: url("/images/tab-left-dark.png") no-repeat top left; }
+
+ul#navbar a:hover {text-decoration: none; color: #333;  background: url("/images/tab-body-lit.png") no-repeat top right #fff; margin-bottom: 15px;}
+ul#navbar a:hover span { background: url("/images/tab-left-lit.png") no-repeat top left; }
+
+ul#navbar li.active a { background: url("/images/tab-body-lit.png") no-repeat top right #fff; }
+ul#navbar li.active a span { background: url("/images/tab-left-lit.png") no-repeat top left; }
+
+ul#navbar li.edit a { background: url("/images/tab-head-edit.png") repeat-x top left #efe2e2; }
+ul#navbar li.edit a span { background: url("/images/tab-head-edit.png") repeat-x top left #efe2e2; }
+
+ul#navbar li.edit a:hover { background: url("/images/tab-head-edit.png") repeat-x top left #fff2f2; }
 
 
 

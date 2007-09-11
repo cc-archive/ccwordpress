@@ -32,10 +32,10 @@ $nav = array (
   //          if ((is_category(1) or (in_category(1) and is_single())) and $item["name"] == "Blog" and !is_home() and !is_page()) $klass = "active";
           }
           
-          print '      <li class="'.$klass.'"><a href="'.$item["path"].'" title="'.$item["name"].'">'.$item["name"].'</a></li>';
+          print '      <li class="'.$klass.'"><a href="'.$item["path"].'" title="'.$item["name"].'"><span>'.$item["name"].'</span></a></li>';
         } 
         
-        if (is_page() or is_single()) edit_post_link('Edit this article', '<li class="edit">', '</li>');
+        if (is_page() or is_single()) edit_post_link('<span>Edit this article</span>', '<li class="edit">', '</li>');
         ?>
         
     </ul>
