@@ -75,6 +75,7 @@ margin-top: 0;
 }
 
 /* I Hate IE */
+ul#navbar { padding-bottom: 10px;}
 ul#navbar li.active { padding-bottom: 2px; margin-top: 0; }
 ul#navbar a:hover { margin-bottom: 0; }
 
