@@ -52,7 +52,7 @@ body { background-color: #fff; color: #333; font: 75%/145% verdana, sans-serif; 
   }
 
 #body { margin: 4px 0 0 0; /* border-top: 1px solid #ddd;*/ }
-#splash {  position: relative; background-color: /*#0f2700*/ #fff; color: #707070; margin: 7px 0 3px 0; padding-bottom:  6px; overflow: hidden;}
+#splash {  position: relative; background-color: /*#0f2700*/ #fff; color: #707070; margin: 0px 0 3px 0; padding-bottom:  6px; overflow: hidden;}
 #splash #blurb { margin: 0 0 28px 0; padding: 0 15px; font-size: 65%; color: #505050; }
 #content { padding: 5px 0; margin-bottom: 20px;}
 #main-content { float: left; width: 83%; padding-bottom: 35px; }
@@ -182,7 +182,7 @@ ul.archives li .blocked { position: absolute; top: 6px; right: 6px; }
 .licensebox { background:#eee; border:1px solid #ccc; padding:6px; }
 
 /* nav tab-bar */
-#mainmenu {	position: relative; padding-top: 0.6em; background: url("/images/tabbar-bg.png") repeat-x bottom left #383e32 /*fafffa*/;/* height: 2.4em;*/ }
+#mainmenu {	position: relative; padding-top: 0.6em; background: url("/images/tabbar-bg.png") repeat-x bottom left #383e32 /*fafffa*/;/* height: 2.4em;*/ margin-bottom: 10px; }
 ul#navbar { list-style-type: none;padding-bottom: 24px;}
 ul#navbar li {float: left; height: 2.4em;  margin: 0.2em 2px 0 2px; background: url("http://search.creativecommons.org/images/tab-bg.png") repeat-x bottom left #f0f4f1; }
 ul#navbar li.edit { margin-left: 15px; background: url("http://search.creativecommons.org/images/tab-bg.png") repeat-x bottom left #efe2e2; }
