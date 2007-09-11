@@ -39,5 +39,6 @@ $nav = array (
         ?>
         
     </ul>
+    <div class="clear"></div>
   </div>
  
