@@ -79,11 +79,10 @@ margin-left: 7px;
 }
 #donormap #mapinfo {
   float: left;
-  width: 14.5%;
+  width: 15.5%;
   background-color: #262f26;
   color: #fff;
   height: 230px;
-  padding: 0 0.5%;
   font-size: 0.9em;
 }
 
@@ -91,6 +90,10 @@ margin-left: 7px;
   margin-top: 0.5em;
   font-size: 105%;
 }
+#donormap #mapinfo p, #donormap #mapinfo h5 {
+  padding: 0 0.5em;
+}
+
 
 #gmaptest p {
 	font-size: 200%;
