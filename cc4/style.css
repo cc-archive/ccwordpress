@@ -60,7 +60,7 @@ body { background-color: #fff; color: #333; font: 75%/145% verdana, sans-serif; 
   #beta, #features { width: 29%; margin-left: 0.5%;} /* + .content-box */
 /* DEPRECATED */  #page {  width: 99%; } /* + .content-box */
 
-#sidebar { font-size: 0.85em; width: 12%; margin-right: 0 !important; padding-left: 5px; padding-bottom: 30px; background-color: #f9faf9; } /* + .content-box */
+#sidebar { font-size: 0.85em; width: 15%; margin-right: 0 !important; padding-left: 5px; padding-bottom: 30px; background-color: #f9faf9; } /* + .content-box */
 #footer { background-color: #f2f4f2; clear: both; margin-top: 40px; padding: 10px 0; color: #555; font-size: 90%; }
 #sub-footer { } /* + .box */
 
