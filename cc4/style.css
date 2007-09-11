@@ -60,7 +60,7 @@ body { background-color: #fff; color: #333; font: 75%/145% verdana, sans-serif; 
   #beta, #features { width: 29%; margin-left: 0.5%;} /* + .content-box */
 /* DEPRECATED */  #page {  width: 99%; } /* + .content-box */
 
-#sidebar { font-size: 0.85em; width: 12%; margin-right: 0 !important; padding-left: 5%; padding-bottom: 30px; background-color: #f9faf9; } /* + .content-box */
+#sidebar { font-size: 0.85em; width: 12%; margin-right: 0 !important; padding-left: 5px; padding-bottom: 30px; background-color: #f9faf9; } /* + .content-box */
 #footer { background-color: #f2f4f2; clear: both; margin-top: 40px; padding: 10px 0; color: #555; font-size: 90%; }
 #sub-footer { } /* + .box */
 
@@ -102,8 +102,8 @@ a.cc-actions:hover { background: url('/images/header-main-hover-b.png') repeat-x
 #splash-menu h3 a { color: #212950; }
 #splash-menu h3 a:hover { color: #00b;}
 
-#sidebar ul,  #features ul { list-style:  none; }
-#sidebar ul li, #features ul li { margin-bottom: 6px; }
+#sidebar ul,  #features ul { list-style:  none; margin-left: 0 !important; }
+#sidebar ul li, #features ul li { margin-bottom: 6px;  margin-left: 0 !important; }
 #sidebar img { margin-bottom: -3px; }
 
 #main-content .blogged img { margin: 0 5px; }
