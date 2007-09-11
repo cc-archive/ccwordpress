@@ -93,7 +93,7 @@ blockquote { padding: 5px; margin: 5px; }
 
 .content-foot { border-bottom: 1px solid #ddd; margin-bottom: 15px; padding-bottom: 5px; text-align: right; }
 
-.cc-actions span.option { color: #fff; font-size: 170%; font-weight: bold; margin-top: 15px; margin-bottom: 0 !important; padding: 0 !important; display: block; }
+.cc-actions span.option { color: #fff; font-size: 1.8em; font-weight: bold; margin-top: 15px; margin-bottom: 0 !important; padding: 0 !important; display: block; }
 .cc-actions img { margin-right: 10px; float: left; }
 a.cc-actions, a.cc-actions:link { display: block; float: right; width: 227px; margin: 0; padding: 10px 0 11px 10px; color: #fff; text-decoration: none; }
 a.cc-actions:hover { background: url('/images/header-main-hover-b.png') repeat-x bottom left; text-decoration: none; }
