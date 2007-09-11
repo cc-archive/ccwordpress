@@ -1,4 +1,4 @@
-<div id="sidebar" class="content-box">
+<div id="sidebar" class="content-box-right">
       <h4><a href="http://creativecommons.org/worldwide">International</a></h4>
       <select id="international" name="sortby" onchange="orderby(this)">
         <option value="">Select a jurisdiction</option>

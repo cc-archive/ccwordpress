@@ -4,7 +4,6 @@
       <div id="splash">
         <? /* Map system goes here */ ?>
         <div id="donormap">
-          <h4>Campaign Donations</h4>
           <iframe
               src="http://labs.creativecommons.org/~paulproteus/mapp.html?data=http://labs.creativecommons.org/~paulproteus/results-icons.txt&zoom=1&center=25,-5"
               id="donormap"
@@ -12,6 +11,12 @@
               marginwidth="0" marginheight="0"
               frameborder="0">
           </iframe>
+          <div id="mapinfo">
+           <h5>2007 Donor Map</h5>
+           <p>
+            Locations and number of donations to the CC Campaign from around the world.
+           </p>
+          </div>
         </div>
       </div>
 

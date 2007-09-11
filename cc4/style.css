@@ -13,6 +13,7 @@ body { background-color: #fff; color: #333; font: 75%/145% verdana, sans-serif; 
 
 .box { text-align: left; margin: 0 auto; width: 91%; min-width: 765px; max-width: 1000px; } /* replaces #wrapper */
 .content-box { float: left; padding-top: 15px;/* border-top: 1px solid #ddd;*/ margin-right: 1%; overflow: hidden; }
+.content-box-right { float: right; padding-top: 15px;/* border-top: 1px solid #ddd;*/ margin-left: 1%; overflow: hidden; }
 .clear { height: 0px !important; clear: both; }
 
 #wrapper-ie { width: auto; }
@@ -60,7 +61,7 @@ body { background-color: #fff; color: #333; font: 75%/145% verdana, sans-serif; 
   #beta, #features { width: 29%; margin-left: 0.5%;} /* + .content-box */
 /* DEPRECATED */  #page {  width: 99%; } /* + .content-box */
 
-#sidebar { font-size: 0.85em; width: 15%; margin-right: 0 !important; padding-left: 5px; padding-bottom: 30px; background-color: #f9faf9; } /* + .content-box */
+#sidebar { font-size: 0.85em; width: 15%; margin-left: 1%; margin-right: 0 !important; padding-left: 5px; padding-bottom: 30px; background-color: #f9faf9; } /* + .content-box */
 #footer { background-color: #f2f4f2; clear: both; margin-top: 40px; padding: 10px 0; color: #555; font-size: 90%; }
 #sub-footer { } /* + .box */
 
@@ -158,6 +159,7 @@ a.cc-actions:hover { background: url('/images/header-main-hover-b.png') repeat-x
   /*border: 1px solid #ddd !important;*/
   border: none !important;
   margin-top: 0 !important;
+  padding-top: 5px;
   padding-bottom: 17px;
   padding-right: 0 !important;
 }
@@ -167,6 +169,12 @@ a.cc-actions:hover { background: url('/images/header-main-hover-b.png') repeat-x
   margin: 0 10px 6px 0;
   padding-bottom: 2px;
   padding-left: 0 !important;
+}
+
+.hero h2 {
+  font-size: 200%;
+  color: #d13814;
+  margin-bottom: 5px;
 }
 
 ul.archives { list-style: none; margin: 0 15px 15px 8px; }
