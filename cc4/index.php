@@ -16,6 +16,7 @@
            <p>
             Locations and number of donations to the CC Campaign from around the world.
            </p>
+           <p>No information, except your city, is used or shared from this map.</p>
           </div>
         </div>
       </div>
