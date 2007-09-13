@@ -56,6 +56,7 @@
             <div id="blurb"><?= cc_intro_blurb() ?></div>
             
           </div>
+          <div id="alpha" class="content-box">
             <h4>Latest News</h4>
 <?php // Get the last 5 posts in the blog category. ?>
 <?php // FIXME: perhaps make this configurable in theme settings...? ?>
@@ -76,6 +77,11 @@
             <ul class="archives">
             <li><h3><a href="/weblog/archive">Weblog Archives</a></h3></li>
 	    <li><h3><a href="/weblog/rss">RSS Feed</a></h3></li></ul>
+	    </div>
+	    <div id="beta" class="content-box">
+	     <h4>Affiliate News</h4>
+	     <?php BDPRSS2::output(1); ?>
+	    </div>
           </div>
 
 
