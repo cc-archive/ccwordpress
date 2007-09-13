@@ -7,25 +7,25 @@ if( !class_exists('BDPRSSOUTPUT') )
 		function packageItemText($string, $wordCount=0, $maxWordLength=50, $processTags=FALSE, $tagSet='')
 		{
 			// keep acceptable tags
-			$string = mb_eregi_replace("\&lt;", 	'<', 	$string);
-			$string = mb_eregi_replace("\&gt;", 	'>', 	$string);
+			$string = eregi_replace("\&lt;", 	'<', 	$string);
+			$string = eregi_replace("\&gt;", 	'>', 	$string);
 			if($processTags && $tagSet)
 			{
 				$tagSet = preg_split("','", $tagSet, -1, PREG_SPLIT_NO_EMPTY);
 				foreach($tagSet as $ts)
 				{
 					// space out tags so they are are easy to identify
-					$string = mb_eregi_replace("<($ts [^>]*)>",	" &lt;\\1&gt;",	$string);
-					$string = mb_eregi_replace("<($ts)>",		" &lt;\\1&gt;",	$string);
-					$string = mb_eregi_replace("<(/$ts)>",		" &lt;\\1&gt;",	$string);
+					$string = eregi_replace("<($ts [^>]*)>",	" &lt;\\1&gt;",	$string);
+					$string = eregi_replace("<($ts)>",		" &lt;\\1&gt;",	$string);
+					$string = eregi_replace("<(/$ts)>",		" &lt;\\1&gt;",	$string);
 				}
 			}
 			// delete unrequired tags
-			$string = mb_eregi_replace("<[a-zA-Z]+[^>]*>", 	'',	$string);
-			$string = mb_eregi_replace("</[a-zA-Z]+[^>]*>",	'',	$string);
+			$string = eregi_replace("<[a-zA-Z]+[^>]*>", 	'',	$string);
+			$string = eregi_replace("</[a-zA-Z]+[^>]*>",	'',	$string);
 			// restore required tags
-			$string = mb_eregi_replace("\&lt;", 	'<', 	$string);
-			$string = mb_eregi_replace("\&gt;", 	'>', 	$string);
+			$string = eregi_replace("\&lt;", 	'<', 	$string);
+			$string = eregi_replace("\&gt;", 	'>', 	$string);
 				
 			// count words
 			$words = explode(' ', $string);
@@ -40,29 +40,27 @@ if( !class_exists('BDPRSSOUTPUT') )
 			
 			for($i=0; $i<$count && $wordCount!=0; $i++)
 			{
-				// trim
-				$outWords[$i] = mb_ereg_replace("^\s+",	"",	$words[$i]);
-				$outWords[$i] = mb_ereg_replace("\s+$",	"",	$outWords[$i]);
-				
+			    	$outWords[$i] = trim ($words[$i]);
+	
 				if(!$outWords[$i]) continue;
 			
 				if($processTags)
 				{
-					if(mb_ereg('^<', $outWords[$i])) 
+					if(ereg('^<', $outWords[$i])) 
 					{
 						if($inTag) echo "<!-- glitch nested tags? -->\n";
 						$inTag = TRUE;
-						if(mb_ereg('^<([a-zA-Z]+)', $outWords[$i], $matches))
+						if(ereg('^<([a-zA-Z]+)', $outWords[$i], $matches))
 						{
 							//open tag
-							$m = mb_strtolower($matches[1]);
+							$m = strtolower($matches[1]);
 							array_push($HTMLclosure, $m); 
 							$token = $m;
 						}
-						if(mb_ereg('^</([a-zA-Z]+).*', $outWords[$i], $matches))
+						if(ereg('^</([a-zA-Z]+).*', $outWords[$i], $matches))
 						{
 							// close tag
-							$m = mb_strtolower($matches[1]);
+							$m = strtolower($matches[1]);
 							$t = array_pop($HTMLclosure);
 							if($t && $t!=$m)
 								array_push($HTMLclosure, $t);
@@ -72,7 +70,7 @@ if( !class_exists('BDPRSSOUTPUT') )
 					
 					if($inTag)
 					{
-						if(mb_ereg('/>', $outWords[$i]))
+						if(ereg('/>', $outWords[$i]))
 						{
 							// closure
 							$m = $token;
@@ -80,9 +78,9 @@ if( !class_exists('BDPRSSOUTPUT') )
 							if($t && $t!=$m) array_push($HTMLclosure, $t);
 						}
 						// quotes in tags must be respected
-						$outWords[$i] = mb_eregi_replace('&quot;',	'"', 	$outWords[$i]);
-						$outWords[$i] = mb_eregi_replace('&#39;', 	"'",  	$outWords[$i]);
-						if(mb_ereg('>', $outWords[$i]))  
+						$outWords[$i] = eregi_replace('&quot;',	'"', 	$outWords[$i]);
+						$outWords[$i] = eregi_replace('&#39;', 	"'",  	$outWords[$i]);
+						if(ereg('>', $outWords[$i]))  
 						{					
 							$inTag = FALSE;
 							$token = FALSE;
@@ -90,10 +88,10 @@ if( !class_exists('BDPRSSOUTPUT') )
 						continue;
 					}
 				}
-				$len = mb_strlen($outWords[$i]);
+				$len = strlen($outWords[$i]);
 				if($maxWordLength && $len > $maxWordLength)
 				{ 
-					$outWords[$i] =  mb_substr($outWords[$i], 0, $maxWordLength);
+					$outWords[$i] =  substr($outWords[$i], 0, $maxWordLength);
 					$outWords[$i] .= '~';
 				}
 				$wordCount--;
@@ -111,16 +109,16 @@ if( !class_exists('BDPRSSOUTPUT') )
 				while($t = array_pop($HTMLclosure)) $ret .= "</$t>"; 
 				
 				// tighten up the HTML 
-				$ret = mb_eregi_replace(" (</[a-zA-Z]+>)", "\\1", $ret);
-				$ret = mb_eregi_replace("([\(\$\[\{]) (<[a-zA-Z]+[^\>]*>)", "\\1\\2", $ret);
-				$ret = mb_eregi_replace("&quot; (<[a-zA-Z]+[^\>]*>)", "&quot;\\1", $ret);
-				$ret = mb_eregi_replace("&#34; (<[a-zA-Z]+[^\>]*>)", "&#34;\\1", $ret);
-				$ret = mb_eregi_replace("&#39; (<[a-zA-Z]+[^\>]*>)", "&#39;\\1", $ret);
-				$ret = mb_eregi_replace("&#8216; (<[a-zA-Z]+[^\>]*>)", "&#8216;\\1", $ret);
-				$ret = mb_eregi_replace("&lsquo; (<[a-zA-Z]+[^\>]*>)", "&lsquo;\\1", $ret);
-				$ret = mb_eregi_replace("&#8220; (<[a-zA-Z]+[^\>]*>)", "&#8220;\\1", $ret);
-				$ret = mb_eregi_replace("&ldquo; (<[a-zA-Z]+[^\>]*>)", "&ldquo;\\1", $ret);
-				$ret = mb_eregi_replace("(<[a-zA-Z]+[^\>]*>) (<[a-zA-Z]+[^\>]*>)", "\\1\\2", $ret);
+				$ret = eregi_replace(" (</[a-zA-Z]+>)", "\\1", $ret);
+				$ret = eregi_replace("([\(\$\[\{]) (<[a-zA-Z]+[^\>]*>)", "\\1\\2", $ret);
+				$ret = eregi_replace("&quot; (<[a-zA-Z]+[^\>]*>)", "&quot;\\1", $ret);
+				$ret = eregi_replace("&#34; (<[a-zA-Z]+[^\>]*>)", "&#34;\\1", $ret);
+				$ret = eregi_replace("&#39; (<[a-zA-Z]+[^\>]*>)", "&#39;\\1", $ret);
+				$ret = eregi_replace("&#8216; (<[a-zA-Z]+[^\>]*>)", "&#8216;\\1", $ret);
+				$ret = eregi_replace("&lsquo; (<[a-zA-Z]+[^\>]*>)", "&lsquo;\\1", $ret);
+				$ret = eregi_replace("&#8220; (<[a-zA-Z]+[^\>]*>)", "&#8220;\\1", $ret);
+				$ret = eregi_replace("&ldquo; (<[a-zA-Z]+[^\>]*>)", "&ldquo;\\1", $ret);
+				$ret = eregi_replace("(<[a-zA-Z]+[^\>]*>) (<[a-zA-Z]+[^\>]*>)", "\\1\\2", $ret);
 			}
 			return ($ret);
 		}
@@ -591,8 +589,8 @@ if( !class_exists('BDPRSSOUTPUT') )
 		
 		function strip($text)
 		{
-			$text = mb_ereg_replace('&lt;',	 	'<',  	$text);
-			$text = mb_ereg_replace('&gt;',	 	'>',  	$text);
+			$text = ereg_replace('&lt;',	 	'<',  	$text);
+			$text = ereg_replace('&gt;',	 	'>',  	$text);
 			return strip_tags($text);
 		}
 		
@@ -661,10 +659,10 @@ if( !class_exists('BDPRSSOUTPUT') )
 				$desc = $r->{$bdprss_db->iitemtext};
 				if($listInfo->{$bdprss_db->lrssfullorsummary} != 'FULL')
 					$desc = BDPRSSOUTPUT::packageItemText($desc, 60, 0, TRUE, $tagSet);
-				$desc = mb_ereg_replace('&lt;',	'<',  	$desc);
-				$desc = mb_ereg_replace('&gt;',	'>',  	$desc);
-				$desc = mb_ereg_replace('&quot;',	'"', 	$desc);
-				$desc = mb_ereg_replace('&#39;', 	"'",  	$desc);
+				$desc = ereg_replace('&lt;',	'<',  	$desc);
+				$desc = ereg_replace('&gt;',	'>',  	$desc);
+				$desc = ereg_replace('&quot;',	'"', 	$desc);
+				$desc = ereg_replace('&#39;', 	"'",  	$desc);
 				
 				$pubDate = gmdate($dateFormat, intval($r->{$bdprss_db->iitemtime}));
 ?>

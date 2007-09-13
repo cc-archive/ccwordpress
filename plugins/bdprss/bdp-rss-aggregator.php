@@ -33,13 +33,13 @@ if ( !(phpversion() >= '4.3') )
 	die( 'Your server is running PHP version ' . phpversion() . 
 	' but the BDP RSS Aggregator Wordpress plugin requires at least 4.3' );
 
-if( !function_exists('mb_internal_encoding') || !function_exists('mb_regex_encoding') )
+/*if( !function_exists('internal_encoding') || !function_exists('regex_encoding') )
 	die( 'Your installation of PHP does not appear to support multibyte strings. '.
 	'This support is needed by the BDP RSS Aggregator plugin. '.
 	'You should ask your web-host to install it; it is easy to install. '.
 	'For more information, refer to <a href="http://www.phpbuilder.com/manual/ref.mbstring.php">'.
 	'http://www.phpbuilder.com/manual/ref.mbstring.php</a>.');
-
+*/
 /* ----- includes ----- */
 require_once(dirname(__FILE__) . '/bdp-rssaggregator-db.php');
 
@@ -54,8 +54,8 @@ if(!$bdprss_db->db_exists())
 	update_option('bdprss_keep_howlong',		0 /* months */);	/* zero = never delete */
 }
 
-mb_internal_encoding( get_option('blog_charset') );
-mb_regex_encoding( get_option('blog_charset') );
+//internal_encoding( get_option('blog_charset') );
+//regex_encoding( get_option('blog_charset') );
 
 /* ----- main game ----- */
 if( !class_exists('BDPRSS2') ) 	// for protection only

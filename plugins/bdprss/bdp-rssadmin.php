@@ -52,15 +52,15 @@ function bdpDisplayCode($text)
 //	&quot;			&quot;			double quotation mark --> "
 //	&nbsp;			&amp;nbsp;		non breaking space
 
-	$text = mb_ereg_replace('&39;', "'", $text);
-	$text = mb_ereg_replace('&quot;', '"', $text);
+	$text = ereg_replace('&39;', "'", $text);
+	$text = ereg_replace('&quot;', '"', $text);
 
-	$text = mb_ereg_replace('&', '&amp;', $text);
+	$text = ereg_replace('&', '&amp;', $text);
 
-	$text = mb_ereg_replace("'", '&39;', $text);
-	$text = mb_ereg_replace('"', '&quot;', $text);
-	$text = mb_ereg_replace('<', '&lt;', $text);
-	$text = mb_ereg_replace('>', '&gt;', $text);
+	$text = ereg_replace("'", '&39;', $text);
+	$text = ereg_replace('"', '&quot;', $text);
+	$text = ereg_replace('<', '&lt;', $text);
+	$text = ereg_replace('>', '&gt;', $text);
 
 	return ($text);
 }
@@ -110,7 +110,7 @@ if( isset($_POST['bdprss_edit_site_button']) )
 	$siteArray['cidentifier'] = $_POST['bdprss_cidentifier'];
 	$siteArray['csitename'] = BDPRSSFeed::title_recode($_POST['bdprss_csitename']);
 	$siteArray['csiteurl'] = BDPRSSFeed::title_recode($_POST['bdprss_csiteurl']);
-	$siteArray['cdescription'] = mb_substr(BDPRSSFeed::title_recode($_POST['bdprss_cdescription']), 0, 250);
+	$siteArray['cdescription'] = substr(BDPRSSFeed::title_recode($_POST['bdprss_cdescription']), 0, 250);
 	$siteArray['cgmtadjust'] = floatval($_POST['bdprss_cgmtadjust']);
 
 	$cpollingfreqmins = intval($_POST['bdprss_cpollingfreqmins']);

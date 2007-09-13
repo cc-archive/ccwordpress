@@ -47,9 +47,9 @@ if( !class_exists('BDPRSSUPDATE') )
 			}
 			
 			// extract and save key site information
-			$siteArray['csitename'] = mb_substr($pfeed['title'], 0, 250);
-			$siteArray['csiteurl'] =  mb_substr($pfeed['link'], 0, 250);
-			$siteArray['cdescription'] = mb_substr(($pfeed['description'] ? 
+			$siteArray['csitename'] = substr($pfeed['title'], 0, 250);
+			$siteArray['csiteurl'] =  substr($pfeed['link'], 0, 250);
+			$siteArray['cdescription'] = substr(($pfeed['description'] ? 
 				$pfeed['description'] : $pfeed['tagline']), 0, 250);
 			$siteArray['cupdatetime'] = $now;
 			$bdprss_db->updateTable($bdprss_db->sitetable, $siteArray, 'cidentifier',
@@ -99,8 +99,8 @@ if( !class_exists('BDPRSSUPDATE') )
 					continue; // a URL link for the item is needed for the database
 				}
 				
-				$link =	mb_substr($link, 0, 250);	// keep it short buddy 
-				$title = mb_substr($title, 0, 250);	// keep it short buddy 
+				$link =	substr($link, 0, 250);	// keep it short buddy 
+				$title = substr($title, 0, 250);	// keep it short buddy 
 					
 				// get the itemtext
 				if($item['content:encoded']) 

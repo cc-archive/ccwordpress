@@ -22,32 +22,32 @@ if( !class_exists('BDPTSSFeed') )
 		 * encode unencoded ampersands
 		 */
 			// blogspot puts encoded tags into the feed stream - decode them
-			$title = mb_eregi_replace("\&lt;", 		'<', 		$title);
-			$title = mb_eregi_replace("\&gt;", 		'>', 		$title);
-			$title = mb_eregi_replace("\&amp;([a-z]+);",	'&\\1;',	$title);
-			$title = mb_eregi_replace("\&amp;#([0-9]+);",	'&#\\1;',	$title);
-			$title = mb_eregi_replace("\&amp;#x([a-e0-9]+);",'&#x\\1;',	$title);
+			$title = eregi_replace("\&lt;", 		'<', 		$title);
+			$title = eregi_replace("\&gt;", 		'>', 		$title);
+			$title = eregi_replace("\&amp;([a-z]+);",	'&\\1;',	$title);
+			$title = eregi_replace("\&amp;#([0-9]+);",	'&#\\1;',	$title);
+			$title = eregi_replace("\&amp;#x([a-e0-9]+);",'&#x\\1;',	$title);
 			
 			// remove CDATA tags - leave XHTML tags
 			$title = preg_replace("'<!\[CDATA\[(.*?)\]\]>'si", '\\1', $title);
 			
 			// tidy-up quotes - prevents SQL insertion
-			$title = mb_ereg_replace('"',	 		'&quot;', 	$title);
-			$title = mb_ereg_replace("'", 			'&#39;',  	$title);
-			$title = mb_eregi_replace('\&apos;',	'&#39;',  	$title); // old browser fix
+			$title = ereg_replace('"',	 		'&quot;', 	$title);
+			$title = ereg_replace("'", 			'&#39;',  	$title);
+			$title = eregi_replace('\&apos;',	'&#39;',  	$title); // old browser fix
 			
 			// find unencoded ampersands and encode them!
-			$title = mb_ereg_replace('<',	 		'&lt;',  	$title);
-			$title = mb_ereg_replace('>',	 		'&gt;',  	$title);
-			$title = mb_eregi_replace('\&([a-z]+);', 	'<\\1>', 	$title); // alpha
-			$title = mb_eregi_replace('\&(#[0-9]+);',	'<\\1>', 	$title); // decimal
-			$title = mb_eregi_replace('\&(#x[a-e0-9]+);',	'<\\1>', 	$title); // hex
-			$title = mb_eregi_replace('\&', 		'&amp;', 	$title);
-			$title = mb_eregi_replace('<([^>]+)>',		'&\\1;',	$title);
+			$title = ereg_replace('<',	 		'&lt;',  	$title);
+			$title = ereg_replace('>',	 		'&gt;',  	$title);
+			$title = eregi_replace('\&([a-z]+);', 	'<\\1>', 	$title); // alpha
+			$title = eregi_replace('\&(#[0-9]+);',	'<\\1>', 	$title); // decimal
+			$title = eregi_replace('\&(#x[a-e0-9]+);',	'<\\1>', 	$title); // hex
+			$title = eregi_replace('\&', 		'&amp;', 	$title);
+			$title = eregi_replace('<([^>]+)>',		'&\\1;',	$title);
 			
 			// tidy-up white spaces
-			$title = mb_eregi_replace('\&nbsp;', 	' ',	$title);
-			$title = mb_eregi_replace('[ \n\r\s]+', ' ',	$title);
+			$title = eregi_replace('\&nbsp;', 	' ',	$title);
+//			$title = eregi_replace('[\n\r\s]+', ' ',	$title);
 			
 			return $title;
 		}
@@ -56,44 +56,44 @@ if( !class_exists('BDPTSSFeed') )
 		{
 			// simplify and manipulate links in the itemtext
 			// 1 - restore quotes and angle brackets -- just for a moment
-			$itemtext = mb_eregi_replace('&quot;',	 	'"', 	$itemtext);
-			$itemtext = mb_eregi_replace('&#39;', 		"'",  	$itemtext);
-			$itemtext = mb_eregi_replace('&lt;',	 	'<', 	$itemtext);
-			$itemtext = mb_eregi_replace('&gt;', 		'>',  	$itemtext);
+			$itemtext = eregi_replace('&quot;',	 	'"', 	$itemtext);
+			$itemtext = eregi_replace('&#39;', 		"'",  	$itemtext);
+			$itemtext = eregi_replace('&lt;',	 	'<', 	$itemtext);
+			$itemtext = eregi_replace('&gt;', 		'>',  	$itemtext);
 			
 			// 2 - simplify and standardise the HTML
-			$itemtext = mb_eregi_replace('<img ([^>]*)src="([^">]*)"([^>]*) />',
+			$itemtext = eregi_replace('<img ([^>]*)src="([^">]*)"([^>]*) />',
 				"<img src='\\2' \\1 \\3 />", $itemtext);
-			$itemtext = mb_eregi_replace("<img ([^>]*)src='([^'>]*)'([^>]*) />",
+			$itemtext = eregi_replace("<img ([^>]*)src='([^'>]*)'([^>]*) />",
 				"<img src='\\2' \\1 \\3 />", $itemtext);
-			$itemtext = mb_eregi_replace("<img (src='[^'>]*')([^>]*)width=['\"]([^'\">]*)['\"]([^>]*) />",
+			$itemtext = eregi_replace("<img (src='[^'>]*')([^>]*)width=['\"]([^'\">]*)['\"]([^>]*) />",
 				"<img \\1 width='\\3' \\2 \\4 />", $itemtext);
-			$itemtext = mb_eregi_replace(
+			$itemtext = eregi_replace(
 				"<img (src='[^'>]*' width='[^'>]*')[^>]*height=['\"]([^'\">]*)['\"][^>]* />",
 				"<img \\1 height='\\2' />", $itemtext);
-			$itemtext = mb_eregi_replace("<a [^>]*href='([^\'>]*)'[^>]*>",
+			$itemtext = eregi_replace("<a [^>]*href='([^\'>]*)'[^>]*>",
 				"<a href='\\1' target='_blank' rel='nofollow'>", $itemtext);
-			$itemtext = mb_eregi_replace('<a [^>]*href="([^"\'>]*)"[^>]*>',
+			$itemtext = eregi_replace('<a [^>]*href="([^"\'>]*)"[^>]*>',
 				"<a href='\\1' target='_blank' rel='nofollow'>", $itemtext);
 
 			// 3 - substitute in full address to relative addresses
-			$itemtext = mb_eregi_replace("<img src='/([^'\>]+'[^\>]+) />",
+			$itemtext = eregi_replace("<img src='/([^'\>]+'[^\>]+) />",
 				"<img src='$siteURL/\\1 />", $itemtext);
-			$itemtext = mb_eregi_replace( "<a href='/([^'>]+'[^\>]+)>",
+			$itemtext = eregi_replace( "<a href='/([^'>]+'[^\>]+)>",
 				"<a href='$siteURL/\\1>", $itemtext);
 				
 			// 4 -- other tidy-ups
-			$itemtext = mb_eregi_replace('<p [^>]*>', '<p>', $itemtext);
-			$itemtext = mb_eregi_replace('<li [^>]*>', '<li>', $itemtext);
-			$itemtext = mb_eregi_replace('<br[^>]* />', '<br />', $itemtext);
+			$itemtext = eregi_replace('<p [^>]*>', '<p>', $itemtext);
+			$itemtext = eregi_replace('<li [^>]*>', '<li>', $itemtext);
+			$itemtext = eregi_replace('<br[^>]* />', '<br />', $itemtext);
 
 			//echo "<!-- DEBUG: $itemtext -->\n";
 
 			// 5 - kill the quotes to be SQL secure
-			$itemtext = mb_eregi_replace('"',	 	'&quot;', 	$itemtext);
-			$itemtext = mb_eregi_replace("'", 		'&#39;',  	$itemtext);
-			$itemtext = mb_eregi_replace('<',	 	'&lt;', 	$itemtext);
-			$itemtext = mb_eregi_replace('>', 		'&gt;',  	$itemtext);
+			$itemtext = eregi_replace('"',	 	'&quot;', 	$itemtext);
+			$itemtext = eregi_replace("'", 		'&#39;',  	$itemtext);
+			$itemtext = eregi_replace('<',	 	'&lt;', 	$itemtext);
+			$itemtext = eregi_replace('>', 		'&gt;',  	$itemtext);
 			
 			return $itemtext;
 		}
@@ -164,10 +164,10 @@ if( !class_exists('BDPTSSFeed') )
 			}
 			$result['feedtype'] = $feedtype;
 			
-			mb_detect_order('WINDOWS-1252, UTF-8, ISO-8859-1');
-			$old_charset = mb_detect_encoding( $content ); 
-			$new_charset = get_option( 'blog_charset' ); 
-			$content = @mb_convert_encoding($content, /*to*/$new_charset, /*from*/$old_charset);
+			//detect_order('WINDOWS-1252, UTF-8, ISO-8859-1');
+			//$old_charset = get_option( 'blog_charset' ); //detect_encoding( $content ); 
+			//$new_charset = get_option( 'blog_charset' ); 
+			//$content = @convert_encoding($content, /*to*/$new_charset, /*from*/$old_charset);
 			
 			// split up channels - we are only going to parse the first channel!
 			if($feedtype == 'RDF') 
