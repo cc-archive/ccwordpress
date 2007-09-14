@@ -57,7 +57,7 @@
             
           </div>
           <div id="alpha" class="content-box">
-            <h4>Latest News</h4>
+            <h4>CC News</h4>
 <?php // Get the last 5 posts in the blog category. ?>
 <?php // FIXME: perhaps make this configurable in theme settings...? ?>
 <?php query_posts('category_name=weblog&showposts=4'); ?>
@@ -79,8 +79,8 @@
 	    <li><h3><a href="/weblog/rss">RSS Feed</a></h3></li></ul>
 	    </div>
 	    <div id="beta" class="content-box">
-	     <h4>Affiliate News</h4>
-	     <?php BDPRSS2::output(1); ?>
+	     <h4>Jurisdiction News</h4>
+	     <?php cc_build_external_feed(); ?>
 	    </div>
           </div>
 
