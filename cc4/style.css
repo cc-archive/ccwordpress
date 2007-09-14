@@ -138,6 +138,10 @@ a.cc-actions:hover { background: url('/images/header-main-hover-b.png') repeat-x
 .block .excerpt { margin-left:  170px; }
 .block .comments { margin: 35px 0; }
 
+.rss img.country { float: right; width: 54px; margin: 0; padding: 0; }
+.rss .rss-title { margin-right: 64px; }
+.rss p { margin: 0; clear: both; }
+
 .page { padding-right: 5% !important; }
 
 #blog .block, #features .page, #alpha .block, #alpha .page { padding-right: 2% !important; }
