@@ -8,6 +8,57 @@ Author: Alex Roberts <alex@creativecommons.org>
 Author URI: 
 */
 
+function cc_build_external_feed() {
+  require_once "magpie/rss_fetch.inc";
+  
+  $feed = "http://planet.creativecommons.org/affiliates/rss20.xml";
+ 	$entries = 5;
+	$wordcount = 25;
+  // fetch the rss file
+	$rss = fetch_rss($feed);
+	
+	// parse through each entry
+	foreach($rss->items as $item) {
+		$title = $item['title'];
+		$link = $item['link'];
+		$description = $item['description'];
+		$date = $item['date_timestamp'];
+		
+		$items[] = array(
+				'date'			=> $date,
+				'title'			=> $title,
+				'link'			=> $link,
+				'description'	=>	$description
+			);
+
+	}
+	
+	// get the dates in order to sort the items by date
+	foreach ($items as $key => $row)
+		$dates[] = $items[$key]['date'];
+	
+	// sort the items by date
+	array_multisort($dates, SORT_DESC, $items);
+	
+	$items = array_slice($items, 0, $entries);
+
+	$out = "";
+	foreach ($items as $item) { 
+				$date = date('Y-m-d', $item['date']);
+				$description = strip_tags($item['description']);
+
+				$description_test = explode(' ', $description);
+				if (count($description_test) > $wordcount)
+					$description = implode(' ', array_slice($description_test, 0, $wordcount)) . '&#8230;';
+
+				$out .= "<div class=\"block blogged\">";
+				$out .= "<strong><a href=\"{$item['link']}\">{$item['title']}</a> ($date)</strong>";
+				$out .= "<p style=\"margin:0;\">$description [<a href=\"{$item['link']}\">Read More</a>]</p>";
+				$out .= "</div>";
+	}
+
+	echo $out;
+}
 
 function cc_get_cat_archives($category, $type='', $limit='', $format='html', $before = '', $after = '', $show_post_count = false, $skip = '') {
 	global $month, $wpdb;
