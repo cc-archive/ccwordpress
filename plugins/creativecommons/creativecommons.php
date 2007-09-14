@@ -51,9 +51,10 @@ function cc_build_external_feed() {
 				if (count($description_test) > $wordcount)
 					$description = implode(' ', array_slice($description_test, 0, $wordcount)) . '&#8230;';
 
-				$out .= "<div class=\"block blogged\">";
-				$out .= "<strong><a href=\"{$item['link']}\">{$item['title']}</a> ($date)</strong>";
-				$out .= "<p style=\"margin:0;\">$description [<a href=\"{$item['link']}\">Read More</a>]</p>";
+				$out .= "<div class=\"block blogged rss\">";
+				$out .= "<img src=\"/images/international/unported.png\" class=\"country\">";
+				$out .= "<div class=\"rss-title\"><h3><a href=\"{$item['link']}\">{$item['title']}</a></h3> ($date)</div>";
+				$out .= "<p>$description [<a href=\"{$item['link']}\">Read More</a>]</p>";
 				$out .= "</div>";
 	}
 
