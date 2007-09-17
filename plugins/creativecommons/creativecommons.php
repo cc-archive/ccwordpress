@@ -31,6 +31,11 @@ function cc_build_external_feed() {
 
 	}
 	
+	// prepare an array of categories we have seen
+	// in the conversion of feed items to HTML to show,
+	// if the category appears in this array skip it.
+	$seen_categories = array();
+
 	// get the dates in order to sort the items by date
 	foreach ($items as $key => $row)
 		$dates[] = $items[$key]['date'];
@@ -38,10 +43,29 @@ function cc_build_external_feed() {
 	// sort the items by date
 	array_multisort($dates, SORT_DESC, $items);
 	
-	$items = array_slice($items, 0, $entries);
+	// Do not slice because we don't know in advance how much we'll need
+	// $items = array_slice($items, 0, $entries);
 
 	$out = "";
+	$number_generated_so_far = 0;
+
 	foreach ($items as $item) { 
+
+	  if ($number_generated_so_far >= $entries) {
+	    break; // get out of this loop so we can echo
+	  }
+	  
+	  $category = $item['category'];
+	  if (array_key_exists($category, $seen_categories)) {
+	    continue; // get next item
+	  }
+	  
+	  // The normal case: where we didn't skip the item because of
+	  // category
+	  $seen_categories[$category] = true;
+	  $number_generated_so_far = $number_generated_so_far + 1;
+
+
 				$date = date('Y-m-d', $item['date']);
 				$description = strip_tags($item['description']);
 
