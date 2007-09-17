@@ -75,8 +75,8 @@ function cc_build_external_feed() {
 
 				$out .= "<div class=\"block blogged rss\">";
 				$out .= "<a href=\"/international/{$item['category']}\"><img src=\"/images/international/{$item['category']}.png\" alt=\"{$item['category']}\" class=\"country\"></a>";
-				$out .= "<div class=\"rss-title\"><h3><a href=\"{$item['link']}\">{$item['title']}</a></h3> ($date)</div>";
-				$out .= "<p>$description [<a href=\"{$item['link']}\">Read More</a>]</p>";
+				$out .= "<div class=\"rss-title\"><h3><a href=\"{$item['link']}\">{$item['title']}</a></h3> <small>$date</small></div>";
+				$out .= "<p>$description<br/>[<a href=\"{$item['link']}\">Read More</a>]</p>";
 				$out .= "</div>";
 	}
 
