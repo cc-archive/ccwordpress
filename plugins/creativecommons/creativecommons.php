@@ -8,6 +8,7 @@ Author: Alex Roberts <alex@creativecommons.org>
 Author URI: 
 */
 
+/* As seen in http://freeculture.org:8080/svn/wordpress-theme/trunk/front_page/feeds_chapter.php */
 function cc_build_external_feed() {
   require_once "magpie/rss_fetch.inc";
   
@@ -28,7 +29,8 @@ function cc_build_external_feed() {
 				'date'			=> $date,
 				'title'			=> $title,
 				'link'			=> $link,
-				'description'	=>	$description
+				'description'	=>	$description,
+				'category' => $category
 			);
 
 	}
@@ -52,7 +54,7 @@ function cc_build_external_feed() {
 					$description = implode(' ', array_slice($description_test, 0, $wordcount)) . '&#8230;';
 
 				$out .= "<div class=\"block blogged rss\">";
-				$out .= "<img src=\"/images/international/unported.png\" class=\"country\">";
+				$out .= "<a href=\"/international/{$item['category']}\"><img src=\"/images/international/{$item['category']}.png\" alt=\"{$item['category']}\" border=\"0\" class=\"country\"></a>";
 				$out .= "<div class=\"rss-title\"><h3><a href=\"{$item['link']}\">{$item['title']}</a></h3> ($date)</div>";
 				$out .= "<p>$description [<a href=\"{$item['link']}\">Read More</a>]</p>";
 				$out .= "</div>";
