@@ -20,17 +20,13 @@ function cc_build_external_feed() {
 	
 	// parse through each entry
 	foreach($rss->items as $item) {
-		$title = $item['title'];
-		$link = $item['link'];
-		$description = $item['description'];
-		$date = $item['date_timestamp'];
 		
 		$items[] = array(
-				'date'			=> $date,
-				'title'			=> $title,
-				'link'			=> $link,
-				'description'	=>	$description,
-				'category' => $category
+				'date'        => $item['date_timestamp'],
+				'title'       => $item['title'],
+				'link'        => $item['link'],
+				'description' =>	$item['description'],
+				'category'    => $item['category']
 			);
 
 	}
