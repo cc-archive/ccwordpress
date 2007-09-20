@@ -35,6 +35,8 @@ http://snoopy.sourceforge.com
 
 *************************************************/
 
+if (class_exists('Snoopy')) { return; }
+
 class Snoopy
 {
 	/**** Public variables ****/
