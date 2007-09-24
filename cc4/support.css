@@ -94,6 +94,16 @@ margin-left: 7px;
   padding: 0 0.5em;
 }
 
+#donormap #mapinfo small {
+  font-size: 0.8em;
+  color: #767f76;
+}
+#donormap #mapinfo a {
+  color: #767f76;
+  text-decoration: underline;
+}
+
+#donormap #mapinfo a:hover { text-decoration:none; }
 
 #gmaptest p {
 	font-size: 200%;
