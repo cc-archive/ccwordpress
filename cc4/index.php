@@ -5,7 +5,7 @@
         <? /* Map system goes here */ ?>
         <div id="donormap">
           <iframe
-              src="http://labs.creativecommons.org/~paulproteus/mapp.html?data=http://labs.creativecommons.org/~paulproteus/results-icons.txt&zoom=1&center=25,-5"
+              src="http://tilecache.creativecommons.org/mvs.html?data=http://tilecache.creativecommons.org/locations.txt&zoom=1&center=25,-5"
               id="donormap"
               scrolling="no"
               marginwidth="0" marginheight="0"
