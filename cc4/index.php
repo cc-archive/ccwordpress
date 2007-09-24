@@ -17,7 +17,7 @@
             Locations and number of donations to the CC Campaign from around the world.
            </p>
            <p>No information, except your city, is used or shared from this map.</p>
-           <p><small>"Pushpin" icon by <a href="http://ordep.com/">Pedro Gordo</a>, CC BY 3.0</small></p>
+           <p><small>"Pushpin" icon by <a href="http://ordep.com/">Pedro Gordo</a>, <a href="http://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a></small></p>
           </div>
         </div>
       </div>
