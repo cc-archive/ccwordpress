@@ -9,7 +9,7 @@ Version: 4.0
 
 * { margin: 0; padding: 0; }
 
-body { background-color: #fff; color: #333; font: 75%/145% verdana, sans-serif; text-align: center; }
+body { background-color: #fff; color: #333; font: 12px verdana, sans-serif !important; line-height:145% !important; text-align: center; }
 
 .box { text-align: left; margin: 0 auto; width: 91%; min-width: 765px; max-width: 1000px; } /* replaces #wrapper */
 .content-box { float: left; padding-top: 15px;/* border-top: 1px solid #ddd;*/ margin-right: 1%; overflow: hidden; }
@@ -65,9 +65,10 @@ body { background-color: #fff; color: #333; font: 75%/145% verdana, sans-serif; 
 #footer { background-color: #f2f4f2; clear: both; margin-top: 40px; padding: 10px 0; color: #555; font-size: 90%; }
 #sub-footer { } /* + .box */
 
-h1, h2, h3 { line-height: 120%; font-size: 150%; font-family: Georgia, serif; }
-h2 { margin-top: 25px; line-height: 140%; margin-bottom: 12px; }
-h3 { font-size: 125%; margin-top: 18px; }
+h1, h2, h3 { line-height: 120%; font-family: Georgia, serif; }
+h1 { font-size: 180%; }
+h2 { margin-top: 25px; line-height: 140%; margin-bottom: 12px; font-size: 175% !important; }
+h3 { font-size: 150% !important; margin-top: 18px; }
 h4, .jurisdiction a:link { color: #773; font-size: 105%; font-weight: bold;}
 .jurisdictions h4 { display: inline; }
 a, a:link { text-decoration: none; color: #00b; }
@@ -96,7 +97,7 @@ blockquote { padding: 5px; margin: 5px; }
 .cc-actions span.option { color: #fff; font-size: 1.8em; font-weight: bold; margin-top: 15px; margin-bottom: 0 !important; padding: 0 !important; display: block; }
 .cc-actions img { margin-right: 10px; float: left; }
 a.cc-actions, a.cc-actions:link { display: block; float: right; width: 227px; margin: 0; padding: 10px 0 11px 10px; color: #fff; text-decoration: none; }
-a.cc-actions:hover { background: url('/images/header-main-hover-b.png') repeat-x bottom left; text-decoration: none; }
+a.cc-actions:hover, #header-main .active a:link { background: url('/images/header-main-hover-b.png') repeat-x bottom left; text-decoration: none; }
 
 
 #splash-menu h3 { display: inline; margin: 0 25px 0 0; }
