@@ -139,7 +139,7 @@ a.cc-actions:hover, #header-main .active a:link { background: url('/images/heade
 .block .excerpt { margin-left:  170px; }
 .block .comments { margin: 35px 0; }
 
-.rss img.country { float: right; width: 54px; margin: 0; padding: 0; }
+.rss img.country { float: right; width: 54px; margin: 0; padding: 0; border: 1px solid #555; }
 .rss .rss-title { margin-right: 64px; }
 .rss p { margin: 0; clear: both; }
 
