@@ -36,17 +36,19 @@ img {
 #header-wrapper {
 margin-top: 0;
 	background-color: #426000;
-	height: 94px;
 }
 
 #header-main {
 	margin-top: 0;
-	
+	margin-top: -4px;
+	padding-bottom: 0px !important;	
 	/* min-width */
 /*	width: expression( 
 	    document.body.clientWidth < 850 ? "850px" : "90%"
 	);
 */}
+
+#header-main .logo img { padding-top: 5px; }
 
 #splash {
 	font-weight: bold;
