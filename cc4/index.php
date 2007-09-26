@@ -4,7 +4,7 @@
 $campaign['initial'] = 15764.00;
 
 // total raised
-$campaign['current'] = file_get_contents('/home/bse/total.txt');
+$campaign['current'] = file_get_contents(dirname(__FILE__). '/../../../../therm_total/total.txt');
 
 //matched funding
 //($campaign['total'] < 20000) ? 
@@ -16,10 +16,9 @@ $campaign['current'] = file_get_contents('/home/bse/total.txt');
 $campaign['total'] = $campaign['current'] + $campaign['initial'];
 
 // figure out value for progress meter
-$campaign['css'] = ceil( ($campaign['total'] / 500000) * 200 );
+$campaign['css'] = ceil (($campaign['total'] / 500000.00) * 100);
 
 ?>
-
 
 <?php get_header(); ?>
 
@@ -58,10 +57,10 @@ $campaign['css'] = ceil( ($campaign['total'] / 500000) * 200 );
             			<a href="http://ccidonor-dev.civicactions.net/"><img src="/images/support/campaign.png" border="0"/></a>
           			<div id="campaign">
 	          			<div class="progress" onclick="window.location = 'http://ccidonor-dev.civicactions.net';">
-							     <span style="padding-right: 47%;">&nbsp;</span>
+							     <span style="padding-right: <?= $campaign['css'] ?>%;">&nbsp;</span>
 
 							    </div>
-								   <div class="results"><a href="http://ccidonor-dev.civicactions.net/">$250,000 / $500,000 by Dec 31</a></div>
+								   <div class="results"><a href="http://ccidonor-dev.civicactions.net/">$<?= $campaign['total'] ?> / $500,000 by Dec 31</a></div>
 							   </div>
 						<!--	   <ul><li><strong>Help us meet our goal</strong> of raising $500,000 before December 31st.</li></ul> -->
            		</div>
