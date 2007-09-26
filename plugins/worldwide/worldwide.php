@@ -10,7 +10,7 @@ class LicenseXML
     private $license_name_cmd = "details?license-uri";
 
     # Loads licenses.xml
-    function __construct($license_xml_filename) {
+    function __construct($license_xml_filename = ABS_PATH . 'license_xsl/licenses.xml') {
         $this->name_dom = new DomDocument();
         $this->dom = new DomDocument();
         $this->dom->load($license_xml_filename);
