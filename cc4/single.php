@@ -98,7 +98,7 @@ if (have_posts())  {
                               $l[name] = $license_xml->getLicenseName($l[uri]);
                               echo "<li><a href='$l[uri]'>$l[name]</a></li>\n";
                           }
-                      } ?>
+                      /* } */ ?>
                 </ul>
                 <p>Many thanks to all who contributed to the license-porting process. This page 
                 remains for reference.</p>
