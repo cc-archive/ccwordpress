@@ -9,7 +9,6 @@ if (have_posts())  {
 } ?>
 
 <?php get_header(); ?>
-<?php /* require(ABSPATH . WPINC . "/licenses.php"); */ ?>
     <?php
      // check if this single is a commoner or blog post
      in_category(7) ? $is_commoner = true : $is_commoner = false;
@@ -79,7 +78,7 @@ if (have_posts())  {
               <h4 class="meta"><?php the_author() ?>, <?php the_time('F jS, Y')?></h4>
 <? } ?>
 
-<? if ($is_worldwide_completed && $jurisdiction_code != "us") { ?>
+<? if ($is_worldwide_completed) { ?>
               <div class="licensebox" style="margin:14px;">
                 <p>The <? echo $jurisdiction_name ?> license has now been integrated 
                 into <a href="/license/?jurisdiction=<?php echo $jurisdiction_code ?>">the Creative 
