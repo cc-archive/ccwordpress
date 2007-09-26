@@ -1,19 +1,3 @@
-<?php
-/* keep around for future progress emeter usage
-// total raised*/
-$campaign['total'] = file_get_contents('/home/bse/total.txt');
-
-// real total including matched funding
-($campaign['total'] < 20000) ? 
-	$campaign['matched'] = $campaign['total'] * 2 :
-	$campaign['matched'] = $campaign['total'] + 20000;
-
-// figure out value for progress meter
-$campaign['css'] = ceil( ($campaign['matched'] / 50000) * 200 );
-
-?>
-
-
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html>

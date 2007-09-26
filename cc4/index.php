@@ -1,3 +1,26 @@
+<?php
+// thermometer code
+
+$campaign['initial'] = 15764.00;
+
+// total raised
+$campaign['current'] = file_get_contents('/home/bse/total.txt');
+
+//matched funding
+//($campaign['total'] < 20000) ? 
+//	$campaign['matched'] = $campaign['total'] * 2 :
+//	$campaign['matched'] = $campaign['total'] + 20000;
+
+// doing it this way because there will be
+// more maths later on - matched funding, cheque errors, etc.
+$campaign['total'] = $campaign['current'] + $campaign['initial'];
+
+// figure out value for progress meter
+$campaign['css'] = ceil( ($campaign['total'] / 500000) * 200 );
+
+?>
+
+
 <?php get_header(); ?>
 
     <div id="body">
