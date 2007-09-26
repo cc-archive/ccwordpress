@@ -1,7 +1,14 @@
 <?php
+/* 
+Plugin Name: Creative Commons International
+Plugin URI: http://creativecommons.org/worldwide/
+Description: Helper methods for /worldwide license engine integration.
+Version: 1.0
+Author: 
+Author URI: 
+*/
 
-class LicenseXML
-{
+class LicenseXML {
     private $dom;
     private $name_dom;
 
@@ -10,7 +17,11 @@ class LicenseXML
     private $license_name_cmd = "details?license-uri";
 
     # Loads licenses.xml
-    function __construct($license_xml_filename = ABS_PATH . 'license_xsl/licenses.xml') {
+    function __construct($license_xml_filename = '') {
+        if ($license_xml_filename == '') {
+            $license_xml_filename = dirname(__FILE__) . "/license_xsl/licenses.xml";
+        }
+
         $this->name_dom = new DomDocument();
         $this->dom = new DomDocument();
         $this->dom->load($license_xml_filename);
