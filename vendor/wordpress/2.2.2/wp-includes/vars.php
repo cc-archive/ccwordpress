@@ -1,24 +1,15 @@
 <?php
 
 // On which page are we ?
-if ( is_admin() ) {
-	// wp-admin pages are checked more carefully
-	preg_match('#/wp-admin/?(.*?)$#i', $PHP_SELF, $self_matches);
+if ( preg_match('#([^/]+\.php)$#', $PHP_SELF, $self_matches) ) {
 	$pagenow = $self_matches[1];
-	$pagenow = preg_replace('#\?.*?$#', '', $pagenow);
-	if ( '' === $pagenow || 'index' === $pagenow || 'index.php' === $pagenow ) {
-		$pagenow = 'index.php';
-	} else {
-		preg_match('#(.*?)(/|$)#', $pagenow, $self_matches);
-		$pagenow = strtolower($self_matches[1]);
-		if ( '.php' !== substr($pagenow, -4, 4) )
-			$pagenow .= '.php'; // for Options +Multiviews: /wp-admin/themes/index.php (themes.php is queried)
-	}
+} elseif ( strpos($PHP_SELF, '?') !== false ) {
+	$pagenow = explode('/', $PHP_SELF);
+	$pagenow = trim($pagenow[(sizeof($pagenow)-1)]);
+	$pagenow = explode('?', $pagenow);
+	$pagenow = $pagenow[0];
 } else {
-	if ( preg_match('#([^/]+\.php)([?/].*?)?$#i', $PHP_SELF, $self_matches) )
-		$pagenow = strtolower($self_matches[1]);
-	else
-		$pagenow = 'index.php';
+	$pagenow = 'index.php';
 }
 
 // Simple browser detection
