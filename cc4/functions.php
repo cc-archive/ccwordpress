@@ -2,6 +2,17 @@
 /* Helper functions for CC3 theme */
 /* Alex Roberts, 2006 */
 
+function cc_monetize($money, $delim = ",") {
+  $chunks = str_split(strrev(sprintf("%.0f", $money)), 3);
+  
+  $ized = "";
+  foreach($chunks as $chunk) {
+    $ized = $ized . $chunk . (((strlen($chunk) > 2)) ? $delim : "");
+  }
+  
+  return strrev($ized);
+}
+
 /* retrieve children pages, and parent breadcrumbs */
 /* FIXME: Bit of a hack at the moment. Needs a better memory of where teh user is */
 /* FIXME: Probably need to break into seperate functions. Works for the time being. */

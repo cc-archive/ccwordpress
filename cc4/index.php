@@ -60,7 +60,7 @@ $campaign['css'] = ceil (($campaign['total'] / 500000.00) * 100);
 							     <span style="padding-right: <?= $campaign['css'] ?>%;">&nbsp;</span>
 
 							    </div>
-								   <div class="results"><a href="http://ccidonor-dev.civicactions.net/">$<?= $campaign['total'] ?> / $500,000 by Dec 31</a></div>
+								   <div class="results"><a href="http://ccidonor-dev.civicactions.net/">$<?= cc_monetize($campaign['total']) ?> / $500,000 by Dec 31</a></div>
 							   </div>
 						<!--	   <ul><li><strong>Help us meet our goal</strong> of raising $500,000 before December 31st.</li></ul> -->
            		</div>
