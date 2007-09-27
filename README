@@ -32,7 +32,35 @@ USAGE NOTES
  * Featured Content and Commoners require an image upload for their post.
  * Featured Content requires the url for the content peice to be in the post 
    Excerpt textarea.
- 
+
+NOTES ON INSTALLING ON A LOCAL MACHINE FOR TESTING
+----------------------------------------------------
+There may be a time when it is wise, expedient, or necessary to check out a
+copy of ccwordpress in order to test something in a non-critical environment,
+perhaps on your personal machine in some subdirectory of the webroot.  Here
+are some pointers on getting that working.  Some things may be slightly
+different depending on what you are trying to do.  There may also be other
+steps that are missing here.  These are just to get you on the right path.
+
+1) svn checkout https://cctools.svn.sourceforge.net/svnroot/cctools/ccwordpress
+2) You'll need the database, so get that installed however you know to do it
+3) cd ccwordpress/trunk/www && cp wp-config.php.a2 wp-config.php.  Edit as
+   necessary.
+4) Perform these mysql operations:
+    UPDATE wp_options SET option_value = '<new url>' WHERE option_name = 'siteurl';
+    UPDATE wp_options SET option_value = '<new url>' WHERE option_name = 'home';
+5) cp -a ccwordpress/trunk/cc4 ccwordpress/trunk/www/wp-content/themes
+6) Navigate to http://<siteurl>/wp-admin/.  Login, goto Presentation->Themes,
+   and select the theme you just copied into the themes directory.
+5) Edit ccwordpress/trunk/www/.htaccess:
+    a) Set RewriteBase to the the proper (sub)dir of the webroot for your install
+	b) Remove the leading slash from all RewriteRules pointing to /index.php.
+	   this can be done in vi with :% s/ \/index\.php/ index\.php/g
+6) Edit the file ccwordpress/trunk/www/wp-content/themes/cc4/nav.php.
+   You must change the values in the $nav array to point to the correct
+   places for your installation.  I found it easiest to change, for example,
+   "path" => "/about/" to "path" => get_option('siteurl') . "/about/"
+----------------------------------------------------
 
 BUGS
  * RSS feeds for Featured Content don't work properly, some hacking of the feed
