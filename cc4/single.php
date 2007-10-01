@@ -46,7 +46,7 @@ if (have_posts())  {
 <? } else if ($is_worldwide) { ?>
 						<h3 class="category">
 							<a href="<?php echo get_settings('home') . "/" ?>worldwide?">
-								Creative Commons Worldwide
+								Creative Commons International 
 							</a>
 						</h3>
 <? } else if ($category_name == "weblog") { ?>
