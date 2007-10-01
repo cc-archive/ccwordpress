@@ -31,7 +31,7 @@ $is_international = true;
       <div id="content">
         <div id="main-content">
         	<div class="block" id="title">
-        		<h2>Worldwide</h2>
+        		<h2>International</h2>
         	</div>
           <div id="alpha" class="content-box">
            <div class="block page">
@@ -55,7 +55,7 @@ $is_international = true;
     }
     $img = "/images/international/$jurisdiction->code.png";
 ?>
-              <div class="ifloat"><a href="/worldwide/<?= $jurisdiction->code ?>/"><img class="flag" border="1" src="<?= $img ?>" alt="<?= $jurisdiction->name ?>"  /></a><br /><p><a href="/worldwide/<?= $jurisdiction->code ?>/"><?= $jurisdiction->name ?></a></p></div>
+              <div class="ifloat"><a href="/international/<?= $jurisdiction->code ?>/"><img class="flag" border="1" src="<?= $img ?>" alt="<?= $jurisdiction->name ?>"  /></a><br /><p><a href="/international/<?= $jurisdiction->code ?>/"><?= $jurisdiction->name ?></a></p></div>
 <?php } ?>
             </div>
             <br clear="all" />
@@ -72,7 +72,7 @@ $is_international = true;
     }
     $img = "/images/international/$jurisdiction->code.png";
 ?>
-              <div class="ifloat"><a href="/worldwide/<?= $jurisdiction->code ?>/"><img class="flag" border="1" src="<?= $img ?>" alt="<?= $jurisdiction->name ?>" /></a><br /><p><a href="/worldwide/<?= $jurisdiction->code ?>/"><?= $jurisdiction->name ?></a></p></div>
+              <div class="ifloat"><a href="/international/<?= $jurisdiction->code ?>/"><img class="flag" border="1" src="<?= $img ?>" alt="<?= $jurisdiction->name ?>" /></a><br /><p><a href="/international/<?= $jurisdiction->code ?>/"><?= $jurisdiction->name ?></a></p></div>
 <?php } ?>
             </div>
 <br clear="all" />
