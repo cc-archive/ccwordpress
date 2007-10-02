@@ -13,7 +13,7 @@ function cc_build_external_feed() {
   require_once "magpie/rss_fetch.inc";
   
   $feed = "http://planet.creativecommons.org/affiliates/rss20.xml";
- 	$entries = 5;
+ 	$entries = 8;
 	$wordcount = 25;
   // fetch the rss file
 	$rss = fetch_rss($feed);
