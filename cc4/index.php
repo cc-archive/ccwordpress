@@ -49,18 +49,18 @@ $campaign['css'] = ceil (($campaign['total'] / 500000.00) * 100);
            	<div class="block feature smallpad">
           		<div class="shome first">
           			<ul>
-          		   <li><a href="http://ccidonor-dev.civicactions.net/donate"><img src="/images/support/donate.png" border="0"/></a></li>
+          		   <li><a href="http://support.creativecommons.org/donate"><img src="/images/support/donate.png" border="0"/></a></li>
           		 	<li>Invest in the future of participatory culture<!--. Become a commoner--> by donating to CC today!<br/>&nbsp;</li>	
           		 	</ul>
           		</div>
           		<div class="shome thermo">
-            			<a href="http://ccidonor-dev.civicactions.net/"><img src="/images/support/campaign.png" border="0"/></a>
+            			<a href="http://support.creativecommons.org/"><img src="/images/support/campaign.png" border="0"/></a>
           			<div id="campaign">
-	          			<div class="progress" onclick="window.location = 'http://ccidonor-dev.civicactions.net';">
+	          			<div class="progress" onclick="window.location = 'http://support.creativecommons.org';">
 							     <span style="padding-right: <?= $campaign['css'] ?>%;">&nbsp;</span>
 
 							    </div>
-								   <div class="results"><a href="http://ccidonor-dev.civicactions.net/">$<?= cc_monetize($campaign['total']) ?> / $500,000 by Dec 31</a></div>
+								   <div class="results"><a href="http://support.creativecommons.org/">$<?= cc_monetize($campaign['total']) ?> / $500,000 by Dec 31</a></div>
 							   </div>
 						<!--	   <ul><li><strong>Help us meet our goal</strong> of raising $500,000 before December 31st.</li></ul> -->
            		</div>
