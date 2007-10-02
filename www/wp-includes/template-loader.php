@@ -32,9 +32,9 @@ if ( defined('WP_USE_THEMES') && constant('WP_USE_THEMES') ) {
 			add_filter('the_content', 'prepend_attachment');
 		include($template);
 		return;
-        # Workaround to make /worldwide/xx/ get the right template
-	} else if ( !is_category("worldwide") && in_category(21) && $template = get_single_template() ) {
-		# Category #21 is "worldwide"
+        # Workaround to make /international/xx/ get the right template
+	} else if ( !is_category("international") && in_category(21) && $template = get_single_template() ) {
+		# Category #21 is "international"
 		include($template);
 		exit;
 	} else if ( is_category() && $template = get_category_template()) {
