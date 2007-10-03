@@ -3,11 +3,12 @@
 /* Alex Roberts, 2006 */
 
 function cc_monetize($money, $delim = ",") {
+
   $chunks = str_split(strrev(sprintf("%.0f", $money)), 3);
   
   $ized = "";
   foreach($chunks as $chunk) {
-    $ized = $ized . $chunk . (((strlen($chunk) > 2)) ? $delim : "");
+    $ized = $ized . $chunk . (((strlen($chunk) > 2) && ($chunk != $chunks[count($chunks) -1])) ? $delim : "");
   }
   
   return strrev($ized);
