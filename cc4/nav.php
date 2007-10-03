@@ -6,7 +6,7 @@ $nav = array (
   array("name" => "Support",        "path" => "http://support.creativecommons.org"),
 /*  array("name" => "License",      "path" => "/license/"),*/
   array("name" => "Projects",       "path" => "/projects/"),
-  array("name" => "Participate",    "path" => "/participate/"),
+  array("name" => "Participate",    "path" => "http://wiki.creativecommons.org/"),
   array("name" => "International",  "path" => "/international/"),
   array("name" => "Contact",        "path" => "/contact/"),
 );
