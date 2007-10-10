@@ -78,6 +78,16 @@ if (have_posts())  {
               <h4 class="meta"><?php the_author() ?>, <?php the_time('F jS, Y')?></h4>
 <? } ?>
 
+<? if ($is_worldwide) { 
+
+     $license_xml = new LicenseXml();
+?>
+
+<div class="licensebox" style="margin:14px;">
+Visit the <a href="<?=$license_xml->getJurisdictionSite($jurisdiction_code)?>">jurisdiction site</a>.
+</div>
+<? } ?>
+
 <? if ($is_worldwide_completed) { ?>
               <div class="licensebox" style="margin:14px;">
                 <p>The <? echo $jurisdiction_name ?> license has now been integrated 
@@ -87,12 +97,6 @@ if (have_posts())  {
                 <p>The latest version of the licenses available for this jurisdiction are:</p>
                 <ul>
                   <?php
-                      /* $license_fname = ABSPATH . WPINC . "/licenses.xml";
-                      if (! file_exists($license_fname)) {
-                          echo "<li>Unknown</li>\n";
-                      } else {
-*/
-                          $license_xml = new LicenseXml(); // $license_fname);
                           $licenses = $license_xml->getLicensesCurrent($jurisdiction_code);
                           foreach ($licenses as $l) {
                               $l[name] = $license_xml->getLicenseName($l[uri]);
