@@ -90,6 +90,24 @@ class LicenseXML {
         }
         return $licenses;
     }
+
+
+    # Return the jursidiction homepage
+    function getJurisdictionSite($jurisdiction) {
+
+        # Query document
+        $xpath = new Domxpath($this->dom);
+	$result = $xpath->query("//jurisdictions/jurisdiction-info[@id='" . $jurisdiction . "']/uri");
+
+        foreach ($result as $j) {
+            // return the first one we find
+            return $j->textContent;
+        }
+
+        // not found; return empty string
+        return '';
+
+    } // getJurisdictionSite
     
     # Get a listing of the most current versions of all licenses for given jurisdiction
     function getLicensesCurrent($jurisdiction='-', $licenseclass='standard') {
