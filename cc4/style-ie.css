@@ -87,3 +87,7 @@ ul#navbar a span { padding-bottom: 0 !important; }
 
 #donormap #mapinfo p { font-size: 10px; font-weight:normal !important; }
 
+#sidebar #campaign .results {
+	left: -88%;
+}
+
