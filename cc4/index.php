@@ -1,38 +1,17 @@
-<?php
-// thermometer code
-
-$campaign['initial'] = 15764.00;
-
-// total raised
-$campaign['current'] = file_get_contents(dirname(__FILE__). '/../../../../therm_total/total.txt');
-
-//matched funding
-//($campaign['total'] < 20000) ? 
-//	$campaign['matched'] = $campaign['total'] * 2 :
-//	$campaign['matched'] = $campaign['total'] + 20000;
-
-// doing it this way because there will be
-// more maths later on - matched funding, cheque errors, etc.
-$campaign['total'] = $campaign['current'] + $campaign['initial'];
-
-// figure out value for progress meter
-$campaign['css'] = ceil (($campaign['total'] / 500000.00) * 100);
-
-?>
-
 <?php get_header(); ?>
 
     <div id="body">
       <div id="splash">
         <? /* Map system goes here */ ?>
-        <div id="donormap">
+                <div id="donormap">
           <iframe
-              src="http://tilecache.creativecommons.org/mvs.html?data=http://tilecache.creativecommons.org/locations.txt&zoom=1&center=25,-5"
+              src="http://tilecache.creativecommons.org/mvs.html?data=http://tilecache.creativecommons.org/locations.txt&center=25,0"
               id="donormap"
               scrolling="no"
               marginwidth="0" marginheight="0"
               frameborder="0">
           </iframe>
+
           <div id="mapinfo">
            <h5>2007 Donor Map</h5>
            <p>
@@ -40,6 +19,7 @@ $campaign['css'] = ceil (($campaign['total'] / 500000.00) * 100);
            </p>
            <p>No information, except your city, is used or shared from this map.</p>
            <p><small>"Pushpin" icon by <a href="http://pedrogordo.com">Pedro Gordo</a>, <a href="http://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a></small></p>
+
           </div>
         </div>
       </div>
@@ -57,11 +37,10 @@ $campaign['css'] = ceil (($campaign['total'] / 500000.00) * 100);
             			<a href="http://support.creativecommons.org/"><img src="/images/support/campaign.png" border="0"/></a>
           			<div id="campaign">
 	          			<div class="progress" onclick="window.location = 'http://support.creativecommons.org';">
-							     <span style="padding-right: <?= $campaign['css'] ?>%;">&nbsp;</span>
-
+							     <span>&nbsp;</span>
 							    </div>
-								   <div class="results"><a href="http://support.creativecommons.org/">$<?= cc_monetize($campaign['total']) ?> / $500,000 by Dec 31</a></div>
-							   </div>
+								  <div class="results"><a href="http://support.creativecommons.org/">$<?= cc_monetize(cc_progress_total()) ?> / $500,000 by Dec 31</a></div>
+							  </div>
 						<!--	   <ul><li><strong>Help us meet our goal</strong> of raising $500,000 before December 31st.</li></ul> -->
            		</div>
           		<div class="shome index-last">
@@ -83,9 +62,9 @@ $campaign['css'] = ceil (($campaign['total'] / 500000.00) * 100);
             <h4>CC News</h4>
 <?php // Get the last 5 posts in the blog category. ?>
 <?php // FIXME: perhaps make this configurable in theme settings...? ?>
-<?php query_posts('category_name=weblog&showposts=4'); ?>
-<?php if (have_posts())  { 
-  while (have_posts()) { the_post(); ?>
+<?php $blog_posts = new WP_Query('category_name=weblog&showposts=5'); ?>
+<?php if ($blog_posts->have_posts())  { 
+  while ($blog_posts->have_posts()) { $blog_posts->the_post(); ?>
             <div class="block blogged" id="post-<?php the_ID(); ?>">
               <h1 class="title">
                 <a href="<?php the_permalink() ?>">
@@ -106,7 +85,6 @@ $campaign['css'] = ceil (($campaign['total'] / 500000.00) * 100);
 	     <?php cc_build_external_feed(); ?>
 	    </div>
           </div>
-
 
 <?php get_sidebar(); ?>
 <?php get_footer(); ?>

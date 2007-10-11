@@ -24,9 +24,8 @@
   <?php } ?>
   
   <link href="<?php bloginfo('stylesheet_directory'); ?>/style.css?4.0" rel="stylesheet" type="text/css" />
-  <? if (is_home()) { ?>
   <link href="<?php bloginfo('stylesheet_directory'); ?>/support.css?4.0" rel="stylesheet" type="text/css" />
-  <? } ?>
+  <link href="http://creativecommons.org/includes/progress.css" rel="stylesheet" type="text/css" />
 
   <!--[if IE]><link rel="stylesheet" type="text/css" media="screen" href="<?php bloginfo('stylesheet_directory'); ?>/style-ie.css" /><![endif]-->
   
@@ -89,5 +88,7 @@
         <script type="text/javascript" src="/includes/jurisdictions.js"></script>
       </select>
     </div>
-    */ ?>
+    */ 
+    ?>
+    
 

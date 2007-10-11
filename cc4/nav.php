@@ -36,6 +36,7 @@ $nav = array (
         } 
         
         if (is_page() or is_single()) edit_post_link('<span>Edit this article</span>', '<li class="edit">', '</li>');
+       
         ?>
         
     </ul>

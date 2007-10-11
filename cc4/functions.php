@@ -2,6 +2,12 @@
 /* Helper functions for CC3 theme */
 /* Alex Roberts, 2006 */
 
+function cc_progress_total() {
+  $campaign_total = file_get_contents('http://creativecommons.org/includes/total.txt');
+  
+  return $campaign_total;
+}
+
 function cc_monetize($money, $delim = ",") {
 
   $chunks = str_split(strrev(sprintf("%.0f", $money)), 3);
