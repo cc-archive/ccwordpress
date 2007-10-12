@@ -84,7 +84,7 @@ function cc_build_external_feed() {
 }
 
 function cc_get_cat_archives($category, $type='', $limit='', $format='html', $before = '', $after = '', $show_post_count = false, $skip = '') {
-	global $month, $wpdb;
+	global $month, $wpdb, $wp_db_version;
 	
 	if ( '' == $type )
 		$type = 'monthly';
@@ -121,7 +121,30 @@ function cc_get_cat_archives($category, $type='', $limit='', $format='html', $be
 	$now = current_time('mysql');
 
 	if ( 'monthly' == $type ) {
-		$arcresults = $wpdb->get_results("SELECT DISTINCT YEAR(post_date) AS `year`, MONTH(post_date) AS `month`, count(ID) AS posts, category_nicename AS catname FROM $wpdb->posts, $wpdb->post2cat AS p2c, $wpdb->categories as cat WHERE post_date < '$now' AND post_date != '0000-00-00 00:00:00' AND post_status = 'publish' AND p2c.category_id = $category AND cat.cat_ID = p2c.category_id AND p2c.post_id = id GROUP BY YEAR(post_date), MONTH(post_date) ORDER BY post_date DESC" . $limit);
+	  if ($wp_db_version < 6124) { /* WP < 2.3 */
+  		$arcresults = $wpdb->get_results("
+    		SELECT DISTINCT YEAR(post_date) AS `year`, MONTH(post_date) AS `month`, count(ID) AS posts, category_nicename AS catname 
+    		FROM $wpdb->posts, $wpdb->post2cat AS p2c, $wpdb->categories as cat 
+    		WHERE post_date < '$now' AND post_date != '0000-00-00 00:00:00' 
+    		  AND post_status = 'publish' 
+    		  AND p2c.category_id = $category 
+    		  AND cat.cat_ID = p2c.category_id 
+    		  AND p2c.post_id = id 
+    		GROUP BY YEAR(post_date), MONTH(post_date) 
+    		ORDER BY post_date DESC" . $limit);
+    } else {  /* WP >= 2.3, important schema differences */
+      $arcresults = $wpdb->get_results("
+    		SELECT DISTINCT YEAR(post_date) AS `year`, MONTH(post_date) AS `month`, count(ID) AS posts, post_status, slug AS catname 
+    		FROM wp_posts, wp_terms, wp_term_relationships, wp_term_taxonomy 
+    		WHERE post_date < NOW() AND post_date != '0000-00-00 00:00:00' 
+    		  AND post_status = 'publish' 
+    		  AND wp_term_relationships.term_taxonomy_id  = $category 
+    		  AND wp_term_relationships.term_taxonomy_id = wp_terms.term_id
+    		  AND wp_term_relationships.object_id = id
+    		GROUP BY YEAR(post_date), MONTH(post_date) 
+    		ORDER BY post_date DESC" . $limit);
+    }
+    
 		if ( $arcresults ) {
 			$afterafter = $after;
 			foreach ( $arcresults as $arcresult ) {
@@ -133,7 +156,8 @@ function cc_get_cat_archives($category, $type='', $limit='', $format='html', $be
 				}
 				
 				$url = get_settings('home') . trailingslashit($daylink) . "$catname/$arcresult->year/$arcresult->month";
-				if ( $show_post_count ) {
+				//if ( $show_post_count ) {
+				if (0) {
 					$text = sprintf('%s %d', $month[zeroise($arcresult->month,2)], $arcresult->year);
 					$after = '&nbsp;('.$arcresult->posts.')' . $afterafter;
 				} else {
@@ -243,24 +267,28 @@ add_filter ('wp_title', "cc_page_title", 10, 2);
 /* convert category nicename to its respective id value */
 /* FIXME: This may actually exist in WP, feel free to replace if it does */
 function cc_cat_to_id($category_name) {
-	global $wpdb;
+	global $wpdb, $wp_db_version;
 	
-	return $wpdb->get_var("SELECT cat_ID FROM $wpdb->categories WHERE category_nicename = '$category_name';");
+  if ($wp_db_version < 6124) { /* WP < 2.3 */
+  	return $wpdb->get_var("SELECT cat_ID FROM $wpdb->categories WHERE category_nicename = '$category_name';");
+  } else { /* WP >= 2.3 */
+  	return $wpdb->get_var("SELECT term_id FROM $wpdb->terms WHERE slug = '$category_name';");
+  }
 }
 
 
 /* turns on the use of verbose rewrite output, instead of hacking classes.php */
 /* merged from Ryan Borens plugin - http://boren.nu/downloads/rewrite.phps    */
-function cc_verbose_rewrite() {
+/*function cc_verbose_rewrite() {
     global $wp_rewrite;
 
     $wp_rewrite->use_verbose_rules = true;
 }
 
 add_action('init', 'cc_verbose_rewrite');
-
+*/
 /* Custom rewrite rules to make the blog operate correctly, and appear totally seperate */
-function cc_custom_rewrites($wp_rewrite) {
+/*function cc_custom_rewrites($wp_rewrite) {
 	$rules = array(
 		'weblog/entry/([^/]+)' => 'index.php?category_name=blog&p=$1',
 		'weblog/archive/([0-9]{4})/([0-9]{1,2})/page/?([0-9]{1,})' => 'index.php?category_name=blog&year=$1&monthnum=$2&paged=$3',
@@ -273,6 +301,6 @@ function cc_custom_rewrites($wp_rewrite) {
 	
 	$wp_rewrite->rules = $rules + $wp_rewrite->rules;
 }
-add_filter ('generate_rewrite_rules', 'cc_custom_rewrites');
+add_filter ('generate_rewrite_rules', 'cc_custom_rewrites');*/
 
 ?>
