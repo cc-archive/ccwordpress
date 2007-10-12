@@ -39,8 +39,9 @@ if (have_posts())  {
 						<!--img src="images/info.png" align="left"/-->
 <? if ($is_commoner) {?>
 						<h3 class="category">
-							<a href="<?php echo get_settings('home') . "/" . $category_name; ?>">
-								<? $cat = get_the_category(); $cat = $cat[1]; echo $cat->cat_name; ?>
+						  <? $cat = get_the_category(); $cat = $cat[0]; ?>
+							<a href="<?php echo get_category_link ($cat->cat_ID); ?>">
+								<? echo $cat->cat_name; ?>
 							</a>
 						</h3>
 <? } else if ($is_worldwide) { ?>
