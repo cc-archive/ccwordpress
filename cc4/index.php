@@ -60,14 +60,19 @@
           </div>
           <div id="alpha" class="content-box">
             <h4>CC News</h4>
-<?php // Get the last 5 posts in the blog category. ?>
-<?php // FIXME: perhaps make this configurable in theme settings...? ?>
-<?php $blog_posts = new WP_Query('category_name=weblog&showposts=5'); ?>
-<?php if ($blog_posts->have_posts())  { 
-  while ($blog_posts->have_posts()) { $blog_posts->the_post(); ?>
+<?php // Get the latest 5 posts that aren't in the worldwide category. ?>
+<?php 
+  while (have_posts()) { 
+    the_post(); 
+    
+    static $count = 0;
+    if ($count == "5") { break; } else {
+      if (in_category(21) && !is_single()) continue; ?>
+    
             <div class="block blogged" id="post-<?php the_ID(); ?>">
               <h1 class="title">
                 <a href="<?php the_permalink() ?>">
+                  <?php if (in_category(4) || in_category(7)) { ?>Featured Commoner: <?php } ?>
                   <?php the_title(); ?>
                 </a>
               </h1>
@@ -75,7 +80,7 @@
               <?php the_content("Read More..."); ?>
               <?php edit_post_link('Edit', '', ''); ?>
             </div>
-<?php } }?>
+<?php $count++; } }?>
             <ul class="archives">
             <li><h3><a href="/weblog/archive">Weblog Archives</a></h3></li>
 	    <li><h3><a href="/weblog/rss">RSS Feed</a></h3></li></ul>
