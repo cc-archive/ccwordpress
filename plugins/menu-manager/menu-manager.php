@@ -52,7 +52,7 @@ $wpfm_location = get_option('siteurl') . '/wp-admin/edit.php?page=menu-manager.p
 
 
 function wpfm_create($menu_name, $current_class = true, $type = 'list', $no_ul = false, $select_first_option = array(), $select_attributes = "" ) {
-	global $wpdb, $wp_query;
+	global $wpdb, $wp_query, $wp_db_version;
 	global $wpfm_table, $wpfm_table_items, $ws_current_item, $wpfm_isfirst, $wpfm_insertscript;
 	
 	$ws_current_item['id'] = '';
@@ -90,7 +90,11 @@ function wpfm_create($menu_name, $current_class = true, $type = 'list', $no_ul =
 		if($meta_type == 'post' || $meta_type == 'page') {
 			$id = $wpdb->get_var("SELECT ID FROM $wpdb->posts WHERE post_name = '$slug'");	
 		} elseif ($meta_type == 'category') {
-			$id = $wpdb->get_var("SELECT cat_ID FROM $wpdb->categories WHERE category_nicename = '$slug'");	
+		  if ($wp_db_version < 6124) { /* WP < 2.3 */
+  			$id = $wpdb->get_var("SELECT cat_ID FROM $wpdb->categories WHERE category_nicename = '$slug'");	
+  		} else {
+  		  $id = $wpdb->get_var("SELECT term_id FROM $wpdb->terms WHERE slug = '$slug'");
+  		}
 		}
 		
 		if(isset($id)) {
@@ -922,12 +926,16 @@ function wpfm_selectlinks($item_type, $selected) {
 }
 
 function wpfm_categories($parent_id) {
-	global $wpdb;
+	global $wpdb, $wp_db_version;
 	global $user_level, $wpfm_location, $mm_item_types;
 	global $wpfm_table, $wpfm_table_items;
 	global $wpfm_list_links, $wpfm_level;
 	
-	$results = $wpdb->get_results("SELECT cat_ID as id, cat_name as name FROM $wpdb->categories WHERE category_parent = '$parent_id'");
+	if ($wp_db_version < 6124) { /* WP < 2.3 */
+  	$results = $wpdb->get_results("SELECT cat_ID as id, cat_name as name FROM $wpdb->categories WHERE category_parent = '$parent_id'");
+  } else {
+    $results = $wpdb->get_results("SELECT term_id as id, term_name as name FROM $wpdb->terms WHERE $wpdb->term_taxonomy.parent = '$parent_id' AND $wpdb->terms.term_id = $wpdb->term_taxonomy.term_id");
+  }
 	
 	if(!empty($results)) {
 		
