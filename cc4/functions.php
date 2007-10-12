@@ -51,7 +51,7 @@ function cc_page_parent ($page) {
 /* retrieve url of uploaded resource from its title */
 function cc_get_attachment ($id) {
 	global $wpdb;
- 	return $wpdb->get_row("SELECT guid AS uri, post_content AS descr FROM $wpdb->posts WHERE post_parent=$id AND post_status='inherit';");
+ 	return $wpdb->get_row("SELECT guid AS uri, post_content AS descr FROM $wpdb->posts WHERE post_parent=$id AND post_status='inherit' ORDER BY descr DESC LIMIT 1;");
 }
 
 function cc_get_attachment_desc ($title) {
