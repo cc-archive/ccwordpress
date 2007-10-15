@@ -223,7 +223,7 @@ add_filter ("category_link", "cc_fix_category_link", 10, 2);
 
 /* Don't need "/commoners/" either, unless we like having "/commoners/text/2006/05/foo-writer" */
 function cc_fix_menu_links($link, $item) {
-	if (strstr($link, "/commoners")) {
+	if (ereg("commoners\/[a-z]+", $link)) {
 		return str_replace ("/commoners/", "/", $link);
 	}
 	return $link;
@@ -245,16 +245,15 @@ function cc_fix_permalink($content, $post){
 	if (strstr($content, "/commoners/")) {
 		$cats = get_the_category($post->ID);
 		foreach ($cats as $cat) {
-			if($cat->category_nicename != "commoners"){
-				return "/" . $cat->category_nicename . "/" . $post->post_name; 
-			}
+			if(($cat->category_nicename == "commoners") && (count($cats) > 1)) continue;
+			return "/" . $cat->category_nicename . "/" . $post->post_name; 
 		}
 	}
   
 	return $content;
 } 
 add_filter ("post_link", "cc_fix_permalink", 11, 2);
-add_filter ("category_link", "cc_fix_permalink", 11, 2);
+//add_filter ("category_link", "cc_fix_permalink", 11, 2);
 
 /* Filter for page title modifications */
 function cc_page_title($title, $sep) {
