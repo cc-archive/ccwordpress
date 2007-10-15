@@ -40,7 +40,7 @@ if (have_posts())  {
 <? if ($is_commoner) {?>
 						<h3 class="category">
 						  <? $cat = get_the_category(); (count($cat) > 1) ? $cat = $cat[1] : $cat = $cat[0]; ?>
-							<a href="<?php echo get_category_link ($cat->cat_ID); ?>">
+							<a href="<?php echo get_option('home') . "/" . $cat->category_nicename . "/"; ?>">
 								<? echo $cat->cat_name; ?>
 							</a>
 						</h3>
