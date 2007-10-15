@@ -45,7 +45,7 @@
            		</div>
           		<div class="shome index-last">
           		 <ul>
-          		 <li><a href="http://ccidonor-dev.civicactions.net/store"><img src="/images/support/store.png" border="0"/></a></li>
+          		 <li><a href="http://support.creativecommons.org/store"><img src="/images/support/store.png" border="0"/></a></li>
           			<li>Support CC by buying our gear and showing the world around you that you support CC!</li>
           		 </ul>
          		</div>
