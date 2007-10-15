@@ -8,7 +8,7 @@
       <?php
       if (!is_home()) {
       ?>
-        <h4><br/>Campaign</h4>
+        <h4><br/>Fundraising Campaign</h4>
   			<div id="campaign">
     			<div class="progress" onclick="window.location = 'http://support.creativecommons.org';"><span>&nbsp;</span></div>
 				  <div class="results"><a href="http://support.creativecommons.org/">$<?= cc_monetize(cc_progress_total()) ?> / $500,000</a></div>
