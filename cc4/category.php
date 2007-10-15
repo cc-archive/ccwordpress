@@ -13,13 +13,13 @@
         <? if (is_month() || is_year()) { ?> 
         <h3 class="category">
           <a href="<?php echo get_settings('home') . "/" . $category_name; ?>">
-            <?= ucfirst($category_name) ?>
+            <? single_cat_title() ?>
           </a>
         </h3>
         <? }?>
         <h2>
           <img src="/images/categories/<?= $category_name ?>.png" alt="[ <?= $category_name ?> ]" border="0" class="category-icon"/>
-          <?php wp_title(''); ?>
+          <?php single_cat_title(); ?>
         </h2>
         <div id="blurb"><?php echo category_description() ?></div>
           </div>
