@@ -934,7 +934,7 @@ function wpfm_categories($parent_id) {
 	if ($wp_db_version < 6124) { /* WP < 2.3 */
   	$results = $wpdb->get_results("SELECT cat_ID as id, cat_name as name FROM $wpdb->categories WHERE category_parent = '$parent_id'");
   } else {
-    $results = $wpdb->get_results("SELECT term_id as id, term_name as name FROM $wpdb->terms WHERE $wpdb->term_taxonomy.parent = '$parent_id' AND $wpdb->terms.term_id = $wpdb->term_taxonomy.term_id");
+    $results = $wpdb->get_results("SELECT $wpdb->terms.term_id as id, name FROM $wpdb->terms, $wpdb->term_taxonomy WHERE $wpdb->term_taxonomy.parent = '$parent_id' AND $wpdb->terms.term_id = $wpdb->term_taxonomy.term_id");
   }
 	
 	if(!empty($results)) {
