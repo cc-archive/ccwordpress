@@ -253,7 +253,7 @@ function cc_fix_permalink($content, $post){
 	return $content;
 } 
 add_filter ("post_link", "cc_fix_permalink", 11, 2);
-//add_filter ("category_link", "cc_fix_permalink", 11, 2);
+add_filter ("category_link", "cc_fix_permalink", 11, 2);
 
 /* Filter for page title modifications */
 function cc_page_title($title, $sep) {
