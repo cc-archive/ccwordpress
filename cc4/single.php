@@ -82,12 +82,19 @@ if (have_posts())  {
 <? if ($is_worldwide) { 
 
      $license_xml = new LicenseXml();
+
+     $jurisdiction_site = $license_xml->getJurisdictionSite($jurisdiction_code);
+
+     if ($jurisdiction_site) {
 ?>
 
 <div class="licensebox" style="margin:14px;">
-Visit the <a href="<?=$license_xml->getJurisdictionSite($jurisdiction_code)?>">jurisdiction site</a>.
+Visit the jurisdiction site <a href="<?=$jurisdiction_site?>">here</a>.
 </div>
-<? } ?>
+<? 
+     }
+} 
+?>
 
 <? if ($is_worldwide_completed) { ?>
               <div class="licensebox" style="margin:14px;">

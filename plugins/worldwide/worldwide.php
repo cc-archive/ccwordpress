@@ -92,8 +92,8 @@ class LicenseXML {
     }
 
 
-    # Return the jursidiction homepage
-    function getJurisdictionSite($jurisdiction) {
+    # Return the jursidiction homepage as specified by licenses.xml
+    function _get_jurisdictions_site_from_xml($jurisdiction) {
 
         # Query document
         $xpath = new Domxpath($this->dom);
@@ -106,6 +106,19 @@ class LicenseXML {
 
         // not found; return empty string
         return '';
+
+    } // _get_jurisdiction_site_from_xml
+
+    # Return the jurisdiction site if it doesn't point to cc.org/international/
+    function getJurisdictionSite($jurisdiction) {
+
+       $site = $this->_get_jurisdiction_site_from_xml($jurisdiction);
+
+       if (strpos($site, "http://creativecommons.org/") !== 0) {
+          return $site;
+       } else {
+          return FALSE;
+       }
 
     } // getJurisdictionSite
     
