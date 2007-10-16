@@ -93,7 +93,7 @@ class LicenseXML {
 
 
     # Return the jursidiction homepage as specified by licenses.xml
-    function _get_jurisdictions_site_from_xml($jurisdiction) {
+    function _get_jurisdiction_site_from_xml($jurisdiction) {
 
         # Query document
         $xpath = new Domxpath($this->dom);
