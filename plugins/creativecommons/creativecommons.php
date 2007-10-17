@@ -15,6 +15,7 @@ function cc_build_external_feed() {
   $feed = "http://planet.creativecommons.org/affiliates/rss20.xml";
  	$entries = 8;
 	$wordcount = 25;
+	$charcount = 275;
   // fetch the rss file
 	$rss = fetch_rss($feed);
 	
@@ -69,9 +70,8 @@ function cc_build_external_feed() {
 				$date = date('Y-m-d', $item['date']);
 				$description = strip_tags($item['description']);
 
-				$description_test = explode(' ', $description);
-				if (count($description_test) > $wordcount)
-					$description = implode(' ', array_slice($description_test, 0, $wordcount)) . '&#8230;';
+				if (mb_strlen($description) > $charcount)
+					$description = mb_strimwidth ($description, 0, $charcount, '&#8230;');
 
 				$out .= "<div class=\"block blogged rss\">";
 				$out .= "<a href=\"/international/{$item['category']}\"><img src=\"/images/international/{$item['category']}.png\" alt=\"{$item['category']}\" class=\"country\"></a>";
