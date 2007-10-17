@@ -70,8 +70,8 @@ function cc_build_external_feed() {
 				$date = date('Y-m-d', $item['date']);
 				$description = strip_tags($item['description']);
 
-				if (mb_strlen($description) > $charcount)
-					$description = mb_strimwidth ($description, 0, $charcount, '&#8230;');
+				if (strlen($description) > $charcount)
+					$description = substr ($description, 0, $charcount);
 
 				$out .= "<div class=\"block blogged rss\">";
 				$out .= "<a href=\"/international/{$item['category']}\"><img src=\"/images/international/{$item['category']}.png\" alt=\"{$item['category']}\" class=\"country\"></a>";
