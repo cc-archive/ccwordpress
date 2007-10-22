@@ -28,7 +28,7 @@
             <div class="block" id="post-<?php the_ID(); ?>">
                 <? if ($attach = cc_get_attachment ($post->ID)) { ?>
               <a href="<?php the_permalink() ?>">
-		<img align="left" src="<?= $attach->uri ?>" alt="<?= $post->post_title ?>" title="<?= $post->post_title ?>" class="commoner" border="0"/>
+		<img align="left" src="<?= $attach->uri ?>" alt="<?= $post->post_title ?>" title="<?= $post->post_title ?>" class="commoner" border="0" width="150" />
               </a>
               <? } ?>
               <div class="excerpt">
