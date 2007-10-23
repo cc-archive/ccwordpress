@@ -64,7 +64,7 @@ if(isset($_REQUEST['addbutton'])) {
 	add_option('cforms'.$no.'_email', get_bloginfo('admin_email', 'cforms'));
 	add_option('cforms'.$no.'_fromemail', '"'.get_option('blogname').'" <wordpress@' . preg_replace('#^www\.#', '', strtolower($_SERVER['SERVER_NAME'])) . '>');
 	add_option('cforms'.$no.'_bcc', '');
-	add_option('cforms'.$no.'_header', __('A new submission (form: "{Form Name}")', 'cforms') . "\r\n============================================\r\n" . __('Submitted on: {Date}', 'cforms') . "\r\n" . __('Via: {Page}', 'cforms') . "\r\n" . __('By {IP} (visitor IP)', 'cforms') . ".\r\n" . ".\r\n" );		
+	add_option('cforms'.$no.'_header', __('A new submission (form: "{Form Name}")', 'cforms') . "\r\n============================================\r\n" . __('Submitted on: {Date}', 'cforms') . "\r\n" . __('Via: {Page}', 'cforms') . "\r\n" . __('By {IP} (visitor IP)', 'cforms') . ".\r\n" );		
 	add_option('cforms'.$no.'_header_html', '<p style="background:#fafafa; text-align:center; font:10px arial">' . __('a form has been submitted on {Date}, via: {Page} [IP {IP}]', 'cforms') . '</p>' );		
 	add_option('cforms'.$no.'_formdata', '1111');
 	add_option('cforms'.$no.'_space', '30');
