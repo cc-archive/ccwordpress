@@ -1,0 +1,175 @@
+/*
+ * Creative Commons 2007 Fundraising Campaign Widget (1.0)
+ *
+ */
+
+#cc_campaign_widget {
+  position: relative;
+  color: #fff;
+  text-align: center !important;
+/*  background: url('http://creativecommons.org/images/support/2007/widget-bg.png') top left no-repeat;*/
+  background: url('http://creativecommons.org/images/support/2007/widget-bg-end.png') top right no-repeat;
+  width:252px; 
+  height: 200px;
+  font: 11px verdana, sans-serif !important;
+  overflow: hidden !important;
+}
+
+* html #cc_campaign_widget{
+  /* craaaaaazy IE background stuff */
+  background-image: url('http://creativecommons.org/images/support/2007/widget-bg-end.gif');
+}
+
+#cc_campaign_widget_bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 235px;
+  height: 200px;
+  background: url('http://creativecommons.org/images/support/2007/widget-bg-wide.png') top left no-repeat;
+}
+
+* html #cc_campaign_widget_bg {
+  /* craaaaaazy IE background stuff */
+  background-image: url('http://creativecommons.org/images/support/2007/widget-bg-wide.gif');
+}
+
+#cc_campaign_widget a {
+  text-decoration: none !important;
+}
+#cc_campaign_widget a:hover {
+  text-decoration: underline !important;
+}
+
+#cc_campaign_widget form {
+  margin-bottom: 5px !important;
+  width: 242px;
+}
+
+* html #cc_campaign_widget form {
+  margin-top: 0px !important;
+}
+
+#cc_campaign_widget form input {
+  border: 1px solid #888;
+  background-color: transparent;
+}
+
+#cc_campaign_widget #campaign {
+  background-color: transparent;
+  padding-left: 5px;
+} 
+
+#cc_campaign_widget #campaign .progress {
+  width: 200px;
+  margin-left: 18px;
+}
+
+#cc_campaign_widget h1 {
+  font: 20px helvetica, arial, sans-serif !important;
+  font-weight: bold !important;
+  color: #fff !important;
+  padding-top: 10px !important;
+  margin: 0 0 0 10px !important;
+  height: 47px;
+  overflow: hidden !important;
+}
+
+* html #cc_campaign_widget h1 {
+  height: 60px;
+}
+
+#cc_campaign_widget p {
+  padding: 0 !important;
+  margin: 0 0 0 10px !important; 
+  height: 30px;
+  overflow: hidden;
+}
+
+* html #cc_campaign_widget p {
+  height: 26px;
+}
+
+#cc_campaign_widget h1, #cc_campaign_widget p {
+  width: 232px;
+}
+
+#cc_widget_get { 
+  text-align: right;
+  font-size: 9px;
+  margin: 3px 0;
+  padding-bottom: 6px;
+}
+
+#cc_widget_get a {
+  color: #688b78;
+}
+#cc_widget_get a:hover {
+  color: #c6d5cd;
+}
+
+
+
+/* Thin styles */
+
+#cc_campaign_widget.thin {
+  width: 130px !important;
+  font-size: 10px !important;
+}
+
+* html #cc_campaign_widget.thin {
+  width: 135px !important;
+}
+
+#cc_campaign_widget.thin #cc_campaign_widget_bg {
+  width: 113px !important;
+}
+
+#cc_campaign_widget.thin #campaign {
+  width: 120px;
+  margin-top: 10px;
+  margin-bottom: 0px !important;
+}
+
+* html #cc_campaign_widget.thin #campaign {
+  font-size: 9px;
+}
+
+#cc_campaign_widget.thin #campaign .progress{
+  width: 100px;
+  height: 15px;
+  margin-left: 8px;
+}
+#cc_campaign_widget.thin #campaign .progress span{
+  height: 13px;
+}
+
+#cc_campaign_widget.thin h1, #cc_campaign_widget.thin p, #cc_campaign_widget.thin form {
+  width: 110px;
+}
+
+#cc_campaign_widget.thin h1 {
+  font-size: 18px !important;
+}
+
+#cc_campaign_widget.thin p {
+  margin-right: 0 !important;
+}
+
+#cc_campaign_widget.thin form {
+  margin-left: 7px !important;
+  text-align: center;
+}
+
+#cc_campaign_widget.thin #cc_widget_donation {
+  width: 30px;
+}
+
+#cc_campaign_widget.thin #cc_widget_get {
+  width: 130px;
+  text-align: center; 
+}
+
+* html #cc_campaign_widget.thin #cc_widget_get {
+	width: 110px;
+}
