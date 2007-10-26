@@ -53,6 +53,7 @@
 #cc_campaign_widget form input {
   border: 1px solid #888;
   background-color: transparent;
+  color: #ddd;
 }
 
 #cc_campaign_widget #campaign {
@@ -166,7 +167,8 @@
 }
 
 #cc_campaign_widget.thin #cc_widget_get {
-  width: 130px;
+  width: 115px;
+  padding-left: 15px;
   text-align: center; 
 }
 
