@@ -110,6 +110,7 @@
 
 #cc_campaign_widget #campaign, #cc_campaign_widget #donors {
   display: none;
+  background-color: transparent;
   height: 49px;
   padding-left: 5px;
   padding-top: 5px;
