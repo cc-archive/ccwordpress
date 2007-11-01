@@ -67,7 +67,7 @@
     
     static $count = 0;
     if ($count == "5") { break; } else {
-      if (in_category(21) && !is_single()) continue; ?>
+      if ((in_category(21) && !is_single()) || (in_category(6))) { continue; }?>
     
             <div class="block blogged" id="post-<?php the_ID(); ?>">
               <h1 class="title">
