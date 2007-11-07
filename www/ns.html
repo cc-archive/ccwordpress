@@ -76,154 +76,155 @@
 
 <h3>Classes</h3>
 
-<div id="Work" instanceof="rdfs:Class">
+<div id="Work" about="#Work" instanceof="rdfs:Class">
     <h4 property="dc:title">Work</h4>
     <span property="dc:description">a potentially copyrightable work</span>
 </div>
 
-<div id="License" instanceof="rdfs:Class">
+<div id="License" about="#License" instanceof="rdfs:Class">
     <h4 property="dc:title">License</h4>
     <span property="dc:description">a set of requests/permissions to users of a Work, e.g. a copyright license, the public domain, information for distributors</span>
 </div>
 
-<div id="Jurisdiction" instanceof="rdfs:Class">
+<div id="Jurisdiction" about="#Jurisdiction" instanceof="rdfs:Class">
   <h4 property="dc:title">Jurisdiction</h4>
-  <span property="dc:description">the legal jursidiction of a license</span>
+  <span property="dc:description">the legal jurisdiction of a license</span>
 </div>
 
-<div id="Permission" instanceof="rdfs:Class">
+<div id="Permission" about="#Permission" instanceof="rdfs:Class">
     <h4 property="dc:title">Permission</h4>
     <span property="dc:description">an action that may or may not be allowed or desired</span>
 </div>
 
-<div id="Requirement" instanceof="rdfs:Class">
+<div id="Requirement" about="#Requirement" instanceof="rdfs:Class">
     <h4 property="dc:title">Requirement</h4>
     <span property="dc:description">an action that may or may not be requested of you</span>
 </div>
 
-<div id="Prohibition" instanceof="rdfs:Class">
+<div id="Prohibition" about="#Prohibition" instanceof="rdfs:Class">
     <h4 property="dc:title">Prohibition</h4>
     <span property="dc:description">something you may be asked not to do</span>
 </div>
 
 <h3>Permissions</h3>
 
-<div id="Reproduction" instanceof="cc:Permission">
+<div id="Reproduction" about="#Reproduction" instanceof="cc:Permission">
     <h4 property="dc:title">Reproduction</h4>
     <span property="dc:description">making multiple copies</span>
 </div>
 
-<div id="Distribution" instanceof="cc:Permission">
+<div id="Distribution" about="#Distribution" instanceof="cc:Permission">
     <h4 property="dc:title">Distribution</h4>
     <span property="dc:description">distribution, public display, and publicly performance</span>
 </div>
 
-<div id="DerivativeWorks" instanceof="cc:Permission">
+<div id="DerivativeWorks" about="#DerivativeWorks" instanceof="cc:Permission">
     <h4 property="dc:title">Derivative Works</h4>
     <span property="dc:description">distribution of derivative works</span>
 </div>
 
-<div id="HighIncomeNationUse" instanceof="cc:Permission">
+<div id="HighIncomeNationUse" about="#HighIncomeNationUse" 
+     instanceof="cc:Permission">
     <h4 property="dc:title">High Income Nation Use</h4>
     <span property="dc:description">use in a non-developing country</span>
 </div>
 
-<div id="Sharing" instanceof="cc:Permission">
+<div id="Sharing" about="#Sharing" instanceof="cc:Permission">
     <h4 property="dc:title">Sharing</h4>
     <span property="dc:description">permits commercial derivatives, but only non-commercial distribution</span>
 </div>
 
 <h3>Requirements</h3>
 
-<div id="Notice" instanceof="cc:Requirement">
+<div id="Notice" about="#Notice" instanceof="cc:Requirement">
     <h4 property="dc:title">copyright notices</h4>
     <span property="dc:description">copyright and license notices be kept intact</span>
 </div>
 
-<div id="Attribution" instanceof="cc:Requirement">
+<div id="Attribution" about="#Attribution" instanceof="cc:Requirement">
     <h4 property="dc:title">attribution</h4>
     <span property="dc:description">credit be given to copyright holder and/or author</span>
 </div>
 
-<div id="ShareAlike" instanceof="cc:Requirement">
+<div id="ShareAlike" about="#ShareAlike" instanceof="cc:Requirement">
     <h4 property="dc:title">share alike</h4>
     <span property="dc:description">derivative works be licensed under the same terms as the original work</span>
 </div>
 
-<div id="SourceCode" instanceof="cc:Requirement">
+<div id="SourceCode" about="#SourceCode" instanceof="cc:Requirement">
     <h4 property="dc:title">source code</h4>
     <span property="dc:description">source code (the preferred form for making modifications) must be provided for all derivative works</span>
 </div>
 
 <h3>Prohibitions</h3>
 
-<div id="CommercialUse" instanceof="cc:Prohibition">
+<div id="CommercialUse" about="#CommercialUse" instanceof="cc:Prohibition">
     <h4 property="dc:title">commercial use</h4>
     <span property="dc:description">exercising rights for commercial purposes</span>
 </div>
 
 <h3>Properties</h3>
 
-<div id="license" instanceof="rdf:Property">
+<div id="license" about="#license" instanceof="rdf:Property">
     <h4>cc:license</h4>
     A <a rel="rdfs:domain" href="#Work">Work</a> <span property="dc:title">has license</span> a <a rel="rdfs:range" href="#License">License</a>. <br />
     (a <a rel="rdfs:subPropertyOf" href="http://purl.org/dc/terms/license">subproperty of dc:license</a>, <a rel="owl:sameAs" href="http://www.w3.org/1999/xhtml/vocab#license">the same as xhtml:license</a>)
 </div>
 
-<div id="permits" instanceof="rdf:Property">
+<div id="permits" about="#permits" instanceof="rdf:Property">
     <h4>cc:permits</h4>
     A <a rel="rdfs:domain" href="#License">License</a> <span property="dc:title">permits</span> a <a rel="rdfs:range" href="#Permission">Permission</a>.
 </div>
 
-<div id="requires" instanceof="rdf:Property">
+<div id="requires" about="#requires" instanceof="rdf:Property">
     <h4>cc:requires</h4>
     A <a rel="rdfs:domain" href="#License">License</a> <span property="dc:title">requires</span> a <a rel="rdfs:range" href="#Requirement">Requirement</a>.
 </div>
 
-<div id="prohibits" instanceof="rdf:Property">
+<div id="prohibits" about="#prohibits" instanceof="rdf:Property">
     <h4>cc:prohibits</h4>
     A <a rel="rdfs:domain" href="#License">License</a> <span property="dc:title">prohibits</span> a <a rel="rdfs:range" href="#Prohibition">Prohibition</a>.
 </div>
 
-<div id="morePermissions" instanceof="rdf:Property">
+<div id="morePermissions" about="#morePermissions" instanceof="rdf:Property">
   <h4>cc:morePermissions</h4>
   The <a rel="rdfs:range" href="http://www.w3.org/2000/01/rdf-schema#Resource">
     URL</a> where additional permissions or alternative licenses for a
   <a rel="rdfs:domain" href="#Work">Work</a> are available.
 </div>
 
-<div id="attributionName" instanceof="rdf:Property">
+<div id="attributionName" about="#attributionName" instanceof="rdf:Property">
   <h4>cc:attributionName</h4>
   The name the creator of a <a rel="rdfs:domain" href="#Work">Work</a> would
   like used when attributing re-use.
 </div>
 
-<div id="attributionURL" instanceof="rdf:Property">
+<div id="attributionURL" about="#attributionURL" instanceof="rdf:Property">
   <h4>cc:attributionURL</h4>
   The <a rel="rdfs:range" href="http://www.w3.org/2000/01/rdf-schema#Resource">
     URL</a> the creator of a <a rel="rdfs:domain" href="#Work">Work</a> would
   like used when attributing re-use.
 </div>
 
-<div id="jurisdiction" instanceof="rdf:Property">
+<div id="jurisdiction" about="#jurisdiction" instanceof="rdf:Property">
   <h4>cc:jurisdiction</h4>
   A <a rel="rdfs:domain" href="#License">License</a> may have a 
   <span property="dc:title">jurisdiction</span>, as defined by
   <a rel="rdfs:range" href="#Jurisdiction">Jursidictions</a>.
 </div>
 
-<div id="legalcode" instanceof="rdf:Property">
+<div id="legalcode" about="#legalcode" instanceof="rdf:Property">
   <h4>cc:legalcode</h4>
   The <a rel="rdfs:range" href="http://www.w3.org/2000/01/rdf-schema#Resource">
     URL</a> of the legal text of a <a rel="rdfs:domain" 
 				      href="#License">License</a>.
 </div>
 
-<div id="deprecatedOn" instanceof="rdf:Property">
+<div id="deprecatedOn" about="#deprecatedOn" instanceof="rdf:Property">
   <h4>cc:deprecatedOn</h4>
   A <a rel="rdfs:domain" href="#License">License</a> may be deprecated;
   provides the <a rel="rdfs:range" 
-		  href="http://www.w3.org/2000/01/rdf-schema#Literal">date</a> 
+	  href="http://www.w3.org/2001/XMLSchema-datatypes#date">date</a> 
   <span property="dc:title">deprecated on</span>.
 </div>
 
