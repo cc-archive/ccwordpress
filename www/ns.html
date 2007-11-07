@@ -4,6 +4,7 @@
       xmlns:dc="http://purl.org/dc/elements/1.1/"
       xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
       xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+      xmlns:owl="http://www.w3.org/2002/07/owl#"
       xmlns:cc="http://creativecommons.org/ns#"
       xml:lang="en-US" lang="en-US">
  <head profile="RDFA_PROFILE">
@@ -85,6 +86,11 @@
     <span property="dc:description">a set of requests/permissions to users of a Work, e.g. a copyright license, the public domain, information for distributors</span>
 </div>
 
+<div id="Jurisdiction" instanceof="rdfs:Class">
+  <h4 property="dc:title">Jurisdiction</h4>
+  <span property="dc:description">the legal jursidiction of a license</span>
+</div>
+
 <div id="Permission" instanceof="rdfs:Class">
     <h4 property="dc:title">Permission</h4>
     <span property="dc:description">an action that may or may not be allowed or desired</span>
@@ -123,8 +129,8 @@
 </div>
 
 <div id="Sharing" instanceof="cc:Permission">
-    <h4 property="dc:title">sharing</h4>
-    <span property="dc:description">noncommercial distribution, permits commercial derivatives, but only non-commercial distribution</span>
+    <h4 property="dc:title">Sharing</h4>
+    <span property="dc:description">permits commercial derivatives, but only non-commercial distribution</span>
 </div>
 
 <h3>Requirements</h3>
@@ -161,7 +167,7 @@
 <div id="license" instanceof="rdf:Property">
     <h4>cc:license</h4>
     A <a rel="rdfs:domain" href="#Work">Work</a> <span property="dc:title">has license</span> a <a rel="rdfs:range" href="#License">License</a>. <br />
-    (a <a rel="rdfs:subPropertyOf" href="http://purl.org/dc/terms/license">subproperty of dc:license</a>)
+    (a <a rel="rdfs:subPropertyOf" href="http://purl.org/dc/terms/license">subproperty of dc:license</a>, <a rel="owl:sameAs" href="http://www.w3.org/1999/xhtml/vocab#license">the same as xhtml:license</a>)
 </div>
 
 <div id="permits" instanceof="rdf:Property">
@@ -177,6 +183,48 @@
 <div id="prohibits" instanceof="rdf:Property">
     <h4>cc:prohibits</h4>
     A <a rel="rdfs:domain" href="#License">License</a> <span property="dc:title">prohibits</span> a <a rel="rdfs:range" href="#Prohibition">Prohibition</a>.
+</div>
+
+<div id="morePermissions" instanceof="rdf:Property">
+  <h4>cc:morePermissions</h4>
+  The <a rel="rdfs:range" href="http://www.w3.org/2000/01/rdf-schema#Resource">
+    URL</a> where additional permissions or alternative licenses for a
+  <a rel="rdfs:domain" href="#Work">Work</a> are available.
+</div>
+
+<div id="attributionName" instanceof="rdf:Property">
+  <h4>cc:attributionName</h4>
+  The name the creator of a <a rel="rdfs:domain" href="#Work">Work</a> would
+  like used when attributing re-use.
+</div>
+
+<div id="attributionURL" instanceof="rdf:Property">
+  <h4>cc:attributionURL</h4>
+  The <a rel="rdfs:range" href="http://www.w3.org/2000/01/rdf-schema#Resource">
+    URL</a> the creator of a <a rel="rdfs:domain" href="#Work">Work</a> would
+  like used when attributing re-use.
+</div>
+
+<div id="jurisdiction" instanceof="rdf:Property">
+  <h4>cc:jurisdiction</h4>
+  A <a rel="rdfs:domain" href="#License">License</a> may have a 
+  <span property="dc:title">jurisdiction</span>, as defined by
+  <a rel="rdfs:range" href="#Jurisdiction">Jursidictions</a>.
+</div>
+
+<div id="legalcode" instanceof="rdf:Property">
+  <h4>cc:legalcode</h4>
+  The <a rel="rdfs:range" href="http://www.w3.org/2000/01/rdf-schema#Resource">
+    URL</a> of the legal text of a <a rel="rdfs:domain" 
+				      href="#License">License</a>.
+</div>
+
+<div id="deprecatedOn" instanceof="rdf:Property">
+  <h4>cc:deprecatedOn</h4>
+  A <a rel="rdfs:domain" href="#License">License</a> may be deprecated;
+  provides the <a rel="rdfs:range" 
+		  href="http://www.w3.org/2000/01/rdf-schema#Literal">date</a> 
+  <span property="dc:title">deprecated on</span>.
 </div>
 
 
