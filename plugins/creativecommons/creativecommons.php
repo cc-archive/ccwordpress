@@ -150,7 +150,10 @@ function cc_get_cat_archives($category, $type='', $limit='', $format='html', $be
 			foreach ( $arcresults as $arcresult ) {
 				//$url	= get_month_link($arcresult->year,	$arcresult->month);
 				if ($category == 1) {
-					$catname = "weblog/archive";
+					# START nkinkade mods
+					#$catname = "weblog/archive";
+					$catname = "weblog";
+					# END nkinkade mods
 				} else {
 					$catname = $arcresult->catname;
 				}
@@ -252,7 +255,9 @@ function cc_fix_permalink($content, $post){
   
 	return $content;
 } 
-add_filter ("post_link", "cc_fix_permalink", 11, 2);
+# START nkinkade mods
+#add_filter ("post_link", "cc_fix_permalink", 11, 2);
+# END nkinkade mods
 //add_filter ("category_link", "cc_fix_permalink", 11, 2);
 
 /* Filter for page title modifications */
