@@ -9,11 +9,11 @@
 
 #cc_campaign_widget {
   position: relative;
-  color: #fff;
+  color: #fff !important;
   text-align: center !important;
   background: url('http://creativecommons.org/images/support/2007/widget-bg-end.png') top right no-repeat;
-  width:252px; 
-  height: 200px;
+  width:252px !important; 
+  height: 200px !important;
   font: 11px verdana, sans-serif !important;
   overflow: hidden !important;
 }
@@ -37,7 +37,17 @@
   background-image: url('http://creativecommons.org/images/support/2007/widget-bg-wide.gif');
 }
 
+#cc_campaign_widget_bg_logo {
+  position: absolute;
+  top: 0px;
+  left: 0;
+  width: 235px;
+  height: 200px;
+  background: url('http://creativecommons.org/images/support/2007/widget-logo-big.png') 10px 15px no-repeat;
+}
+
 #cc_campaign_widget a {
+  color: #ddd !important;
   text-decoration: none !important;
 }
 #cc_campaign_widget a:hover {
@@ -68,8 +78,7 @@
   padding-top: 10px !important;
   margin: 10px 0 0 20px !important;
   width: 143px;
-  height: 38px;
-  background: url('http://creativecommons.org/images/support/2007/widget-logo-big.png') top left no-repeat;
+  height: 35px;
 }
 #cc_campaign_widget h1 span { display: none; }
 
@@ -80,16 +89,17 @@
 #cc_campaign_widget p {
   padding: 0 !important;
   margin: 0 0 0 10px !important; 
-  height: 30px;
-  overflow: hidden;
+  height: 30px !important;
+  overflow: hidden !important;
+  font-size: 11px !important;
 }
 
 * html #cc_campaign_widget p {
-  height: 26px;
+  height: 26px !important;
 }
 
 #cc_campaign_widget h1, #cc_campaign_widget p {
-  width: 232px;
+  width: 232px !important;
 }
 
 #cc_widget_get { 
@@ -110,12 +120,12 @@
 
 #cc_campaign_widget #campaign, #cc_campaign_widget #donors {
   display: none;
-  background-color: transparent;
   height: 49px;
   padding-left: 5px;
   padding-top: 5px;
   margin-bottom: 10px;
   text-align: center;
+  background-color: transparent;
 }
 
 #cc_campaign_widget #campaign {
@@ -189,8 +199,12 @@
   width: 135px !important;
 }
 
-#cc_campaign_widget.thin #cc_campaign_widget_bg {
+#cc_campaign_widget.thin #cc_campaign_widget_bg, #cc_campaign_widget.thin #cc_campaign_widget_bg_logo {
   width: 113px !important;
+}
+
+#cc_campaign_widget.thin #cc_campaign_widget_bg_logo {
+  background: url('http://creativecommons.org/images/support/2007/widget-logo-small.png') 8px 10px no-repeat;
 }
 
 #cc_campaign_widget.thin #campaign, #cc_campaign_widget.thin #donors {
@@ -209,8 +223,8 @@
 }
 
 #cc_campaign_widget.thin #campaign .progress{
-  width: 100px;
-  height: 15px;
+  width: 100px !important;
+  height: 15px !important;
   margin-left: 8px;
 }
 #cc_campaign_widget.thin #campaign .progress span{
@@ -218,14 +232,14 @@
 }
 
 #cc_campaign_widget.thin h1 {
-  width: 107px;
+  width: 107px !important;
   height: 26px;
-  background-image: url('http://creativecommons.org/images/support/2007/widget-logo-small.png');
+  /*background-image: url('http://creativecommons.org/images/support/2007/widget-logo-small.png');*/
   margin-left: 12px !important;
 }
 
 #cc_campaign_widget.thin p, #cc_campaign_widget.thin form {
-  width: 110px;
+  width: 110px !important;
 }
 
 #cc_campaign_widget.thin p {
@@ -239,14 +253,14 @@
 }
 
 #cc_campaign_widget.thin #cc_widget_donation {
-  width: 30px;
+  width: 30px !important;
 }
 
 #cc_campaign_widget.thin #cc_widget_get {
-  width: 130px;
+  width: 130px !important;
   text-align: center; 
 }
 
 * html #cc_campaign_widget.thin #cc_widget_get {
-	width: 110px;
+	width: 110px !important;
 }
