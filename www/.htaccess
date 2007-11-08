@@ -24,6 +24,12 @@
 # Catch any old permalinks that point to long, ugly post names.  The
 # CC Permalink Mapper will get this request and redirect the user accordingly.
     RewriteRule ^([a-z-]+)/\d{4}/\d{2}/(.+?)/?$ /index.php?post_name=$2&category=$1&roflcopter [L,QSA]
+
+# Map the namespace document and schema URLs
+
+    RewriteRule ^ns$ /rdf/ns.html [L]
+    RewriteRule ^schema.rdf$ /rdf/schema.rdf [L]
+
 </IfModule>
 
 ##############################################################################
