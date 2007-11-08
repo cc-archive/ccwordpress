@@ -82,7 +82,10 @@
             </div>
 <?php $count++; } }?>
             <ul class="archives">
-            <li><h3><a href="/weblog/archive">Weblog Archives</a></h3></li>
+	    <!-- START nkinkade mods -->
+            <!--<li><h3><a href="/weblog/archive">Weblog Archives</a></h3></li>-->
+            <li><h3><a href="/weblog">Weblog Archives</a></h3></li>
+	    <!-- END nkinkade mods -->
 	    <li><h3><a href="/weblog/rss">RSS Feed</a></h3></li></ul>
 	    </div>
 	    <div id="beta" class="content-box">

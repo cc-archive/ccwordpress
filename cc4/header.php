@@ -27,8 +27,8 @@
   <link href="<?php bloginfo('stylesheet_directory'); ?>/support.css?4.0" rel="stylesheet" type="text/css" />
   <link href="http://creativecommons.org/includes/progress.css?<?= rand() ?>" rel="stylesheet" type="text/css" />
 
-  <!--[if IE]><link rel="stylesheet" type="text/css" media="screen" href="<?php bloginfo('stylesheet_directory'); ?>/style-ie.css" /><![endif]-->
-  
+  <!--[if IE ]><link rel="stylesheet" type="text/css" media="screen" href="<?php bloginfo('stylesheet_directory'); ?>/style-ie.css" /><![endif]-->
+  <!--[if gte IE 6]><link rel="stylesheet" type="text/css" media="screen" href="<?php bloginfo('stylesheet_directory'); ?>/style-ie7.css" /><![endif]--> 
   <?php /* wp_get_archives('type=monthly&format=link'); */ ?>
   <script src="/includes/icommons.js" type="text/javascript"></script>
   <?php wp_head(); ?>
