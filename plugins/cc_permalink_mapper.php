@@ -19,7 +19,8 @@ Author URI: http://creativecommons.org
  */
 $cc_pl_rewrites = array(
 	array("\/weblog\/\d{4}\/\d{2}\/\d{2}\/", "/weblog/entry/"),
-	array("\/press-releases\/\d{4}\/\d{2}\/\d{2}\/", "/press-releases/entry/")
+	array("\/press-releases\/\d{4}\/\d{2}\/\d{2}\/", "/press-releases/entry/"),
+	array("\/commoners\/\d{4}\/\d{2}\/\d{2}\/", "/weblog/entry/")
 );
 
 # Since we go changing it around, this variable will simply keep track
@@ -28,10 +29,7 @@ $cc_orginal_request_uri = $_SERVER['REQUEST_URI'];
 
 add_action("init", "cc_mangle_request");
 add_filter("wp_footer", "cc_rewrite_request_uri_notify");
-add_filter("the_permalink", "cc_rewrite_permalink");
-# This link is needed
 add_filter("post_link", "cc_rewrite_permalink");
-
 
 /**
  * Sometimes Wordpress decides what page to display based on both the query
@@ -83,6 +81,9 @@ function cc_rewrite_permalink($link) {
 			return $rewritten_link;
 		}
 	}
+
+	# If nothing was changed, then just return the original link	
+	return $link;
 
 }
 
