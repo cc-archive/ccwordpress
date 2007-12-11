@@ -1,0 +1,79 @@
+<h1>WordPress Versioning Plugin v19.2 Beta Install</h1>
+
+<h2>Installing</h2>
+
+<p>
+
+<?php
+
+	global $wpdb, $table_prefix;
+	
+	$wpdb->version_ids = $table_prefix . 'version_ids';	
+	$wpdb->versions = $table_prefix . 'versions';	
+	 
+//****************************************//
+//**  Create $wpdb->email_list table     **// 
+//****************************************//
+
+$sql = "CREATE TABLE $wpdb->version_ids (
+  			post_ID bigint(20) NOT NULL default '0',
+  			current_post_version mediumint(12) NOT NULL default '0',
+  			PRIMARY KEY  (post_ID)
+			)";
+       
+echo "Creating table: $wpdb->version_ids...<br />";
+mysql_query( $sql );
+
+if (!$sql) {
+	  echo "Could not successfully run query ($sql) from DB: " . mysql_error();
+		exit;
+		}
+
+$sql = "CREATE TABLE $wpdb->versions (
+			  ID bigint(20) unsigned NOT NULL auto_increment,
+			  post_ID bigint(20) unsigned NOT NULL default '0',
+			  post_version int(12) NOT NULL default '0',
+			  post_author int(4) NOT NULL default '0',
+			  post_date datetime NOT NULL default '0000-00-00 00:00:00',
+			  post_date_gmt datetime NOT NULL default '0000-00-00 00:00:00',
+			  post_content longtext NOT NULL,
+			  post_title text NOT NULL,
+			  post_category int(4) NOT NULL default '0',
+			  post_excerpt text NOT NULL,
+			  post_status enum('publish','draft','private','static','object') NOT NULL default 'publish',
+			  comment_status enum('open','closed','registered_only') NOT NULL default 'open',
+			  ping_status enum('open','closed') NOT NULL default 'open',
+			  post_password varchar(20) NOT NULL default '',
+			  post_name varchar(200) NOT NULL default '',
+			  to_ping text NOT NULL,
+			  pinged text NOT NULL,
+			  post_modified datetime NOT NULL default '0000-00-00 00:00:00',
+			  post_modified_gmt datetime NOT NULL default '0000-00-00 00:00:00',
+			  post_content_filtered text NOT NULL,
+			  post_parent int(11) NOT NULL default '0',
+			  guid varchar(255) NOT NULL default '',
+			  menu_order int(11) NOT NULL default '0',
+			  PRIMARY KEY  (ID),
+			  KEY post_name (post_name),
+			  KEY post_status (post_status)
+			)";
+
+echo "Creating table: $wpdb->versions...<br />";
+mysql_query( $sql );
+
+if (!$sql) {
+	  echo "Could not successfully run query ($sql) from DB: " . mysql_error();
+		exit;
+		}
+
+else {
+?>
+</p>
+
+<p>
+<em>Finished!</em>
+<br /><br />
+You should now remove install.php from your server.
+</p>
+
+<?php }  ?>

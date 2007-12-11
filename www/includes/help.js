@@ -13,7 +13,7 @@ YAHOO.cc.help.init_help_item = function(help_anchor) {
 
     // create the new panel and position it
     var new_panel = new YAHOO.widget.Panel(help_id, 
-{close: false, visible: false, draggable: false, width:200,
+{close: false, visible: false, draggable: false, width:250,
  effect:{effect:YAHOO.widget.ContainerEffect.FADE,duration:0.35} } ); 
 
     var link_region = YAHOO.util.Dom.getRegion(link_id);

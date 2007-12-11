@@ -224,6 +224,13 @@
 		li.more {
 					background: url("/images/deed/more.png") 0 0 no-repeat;
 		}
+
+                li.notice {
+                                        background: url("/images/deed/notice.png") 0 0 no-repeat;
+                }
+                li.src {
+                                        background: url("/images/deed/src.png") 0 0 no-repeat;
+                }
 		
 		li a {
 			color: #0000ff;

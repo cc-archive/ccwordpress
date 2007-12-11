@@ -134,6 +134,7 @@ a.cc-actions:hover, #header-main .active a:link { background: url('/images/heade
 .block img.feature { display: block; }
 .block img.commoner { margin-right: 10px; margin-left: 0; padding: 3px; border: 1px solid #e3e3e3; }
 .block ul, .block ol { margin-left: 20px; margin-bottom: 15px; }
+.block li { padding-bottom: 10px; }
 .block ol ol { list-style-type: lower-roman; }
 .block li { padding-bottom: 10px; }
 .block .publish-pics { float: left; margin-right: 10px; margin-bottom: 25px; padding: 3px; border: 1px solid #ccc; }

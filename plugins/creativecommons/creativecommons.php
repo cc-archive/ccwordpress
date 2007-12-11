@@ -15,6 +15,7 @@ function cc_build_external_feed() {
   $feed = "http://planet.creativecommons.org/affiliates/rss20.xml";
  	$entries = 8;
 	$wordcount = 25;
+	$charcount = 275;
   // fetch the rss file
 	$rss = fetch_rss($feed);
 	
@@ -69,9 +70,8 @@ function cc_build_external_feed() {
 				$date = date('Y-m-d', $item['date']);
 				$description = strip_tags($item['description']);
 
-				$description_test = explode(' ', $description);
-				if (count($description_test) > $wordcount)
-					$description = implode(' ', array_slice($description_test, 0, $wordcount)) . '&#8230;';
+				if (strlen($description) > $charcount)
+					$description = substr ($description, 0, $charcount);
 
 				$out .= "<div class=\"block blogged rss\">";
 				$out .= "<a href=\"/international/{$item['category']}\"><img src=\"/images/international/{$item['category']}.png\" alt=\"{$item['category']}\" class=\"country\"></a>";
@@ -150,7 +150,10 @@ function cc_get_cat_archives($category, $type='', $limit='', $format='html', $be
 			foreach ( $arcresults as $arcresult ) {
 				//$url	= get_month_link($arcresult->year,	$arcresult->month);
 				if ($category == 1) {
-					$catname = "weblog/archive";
+					# START nkinkade mods
+					#$catname = "weblog/archive";
+					$catname = "weblog";
+					# END nkinkade mods
 				} else {
 					$catname = $arcresult->catname;
 				}
@@ -223,7 +226,7 @@ add_filter ("category_link", "cc_fix_category_link", 10, 2);
 
 /* Don't need "/commoners/" either, unless we like having "/commoners/text/2006/05/foo-writer" */
 function cc_fix_menu_links($link, $item) {
-	if (strstr($link, "/commoners")) {
+	if (ereg("commoners\/[a-z]+", $link)) {
 		return str_replace ("/commoners/", "/", $link);
 	}
 	return $link;
@@ -245,16 +248,17 @@ function cc_fix_permalink($content, $post){
 	if (strstr($content, "/commoners/")) {
 		$cats = get_the_category($post->ID);
 		foreach ($cats as $cat) {
-			if($cat->category_nicename != "commoners"){
-				return "/" . $cat->category_nicename . "/" . $post->post_name; 
-			}
+			if(($cat->category_nicename == "commoners") && (count($cats) > 1)) continue;
+			return "/" . $cat->category_nicename . "/" . $post->post_name; 
 		}
 	}
   
 	return $content;
 } 
-add_filter ("post_link", "cc_fix_permalink", 11, 2);
-add_filter ("category_link", "cc_fix_permalink", 11, 2);
+# START nkinkade mods
+#add_filter ("post_link", "cc_fix_permalink", 11, 2);
+# END nkinkade mods
+//add_filter ("category_link", "cc_fix_permalink", 11, 2);
 
 /* Filter for page title modifications */
 function cc_page_title($title, $sep) {
