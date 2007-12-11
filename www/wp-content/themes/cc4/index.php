@@ -67,7 +67,7 @@
     
     static $count = 0;
     if ($count == "5") { break; } else {
-      if (in_category(21) && !is_single()) continue; ?>
+      if ((in_category(21) && !is_single()) || (in_category(6))) { continue; }?>
     
             <div class="block blogged" id="post-<?php the_ID(); ?>">
               <h1 class="title">
@@ -82,7 +82,10 @@
             </div>
 <?php $count++; } }?>
             <ul class="archives">
-            <li><h3><a href="/weblog/archive">Weblog Archives</a></h3></li>
+	    <!-- START nkinkade mods -->
+            <!--<li><h3><a href="/weblog/archive">Weblog Archives</a></h3></li>-->
+            <li><h3><a href="/weblog">Weblog Archives</a></h3></li>
+	    <!-- END nkinkade mods -->
 	    <li><h3><a href="/weblog/rss">RSS Feed</a></h3></li></ul>
 	    </div>
 	    <div id="beta" class="content-box">

@@ -18,7 +18,12 @@
 <?php while (have_posts()) { 
   the_post(); ?>
             <div class="block" id="post-<?php the_ID(); ?>">
-              <h1 class="title"><a href="<? the_permalink() ?>"><?the_title()?></a></h1>
+              <h1 class="title">
+                <a href="<? the_permalink() ?>">
+                 <?php if (in_category(4) || in_category(7)) { ?>Featured Commoner: <?php } ?> 
+                 <?the_title()?>
+                </a>
+              </h1>
               <h4 class="meta"><?php the_author() ?>, <?php the_time('F jS, Y')?></h4>
               <div class="clearer"></div>
               <?php the_content("Read More..."); ?>
