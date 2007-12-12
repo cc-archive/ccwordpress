@@ -5,10 +5,40 @@
 	}
 
 	.yui-module .bd th {
+	    width: 40%;
 	    text-align:right;
+	}
+
+	.yui-module .bd td {
+	    padding-left: 20px;
 	}
 
 	.yui-module .bd tr {
 	    vertical-align:top;
 	    font-family:sans-serif;
+	    margin-bottom: 20px;
 	}
+
+	.yui-module .bd .form-row {
+		clear: both;
+		padding-top: 10px !important;
+		width: 100%;
+	}
+
+	.yui-module .bd .form-question {
+		width: 30%;
+		text-align: right;
+		font-weight: bold;
+		font-size: 105%;
+		float: left;
+	}
+
+	.yui-module .bd .form-answer {
+		float: left;
+		width: 57%;
+		padding-left: 2%;
+	}
+	.yui-module .bd .form-answer input {
+		width: 100%;
+	}
+
