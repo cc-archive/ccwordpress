@@ -1,124 +1,114 @@
-      // CC-Zero
-      YAHOO.namespace("cc.zero");
+// CC-Zero
+YAHOO.namespace("cc.zero");
 
-      YAHOO.cc.zero.show_dedication = function(e) {
+YAHOO.cc.zero.show_dedication = function(e) {
 
-        YAHOO.cc.zero.pnlAssertion.hide();
-        YAHOO.cc.zero.pnlDedication.show();
-
-      } // show_dedication
-
-
-      YAHOO.cc.zero.show_assertion = function(e) {
-
-        YAHOO.cc.zero.pnlDedication.hide();
-        YAHOO.cc.zero.pnlAssertion.show();
-
-      } // show_assertion
+    YAHOO.cc.zero.pnlAssertion.hide();
+    YAHOO.cc.zero.pnlDedication.show();
+    
+} // show_dedication
 
 
-      function conn_test(e) {
+YAHOO.cc.zero.show_assertion = function(e) {
+	
+    YAHOO.cc.zero.pnlDedication.hide();
+    YAHOO.cc.zero.pnlAssertion.show();
+    
+} // show_assertion
 
-        document.getElementById('dedication-html').value = 'foo';
+YAHOO.cc.zero.dedication_consent = function() {
+    // return true if the user has checked the "consent" checkbox
 
-      } // conn_test
+    return document.getElementById('confirm_dedication').checked;
 
-      YAHOO.cc.zero.dedication_consent = function() {
-         // return true if the user has checked the "consent" checkbox
+} // consent
 
-         return document.getElementById('confirm_dedication').checked;
+YAHOO.cc.zero.assertion_consent = function() {
+    // return true if the user has checked the "consent" checkbox
 
-      } // consent
+    return document.getElementById('confirm_assertion').checked;
 
-      YAHOO.cc.zero.assertion_consent = function() {
-         // return true if the user has checked the "consent" checkbox
+} // consent
 
-         return document.getElementById('confirm_assertion').checked;
+YAHOO.cc.zero.update_assertion = function(e) {
 
-      } // consent
+    if (YAHOO.cc.zero.assertion_consent()) {
+	// post the fields, get the HTML+RDFa
 
-      YAHOO.cc.zero.update_assertion = function(e) {
+	var assertion_form = document.getElementById('form-assertion');
+	YAHOO.util.Connect.setForm(assertion_form);
 
-         if (YAHOO.cc.zero.assertion_consent()) {
-            // post the fields, get the HTML+RDFa
+	var callback = {
+	    success : function(o) {
+		document.getElementById('assertion-html').value = o.responseText;
+		document.getElementById('assertion-preview').innerHTML = o.responseText;
+	    },
 
-            var assertion_form = document.getElementById('form-assertion');
-            YAHOO.util.Connect.setForm(assertion_form);
+	    failure : function(o) { alert(o.statusText) },
+	};
 
-            var callback = {
-                success : function(o) {
-                    document.getElementById('assertion-html').value =
-                o.responseText;
-                },
+	var conn = YAHOO.util.Connect.asyncRequest('GET', 
+					     '/license/get-rdfa', callback);
 
-                failure : function(o) { alert(o.statusText) },
-                };
+    }
 
-            var conn = YAHOO.util.Connect.asyncRequest('GET', 
-                       '/license/get-rdfa', callback);
+} // update_dedication
 
-         }
+YAHOO.cc.zero.update_dedication = function(e) {
 
-      } // update_dedication
+    if (YAHOO.cc.zero.dedication_consent()) {
+	// post the fields, get the HTML+RDFa
 
-      YAHOO.cc.zero.update_dedication = function(e) {
+	var dedication_form = document.getElementById('form-dedication');
+	YAHOO.util.Connect.setForm(dedication_form);
 
-         if (YAHOO.cc.zero.dedication_consent()) {
-            // post the fields, get the HTML+RDFa
+	var callback = {
+	    success : function(o) {
+		document.getElementById('dedication-html').value = o.responseText;
+		document.getElementById('dedication-preview').innerHTML = o.responseText;
+	    },
 
-            var dedication_form = document.getElementById('form-dedication');
-            YAHOO.util.Connect.setForm(dedication_form);
+	    failure : function(o) { alert(o.statusText) },
+	};
 
-            var callback = {
-                success : function(o) {
-                    document.getElementById('dedication-html').value =
-                o.responseText;
-                },
+	var conn = YAHOO.util.Connect.asyncRequest('GET', 
+					      '/license/get-rdfa', callback);
 
-                failure : function(o) { alert(o.statusText) },
-                };
+    }
 
-            var conn = YAHOO.util.Connect.asyncRequest('GET', 
-                       '/license/get-rdfa', callback);
+} // update_dedication
 
-         }
+YAHOO.cc.zero.init = function() {
 
-      } // update_dedication
+    // init the two UI panels
+    YAHOO.cc.zero.pnlDedication = new YAHOO.widget.Module("dedication_ui", 
+                                                          {visible:false,});
+    YAHOO.cc.zero.pnlDedication.render();
 
-      YAHOO.cc.zero.init = function() {
+    YAHOO.cc.zero.pnlAssertion = new YAHOO.widget.Module("assertion_ui",
+                                                         {visible:false,});
 
-        // init the two UI panels
-        YAHOO.cc.zero.pnlDedication = new YAHOO.widget.Module(
-                           "dedication_ui", 
-                            {visible:false,} 
-                           );
-        YAHOO.cc.zero.pnlDedication.render();
+    YAHOO.cc.zero.pnlAssertion.render();
 
-        YAHOO.cc.zero.pnlAssertion = new YAHOO.widget.Module(
-                           "assertion_ui", 
-                            {visible:false,} 
-                           );
+    // init the two path buttons
+    var pathButtonGroup = new YAHOO.widget.ButtonGroup("pathbuttongroup");
+    pathButtonGroup.getButton(0).addListener("click", 
+					     YAHOO.cc.zero.show_dedication);
+    pathButtonGroup.getButton(1).addListener("click", 
+					     YAHOO.cc.zero.show_assertion);
 
-        YAHOO.cc.zero.pnlAssertion.render();
-
-        // init the two path buttons
-        var pathButtonGroup = new YAHOO.widget.ButtonGroup("pathbuttongroup");
-        pathButtonGroup.getButton(0).addListener("click", 
-            YAHOO.cc.zero.show_dedication);
-        pathButtonGroup.getButton(1).addListener("click", 
-            YAHOO.cc.zero.show_assertion);
-
-        // add change listeners for the form elements
-        YAHOO.util.Event.addListener(
+    // add change listeners for the form elements
+    YAHOO.util.Event.addListener(
            YAHOO.util.Dom.getElementsByClassName("form-field",
            "input", document.getElementById("form-dedication")),
            "change", YAHOO.cc.zero.update_dedication); 
 
-        YAHOO.util.Event.addListener(
+    YAHOO.util.Event.addListener(
            YAHOO.util.Dom.getElementsByClassName("form-field",
            "input", document.getElementById("form-assertion")),
            "change", YAHOO.cc.zero.update_assertion); 
 
-      } // init
+} // init
 
-      YAHOO.util.Event.onDOMReady(YAHOO.cc.zero.init);
+// hook for initialization
+YAHOO.util.Event.onDOMReady(YAHOO.cc.zero.init);
