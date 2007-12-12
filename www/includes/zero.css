@@ -1,0 +1,14 @@
+	.yui-module .hd { 
+	    font-size: 150%;
+	    color: #FFF;
+	    background-color: #43594a; 
+	}
+
+	.yui-module .bd th {
+	    text-align:right;
+	}
+
+	.yui-module .bd tr {
+	    vertical-align:top;
+	    font-family:sans-serif;
+	}
