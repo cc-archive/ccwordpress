@@ -231,6 +231,12 @@
                 li.src {
                                         background: url("/images/deed/src.png") 0 0 no-repeat;
                 }
+                li.nolaw {
+                                        background: url("/images/deed/nolaw.png") 0 0 no-repeat;
+                }
+                li.scnorms{
+                                        background: url("/images/deed/scnorms.png") 0 0 no-repeat;
+                }
 		
 		li a {
 			color: #0000ff;

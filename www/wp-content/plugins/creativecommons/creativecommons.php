@@ -133,16 +133,23 @@ function cc_get_cat_archives($category, $type='', $limit='', $format='html', $be
     		GROUP BY YEAR(post_date), MONTH(post_date) 
     		ORDER BY post_date DESC" . $limit);
     } else {  /* WP >= 2.3, important schema differences */
-      $arcresults = $wpdb->get_results("
-    		SELECT DISTINCT YEAR(post_date) AS `year`, MONTH(post_date) AS `month`, count(ID) AS posts, post_status, slug AS catname 
-    		FROM wp_posts, wp_terms, wp_term_relationships, wp_term_taxonomy 
-    		WHERE post_date < NOW() AND post_date != '0000-00-00 00:00:00' 
-    		  AND post_status = 'publish' 
-    		  AND wp_term_relationships.term_taxonomy_id  = $category 
-    		  AND wp_term_relationships.term_taxonomy_id = wp_terms.term_id
-    		  AND wp_term_relationships.object_id = id
-    		GROUP BY YEAR(post_date), MONTH(post_date) 
-    		ORDER BY post_date DESC" . $limit);
+        $getcats_sql = sprintf("
+                SELECT YEAR(wp_posts.post_date) AS year, MONTH(wp_posts.post_date) AS month,
+                        count(wp_posts.ID) AS posts, wp_posts.post_status, wp_terms.slug AS catname
+                FROM wp_posts INNER JOIN wp_term_relationships ON wp_posts.ID = wp_term_relationships.object_id
+                        INNER JOIN wp_term_taxonomy ON wp_term_relationships.term_taxonomy_id = wp_term_taxonomy.term_taxonomy_id
+                        INNER JOIN wp_terms on wp_term_taxonomy.term_id = wp_terms.term_id
+                WHERE wp_term_taxonomy.term_id = '7'
+                        AND wp_posts.post_date < NOW()
+                        AND wp_posts.post_date <> '0000-00-00 00:00:00'
+                        AND wp_posts.post_status = 'publish'
+                GROUP BY year, month
+                ORDER BY wp_posts.post_date DESC
+                %s
+                ",
+                $limit
+        );
+        $arcresults = $wpdb->get_results($getcats_sql);
     }
     
 		if ( $arcresults ) {
