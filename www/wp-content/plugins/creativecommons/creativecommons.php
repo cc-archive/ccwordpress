@@ -139,7 +139,7 @@ function cc_get_cat_archives($category, $type='', $limit='', $format='html', $be
                 FROM wp_posts INNER JOIN wp_term_relationships ON wp_posts.ID = wp_term_relationships.object_id
                         INNER JOIN wp_term_taxonomy ON wp_term_relationships.term_taxonomy_id = wp_term_taxonomy.term_taxonomy_id
                         INNER JOIN wp_terms on wp_term_taxonomy.term_id = wp_terms.term_id
-                WHERE wp_term_taxonomy.term_id = '7'
+                WHERE wp_term_taxonomy.term_id = '%s'
                         AND wp_posts.post_date < NOW()
                         AND wp_posts.post_date <> '0000-00-00 00:00:00'
                         AND wp_posts.post_status = 'publish'
@@ -147,6 +147,7 @@ function cc_get_cat_archives($category, $type='', $limit='', $format='html', $be
                 ORDER BY wp_posts.post_date DESC
                 %s
                 ",
+                $category,
                 $limit
         );
         $arcresults = $wpdb->get_results($getcats_sql);
