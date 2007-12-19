@@ -8,6 +8,8 @@ Author: Alex Roberts <alex@creativecommons.org>
 Author URI: 
 */
 
+require_once "creativecommons-admin.php";
+
 /* As seen in http://freeculture.org:8080/svn/wordpress-theme/trunk/front_page/feeds_chapter.php */
 function cc_build_external_feed() {
   require_once "magpie/rss_fetch.inc";
