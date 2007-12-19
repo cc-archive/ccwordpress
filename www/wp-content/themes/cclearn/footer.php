@@ -6,18 +6,17 @@
       <div id="sub-footer" class="box">
         <ul>
           <li><a href="#top">Top</a>&nbsp;&nbsp;&nbsp;&nbsp;</li>
-          <li><a href="/weblog">Blog</a></li>
+          <li><a href="/">Home</a></li>
           <li><a href="/contact">Contact</a></li>
           <li>
           <h4><br/>The Commons</h4>
 <ul>
   <li><a href="http://creativecommons.org/">Creative Commons</a></li>
-  <li><img src="/images/commons/sc.png"> <a href="http://sciencecommons.org/">Science Commons</a></li>
-  <li><img src="/images/commons/cci.png"> <a href="http://creativecommons.org/worldwide/">ccInternational</a></li>
-  <li><img src="/images/commons/learn.png"> <a href="http://learn.creativecommons.org/">ccLearn</a></li>
-  <li><img src="/images/commons/labs.png"> <a href="http://labs.creativecommons.org/">ccLabs</a></li>
-  <li><img src="/images/commons/mix.png"> <a href="http://ccmixter.org/">ccMixter</a></li>
-  <li><img src="/images/commons/ic.png"> <a href="http://icommons.org/">iCommons</a></li>
+  <li><a href="http://sciencecommons.org/">Science Commons</a></li>
+  <li><a href="http://creativecommons.org/worldwide/">ccInternational</a></li>
+  <li><a href="http://labs.creativecommons.org/">ccLabs</a></li>
+  <li><a href="http://ccmixter.org/">ccMixter</a></li>
+  <li><a href="http://icommons.org/">iCommons</a></li>
 </ul>
           </li>
         </ul>
