@@ -11,15 +11,21 @@ Author URI:
 require_once "creativecommons-admin.php";
 
 /* As seen in http://freeculture.org:8080/svn/wordpress-theme/trunk/front_page/feeds_chapter.php */
-function cc_build_external_feed() {
+function cc_build_external_feed($feedid = 1, $entries = 8, $charcount = 300) {
   require_once "magpie/rss_fetch.inc";
+  global $cc_db_rss_table;
+  global $wpdb;
   
-  $feed = "http://planet.creativecommons.org/affiliates/rss20.xml";
- 	$entries = 8;
-	$wordcount = 25;
-	$charcount = 275;
+  $feed = $wpdb->get_var("SELECT feed_url FROM $cc_db_rss_table WHERE id=" . $wpdb->escape($feedid) . ";");
+  if (!$feed) {
+    echo "<strong>Error:</strong> Feed id '$feedid' not found in db.";
+    return;
+  }
+  
   // fetch the rss file
 	$rss = fetch_rss($feed);
+	
+	$wordcount = 25;
 	
 	// parse through each entry
 	foreach($rss->items as $item) {
@@ -317,5 +323,9 @@ add_action('init', 'cc_verbose_rewrite');
 	$wp_rewrite->rules = $rules + $wp_rewrite->rules;
 }
 add_filter ('generate_rewrite_rules', 'cc_custom_rewrites');*/
+
+
+/* Plugin installation, set up DB table for rss feeding */
+register_activation_hook( __FILE__, 'cc_plugin_activate' );
 
 ?>
