@@ -8,7 +8,7 @@
 $cc_db_version = "1";
 $cc_db_rss_table = $wpdb->prefix . "cc_rss_feeds";
 
-
+/* On first activation create rss feeds table, insert International Planet CC */
 function cc_plugin_activate () {
   global $wpdb;
   global $cc_db_version;
@@ -47,6 +47,7 @@ function cc_plugin_add_pages() {
     add_options_page('CC Settings', 'CC Settings', 'manage_options', __FILE__, 'cc_manage_options');
 }
 
+/* Options -> CC Settings page in WP admin */
 function cc_manage_options() {
   global $post_msg;
     global $wpdb;
@@ -70,7 +71,7 @@ function cc_manage_options() {
     $action = "Update";
     $submit_action = "update";
     
-    $feed = $wpdb->get_row("SELECT * FROM $cc_db_rss_table WHERE id={$_REQUEST['feed_id']};");
+    $feed = $wpdb->get_row("SELECT * FROM $cc_db_rss_table WHERE id=" . $wpdb->escape($_REQUEST['feed_id']) . ";");
     $feed_id = $feed->id;
     $feed_name = $feed->name;
     $feed_url = $feed->url;
