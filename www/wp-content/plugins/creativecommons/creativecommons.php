@@ -16,7 +16,7 @@ function cc_build_external_feed($feedid = 1, $entries = 8, $charcount = 300) {
   global $cc_db_rss_table;
   global $wpdb;
   
-  $feed = $wpdb->get_var("SELECT feed_url FROM $cc_db_rss_table WHERE id=" . $wpdb->escape($feedid) . ";");
+  $feed = $wpdb->get_var("SELECT url FROM $cc_db_rss_table WHERE id=" . $wpdb->escape($feedid) . ";");
   if (!$feed) {
     echo "<strong>Error:</strong> Feed id '$feedid' not found in db.";
     return;
