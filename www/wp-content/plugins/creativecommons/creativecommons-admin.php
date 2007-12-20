@@ -26,7 +26,7 @@ function cc_plugin_activate () {
     dbDelta($sql);  
     
     $feed_name = "Planet CC";
-    $feed_url = "http://planet.creativecommons.org/affiliates/rss20.xml";
+    $feed_url = "http://planet.creativecommons.org/jurisdictions/rss20.xml";
     $insert = "INSERT INTO " . $cc_db_rss_table . " (name, url) " .
             "VALUES ('" . $wpdb->escape($feed_name) . "','" . $wpdb->escape($feed_url) . "')";
     $results = $wpdb->query( $insert );
