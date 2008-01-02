@@ -124,6 +124,14 @@ a.cc-actions:hover, #header-main .active a:link { background: url('/images/heade
 #main-content #searchform input {
   font-size: 130%;
  }
+ 
+#main-content #beta #searchform input {
+  font-size: 100%;
+}
+
+#main-content #beta #searchform input#s {
+  width: 60%;
+}
 
 #searchform input#s { 
   font-weight: bold;
