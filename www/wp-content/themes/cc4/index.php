@@ -1,56 +1,9 @@
 <?php get_header(); ?>
 
     <div id="body">
-      <div id="splash">
-        <? /* Map system goes here */ ?>
-                <div id="donormap">
-          <iframe
-              src="http://tilecache.creativecommons.org/mvs.html?data=http://tilecache.creativecommons.org/locations.txt&center=25,0"
-              id="donormap"
-              scrolling="no"
-              marginwidth="0" marginheight="0"
-              frameborder="0">
-          </iframe>
-
-          <div id="mapinfo">
-           <h5>2007 Donor Map</h5>
-           <p>
-            Locations and number of donations to the CC Campaign from around the world.
-           </p>
-           <p>No information, except your city, is used or shared from this map.</p>
-           <p><small>"Pushpin" icon by <a href="http://pedrogordo.com">Pedro Gordo</a>, <a href="http://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a></small></p>
-
-          </div>
-        </div>
-      </div>
 
       <div id="content">
         <div id="main-content">
-           	<div class="block feature smallpad">
-          		<div class="shome first">
-          			<ul>
-          		   <li><a href="http://support.creativecommons.org/donate"><img src="/images/support/donate.png" border="0"/></a></li>
-          		 	<li>Invest in the future of participatory culture<!--. Become a commoner--> by donating to CC today!<br/>&nbsp;</li>	
-          		 	</ul>
-          		</div>
-          		<div class="shome thermo">
-            			<a href="http://support.creativecommons.org/"><img src="/images/support/campaign.png" border="0"/></a>
-          			<div id="campaign">
-	          			<div class="progress" onclick="window.location = 'http://support.creativecommons.org';">
-							     <span>&nbsp;</span>
-							    </div>
-								  <div class="results"><a href="http://support.creativecommons.org/">$<?= cc_monetize(cc_progress_total()) ?> / $500,000 by Dec 31</a></div>
-							  </div>
-						<!--	   <ul><li><strong>Help us meet our goal</strong> of raising $500,000 before December 31st.</li></ul> -->
-           		</div>
-          		<div class="shome index-last">
-          		 <ul>
-          		 <li><a href="http://support.creativecommons.org/store"><img src="/images/support/store.png" border="0"/></a></li>
-          			<li>Support CC by buying our gear and showing the world around you that you support CC!</li>
-          		 </ul>
-         		</div>
-          		<div class="clear">&nbsp;</div>
-            </div>
           <div class="block hero" id="title">
 <!--              <? /* cc_current_feature(); ?>
             
