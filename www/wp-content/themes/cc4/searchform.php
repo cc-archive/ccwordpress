@@ -6,6 +6,6 @@
 </p>
 <label><input type="radio" name="st" value="blog" checked /> Search blog</label>
 &nbsp;&nbsp;&nbsp;
-<label><input type="radio" name="st" value="site" /> Search creativecommons.org</label>
+<label><input type="radio" name="st" value="site" /> Search creativecommons.org using Google</label>
 </div>
 </form>
