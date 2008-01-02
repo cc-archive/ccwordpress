@@ -117,11 +117,11 @@ a.cc-actions:hover, #header-main .active a:link { background: url('/images/heade
 #blog .block, #alpha .block { margin-bottom: 33px; }
 #features .block, #beta .block { padding: 0 5px; }
 
-#searchform {
+#main-content #searchform {
   margin: 5px 0 0 5px;
 }
 
-#searchform input {
+#main-content #searchform input {
   font-size: 130%;
  }
 
