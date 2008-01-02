@@ -68,3 +68,26 @@
 #pathbuttongroup {
     text-align: center;
 }
+
+#assertion_ui {
+    display:none;
+}
+
+#waiver_ui {
+    display:none;
+}
+
+#results {
+    display:none;
+}
+
+#waiver-submit,
+#assertion-submit {
+    text-align: center;
+}
+
+
+#waiver-submit button,
+#assertion-submit button {
+    background-color:red;
+}

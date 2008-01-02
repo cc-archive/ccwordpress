@@ -5,6 +5,9 @@ YAHOO.cc.zero.show_dedication = function(e) {
 
     YAHOO.cc.zero.pnlAssertion.hide();
     YAHOO.cc.zero.pnlDedication.show();
+
+    // override the default event handling
+    YAHOO.util.Event.preventDefault(e);
     
 } // show_dedication
 
@@ -13,8 +16,20 @@ YAHOO.cc.zero.show_assertion = function(e) {
 	
     YAHOO.cc.zero.pnlDedication.hide();
     YAHOO.cc.zero.pnlAssertion.show();
+
+    // override the default event handling
+    YAHOO.util.Event.preventDefault(e);
     
 } // show_assertion
+
+YAHOO.cc.zero.show_results = function(e) {
+
+    YAHOO.cc.zero.pnlResults.show();
+
+    // override the default event handling
+    YAHOO.util.Event.preventDefault(e);
+    
+} // show_results
 
 YAHOO.cc.zero.dedication_consent = function() {
     // return true if the user has checked the "consent" checkbox
@@ -40,8 +55,8 @@ YAHOO.cc.zero.update_assertion = function(e) {
 
 	var callback = {
 	    success : function(o) {
-		document.getElementById('assertion-html').value = o.responseText;
-		document.getElementById('assertion-preview').innerHTML = o.responseText;
+		document.getElementById('results-html').value = o.responseText;
+		document.getElementById('results-preview').innerHTML = o.responseText;
 	    },
 
 	    failure : function(o) { alert(o.statusText) },
@@ -59,13 +74,13 @@ YAHOO.cc.zero.update_dedication = function(e) {
     if (YAHOO.cc.zero.dedication_consent()) {
 	// post the fields, get the HTML+RDFa
 
-	var dedication_form = document.getElementById('form-dedication');
+	var dedication_form = document.getElementById('form-waiver');
 	YAHOO.util.Connect.setForm(dedication_form);
 
 	var callback = {
 	    success : function(o) {
-		document.getElementById('dedication-html').value = o.responseText;
-		document.getElementById('dedication-preview').innerHTML = o.responseText;
+		document.getElementById('results-html').value = o.responseText;
+		document.getElementById('results-preview').innerHTML = o.responseText;
 	    },
 
 	    failure : function(o) { alert(o.statusText) },
@@ -80,8 +95,8 @@ YAHOO.cc.zero.update_dedication = function(e) {
 
 YAHOO.cc.zero.init = function() {
 
-    // init the two UI panels
-    YAHOO.cc.zero.pnlDedication = new YAHOO.widget.Module("dedication_ui", 
+    // init the UI panels
+    YAHOO.cc.zero.pnlDedication = new YAHOO.widget.Module("waiver_ui", 
                                                           {visible:false,});
     YAHOO.cc.zero.pnlDedication.render();
 
@@ -90,6 +105,11 @@ YAHOO.cc.zero.init = function() {
 
     YAHOO.cc.zero.pnlAssertion.render();
 
+    YAHOO.cc.zero.pnlResults = new YAHOO.widget.Module("results",
+                                                       {visible:false,});
+
+    YAHOO.cc.zero.pnlResults.render();
+
     // init the two path buttons
     var pathButtonGroup = new YAHOO.widget.ButtonGroup("pathbuttongroup");
     pathButtonGroup.getButton(0).addListener("click", 
@@ -97,6 +117,14 @@ YAHOO.cc.zero.init = function() {
     pathButtonGroup.getButton(1).addListener("click", 
 					     YAHOO.cc.zero.show_assertion);
 
+    // initialize the "click-through" buttons
+    var waiver_submit = new YAHOO.widget.Button("waiver-submit",
+                                                {type:'push'});
+    waiver_submit.addListener("click", YAHOO.cc.zero.show_results);
+    var assertion_submit = new YAHOO.widget.Button("assertion-submit",
+                                                {type:'push'});
+    assertion_submit.addListener("click", YAHOO.cc.zero.show_results);
+			   
     // add change listeners for the form elements
     YAHOO.util.Event.addListener(
            YAHOO.util.Dom.getElementsByClassName("form-field",
@@ -107,6 +135,7 @@ YAHOO.cc.zero.init = function() {
            YAHOO.util.Dom.getElementsByClassName("form-field",
            "input", document.getElementById("form-assertion")),
            "change", YAHOO.cc.zero.update_assertion); 
+
 
 } // init
 
