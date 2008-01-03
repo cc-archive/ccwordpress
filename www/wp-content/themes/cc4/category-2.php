@@ -32,7 +32,19 @@
 </div>
             </div>
 <?php } }?>
-            <?php posts_nav_link(' &mdash; ', 'previous page', 'next page'); ?>
+
+            <div style="margin: 1ex;">
+            <?php
+            # Add pretty pagination if the plugin PageNavi is installed,
+            # otherwise just use the boring stuff.  nkinkade 2008-01-02
+            if ( function_exists('wp_pagenavi') ) {
+                wp_pagenavi();
+            } else {
+                posts_nav_link(' &mdash; ', 'previous page', 'next page');
+            }
+            ?>
+            </div>
+
           </div>
           <div id="beta" class="content-box">
             <h4>Archives</h4>
