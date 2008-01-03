@@ -69,15 +69,7 @@
     text-align: center;
 }
 
-#assertion_ui_container {
-    display:none;
-}
-
-#waiver_ui_container {
-    display:none;
-}
-
-#results_container {
+.ui_container {
     display:none;
 }
 

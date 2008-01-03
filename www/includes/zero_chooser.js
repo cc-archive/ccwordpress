@@ -3,6 +3,10 @@ YAHOO.namespace("cc.zero");
 
 YAHOO.cc.zero.show_dedication = function(e) {
 
+    // show the container 
+    // (which is hidden @ load to prevent initial flash of content)
+    YAHOO.util.Dom.removeClass("waiver_ui_container", "ui_container");
+
     YAHOO.cc.zero.pnlAssertion.hide();
     YAHOO.cc.zero.pnlDedication.show();
     YAHOO.cc.zero.pnlResults.hide();
@@ -15,6 +19,10 @@ YAHOO.cc.zero.show_dedication = function(e) {
 
 YAHOO.cc.zero.show_assertion = function(e) {
 	
+    // show the container 
+    // (which is hidden @ load to prevent initial flash of content)
+    YAHOO.util.Dom.removeClass("assertion_ui_container", "ui_container");
+
     YAHOO.cc.zero.pnlDedication.hide();
     YAHOO.cc.zero.pnlAssertion.show();
     YAHOO.cc.zero.pnlResults.hide();
@@ -25,6 +33,10 @@ YAHOO.cc.zero.show_assertion = function(e) {
 } // show_assertion
 
 YAHOO.cc.zero.show_results = function(e) {
+
+    // show the container 
+    // (which is hidden @ load to prevent initial flash of content)
+    YAHOO.util.Dom.removeClass("results_container", "ui_container");
 
     YAHOO.cc.zero.pnlResults.show();
 
