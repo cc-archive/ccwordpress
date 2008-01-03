@@ -14,7 +14,7 @@
           Search Results
         </h2>
           </div>
-          <div  class="content-box">
+          <div  class="content-box" id="page">
            <div class="block hero">
           		<?php include (TEMPLATEPATH . '/searchform.php'); ?>
            </div>
@@ -30,9 +30,23 @@
 			</div>
 
 
-<?php } }?>
+<?php } ?>
 
-            <?php posts_nav_link(' &mdash; ', 'previous page', 'next page'); ?>
+	    <div style="margin: 1ex;">
+	    <?php
+	    # Add pretty pagination if the plugin PageNavi is installed,
+	    # otherwise just use the boring stuff.  nkinkade 2008-01-02
+	    if ( function_exists('wp_pagenavi') ) {
+	    	wp_pagenavi();
+	    } else {
+                posts_nav_link(' &mdash; ', 'previous page', 'next page');
+	    }
+	    ?>
+	    </div>
+<?php } else { ?>
+  <h2>No search results found.</h2>
+
+<?php } ?>
           </div>
         </div>  
 <?php get_sidebar(); ?>
