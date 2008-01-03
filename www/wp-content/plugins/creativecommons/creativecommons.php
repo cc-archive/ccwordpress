@@ -11,7 +11,7 @@ Author URI:
 require_once "creativecommons-admin.php";
 
 /* As seen in http://freeculture.org:8080/svn/wordpress-theme/trunk/front_page/feeds_chapter.php */
-function cc_build_external_feed($feedid = 1, $entries = 8, $charcount = 300) {
+function cc_build_external_feed($feedid = 1, $singlecat = false, $showcat = true, $entries = 8, $charcount = 300) {
   require_once "magpie/rss_fetch.inc";
   global $cc_db_rss_table;
   global $wpdb;
@@ -64,28 +64,31 @@ function cc_build_external_feed($feedid = 1, $entries = 8, $charcount = 300) {
 	    break; // get out of this loop so we can echo
 	  }
 	  
-	  $category = $item['category'];
-	  if (array_key_exists($category, $seen_categories)) {
-	    continue; // get next item
+	  if (!$singlecat) {
+  	  $category = $item['category'];
+  	  if (array_key_exists($category, $seen_categories)) {
+  	    continue; // get next item
+  	  }
+  	  
+  	  // The normal case: where we didn't skip the item because of
+  	  // category
+  	  $seen_categories[$category] = true;
+  	  $number_generated_so_far = $number_generated_so_far + 1;
 	  }
-	  
-	  // The normal case: where we didn't skip the item because of
-	  // category
-	  $seen_categories[$category] = true;
-	  $number_generated_so_far = $number_generated_so_far + 1;
 
+		$date = date('Y-m-d', $item['date']);
+		$description = strip_tags($item['description']);
 
-				$date = date('Y-m-d', $item['date']);
-				$description = strip_tags($item['description']);
+		if (strlen($description) > $charcount)
+			$description = substr ($description, 0, $charcount);
 
-				if (strlen($description) > $charcount)
-					$description = substr ($description, 0, $charcount);
-
-				$out .= "<div class=\"block blogged rss\">";
-				$out .= "<a href=\"/international/{$item['category']}\"><img src=\"/images/international/{$item['category']}.png\" alt=\"{$item['category']}\" class=\"country\"></a>";
-				$out .= "<div class=\"rss-title\"><h3><a href=\"{$item['link']}\">{$item['title']}</a></h3> <small>$date</small></div>";
-				$out .= "<p>$description<br/>[<a href=\"{$item['link']}\">Read More</a>]</p>";
-				$out .= "</div>";
+		$out .= "<div class=\"block blogged rss\">";
+		if ($showcat) {
+			$out .= "<a href=\"/international/{$item['category']}\"><img src=\"/images/international/{$item['category']}.png\" alt=\"{$item['category']}\" class=\"country\"></a>";
+		}
+		$out .= "<div class=\"rss-title\"><h3><a href=\"{$item['link']}\">{$item['title']}</a></h3> <small>$date</small></div>";
+		$out .= "<p>$description<br/>[<a href=\"{$item['link']}\">Read More</a>]</p>";
+		$out .= "</div>";
 	}
 
 	echo $out;
