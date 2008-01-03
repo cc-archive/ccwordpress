@@ -133,6 +133,17 @@ a.cc-actions:hover, #header-main .active a:link { background: url('/images/heade
   width: 60%;
 }
 
+#footer #searchform input {
+  font-size: 90%;
+}
+#footer #searchform input#s {
+  width: 200px;
+}
+
+#footer #footersearch {
+  margin-bottom: 40px;
+}
+
 #searchform input#s { 
   font-weight: bold;
 }
