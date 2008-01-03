@@ -1,3 +1,11 @@
+<?php // handle search stuff first
+
+  if ($_GET['s'] && ($_GET['st'] == site)) {
+    // site searchtype redirects to google query
+    $query = $_GET['s'];
+    header("Location:http://www.google.com/custom?q=" . $query . "&sa=search&cof=GIMP%3Ablack%3BT%3A%23333333%3BLW%3A162%3BALC%3Ared%3BL%3Ahttp%3A%2F%2Fcreativecommons.org%2Fimages%2Flogo_trademark.gif%3BGFNT%3A%2399999%3BLC%3A%235e715e%3BLH%3A40%3BBGC%3Awhite%3BAH%3Aleft%3BVLC%3A%238EA48E%3BS%3Ahttp%3A%2F%2Fcreativecommons.org%2F%3BGALT%3A%23666666%3BAWFID%3Afad503ba397c7a7f%3B&domains=creativecommons.org&sitesearch=creativecommons.org");
+  }
+?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html>
@@ -5,6 +13,8 @@
   <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
   <? if (is_home() || is_404()) {?>
   <title>Creative Commons</title>
+  <? } else if (is_search()) { ?>
+  <title>Search Creative Commons</title>
   <? } else { ?>  
   <title><?php wp_title(''); ?> - Creative Commons</title>
   <? }?>
