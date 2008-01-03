@@ -5,6 +5,7 @@ YAHOO.cc.zero.show_dedication = function(e) {
 
     YAHOO.cc.zero.pnlAssertion.hide();
     YAHOO.cc.zero.pnlDedication.show();
+    YAHOO.cc.zero.pnlResults.hide();
 
     // override the default event handling
     YAHOO.util.Event.preventDefault(e);
@@ -16,6 +17,7 @@ YAHOO.cc.zero.show_assertion = function(e) {
 	
     YAHOO.cc.zero.pnlDedication.hide();
     YAHOO.cc.zero.pnlAssertion.show();
+    YAHOO.cc.zero.pnlResults.hide();
 
     // override the default event handling
     YAHOO.util.Event.preventDefault(e);

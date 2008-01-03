@@ -69,23 +69,17 @@
     text-align: center;
 }
 
-#assertion_ui {
+#assertion_ui_container {
     display:none;
 }
 
-#waiver_ui {
+#waiver_ui_container {
     display:none;
 }
 
-#results {
+#results_container {
     display:none;
 }
-
-#waiver-submit,
-#assertion-submit {
-    text-align: center;
-}
-
 
 #waiver-submit button,
 #assertion-submit button {
