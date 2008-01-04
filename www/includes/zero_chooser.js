@@ -56,6 +56,13 @@ YAHOO.cc.zero.get_path = function() {
    
 } // get_path
 
+YAHOO.cc.zero.on_show_form = function(e) {
+
+    Ext.get("confirm_waiver").dom.checked = false;
+    Ext.get("confirm_assertion").dom.checked = false;
+
+} // on_show_form
+
 YAHOO.cc.zero.on_show_results = function(e) {
 
     Ext.get("waiver-results-leadin").setVisibilityMode(Ext.Element.DISPLAY);
@@ -159,9 +166,12 @@ YAHOO.cc.zero.init = function() {
 
 
     // add panel-show listeners
-    YAHOO.cc.zero.chooser.items.get(5).on("show", 
+    YAHOO.cc.zero.chooser.items.get('page-results').on("show", 
 					  YAHOO.cc.zero.on_show_results);
-
+    YAHOO.cc.zero.chooser.items.get('page-waiver').on('show',
+					      YAHOO.cc.zero.on_show_form);
+    YAHOO.cc.zero.chooser.items.get('page-assertion').on('show',
+					      YAHOO.cc.zero.on_show_form);
 				     
 } // init
 
