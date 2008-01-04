@@ -61,6 +61,8 @@ YAHOO.cc.zero.on_show_form = function(e) {
     Ext.get("confirm_waiver").dom.checked = false;
     Ext.get("confirm_assertion").dom.checked = false;
 
+    Ext.get("waiver-submit").dom.disabled= true;
+    Ext.get("assertion-submit").dom.disabled= true;
 } // on_show_form
 
 YAHOO.cc.zero.on_show_results = function(e) {
