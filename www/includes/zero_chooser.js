@@ -94,6 +94,16 @@ YAHOO.cc.zero.on_show_results = function(e) {
 
 } // on_show_results
 
+function swapbutton(buttonurl) {
+  //document.getElementById('licensebutton').setAttribute('src',buttonurl);
+  e = document.getElementById('results-html');
+  var codetocopy = e.value;
+  var newcodetocopy = codetocopy.replace(/src=".*?"/, 'src="'+buttonurl+'"');
+  e.value = newcodetocopy;  
+
+  Ext.get("results-preview").dom.innerHTML = newcodetocopy;
+}
+
 YAHOO.cc.zero.init = function() {
 
     YAHOO.cc.zero.chooser_path = new Array();
@@ -103,7 +113,7 @@ YAHOO.cc.zero.init = function() {
 	activeItem: 0, 
 	renderTo:'zero-wizard',
 	autoWidth:true,
-	height:350,
+	height:400,
 	border:false,
 	defaults: {
             // applied to each contained panel
@@ -179,3 +189,4 @@ YAHOO.cc.zero.init = function() {
 
 // hook for initialization
 Ext.EventManager.onDocumentReady(YAHOO.cc.zero.init);
+
