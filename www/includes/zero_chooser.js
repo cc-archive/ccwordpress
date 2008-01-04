@@ -1,63 +1,45 @@
 // CC-Zero
 YAHOO.namespace("cc.zero");
 
-YAHOO.cc.zero.show_dedication = function(e) {
+YAHOO.cc.zero._show_panel = function(e, index) {
 
-    // show the container 
-    // (which is hidden @ load to prevent initial flash of content)
-    YAHOO.util.Dom.removeClass("waiver_ui_container", "ui_container");
+    e.preventDefault();
 
-    YAHOO.cc.zero.pnlAssertion.hide();
-    YAHOO.cc.zero.pnlDedication.show();
-    YAHOO.cc.zero.pnlResults.hide();
+    // push the current item onto the stack
+    YAHOO.cc.zero.chooser_path.push(this.getLayout().activeItem);
 
-    // override the default event handling
-    YAHOO.util.Event.preventDefault(e);
-    
-} // show_dedication
+    // show the specified item
+    this.getLayout().setActiveItem(index);
 
+    this.getBottomToolbar().items.get('move-back').setDisabled(false);
 
-YAHOO.cc.zero.show_assertion = function(e) {
-	
-    // show the container 
-    // (which is hidden @ load to prevent initial flash of content)
-    YAHOO.util.Dom.removeClass("assertion_ui_container", "ui_container");
+} // _show_panel
 
-    YAHOO.cc.zero.pnlDedication.hide();
-    YAHOO.cc.zero.pnlAssertion.show();
-    YAHOO.cc.zero.pnlResults.hide();
+YAHOO.cc.zero._back = function() {
 
-    // override the default event handling
-    YAHOO.util.Event.preventDefault(e);
-    
-} // show_assertion
+    // pop the last place off the stack
+    last = YAHOO.cc.zero.chooser_path.pop();
 
-YAHOO.cc.zero.show_results = function(e) {
+    // show the last page
+    YAHOO.cc.zero.chooser.getLayout().setActiveItem(last);
 
-    // show the container 
-    // (which is hidden @ load to prevent initial flash of content)
-    YAHOO.util.Dom.removeClass("results_container", "ui_container");
+    // see if we need to disable the back button
+    if (YAHOO.cc.zero.chooser_path.length == 0) {
+	YAHOO.cc.zero.chooser.getBottomToolbar().items.get('move-back').setDisabled(true);
+    }
 
-    YAHOO.cc.zero.pnlResults.show();
+} // _back
 
-    // override the default event handling
-    YAHOO.util.Event.preventDefault(e);
-    
-} // show_results
+YAHOO.cc.zero._enable_button = function(e, btn_id) {
 
-YAHOO.cc.zero.dedication_consent = function() {
-    // return true if the user has checked the "consent" checkbox
+    Ext.get(btn_id).dom.disabled = !(e.target.checked);
 
-    return document.getElementById('confirm_dedication').checked;
+} // _enable_button
 
-} // consent
+YAHOO.cc.zero.on_show_confirmation = function(zerotype) {
 
-YAHOO.cc.zero.assertion_consent = function() {
-    // return true if the user has checked the "consent" checkbox
-
-    return document.getElementById('confirm_assertion').checked;
-
-} // consent
+   
+} // on_show_confirmation
 
 YAHOO.cc.zero.update_assertion = function(e) {
 
@@ -83,74 +65,93 @@ YAHOO.cc.zero.update_assertion = function(e) {
 
 } // update_dedication
 
-YAHOO.cc.zero.update_dedication = function(e) {
+YAHOO.cc.zero.on_show_results = function(e) {
+    
+    var mgr = Ext.get("results-preview").getUpdater();
 
-    if (YAHOO.cc.zero.dedication_consent()) {
-	// post the fields, get the HTML+RDFa
+    mgr.formUpdate("form-waiver", "/license/get-rdfa",
+		   false, function (el, success, response) {
+		       if (success) {
+		   Ext.get("results-html").dom.value = response.responseText;
+		       }
+		   });
 
-	var dedication_form = document.getElementById('form-waiver');
-	YAHOO.util.Connect.setForm(dedication_form);
-
-	var callback = {
-	    success : function(o) {
-		document.getElementById('results-html').value = o.responseText;
-		document.getElementById('results-preview').innerHTML = o.responseText;
-	    },
-
-	    failure : function(o) { alert(o.statusText) },
-	};
-
-	var conn = YAHOO.util.Connect.asyncRequest('GET', 
-					      '/license/get-rdfa', callback);
-
-    }
-
-} // update_dedication
+} // on_show_results
 
 YAHOO.cc.zero.init = function() {
 
-    // init the UI panels
-    YAHOO.cc.zero.pnlDedication = new YAHOO.widget.Module("waiver_ui", 
-                                                          {visible:false,});
-    YAHOO.cc.zero.pnlDedication.render();
+    YAHOO.cc.zero.chooser_path = new Array();
 
-    YAHOO.cc.zero.pnlAssertion = new YAHOO.widget.Module("assertion_ui",
-                                                         {visible:false,});
+    YAHOO.cc.zero.chooser = new Ext.Panel({
+        layout:'card',
+	activeItem: 0, 
+	renderTo:'zero-wizard',
+	autoWidth:true,
+	height:350,
+	border:false,
+	defaults: {
+            // applied to each contained panel
+	    border:false,
+	    bodyStyle:"padding:10px",
+	},
 
-    YAHOO.cc.zero.pnlAssertion.render();
+	bbar: [
+        {
+            id: 'move-back',
+            text: '<< Back',
+            handler: YAHOO.cc.zero._back,
+            disabled: true
+        },
+	       ],
 
-    YAHOO.cc.zero.pnlResults = new YAHOO.widget.Module("results",
-                                                       {visible:false,});
-
-    YAHOO.cc.zero.pnlResults.render();
-
-    // init the two path buttons
-    var pathButtonGroup = new YAHOO.widget.ButtonGroup("pathbuttongroup");
-    pathButtonGroup.getButton(0).addListener("click", 
-					     YAHOO.cc.zero.show_dedication);
-    pathButtonGroup.getButton(1).addListener("click", 
-					     YAHOO.cc.zero.show_assertion);
-
-    // initialize the "click-through" buttons
-    var waiver_submit = new YAHOO.widget.Button("waiver-submit",
-                                                {type:'push'});
-    waiver_submit.addListener("click", YAHOO.cc.zero.show_results);
-    var assertion_submit = new YAHOO.widget.Button("assertion-submit",
-                                                {type:'push'});
-    assertion_submit.addListener("click", YAHOO.cc.zero.show_results);
-			   
-    // add change listeners for the form elements
-    YAHOO.util.Event.addListener(
-           YAHOO.util.Dom.getElementsByClassName("form-field",
-           "input", document.getElementById("form-dedication")),
-           "change", YAHOO.cc.zero.update_dedication); 
-
-    YAHOO.util.Event.addListener(
-           YAHOO.util.Dom.getElementsByClassName("form-field",
-           "input", document.getElementById("form-assertion")),
-           "change", YAHOO.cc.zero.update_assertion); 
+	// the panels (or "cards") within the layout
+	items: [{contentEl:'page-welcome'},
+	        {contentEl:'page-waiver'},
+                {contentEl:'page-assertion'},
+	        {contentEl:'page-confirmation'},
+                {contentEl:'page-results'},
+	       ]
+	});
 
 
+    // init the path buttons
+    Ext.get("do-waiver").on("click", 
+	     YAHOO.cc.zero._show_panel.createDelegate(YAHOO.cc.zero.chooser, 
+						      [1], 1));
+    Ext.get("do-assertion").on("click", 
+	     YAHOO.cc.zero._show_panel.createDelegate(YAHOO.cc.zero.chooser, 
+						      [2], 1));
+
+    // forward-movement handlers
+    Ext.get("assertion-submit").on("click",
+       YAHOO.cc.zero._show_panel.createDelegate(YAHOO.cc.zero.chooser, 
+						[3], 1));
+    Ext.get("assertion-submit").dom.disabled = true;
+
+    Ext.get("waiver-submit").on("click",
+       YAHOO.cc.zero._show_panel.createDelegate(YAHOO.cc.zero.chooser, 
+						[3], 1));
+    Ext.get("waiver-submit").dom.disabled = true;
+
+    Ext.get("confirm-submit").on("click",
+       YAHOO.cc.zero._show_panel.createDelegate(YAHOO.cc.zero.chooser, 
+						[4], 1));
+
+    // add listeners for the "agreement" checkboxes
+    Ext.get("confirm_waiver").on("click",
+				 YAHOO.cc.zero._enable_button.createDelegate(this, ["waiver-submit"], 1));
+
+    Ext.get("confirm_assertion").on("click",
+				    YAHOO.cc.zero._enable_button.createDelegate(this, ["assertion-submit"], 1));
+
+
+    // add panel-show listeners
+    YAHOO.cc.zero.chooser.items.get(3).on("show", 
+					  YAHOO.cc.zero.on_show_confirmation);
+    YAHOO.cc.zero.chooser.items.get(4).on("show", 
+					  YAHOO.cc.zero.on_show_results);
+
+				     
 } // init
 
 // hook for initialization

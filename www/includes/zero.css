@@ -74,6 +74,11 @@
 }
 
 #waiver-submit button,
-#assertion-submit button {
+#assertion-submit button, 
+.alert {
     background-color:red;
+}
+
+.alert {
+    text-align: center;
 }
