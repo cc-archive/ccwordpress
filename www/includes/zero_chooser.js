@@ -1,4 +1,11 @@
-// CC-Zero
+/*
+ * CC0
+ * zero_chooser.js
+ * 
+ * copyright 2007, Creative Commons, Nathan R. Yergler
+ * licensed to the public under the GNU GPL v2
+ * 
+ */
 YAHOO.namespace("cc.zero");
 
 YAHOO.cc.zero._show_panel = function(e, index) {
@@ -36,40 +43,40 @@ YAHOO.cc.zero._enable_button = function(e, btn_id) {
 
 } // _enable_button
 
-YAHOO.cc.zero.on_show_confirmation = function(zerotype) {
+YAHOO.cc.zero.get_path = function() {
+    // return the path the user has chosen: either "waiver" or "assertion"
 
-   
-} // on_show_confirmation
+    var waiver_page = YAHOO.cc.zero.chooser.items.get('page-waiver');
 
-YAHOO.cc.zero.update_assertion = function(e) {
-
-    if (YAHOO.cc.zero.assertion_consent()) {
-	// post the fields, get the HTML+RDFa
-
-	var assertion_form = document.getElementById('form-assertion');
-	YAHOO.util.Connect.setForm(assertion_form);
-
-	var callback = {
-	    success : function(o) {
-		document.getElementById('results-html').value = o.responseText;
-		document.getElementById('results-preview').innerHTML = o.responseText;
-	    },
-
-	    failure : function(o) { alert(o.statusText) },
-	};
-
-	var conn = YAHOO.util.Connect.asyncRequest('GET', 
-					     '/license/get-rdfa', callback);
-
+    if (YAHOO.cc.zero.chooser_path.indexOf(waiver_page) > -1) {
+	return "waiver";
+    } else {
+	return "assertion";
     }
-
-} // update_dedication
+   
+} // get_path
 
 YAHOO.cc.zero.on_show_results = function(e) {
-    
+
+    Ext.get("waiver-results-leadin").setVisibilityMode(Ext.Element.DISPLAY);
+    Ext.get("assertion-results-leadin").setVisibilityMode(Ext.Element.DISPLAY);
+
+    var path = YAHOO.cc.zero.get_path();
+
+    // show the appropriate leadin
+    if (path == 'waiver') {
+	Ext.get("waiver-results-leadin").show();
+	Ext.get("assertion-results-leadin").hide();
+    } else {
+	Ext.get("waiver-results-leadin").hide();
+	Ext.get("assertion-results-leadin").show();
+    }
+
+
+    // get the HTML + RDFa
     var mgr = Ext.get("results-preview").getUpdater();
 
-    mgr.formUpdate("form-waiver", "/license/get-rdfa",
+    mgr.formUpdate("form-" + path, "/license/get-rdfa",
 		   false, function (el, success, response) {
 		       if (success) {
 		   Ext.get("results-html").dom.value = response.responseText;
@@ -105,54 +112,58 @@ YAHOO.cc.zero.init = function() {
 	       ],
 
 	// the panels (or "cards") within the layout
-	items: [{contentEl:'page-welcome'},
-	        {contentEl:'page-waiver'},
-                {contentEl:'page-assertion'},
-	        {contentEl:'page-confirmation'},
-                {contentEl:'page-results'},
+	items: [
+    {contentEl:'page-welcome', id:'page-welcome'},
+    {contentEl:'page-waiver', id:'page-waiver'},
+    {contentEl:'page-assertion', id:'page-assertion'},
+    {contentEl:'page-waiver-confirmation', id:'page-waiver-confirmation'},
+    {contentEl:'page-assertion-confirmation', id:'page-assertion-confirmation'},
+    {contentEl:'page-results', id: 'page-results'},
 	       ]
 	});
-
 
     // init the path buttons
     Ext.get("do-waiver").on("click", 
 	     YAHOO.cc.zero._show_panel.createDelegate(YAHOO.cc.zero.chooser, 
-						      [1], 1));
+						      ['page-waiver'], 1));
     Ext.get("do-assertion").on("click", 
 	     YAHOO.cc.zero._show_panel.createDelegate(YAHOO.cc.zero.chooser, 
-						      [2], 1));
+						      ['page-assertion'], 1));
 
     // forward-movement handlers
     Ext.get("assertion-submit").on("click",
        YAHOO.cc.zero._show_panel.createDelegate(YAHOO.cc.zero.chooser, 
-						[3], 1));
+				['page-assertion-confirmation'], 1));
     Ext.get("assertion-submit").dom.disabled = true;
 
     Ext.get("waiver-submit").on("click",
        YAHOO.cc.zero._show_panel.createDelegate(YAHOO.cc.zero.chooser, 
-						[3], 1));
+				['page-waiver-confirmation'], 1));
     Ext.get("waiver-submit").dom.disabled = true;
 
-    Ext.get("confirm-submit").on("click",
+    Ext.get("confirm-waiver-submit").on("click",
        YAHOO.cc.zero._show_panel.createDelegate(YAHOO.cc.zero.chooser, 
-						[4], 1));
+						['page-results'], 1));
+    Ext.get("confirm-assertion-submit").on("click",
+       YAHOO.cc.zero._show_panel.createDelegate(YAHOO.cc.zero.chooser, 
+						['page-results'], 1));
 
     // add listeners for the "agreement" checkboxes
     Ext.get("confirm_waiver").on("click",
-				 YAHOO.cc.zero._enable_button.createDelegate(this, ["waiver-submit"], 1));
+        YAHOO.cc.zero._enable_button.createDelegate(this, ["waiver-submit"], 
+						    1));
 
     Ext.get("confirm_assertion").on("click",
-				    YAHOO.cc.zero._enable_button.createDelegate(this, ["assertion-submit"], 1));
+        YAHOO.cc.zero._enable_button.createDelegate(this, ["assertion-submit"],
+						    1));
 
 
     // add panel-show listeners
-    YAHOO.cc.zero.chooser.items.get(3).on("show", 
-					  YAHOO.cc.zero.on_show_confirmation);
-    YAHOO.cc.zero.chooser.items.get(4).on("show", 
+    YAHOO.cc.zero.chooser.items.get(5).on("show", 
 					  YAHOO.cc.zero.on_show_results);
 
 				     
 } // init
 
 // hook for initialization
-YAHOO.util.Event.onDOMReady(YAHOO.cc.zero.init);
+Ext.EventManager.onDocumentReady(YAHOO.cc.zero.init);
