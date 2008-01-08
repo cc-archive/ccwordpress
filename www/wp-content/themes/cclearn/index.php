@@ -66,7 +66,7 @@
             <?php the_content("Read More..."); ?>
             <?php edit_post_link('Edit', '', ''); ?>
           </div>
-<?php } }?>
+<?php } ?>
 
 
         </div>
