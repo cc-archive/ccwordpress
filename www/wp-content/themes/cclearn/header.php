@@ -55,6 +55,11 @@
           </a>
         </span>
         -->
+      <div id="search-box">
+        <h4>Open Education Search</h4>
+        <input type="text" size="30" />
+        <input type="submit" value="Search" />
+      </div>
         <span class="logo"><a href="<?php echo get_option('home'); ?>"><span><img src="<?php bloginfo('stylesheet_directory'); ?>/images/ccl-title-d.png" alt="cclearn" id="cc-title" border="0"/></span></a></span>
         
 <?/*        <div id="strap">Share, Remix, Reuse &mdash; Legally</div> */?>
