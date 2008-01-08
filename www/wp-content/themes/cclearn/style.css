@@ -126,6 +126,7 @@ a.cc-actions:hover, #header-main .active a:link { background: url('/images/heade
 #title h4.category a { color: #9a9; }
 #title h1.splash-title { padding-bottom: 0px; color: #777; font-size: 300%; }
 #title h4 { font-size: 90%; padding-top: 10px;}
+#title h5 { margin-right: 5%; }
 #title img {  border: 1px solid #666; padding: 0 !important; margin-right: 15px; }
 #title #blurb { font-size: 60%; margin-bottom: 15px; margin-right: 70px; }
 
