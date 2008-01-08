@@ -14,7 +14,7 @@ body { background-color: #fff; color: #333; font: 12px verdana, sans-serif !impo
 .box { text-align: left; margin: 0 auto; width: 91%; min-width: 765px; max-width: 1000px; } /* replaces #wrapper */
 .content-box { float: left; padding-top: 15px;/* border-top: 1px solid #ddd;*/ margin-right: 1%; overflow: hidden; }
 .content-box-right { float: right; padding-top: 15px;/* border-top: 1px solid #ddd;*/ margin-left: 1%; overflow: hidden; }
-.clear { height: 0px !important; clear: both; }
+.clear { height: 0px !important; clear: both; overflow:hidden; }
 
 #wrapper-ie { width: auto; }
 
@@ -142,9 +142,14 @@ a.cc-actions:hover, #header-main .active a:link { background: url('/images/heade
 .block .excerpt { margin-left:  170px; }
 .block .comments { margin: 35px 0; }
 
-p.intro {
+#blurb img {
+  margin-left: 16px;
+  margin-top: 8px;
+}
+#blurb p.intro {
   font-size: 130%;
   line-height: 1.3em;
+  margin-left: 110px;
 }
 
 .rss img.country { float: right; width: 54px; margin: 0; padding: 0; border: 1px solid #555; }
@@ -243,6 +248,7 @@ ul#navbar li.edit a { background: url("/images/tab-body-edit.png") no-repeat top
 ul#navbar li.edit a span { background: url("/images/tab-left-edit.png") no-repeat top left; }
 
 ul#navbar li.edit a:hover { background: url("/images/tab-body-edit.png") no-repeat top right #fff2f2; }
+
 
 
 

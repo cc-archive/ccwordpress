@@ -16,9 +16,7 @@
             <h2><?php bloginfo('description'); ?></h2> */?> -->
             <div id="blurb">
               <img src="<?php bloginfo('stylesheet_directory'); ?>/images/apple.png" align="left" border="0" style="border:none;" />
-              <p style="margin-left: 80px">
              <?= cc_intro_blurb() ?>
-              </p>
             </div>
           </div>
           <div class="cc_box">
@@ -91,6 +89,9 @@
 	    <h4>Latest News</h4>
 <?php // Get the latest 5 posts that aren't in the worldwide category. ?>
 <?php 
+cc_build_external_feed("CC Education Weblog", true, false);
+
+/*
   while (have_posts()) { 
     the_post(); 
     ?>

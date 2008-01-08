@@ -62,8 +62,7 @@
         <script type="text/javascript" src="http://api.creativecommons.org/rest/dev/support/jurisdictions.js"></script>
       </select>
       <span class="international"><a href="/international">More information</a></span>
-      <br/>
-      <strong>SEARCH FIELD HERE</strong>
+
     </div>
         <span class="logo"><a href="<?php echo get_option('home'); ?>"><span><img src="<?php bloginfo('stylesheet_directory'); ?>/images/ccl-title-d.png" alt="cclearn" id="cc-title" border="0"/></span></a></span>
         
