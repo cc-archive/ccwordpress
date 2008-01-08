@@ -138,6 +138,7 @@ YAHOO.cc.zero.init = function() {
     {contentEl:'page-waiver-confirmation', id:'page-waiver-confirmation'},
     {contentEl:'page-assertion-confirmation', id:'page-assertion-confirmation'},
     {contentEl:'page-results', id: 'page-results'},
+    {contentEl:'page-bailout', id: 'page-bailout'},
 	       ]
 	});
 
@@ -163,9 +164,16 @@ YAHOO.cc.zero.init = function() {
     Ext.get("confirm-waiver-submit").on("click",
        YAHOO.cc.zero._show_panel.createDelegate(YAHOO.cc.zero.chooser, 
 						['page-results'], 1));
+    Ext.get("decline-waiver-submit").on("click",
+       YAHOO.cc.zero._show_panel.createDelegate(YAHOO.cc.zero.chooser, 
+						['page-bailout'], 1));
+
     Ext.get("confirm-assertion-submit").on("click",
        YAHOO.cc.zero._show_panel.createDelegate(YAHOO.cc.zero.chooser, 
 						['page-results'], 1));
+    Ext.get("decline-assertion-submit").on("click",
+       YAHOO.cc.zero._show_panel.createDelegate(YAHOO.cc.zero.chooser, 
+						['page-bailout'], 1));
 
     // add listeners for the "agreement" checkboxes
     Ext.get("confirm_waiver").on("click",

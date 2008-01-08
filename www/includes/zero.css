@@ -29,6 +29,14 @@
 		width: 100%;
 	}
 
+	.yui-module .bd {
+		padding-top: 10px;
+	}
+
+	.yui-module .bd p {
+		padding-bottom: 10px;
+	}
+
 	.yui-module .bd .form-question {
 		width: 30%;
 		text-align: right;
@@ -65,7 +73,7 @@
     padding: 2px;
 }
 
-#pathbuttongroup {
+.yui-buttongroup {
     text-align: center;
 }
 
@@ -73,12 +81,7 @@
     display:none;
 }
 
-#waiver-submit button,
-#assertion-submit button, 
 .alert {
-    background-color:red;
-}
-
-.alert {
+    background-color:red !important;
     text-align: center;
 }
