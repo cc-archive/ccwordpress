@@ -113,12 +113,13 @@ YAHOO.cc.zero.init = function() {
 	activeItem: 0, 
 	renderTo:'zero-wizard',
 	autoWidth:true,
-	height:400,
+	height:450,
 	border:false,
 	defaults: {
             // applied to each contained panel
 	    border:false,
 	    bodyStyle:"padding:10px",
+	    title:' ',
 	},
 
 	bbar: [
@@ -132,15 +133,28 @@ YAHOO.cc.zero.init = function() {
 
 	// the panels (or "cards") within the layout
 	items: [
-    {contentEl:'page-welcome', id:'page-welcome'},
+    {contentEl:'page-welcome', id:'page-welcome',},
     {contentEl:'page-waiver', id:'page-waiver'},
     {contentEl:'page-assertion', id:'page-assertion'},
     {contentEl:'page-waiver-confirmation', id:'page-waiver-confirmation'},
     {contentEl:'page-assertion-confirmation', id:'page-assertion-confirmation'},
-    {contentEl:'page-results', id: 'page-results'},
+    {contentEl:'page-results', id: 'page-results', autoScroll:true},
     {contentEl:'page-bailout', id: 'page-bailout'},
 	       ]
 	});
+
+    // initalize the title/headers
+    // -- we do this here so Zope can handle i18n
+    for (i = 0; i < YAHOO.cc.zero.chooser.items.length; i++) {
+	var current = YAHOO.cc.zero.chooser.items.get(i);
+
+	hd = current.getEl().down("div .hd");
+	if (hd && hd.dom.innerHTML) {
+	    current.setTitle(hd.dom.innerHTML);
+	    hd.remove();
+	} // if a .hd was found
+
+    } // for each panel...
 
     // init the path buttons
     Ext.get("do-waiver").on("click", 
