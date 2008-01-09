@@ -85,3 +85,11 @@
     background-color:red !important;
     text-align: center;
 }
+
+#alpha {
+       width:99%;
+}
+
+#beta {
+      display: none;
+}
