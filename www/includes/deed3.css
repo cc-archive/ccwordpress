@@ -67,6 +67,7 @@
 		}
 		
 		#deed-main-content {
+			position: relative;
 			margin: 0 15px;
 		
 		}
@@ -264,3 +265,15 @@
 			margin-top:  1.75em;
 			margin-bottom:  0.7em;
 		}
+
+		#libre {
+			position: absolute;
+			right: 30px;
+			top: 50px;
+			width: 150px;
+			height: 250px;
+		}
+		#libre img {
+			border: none !important;
+		}
+
