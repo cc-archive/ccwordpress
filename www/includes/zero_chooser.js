@@ -59,7 +59,7 @@ YAHOO.cc.zero.get_path = function() {
 YAHOO.cc.zero.on_show_form = function(e) {
 
     Ext.get("confirm_waiver").dom.checked = false;
-    Ext.get("confirm_assertion").dom.checked = false;
+    // Ext.get("confirm_assertion").dom.checked = false;
 
     Ext.get("waiver-submit").dom.disabled= true;
     Ext.get("assertion-submit").dom.disabled= true;
@@ -194,10 +194,11 @@ YAHOO.cc.zero.init = function() {
         YAHOO.cc.zero._enable_button.createDelegate(this, ["waiver-submit"], 
 						    1));
 
+    /*
     Ext.get("confirm_assertion").on("click",
         YAHOO.cc.zero._enable_button.createDelegate(this, ["assertion-submit"],
 						    1));
-
+    */
 
     // add panel-show listeners
     YAHOO.cc.zero.chooser.items.get('page-results').on("show", 

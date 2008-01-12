@@ -50,7 +50,7 @@
 		width: 57%;
 		padding-left: 2%;
 	}
-	.yui-module .bd .form-answer input {
+	.yui-module .bd .form-answer input.form-field {
 		width: 100%;
 	}
 
@@ -92,4 +92,12 @@
 
 #beta {
       display: none;
+}
+
+.x-panel-header-text {
+      font-size: 200%;
+}
+
+.indent {
+	margin-left: 15px;
 }
