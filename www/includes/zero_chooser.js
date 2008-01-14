@@ -43,6 +43,24 @@ YAHOO.cc.zero._enable_button = function(e, btn_id) {
 
 } // _enable_button
 
+YAHOO.cc.zero.enable_button_assertion = function(e) {
+
+   // enable the continue button if one or more of the reason checkboxes is selected.
+   var disabled = true;
+
+   function is_checked(el, scope, index) {
+      if (el.dom.checked) {
+	disabled = false;
+      }
+   }
+
+   Ext.select(".reason").each(is_checked);
+
+   Ext.get("assertion-submit").dom.disabled = disabled;
+
+} // enable_button_assertion
+
+
 YAHOO.cc.zero.get_path = function() {
     // return the path the user has chosen: either "waiver" or "assertion"
 
@@ -194,11 +212,8 @@ YAHOO.cc.zero.init = function() {
         YAHOO.cc.zero._enable_button.createDelegate(this, ["waiver-submit"], 
 						    1));
 
-    /*
-    Ext.get("confirm_assertion").on("click",
-        YAHOO.cc.zero._enable_button.createDelegate(this, ["assertion-submit"],
-						    1));
-    */
+    Ext.select(".reason").on("click",
+	YAHOO.cc.zero.enable_button_assertion);
 
     // add panel-show listeners
     YAHOO.cc.zero.chooser.items.get('page-results').on("show", 
