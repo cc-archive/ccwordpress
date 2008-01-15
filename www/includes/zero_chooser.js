@@ -214,7 +214,11 @@ YAHOO.cc.zero.init = function() {
 
     Ext.select(".reason").on("click",
 	YAHOO.cc.zero.enable_button_assertion);
-
+    Ext.get("enable_other_assertion_reason").on("click",
+        function (e) {
+            Ext.get("other_assertion_reason").setVisible(e.target.checked, true);
+        });
+	
     // add panel-show listeners
     YAHOO.cc.zero.chooser.items.get('page-results').on("show", 
 					  YAHOO.cc.zero.on_show_results);
