@@ -1,0 +1,41 @@
+
+#splash {
+	position: relative;
+	text-align: center;
+	margin-bottom: 30px;
+	overflow: hidden;
+}
+
+#splash .splash-box {
+	position: relative;
+	width: 623px;
+	height: 17em;
+	margin: 0 auto;
+}
+
+#splash .splash-box h2 {
+	text-align: left;
+	font-size: 2.75em;
+	color: #333;
+}
+
+#splash img {
+	border: none;
+	width: 312px; height: 162px;
+}
+
+
+/* CC+/CC0 */
+#splash .splash-box-left {
+	position: absolute;
+	top: 3.25em; 
+	left: 0;
+	width: 312px;
+}
+#splash .splash-box-right {
+	position: absolute;
+	top: 3.25em;
+	left: 312px;
+	width: 312px;
+}
+
