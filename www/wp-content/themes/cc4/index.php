@@ -4,7 +4,22 @@
 
       <div id="content">
         <div id="main-content">
-          <div class="block hero" id="title">
+
+	<div id="splash">
+	 <div class="splash-box">
+		<div class="splash-box-left">
+			<a href="/projects/ccplus">
+				<img src="/images/splash/left-ccp.png" alt="CC0" border="0" />
+			</a>
+		</div>
+		<div class="splash-box-right">
+			<a href="/projects/cczero">
+				<img src="/images/splash/right-ccz.png" alt="CC0" border="0" />
+			</a>
+		</div>
+	 </div>
+	</div>
+	<div class="block hero" id="title">
 <!--              <? /* cc_current_feature(); ?>
             
             <h2><?php bloginfo('description'); ?></h2> */?> -->
