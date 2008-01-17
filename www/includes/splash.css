@@ -39,10 +39,14 @@
 #splash p.info {
 	position: absolute;
 	z-index: 100;
-	top: 100px;
+	/*top: 100px;
 	left: 15px;
 	width: 295px;
-	font-size: 0.75em;
+	font-size: 0.75em;*/
+	top: 20px;
+	left: 160px;
+	width: 130px;
+	font-size: 0.9em;
 	text-align: left;
 }
 
