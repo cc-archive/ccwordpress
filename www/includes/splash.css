@@ -8,7 +8,7 @@
 
 #splash .splash-box {
 	position: relative;
-	width: 623px;
+	width: 624px;
 	height: 17em;
 	margin: 0 auto;
 }
@@ -28,14 +28,31 @@
 /* CC+/CC0 */
 #splash .splash-box-left {
 	position: absolute;
-	top: 3.25em; 
+	top: 4em; 
 	left: 0;
 	width: 312px;
 }
+#splash .splash-box-left p.info {
+	color: #293a52;
+}
+
+#splash p.info {
+	position: absolute;
+	z-index: 100;
+	top: 100px;
+	left: 15px;
+	width: 295px;
+	font-size: 0.75em;
+	text-align: left;
+}
+
 #splash .splash-box-right {
 	position: absolute;
-	top: 3.25em;
-	left: 312px;
+	top: 4em;
+	left: 313px;
 	width: 312px;
 }
 
+#splash .splash-box-right p.info {
+	color: #125f4f;
+}
