@@ -10,7 +10,7 @@
 	 	<h2>Active Initiatives</h2>
 		<div class="splash-box-left">
 			<a href="/projects/ccplus">
-				<img src="/images/splash/left-ccp.png" alt="CC0" border="0" />
+				<img src="/images/splash/left-ccp.png" alt="CC+" border="0" />
 			</a>
 			<p class="info">A protocol providing a simple way for users to get rights beyond the rights granted by a CC license.</p>
 		</div>
