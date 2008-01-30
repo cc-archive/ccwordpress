@@ -1,26 +1,34 @@
 <?php
-//
-// config
-//
-$img_sz_type   = 0; 
-$img_sz_width  = 115; 
-$img_sz_height = 25; 
+$img_sz_type	= 0;
+$img_sz_width	= ($_REQUEST['w']<>'')?$_REQUEST['w']:115;
+$img_sz_height	= ($_REQUEST['h']<>'')?$_REQUEST['h']:25;
 
-$im_bg      = 0; 
-$im_bg_type = 1; 
-$im_bg_url  = 'captchabg/1.gif'; 
+$im_bg			= 0;
+$im_bg_type		= 1;
+$im_bg_url		= 'captchabg/' . ( ($_REQUEST['b']<>'')?$_REQUEST['b']:'1.gif' );
 
-$fontUsed  = 0; 
-$font_url  = 'captchafonts/font4.ttf';   // 1,16,31
-$fonts_dir = 'captchafonts';
+$fontUsed		= 0; 
+$font_url		= 'captchafonts/' . ( ($_REQUEST['f']<>'')?$_REQUEST['f']:'font4.ttf' );
+$fonts_dir		= 'captchafonts';
 
-$min_font_size = 17; $max_font_size = 19;
+$min_font_size	= ($_REQUEST['f1']<>'')?$_REQUEST['f1']:17;
+$max_font_size	= ($_REQUEST['f2']<>'')?$_REQUEST['f2']:19;
 
-$min_angle = -12; $max_angle = 12;
+$min_angle		= ($_REQUEST['a1']<>'')?$_REQUEST['a1']:-12;
+$max_angle		= ($_REQUEST['a2']<>'')?$_REQUEST['a2']:12;
 
-$col_txt_type = 4;  $col_txt_r = 0; $col_txt_g = 0; $col_txt_b = 102; 
+$col_txt_type	= 4;
+$col			= ($_REQUEST['c']<>'')?$_REQUEST['c']:'000066';
+$col_txt_r		= hexdec(substr($col,0,2));
+$col_txt_g		= hexdec(substr($col,2,2));
+$col_txt_b		= hexdec(substr($col,4,2)); 
 
-$char_padding = 2;
+$border			= ($_REQUEST['l']<>'')?$_REQUEST['l']:'000066';
+$border_r		= hexdec(substr($border,0,2));
+$border_g		= hexdec(substr($border,2,2));
+$border_b		= hexdec(substr($border,4,2));
+
+$char_padding	= 2;
 
 # $output_type='jpeg';
 $output_type='png';
@@ -45,6 +53,7 @@ $length = strlen($turing);
 $data = array();
 $image_width = $image_height = 0;
 
+$codelen = 0;
 
 /* build the data array of the characters, size, placement, etc. */
 
@@ -59,6 +68,8 @@ for($i=0; $i<$length; $i++) {
 
   $char_width = max($bbox[2], $bbox[4]) - min($bbox[0], $bbox[6]);
   $char_height = max($bbox[1], $bbox[3]) - min($bbox[7], $bbox[5]);
+
+  $codelen = $codelen + $char_width + $char_padding;
 
   $image_width += $char_width + $char_padding;
   $image_height = max($image_height, $char_height);
@@ -99,7 +110,7 @@ while ( ($d1<50) AND ($d2<50) AND ($d3<50) )
 	}
 
 $color_bg       = ImageColorAllocate($im, $r, $g, $b );
-$color_border   = ImageColorAllocate($im, round($r/2), round($g/2), round($b/2));
+$color_border   = ImageColorAllocate($im, $border_r, $border_g, $border_b);
 $color_line0    = ImageColorAllocate($im, round($r*0.85), round($g*0.85), round($b*0.85) );
 $color_elipse0  = ImageColorAllocate($im, round($r*0.95), round($g*0.95), round($b*0.95) );
 $color_elipse1  = ImageColorAllocate($im, round($r*0.90), round($g*0.90), round($b*0.90) );
@@ -154,54 +165,51 @@ if ( $im_bg == 1 )
 					  		   } else ImageFilledRectangle($im, $lx, 0, $lx+$lw, $image_height-1, $$c );
 			  		}; break;
 			} 
-	}
-
-if ( $im_bg == 0 )
-	{
-	  	$image_data=getimagesize($im_bg_url);
-	
-	  	$image_type=$image_data[2];
-	
-	  	if($image_type==1) $img_src=imagecreatefromgif($im_bg_url);
-	  	elseif($image_type==2) $img_src=imagecreatefromjpeg($im_bg_url);
-	  	elseif($image_type==3) $img_src=imagecreatefrompng($im_bg_url);
-	
-			if ( $im_bg_type == 1 ) {
-						  imagesettile($im,$img_src);
-						  imagefill($im,0,0,IMG_COLOR_TILED);
-						}
-			else imagecopyresampled($im,$img_src,0,0,0,0,$image_width,$image_height,$image_data[0],$image_data[1]);
-	
-	}
-
-$pos_x = $x_padding + ($char_padding / 2);
-foreach($data as $d) {
-
-	  $pos_y = ( ( $image_height + $d['height'] ) / 2 );
-	  ImageTTFText($im, $d['size'], $d['angle'], $pos_x, $pos_y, $col_txt, $font, $d['char'] );
-	
-	  $pos_x += $d['width'] + $char_padding;
-
 }
 
+if ( $im_bg == 0 ){
+	  	$image_data=getimagesize($im_bg_url);
+	  	$image_type=$image_data[2];
+
+	  	if($image_type==1) 		$img_src=imagecreatefromgif($im_bg_url);
+	  	elseif($image_type==2)	$img_src=imagecreatefromjpeg($im_bg_url);
+	  	elseif($image_type==3)	$img_src=imagecreatefrompng($im_bg_url);
+	
+		if ( $im_bg_type == 1 ) {
+		  imagesettile($im,$img_src);
+//		  imagefill($im,0,0,IMG_COLOR_TILED);
+	      imageFilledRectangle ($im, 0, 0, $image_width, $image_height, IMG_COLOR_TILED);
+		}
+		else imagecopyresampled($im,$img_src,0,0,0,0,$image_width,$image_height,$image_data[0],$image_data[1]);
+	
+}
+
+$pos_x = ($image_width - $codelen) / 2;
+foreach($data as $d) {
+
+	$pos_y = ( ( $image_height + $d['height'] ) / 2 );
+	ImageTTFText($im, $d['size'], $d['angle'], $pos_x, $pos_y, $col_txt, $font, $d['char'] );
+	
+	$pos_x += $d['width'] + $char_padding;
+	
+}
 
 /* a nice border */
 ImageRectangle($im, 0, 0, $image_width-1, $image_height-1, $color_border);
 
 	/* display it */
-  
 	switch ($output_type) {
 			 case 'jpeg':
-					  Header('Expires: Mon, 26 Jul 1997 05:00:00 GMT');
-					  Header('Cache-Control: no-cache, must-revalidate');
+//					  Header('Expires: Mon, 26 Jul 1997 05:00:00 GMT');
+//					  Header('Cache-Control: no-cache, must-revalidate');
 					  Header('Content-type: image/jpeg');
 					  ImageJPEG($im,NULL,100);
 					  break;
 			
 			 case 'png':
 			 default:
-					  Header('Expires: Mon, 26 Jul 1997 05:00:00 GMT');
-					  Header('Cache-Control: no-cache, must-revalidate');
+//					  Header('Expires: Mon, 26 Jul 1997 05:00:00 GMT');
+//					  Header('Cache-Control: no-cache, must-revalidate');
 					  Header('Content-type: image/png');
 					  ImagePNG($im);
 					  break;

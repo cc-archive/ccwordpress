@@ -142,7 +142,7 @@ function TinyMCE_buttonsnap_cleanup(type, content) {
 					var contentAfter = content.substring(startPos + 7 + buttonsnap_markers[z].length);
 					content = content.substring(0, startPos);
 					content += '<img src="' + (tinyMCE.getParam("theme_href") + "/images/spacer.gif") + '" ';
-					content += ' width="100%" height="10px" ';
+					content += ' width="100%" height="40px" ';
 					content += 'alt="" class="' + buttonsnap_classes[z] + '" />';
 					content += contentAfter;
 

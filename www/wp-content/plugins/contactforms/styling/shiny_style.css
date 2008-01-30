@@ -4,29 +4,34 @@
 /*  ** if you want this to apply to a different       */
 /*  ** form than to just the 2nd form change the '2'  */
 /*  ** (or remove for your 1st, default form)         */
+@import "calendar.css";
 
 .cform fieldset.cf-fs1 {
 	background: url(../images/customform_shiny_bg.jpg) no-repeat;
 	padding-bottom:0;
 }
+.cform fieldset.cf-fs1 ol.cf-ol { 
+	margin:50px 0 0 0!important; 
+}
+
 
 /*                                                    */
 /*  main 'top-level' form elements                    */
 /*                                                    */
-
 .cform { 
 	margin:10px auto 0 auto; 
 	width: 410px; 
 }
 
 .cform fieldset	{ 
-	margin-top:10px; 
+	margin:10px 0 0 0; 
 	padding:5px 0 15px 0; 
 	border:none;
 	background:white;
 }
 
-.cform fieldset.cf_hidden { 
+.cform .cf_hidden {
+	display:none; 
 	border:none!important;
 	background:none!important;
 	padding:0!important;
@@ -38,14 +43,16 @@
 }
 
 ol.cf-ol { 
-	margin:40px 0 0 0; 
+	margin:0; 
 	padding:0; 
 }
-ol.cf-ol li	{ 
+ol.cf-ol li	{
+	background:none!important; 
 	margin:5px 0!important; /*some themes may interfere otherwise*/
 	padding:0; 
 	list-style:none!important; 
 	text-align:left;
+	line-height:1.3em;
 }
 
 
@@ -67,7 +74,7 @@ ol.cf-ol li.textonly {
 .cform label {
 	color:#666666;
 	width:90px; 
-	margin:2px 10px 0 0; 
+	margin:4px 10px 0 0; 
 	display:-moz-inline-box; /*for mozilla*/
 	display:inline-block; /*for Opera & IE*/
 	text-align:right;
@@ -80,11 +87,11 @@ ol.cf-ol li.textonly {
 }
 
 label.cf-before {
-	margin:0 10px 0 0; 
+	margin:4px 10px 0 0; 
 }
 
 label.cf-after 	{
-	margin:0 0 0 6px;
+	margin:4px 0 0 6px;
 	width:200px;
 	text-align:left;
 }
@@ -95,12 +102,12 @@ label.cf-after span {
 }
 
 label.cf-group-after {
-	margin:0 0 0 2px;
-	width:60px;
+	margin:4px 4px 0 2px;
+	width:125px;
 	text-align:left;
 }
 label.cf-group-after span {
-	width:60px;
+	width:125px;
 	display:block;
 }
 
@@ -111,29 +118,36 @@ label.cf-group-after span {
 .cform input,
 .cform textarea,
 .cform select {
-	color:#666666;
-	padding:1px 3px;
-	background: #f9f9f9; 
-	border: 1px solid #888888; 
+	color:#333;
+	padding:3px;
+	background: #fefefe; 
+	border: 1px solid #ddd; 
+	vertical-align:top;
+	letter-spacing:1px;
+	line-height:normal;
+	padding:4px 3px;
+	vertical-align:top;
+	font:bold 9px Arial;
 }
+
 .cform input:hover,
 .cform textarea:hover,
 .cform select:hover	{
-	background:#CEDDDF; 
+	background:#f2f2f2; 
 }
 
 .cform input:focus,
 .cform textarea:focus,
 .cform select:focus	{ 
-	background:#F3F8F8; 
+	background:#fefefe; 
 }
 
 .cform textarea,
 .cform input {
-	width:150px; 
+	width:175px; 
 }
 .cform select {
-	width:158px; /* attempt to have equal length */
+	width:183	px; /* attempt to have equal length */
 }  
 
 .cform select.cfselectmulti	{ 
@@ -141,8 +155,6 @@ label.cf-group-after span {
 }
 
 .cform textarea {
-	font-family: arial;
-	font-size: 0.9em;
 	overflow:auto;
 }
 
@@ -153,10 +165,11 @@ label.cf-group-after span {
 span.reqtxt,
 span.emailreqtxt {
 	color:#a2a2a2;
-	margin:3px 5px 0 0;
-	font-size:0.9em;
+	margin:3px 0 0 5px;
+	font:normal 9px Tahoma;
 	display: -moz-inline-box; 
 	vertical-align:top;
+	letter-spacing:1px;
 }
 
 
@@ -167,6 +180,7 @@ span.emailreqtxt {
 ol.cf-ol li.cf-box-title {
 	color:#a2a2a2;
 	padding-left:100px; /* check with label 'width' incl. */
+	margin:6px 0 0 0!important;
 }
 
 /*                                                    */
@@ -177,7 +191,9 @@ input.cf-box-a,
 input.cf-box-b 	{ 
 	margin:2px 0 0 0; 
 	width:16px; 
-	border:none; 
+	height:22px;
+	border:none!important;
+	background:none!important;
 }
 
 input.cf-box-a 	{ 
@@ -190,6 +206,7 @@ input.cf-box-a 	{
 /*                                                    */
 
 ol.cf-ol li.cf-box-group {
+	margin:0pt !important;
 	padding: 0 0 5px 100px; 
 } 
 
@@ -199,55 +216,87 @@ ol.cf-ol li.cf-box-group {
 /*                                                    */
 
 p.cf-sb {
-	margin: 0;
-	padding-bottom:13px;
+	text-align:right;
+	padding:0!important;
+	margin:0;
 	background: url(../images/customform_shiny_bg_bottom.jpg) no-repeat bottom left;
 }
 .cform input.sendbutton	{ 
-	color:white;
-	border:0; 
-	height:28px; 
-	width:76px;
-	padding:0 0 4px 0; 
-	margin: 0 0 6px 279px;
-	font-size:1.2em;
-	font-weight:bold;
-	background: white url(../images/customform_shiny_submit.gif) no-repeat;
+	color:#FFFFFF;
+	cursor:pointer;
+	font:14px Arial;
+	height:31px;
+	line-height:31px;
+	margin: 0px 10px 10px 0px;
+	padding: 0 0 5px;
+	width:120px;
+	background: white url(../images/customform_shiny_submit.jpg) no-repeat;
+	border:none;
 }
+.cform input.sendbutton:hover	{ 
+	background-position:0 -31px;
+}
+
 
 
 /*                                                    */
 /*   formatting for invalid user inputs               */
 /*                                                    */
+.cform .cf_error { 
+	color:#ad2929; 
+	border:1px solid #ad2929; 
+}
+.mailerr,
+.cform .cf_errortxt {
+	color:#ad2929; 
+}
 
-.cform .error 		{ color:red!important; border:1px solid #FF0000!important; padding:1px 3px; }
-.cform .errortxt,
-.mailerr	    	{ color:red!important; }
+/*                                                    */
+/*   FORM FIELDS enhanced error display               */
+/*                                                    */
+ol.cf-ol li.cf_li_err {
+	background:#FFDFDF url(li-err-bg.png) repeat!important;
+	border-color:#DF7D7D;
+	border-style:solid;
+	border-width:1px 0pt;
+	padding:5px 0!important;
+	margin:5px 0!important;
+}
+
+ol.cf-ol li ul.cf_li_text_err {
+	margin:0 0 0 100px;
+	padding:0;
+	color:#333;
+}
+
+ol.cf-ol ul.cf_li_text_err li {
+	background:url(icon-alert.png) no-repeat left 1px!important;
+	list-style:none!important;
+	font-weight:bold;
+	text-indent:0;
+	margin:0 0 2px!important;
+	padding-left:15px;
+}
+ol.cf-ol ul.cf_li_text_err li:before {
+	content:'';
+}
 
 
 /*                                                    */
 /* 'visitor verification' related styles              */
 /*                                                    */
 
-label.seccap {
-	margin-top: 6px;
-}
 label.secq,
-label.secq span {
-	display:inline;
-	width:auto;
-}
-label.secq {
-	vertical-align:middle;
+label.seccap {
+	vertical-align:text-bottom;
+	margin-bottom:4px;
 }
 
 input.secinput {
-	width:45px;
-	margin: 3px 0 0 10px;
-	vertical-align:middle;
+	vertical-align:text-bottom;
 }
 
-
+#cforms_captcha6,
 #cforms_captcha5,
 #cforms_captcha4,
 #cforms_captcha3,
@@ -257,10 +306,11 @@ input.secinput {
 	width:50px;
 	padding: 4px 4px;
 	margin: 0;
-	vertical-align:top;
+	vertical-align:text-bottom;
 }
 
 img.captcha	{
+	vertical-align:text-bottom;
 	margin:0 0 0 10px!important;
 	padding:0!important;
 	border:none!important;
@@ -268,26 +318,54 @@ img.captcha	{
 }
 
 img.captcha-reset {
-	background:	url(../images/captcha_reset_white.jpg) no-repeat;
-	margin-left:3px;
+	vertical-align:text-bottom;
+	background:	url(captcha_reset_silver.gif) no-repeat;
+	margin:0 0 2px 3px;
 	width:21px;
 	height:21px;
+	border:none;
 }
 
+img.imgcalendar {
+	border:none;
+}
 
 /*                                                    */
 /* change formatting of response msgs here            */
 /*                                                    */
 
-p.info 		{
-	margin:10px 0;
-	text-align:center;
+div.cf_info {
+	color:#333;
+	display:none;
+	padding:10px 15px!important;
+	width:380px;
+	line-height:1.3em;
+	margin:10px auto;
 }
-p.success 	{
-	color:green;
+div.cf_info ol {
+	margin:0;
+	padding:5px 15px 0 30px;
 }
-p.failure 	{
-	color:red;
+div.cf_info ol li {
+	padding:1px 0;
+	margin:2px 0;
+}
+div.cf_info a	{
+	color:#ad2929!important;
+	text-decoration:underline!important;
+}
+div.success {
+	background:white none repeat scroll 0%;
+	color:#AAAAAA;
+	display:block;
+	letter-spacing:3px;
+}
+div.failure {
+	display:block;
+	background:#FFDFDF url(li-err-bg.png) repeat!important;
+	border-color:#DF7D7D;
+	border-style:solid;
+	border-width:1px 0pt;
 }
 
 /*                                                    */
@@ -308,6 +386,7 @@ p.failure 	{
 /*                                                    */
 
 .cform input.cf_upload  {
+	width:220px;
 	background: #f9f9f9;
 	border:1px solid #888888;
 }
@@ -316,7 +395,8 @@ p.failure 	{
 /*  Other: link love                                  */
 /*                                                    */
 .linklove {
-	margin:0 0 10px 0!important;
+	width:410px;
+	margin:0 auto 10px!important;
 	padding:0!important;	
 	text-align:center!important;
 }
@@ -324,49 +404,31 @@ p.failure 	{
 .linklove a:visited {
 	font-size: 0.8em;
 	font-family: Tahoma;
-	color:#aaaaaa;
+	color:#aaaaaa!important;
 }
 
 /*                                                    */
 /*  Other: browser hacks                              */
 /*                                                    */
+* html ol.cf-ol,
+* html ol.cf-ol li,
 * html span.reqtxt,
 * html span.emailreqtxt { 
 	display: inline-block;  /*for ie6*/
 }
+*+html ol.cf-ol,
+*+html ol.cf-ol li,
 *+html .cform label,
 *+html span.reqtxt,
 *+html span.emailreqtxt {
 	display: inline-block; /*for ie7*/
 }
-* html .cform fieldset.cf_hidden { 
-	border:none!important;
-	background:none!important;
-	padding:0!important;
-	margin:0!important;
-}
-
-* html .cform legend { 
-	position:absolute; 
-	top: -10px; 
-	left: 10px; 
-	margin-left:0;
-}
-* html .cform fieldset {
-	position: relative;
-	margin-top:15px;
-	padding-top:25px; 
+*+html img.captcha	{
+	margin-bottom:1px!important;
 }
 * html img.captcha	{
-	margin-top:1px!important;
+	margin-bottom:1px!important;
 }
-*+html input.cf-box-a,
-*+html input.cf-box-b { 
-	background:none;
-	margin-top:0;
-}
-* html input.cf-box-a,
-* html input.cf-box-b { 
-	background:none;
-	margin-top:0;
+* html select {
+	margin-top:3px!important;
 }

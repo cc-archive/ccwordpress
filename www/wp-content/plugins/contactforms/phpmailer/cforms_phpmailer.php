@@ -6,22 +6,33 @@ function cforms_phpmailer( $no, $frommail, $field_email, $to, $vsubject, $messag
 		$mail = new PHPMailer();
 		$mail->ClearAllRecipients();
 		$mail->ClearAddresses();
-		$mail->ClearAttachments(); 
+		$mail->ClearAttachments();
+		$mail->CharSet = 'utf-8';
 		
 		include_once ('phpmailer.lang-en.php');
         $mail->language = $PHPMAILER_LANG;
 
-		$mail->PluginDir=ABSPATH.WPINC.'/'; 
+		$mail->PluginDir = dirname(__FILE__).'/'; 
 
 		$mail->IsSMTP();                    // send via SMTP
-		$mail->Host     = $smtpsettings[1]; // SMTP servers
-		if ( $smtpsettings[2]<>''){
+		
+		$mail->Host			= $smtpsettings[1]; // SMTP servers
+
+		//$mail->SMTPDebug = true;
+
+		if ( $smtpsettings[2]<>'' && $smtpsettings[4]<>'' ){
 			$mail->SMTPAuth = true;         // turn on SMTP authentication
+
+			//secure stuff
+			$mail->SMTPSecure = $smtpsettings[4];   // sets the prefix to the servier
+			$mail->Port       = $smtpsettings[5];   // set the SMTP port 
+
 			$mail->Username = $smtpsettings[2]; // SMTP username
 			$mail->Password = $smtpsettings[3]; // SMTP password
 		}
 
 
+		$temp2=array();
 		//from
 		if( preg_match('/([\w-\.]+@([\w-]+\.)+[\w-]{2,4})/',$frommail,$temp) ) 
 			$mail->From     = $temp[0];
@@ -31,7 +42,7 @@ function cforms_phpmailer( $no, $frommail, $field_email, $to, $vsubject, $messag
 		else
 			$mail->FromName = $temp[0];
 
-
+		$temp2=array();
 		//reply-to
 		if( preg_match('/([\w-\.]+@([\w-]+\.)+[\w-]{2,4})/',$field_email,$temp) ) {
 			if ( preg_match('/(.*)\s+(([\w-\.]+@|<)).*/',$field_email,$temp2) )
@@ -39,6 +50,10 @@ function cforms_phpmailer( $no, $frommail, $field_email, $to, $vsubject, $messag
 			else
 				$mail->AddReplyTo($temp[0]);		
 		}
+		//TAF: add CC
+		if ( substr(get_option('cforms'.$no.'_tellafriend'),0,1)=='1' && $fileext=='ac') 
+			$mail->AddCC($temp[0],str_replace('"','',$temp2[1])); 
+
 
 		//bcc
 		if( preg_match('/[\w-\.]+@([\w-]+\.)+[\w-]{2,4}/',stripslashes(get_option('cforms'.$no.'_bcc')),$temp) )
@@ -66,7 +81,7 @@ function cforms_phpmailer( $no, $frommail, $field_email, $to, $vsubject, $messag
 			$mail->Body     =  stripslashes($message).((substr(get_option('cforms'.$no.'_formdata'),0,1)=='1'&&$formdata<>'')?$eol.$formdata:'');
 		
 		// possibly add attachment with indiv. mime types
-		if ( $fileext<>'' && count($_FILES['cf_uploadfile'.$no]['tmp_name']) > 0 && isset($_FILES['cf_uploadfile'.$no]) && !get_option('cforms'.$no.'_noattachments') ) {
+		if ( $fileext<>'ac' && $fileext<>'' && count($_FILES['cf_uploadfile'.$no]['tmp_name']) > 0 && isset($_FILES['cf_uploadfile'.$no]) && !get_option('cforms'.$no.'_noattachments') ) {
 
 		 		$all_mime = array("txt"=>"text/plain", "htm"=>"text/html", "html"=>"text/html", "gif"=>"image/gif", "png"=>"image/x-png",
 		 						 "jpeg"=>"image/jpeg", "jpg"=>"image/jpeg", "tif"=>"image/tiff", "bmp"=>"image/x-ms-bmp", "wav"=>"audio/x-wav",

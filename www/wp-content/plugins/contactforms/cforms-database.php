@@ -12,7 +12,6 @@ $cforms_root = get_settings('siteurl') . '/wp-content/plugins/'.$plugindir;
 ### db settings
 $wpdb->cformssubmissions	= $wpdb->prefix . 'cformssubmissions';
 $wpdb->cformsdata       	= $wpdb->prefix . 'cformsdata';
-
 		
 ### Check Whether User Can Manage Database
 if(!current_user_can('manage_cforms') && !current_user_can('track_cforms')) {
@@ -28,7 +27,7 @@ if ( get_option('cforms_formcount') == '' ){
 	<p><?php _e('Please go to your <strong>Plugins</strong> tab and either disable the plugin, or toggle its status (disable/enable) to revive cforms!', 'cforms') ?></p>
 	</div>
 	<?php
-	die;
+	return;
 }
 
 
@@ -58,8 +57,11 @@ if ( (isset($_POST['delete'])) ) {
 	foreach ($_POST['entries'] as $entry) :
 		$entry = (int) $entry;
 
+		$temp = explode( '$#$',stripslashes(htmlspecialchars(get_option('cforms'.$fileval->form_id.'_upload_dir'))) );
+		$fileuploaddir = $temp[0];
+
 		$fileval = $wpdb->get_row("SELECT DISTINCT field_val,form_id FROM {$wpdb->cformsdata},{$wpdb->cformssubmissions} WHERE sub_id = '$entry' AND id=sub_id AND field_name LIKE '%[*]%'");
-		$file = get_option('cforms'.$fileval->form_id.'_upload_dir').'/'.$entry.'-'.$fileval->field_val;
+		$file = $fileuploaddir.'/'.$entry.'-'.$fileval->field_val;
 		
 		$del='';
 		if ( $fileval->field_val <> '' ){
@@ -74,7 +76,7 @@ if ( (isset($_POST['delete'])) ) {
 	endforeach;
 	
 	?>
-	<div id="message" class="updated fade"><p><strong><?php echo $i; ?> <?php _e('entries succesfully removed from the tables!', 'cforms') ?></strong><br />
+	<div id="message" class="updated fade"><p><strong><?php echo $i; ?> <?php _e('Entries successfully removed from the tables!', 'cforms') ?></strong><br />
 		<em><?php _e('Note: If you erroneously deleted an entry, no worries, you should still have an email copy.', 'cforms') ?></em></p></div>
 	<?php
 
@@ -90,25 +92,42 @@ if ( isset($_POST['sqlwhere']) ){
 			$entry = substr( $arg,7 );
 	}
 
-	$fileval = $wpdb->get_row("SELECT DISTINCT field_val,form_id FROM {$wpdb->cformsdata},{$wpdb->cformssubmissions} WHERE sub_id = '$entry' AND id=sub_id AND field_name LIKE '%[*]%'");
+	$filevalues = $wpdb->get_results("SELECT field_val,form_id FROM {$wpdb->cformsdata},{$wpdb->cformssubmissions} WHERE sub_id = '$entry' AND id=sub_id AND field_name LIKE '%[*]%'");
 
-	$file = get_option('cforms'.$fileval->form_id.'_upload_dir').'/'.$entry.'-'.$fileval->field_val;
 	
 	$del='';
-	if ( $fileval->field_val <> '' ){
-		if ( file_exists( $file ) ){
-			unlink ( $file );
-			$del = __('(including attachment)','cforms');
-		}
-		else
-			$del = __('(but associated attachment was not found!)','cforms');
-	}
+	$found = 0;
 	
+	foreach( $filevalues as $fileval ) {
+
+		$temp = explode( '$#$',stripslashes(htmlspecialchars(get_option('cforms'.$fileval->form_id.'_upload_dir'))) );
+		$fileuploaddir = $temp[0];
+	
+		$file = $fileuploaddir.'/'.$entry.'-'.$fileval->field_val;
+
+		if ( $fileval->field_val <> '' ){
+			if ( file_exists( $file ) ){
+				unlink ( $file );
+				$found = $found | 1;
+			}
+			else{
+				$found = $found | 2;
+			}
+		}
+	}
+
+	if ( $found==3 )
+		$del = ' '.__('(some associated attachment/s were not found!)','cforms');
+	else if ( $found==2 )
+		$del = ' '.__('(associated attachment/s were not found!)','cforms');
+	else if ( $found==1 )
+		$del = ' '.__('(including all attachment/s)','cforms');
+		
 	$nuked = $wpdb->query("DELETE FROM {$wpdb->cformssubmissions} WHERE id = '$entry'");
 	$nuked = $wpdb->query("DELETE FROM {$wpdb->cformsdata} WHERE sub_id = '$entry'");
 
 	?>
-	<div id="message" class="updated fade"><p><strong><?php echo $i; ?> <?php _e('entry succesfully removed', 'cforms'); echo ' '.$del; ?>.</strong></p></div>
+	<div id="message" class="updated fade"><p><strong><?php echo $i; ?> <?php _e('Entry successfully removed', 'cforms'); echo $del; ?>.</strong></p></div>
 	<?php
 }
 
@@ -145,8 +164,8 @@ if ( ($_POST['showid']<>'' || isset($_POST['showselected']) || isset($_POST['sql
 
 			if( $sub_id<>$entry->sub_id ){
 				$sub_id = $entry->sub_id;
-				echo '<div class="showform">Form: <span>'. get_option('cforms'.$entry->form_id.'_fname') . '</span> &nbsp; <em>(ID:' . $entry->sub_id . ')</em>' .
-						'&nbsp; <input class="allbuttons xbutton" type="submit" name="xbutton'.$entry->sub_id.'" title="'.__('delete this entry', 'cforms').'" value=""/></div>' . "\n";
+				echo '<div class="showform">Form: <span>'. stripslashes(get_option('cforms'.$entry->form_id.'_fname')) . '</span> &nbsp; <em>(ID:' . $entry->sub_id . ')</em>' .
+						'&nbsp; <input class="allbuttons altx" type="submit" name="xbutton'.$entry->sub_id.'" title="'.__('delete this entry', 'cforms').'" value=""/></div>' . "\n";
 			}
 
 			$name = $entry->field_name==''?'&nbsp;':stripslashes($entry->field_name);
@@ -155,15 +174,24 @@ if ( ($_POST['showid']<>'' || isset($_POST['showselected']) || isset($_POST['sql
 			if (strpos($name,'[*]')!==false) {  // attachments?
 
 					$no   = $entry->form_id; 
-                    $file = get_option('cforms'.$no.'_upload_dir').'/'.$entry->sub_id.'-'.strip_tags($val);
-                    $file = get_settings('siteurl') . substr( $file, strpos($file, '/wp-content/') );
-                    
+
+					$temp = explode( '$#$',stripslashes(htmlspecialchars(get_option('cforms'.$no.'_upload_dir'))) );
+					$fileuploaddir = $temp[0];
+					$fileuploaddirurl = $temp[1];
+										
+					if ( $fileuploaddirurl=='' ){
+	                    $fileurl = $fileuploaddir.'/'.$entry->sub_id.'-'.strip_tags($val);
+	                    $fileurl = get_settings('siteurl') . substr( $fileurl, strpos($fileurl, '/wp-content/') );
+					}
+					else
+	                    $fileurl = $fileuploaddirurl.'/'.$entry->sub_id.'-'.strip_tags($val);
+
 					echo '<div class="showformfield" style="margin:4px 0;color:#3C575B;"><div class="L">';
 					_e('Attached file:', 'cforms');
 					if ( $entry->field_val == '' )
 						echo 	'</div><div class="R">' . __('-','cforms') . '</div></div>' . "\n";					
 					else
-						echo 	'</div><div class="R">' . '<a href="' . $file . '">' . str_replace("\n","<br />", strip_tags($val) ) . '</a>' . '</div></div>' . "\n";
+						echo 	'</div><div class="R">' . '<a href="' . $fileurl . '">' . str_replace("\n","<br />", strip_tags($val) ) . '</a>' . '</div></div>' . "\n";
 
 			}
 			elseif ($name=='page') {  // special field: page 
@@ -172,6 +200,10 @@ if ( ($_POST['showid']<>'' || isset($_POST['showselected']) || isset($_POST['sql
 					_e('Submitted via page', 'cforms');
 					echo 	'</div><div class="R">' . str_replace("\n","<br />", strip_tags($val) ) . '</div></div>' . "\n";
 
+			} elseif ( strpos($name,'Fieldset')!==false ) {
+			
+					echo '<div class="showformfield tfieldset"><div class="L">&nbsp;</div><div class="R">' . strip_tags($val)  . '</div></div>' . "\n";
+			
 			} else {
 
 					echo '<div class="showformfield"><div class="L">' . $name . '</div>' .
@@ -209,12 +241,12 @@ if ( ($_POST['showid']<>'' || isset($_POST['showselected']) || isset($_POST['sql
 	$entries = $wpdb->get_results($sql);
 
 	$formselect  = '<select align="right" type="text" name="filter_form" id="filter_form">';
-	$formselect .= '<option value="*" '.( (!isset($_POST['filter_form']))?'selected="selected"':'' ).'>**all forms**</option>';
+	$formselect .= '<option value="*" '.( (!isset($_POST['filter_form']))?'selected="selected"':'' ).'>'.__('**all forms**','cforms').'</option>';
 
 	for ($i=1; $i <= get_option('cforms_formcount'); $i++){
 		$n = ( $i==1 )?'':$i; 
 		$selected = ( isset($_POST['filter_form']) && $_POST['filter_form']==$n )?'selected="selected"':'';
-		$formselect .= '<option value="'.$n.'" '.$selected.'>'.get_option('cforms'.$n.'_fname').'</option>';
+		$formselect .= '<option value="'.$n.'" '.$selected.'>'.stripslashes(get_option('cforms'.$n.'_fname')).'</option>';
 	}
 	
 	$formselect .= '</select>';
@@ -228,7 +260,7 @@ if ( ($_POST['showid']<>'' || isset($_POST['showselected']) || isset($_POST['sql
 
 		<p><?php _e('Keep track of all form submissions & data entered, view individual entries or a whole bunch and download as TAB or CSV formatted file. Attachments can be accessed in the details section. When deleting entries, associated attachments will be removed, too! ', 'cforms') ?></p>
 
-		<p><?php echo str_replace('[url]', $cforms_root.'/images/search_icon.gif',__('Use the below filter fields <img src="[url]" alt="filter" title="Click to filter"> to narrow down the number of shown entries.', 'cforms')) ?></p>
+		<p><?php echo sprintf( __('Use the below filter fields <img src="%s" alt="Filter" title="Click to filter"> to narrow down the number of shown entries.', 'cforms'),$cforms_root.'/images/search_icon.gif') ?></p>
 
 		<form id="cformsdata" name="form" method="post" action="">
 				<input type="hidden" name="showid" value=""/>
@@ -236,16 +268,6 @@ if ( ($_POST['showid']<>'' || isset($_POST['showselected']) || isset($_POST['sql
 				<input type="hidden" name="orderdir" value="<?php echo $orderdir; ?>"/>
 				<input type="hidden" name="checkflag" value="0"/>
 
-
-				<div class="dataheader">
-					<input type="submit" class="allbuttons delete" name="delete" value="<?php _e('delete selected entries', 'cforms') ?>" onclick="return confirm('Do you really want to erase the selected records?');"/>
-					<input type="submit" class="allbuttons showselected" name="showselected" value="<?php _e('show selected entries', 'cforms') ?>" />&nbsp;&nbsp;
-					<input type="submit" class="allbuttons downloadselectedcforms" name="downloadselectedcforms" value="<?php _e('download selected entries', 'cforms') ?>" />
-					<select name="downloadformat" class="downloadformat">
-						<option value="csv"><?php _e('CSV', 'cforms') ?></option>
-						<option value="txt"><?php _e('TXT (tab delimited)', 'cforms') ?></option>
-					</select>
-				</div>
 
 				<ul class="sortheader">
 					<li class="col0">#</li>
@@ -257,42 +279,54 @@ if ( ($_POST['showid']<>'' || isset($_POST['showselected']) || isset($_POST['sql
 				</ul>
 
 
-				<ul class="selectrow" style="margin-top:5px;">
+				<ul class="selectrow" style="margin:8px auto;">
 					<li>
 						<label for="allchktop"><input type="checkbox" id="allchktop" name="allchktop" onClick="javascript:checkonoff('form','entries[]');"/> <strong><?php _e('select/deselect all', 'cforms') ?></strong></label>
 					</li>
 				</ul>
 
-				<?php
-				$class=''; $i=0;
-				foreach ($entries as $entry)
-				{
-					$class = ('alternate' == $class) ? '' : 'alternate'; ?>
-
-					<ul class="datarow <?php echo $class; ?>">
-						<li class="col0"><?php echo $entry->id; ?></li>
-						<li class="col1"><input type="checkbox" name="entries[]" id="e<?php echo $entry->id; ?>" value="<?php echo $entry->id; ?>" /></li>
-						<li class="col2" onclick="checkentry('e<?php echo $entry->id; ?>')"><?php echo get_option('cforms'.$entry->form_id.'_fname'); ?></li>
-						<li class="col3" onclick="checkentry('e<?php echo $entry->id; ?>')"><?php echo $entry->email; ?></li>
-						<li class="col4" onclick="checkentry('e<?php echo $entry->id; ?>')"><?php echo $entry->sub_date; ?></li>
-						<li class="col5" onclick="checkentry('e<?php echo $entry->id; ?>')"><?php echo $entry->ip; ?></li>
-						<li class="col6" onclick="checkentry('e<?php echo $entry->id; ?>')"><?php echo '<a href="#" onclick="document.form.showid.value=\''.$entry->id.'\';document.form.submit();">'; ?><?php _e('view', 'cforms') ?></a></li>
-					</ul>
-
-				<?php
-				}
-				?>
-
-				<ul class="selectrow">
+				<div class="r15container"><div id="r15" class="rbox">
+				
+					<div id="trackingdata">
+					<?php
+					$class=''; $i=0;
+					foreach ($entries as $entry)
+					{
+						$class = ('alternate' == $class) ? '' : 'alternate'; ?>
+	
+						<ul class="datarow <?php echo $class; ?>">
+							<li class="col0"><?php echo $entry->id; ?></li>
+							<li class="col1"><input type="checkbox" name="entries[]" id="e<?php echo $entry->id; ?>" value="<?php echo $entry->id; ?>" /></li>
+							<li class="col2" onclick="checkentry('e<?php echo $entry->id; ?>')"><?php echo stripslashes(get_option('cforms'.$entry->form_id.'_fname')); ?></li>
+							<li class="col3" onclick="checkentry('e<?php echo $entry->id; ?>')"><?php echo $entry->email; ?></li>
+							<li class="col4" onclick="checkentry('e<?php echo $entry->id; ?>')"><?php echo $entry->sub_date; ?></li>
+							<li class="col5" onclick="checkentry('e<?php echo $entry->id; ?>')"><a href="http://geomaplookup.cinnamonthoughts.org/?ip=<?php echo $entry->ip; ?>" title="<?php _e('IP Lookup', 'cforms') ?>"><?php echo $entry->ip; ?></a></li>
+							<li class="col6" onclick="checkentry('e<?php echo $entry->id; ?>')"><?php echo '<a href="#" onclick="document.form.showid.value=\''.$entry->id.'\';document.form.submit();">'; ?><?php _e('view', 'cforms') ?></a></li>
+						</ul>
+	
+					<?php
+					}
+					?>
+					</div>
+					
+					<div id="rh15"></div>
+				</div></div>
+				
+				<ul class="selectrow" style="margin:14px auto 8px auto;">
 					<li>
 						<label for="allchkbottom"><input type="checkbox" id="allchkbottom" name="allchkbottom" onClick="javascript:checkonoff('form','entries[]');"/> <strong><?php _e('select/deselect all', 'cforms') ?></strong></label>
 					</li>
 				</ul>
 
+
 				<div class="dataheader">
-					<input type="submit" class="allbuttons delete" name="delete" value="<?php _e('delete selected entries', 'cforms') ?>" onclick="return confirm('Do you really want to erase the selected records?');" />
+					<input type="submit" class="allbuttons delete" name="delete" value="<?php _e('delete selected entries', 'cforms') ?>" onclick="return confirm('Do you really want to erase the selected records?');"/>
 					<input type="submit" class="allbuttons showselected" name="showselected" value="<?php _e('show selected entries', 'cforms') ?>" />&nbsp;&nbsp;
 					<input type="submit" class="allbuttons downloadselectedcforms" name="downloadselectedcforms" value="<?php _e('download selected entries', 'cforms') ?>" />
+					<select name="downloadformat" class="downloadformat">
+						<option value="csv"><?php _e('CSV', 'cforms') ?></option>
+						<option value="txt"><?php _e('TXT (tab delimited)', 'cforms') ?></option>
+					</select>
 				</div>
 
 			</form>
