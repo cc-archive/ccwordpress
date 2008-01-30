@@ -1,10 +1,11 @@
 /*                                                    */
 /*  main 'top-level' form elements                    */
 /*                                                    */
+@import "calendar.css";
 
 .cform { 
-	/* margin:10px auto 0 auto;  */
-	width: 80% ;
+	margin:10px auto 0 auto; 
+	width: 410px; 
 }
 
 .cform fieldset	{ 
@@ -13,9 +14,11 @@
 	border:1px solid #adadad; 
 	border-left-color:#ececec; 
 	border-top-color:#ececec; 
-	background:#f7f7f7; }
+	background:#f7f7f7; 
+}
 
-.cform fieldset.cf_hidden { 
+.cform .cf_hidden {
+	display:none; 
 	border:none!important;
 	background:none!important;
 	padding:0!important;
@@ -25,18 +28,22 @@
 .cform legend { 
 	margin-left:10px;
 	padding: 0 2px; 
-	font:normal 20px Times; 
+	font:normal 20px Times;
+	color:#666666;
 }
 
 ol.cf-ol { 
 	margin:0; 
-	padding:0; 
+	padding:0;
 }
-ol.cf-ol li	{ 
-	margin:5px 0!important; /*some themes may interfere otherwise*/
+
+ol.cf-ol li	{
+	background:none!important; 
+	margin:5px 0!important;
 	padding:0; 
 	list-style:none!important; 
 	text-align:left;
+	line-height:1.3em;
 }
 
 
@@ -45,7 +52,10 @@ ol.cf-ol li	{
 /*                                                    */
 
 ol.cf-ol li.textonly {
-	padding:3px 0; 
+	background:#F0F0F0 !important;
+	letter-spacing:1px;
+	margin:10px 0pt !important;
+	padding:5px 0pt;
 	text-align:center;
 }
 
@@ -56,23 +66,24 @@ ol.cf-ol li.textonly {
 
 .cform label {
 	width:90px; 
-	margin:2px 10px 0 0; 
+	margin:4px 10px 0 0; 
 	display:-moz-inline-box; /*for mozilla*/
 	display:inline-block; /*for Opera & IE*/
 	text-align:right;
 	vertical-align:top;
 }
+
 .cform label span {
 	width:90px; /* must be the same as above!*/
 	display:block; 
 }
 
 label.cf-before {
-	margin:0 10px 0 0; 
+	margin:4px 10px 0 0; 
 }
 
 label.cf-after 	{
-	margin:0 0 0 6px;
+	margin:4px 0 0 6px;
 	width:200px;
 	text-align:left;
 }
@@ -83,12 +94,12 @@ label.cf-after span {
 }
 
 label.cf-group-after {
-	margin:0 0 0 2px;
-	width:60px;
+	margin:3px 4px 0 2px;
+	width:72px;
 	text-align:left;
 }
 label.cf-group-after span {
-	width:60px;
+	width:72px;
 	display:block;
 }
 
@@ -99,9 +110,10 @@ label.cf-group-after span {
 .cform input,
 .cform textarea,
 .cform select { 
-	padding:1px 3px;
+	padding:3px;
 	background: #f9f9f9; 
 	border: 1px solid #888888; 
+	vertical-align:top;
 }
 .cform input:hover,
 .cform textarea:hover,
@@ -121,6 +133,7 @@ label.cf-group-after span {
 }
 .cform select {
 	width:158px; /* attempt to have equal length */
+	padding:2px 0;
 }  
 
 .cform select.cfselectmulti	{ 
@@ -134,38 +147,29 @@ label.cf-group-after span {
 }
 
 /*                                                    */
-/* formatting for text:  "(required)"  & other        */
-/*                                                    */
-
-span.reqtxt,
-span.emailreqtxt { 
-	margin:3px 5px 0 0;
-	font-size:0.9em;
-	display: -moz-inline-box; 
-	vertical-align:top;
-}
-
-
-/*                                                    */
 /*   radio button title                               */
 /*                                                    */
 
 ol.cf-ol li.cf-box-title {
-	padding-left:100px; /* check with label 'width' incl. */
+	font-weight:bold;
+	letter-spacing:1px;
+	padding:8px 0 0 100px; /* check with label 'width' incl. */
 }
 
 /*                                                    */
 /*   check boxes                                      */
 /*                                                    */
 
-input.cf-box-a,
-input.cf-box-b 	{ 
+.cform input.cf-box-a,
+.cform input.cf-box-b 	{ 
 	margin:2px 0 0 0; 
-	width:16px; 
-	border:none; 
+	width:14px;
+	height:22px;
+	border:none!important;
+	background:none!important; 
 }
 
-input.cf-box-a 	{ 
+.cform input.cf-box-a 	{ 
 	margin-left:100px; /* check with label 'width' incl. */
 } 
 
@@ -175,20 +179,33 @@ input.cf-box-a 	{
 /*                                                    */
 
 ol.cf-ol li.cf-box-group {
-	padding: 0 0 5px 100px; 
+	margin:10px 0pt 0px !important;
+	padding-left: 100px; 
 } 
 
+/*                                                    */
+/* formatting for text:  "(required)"  & other        */
+/*                                                    */
+
+span.reqtxt,
+span.emailreqtxt { 
+	margin:3px 0 0 3px;
+	font-size:0.9em;
+	display: -moz-inline-box; 
+	vertical-align:top;
+}
 
 /*                                                    */
 /*   FORM submit button                               */
 /*                                                    */
 
 p.cf-sb {
+	padding: 0!important;
 	margin: 0;
 }
 .cform input.sendbutton	{ 
 	width:100px;  
-	padding:2px; 
+	padding:5px; 
 	margin: 10px 0 0 310px;
 	font-size:0.8em;
 	background:url(../images/button-bg.gif) repeat-x; 
@@ -201,34 +218,62 @@ p.cf-sb {
 /*                                                    */
 /*   formatting for invalid user inputs               */
 /*                                                    */
+.cform .cf_error { 
+	color:#ad2929; 
+	border:1px solid #ad2929; 
+}
+.mailerr,
+.cform .cf_errortxt {
+	color:#ad2929; 
+}
 
-.cform .error 		{ color:red!important; border:1px solid #FF0000!important; padding:1px 3px; }
-.cform .errortxt,
-.mailerr	    	{ color:red!important; }
+/*                                                    */
+/*   FORM FIELDS enhanced error display               */
+/*                                                    */
+ol.cf-ol li.cf_li_err {
+	background:#FFDFDF url(li-err-bg.png) repeat!important;
+	border-color:#DF7D7D;
+	border-style:solid;
+	border-width:1px 0pt;
+	padding:5px 0!important;
+	margin:5px 0!important;
+}
+
+ol.cf-ol li ul.cf_li_text_err {
+	height:1%;
+	min-height:1%;
+	margin:0 0 0 100px;
+	padding:0;
+	color:#333;
+}
+
+ol.cf-ol ul.cf_li_text_err li {
+	background:url(icon-alert.png) no-repeat left 1px!important;
+	list-style:none!important;
+	font-weight:bold;
+	text-indent:0;
+	margin:0 0 2px!important;
+	padding-left:15px;
+}
+ol.cf-ol ul.cf_li_text_err li:before {
+	content:'';
+}
 
 /*                                                    */
 /* 'visitor verification' related styles              */
 /*                                                    */
 
-label.seccap {
-	margin-top: 6px;
-}
 label.secq,
-label.secq span {
-	display:inline;
-	width:auto;
-}
-label.secq {
-	margin-left:20px;
-	vertical-align:middle;
+label.seccap {
+	vertical-align:text-bottom;
+	margin-bottom:4px;
 }
 
 input.secinput {
-	width:45px;
-	margin: 3px 0 0 10px;
-	vertical-align:middle;
+	vertical-align:text-bottom;
 }
 
+#cforms_captcha6,
 #cforms_captcha5,
 #cforms_captcha4,
 #cforms_captcha3,
@@ -238,10 +283,10 @@ input.secinput {
 	width:50px;
 	padding: 4px 4px;
 	margin: 0;
-	vertical-align:top;
 }
 
 img.captcha	{
+	vertical-align:text-bottom;
 	margin:0 0 0 10px!important;
 	padding:0!important;
 	border:none!important;
@@ -249,25 +294,53 @@ img.captcha	{
 }
 
 img.captcha-reset {
-	background:	url(../images/captcha_reset_grey.jpg) no-repeat;
-	margin-left:3px;
+	vertical-align:text-bottom;
+	background:	url(captcha_reset_grey.gif) no-repeat;
+	margin:0 0 2px 3px;
 	width:21px;
 	height:21px;
+	border:none;
+}
+
+img.imgcalendar {
+	border:none;
 }
 
 /*                                                    */
 /* change formatting of response msgs here            */
 /*                                                    */
 
-p.info 		{
-	margin:10px 0;
-	text-align:center;
+div.cf_info {
+	color:#333;
+	display:none;
+	padding:10px 15px!important;
+	width:380px;
+	line-height:1.3em;
+	margin:10px auto;
 }
-p.success 	{
-	color:green;
+div.cf_info ol {
+	margin:0;
+	padding:5px 15px 0 30px;
 }
-p.failure 	{
-	color:red;
+div.cf_info ol li {
+	padding:1px 0;
+	margin:2px 0;
+}
+div.cf_info a	{
+	color:#ad2929!important;
+	text-decoration:underline!important;
+}
+div.success {
+	background:#F7F7F7 none repeat scroll 0% 50%;
+	color:#444444;
+	display:block;
+}
+div.failure {
+	display:block;
+	background:#FFDFDF url(li-err-bg.png) repeat!important;
+	border-color:#DF7D7D;
+	border-style:solid;
+	border-width:1px 0pt;
 }
 
 /*                                                    */
@@ -286,8 +359,8 @@ p.failure 	{
 /*                                                    */
 /* upload box styling                                 */
 /*                                                    */
-
 .cform input.cf_upload  {
+	width:220px;
 	background: #f9f9f9;
 	border:1px solid #888888;
 }
@@ -296,10 +369,10 @@ p.failure 	{
 /*  Other: link love                                  */
 /*                                                    */
 .linklove {
-	margin:0 0 10px 0!important;
+	width:410px;
+	margin:0 auto 10px!important;
 	padding:0!important;	
 	text-align:center!important;
-    display: none;
 }
 .linklove a,
 .linklove a:visited {
@@ -311,41 +384,46 @@ p.failure 	{
 /*                                                    */
 /*  Other: browser hacks                              */
 /*                                                    */
-* html span.reqtxt,
-* html span.emailreqtxt { 
-	display: inline-block;  /*for ie6*/
+* html .cform fieldset {
+	position: relative;
+	margin-top:15px;
+	padding-top:25px; 
 }
-*+html .cform label,
-*+html span.reqtxt,
-*+html span.emailreqtxt {
-	display: inline-block; /*for ie7*/
-}
-* html .cform fieldset.cf_hidden { 
-	border:none!important;
-	background:none!important;
-	padding:0!important;
-	margin:0!important;
-}
-
 * html .cform legend { 
 	position:absolute; 
 	top: -10px; 
 	left: 10px; 
 	margin-left:0;
 }
-* html .cform fieldset {
+*+html .cform fieldset {
 	position: relative;
 	margin-top:15px;
 	padding-top:25px; 
 }
-* html img.captcha	{
-	margin-top:1px!important;
+*+html .cform legend { 
+	position:absolute; 
+	top: -10px; 
+	left: 10px; 
+	margin-left:0;
 }
-*+html input.cf-box-a,
-*+html input.cf-box-b { 
-	margin-top:0;
+
+* html ol.cf-ol,
+* html ol.cf-ol li,
+* html span.reqtxt,
+* html span.emailreqtxt { 
+	display: inline-block;  /*for ie6*/
 }
-* html input.cf-box-a,
-* html input.cf-box-b { 
-	margin-top:0;
+*+html .cform label,
+*+html ol.cf-ol,
+*+html ol.cf-ol li,
+*+html span.reqtxt,
+*+html span.emailreqtxt {
+	display: inline-block; /*for ie7*/
+}
+
+* html img.captcha {
+	margin-bottom:1px!important;
+}
+*+html img.captcha {
+	margin-bottom:1px!important;
 }

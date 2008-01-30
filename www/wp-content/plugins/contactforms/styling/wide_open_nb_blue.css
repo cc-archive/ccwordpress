@@ -1,6 +1,7 @@
 /*                                                    */
 /*  main 'top-level' form elements                    */
 /*                                                    */
+@import "calendar.css";
 
 .cform { 
 	margin:10px auto 0 auto; 
@@ -9,11 +10,12 @@
 
 .cform fieldset	{ 
 	margin-top:10px; 
-	padding:5px 0 0 0; 
+	padding:10px 0 2px 0;
 	border:none;
-	background:none; }
+}
 
-.cform fieldset.cf_hidden { 
+.cform .cf_hidden {
+	display:none; 
 	border:none!important;
 	background:none!important;
 	padding:0!important;
@@ -21,21 +23,23 @@
 }
 
 .cform legend { 
-	color:#000066;
 	margin-left:10px;
 	padding: 0 2px; 
 	font:normal 20px Times; 
+	color:#000066;
 }
 
 ol.cf-ol { 
 	margin:0; 
 	padding:0; 
 }
-ol.cf-ol li	{ 
-	margin:8px 23px!important; /*some themes may interfere otherwise*/
+ol.cf-ol li	{
+	background:none!important; 
+	margin:0 10px!important; /*some themes may interfere otherwise*/
 	padding:0; 
 	list-style:none!important; 
 	text-align:left;
+	line-height:1.3em;
 }
 
 
@@ -46,6 +50,7 @@ ol.cf-ol li	{
 ol.cf-ol li.textonly {
 	padding:3px 0; 
 	text-align:center;
+	color:#000099;
 }
 
 
@@ -54,47 +59,50 @@ ol.cf-ol li.textonly {
 /*                                                    */
 
 .cform label {
-	width:100%; 
-	margin:2px 10px 0 0; 
+	margin:0 10px 0 0; 
 	text-align:left;
-	vertical-align:top;
-	font-size: 10px;
+	font-size: 11px;
 	display:block;
 	color:#97AEFF;
-}
-.cform label span {
+	padding:2px;
+	letter-spacing:1px;
 }
 
 label.cf-before {
 	display:-moz-inline-box; /*for mozilla*/
 	display:inline-block; /*for Opera & IE*/
-	margin:0 5px 0 0; 
+	margin:3px 5px 0 0; 
+	width:80px; 
+}
+
+label.cf-before span{
+	width:80px; 
+	display:block;
 }
 
 label.cf-after 	{
 	display:-moz-inline-box; /*for mozilla*/
 	display:inline-block; /*for Opera & IE*/
-	margin:0 0 0 6px;
-	width:200px;
+	margin:3px 0 0 4px;
+	width:350px;
 	text-align:left;	
 }
 
 label.cf-after span {
-	width:200px;
+	width:350px;
 	display:block;
 }
 
 label.cf-group-after {
 	display:-moz-inline-box; /*for mozilla*/
 	display:inline-block; /*for Opera & IE*/
-	margin:2px 0 0 2px;
-	width:60px;
+	margin:3px 10px 0 4px;
+	width:105px;
 	text-align:left;
 }
 label.cf-group-after span {
-	width:60px;
+	width:105px;
 	display:block;
-	line-height:1.3em;
 }
 
 /*                                                    */
@@ -104,11 +112,15 @@ label.cf-group-after span {
 .cform input,
 .cform textarea,
 .cform select { 
-	padding:1px 3px;
+	margin:0 0 10px 0;
+	padding:3px;
 	background: #C5DAED; 
 	border:none;
-	border-top: 1px solid #000099; 
-	
+	border-top: 1px solid #f0f0f0; 
+	vertical-align:top;
+	color:#000099;
+	font-weight:bold;
+	letter-spacing:1px;
 }
 .cform input:hover,
 .cform textarea:hover,
@@ -120,16 +132,16 @@ label.cf-group-after span {
 .cform input:focus,
 .cform textarea:focus,
 .cform select:focus	{ 
+	color:#000099;
 	background:#F3F8F8; 
-	color: #000066;
 }
 
 .cform textarea,
 .cform input {
-	width:370px; 
+	width:415px; 
 }
 .cform select {
-	width:378px; /* attempt to have equal length */
+	width:421px; /* attempt to have equal length */
 }  
 
 .cform select.cfselectmulti	{ 
@@ -143,26 +155,19 @@ label.cf-group-after span {
 	overflow:auto;
 }
 
-/*                                                    */
-/* formatting for text:  "(required)"  & other        */
-/*                                                    */
-
-span.reqtxt,
-span.emailreqtxt { 
-	display:-moz-inline-box; /*for mozilla*/
-	display:inline-block; /*for Opera & IE*/
-	font-size:9px;
-	vertical-align:top;
-	color:#888888;
-	text-align:left;
+.cform  input.cf_date {
+	width:395px;
 }
-
 
 /*                                                    */
 /*   radio button title                               */
 /*                                                    */
 
 ol.cf-ol li.cf-box-title {
+	color:#97AEFF;
+	font-size:11px;
+	letter-spacing:1px;
+	padding:6px 0pt 0pt;
 }
 
 /*                                                    */
@@ -171,13 +176,12 @@ ol.cf-ol li.cf-box-title {
 
 input.cf-box-a,
 input.cf-box-b 	{ 
-	margin:2px 0 0 0; 
+	margin:3px 0 0 0; 
 	width:16px; 
-	border:none; 
+	height:22px;
+	border:none!important;
+	background:none!important; 
 }
-
-input.cf-box-a 	{ 
-} 
 
 
 /*                                                    */
@@ -190,19 +194,45 @@ ol.cf-ol li.cf-box-group {
 
 
 /*                                                    */
+/* formatting for text:  "(required)"  & other        */
+/*                                                    */
+
+span.reqtxt,
+span.emailreqtxt { 
+	display:block; /*for mozilla*/
+	color:#888888;
+	font-size:9px;
+	letter-spacing:3px;
+	margin:0pt 3px 0pt 0pt;
+	text-align:right;
+	vertical-align:top;
+	height:13px;
+	line-height:13px;
+	width:421px;
+}
+
+.cform textarea.fldemail,
+.cform textarea.fldrequired,
+.cform input.fldemail,
+.cform input.fldrequired {
+	margin:0;
+}
+
+/*                                                    */
 /*   FORM submit button                               */
 /*                                                    */
 
 p.cf-sb {
-	margin: 0;
+	padding: 0!important;
+	margin: 10px 0 0 0;
 	text-align:right;
 }
 .cform input.sendbutton	{ 
-	width:100px;  
-	padding:2px; 
-	margin: 0 51px 10px 0;
+	width:150px;  
+	padding:5px; 
+	margin: 0px 18px 4px 0pt;
 	font-size:0.8em;
-	background:url(../images/button-bg-blue.gif) repeat-x; 
+	background:url(../images/button-bg.gif) repeat-x; 
 	border:1px solid #adadad!important;
 	border-left-color:#ececec!important; 
 	border-top-color:#ececec!important;
@@ -212,10 +242,45 @@ p.cf-sb {
 /*                                                    */
 /*   formatting for invalid user inputs               */
 /*                                                    */
+.cform .cf_error { 
+	color:#ad2929; 
+	border:1px solid #ad2929; 
+}
+.mailerr,
+.cform .cf_errortxt {
+	color:#ad2929; 
+}
 
-.cform .error 		{ color:red!important; border:1px solid #FF0000!important; padding:1px 3px; }
-.cform .errortxt,
-.mailerr	    	{ color:red!important; }
+/*                                                    */
+/*   FORM FIELDS enhanced error display               */
+/*                                                    */
+ol.cf-ol li.cf_li_err {
+	background:#FFDFDF url(li-err-bg.png) repeat!important;
+	border-color:#DF7D7D;
+	border-style:solid;
+	border-width:1px 0pt;
+	padding:5px 10px!important;
+	margin:5px 0!important;
+}
+
+ol.cf-ol li ul.cf_li_text_err {
+	padding:0 0 0 10px;
+	margin:0;
+	color:#333;
+	display:inline-block;
+}
+
+ol.cf-ol ul.cf_li_text_err li {
+	background:url(icon-alert.png) no-repeat left 1px!important;
+	list-style:none!important;
+	font-weight:bold;
+	text-indent:0;
+	margin:0 0 2px!important;
+	padding-left:15px;
+}
+ol.cf-ol ul.cf_li_text_err li:before {
+	content:'';
+}
 
 
 /*                                                    */
@@ -225,60 +290,92 @@ p.cf-sb {
 label.seccap {
 	margin-top: 6px;
 }
-label.secq,
-label.secq span {
-	display:inline;
+
+label.secq{
+	display:-moz-inline-box; /*for mozilla*/
+	display:inline-block; /*for Opera & IE*/
+	width:auto;
+	padding:2px 4px 2px 2px;
 }
-label.secq {
-	vertical-align:middle;
+label.secq span {
+	display:block!important;
+	width:auto;
 }
 
 input.secinput {
-	width:45px;
-	margin: 3px 0 0 10px;
-	vertical-align:middle;
+	vertical-align:text-bottom;
 }
 
+#cforms_captcha6,
 #cforms_captcha5,
 #cforms_captcha4,
 #cforms_captcha3,
 #cforms_captcha2,
 #cforms_captcha {
 	height:15px;
-	width:50px;
-	padding: 4px 4px 5px;
-	margin: 0;
-	vertical-align:top;
+	width:196px;
+	padding: 4px 4px;
+	margin: 0 0 8px 0;
+	vertical-align:text-bottom;
 }
 
 img.captcha	{
-	margin:0 0 0 10px!important;
+	vertical-align:text-bottom;
+	margin:0 0 8px 10px!important;
 	padding:0!important;
 	border:none!important;
 	float:none!important;
 }
 
 img.captcha-reset {
-	background:	url(../images/captcha_reset_white.jpg) no-repeat;
-	margin-left:3px;
+	vertical-align:text-bottom;
+	background:	url(captcha_reset_grey.gif) no-repeat;
+	margin:0 0 10px 3px;
 	width:21px;
 	height:21px;
+	border:none!important;
 }
 
+img.imgcalendar {
+	border:none!important;
+}
 
 /*                                                    */
 /* change formatting of response msgs here            */
 /*                                                    */
 
-p.info 		{
-	margin:10px 0;
-	text-align:center;
+div.cf_info {
+	color:#333;
+	display:none;
+	padding:10px 15px!important;
+	width:420px;
+	line-height:1.3em;
+	margin:10px auto;
 }
-p.success 	{
-	color:green;
+div.cf_info ol {
+	margin:0;
+	padding:5px 15px 0 30px;
 }
-p.failure 	{
-	color:red;
+div.cf_info ol li {
+	padding:1px 0;
+	margin:2px 0;
+}
+div.cf_info a	{
+	color:red!important;
+	text-decoration:underline!important;
+}
+div.success {
+	color:#000099;
+	display:block;
+	letter-spacing:2px;
+	text-align:right;
+}
+div.failure {
+	display:block;
+	background:#FFDFDF url(li-err-bg.png) repeat!important;
+	border-color:#DF7D7D;
+	border-style:solid;
+	border-width:1px 0pt;
 }
 
 /*                                                    */
@@ -299,6 +396,7 @@ p.failure 	{
 /*                                                    */
 
 .cform input.cf_upload  {
+	width:220px;
 	background: #f9f9f9;
 	border:1px solid #888888;
 }
@@ -307,7 +405,8 @@ p.failure 	{
 /*  Other: link love                                  */
 /*                                                    */
 .linklove {
-	margin:0 0 10px 0!important;
+	width:410px;
+	margin:0 auto 10px!important;
 	padding:0!important;	
 	text-align:center!important;
 }
@@ -315,40 +414,41 @@ p.failure 	{
 .linklove a:visited {
 	font-size: 0.8em;
 	font-family: Tahoma;
-	color:#97AEFF!important;
+	color:#aaaaaa!important;
 }
 
+  
 /*                                                    */
 /*  Other: browser hacks                              */
 /*                                                    */
-* html .cform fieldset.cf_hidden { 
-	border:none!important;
-	background:none!important;
-	padding:0!important;
-	margin:0!important;
-}
-
 * html .cform legend { 
 	position:absolute; 
 	top: -10px; 
 	left: 10px; 
 	margin-left:0;
 }
+*+html .cform legend { 
+	position:absolute; 
+	top: -10px; 
+	left: 10px; 
+	margin-left:0;
+}
+*+html .cform fieldset {
+	position: relative;
+	margin-top:15px;
+	padding-top:25px; 
+}
 * html .cform fieldset {
 	position: relative;
 	margin-top:15px;
 	padding-top:25px; 
 }
+* html ol.cf-ol 	{
+	display:inline-block; /*for IE6!!*/
+}
 * html img.captcha	{
-	margin-top:1px!important;
+	margin-bottom:9px!important;
 }
-*+html input.cf-box-a,
-*+html input.cf-box-b { 
-	background:none;
-	margin-top:0px;
-}
-* html input.cf-box-a,
-* html input.cf-box-b { 
-	background:none;
-	margin-top:0px;
+*+html img.captcha	{
+	margin-bottom:9px!important;
 }

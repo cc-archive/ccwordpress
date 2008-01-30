@@ -204,6 +204,12 @@ p.cf-sb {
 /*   formatting for invalid user inputs               */
 /*                                                    */
 
+/* Added to work with new error class names in Cforms II v7.3 (nkinkade 2008-01-29) */
+.failure		{ color:red!important; }
+.cf_error		{ color:red!important; border:1px solid #FF0000!important; padding:1px 3px; }
+.success		{ color:green!important; }
+
+
 .cform .error 		{ color:red!important; border:1px solid #FF0000!important; padding:1px 3px; }
 .cform .errortxt,
 .mailerr	    	{ color:red!important; }
@@ -298,18 +304,19 @@ p.failure 	{
 /*                                                    */
 /*  Other: link love                                  */
 /*                                                    */
+/* Give the author credit for this form */
+
 .linklove {
-	margin:0 0 10px 0!important;
-	padding:0!important;	
-	text-align:center!important;
-    display: none;
+	margin:0 0 10px 0 !important;
+	padding:0 !important;	
+	text-align:left !important;
 }
 .linklove a,
 .linklove a:visited {
 	font-size: 0.8em;
-	font-family: Tahoma;
 	color:#aaaaaa!important;
 }
+
 
 /*                                                    */
 /*  Other: browser hacks                              */

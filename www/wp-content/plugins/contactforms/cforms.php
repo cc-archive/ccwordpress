@@ -2,9 +2,9 @@
 /*
 Plugin Name: cforms II
 Plugin URI: http://www.deliciousdays.com/cforms-plugin
-Description: cforms II offers unparalleled flexibility in deploying contact forms across your blog. Features include: comprehensive SPAM protection, Ajax support, Backup & Restore, Multi-Recipients, Role Manager support, Database tracking and many more.
+Description: cforms II offers unparalleled flexibility in deploying contact forms across your blog. Features include: comprehensive SPAM protection, Ajax support, Backup & Restore, Multi-Recipients, Role Manager support, Database tracking and many more. Please see the <a href="http://www.deliciousdays.com/cforms-forum?forum=2&topic=2&page=1">VERSION HISTORY</a> for <strong>what's new</strong> and current <strong>bugfixes</strong>.
 Author: Oliver Seidel
-Version: 5.4
+Version: 7.3b
 Author URI: http://www.deliciousdays.com
 */
 
@@ -12,36 +12,26 @@ Author URI: http://www.deliciousdays.com
 Copyright 2006  Oliver Seidel   (email : oliver.seidel@deliciousdays.com)
 /*
 
-cforms II - v5.4
-*) feature: added Tell-A-Friend functionality, see Help documentation
-*) feature: added filter option for displaying data records on "Tracking" page
-*) feature: added support for individual input field CSS customization
-    ie. unique <li> ID's, see "Styling" page
-*) feature: added ajax captcha reset
-*) feature: added individual error messages (HTML enabled), see Help
-*) feature: added HTML support for field labels (field names), see examples on Help page
-*) feature: added HTML support for the general error and success message
-    (HTML gets stripped for popup alert() boxes!)
+***
+*** PLEASE NOTE UPDATED "WP comment feature" code snippet, check with the HELP page
+***
 
-*) other: changed {Page} variable to reflect query params (/?p=123)
-    if using the default permalink structure
-*) other: changed session_start() call in favour of gzip compression
-*) other: forcing chronological order of data records when downloading as CSV
-
-*) bugfix: fixed group check box bug (in ajax)
-*) bugfix: fixed special characters (e.g. Umlauts) in subject line
-*) bugfix: minor CSS bugs
-*) bugfix: check box select bug on "Tracking" page
-*) bugfix: fixed copying of attachment(s) to specified server dir, when Tracking is turned off
-*) bugfix: fixed sorting bug on 'Tracking' page for Internet Explorer
+WHAT's NEW in cforms II - v7.3b
+*) bugfix: several related to multi-selectbox (quotes in values, 'required' flag etc., ajax submission broken)
+*) bugfix: new option 'Extra variables' was reset under certain circumstances
+*) bugfix: general formatting issue with escaped input characters, e.g. ", \ etc.  - no one noticed??
+*) bugfix: email validity check now accepts the + character
 */
 
+$localversion = '7.3b';
 load_plugin_textdomain('cforms');
 
 ### http://trac.wordpress.org/ticket/3002
 $plugindir   = dirname(plugin_basename(__FILE__));
 $cforms_root = get_settings('siteurl') . '/wp-content/plugins/'.$plugindir;
 
+global $dpflag;
+$dpflag = false;
 
 ### db settings
 $wpdb->cformssubmissions	= $wpdb->prefix . 'cformssubmissions';
@@ -49,7 +39,6 @@ $wpdb->cformsdata       	= $wpdb->prefix . 'cformsdata';
 
 require		(dirname(__FILE__) . '/buttonsnap.php');
 require_once(dirname(__FILE__) . '/editor.php');
-include_once(dirname(__FILE__) . '/wp.php');
 
 
 ### SMPT sever configured?
@@ -61,8 +50,9 @@ if ( ABSPATH=='' || WPINC=='' ) {
 } 
 
 if ( $smtpsettings[0]=='1' ) {
-	if ( file_exists(ABSPATH . WPINC . '/class-phpmailer.php') ) {
-		require_once ABSPATH . WPINC . '/class-phpmailer.php';
+	if ( file_exists(dirname(__FILE__) . '/phpmailer/class.phpmailer.php') ) {
+		require_once(dirname(__FILE__) . '/phpmailer/class.phpmailer.php');
+		require_once(dirname(__FILE__) . '/phpmailer/class.smtp.php');
 		require_once(dirname(__FILE__) . '/phpmailer/cforms_phpmailer.php');
 	}
 	else
@@ -74,132 +64,26 @@ $track = array();
 $Ajaxpid = '';
 $AjaxURL = '';
 
+
 ### need this for captchas
 add_action('template_redirect', 'start_cforms_session');
 function start_cforms_session() {
-    @session_start();
-}
-
-
-### download form settings or tracked form data ??
-add_action('init', 'download_cforms');
-function download_cforms() {
-
-	if( strpos($_SERVER['HTTP_REFERER'], $plugindir.'/cforms') !== false ) {
-		global $wpdb;
-
-		$br="\n";
-		$buffer='';
-		if( isset($_REQUEST['savecformsdata']) ) {
-		
-			// current form
-			$noDISP = '1'; $no='';
-			if( $_REQUEST['noSub']<>'1' )
-				$noDISP = $no = $_REQUEST['noSub'];
-				
-			$buffer .= 'cf:'.get_option('cforms'.$no.'_count_fields') . $br;
-			$buffer .= 'ff:';
-			for ( $i=1; $i<=get_option('cforms'.$no.'_count_fields'); $i++)  //now delete all fields from last form
-			$buffer .= get_option('cforms'.$no.'_count_field_'.$i)."+++";
-			
-			$buffer .= $br;
-			$buffer .= 'rq:'.get_option('cforms'.$no.'_required') . $br;
-			$buffer .= 'er:'.get_option('cforms'.$no.'_emailrequired') . $br;
-			
-			$buffer .= 'ac:'.get_option('cforms'.$no.'_confirm') . $br;
-			$buffer .= 'jx:'.get_option('cforms'.$no.'_ajax') . $br;
-			$buffer .= 'fn:'.get_option('cforms'.$no.'_fname') . $br;
-			$buffer .= 'cs:'.get_option('cforms'.$no.'_csubject') . $br;
-			$buffer .= 'cm:'.preg_replace ( '|\r\n|', '$n$',get_option('cforms'.$no.'_cmsg')) . $br;
-			$buffer .= 'em:'.get_option('cforms'.$no.'_email') . $br;
-			
-			$buffer .= 'sj:'.get_option('cforms'.$no.'_subject') . $br;
-			$buffer .= 'su:'.get_option('cforms'.$no.'_submit_text') . $br;
-			$buffer .= 'sc:'.preg_replace ( '|\r\n|', '$n$',get_option('cforms'.$no.'_success')) . $br;
-			$buffer .= 'fl:'.preg_replace ( '|\r\n|', '$n$',get_option('cforms'.$no.'_failure')) . $br;
-			$buffer .= 'wo:'.get_option('cforms'.$no.'_working') . $br;
-			$buffer .= 'pp:'.get_option('cforms'.$no.'_popup') . $br;
-			$buffer .= 'sp:'.get_option('cforms'.$no.'_showpos') . $br;
-			$buffer .= 'rd:'.get_option('cforms'.$no.'_redirect') . $br;
-			$buffer .= 'rp:'.get_option('cforms'.$no.'_redirect_page') . $br;
-			$buffer .= 'hd:'.preg_replace ( '|\r\n|', '$n$',get_option('cforms'.$no.'_header')) . $br;
-			$buffer .= 'pc:'.get_option('cforms'.$no.'_space') . $br;
-			$buffer .= 'at:'.get_option('cforms'.$no.'_noattachments') . $br;
-			$buffer .= 'ud:'.get_option('cforms'.$no.'_upload_dir') . $br;
-			$buffer .= 'ue:'.get_option('cforms'.$no.'_upload_ext') . $br;
-			$buffer .= 'us:'.get_option('cforms'.$no.'_upload_size') . $br;
-			$buffer .= 'ar:'.get_option('cforms'.$no.'_action') . $br;
-			$buffer .= 'ap:'.get_option('cforms'.$no.'_action_page') . $br;
-			$buffer .= 'bc:'.get_option('cforms'.$no.'_bcc') . $br;
-			$buffer .= 'ch:'.preg_replace ( '|\r\n|', '$n$',get_option('cforms'.$no.'_cmsg_html')) . $br;
-			$buffer .= 'hh:'.preg_replace ( '|\r\n|', '$n$',get_option('cforms'.$no.'_header_html')) . $br;
-			$buffer .= 'fd:'.get_option('cforms'.$no.'_formdata') . $br;
-			$buffer .= 'tr:'.get_option('cforms'.$no.'_tracking') . $br;
-			$buffer .= 'fm:'.get_option('cforms'.$no.'_fromemail') . $br;
-			$buffer .= 'tf:'.get_option('cforms'.$no.'_tellafriend') . $br;
-			
-			header("Pragma: public");
-			header("Expires: 0");
-			header("Cache-Control: must-revalidate, post-check=0, pre-check=0");
-			header("Content-Type: application/force-download");
-			header("Content-Type: application/octet-stream");
-			header("Content-Type: application/download");
-			header("Content-Disposition: attachment; filename=\"formconfig.txt\"");
-			header("Content-Transfer-Encoding: binary");
-			header("Content-Length: " .(string)(strlen($buffer)) );
-			print $buffer;
-			exit();
-
-		} // form settings
-		else if( isset($_REQUEST['downloadselectedcforms']) && isset($_POST['entries']) ) {
-
-			$sub_id = implode(',', $_POST['entries']);
-			$sql = "SELECT *, form_id FROM {$wpdb->cformsdata},{$wpdb->cformssubmissions} WHERE sub_id in ($sub_id) AND sub_id=id ORDER BY sub_id DESC, f_id ASC";
-			$entries = $wpdb->get_results($sql);
-		
-			$sub_id='';
-			foreach ($entries as $entry){
-		
-				if( $sub_id<>$entry->sub_id ){
-
-					if ( $sub_id<>'' ) 
-						$buffer = substr($buffer,0,-1) . $br;
-						
-					$sub_id = $entry->sub_id;
-
-					$format = ($_REQUEST['downloadformat']=="csv")?",":"\t";
-					
-					$buffer .= '"Form: ' . get_option('cforms'.$entry->form_id.'_fname'). '"'. $format .'"'. $entry->sub_date .'"' . $format;
-				}
-
-				$buffer .= '"' . str_replace('"','""', utf8_decode(stripslashes($entry->field_val))) . '"' . $format;
-		
-			}
-	
-			header("Pragma: public");
-			header("Expires: 0");
-			header("Cache-Control: must-revalidate, post-check=0, pre-check=0");
-			header("Content-Type: application/force-download");
-			header("Content-Type: text/download");
-			header("Content-Type: text/csv");
-			header("Content-Disposition: attachment; filename=\"formdata." . $_REQUEST['downloadformat'] . "\"");
-			header("Content-Transfer-Encoding: binary");
-			header("Content-Length: " .(string)(strlen($buffer)) );
-			print $buffer;	
-			exit();
-		} // tracked form submissions
-
-	} // on a cforms page?
+	@session_cache_limiter('private, must-revalidate');
+	@session_cache_expire(0);
+	@session_start();
 }
 
 
 
 // do a couple of things necessary as part of plugin activation
-if (isset($_GET['activate']) && $_GET['activate'] == 'true') {
-
+if (isset($_GET['activate']) && $_GET['activate'] == 'true')
 	require_once(dirname(__FILE__) . '/lib_activate.php');
 
-}
+
+
+// load download function
+if ( strpos($_SERVER['HTTP_REFERER'], $plugindir.'/cforms') !== false )
+	require_once(dirname(__FILE__) . '/lib_functions.php');
 
 
 
@@ -259,10 +143,10 @@ function write_tracking_record($no,$field_email){
 
 		if ( get_option('cforms_database') == '1'  ) {
 
-			$page = get_current_page();
-	
-			$wpdb->query("INSERT INTO $wpdb->cformssubmissions (form_id,email,ip) VALUES ".
-						 "('" . $no . "', '" . $field_email . "', '" . cf_getip() . "');");
+			$page = (get_option('cforms'.$no.'_tellafriend')=='2')?$_POST['cforms_pl'.$no]:get_current_page(); // WP comment fix
+
+			$wpdb->query("INSERT INTO $wpdb->cformssubmissions (form_id,email,ip,sub_date) VALUES ".
+						 "('" . $no . "', '" . $field_email . "', '" . cf_getip() . "', '".gmdate('Y-m-d H:i:s', current_time('timestamp'))."');");
 	
     		$subID = $wpdb->get_row("select LAST_INSERT_ID() as number from $wpdb->cformsdata;");
     		$subID = ($subID->number=='')?'1':$subID->number;
@@ -288,7 +172,11 @@ function write_tracking_record($no,$field_email){
 
 function get_current_page(){
 
-	$page = substr( $_SERVER['REQUEST_URI'], 0, strpos($_SERVER['REQUEST_URI'],'?')-1);
+	if ( strpos($_SERVER['REQUEST_URI'],'?')>0 )
+		$page = substr( $_SERVER['REQUEST_URI'], 0, strpos($_SERVER['REQUEST_URI'],'?')-1);
+	else
+		$page = $_SERVER['REQUEST_URI'];
+	
 	$page = (trim($page)=='')?$_SERVER['HTTP_REFERER']:trim($page); // for ajax
 	return $page;
 	
@@ -298,32 +186,46 @@ function check_default_vars($m,$no) {
 
 		global $subID, $Ajaxpid, $AjaxURL, $post, $wpdb;
 
-		$pid = ($_POST['cforms_pid'.$no])?$_POST['cforms_pid'.$no]:$Ajaxpid;
+		if ( $_POST['comment_post_ID'.$no] )
+			$pid = $_POST['comment_post_ID'.$no];
+		else if ( $Ajaxpid<>'' )
+			$pid = $Ajaxpid;
+		else if ( function_exists('get_the_ID') )
+			$pid = get_the_ID();
+
+		if ( $_POST['cforms_pl'.$no] )
+			$permalink = $_POST['cforms_pl'.$no];
+		else if ( $Ajaxpid<>'' )
+			$permalink = $AjaxURL;
+		else if ( function_exists('get_permalink') && function_exists('get_userdata') )
+			$permalink = get_permalink($pid);
 				
-		// special fields: {Form Name}, {Date}, {Page}, {IP}, {PERMALINK}, {TITLE}, {EXCERPT}
+		// special fields: {Form Name}, {Date}, {Page}, {IP}, {PERMALINK}, {TITLE}, {EXCERPT},{BLOGNAME}
 		$date = mysql2date(get_option('date_format'), current_time('mysql'));
 		$time = gmdate(get_option('time_format'), current_time('timestamp'));
 		$page = get_current_page();
-		
-		$permalink = ($_POST['cforms_pl'.$no])?$_POST['cforms_pl'.$no]:$AjaxURL;
+				
+		if ( get_option('cforms'.$no.'_tellafriend')=='2' ) // WP comment fix
+			$page = $permalink;
 
-		$find = $wpdb->get_row("SELECT post_title, post_excerpt FROM $wpdb->posts WHERE ID='$pid'");
+		$find = $wpdb->get_row("SELECT p.post_title, p.post_excerpt, u.user_nicename FROM $wpdb->posts AS p LEFT JOIN ($wpdb->users AS u) ON p.post_author = u.ID WHERE p.ID='$pid'");
 		
-		$m 	= str_replace( __('{Form Name}', 'cforms'), get_option('cforms'.$no.'_fname'), $m );
-		$m 	= str_replace( __('{Page}', 'cforms'), $page, $m );
-		$m 	= str_replace( __('{Date}', 'cforms'), $date, $m );
-		$m 	= str_replace( __('{Time}', 'cforms'), $time, $m );
-		$m 	= str_replace( __('{IP}', 'cforms'), cf_getip(), $m );
+		$m 	= str_replace( '{Form Name}',	get_option('cforms'.$no.'_fname'), $m );
+		$m 	= str_replace( '{Page}',		$page, $m );
+		$m 	= str_replace( '{Date}',		$date, $m );
+		$m 	= str_replace( '{Author}',		$find->user_nicename, $m );
+		$m 	= str_replace( '{Time}',		$time, $m );
+		$m 	= str_replace( '{IP}',			cf_getip(), $m );
+		$m 	= str_replace( '{BLOGNAME}',	get_option('blogname'), $m );
 		
-		$m 	= str_replace( __('{Permalink}', 'cforms'), $permalink, $m );
-		$m 	= str_replace( __('{Title}', 'cforms'), $find->post_title, $m );
-		$m 	= str_replace( __('{Excerpt}', 'cforms'), $find->post_excerpt, $m );
+		$m 	= str_replace( '{Permalink}',	$permalink, $m );
+		$m 	= str_replace( '{Title}',		$find->post_title, $m );
+		$m 	= str_replace( '{Excerpt}',		$find->post_excerpt, $m );
 
-		$m 	= preg_replace( "/\.(\r\n|$)/", "\r\n", $m );			
-		
+		$m 	= preg_replace( "/\r\n\./", "\r\n", $m );			
 		
 		if  ( get_option('cforms_database') && $subID<>'' )
-			$m 	= str_replace( __('{ID}', 'cforms'), $subID, $m );
+			$m 	= str_replace( '{ID}', $subID, $m );
 							 
 		return $m;
 }
@@ -333,8 +235,10 @@ function check_cust_vars($m,$t) {
 	preg_match_all('/\\{([^\\{]+)\\}/',$m,$findall);
 	
 	if ( count($findall[1]) > 0 ) {
+		$allvars = array_keys($t);
 		foreach ( $findall[1] as $fvar ) {
-			$m = str_replace('{'.$fvar.'}', $t[$fvar], $m);
+			if( in_array($fvar,$allvars ) )
+				$m = str_replace('{'.$fvar.'}', $t[$fvar], $m);
 		}
 	}
 	return $m;
@@ -342,19 +246,20 @@ function check_cust_vars($m,$t) {
 }
 
 
-// Common HTML message information 
-$styles  = "<HEAD><style><!--\n";
-$styles .= ".fs-td { font-weight:bold; font-size:1.2em; border-bottom:1px solid #888; padding-top:15px; }\n";
-$styles .= ".data-td { font-weight:bold; padding-right:20px; }\n";
-$styles .= "--></style></HEAD>\n";	
-
+// Common HTML message information
+$styles="<HEAD>\n<style><!--\n".
+		".fs-td { font:bold 1.2em Arial; letter-spacing:2px; border-bottom:2px solid #7babfb; padding:10px 0 5px; text-align:center; background:#ddecff;}\n".
+		".data-td { font-weight:bold; padding-right:20px; vertical-align:top; }\n".
+		".datablock { background:#c1ddff; width:90%; padding:2px;}\n".
+		".cforms { font:normal 10px Arial; color:#777;}\n".
+		"--></style>\n</HEAD>";
 
 //
 // ajax submission of form
 //
 function cforms_submitcomment($content) {
 
-	global $wpdb, $subID, $styles, $smtpsettings, $track, $Ajaxpid, $AjaxURL;
+	global $wpdb, $subID, $styles, $smtpsettings, $track, $Ajaxpid, $AjaxURL, $wp_locale;
 
 	$content = explode('+++', $content);
 	$Ajaxpid = $content[1];
@@ -364,6 +269,21 @@ function cforms_submitcomment($content) {
 	$params = array();
 
 
+	$locale = get_locale();
+
+/* debug
+	$wplocale = substr( dirname(__FILE__),0,strpos(dirname(__FILE__),'wp-content')) . 'wp-includes/locale.php';
+	if ( file_exists($wplocale) )
+		include_once($wplocale);
+
+	$wpsettings = substr( dirname(__FILE__),0,strpos(dirname(__FILE__),'wp-content')) . 'wp-config.php';
+	if ( file_exists($wpsettings) )
+		include_once($wpsettings);
+
+	if ( class_exists('WP_Locale') )
+		$wp_locale =& new WP_Locale();
+*/
+
 	for($i = 1; $i <= sizeof($segments); $i++)
 		$params['field_' . $i] = $segments[$i];
 
@@ -372,15 +292,25 @@ function cforms_submitcomment($content) {
 
 	// init variables
 	$formdata = '';
-	$htmlformdata = '<br />';
+	$htmlformdata = '';
 
+	$track = array();
+	$trackinstance = array();
+	
  	$to_one = "-1";
   	$ccme = false;
 	$field_email = '';
 	$off = 0;
+	$fieldsetnr=1;
 
 	$taf_youremail = false;
 	$taf_friendsemail = false;
+
+	// form limit reached
+	if ( get_option('cforms'.$no.'_maxentries')<>'' && get_cforms_submission_left($no)==0 ){
+	    $pre = $segments[0].'*$#'.substr(get_option('cforms'.$no.'_popup'),0,1);
+	    return $pre . preg_replace ( '|\r\n|', '<br />', stripslashes(get_option('cforms'.$no.'_limittxt'))) . $hide;
+	}
 
 	//space for pre formatted text layout
 	$customspace = (int)(get_option('cforms'.$no.'_space')>0)?get_option('cforms'.$no.'_space'):30;
@@ -403,7 +333,10 @@ function cforms_submitcomment($content) {
 								$space = str_repeat("-", $n );
 								
 							$formdata .= substr("\n$space$field_stat[0]$space",0,($customspace*2)) . "\n\n";
-							$htmlformdata .= '<tr bgcolor=3Dwhite><td align=3Dcenter colspan=3D2 class=fs-td>' . $field_stat[0] . '</td></tr>';
+							$htmlformdata .= '<tr><td class=3D"fs-td" colspan=3D"2">' . $field_stat[0] . '</td></tr>';
+							
+							if ( $field_stat[1] == 'fieldsetstart' )
+								$track['Fieldset'.$fieldsetnr++] = $field_stat[0];
 
 					}
 					
@@ -469,10 +402,15 @@ function cforms_submitcomment($content) {
 	 		}
 			else {
 			    if ( strtoupper(get_option('blog_charset')) <> 'UTF-8' && function_exists('mb_convert_encoding'))
-        		    $value = mb_convert_encoding(utf8_decode($params ['field_' . $i]), get_option('blog_charset'));   // convert back and forth to support also other than UTF8 charsets
+        		    $value = mb_convert_encoding(utf8_decode( stripslashes( $params['field_' . $i] ) ), get_option('blog_charset'));   // convert back and forth to support also other than UTF8 charsets
                 else
-                    $value = $params ['field_' . $i];
+                    $value = stripslashes( $params['field_' . $i] );
             }
+
+			//only if hidden!
+			if( $field_type == 'hidden' )
+				$value = rawurldecode($value);
+
 
 			// Q&A verification
 			if ( $field_type == "verification" ) 
@@ -480,7 +418,14 @@ function cforms_submitcomment($content) {
 
 			
 			//for db tracking
-			$track[trim($field_name)] = $value;
+			$inc='';
+			$trackname=trim($field_name);
+			if ( array_key_exists($trackname, $track) ){
+				if ( $trackinstance[$trackname]=='' )
+					$trackinstance[$trackname]=2;
+				$inc = '___'.($trackinstance[$trackname]++);
+			}
+			$track[$trackname.$inc] = $value;
 
 			//for all equal except textareas!
 			$htmlvalue = str_replace("=","=3D",$value);
@@ -489,8 +434,8 @@ function cforms_submitcomment($content) {
 			// just for looks: break for textarea
  			if ( $field_type == "textarea" ) {
 					$field_name = "\n" . $field_name;
-					$value = "\n" . $value . "\n";
 					$htmlvalue = str_replace(array("=","\n"),array("=3D","<br />\n"),$value);
+					$value = "\n" . $value . "\n";
 			}
 
 			// just for looks:rest
@@ -501,13 +446,13 @@ function cforms_submitcomment($content) {
 			// create formdata block for email
 			if ( $field_stat[1] <> 'verification' && $field_stat[1] <> 'captcha' ) {
 				$formdata .= stripslashes( $field_name ). ': '. $space . $value . "\n";
-				$htmlformdata .= '<tr><td valign=3Dtop class=3Ddata-td>' . $htmlfield_name . '</td><td>' . $htmlvalue . '</td></tr>';
+				$htmlformdata .= '<tr><td class=3D"data-td">' . $htmlfield_name . '</td><td>' . $htmlvalue . '</td></tr>';
 			}
 					
 	} // for
 
 	// assemble html formdata
-	$htmlformdata = '<table width=3D"100%" cellpadding=3D2 bgcolor=3D#fafafa>' . stripslashes( $htmlformdata ) . '</table>';
+	$htmlformdata = '<div class=3D"datablock"><table width=3D"100%" cellpadding=3D"2">' . stripslashes( $htmlformdata ) . '</table></div><span class=3D"cforms">powered by <a href=3D"http://www.deliciousdays.com/cforms-plugin">cformsII</a></span>';
 
 
 	
@@ -524,7 +469,7 @@ function cforms_submitcomment($content) {
 			$to = $replyto;
 
 	// T-A-F overwrite?
-	if ( $taf_youremail && $taf_friendsemail && get_option('cforms'.$no.'_tellafriend') )
+	if ( $taf_youremail && $taf_friendsemail && substr(get_option('cforms'.$no.'_tellafriend'),0,1)=='1' )
 		$replyto = "\"{$taf_yourname}\" <{$taf_youremail}>";
 
 
@@ -590,8 +535,8 @@ function cforms_submitcomment($content) {
 	
 		// actual user message
 		$htmlmessage = get_option('cforms'.$no.'_header_html');					
-		$htmlmessage = preg_replace('/=([^3D])/','=3D${1}', check_default_vars($htmlmessage,$no));
-		$htmlmessage = stripslashes( check_cust_vars($htmlmessage,$track) );
+		$htmlmessage = check_default_vars($htmlmessage,$no);
+		$htmlmessage = str_replace(array("=","\n"),array("=3D","<br />\n"), stripslashes( check_cust_vars($htmlmessage,$track) ) );
 
 		$fmessage .= "------MIME_BOUNDRY_main_message"  . $eol;
 		$fmessage .= "Content-Type: text/html; charset=\"" . get_option('blog_charset') . "\"". $eol;
@@ -641,6 +586,10 @@ function cforms_submitcomment($content) {
 
 					$headers2 = "From: ". $frommail . $eol;
 					$headers2.= "Reply-To: " . $replyto . $eol;
+					
+					if ( substr(get_option('cforms'.$no.'_tellafriend'),0,1)=='1' ) //TAF: add CC
+						$headers2.= "CC: " . $replyto . $eol;
+					
 					$headers2.= "MIME-Version: 1.0"  .$eol;
 					if( $html_show_ac || ($html_show && $ccme) ){
 						$headers2.= "Content-Type: multipart/alternative; boundary=\"----MIME_BOUNDRY_main_message\"";
@@ -666,8 +615,8 @@ function cforms_submitcomment($content) {
 					
 						// actual user message
 						$cmsghtml = get_option('cforms'.$no.'_cmsg_html');					
-						$cmsghtml = preg_replace('/=([^3D])/','=3D${1}', check_default_vars($cmsghtml,$no));
-						$cmsghtml = check_cust_vars($cmsghtml,$track);
+						$cmsghtml = check_default_vars($cmsghtml,$no);
+						$cmsghtml = str_replace(array("=","\n"),array("=3D","<br />\n"), check_cust_vars($cmsghtml,$track) );
 
 						$automessage .= "------MIME_BOUNDRY_main_message"  . $eol;
 						$automessage .= "Content-Type: text/html; charset=\"" . get_option('blog_charset') . "\"". $eol;
@@ -693,49 +642,53 @@ function cforms_submitcomment($content) {
 					$field_email = (get_option('cforms'.$no.'_tracking')<>'')?$field_email.get_option('cforms'.$no.'_tracking'):$field_email;
 
 					// if in Tell-A-Friend Mode, then overwrite header stuff...
-					if ( $taf_youremail && $taf_friendsemail && get_option('cforms'.$no.'_tellafriend') )
+					if ( $taf_youremail && $taf_friendsemail && substr(get_option('cforms'.$no.'_tellafriend'),0,1)=='1' )
 						$field_email = "\"{$taf_friendsname}\" <{$taf_friendsemail}>";
 
 					
 					if ( $ccme ) {
 						if ( $smtpsettings[0]=='1' )
-							$sent = cforms_phpmailer( $no, $frommail, $replyto, $field_email, stripslashes($t[1]), $message, $formdata, $htmlmessage, $htmlformdata );
+							$sent = cforms_phpmailer( $no, $frommail, $replyto, $field_email, stripslashes($t[1]), $message, $formdata, $htmlmessage, $htmlformdata,'ac' );
 						else
 							$sent = @mail($field_email, encode_header(stripslashes($t[1])), $fmessage, $headers2); //takes $message!!
 					}
 					else {
 						if ( $smtpsettings[0]=='1' )
-							$sent = cforms_phpmailer( $no, $frommail, $replyto, $field_email, stripslashes($t[0]) , $cmsg , '', $cmsghtml, '' );
+							$sent = cforms_phpmailer( $no, $frommail, $replyto, $field_email, stripslashes($t[0]) , $cmsg , '', $cmsghtml, '','ac' );
 						else
 							$sent = @mail($field_email, encode_header(stripslashes($t[0])), stripslashes($automessage), $headers2);
 					}
 					
 		  		if( $sent<>'1' ) {
-					$err = __('Error occured while sending the auto confirmation message: ','cforms') . ($smtpsettings[0]?" ($sent)":'');
+					$err = __('Error occurred while sending the auto confirmation message: ','cforms') . ($smtpsettings[0]?" ($sent)":'');
 				    $pre = $segments[0].'*$#'.substr(get_option('cforms'.$no.'_popup'),0,1);
 				    return $pre . $err .'|!!!';
 		  			
 		  		}
 	    } // cc
 
+		$hide='';
 		// redirect to a different page on suceess?
-		if ( get_option('cforms'.$no.'_redirect') ) {
+		if ( get_option('cforms'.$no.'_redirect')==1 ) {
 			return get_option('cforms'.$no.'_redirect_page');
 		}
+		else if ( get_option('cforms'.$no.'_redirect')==2 || get_cforms_submission_left($no)==0 )
+			$hide = '|~~~';
 
 		// return success msg
 	    $pre = $segments[0].'*$#'.substr(get_option('cforms'.$no.'_popup'),0,1);
-	    return $pre . preg_replace ( '|\r\n|', '<br />', stripslashes(get_option('cforms'.$no.'_success')));
+	    return $pre . preg_replace ( '|\r\n|', '<br />', stripslashes(get_option('cforms'.$no.'_success'))) . $hide;
 
 	} // no admin mail sent!
 
 	else {
 
 		// return error msg
-		$err = __('Error occured while sending the message: ','cforms') . ($smtpsettings[0]?'<br />'.$sentadmin:'');
+		$err = __('Error occurred while sending the message: ','cforms') . ($smtpsettings[0]?'<br />'.$sentadmin:'');
 	    $pre = $segments[0].'*$#'.substr(get_option('cforms'.$no.'_popup'),0,1);
 	    return $pre . $err .'|!!!';
 	}
+
 
 } //function
 
@@ -905,12 +858,19 @@ sajax_handle_client_request();
 //
 function reset_captcha( $no = '' ){
     @session_start();
-	$_SESSION['turing_string_'.$no] = rc(4,5);
+	$_SESSION['turing_string_'.$no] = rc();
 		
-	$path = preg_replace( '|.*(/wp-content/.*)/.*|','${1}', __FILE__ );
+	//fix for windows!!!
+	if ( strpos(__FILE__,'\\') ){
+		$path = preg_replace( '|.*(wp-content.*)cforms.php|','${1}', __FILE__ );
+		$path = '/'.str_replace('\\','/',$path);
+	}
+	else
+		$path = preg_replace( '|.*(/wp-content/.*)/.*|','${1}', __FILE__ );
+	
 	$path = get_bloginfo('wpurl') . $path;
 	
-	$newimage = md5(strtolower($_SESSION['turing_string_'.$no])) . '|' . $no . '|' . $path  . '/cforms-captcha.php?ts='.$no;	 
+	$newimage = md5($_SESSION['turing_string_'.$no]).'|'.$no.'|'.$path.'/cforms-captcha.php?ts='.$no.get_captcha_uri();	 
 	return $newimage;
 }
 
@@ -922,10 +882,13 @@ function reset_captcha( $no = '' ){
 
 function cforms($args = '',$no = '') {
 
-	global $smtpsettings, $styles, $subID, $cforms_root, $wpdb, $track;
+	global $smtpsettings, $styles, $subID, $cforms_root, $wpdb, $track, $wp_db_version;
+
+	//Safety, in case someone uses '1' for the default form
+	$no = ($no=='1')?'':$no;
 
 	parse_str($args, $r);	// parse all args, and if not specified, initialize to defaults
-
+	
 	//custom fields support
 	if ( !(strpos($no,'+') === false) ) {
 	    $no = substr($no,0,-1);
@@ -938,8 +901,6 @@ function cforms($args = '',$no = '') {
 	}
 	
 	$content = '';
-	$indent .= "\t";
-
 
 	$err=0;
 	$filefield=0;   // for multiple file upload fields
@@ -947,733 +908,93 @@ function cforms($args = '',$no = '') {
 	$validations = array();
 	$all_valid = 1;
 	$off=0;
+	$fieldsetnr=1;
 
 	$c_errflag=false;
 	$custom_error='';
+	$usermessage_class='';
 	
 	if( isset($_POST['sendbutton'.$no]) ) {  /* alternative sending: both events r ok!  */
 
-		//
-		// VALIDATE all fields 
-		//
-		for($i = 1; $i <= $field_count; $i++) {
-		
-					if ( !$custom ) 
-						$field_stat = explode('$#$', get_option('cforms'.$no.'_count_field_' . ((int)$i+(int)$off) ));
-					else
-						$field_stat = explode('$#$', $customfields[((int)$i+(int)$off) - 1]);
+		require_once (dirname(__FILE__) . '/lib_nonajax.php');
 
-					// filter non input fields
-					while ( $field_stat[1] == 'fieldsetstart' || $field_stat[1] == 'fieldsetend' || $field_stat[1] == 'textonly' ) {
-							$off++;
-
-							if ( !$custom ) 
-                                $field_stat = explode('$#$', get_option('cforms'.$no.'_count_field_' . ((int)$i+(int)$off) ));
-                            else
-                                $field_stat = explode('$#$', $customfields[((int)$i+(int)$off) - 1]);
-                                
-							if( $field_stat[1] == '')
-									break 2; // all fields searched, break both while & for
-					}
-
-				// custom error set?
-				$c_err = explode('|err:', $field_stat[0], 2);
-						
-				$field_name = $c_err[0];
-				$field_type = $field_stat[1];
-				$field_required = $field_stat[2];
-				$field_emailcheck = $field_stat[3];
-				
-				
-				if( $field_emailcheck ) {  // email field
-				
-						$validations[$i+$off] = cforms_is_email( $_POST['cf'.$no.'_field_' . ((int)$i+(int)$off)]);
-						if ( !$validations[$i+$off] && $err==0 ) $err=1;
-					
-				}
-				else if( $field_required ) { // just required
-
-						if( in_array($field_type,array('textfield','textarea','yourname','youremail','friendsname','friendsemail')) ){
-
-								// textfields empty ?
-								$validations[$i+$off] = !empty($_POST['cf'.$no.'_field_' . ((int)$i+(int)$off)]);
-	
-								// regexp set for textfields?
-								$obj = explode('|', $errobj[0], 3);
-								
-				  				if ( $obj[2] <> '') {
-				  				
-									$reg_exp = str_replace('/','\/',stripslashes($obj[2]) );
-									if( !preg_match('/'.$reg_exp.'/',$_POST['cf'.$no.'_field_' . ((int)$i+(int)$off)]) )
-									    $validations[$i+$off] = false;
-											    
-								}						
-								
-
-						}else if( $field_type=="checkbox" ) {
-
-									// textfields empty ?
-									$validations[$i+$off] = !empty($_POST['cf'.$no.'_field_' . ((int)$i+(int)$off)]);
-
-						}else if( $field_type=="selectbox" || $field_type=="emailtobox" ) {
-
-									// textfields empty ?
-									$validations[$i+$off] = !($_POST['cf'.$no.'_field_' . ((int)$i+(int)$off)] == '-' );
-
-						}else if( $field_type=="multiselectbox" ) {
-						
-									// how many multiple selects ?
-                                    $all_options = $_POST['cf'.$no.'_field_' . ((int)$i+(int)$off)];
-									if ( count($all_options) == 0 )                               
-        									$validations[$i+$off] = false;
-                                    else						    
-        									$validations[$i+$off] = true;
-
-						}else if( $field_type=="upload" ) {  // prelim upload check
-
-									$validations[$i+$off] = !($_FILES['cf_uploadfile'.$no][name][$filefield++]=='');
-									if ( !$validations[$i+$off] && $err==0 )
-											{ $err=3; $fileerr = get_option('cforms_upload_err2'); }
-						}
-
-						if ( !$validations[$i+$off] && $err==0 ) $err=1;
-
-				}
-				else if( $field_type == 'verification' ){  // visitor verification code
-				
-	            		$validations[$i+$off] = 1;
-						if ( $_POST['cforms_a'.$no] <> md5(rawurlencode(strtolower($_POST['cforms_q'.$no]))) ) {
-								$validations[$i+$off] = 0;
-								$err = !($err)?2:$err;
-								}
-								
-				}
-				else if( $field_type == 'captcha' ){  // captcha verification
-				
-	            		$validations[$i+$off] = 1;
-						if ( $_POST['cforms_cap'.$no] <> md5(strtolower($_POST['cforms_captcha'.$no])) ) {
-								$validations[$i+$off] = 0;
-								$err = !($err)?2:$err;
-								}
-						
-				}
-				else
-					$validations[$i+$off] = 1;
-
-				$all_valid = $all_valid && $validations[$i+$off];
-				
-				if ( $c_err[1] <> '' && $validations[$i+$off] == false ){
-					$c_errflag=4;
-					$custom_error .= '<br />'.stripslashes($c_err[1]);
-				}
-
-			}
-
-
-		//
-		// have to upload a file?
-		//
-		$uploadedfile='';
-		$filefield=0;   // for multiple file upload fields
-
-		if( isset($_FILES['cf_uploadfile'.$no]) && $all_valid){
-
-			foreach( $_FILES['cf_uploadfile'.$no][name] as $value ) {
-				
-				if(!empty($value)){   // this will check if any blank field is entered
-
-					  	$file = $_FILES['cf_uploadfile'.$no];
-						
-						$fileerr = '';
-						// A successful upload will pass this test. It makes no sense to override this one.
-						if ( $file['error'][$filefield] > 0 )
-								$fileerr = get_option('cforms_upload_err1');
-								
-						// A successful upload will pass this test. It makes no sense to override this one.
-						$fileext[$filefield] = substr($value,strrpos($value, '.')+1,strlen($value));
-						$allextensions = explode(',' ,  preg_replace('/\s/', '', get_option('cforms'.$no.'_upload_ext')) );
-						
-						if ( get_option('cforms'.$no.'_upload_ext')<>'' && !in_array($fileext[$filefield], $allextensions) )
-								$fileerr = get_option('cforms_upload_err5');
-		
-						// A non-empty file will pass this test.
-						if ( !( $file['size'][$filefield] > 0 ) )
-								$fileerr = get_option('cforms_upload_err2');
-		
-						// A non-empty file will pass this test.
-						if ( $file['size'][$filefield] >= (int)get_option('cforms'.$no.'_upload_size') * 1024 )
-								$fileerr = get_option('cforms_upload_err3');
-		
-		
-						// A properly uploaded file will pass this test. There should be no reason to override this one.
-						if (! @ is_uploaded_file( $file['tmp_name'][$filefield] ) )
-								$fileerr = get_option('cforms_upload_err4');
-				
-						if ( $fileerr <> '' ){
-		
-								$err = 3;
-								$all_valid = false;
-		
-						} else {
-		
-								// cool, got the file!
-		
-						  		$uploadedfile = file($file['tmp_name'][$filefield]);
-					
-					            $fp = fopen($file['tmp_name'][$filefield], "rb"); //Open it
-					            $fdata = fread($fp, filesize($file['tmp_name'][$filefield])); //Read it
-					            $filedata[$filefield] = chunk_split(base64_encode($fdata)); //Chunk it up and encode it as base64 so it can emailed
-					            fclose($fp);
+		$usermessage_class = $all_valid?' success':' failure';
 			
-						} // file uploaded
-
-		        } // if !empty
-				$filefield++;
-		        
-		    } // while all file
-
-		} // no file upload triggered
-
-
-	} // if isset sendbutton
-
-
-	//
-	// what kind of error message?
-	//
-	switch($err){
-		case 0:
-				break;
-		case 1:
-				$usermessage_text = preg_replace ( array("|\\\'|",'/\\\"/','|\r\n|'),array('&#039;','&quot;','<br />'), get_option('cforms'.$no.'_failure') );
-				if ( $c_errflag )
-					$usermessage_text .= $custom_error;
-				break;
-		case 2:
-				$usermessage_text = preg_replace ( array("|\\\'|",'/\\\"/','|\r\n|'),array('&#039;','&quot;','<br />'), get_option('cforms_codeerr') );
-				if ( $c_errflag )
-					$usermessage_text .= $custom_error;
-				break;
-		case 3:
-				$usermessage_text = preg_replace ( array("|\\\'|",'/\\\"/','|\r\n|'),array('&#039;','&quot;','<br />'), $fileerr);
-				if ( $c_errflag )
-					$usermessage_text .= $custom_error;
-				break;
-		case 4:
-				$usermessage_text = preg_replace ( array("|\\\'|",'/\\\"/','|\r\n|'),array('&#039;','&quot;','<br />'), get_option('cforms'.$no.'_failure') );
-				if ( $c_errflag )
-					$usermessage_text .= $custom_error;								
-				break;
-				
 	}
 
-	$usermessage_class = $all_valid?'success':'failure';
-	
-	
-	//
-	// all valid? get ready to send
-	//
-	if( (isset($_POST['sendbutton'.$no]) ) && $all_valid ) {
 
-			$usermessage_text = preg_replace ( '|\r\n|', '<br />', stripslashes(get_option('cforms'.$no.'_success')) );
-
-
-			$formdata = '';
-			$htmlformdata = '<br />';
-
-	  		$to_one = "-1";
-			$ccme = false;
-			$field_email = '';
-
-			$filefield=0;
-			$taf_youremail = false;
-			$taf_friendsemail = false;
-
-			$customspace = (int)(get_option('cforms'.$no.'_space')>0)?get_option('cforms'.$no.'_space'):30;
-
-			for($i = 1; $i <= $field_count; $i++) {
-
-				if ( !$custom ) 
-					$field_stat = explode('$#$', get_option('cforms'.$no.'_count_field_' . $i ));
-				else
-					$field_stat = explode('$#$', $customfields[$i-1]);
-
-
-				// filter non input fields
-				while ( $field_stat[1] == 'fieldsetstart' || $field_stat[1] == 'fieldsetend' || $field_stat[1] == 'textonly' ) {
-
-						if ( $field_stat[1] <> 'textonly' ){ // include and make only fieldsets pretty!
-	
-							//just for email looks
-							$space='-'; 
-							$n = ((($customspace*2)+2) - strlen($field_stat[0])) / 2;
-							$n = ($n<0)?0:$n;							
-							if ( strlen($field_stat[0]) < (($customspace*2)-2) )
-								$space = str_repeat("-", $n );
-								
-							$formdata .= substr("\n$space$field_stat[0]$space",0,($customspace*2)) . "\n\n";
-							$htmlformdata .= '<tr bgcolor=3Dwhite><td align=3Dcenter valign=3Dtop colspan=3D2 class=3Dfs-td>' . $field_stat[0] . '</td></tr>';
-							
-						}
-						
-						//get next in line...
-						$i++;
-
-						if ( !$custom ) 
-      						$field_stat = explode('$#$', get_option('cforms'.$no.'_count_field_' . $i ));
-						else
-           					$field_stat = explode('$#$', $customfields[$i-1]);
-
-						if( $field_stat[1] == '')
-								break 2; // all fields searched, break both while & for
-				}
-
-				$field_name = $field_stat[0];
-      			$field_type = $field_stat[1];
-
-				// strip out default value
-				if ( ($pos=strpos($field_name,'|')) )
-				    $field_name = substr($field_name,0,$pos);
-
-
-				// special Tell-A-Friend fields
-				if ( !$taf_friendsemail && $field_type=='friendsemail' && $field_stat[3]=='1')
-						$field_email = $taf_friendsemail = $_POST['cf'.$no.'_field_' . $i];
-
-				if ( !$taf_youremail && $field_type=='youremail' && $field_stat[3]=='1')
-						$taf_youremail = $_POST['cf'.$no.'_field_' . $i];
-
-				if ( $field_type=='friendsname' )
-						$taf_friendsname = $_POST['cf'.$no.'_field_' . $i];
-
-				if ( $field_type=='yourname' )
-						$taf_yourname = $_POST['cf'.$no.'_field_' . $i];
-
-
-
-				// find email address
-				if ( $field_email == '' && $field_stat[3]=='1')
-						$field_email = $_POST['cf'.$no.'_field_' . $i];
-
-
-				// special case: select box & radio box
-				if ( $field_type == "checkboxgroup" || $field_type == "multiselectbox" || $field_type == "selectbox" || $field_type == "radiobuttons" ) { //only needed for field name
-				  $field_name = explode('#',$field_name);
-				  $field_name = $field_name[0];
-				}
-
-
-				// special case: check box
-				if ( $field_type == "checkbox" || $field_type == "ccbox" ) {
-				  $field_name = explode('#',$field_name);
-				  $field_name = ($field_name[1]=='')?$field_name[0]:$field_name[1];
-					// if ccbox
-				  if ($field_type == "ccbox" && isset($_POST['cf'.$no.'_field_' . $i]) )
-				      $ccme = true;
-				}
-
-
-			if ( $field_type == "emailtobox" ){  				//special case where the value needs to bet get from the DB!
-
-                $field_name = explode('#',$field_stat[0]);  //can't use field_name, since '|' check earlier
-                $to_one = $_POST['cf'.$no.'_field_' . $i];
-                
-                $offset = (strpos($field_name[1],'|')===false) ? 1 : 2; // names come usually right after the label
-                
-                $value 	= $field_name[(int)$to_one+$offset];  // values start from 0 or after!
-                $field_name = $field_name[0];
-	 		}
-	 		else if ( $field_type == "upload" ){
-	 		
-	 			//$fsize = $file['size'][$filefield]/1000;
-	 			$value = $file['name'][$filefield++];
-
-	 		}	 		
-	 		else if ( $field_type == "multiselectbox" || $field_type == "checkboxgroup"){
-	 		    
-                $all_options = $_POST['cf'.$no.'_field_' . $i];
-	 		    if ( count($all_options) > 0)
-                    $value = implode(',', $all_options);
-                else
-                    $value = '';
-                    
-            }	            			
-			else if ( $field_stat[1] == 'captcha' ) // captcha response
-
-				$value = $_POST['cforms_captcha'.$no];
-				
-			else if ( $field_stat[1] == 'verification' ) { // verification Q&A response
-
-				$value = $_POST['cforms_q'.$no]; // add Q&A label!
-				$field_name = __('Q&A','cforms');
-			}				
-			else
-				$value = $_POST['cf'.$no.'_field_' . $i];       // covers all other fields' values
-
-
-			//check boxes
-			if ( $field_type == "checkbox" || $field_type == "ccbox" ) {
-			
-					if ( isset($_POST['cf'.$no.'_field_' . $i]) )
-						$value = 'X';
-					else
-						$value = '-';
-
-			} else if ( $field_type == "radiobuttons" ) {
-
-					if ( ! isset($_POST['cf'.$no.'_field_' . $i]) )
-						$value = '-';
-			} 
-
-
-			//for db tracking
-			$trackname = trim( ($field_type == "upload")?$field_name.'[*]':$field_name ); 
-			$track[$trackname] = $value;
-
-			//for all equal except textareas!
-			$htmlvalue = str_replace("=","=3D",$value);
-			$htmlfield_name = $field_name;
-			
-			// just for looks: break for textarea
- 			if ( $field_type == "textarea" ) {
-					$field_name = "\n" . $field_name;
-					$value = "\n" . $value . "\n";
-					$htmlvalue = str_replace(array("=","\n"),array("=3D","<br />\n"),$value);
-			}
-
-
-			// for looks
-			$space='';
-			if ( strlen(stripslashes($field_name)) < $customspace )
-				  $space = str_repeat(" ", $customspace - strlen(stripslashes($field_name)));
-
-			$field_name .= ': ' . $space;
-
-
-			if ( $field_stat[1] <> 'verification' && $field_stat[1] <> 'captcha' ){
-					$formdata .= stripslashes( $field_name ) . $value . "\n";
-					$htmlformdata .= '<tr><td valign=3Dtop class=3Ddata-td>' . $htmlfield_name . '</td><td>' . $htmlvalue . '</td></tr>';
-			}
-
-		} //for all fields
-
-		// assemble html formdata
-		$htmlformdata = '<table width=3D\'100%\' cellpadding=3D2px bgcolor=3D#fafafa>' . stripslashes( $htmlformdata ) . '</table>';
-
-		//
-		// allow the user to use form data for other apps
-		//
-		$trackf['id'] = $no;
-		$trackf['data'] = $track;
-		do_action('cforms_data',$trackf);
-
-
-		//
-		// now replace the left over {xyz} variables with the input data
-		//
-		$message	= get_option('cforms'.$no.'_header');
-		$message	= check_default_vars($message,$no);
-		$message	= check_cust_vars($message,$track);
-
-		//
-		// FIRST into the database is required!
-		//
-		
-		$subID = write_tracking_record($no,$field_email);
-			
-		//
-		// Files uploaded??
-		//
-		$filefield=0;
-		if ( isset($_FILES['cf_uploadfile'.$no]) ) {
-			foreach( $_FILES['cf_uploadfile'.$no][tmp_name] as $tmpfile ) {
-	            //copy attachment to local server dir
-	            if ( $tmpfile <> '')
-	            	copy($tmpfile,get_option('cforms'.$no.'_upload_dir').'/'.$subID.'-'.$file['name'][$filefield++]);
-			}	 
-		}
-
-		//
-		//set reply-to & watch out for T-A-F
-		//
-		$replyto = preg_replace( array('/;|#|\|/'), array(','), stripslashes(get_option('cforms'.$no.'_email')) );
-
-		// multiple recipients? and to whom is the email sent?
-		if ( $to_one <> "-1" ) {
-				$all_to_email = explode(',', $replyto);
-				$replyto = $to = $all_to_email[ $to_one ];
-		} else
-				$to = $replyto;
-
-
-		//T-A-F? then overwrite
-		if ( $taf_youremail && $taf_friendsemail && get_option('cforms'.$no.'_tellafriend') )
-			$replyto = "\"{$taf_yourname}\" <{$taf_youremail}>";
-
-
-		//
-		// ready to send email
-		// email header 
-		//
-		$eol = "\n";
-
-		if ( ($frommail=stripslashes(get_option('cforms'.$no.'_fromemail')))=='' )
-			$frommail = '"'.get_option('blogname').'" <wordpress@' . preg_replace('#^www\.#', '', strtolower($_SERVER['SERVER_NAME'])) . '>';	
-		
-		$headers = "From: ". $frommail . $eol;
-		$headers.= "Reply-To: " . $field_email . $eol;
-
-		if ( ($tempBcc=stripslashes(get_option('cforms'.$no.'_bcc'))) != "")
-		    $headers.= "Bcc: " . $tempBcc . $eol;
-
-		$headers.= "MIME-Version: 1.0"  .$eol;
-		$headers.= "Content-Type: multipart/mixed; boundary=\"----MIME_BOUNDRY_main_message\"";
-	
-		// prep message text, replace variables
-		$message	= get_option('cforms'.$no.'_header');
-		$message	= check_default_vars($message,$no);
-		$message	= check_cust_vars($message,$track);
-		
-		// text & html message
-		$fmessage = "This is a multi-part message in MIME format."  . $eol;
-		$fmessage .= "------MIME_BOUNDRY_main_message"  . $eol;
-
-
-		// HTML message part?
-		$html_show = ( substr(get_option('cforms'.$no.'_formdata'),2,1)=='1' )?true:false;
-
-		if ($html_show) {
-			$fmessage .= "Content-Type: multipart/alternative; boundary=\"----MIME_BOUNDRY_sub_message\"" . $eol . $eol;
-			$fmessage .= "------MIME_BOUNDRY_sub_message"  . $eol;
-			$fmessage .= "Content-Type: text/plain; charset=\"" . get_option('blog_charset') . "\"" . $eol;
-			$fmessage .= "Content-Transfer-Encoding: quoted-printable"  . $eol . $eol;
-		}
-		else
-			$fmessage .= "Content-Type: text/plain; charset=\"" . get_option('blog_charset') . "\"" . $eol . $eol;
-
-		$fmessage .= $message . $eol;
-		
-		// need to add form data summary or is all in the header anyway?
-		if(substr(get_option('cforms'.$no.'_formdata'),0,1)=='1')
-			$fmessage .= $eol . $formdata . $eol;
-
-
-		// HTML text
-		if ( $html_show ) {
-		
-			// actual user message
-			$htmlmessage = get_option('cforms'.$no.'_header_html');					
-			$htmlmessage = preg_replace('/=([^3D])/','=3D${1}', check_default_vars($htmlmessage,$no));
-			$htmlmessage = stripslashes( check_cust_vars($htmlmessage,$track) );
-
-	
-			$fmessage .= "------MIME_BOUNDRY_sub_message"  . $eol;	
-			$fmessage .= "Content-Type: text/html; charset=\"" . get_option('blog_charset') . "\"". $eol;
-			$fmessage .= "Content-Transfer-Encoding: quoted-printable"  . $eol . $eol;;
-	
-			$fmessage .= "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0 Transitional//EN\">"  . $eol;
-
-			$fmessage .= "<HTML>" . $eol;
-			$fmessage .= $styles;
-			$fmessage .= "<BODY>" . $eol;
-
-			$fmessage .= $htmlmessage;
-	
-			// need to add form data summary or is all in the header anyway?
-			if(substr(get_option('cforms'.$no.'_formdata'),1,1)=='1')
-				$fmessage .= $eol . $htmlformdata;
-	
-			$fmessage .= "</BODY></HTML>"  . $eol . $eol;
-		}
-
-		// end of sub message
-		
-		$attached='';
-		// possibly add attachment
-		if ( isset($_FILES['cf_uploadfile'.$no]) && $filedata[0]<>'' && !get_option('cforms'.$no.'_noattachments') ) {
-
-				// different header for attached files
-		 		//
-		 		$all_mime = array("txt"=>"text/plain", "htm"=>"text/html", "html"=>"text/html", "gif"=>"image/gif", "png"=>"image/x-png",
-		 						 "jpeg"=>"image/jpeg", "jpg"=>"image/jpeg", "tif"=>"image/tiff", "bmp"=>"image/x-ms-bmp", "wav"=>"audio/x-wav",
-		 						 "mpeg"=>"video/mpeg", "mpg"=>"video/mpeg", "mov"=>"video/quicktime", "avi"=>"video/x-msvideo",
-		 						 "rtf"=>"application/rtf", "pdf"=>"application/pdf", "zip"=>"application/zip", "hqx"=>"application/mac-binhex40",
-		 						 "sit"=>"application/x-stuffit", "exe"=>"application/octet-stream", "ppz"=>"application/mspowerpoint",
-								 "ppt"=>"application/vnd.ms-powerpoint", "ppj"=>"application/vnd.ms-project", "xls"=>"application/vnd.ms-excel",
-								 "doc"=>"application/msword");
-
-				if ( $html_show )
-					$fmessage .= "------MIME_BOUNDRY_sub_message--"  . $eol;
-
-				for ( $filefield=0; $filefield < count($_FILES['cf_uploadfile'.$no][name]); $filefield++) {
-	
-					if ( $filedata[$filefield] <> '' ){
-						$mime = (!$all_mime[$fileext[$filefield]])?'application/octet-stream':$all_mime[$fileext[$filefield]];
-		
-						$attached .= "------MIME_BOUNDRY_main_message" . $eol;		
-						$attached .= "Content-Type: $mime;\n\tname=\"" . $file['name'][$filefield] . "\"" . $eol;
-						$attached .= "Content-Transfer-Encoding: base64" . $eol;
-						$attached .= "Content-Disposition: inline;\n\tfilename=\"" . $file['name'][$filefield] . "\"\n" . $eol;
-						$attached .= $eol . $filedata[$filefield]; 	//The base64 encoded message
-					}				
-					
-				}
-			
- 		}
-
-
-		//
-		// finally send mails
-		//
-		
-		//either use configured subject or user determined
-		//now replace the left over {xyz} variables with the input data
-		$vsubject = get_option('cforms'.$no.'_subject');
-		$vsubject = check_default_vars($vsubject,$no);
-		$vsubject = stripslashes( check_cust_vars($vsubject,$track) );
-
-		// SMTP server or native PHP mail() ?
-		if ( $smtpsettings[0]=='1' )
-			$sentadmin = cforms_phpmailer( $no, $frommail, $field_email, $to, $vsubject, $message, $formdata, $htmlmessage, $htmlformdata, $fileext );
-		else
-			$sentadmin = @mail($to, encode_header($vsubject), $fmessage.$attached, $headers);	
-
-		if( $sentadmin==1 ) {
-				  // send copy or notification?
-			    if ( (get_option('cforms'.$no.'_confirm')=='1' && $field_email<>'') || $ccme )  // not if no email & already CC'ed
-			    {
-							if ( ($frommail=stripslashes(get_option('cforms'.$no.'_fromemail')))=='' )
-								$frommail = '"'.get_option('blogname').'" <wordpress@' . preg_replace('#^www\.#', '', strtolower($_SERVER['SERVER_NAME'])) . '>';	
-							
-							// HTML message part?
-							$html_show_ac = ( substr(get_option('cforms'.$no.'_formdata'),3,1)=='1' )?true:false;
-							$automsg = '';
-
-							$headers2 = "From: ". $frommail . $eol;
-							$headers2.= "Reply-To: " . $replyto . $eol;
-							$headers2.= "MIME-Version: 1.0"  .$eol;
-
-							if( $html_show_ac || ($html_show && $ccme ) ){
-								$headers2.= "Content-Type: multipart/alternative; boundary=\"----MIME_BOUNDRY_main_message\"";
-								$automsg .= "This is a multi-part message in MIME format."  . $eol;
-								$automsg .= "------MIME_BOUNDRY_main_message"  . $eol;
-								$automsg .= "Content-Type: text/plain; charset=\"" . get_option('blog_charset') . "\"; format=flowed" . $eol;
-								$automsg .= "Content-Transfer-Encoding: quoted-printable"  . $eol . $eol;								
-							} 
-							else
-								$headers2.= "Content-Type: text/plain; charset=\"" . get_option('blog_charset') . "\"; format=flowed";
-							
-	
-							// actual user message
-							$cmsg = get_option('cforms'.$no.'_cmsg');					
-							$cmsg = check_default_vars($cmsg,$no);
-							$cmsg = check_cust_vars($cmsg,$track);
-		
-					
-							// text text
-							$automsg .= $cmsg . $eol;
-		
-							// HTML text
-							if ( $html_show_ac ) {
-							
-								// actual user message
-								$cmsghtml = get_option('cforms'.$no.'_cmsg_html');					
-								$cmsghtml = preg_replace('/=([^3D])/','=3D${1}', check_default_vars($cmsghtml,$no));
-								$cmsghtml = check_cust_vars($cmsghtml,$track);
-		
-								$automsg .= "------MIME_BOUNDRY_main_message"  . $eol;
-								$automsg .= "Content-Type: text/html; charset=\"" . get_option('blog_charset') . "\"". $eol;
-								$automsg .= "Content-Transfer-Encoding: quoted-printable"  . $eol . $eol;;
-			
-								$automsg .= "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0 Transitional//EN\">"  . $eol;
-								$automsg .= "<HTML><BODY>"  . $eol;
-								$automsg .= $cmsghtml;
-								$automsg .= "</BODY></HTML>"  . $eol . $eol;
-							}							
-							
-						 	$subject2 = get_option('cforms'.$no.'_csubject');
-							$subject2 = check_default_vars($subject2,$no);
-							$subject2 = check_cust_vars($subject2,$track);
-
-							// different cc & ac subjects?
-							$t=explode('$#$',$subject2);
-							$t[1] = ($t[1]<>'') ? $t[1] : $t[0];
-
-							// email tracking via 3rd party?
-							$field_email = (get_option('cforms'.$no.'_tracking')<>'')?$field_email.get_option('cforms'.$no.'_tracking'):$field_email;
-	    
-							// if in Tell-A-Friend Mode, then overwrite header stuff...
-							if ( $taf_youremail && $taf_friendsemail && get_option('cforms'.$no.'_tellafriend') )
-								$field_email = "\"{$taf_friendsname}\" <{$taf_friendsemail}>";
-
-							if ( $ccme ) {
-								if ( $smtpsettings[0]=='1' )
-									$sent = cforms_phpmailer( $no, $frommail, $replyto, $field_email, stripslashes($t[1]), $message, $formdata, $htmlmessage, $htmlformdata, '' );
-								else
-									$sent = @mail($field_email, encode_header(stripslashes($t[1])), $fmessage, $headers2); //the admin one
-							}
-							else {
-								if ( $smtpsettings[0]=='1' )
-									$sent = cforms_phpmailer( $no, $frommail, $replyto, $field_email, stripslashes($t[0]) , $cmsg , '', $cmsghtml, '' );
-								else
-									$sent = @mail($field_email, encode_header(stripslashes($t[0])), stripslashes($automsg), $headers2); //takes the above
-							}
-					
-			  		if( $sent<>'1' )
-				  			$usermessage_text = __('Error occured while sending the auto confirmation message.','cforms')." ($sent)";
-			    }
-
-			// redirect to a different page on suceess?
-			if ( get_option('cforms'.$no.'_redirect') ) {
-				?>
-				<script type="text/javascript">
-					location.href = '<?php echo get_option('cforms'.$no.'_redirect_page') ?>';
-				</script>
-				<?php 
-			}		
-			
-	  	} // if first email already failed
-		else
-			$usermessage_text = __('Error occured while sending the message: ','cforms') . '<br />'. $smtpsettings[0]?'<br />'.$sentadmin:'';
-
-	} //if isset & valid sendbutton
+	if ( get_option('cforms'.$no.'_tellafriend')=='2' && $send2author )
+		return;
 
 
 	//
 	// paint form
 	//
+	$success=false;
+	if ( ((isset($_GET['email']) && $_GET['email']=='sent') || (isset($_GET['cfemail']) && $_GET['cfemail']=='sent'))
+			&& get_option('cforms'.$no.'_tellafriend')=='2' ){ // fix for WP Comment
+		$usermessage_class = ' success';
+		$usermessage_text = preg_replace ( '|\r\n|', '<br />', stripslashes(get_option('cforms'.$no.'_success')) );
+		$success=true;
+		echo"***WPCOMMENT";
+	}
+	
 	$break='<br />';
 	$nl="\n";
 	$tab="\t";
+	$tt="\t\t";
+	$ntt="\n\t\t";
+	$nttt="\n\t\t\t";
 
 	//either show message above or below
 	if( substr(get_option('cforms'.$no.'_showpos'),0,1)=='y' ) {
-		$content .= $nl . $indent . $tab . '<p id="usermessage'.$no.'a" class="info ' . $usermessage_class . '" >' . $usermessage_text . '</p>' . $nl;
+		$content .= $ntt . '<div id="usermessage'.$no.'a" class="cf_info' . $usermessage_class . '">' . $usermessage_text . '</div>';
 		$actiontarget = 'a';
  	} else if ( substr(get_option('cforms'.$no.'_showpos'),1,1)=='y' )
 		$actiontarget = 'b';
- 	
+
+
+	// redirect == 2 : hide form?    || or if max entries reached!
+	if ( (get_option('cforms'.$no.'_redirect')==2 && isset($_POST['sendbutton'.$no]) && $all_valid) )
+		return $content;
+	else if ( get_option('cforms'.$no.'_maxentries')<>'' && get_cforms_submission_left($no)==0 ){
+
+		if ( $cflimit == "reached" )
+			return stripslashes(get_option('cforms'.$no.'_limittxt'));
+		else
+			return $content.stripslashes(get_option('cforms'.$no.'_limittxt'));
+		
+	}
  	
  	//alternative form action
 	$alt_action=false;
 	if( get_option('cforms'.$no.'_action')=='1' ) {
 		$action = get_option('cforms'.$no.'_action_page');
 		$alt_action=true;
- 	} else
+	}
+	else if( get_option('cforms'.$no.'_tellafriend')=='2' )
+		$action = get_option('siteurl').'/wp-comments-post.php'; // re-route and use WP comment processing
+ 	else
 		$action = $_SERVER['REQUEST_URI'] . '#usermessage'. $no . $actiontarget;
 
  	
-	$content .= $indent . $tab . '<form enctype="multipart/form-data" action="' . $action . '" method="post" class="cform" id="cforms'.$no.'form">' . $nl;
+	$content .= $ntt . '<form enctype="multipart/form-data" action="' . $action . '" method="post" class="cform" id="cforms'.$no.'form">' . $nl;
+
 
 	// start with no fieldset
-	$custom_error = '';
 	$fieldsetopen = false;
 	$verification = false;
+	
 	$captcha = false;
 	$upload = false;
 	$fscount = 1;
 	$ol = false;
-	
+	global $dpflag;
+
+	//??? check for WP2.0.2
+	if ( $wp_db_version >= 3440 )
+		$user = wp_get_current_user();
+
 	for($i = 1; $i <= $field_count; $i++) {
 
 		if ( !$custom ) 
@@ -1687,39 +1008,65 @@ function cforms($args = '',$no = '') {
 		$field_emailcheck = $field_stat[3];
 		$field_clear      = $field_stat[4];
 		$field_disabled   = $field_stat[5];
+		$field_readonly   = $field_stat[6];
+
+
+		// ommit certain fields
+		if( in_array($field_type,array('author','url','email')) ){
+			if ( $user->ID )
+				continue;
+		}
 
 
 		// check for custom err message and split field_name
 	    $obj = explode('|err:', $field_name,2);
-		if ( $obj[1] <> '')	{
+	    $fielderr = $obj[1];
+	    
+		if ( $fielderr <> '')	{
 
 			    switch ( $field_type ) {
 			    
 			    case 'upload':	
-							$custom_error .= 'cf_uploadfile' . $no . '$#$' . ($obj[1]).'|';
+							$custom_error .= 'cf_uploadfile' . $no . '-'. $i . '$#$'.$fielderr.'|';
 			    			break;
 
 			    case 'captcha':	
-							$custom_error .= 'cforms_captcha' . $no . '$#$' . ($obj[1]).'|';
+							$custom_error .= 'cforms_captcha' . $no . '$#$'.$fielderr.'|';
 			    			break;
 
 			    case 'verification':	
-							$custom_error .= 'cforms_q'. $no . '$#$' . ($obj[1]).'|';
+							$custom_error .= 'cforms_q'. $no . '$#$'.$fielderr.'|';
 			    			break;
 
-			    default:	$custom_error .= 'cf'.$no.'_field_' . $i . '$#$' . ($obj[1]).'|';
+				case "author":
+				case "url":
+				case "email":
+				case "comment":
+							$custom_error .= $field_type . '$#$'.$fielderr.'|';
+			    			break;
+
+			    default:				    
+		    				preg_match('/^([^#\|]*).*/',$field_name,$input_name);
+							$custom_error .= (get_option('cforms'.$no.'_customnames')=='1')?str_replace(' ','_',$input_name[1]):'cf'.$no.'_field_'.$i;
+							$custom_error .= '$#$'.$fielderr.'|';
 			    			break;
 			    }
 		
-		}
-		
+		}		
 
 		//special treatment for selectboxes  
-		if (  in_array($field_type,array('multiselectbox','selectbox','radiobuttons','checkbox','checkboxgroup','ccbox','emailtobox'))  ){
+		if (  in_array($field_type,array('multiselectbox','selectbox','radiobuttons','send2author','checkbox','checkboxgroup','ccbox','emailtobox'))  ){
 
 			$options = explode('#', stripslashes(($obj[0])) );
             $field_name = $options[0];
             
+		}
+
+
+		//check if fieldset is open
+		if ( !$fieldsetopen && !$ol && $field_type<>'fieldsetstart') {
+			$content .= $tt . '<ol class="cf-ol">';
+			$ol = true;
 		}
 		
 		
@@ -1738,114 +1085,150 @@ function cforms($args = '',$no = '') {
 			$labelclass = ' class="seccap"';
 
 
+		$defaultvalue = '';
+		// setting the default val & regexp if it exists
+		if ( ! in_array($field_type,array('fieldsetstart','fieldsetend','radiobuttons','send2author','checkbox','checkboxgroup','ccbox','emailtobox','multiselectbox','selectbox','verification')) ) {
+
+		    // check if default val & regexp are set
+		    $obj = explode('|', $obj[0],3);
+
+			if ( $obj[2] <> '')	$reg_exp = str_replace('"','&quot;',stripslashes($obj[2])); else $reg_exp='';
+		    if ( $obj[1] <> '')	$defaultvalue = check_default_vars(stripslashes(($obj[1])),$no);
+
+			$field_name = $obj[0];
+		}
+
 		//Label ID's
 		$labelIDx = '';
 		$labelID  = (get_option('cforms_labelID')=='1')?' id="label-'.$no.'-'.$i.'"':'';
 		
 		//<li> ID's
-		$liID = '';
-		$liID  = (get_option('cforms_liID')=='1')?' id="li-'.$no.'-'.$i.'"':'';
+		$liID = ( get_option('cforms_liID')=='1' || 
+				  substr(get_option('cforms'.$no.'_showpos'),2,1)=="y" || 
+				  substr(get_option('cforms'.$no.'_showpos'),3,1)=="y" )?' id="li-'.$no.'-'.$i.'"':'';
 		
-
-		$defaultvalue = '';
-		// no labels and other goodies for fieldsets, radio- & checkboxes !
-		if ( ! in_array($field_type,array('fieldsetstart','fieldsetend','radiobuttons','checkbox','checkboxgroup','ccbox')) ) {
-
-		    // check if default val & regexp are set
-		    $obj = explode('|', $obj[0],3);
-
-			if ( $obj[2] <> '')	$reg_exp = stripslashes($obj[2]); else $reg_exp='';
-		    if ( $obj[1] <> '')	$defaultvalue = stripslashes(($obj[1]));
-
-			if ( ! in_array($field_type,array('emailtobox','multiselectbox','selectbox','verification')) )  //it's already set above, the others (cc, radio..) are treated diff anyways
-				$field_name = $obj[0];
-
-			//set label for
-			switch ($field_type){
-			  case 'verification':
-				  $label = 'cforms_q'.$no;
-			  break;
-			  case 'captcha':
-				  $label = 'cforms_captcha'.$no;
-			  break;
-			  case 'upload':
-				  $label = 'cf_uploadfile'.$no;
-			  break;
-			  default:
-				  $label = 'cf'.$no.'_field_' . $i;
-			  break;
-			}
-
-
-			//check if fieldset is open
-			if ( !$fieldsetopen && !$ol ) {
-				$content .= $indent . $tab . '<ol class="cf-ol">' . $nl;
-				$ol = true;
-			}
-
-			//print label only for non "textonly" fields! Skip some others too, and handle them below indiv.
-			if( $field_type <> 'textonly' )
-				$content .= $nl . $indent . $tab . $tab . '<li'.$liID.'><label ' . $labelID . ' for="'.$label.'"'. $labelclass . '><span>' . stripslashes(($field_name)) . '</span></label>';
-
+		//input field names & label
+		$input_id = $input_name = (get_option('cforms'.$no.'_customnames')=='1')?str_replace(' ','_',$field_name):'cf'.$no.'_field_'.$i;
+						
+		$field_class = '';
+		
+		switch ($field_type){
+			case 'verification':
+				$input_id = $input_name = 'cforms_q'.$no;
+				break;
+			case 'captcha':
+				$input_id = $input_name = 'cforms_captcha'.$no;
+				break;
+			case 'upload':
+				$input_id = $input_name = 'cf_uploadfile'.$no.'-'.$i;
+				$field_class = 'upload';
+				break;
+			case "send2author":
+			case "email":
+			case "author":			
+			case "url":
+				$input_id = $input_name = $field_type;
+			case "datepicker":
+			case "yourname":
+			case "youremail":
+			case "friendsname":
+			case "friendsemail":
+			case "textfield":
+			case "pwfield":
+				$field_class = 'single';
+				break;
+			case "hidden":
+				$field_class = 'hidden';
+				break;
+			case 'comment':
+				$input_id = $input_name = $field_type;
+				$field_class = 'area';
+				break;
+			case 'textarea':
+				$field_class = 'area';
+				break;
 		}
 
-		
-		
-		// field classes
-		$field_class = 'default';
-		
-		if      ( $field_disabled )		$field_class .= ' disabled';
-		else if ( $field_emailcheck )	$field_class .= ' fldemail';
-		else if ( $field_required ) 	$field_class .= ' fldrequired';
+
+		// additional field classes		
+		if ( $field_disabled )		$field_class .= ' disabled';
+		if ( $field_readonly )		$field_class .= ' readonly';
+		if ( $field_emailcheck )	$field_class .= ' fldemail';
+		if ( $field_required ) 		$field_class .= ' fldrequired';
 
 		
 		$field_value = ''; 
-		if( !isset($_POST['sendbutton'.$no]) && isset($_GET['cf'.$no.'_field_'.$i]) )
-			$field_value = $_GET['cf'.$no.'_field_'.$i];
+		
+		//pre-populating fields...
+		if( !isset($_POST['sendbutton'.$no]) && isset($_GET[$input_name]) )
+			$field_value = $_GET[$input_name];
 
 		// an error ocurred:
+		$liERR = $insertErr = '';
 		if(! $all_valid){
-			$field_class .= ($validations[$i]==1)?'':' error';  //error ?
+		
+			if ( $validations[$i]==1 )
+				$field_class .= '';
+			else{
+				$field_class .= ' cf_error';
+				
+				//enhanced error display
+				if(substr(get_option('cforms'.$no.'_showpos'),2,1)=="y")
+					$liERR = ' class="cf_li_err"';
+				if(substr(get_option('cforms'.$no.'_showpos'),3,1)=="y")
+					$insertErr = ($fielderr<>'')?'<ul class="cf_li_text_err"><li>'.stripslashes($fielderr).'</li></ul>':'';
+			}
+			
 			
 			if ( $field_type == 'multiselectbox' || $field_type == 'checkboxgroup' ){
-				$field_value = $_POST['cf'.$no.'_field_' . $i];  // in this case it's an array! will do the stripping later
+				$field_value = $_POST[$input_name];  // in this case it's an array! will do the stripping later
 			}
 			else
-				$field_value = stripslashes(($_POST['cf'.$no.'_field_' . $i]));
+				$field_value = str_replace('"','&quot;',stripslashes($_POST[$input_name]));
+
 		}
+
+
+		//print label only for non "textonly" fields! Skip some others too, and handle them below indiv.
+		if( ! in_array($field_type,array('hidden','textonly','fieldsetstart','fieldsetend','ccbox','checkbox','checkboxgroup','send2author','radiobuttons')) )
+			$content .= $nttt . '<li'.$liID.$liERR.'>'.$insertErr.'<label' . $labelID . ' for="'.$input_id.'"'. $labelclass . '><span>' . stripslashes(($field_name)) . '</span></label>';
+
 		
 		if ( $field_value=='' && $defaultvalue<>'' ) // if not reloaded (due to err) then use default values
 			$field_value=$defaultvalue;    
 
-		// field disabled, greyed out?
-		$disabled = $field_disabled?'disabled="disabled"':'';
+		// field disabled or readonly, greyed out?
+		$disabled = $field_disabled?' disabled="disabled"':'';
+		$readonly = $field_readonly?' readonly="readonly"':'';
 
-		$field = '';
+		$dp = '';
+		$naming = false;
+		$field  = '';
 		switch($field_type) {
 
 			case "upload":
 	  			$upload=true;  // set upload flag for ajax suppression!
-				$field = '<input ' . $disabled . ' type="file" name="cf_uploadfile'.$no.'[]" id="cf_uploadfile'.$no.'" class="cf_upload ' . $field_class . '"/>';
+				$field = '<input' . $readonly.$disabled . ' type="file" name="cf_uploadfile'.$no.'[]" id="cf_uploadfile'.$no.'-'.$i.'" class="cf_upload ' . $field_class . '"/>';
 				break;
 
 			case "textonly":
-				$field .= $indent . $tab . $tab . '<li'.$liID.' class="textonly' . (($defaultvalue<>'')?' '.$defaultvalue:'') . '" ' . (($reg_exp<>'')?' style="'.$reg_exp.'" ':'') . '>' . stripslashes(($field_name)) . '</li>';
+				$field .= $nttt . '<li'.$liID.' class="textonly' . (($defaultvalue<>'')?' '.$defaultvalue:'') . '"' . (($reg_exp<>'')?' style="'.$reg_exp.'" ':'') . '>' . stripslashes(($field_name)) . '</li>';	 
 				break;
 
 			case "fieldsetstart":
 				if ($fieldsetopen) {
-						$field = $nl . $indent . $tab . '</ol>' . $nl .
-								 $indent . $tab . '</fieldset>' . $nl;
+						$field = $ntt . '</ol>' . $nl .
+								 $tt . '</fieldset>' . $nl;
 						$fieldsetopen = false;
 						$ol = false;
 				}
 				if (!$fieldsetopen) {
 						if ($ol)
-							$field = $nl . $indent . $tab . '</ol>' . $nl;
+							$field = $ntt . '</ol>' . $nl;
 
-						$field .= $indent . $tab .'<fieldset class="cf-fs'.$fscount++.'">' . $nl .
-								  $indent . $tab . '<legend>' . stripslashes($field_name) . '</legend>' . $nl .
-								  $indent . $tab . '<ol class="cf-ol">';
+						$field .= $tt .'<fieldset class="cf-fs'.$fscount++.'">' . $nl .
+								  $tt . '<legend>' . stripslashes($field_name) . '</legend>' . $nl .
+								  $tt . '<ol class="cf-ol">';
 						$fieldsetopen = true;
 						$ol = true;
 		 		}
@@ -1853,76 +1236,112 @@ function cforms($args = '',$no = '') {
 
 			case "fieldsetend":
 				if ($fieldsetopen) {
-						$field = $indent . $tab . '</ol>' . $nl .
-								 $indent . $tab . '</fieldset>' . $nl;
+						$field = $ntt . '</ol>' . $nl .
+								 $tt . '</fieldset>' . $nl;
 						$fieldsetopen = false;
 						$ol = false;
 				} else $field='';
 				break;
 
 			case "verification":
-				$field = '<input type="text" name="cforms_q'.$no.'" id="cforms_q'.$no.'" class="secinput ' . $field_class . '" value="" />';
+				$field = '<input type="text" name="'.$input_name.'" id="cforms_q'.$no.'" class="secinput ' . $field_class . '" value=""/>';
 		    	$verification=true;
 				break;
 
-			case "captcha":
-				$_SESSION['turing_string_'.$no] = rc(4,5);
+			case "captcha":			
+				$_SESSION['turing_string_'.$no] = rc();
 				
-				$field = '<input type="text" name="cforms_captcha'.$no.'" id="cforms_captcha'.$no.'" class="secinput ' . $field_class . '" value="" />'.
-						 '<img id="cf_captcha_img'.$no.'" class="captcha" src="'.$cforms_root.'/cforms-captcha.php?ts='.$no.'" alt=""/>'.
-						 '<a title="'.__('reset captcha image', 'cforms').'" href="javascript:reset_captcha(\''.$no.'\')"><img class="captcha-reset" src="'.$cforms_root.'/images/spacer.gif" alt=""/></a>';
+				$field = '<input type="text" name="'.$input_name.'" id="cforms_captcha'.$no.'" class="secinput' . $field_class . '" value=""/>'.
+						 '<img id="cf_captcha_img'.$no.'" class="captcha" src="'.$cforms_root.'/cforms-captcha.php?ts='.$no.get_captcha_uri().'" alt=""/>'.
+						 '<a title="'.__('reset captcha image', 'cforms').'" href="javascript:reset_captcha(\''.$no.'\')"><img class="captcha-reset" src="'.$cforms_root.'/images/spacer.gif" alt="Captcha"/></a>';
 		    	$captcha=true;
 				break;
-
+			
+			case "author":
+			case "url":
+			case "email":			
+			case "datepicker":
 			case "yourname":
 			case "youremail":
 			case "friendsname":
 			case "friendsemail":
 			case "textfield":
+			case "pwfield":
+				$type = ($field_type=='pwfield')?'password':'text';
+				$field_class = ($field_type=='datepicker')?$field_class.' cf_date':$field_class;
+				
+				if ($field_type=='datepicker') 
+					$dp = '<a href="javascript: void(0);" onmouseover="window.status=\'Show Calendar\';" onmouseout="window.status=\'\';"  '.
+					'onclick="dp.select(document.forms[\'cforms'.$no.'form\'].'.$input_id.',\'anchor'.$i.'\',\''.get_option('cforms_dp_date').'\'); return false;" id="anchor'.$i.'" name="anchor'.$i.'">'.
+					'<img class="imgcalendar" src="'.$cforms_root.'/js/calendar.gif" alt=""/></a>';
+
 			    $onfocus = $field_clear?' onfocus="clearField(this)" onblur="setField(this)"' : '';
 					
-				$field = '<input ' . $disabled . ' type="text" name="cf'.$no.'_field_' . $i . '" id="cf'.$no.'_field_' . $i . '" class="' . $field_class . '" value="' . $field_value  . '"'.$onfocus.'/>';
+				$field = '<input' . $readonly.$disabled . ' type="'.$type.'" name="'.$input_name.'" id="'.$input_id.'" class="' . $field_class . '" value="' . $field_value  . '"'.$onfocus.'/>';
 				  if ( $reg_exp<>'' )
-	           		 $field .= '<input type="hidden" name="cf'.$no.'_field_' . $i . '_regexp" id="cf'.$no.'_field_' . $i . '_regexp" value="'.$reg_exp.'"/>';
-	
+	           		 $field .= '<input type="hidden" name="'.$input_name.'_regexp" id="'.$input_id.'_regexp" value="'.$reg_exp.'"/>';
+
+				$field .= $dp;
+				break;
+
+			case "hidden":
+
+				preg_match_all('/\\{([^\\{]+)\\}/',$field_value,$findall);
+				if ( count($findall[1]) > 0 ) {
+				$allfields = get_post_custom( get_the_ID() );
+
+					foreach ( $findall[1] as $fvar ) {
+						if( $allfields[$fvar][0] <> '')
+							$field_value = str_replace('{'.$fvar.'}', $allfields[$fvar][0], $field_value);
+					}
+				}
+				
+				$field .= $nttt . '<li class="cf_hidden"><input type="hidden" class="cfhidden" name="'.$input_name.'" id="'.$input_id.'" value="' . $field_value  . '"/></li>';
+				break;
+
+			case "comment":
+			    $onfocus = $field_clear?' onfocus="clearField(this)" onblur="setField(this)"' : '';
+
+				$field = '<textarea' . $readonly.$disabled . ' cols="30" rows="8" name="comment" id="comment" class="' . $field_class . '"'. $onfocus.'>' . $field_value  . '</textarea>';
+				  if ( $reg_exp<>'' )
+	           		 $field .= '<input type="hidden" name="comment" id="comment_regexp" value="'.$reg_exp.'"/>';
 				break;
 
 			case "textarea":
 
 			    $onfocus = $field_clear?' onfocus="clearField(this)" onblur="setField(this)"' : '';
 
-				$field = '<textarea ' . $disabled . ' cols="30" rows="8" name="cf'.$no.'_field_' . $i . '" id="cf'.$no.'_field_' . $i . '" class="' . $field_class . '"'. $onfocus.'>' . $field_value  . '</textarea>';
+				$field = '<textarea' . $readonly.$disabled . ' cols="30" rows="8" name="'.$input_name.'" id="'.$input_id.'" class="' . $field_class . '"'. $onfocus.'>' . $field_value  . '</textarea>';
 				  if ( $reg_exp<>'' )
-	           		 $field .= '<input type="hidden" name="cf'.$no.'_field_' . $i . '_regexp" id="cf'.$no.'_field_' . $i . '_regexp" value="'.$reg_exp.'"/>';
+	           		 $field .= '<input type="hidden" name="'.$input_name.'_regexp" id="'.$input_id.'_regexp" value="'.$reg_exp.'"/>';
 				break;
 
 	   		case "ccbox":
 			case "checkbox":
 				$err='';
-				if(! $all_valid)
-						$err = ($validations[$i]==1)?'':' errortxt';  //error ?
+				if( !$all_valid && $validations[$i]<>1 )
+					$err = ' cf_errortxt';
 
-			  if ( $options[1]<>'' ) {
-				 		$before = $nl . $indent . $tab . $tab . '<li'.$liID.'>';
-						$after  = '<label ' . $disabled . $labelID . ' for="cf'.$no.'_field_' . $i . '" class="cf-after'.$err.'"><span>' . ($options[1]) . '</span></label></li>';
-				 		$ba = 'a ';
+				if ( $options[1]<>'' ) {
+				 		$before = '<li'.$liID.$liERR.'>'.$insertErr;
+						$after  = '<label'. $labelID . ' for="'.$input_id.'" class="cf-after'.$err.'"><span>' . ($options[1]) . '</span></label></li>';
+				 		$ba = 'a';
 				}
-				else {
-						$before = $nl . $indent . $tab . $tab . '<li'.$liID.'><label ' . $disabled . $labelID . ' for="cf'.$no.'_field_' . $i . '" class="cf-before'. $err .'"><span>' . ($field_name) . '</span></label>';
+				else {					
+						$before = '<li'.$liID.$liERR.'>'.$insertErr.'<label' . $labelID . ' for="'.$input_name.'" class="cf-before'. $err .'"><span>' . ($field_name) . '</span></label>';
 				 		$after  = '</li>';
-				 		$ba = 'b ';
+				 		$ba = 'b';
 				}
-				$field = $before . '<input ' . $disabled . ' type="checkbox" name="cf'.$no.'_field_' . $i . '" id="cf'.$no.'_field_' . $i . '" class="cf-box-' . $ba . $field_class . '" '.($field_value?'checked="checked"':'').' />' . $after;
+				$field = $nttt . $before . '<input' . $readonly.$disabled . ' type="checkbox" name="'.$input_name.'" id="'.$input_id.'" class="cf-box-' . $ba . $field_class . '"'.($field_value?' checked="checked"':'').'/>' . $after;
 
 				break;
 
 
 			case "checkboxgroup":
-				$liID_b = substr($liID,0,-1) . 'items"';
+				$liID_b = ($liID <>'')?substr($liID,0,-1) . 'items"':'';
 				array_shift($options);
-				$field .= $nl . $indent . $tab . $tab . '<li'.$liID.' class="cf-box-title">' . (($field_name)) . '</li>' . 
-						  $nl . $indent . $tab . $tab . '<li'.$liIDb.' class="cf-box-group">' . $nl .
-						  $indent . $tab . $tab . $tab;
+				$field .= $nttt . '<li'.$liID.' class="cf-box-title">' . (($field_name)) . '</li>' . 
+						  $nttt . '<li'.$liIDb.' class="cf-box-group">';
 				$id=1; $j=0;
 				foreach( $options as $option  ) {
 
@@ -1940,19 +1359,19 @@ function cforms($args = '',$no = '') {
 						if ( $labelID<>'' ) $labelIDx = substr($labelID,0,-1) . $id . '"';
 
 						if ( $opt[0]=='' )
-							$field .= '<br />';
+							$field .= $nttt . $tab . '<br />';
 						else
-							$field .= '<input ' . $disabled . ' type="checkbox" id="cf'.$no.'_field_'.$i. $id . '" name="cf'.$no.'_field_' . $i . '[]" value="'.$opt[1].'" '.$checked.' class="cf-box-b"/>'.
-											'<label ' . $disabled . $labelIDx . ' for="cf'.$no.'_field_'. $i . ($id++) . '" class="cf-group-after"><span>'.$opt[0] . "</span></label>";
+							$field .= $nttt . $tab . '<input' . $readonly.$disabled . ' type="checkbox" id="'. $input_id . $id . '" name="'. $input_name . '[]" value="'.$opt[1].'" '.$checked.' class="cf-box-b"/>'.
+									  '<label' . $labelIDx . ' for="'. $input_id . ($id++) . '" class="cf-group-after"><span>'.$opt[0] . "</span></label>";
 											
 					}
-				$field .= $nl . $indent . $tab . $tab . '</li>';
+				$field .= $nttt . '</li>';
 				break;
 				
 				
 			case "multiselectbox":
-				//$field .= $nl . $indent . $tab . $tab . '<li><label ' . $labelID . ' for="'.$label.'"'. $labelclass . '><span>' . stripslashes(($field_name)) . '</span></label>';
-				$field .= '<select ' . $disabled . ' multiple="multiple" name="cf'.$no.'_field_' . $i . '[]" id="cf'.$no.'_field_' . $i . '" class="cfselectmulti ' . $field_class . '">';
+				//$field .= $nttt . '<li><label ' . $labelID . ' for="'.$input_name.'"'. $labelclass . '><span>' . stripslashes(($field_name)) . '</span></label>';
+				$field .= '<select' . $readonly.$disabled . ' multiple="multiple" name="'.$input_name.'[]" id="'.$input_id.'" class="cfselectmulti ' . $field_class . '">';
 				array_shift($options);
 				$second = false;
 				$j=0;
@@ -1963,50 +1382,54 @@ function cforms($args = '',$no = '') {
                     
                     $checked = '';
                     if ( $opt[1]==stripslashes(htmlspecialchars($field_value[$j])) )  {
-                        $checked = 'selected="selected"';
+                        $checked = ' selected="selected"';
                         $j++;
                     }
                         
-                    $field.= '<option value="'. $opt[1] .'" '.$checked.'>'.$opt[0].'</option>';
+                    $field.= $nttt . $tab . '<option value="'. str_replace('"','&quot;',$opt[1]) .'"'.$checked.'>'.$opt[0].'</option>';
                     $second = true;
                     
 				}
-				$field.= '</select>';
+				$field.= $nttt . '</select>';
 				break;
 
 			case "emailtobox":
 			case "selectbox":
-				$field = '<select ' . $disabled . ' name="cf'.$no.'_field_' . $i . '" id="cf'.$no.'_field_' . $i . '" class="cformselect ' . $field_class . '">';
+				$field = '<select' . $readonly.$disabled . ' name="'.$input_name.'" id="'.$input_id.'" class="cformselect' . $field_class . '">';
 				array_shift($options); $jj=$j=0;
 				$second = false;
 				foreach( $options as $option  ) {
 
-						//supporting names & values
-				    $opt = explode('|', $option,2);
-						if ( $opt[1]=='' ) $opt[1] = $opt[0];
+					//supporting names & values
+				    $opt = explode('|', $option,2);		if ( $opt[1]=='' ) $opt[1] = $opt[0];
 
 						//email-to-box valid entry?
 				    if ( $field_type == 'emailtobox' && $opt[1]<>'-' )
 								$jj = $j++; else $jj = '-';
 
 				    $checked = '';
-						if( $field_value == '' || $field_value == '-') {
-								if ( !$second )
-								    $checked = 'selected="selected"';
-						}	else
-								if ( $opt[1]==$field_value || $jj==$field_value ) $checked = 'selected="selected"';
-						    
-						$field.= '<option value="'.(($field_type=='emailtobox')?$jj:$opt[1]).'" '.$checked.'>'.$opt[0].'</option>';
-						$second = true;
+
+					if( $field_value == '' || $field_value == '-') {
+							if ( !$second )
+							    $checked = ' selected="selected"';
+					}	else
+							if ( $opt[1]==$field_value || $jj==$field_value ) 
+								$checked = ' selected="selected"';
+					    
+					$field.= $nttt . $tab . '<option value="'.(($field_type=='emailtobox')?$jj:$opt[1]).'"'.$checked.'>'.$opt[0].'</option>';
+					$second = true;
+					
 				}
-				$field.= '</select>';
+				$field.= $nttt . '</select>';
 				break;
 
+			case "send2author":				
 			case "radiobuttons":
-				$liID_b = substr($liID,0,-1) . 'items"';
+				$liID_b = ($liID <>'')?substr($liID,0,-1) . 'items"':'';	//only if label ID's active
+
 				array_shift($options);
-				$field .= $nl . $indent . $tab . $tab . '<li'.$liID.' class="cf-box-title">' . (($field_name)) . '</li>' . 
-						  $nl . $indent . $tab . $tab . '<li'.$liID_b.'>';
+				$field .= $nttt . '<li'.$liID.' class="cf-box-title">' . (($field_name)) . '</li>' . 
+						  $nttt . '<li'.$liID_b.' class="cf-box-group">';
 				$second = false; $id=1;
 				foreach( $options as $option  ) {
 				    $checked = '';
@@ -2017,18 +1440,19 @@ function cforms($args = '',$no = '') {
 
 						if( $field_value == '' ) {
 								if ( !$second )
-								    $checked = 'checked="checked"';
+								    $checked = ' checked="checked"';
 						}	else
-								if ( $opt[1]==$field_value ) $checked = 'checked="checked"';
+								if ( $opt[1]==$field_value ) $checked = ' checked="checked"';
 						
 						if ( $labelID<>'' ) $labelIDx = substr($labelID,0,-1) . $id . '"';
 						
-						$field .= '<input ' . $disabled . ' type="radio" id="cf'.$no.'_field_'.$i. $id . '" name="cf'.$no.'_field_' . $i . '" value="'.$opt[1].'" '.$checked.' class="cf-box-a'.(($second)?' cformradioplus':'').'"/>'.
-											'<label ' . $disabled . $labelIDx . ' for="cf'.$no.'_field_'. $i . ($id++) . '" class="cf-after"><span>'.$opt[0] . "</span></label>$break";
+						$field .= $nttt . $tab .
+								  '<input' . $readonly.$disabled . ' type="radio" id="'. $input_id . $id . '" name="'.$input_name.'" value="'.$opt[1].'"'.$checked.' class="cf-box-b'.(($second)?' cformradioplus':'').'"/>'.
+								  '<label' . $labelIDx . ' for="'. $input_id . ($id++) . '" class="cf-after"><span>'.$opt[0] . "</span></label>$break";
 											
 						$second = true;
 					}
-				$field .= '</li>';
+				$field .= $nttt  . '</li>';
 				break;
 				
 		}
@@ -2038,80 +1462,111 @@ function cforms($args = '',$no = '') {
 
 		// adding "required" text if needed
 		if($field_emailcheck == 1)
-			$content .= '<span class="emailreqtxt">&nbsp;'.stripslashes(get_option('cforms'.$no.'_emailrequired')).'</span>';
-		else if($field_required == 1 && $field_type <> 'checkbox' && $field_type <> 'multiselectbox' && $field_type <> 'selectbox' && $field_type <> 'upload' )
-			$content .= '<span class="reqtxt">&nbsp;'.stripslashes(get_option('cforms'.$no.'_required')).'</span>';
+			$content .= '<span class="emailreqtxt">'.stripslashes(get_option('cforms'.$no.'_emailrequired')).'</span>';
+		else if($field_required == 1 && $field_type <> 'checkbox')
+			$content .= '<span class="reqtxt">'.stripslashes(get_option('cforms'.$no.'_required')).'</span>';
 
 		//close out li item
-		if ( ! in_array($field_type,array('fieldsetstart','fieldsetend','radiobuttons','checkbox','checkboxgroup','ccbox','textonly')) )
+		if ( ! in_array($field_type,array('hidden','fieldsetstart','fieldsetend','radiobuttons','checkbox','checkboxgroup','ccbox','textonly','send2author')) )
 			$content .= '</li>';
 		
 	} //all fields
 
 
 	if ( $ol )
-		$content .= $nl . $indent . $tab . '</ol>';
+		$content .= $ntt . '</ol>';
 	if ( $fieldsetopen )
-		$content .= $nl . $indent . $tab . '</fieldset>' . $nl;
+		$content .= $ntt . '</fieldset>';
 
 
 	// rest of the form
-
-	if ( get_option('cforms'.$no.'_ajax')=='1' && !$upload && !$custom && !$alt_action )   // ajax enabled & no upload file field!
+	if ( get_option('cforms'.$no.'_ajax')=='1' && !$upload && !$custom && !$alt_action && !(get_option('cforms'.$no.'_tellafriend')=='2') )
 		$ajaxenabled = ' onclick="return cforms_validate(\''.$no.'\', false)"';
-	else if ( ($upload || $custom || $alt_action) && get_option('cforms'.$no.'_ajax')=='1' )
+	else if ( ($upload || $custom || $alt_action || get_option('cforms'.$no.'_tellafriend')=='2') && get_option('cforms'.$no.'_ajax')=='1' )
 		$ajaxenabled = ' onclick="return cforms_validate(\''.$no.'\', true)"';
 	else
 		$ajaxenabled = '';
 
+
 	// just to appease "strict"
-	$content .= $indent . $tab . '<fieldset class="cf_hidden">' . $nl;
+	$content .= $ntt . '<fieldset class="cf_hidden">'.$nttt.'<legend>&nbsp;</legend>';
 
 	// if visitor verification turned on:
 	if ( $verification )
-		$content .= $nl . $indent . $tab . '<input type="hidden" name="cforms_a'.$no.'" id="cforms_a'.$no.'" value="' . md5(rawurlencode(strtolower($q[1]))) . '"/>';
+		$content .= $nttt .'<input type="hidden" name="cforms_a'.$no.'" id="cforms_a'.$no.'" value="' . md5(rawurlencode(strtolower($q[1]))) . '"/>';
 
 	if ( $captcha )
-		$content .= $nl . $indent . $tab . '<input type="hidden" name="cforms_cap'.$no.'" id="cforms_cap'.$no.'" value="' . md5(strtolower($_SESSION['turing_string_'.$no])) . '"/>';
+		$content .= $nttt .'<input type="hidden" name="cforms_cap'.$no.'" id="cforms_cap'.$no.'" value="' . md5($_SESSION['turing_string_'.$no]) . '"/>';
 
-	if ( get_option('cforms'.$no.'_tellafriend') ){
-		$content .= $nl . $indent . $tab . '<input type="hidden" name="cforms_pid'.$no.'" id="cforms_pid'.$no.'" value="' . ( isset($_GET['pid'])? $_GET['pid'] : get_the_ID() ) . '"/>';
-		$content .= $nl . $indent . $tab . '<input type="hidden" name="cforms_pl'.$no.'" id="cforms_pl'.$no.'" value="' . ( isset($_GET['pid'])? get_permalink($_GET['pid']) : get_permalink() ) . '"/>';
+	$custom_error=substr(get_option('cforms'.$no.'_showpos'),2,1).substr(get_option('cforms'.$no.'_showpos'),3,1).substr(get_option('cforms'.$no.'_showpos'),4,1).$custom_error;
+
+	if ( get_option('cforms'.$no.'_tellafriend')>0 ){
+		if ( get_option('cforms'.$no.'_tellafriend')==2 ) 
+			$nono = ''; else $nono = $no;
+			
+		$content .= $nttt . '<input type="hidden" name="comment_post_ID'.$nono.'" id="comment_post_ID'.$nono.'" value="' . ( isset($_GET['pid'])? $_GET['pid'] : get_the_ID() ) . '"/>' . 
+					$nttt . '<input type="hidden" name="cforms_pl'.$no.'" id="cforms_pl'.$no.'" value="' . ( isset($_GET['pid'])? get_permalink($_GET['pid']) : get_permalink() ) . '"/>';
 	}
 	
-	$content .= $indent . $tab . $tab . '<input type="hidden" name="cf_working'.$no.'" id="cf_working'.$no.'" value="'.rawurlencode(get_option('cforms'.$no.'_working')).'"/>'. $nl .
-				$indent . $tab . $tab . '<input type="hidden" name="cf_failure'.$no.'" id="cf_failure'.$no.'" value="'.rawurlencode(get_option('cforms'.$no.'_failure')).'"/>'. $nl .
-				$indent . $tab . $tab . '<input type="hidden" name="cf_codeerr'.$no.'" id="cf_codeerr'.$no.'" value="'.rawurlencode(get_option('cforms_codeerr')).'"/>'. $nl .
-				$indent . $tab . $tab . '<input type="hidden" name="cf_customerr'.$no.'" id="cf_customerr'.$no.'" value="'.rawurlencode($custom_error).'"/>'. $nl .
-				$indent . $tab . $tab . '<input type="hidden" name="cf_popup'.$no.'"   id="cf_popup'.$no.'"   value="'.get_option('cforms'.$no.'_popup').'"/>' . $nl;
+	$content .= $nttt . '<input type="hidden" name="cf_working'.$no.'" id="cf_working'.$no.'" value="'.rawurlencode(get_option('cforms'.$no.'_working')).'"/>'.
+				$nttt . '<input type="hidden" name="cf_failure'.$no.'" id="cf_failure'.$no.'" value="'.rawurlencode(get_option('cforms'.$no.'_failure')).'"/>'.
+				$nttt . '<input type="hidden" name="cf_codeerr'.$no.'" id="cf_codeerr'.$no.'" value="'.rawurlencode(get_option('cforms_codeerr')).'"/>'.
+				$nttt . '<input type="hidden" name="cf_customerr'.$no.'" id="cf_customerr'.$no.'" value="'.rawurlencode($custom_error).'"/>'.
+				$nttt . '<input type="hidden" name="cf_popup'.$no.'" id="cf_popup'.$no.'" value="'.get_option('cforms'.$no.'_popup').'"/>';
 
-	$content .= $indent . $tab . '</fieldset>' . $nl;
+	$content .= $ntt . '</fieldset>';
 
-	$content .= $indent . $tab . '<p class="cf-sb"><input type="submit" name="sendbutton'.$no.'" id="sendbutton'.$no.'" class="sendbutton" value="' . get_option('cforms'.$no.'_submit_text') . '"'.
-										$ajaxenabled.'/></p>' . $nl;
 
-	$content .= $indent . $tab . '</form>' . $nl;
+	$content .= $ntt . '<p class="cf-sb"><input type="submit" name="sendbutton'.$no.'" id="sendbutton'.$no.'" class="sendbutton" value="' . get_option('cforms'.$no.'_submit_text') . '"'.
+				$ajaxenabled.'/></p>';
+		
+	$content .= $ntt . '</form>';
 
+	if ( get_option('cforms_datepicker')=='1' && !$dpflag ){
+		$content .= $ntt . '<div id="datepicker" style="position:absolute;visibility:hidden;z-index:999;"></div><script type="text/javascript">if ( !dp ) dpinit();</script>';
+		$dpflag   = true;		
+	}
+	
 	//link love? you bet ;)
-	//	if( get_option('cforms_linklove')=="1" ) 
-		$content .= $indent . $tab . '<p class="linklove" id="ll'. $no 	.'"><a href="http://www.deliciousdays.com/cforms-plugin"><em>cforms</em> contact form by delicious:days</a></p>' . $nl;
+		$content .= $ntt . '<p class="linklove" id="ll'. $no .'"><a href="http://www.deliciousdays.com/cforms-plugin"><em>cforms</em> contact form by delicious:days</a></p>';
 	
 
 	//either show message above or below
-	if( substr(get_option('cforms'.$no.'_showpos'),1,1)=='y' )
-		$content .= $indent . $tab . '<p id="usermessage'.$no.'b" class="info ' . $usermessage_class . '" >' . $usermessage_text . '</p>' . $nl;
+	if( substr(get_option('cforms'.$no.'_showpos'),1,1)=='y' && !($success&&get_option('cforms'.$no.'_redirect')==2))
+		$content .= $tt . '<div id="usermessage'.$no.'b" class="cf_info ' . $usermessage_class . '" >' . $usermessage_text . '</div>' . $nl;
 
 	return $content;
 }
 
 
-// captcha random code
-function rc($min,$max) 
+// prep captcha get call
+function get_captcha_uri() 
 {
-	$src = 'abcdefghijkmnpqrstuvwxyz';   
-	$src .= '23456789';         
-	$srclen = strlen($src)-1;
-	
+	$captcha = get_option('cforms_captcha_def'); 
+	$h = ( $captcha['h']<>'' ) ? stripslashes(htmlspecialchars( $captcha['h'] )) : 25;
+	$w = ( $captcha['w']<>'' ) ? stripslashes(htmlspecialchars( $captcha['w'] )) : 115;
+	$c = ( $captcha['c']<>'' ) ? stripslashes(htmlspecialchars( $captcha['c'] )) : '000066';
+	$l = ( $captcha['l']<>'' ) ? stripslashes(htmlspecialchars( $captcha['l'] )) : '000066';
+	$f = ( $captcha['f']<>'' ) ? stripslashes(htmlspecialchars( $captcha['f'] )) : 'font4.ttf';
+	$a1 = ( $captcha['a1']<>'' ) ? stripslashes(htmlspecialchars( $captcha['a1'] )) : -12;
+	$a2 = ( $captcha['a2']<>'' ) ? stripslashes(htmlspecialchars( $captcha['a2'] )) : 12;
+	$f1 = ( $captcha['f1']<>'' ) ? stripslashes(htmlspecialchars( $captcha['f1'] )) : 17;
+	$f2 = ( $captcha['f2']<>'' ) ? stripslashes(htmlspecialchars( $captcha['f2'] )) : 19;
+	$bg = ( $captcha['bg']<>'' ) ? stripslashes(htmlspecialchars( $captcha['bg'] )) : '1.gif';
+		
+	return "&w={$w}&h={$h}&c={$c}&l={$l}&f={$f}&a1={$a1}&a2={$a2}&f1={$f1}&f2={$f2}&b={$bg}";
+}
+
+
+// captcha random code
+function rc() 
+{
+	$captcha = get_option('cforms_captcha_def'); 
+	$min = ( $captcha['c1']<>'' ) ? stripslashes(htmlspecialchars( $captcha['c1'] )) : 4;
+	$max = ( $captcha['c2']<>'' ) ? stripslashes(htmlspecialchars( $captcha['c2'] )) : 5;
+	$src = ( $captcha['ac']<>'' ) ? stripslashes(htmlspecialchars( $captcha['ac'] )) : 'abcdefghijkmnpqrstuvwxyz23456789';
+
+	$srclen = strlen($src)-1;	
 	$length = mt_rand($min,$max);
 	$Code = '';
 	
@@ -2119,77 +1574,72 @@ function rc($min,$max)
 		$Code .= substr($src, mt_rand(0, $srclen), 1);
 	
 	return $Code;
-
 }
 
-function cforms_is_email($string)
-{ return eregi("^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4})$", $string); }
 
 // some css for positioning the form elements
 function cforms_style() {
-	global $cforms_root;
-	echo "\n\t<!-- Start Of Script Generated By cforms v".cforms_info('localversion')." [Oliver Seidel | www.deliciousdays.com] -->\n";
-	echo "\t".'<link rel="stylesheet" type="text/css" href="' . $cforms_root . '/styling/' . get_option('cforms_css') . '" />'."\n";
-	echo "\t".'<script type="text/javascript" src="' . $cforms_root. '/js/cforms.js"></script>'."\n";
-	echo "\t".'<!-- End Of Script Generated By cforms -->'."\n\n";
+	global $wp_query, $cforms_root, $localversion;
+
+	// add content actions and filters
+	$page_obj = $wp_query->get_queried_object();
+	
+	$onPages  = str_replace(' ','',stripslashes(htmlspecialchars( get_option('cforms_include') )));	
+	$onPagesA = explode(',', $onPages);
+
+	if( $onPages=='' || in_array($page_obj->ID,$onPagesA) ){
+
+		echo "\n<!-- Start Of Script Generated By cforms v".$localversion." [Oliver Seidel | www.deliciousdays.com] -->\n";
+		if( get_option('cforms_no_css')<>'1' )
+			echo '<link rel="stylesheet" type="text/css" href="' . $cforms_root . '/styling/' . get_option('cforms_css') . '" />'."\n";
+		echo '<script type="text/javascript" src="' . $cforms_root. '/js/cforms.js"></script>'."\n";
+		if( get_option('cforms_datepicker')=='1' ){
+			echo '<script type="text/javascript" src="' . $cforms_root. '/js/simplecalendar.js"></script>'."\n";
+			echo '<script type="text/javascript">'."\n".
+				 'var dp;'."\n". 
+				 'function dpinit(){'."\n". 
+				 "\t".'dp = new CalendarPopup(\'datepicker\');'."\n".
+				 "\t".'dp.setTodayText(\''.stripslashes(get_option('cforms_dp_today')).'\');'."\n".
+				 "\t".'dp.showYearNavigation();'."\n".
+				 "\t".'dp.setMonthNames('.stripslashes(get_option('cforms_dp_months')).');'."\n".
+				 "\t".'dp.setDayHeaders('.stripslashes(get_option('cforms_dp_days')).');'."\n".
+				 "\t".'dp.setWeekStartDay('.stripslashes(get_option('cforms_dp_start')).');}'."\n".
+				 '</script>'."\n";
+		}
+		echo '<!-- End Of Script Generated By cforms -->'."\n\n";
+		
+	}
 }
 
-
-// some css for arranging the table fields in wp-admin
-function cforms_options_page_style() {
-
-	if (   strpos($_SERVER['REQUEST_URI'], 'plugins.php') !== false ) {
-		if( cforms_remote_version_check()==1 ) {
-			global $cforms_root;
-			$nl="\n";
-			echo '<script type="text/javascript" src="' . $cforms_root . '/js/cformsadmin.js"></script>' . $nl .
-				 '<script type=\'text/javascript\'>' . $nl .
-				 '//<![CDATA[' . $nl .
-				 'addLoadEvent(newcformsversion);' . $nl .
-				 '//]]>'. $nl .
-				 '</script>' . $nl;
-	  } // no newer release avail.
-	} // not plugin page
-  
- 	// other admin pages
-	global $cforms_root;
-	if (   strpos($_SERVER['REQUEST_URI'], $plugindir.'/cforms') !== false )
-		echo	'<link rel="stylesheet" type="text/css" href="' . $cforms_root . '/cforms-admin.css" />' . "\n" .
-				'<script type="text/javascript" src="' . $cforms_root . '/js/dbx.js"></script>' . "\n" .
-				'<script type="text/javascript" src="' . $cforms_root . '/js/cformsadmin.js"></script>' . "\n";
-}
-
-//footer unbder all options pages
-function cforms_footer() {
-?>	<p style="padding-top:50px; font-size:11px; text-align:center;">
-		<em>
-			<?php echo str_replace('[url]','http://www.deliciousdays.com/cforms-forum/',__('For more information and support, visit the <strong>cforms</strong> <a href="[url]" title="cforms support forum">support forum</a>. ', 'cforms')) ?>
-			<?php _e('Translation provided by Oliver Seidel, for updates <a href="http://deliciousdays.com/cforms-plugin">check here.</a>', 'cforms') ?>
-		</em>
-	</p>
-
-	<p align="center">Version <?php echo cforms_info('localversion'); ?></p>
-<?php 
-}
 
 // replace placeholder by generated code
 function cforms_insert( $content ) {
 	global $post;
 
-	$forms = get_option('cforms_formcount');
+	if ( strpos($content,'<!--cforms')!==false ) {  //only if form tag is present!
 
-	for ($i=1;$i<=$forms;$i++) {
-		if($i==1) {
-	  		if(preg_match('#<!--cforms-->#', $content) && check_for_taf('',$post->ID) )
-	   			$content = preg_replace('/(<p>)?<!--cforms-->(<\/p>)?/', cforms(''), $content);
-		} else {
-	 		 if(preg_match('#<!--cforms'.$i.'-->#', $content) && check_for_taf($i,$post->ID) )
-				$content = preg_replace('/(<p>)?<!--cforms'.$i.'-->(<\/p>)?/', cforms('',$i), $content);
+		$forms = get_option('cforms_formcount');
+	
+		for ($i=1;$i<=$forms;$i++) {
+			if($i==1) {
+
+		  		if(preg_match('#<!--cforms1?-->#', $content) && check_for_taf('',$post->ID) )
+		   			$content = preg_replace('/(<p>)?<!--cforms1?-->(<\/p>)?/', cforms('').'$1$2', $content);
+
+			} else {
+
+		 		if(preg_match('#<!--cforms'.$i.'-->#', $content) && check_for_taf($i,$post->ID) )
+					$content = preg_replace('/(<p>)?<!--cforms'.$i.'-->(<\/p>)?/', cforms('',$i).'$1$2', $content);
+
+			}
+  			$content = str_replace('<p></p>','',$content);
 		}
+		
 	}
 	
 	return $content;
 }
+
 
 //build field_stat string from array (for custom forms)
 function build_fstat($fields) {	
@@ -2200,7 +1650,8 @@ function build_fstat($fields) {
         if ( $fields['isemail'][$i] == '') $fields['isemail'][$i] = '0';
         if ( $fields['isclear'][$i] == '') $fields['isclear'][$i] = '0';
         if ( $fields['isdisabled'][$i] == '') $fields['isdisabled'][$i] = '0';
-        $cfarray[$i]=$fields['label'][$i].'$#$'.$fields['type'][$i].'$#$'.$fields['isreq'][$i].'$#$'.$fields['isemail'][$i].'$#$'.$fields['isclear'][$i].'$#$'.$fields['isdisabled'][$i];
+        if ( $fields['isreadonly'][$i] == '') $fields['isreadonly'][$i] = '0';
+        $cfarray[$i]=$fields['label'][$i].'$#$'.$fields['type'][$i].'$#$'.$fields['isreq'][$i].'$#$'.$fields['isemail'][$i].'$#$'.$fields['isclear'][$i].'$#$'.$fields['isdisabled'][$i].'$#$'.$fields['isreadonly'][$i];
     }
     return $cfarray;
 }
@@ -2245,7 +1696,7 @@ function check_for_taf($no,$pid) {
 	$tmp = get_post_custom($pid);
 	$taf = $tmp["tell-a-friend"][0];
 
-	if ( get_option('cforms'.$no.'_tellafriend')<>'1')
+	if ( substr(get_option('cforms'.$no.'_tellafriend'),0,1)<>'1')
 		return true;
 	else {
 		if ( $taf=='1' )
@@ -2258,69 +1709,8 @@ function check_for_taf($no,$pid) {
 
 // check if post is t-f-a enabled
 function is_tellafriend($pid) {
-
 	$tmp = get_post_custom($pid);
-	$taf = $tmp["tell-a-friend"][0];
-
-	if ( $taf=='1' )
-		return true;
-	else
-		return false;
-}
-
-// Set 'manage_database' Capabilities To Administrator
-add_action('activate_'.$plugindir.'/cforms.php', 'cforms_init');
-function cforms_init() {
-	global $wpdb;
-	
-	$role = get_role('administrator');
-	if(!$role->has_cap('manage_cforms')) {
-		$role->add_cap('manage_cforms');
-	}
-	if(!$role->has_cap('track_cforms')) {
-		$role->add_cap('track_cforms');
-	}
-	
-	//alter tracking tables if needed
-	$tables = $wpdb->get_col("SHOW TABLES FROM " . DB_NAME . " LIKE '$wpdb->cformssubmissions'",0);
-
-	if( $tables[0]==$wpdb->cformssubmissions ) {
-
-		$columns = $wpdb->get_results("SHOW COLUMNS FROM {$wpdb->cformssubmissions}");
-		if ( $columns[2]->Field == 'date' ) 
-			$result = $wpdb->query("ALTER TABLE `{$wpdb->cformssubmissions}` CHANGE `date` `sub_date` TIMESTAMP");
-	
-	}
-	
-}
-
-
-
-function widget_cforms_init() {
-	if (! function_exists("register_sidebar_widget")) {
-		return;
-	}
-	
-	function widget_cforms($args) {
-		extract($args);
-		
-		echo $before_widget;
-		
-		preg_match('/^.*widgetcform([^"]*)".*$/',$before_widget,$form_no);
-
-		$no = ($form_no[1]=='0')?'':(int)($form_no[1]+1);
-		echo $before_widget . "<!--oli $no-->" . insert_cform($no) . $after_widget;
-	}
-
-	for ( $i=0;$i<get_option('cforms_formcount');$i++ ) {
-	
-		$no = ($i==0)?'':($i+1);
-		$form = substr(get_option('cforms'.$no.'_fname'),0,10).'...';
-		
-		$nodisp = ($i==0)?'default':'#'.($i+1);
-		register_sidebar_widget('cforms II ('.$nodisp.')<br />&raquo;'.$form, 'widget_cforms','widgetcform'.$i);
-	}
-
+	return ($tmp["tell-a-friend"][0]=='1')?true:false;
 }
 
 
@@ -2333,7 +1723,7 @@ function taf_admin() {
 	$edit_post = intval($_GET['post']);
 
 	for ( $i=1;$i<=get_option('cforms_formcount');$i++ ) {
-		$tafenabled = (get_option('cforms'.(($i=='1')?'':$i).'_tellafriend')=='1') ? true : false;
+		$tafenabled = ( substr(get_option('cforms'.(($i=='1')?'':$i).'_tellafriend'),0,1)=='1') ? true : false;
 		if ( $tafenabled ) break;
 	}
 	
@@ -2341,12 +1731,14 @@ function taf_admin() {
 
 		$tmp = get_post_custom($edit_post);
 		$taf = $tmp["tell-a-friend"][0];
+		
+		$chk = ($taf=='1' || ($edit_post=='' && substr(get_option('cforms'.$i.'_tellafriend'),1,1)=='1') )?'checked="checked"':'';
 				
 		?>
 		<fieldset id="poststickystatusdiv" class="dbx-box">
 			<h3 class="dbx-handle"><?php _e('cforms Tell-A-Friend', 'cforms'); ?></h3> 
 			<div class="dbx-content">
-				<label for="tellafriend" class="selectit"><input type="checkbox" id="tellafriend" name="tellafriend" value="1"<?php checked($taf, 1); ?>/>&nbsp;<?php _e('Include Form', 'cforms'); ?></label>
+				<label for="tellafriend" class="selectit"><input type="checkbox" id="tellafriend" name="tellafriend" value="1"<?php echo $chk; ?>/>&nbsp;<?php _e('Show Form', 'cforms'); ?></label>
 			</div>
 		</fieldset>
 		<?php
@@ -2367,32 +1759,89 @@ function enable_tellafriend($post_ID) {
 }
 
 
-### Add cforms menu to admin
-function cforms_menu() {
-	global $plugindir, $wpdb;
 
-	$tablesup = ($wpdb->get_var("show tables like '$wpdb->cformssubmissions'") == $wpdb->cformssubmissions)?true:false;
+function widget_cforms_init() {
+
+	global $cforms_root;
+
+	if (! function_exists("register_sidebar_widget")) {
+		return;
+	}
 	
-	if (function_exists('add_menu_page')) {
-		add_menu_page(__('cforms II', 'cforms'), __('cforms II', 'cforms'), 'manage_cforms', $plugindir.'/cforms-options.php');
+	function widget_cforms($args) {
+		extract($args);
+		
+		echo $before_widget;
+		
+		preg_match('/^.*widgetcform([^"]*)".*$/',$before_widget,$form_no);
+
+		$no = ($form_no[1]=='0')?'':(int)($form_no[1]+1);
+		echo $before_widget . "<!--$no-->" . insert_cform($no) . $after_widget;
 	}
-	if (function_exists('add_submenu_page')) {
-		add_submenu_page($plugindir.'/cforms-options.php', __('Plugin Settings', 'cforms'), __('Plugin Settings', 'cforms'), 'manage_cforms', $plugindir.'/cforms-global-settings.php');
-		if ( ($tablesup || isset($_REQUEST['cforms_database'])) && !isset($_REQUEST['deletetables']) )
-			add_submenu_page($plugindir.'/cforms-options.php', __('Tracking', 'cforms'), __('Tracking', 'cforms'), 'track_cforms', $plugindir.'/cforms-database.php');
-		add_submenu_page($plugindir.'/cforms-options.php', __('Styling', 'cforms'), __('Styling', 'cforms'), 'manage_cforms', $plugindir.'/cforms-css.php');
-		add_submenu_page($plugindir.'/cforms-options.php', __('Help!', 'cforms'), __('Help!', 'cforms'), 'manage_cforms', $plugindir.'/cforms-help.php');
+
+	for ( $i=0;$i<get_option('cforms_formcount');$i++ ) {
+	
+		$no = ($i==0)?'':($i+1);
+		$form = substr(get_option('cforms'.$no.'_fname'),0,10).'...';
+		$url = 'url('.$cforms_root.'/images/cfii.gif) no-repeat right 1px;';
+		
+		$nodisp = ($i==0)?'default':'#'.($i+1);
+		register_sidebar_widget('<span style="line-height:1.2em;padding:5px;display:block;height:31px;width:94%;position:relative; top:-1px; left:0;background:'.$url.'">cforms II ('.$nodisp.')<br />&raquo;'.$form.'</span>', 'widget_cforms','widgetcform'.$i);
 	}
+
 }
 
+// get # of submission left (max subs)
+function get_cforms_submission_left($no='') {  
+	global $wpdb;
 
+	if ( $no==0 || $no==1 ) $no='';
+	$max   = (int)get_option('cforms'.$no.'_maxentries');
+	if( $max == '' || get_option('cforms_database')=='0' )
+		return -1;
+		
+	$entries = $wpdb->get_row("SELECT count(id) as submitted FROM {$wpdb->cformssubmissions} WHERE form_id='{$no}'");
+
+	if( $max-$entries->submitted > 0)
+		return ($max-$entries->submitted);
+	else
+		return 0;
+}
+
+### add actions
 if (function_exists('add_action')){
-	add_action('admin_head', 'cforms_options_page_style');
-	add_action('admin_menu', 'cforms_menu');
+
+	global $plugindir;
+	
 	add_action('plugins_loaded', 'widget_cforms_init');
+
+	### dashboard
+	if ( $_SERVER['SCRIPT_FILENAME'] <> '' )
+		$loc = $_SERVER['SCRIPT_FILENAME'];
+	else if ( $_SERVER['SCRIPT_URI'] <> '' )
+		$loc = $_SERVER['SCRIPT_URI'];
+	else	
+		$loc = "/wp-admin/index.php";
+		
+	$admin = dirname($loc);	
+	$admin = ( strpos($admin,'wp-admin')!==false )?true:false;
+
+	if ( get_option('cforms_showdashboard')=='1' && get_option('cforms_database')=='1' ) {	
+		require_once(dirname(__FILE__) . '/lib_dashboard.php');
+		add_action( 'activity_box_end', 'cforms_dashboard', 1 );
+	}
+
+	// Set 'manage_database' Capabilities To Administrator
+	if ( $admin ) {
+		require_once(dirname(__FILE__) . '/lib_functions.php');
+		add_action('activate_'.$plugindir.'/cforms.php', 'cforms_init');
+		add_action('admin_head', 'cforms_options_page_style');
+		add_action('admin_menu', 'cforms_menu');
+		add_action('init', 'download_cforms');
+	}
+
 }
 
-// add content actions and filters
 add_filter('wp_head', 'cforms_style'); 
 add_filter('the_content', 'cforms_insert',10);
 

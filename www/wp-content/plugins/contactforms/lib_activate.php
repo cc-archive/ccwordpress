@@ -11,11 +11,11 @@
 		add_option('cforms_upload_err5', __('File not accepted, file type not allowed.', 'cforms'));
 
 		/*for default form*/
-		add_option('cforms_count_field_1', __('My Fieldset$#$fieldsetstart$#$0$#$0$#$0$#$0', 'cforms'));
-		add_option('cforms_count_field_2', __('Your Name|Your Name$#$textfield$#$1$#$0$#$1$#$0', 'cforms'));
-		add_option('cforms_count_field_3', __('Email$#$textfield$#$1$#$1$#$0$#$0', 'cforms'));
-		add_option('cforms_count_field_4', __('Website|http://$#$textfield$#$0$#$0$#$0$#$0', 'cforms'));
-		add_option('cforms_count_field_5', __('Message$#$textarea$#$0$#$0$#$0$#$0', 'cforms'));
+		add_option('cforms_count_field_1', __('My Fieldset', 'cforms').'$#$fieldsetstart$#$0$#$0$#$0$#$0$#$0');
+		add_option('cforms_count_field_2', __('Your Name|Your Name', 'cforms').'$#$textfield$#$1$#$0$#$1$#$0$#$0');
+		add_option('cforms_count_field_3', __('Email', 'cforms').'$#$textfield$#$1$#$1$#$0$#$0$#$0');
+		add_option('cforms_count_field_4', __('Website', 'cforms').'|http://$#$textfield$#$0$#$0$#$0$#$0$#$0');
+		add_option('cforms_count_field_5', __('Message', 'cforms').'$#$textarea$#$0$#$0$#$0$#$0$#$0');
 
 		/*form verification questions*/
 		add_option('cforms_sec_qa', __('What color is snow?=white', 'cforms'). "\r\n" . __('The color of grass is=green', 'cforms'). "\r\n" . __('Ten minus five equals=five', 'cforms'));
@@ -30,37 +30,50 @@
 		add_option('cforms_fname', __('Your default form', 'cforms'));
 		add_option('cforms_csubject', __('Re: Your note', 'cforms').'$#$'.__('Re: Submitted form (copy)', 'cforms'));
 		add_option('cforms_cmsg', __('Dear {Your Name},', 'cforms') . "\n" . __('Thank you for your note!', 'cforms') . "\n". __('We will get back to you as soon as possible.', 'cforms') . "\n\n");
-		add_option('cforms_cmsg_html',  __('<div style="color:#ccc; border-bottom:1px solid #ccc"><strong>auto confirmation message, {Date}</strong></div> ', 'cforms') . "\n<br />\n" . __('<p><strong>Dear {Your Name},</strong></p>', 'cforms') . "\n". __('<p>Thank you for your note!</p>', 'cforms') . "\n". __('<p>We will get back to you as soon as possible.</p>', 'cforms') . "\n\n");
-		add_option('cforms_email', get_bloginfo('admin_email'));
-		add_option('cforms_fromemail', '"'.get_option('blogname').'" <wordpress@' . preg_replace('#^www\.#', '', strtolower($_SERVER['SERVER_NAME'])) . '>' );
+
+		add_option('cforms_cmsg_html', '<div style="font:normal 1em arial; margin-top:10px"><p><strong>' . __('Dear {Your Name},', 'cforms') . "</strong></p>\n<p>". __('Thank you for your note!', 'cforms') . "</p>\n<p>". __('We will get back to you as soon as possible.', 'cforms') . "\n" . '<div style="width:80%; background:#f4faff ; color:#aaa; font-size:11px; padding:10px; margin-top:20px"><strong>'.__('This is an automatic confirmation message.', 'cforms').' {Date}.'.'</strong></div></div>'. "\n\n");
+
+		add_option('cforms_email', get_bloginfo('admin_email') );
+		add_option('cforms_fromemail', get_bloginfo('admin_email') );
 		add_option('cforms_bcc', '');
 
 		add_option('cforms_header', __('A new submission (form: "{Form Name}")', 'cforms') . "\r\n============================================\r\n" . __('Submitted on: {Date}', 'cforms') . "\r\n" . __('Via: {Page}', 'cforms') . "\r\n" . __('By {IP} (visitor IP)', 'cforms') . ".\r\n" . ".\r\n" );		
-		add_option('cforms_header_html', '<p style="background:#fafafa; text-align:center; font:10px arial">' . __('a form has been submitted on {Date}, via: {Page} [IP {IP}]', 'cforms') . '</p>' );		
+		add_option('cforms_header_html', '<p style="font:1em arial; font-weight:bold;">' . __('a form has been submitted on {Date}, via: {Page} [IP {IP}]', 'cforms') . '</p>' );		
 		add_option('cforms_formdata', '1111');
 		add_option('cforms_space', '30');
 		add_option('cforms_noattachments', '0');
 
 		add_option('cforms_subject', __('A comment from {Your Name}', 'cforms'));
-		add_option('cforms_submit_text', __('Send Comment', 'cforms'));
+		add_option('cforms_submit_text', __('Submit', 'cforms'));
 		add_option('cforms_success', __('Thank you for your comment!', 'cforms'));
 		add_option('cforms_failure', __('Please fill in all the required fields.', 'cforms'));
+		add_option('cforms_limittxt', __('<strong>No more submissions accepted at this time.</strong>', 'cforms'));
 		add_option('cforms_codeerr', __('Please double-check your verification code.', 'cforms'));
 		add_option('cforms_working', __('One moment please...', 'cforms'));
 		add_option('cforms_popup', 'nn');
-		add_option('cforms_showpos', 'yn');
+		add_option('cforms_showpos', 'ynyyy');
 		add_option('cforms_database', '0');
 
 		add_option('cforms_css', 'cforms.css');
 		add_option('cforms_labelID', '0');
+		add_option('cforms_liID', '0');
 		
 		add_option('cforms_redirect', '0');
-		add_option('cforms_redirect_page', 'http://redirect.to.this.page');		
+		add_option('cforms_redirect_page', __('http://redirect.to.this.page', 'cforms'));		
 		add_option('cforms_action', '0');
 		add_option('cforms_action_page', 'http://');		
 		
 		add_option('cforms_tracking', '');
+		add_option('cforms_showdashboard', '1');
+		add_option('cforms_maxentries', '');
 		add_option('cforms_tellafriend', '0');
+		add_option('cforms_dashboard', '0');
+		add_option('cforms_datepicker', '0');
+		add_option('cforms_dp_start', '0');
+		add_option('cforms_dp_date', 'MM/dd/yyyy');
+		add_option('cforms_dp_days', __('"S","M","T","W","T","F","S"', 'cforms'));
+		add_option('cforms_dp_months', __('"January","February","March","April","May","June","July","August","September","October","November","December"', 'cforms'));
+		add_option('cforms_dp_today', __('Today', 'cforms'));
 		
 		// updates existing tracking db
 		if ( $wpdb->get_var("show tables like '$wpdb->cformsdata'") == $wpdb->cformsdata ) {
@@ -76,7 +89,7 @@
     					  ADD f_id int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
     					  CHANGE field_name field_name varchar(100) NOT NULL default '';";
     			$wpdb->query($sql);
-              	echo '<div id="message" class="updated fade"><p><strong>' . __('Existing cforms Tracking Tables updated.', 'cforms') . '</strong></p></div>';
+              	echo '<div id="message" class="updated fade"><p><strong>' . __('Existing cforms tracking tables updated.', 'cforms') . '</strong></p></div>';
             }            
         }
 ?>
