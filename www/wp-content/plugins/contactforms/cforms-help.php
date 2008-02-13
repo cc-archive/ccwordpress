@@ -33,7 +33,7 @@ if(!current_user_can('manage_cforms')) {
 				<li><a href="#regexp" onclick="setshow(19)"><?php _e('Using regular expressions with form fields', 'cforms'); ?></a> &raquo;</li>
 			</ul></li>
 			<li><a href="#customerr" onclick="setshow(20)"><?php _e('Custom error messages', 'cforms'); ?></a> &raquo;</li>
-			<li><a href="#hook" onclick="setshow(21)"><?php _e('Advanced: Post-processing of submitted data', 'cforms'); ?></a> &raquo;</li>
+			<li><a href="#hook" onclick="setshow(21)"><?php _e('Advanced: (Post-)Processing of submitted data', 'cforms'); ?></a> &raquo;</li>
 			<li><a href="#dynamicforms" onclick="setshow(22)"><?php _e('Advanced: Real-time creation of dynamic forms', 'cforms'); ?></a> &raquo;</li>
 			<li><a href="#variables" onclick="setshow(23)"><?php _e('Using variables in email subjects &amp; messages', 'cforms'); ?></a> &raquo;</li>
 			<li><a href="#CSS" onclick="setshow(24)"><?php _e('Styling your forms', 'cforms'); ?></a> &raquo;</li>
@@ -89,7 +89,7 @@ if(!current_user_can('manage_cforms')) {
 			<ul style="margin:10px 0 0 100px; list-style:square;">
 				<li><a href="#textonly" onclick="setshow(19)"><?php 	_e('Text only elements', 'cforms'); ?></a></li>
 				<li><a href="#datepicker" onclick="setshow(19)"><?php _e('Javascript Date Picker input field', 'cforms'); ?></a></li>
-				<li><a href="#single" onclick="setshow(19)"><?php 	_e('Single-, Password & Multi-line fields', 'cforms'); ?></a></li>
+				<li><a href="#single" onclick="setshow(19)"><?php 	_e('Single-, Password &amp; Multi-line fields', 'cforms'); ?></a></li>
 				<li><a href="#select" onclick="setshow(19)"><?php 	_e('Select / drop down box &amp; radio buttons', 'cforms'); ?></a></li>
 				<li><a href="#multiselect" onclick="setshow(19)"><?php _e('Multi-select box', 'cforms'); ?></a></li>
 				<li><a href="#check" onclick="setshow(19)"><?php 		_e('Check boxes', 'cforms'); ?></a></li>
@@ -177,7 +177,7 @@ if(!current_user_can('manage_cforms')) {
 		<h4 id="single">
 			<span class="h4ff"><?php _e('form<br />field', 'cforms'); ?></span>
 			<a class="helptop" href="#top"><?php _e('top', 'cforms'); ?></a>
-			<?php _e('Single, Password & Multi line input fields', 'cforms'); ?>
+			<?php _e('Single, Password &amp; Multi line input fields', 'cforms'); ?>
 		</h4>
 		<img class="helpimg" src="<?php echo $cforms_root; ?>/images/example-single.png"  alt=""/>
 		<table class="hf" cellspacing="2" border="4">
@@ -684,6 +684,7 @@ if ( is_tellafriend( $post-&gt;ID ) ) <br />
 					<code><strong><?php _e('Author\'s Comment', 'cforms'); ?></strong></code>
 				</td>
 			</tr>
+			<tr><td class="bleft" colspan="2">&nbsp;</td></tr>
 			<tr>
 				<td class="bleft"><span class="abbr" title="<?php _e('Entry format for Field Name', 'cforms'); ?>"><?php _e('Format:', 'cforms'); ?></span></td>
 				<td class="bright"><?php echo sprintf(__('field name %1$s text <em>comment</em> %2$s 0 %1$s text <em>to author</em> %2$s 1', 'cforms'),'<span style="color:red; font-weight:bold;">#</span>','<span style="color:red; font-weight:bold;">|</span>'); ?></td>
@@ -697,14 +698,23 @@ if ( is_tellafriend( $post-&gt;ID ) ) <br />
 				<td class="bleft"><?php _e('Example:', 'cforms'); ?></td><td class="bright">
 					<code><?php _e('Send as#regular comment|0#email to post author|1', 'cforms'); ?></code></td>
 			</tr>
+			<tr><td class="bleft" colspan="2">&nbsp;</td></tr>
 			<tr>
 				<td class="ball" colspan="2">
 					<?php _e('<strong>To get it working:</strong>', 'cforms'); ?>
 					<ol>
 						<li><?php echo sprintf(__('Turn on the <a href="%s" %s>WP Comment feature</a> for the given form. (<em>Make sure it\'s the right one!</em>), otherwise you won\'t see the above input fields in the [<em>Field Type</em>] select box.', 'cforms'),'?page='.$plugindir.'/cforms-options.php#commentrep','onclick="setshow(7)"'); ?></li>
-						<li><?php _e('Modify this form to include all the necessary (new) input fields, make them required or not, add regexp or even custom err messages. All up to you.', 'cforms'); ?></li>
+						<li><?php _e('Modify this form to include all the necessary (new) input fields, make them required or not, add regexp, anti SPAM fields or even custom err messages. All up to you.', 'cforms'); ?></li>
 						<li><?php _e('Edit your WP Theme template for comments. Remove the current <strong><u>form tag</u></strong> and usually anything in-between (<code  style="color:red">&lt;form action=&quot;...&lt;/form&gt;</code>). Instead replace with a PHP call to cforms: <code  style="color:red">&lt;?php insert_cform(X); ?&gt;</code> with <strong>X</strong> being <u>omitted</u> if the form is your default form or starting at <strong>\'2\'</strong> (with single quotes!) for any subsequent form #.', 'cforms'); ?></li>
-						<li><?php _e('<strong>VERY IMPORTANT</strong>: the below, separately listed code snippet you\'ll have to add to your <strong>wp-comments-post.php</strong> file (WP root directory).', 'cforms'); ?></li>
+						<li><?php echo sprintf(__('Double check the extended <a href="%s" %s>WP comment feature settings here</a> (especially the Ajax specific ones!). ', 'cforms'),'?page='.$plugindir.'/cforms-global-settings.php#wpcomment','onclick="setshow(28)"'); ?></li>
+						<li><?php _e('<strong>IMPORTANT</strong>: To make Ajax work in case there are no comments yet, make sure that the comment container <strong>is always</strong> being rendered.', 'cforms'); ?></li>
+					</ol>					
+				</td>
+			</tr>
+			<tr>
+				<td class="ball" colspan="2">
+					<?php _e('<strong>Suggestions:</strong>', 'cforms'); ?>
+					<ol>
 						<li><?php echo sprintf(__('I recommend you choose the <strong>wide_form.css</strong> theme under the <a href="%s">Styling</a> menu. And adjust to your liking.', 'cforms'),'?page='.$plugindir.'/cforms-css.php'); ?></li>
 						<li><?php _e('If you intend to make certain fields "required", I further recommend you add the text "<em>required</em>" to the input field label and set this style: <code  style="color:red">span.reqtxt, span.emailreqtxt {...</code> to <code  style="color:red">display:none;</code> (using the CSS editor on the <em>Styling</em> page)', 'cforms'); ?></li>
 					</ol>					
@@ -713,39 +723,6 @@ if ( is_tellafriend( $post-&gt;ID ) ) <br />
 			<tr>
 				<td class="ball" colspan="2">
 					<strong><?php _e('Note:', 'cforms'); ?></strong> <?php _e('The beauty is, using one form, you can now offer your readers to either leave a comment behind or simply send a note to the post editor while being able to fully utilize all security aspects of cforms.', 'cforms'); ?>
-				</td>
-			</tr>
-		</table>
-		<br />
-		<table class="hf" cellspacing="2" border="4">
-			<tr>
-				<td class="ball" colspan="2">
-					<?php _e('Code snippet for wp-comments-post.php, to be placed right under "nocache_headers();" (line 12 or so).', 'cforms'); ?>
-					<br /><a href="<?php echo $cforms_root; ?>/codesnippet.txt"><?php _e('click here to view code for copy &amp; paste', 'cforms'); ?></a>
-							
-<pre style="font-size:11px;"><code>
-if ( isset($_POST['send2author']) &amp;&amp; $_POST['send2author']=='1' ) { // cforms
-
-	$keys = array_keys($_POST);
-	
-	foreach ( $keys as $key ){
-		if ( preg_match('/sendbutton(.*)/',$key,$no ) )
-			break;
-	}
-
-	$no = $no[1];
-		
-	cforms( '',$no );
-
-	$cfpre = ( strpos( get_permalink($_POST['comment_post_ID']) ,'?')!==false ) ? '&':'?';
-
-	$location = ( empty($_POST['redirect_to'] ) ? get_permalink($_POST['comment_post_ID']).$cfpre.'cfemail=sent' : $_POST['redirect_to'] );
-	$location = apply_filters('comment_post_redirect', $location, $comment);
-	
-	wp_redirect($location);
-	exit;
-}	
-</code></pre>
 				</td>
 			</tr>
 		</table>
@@ -903,37 +880,31 @@ if ( isset($_POST['send2author']) &amp;&amp; $_POST['send2author']=='1' ) { // c
 		</div>
 
 
-	    <h3 id="hook"><a class="helptop" href="#top"><?php _e('top', 'cforms'); ?></a><a id="b21" class="blindminus" onfocus="this.blur()" onclick="toggleui(21);return false;" href="#" title="<?php _e('Expand/Collapse', 'cforms') ?>"></a><span class="h3title-no">5.</span><?php _e('Advanced: Post-processing of submitted data', 'cforms'); ?></h3>
+	    <h3 id="hook"><a class="helptop" href="#top"><?php _e('top', 'cforms'); ?></a><a id="b21" class="blindminus" onfocus="this.blur()" onclick="toggleui(21);return false;" href="#" title="<?php _e('Expand/Collapse', 'cforms') ?>"></a><span class="h3title-no">5.</span><?php _e('Advanced: (Post-)Processing of submitted data', 'cforms'); ?></h3>
 
 		<div id="o21">
 			<p><?php _e('This is really for hard core deployments, where <em>real-time manipulation</em> of a form &amp; fields are required.', 'cforms'); ?></p>
 	
-			<p><?php _e('If you require the submitted data to be sent to a 3rd party or would like to make use of the data otherwise, here is how:', 'cforms'); ?></p>
-			<ol>
-				<li><?php _e('Edit your WP theme\'s <strong>functions.php</strong> file and add a <em>new action</em>', 'cforms');?></li>
-				<li><?php _e('Take the below code sample and modify as required', 'cforms');?></li>
-			</ol>
-	
-	        <strong><?php _e('Example:', 'cforms'); ?></strong>
-			<pre style="font-size: 11px;"><code>
-function process_data($cformsdata) {
+			<p><?php _e('If you require the submitted data to be manipulated, and or sent to a 3rd party or would like to make use of the data otherwise, here is how:', 'cforms'); ?></p>
+			<p class="ex"><?php _e('With v7.4 and forward, cforms comes with its own <strong>my-functions.php</strong> file (plugin root directory), including examples.', 'cforms');?></p>
 
-	$formID = $cformsdata['id'];      // <strong><?php _e('Note:', 'cforms'); ?></strong> <code>$formID</code> = <strong>''</strong><?php _e('(empty) for the first form!', 'cforms');?> 
-	$form   = $cformsdata['data'];    // &amp; form data
-	
-	if ( $formID == '3' ) {           // your third form (1st form would be '' !)
-		
-		foreach ( array_keys($form) as $key ) {                 // go through all keys (field names)
-			if ( $key=="Your Name" )                        // if specific one found, 
-				$form[$key] = 'Mr./Mrs. '.$form[$key];  // do someting with it
-		}
-		
-		// send to 3d party or do something else
-		
-	}
-	
-}
-add_action('cforms_data','process_data');</code></pre>
+			<table class="hf" cellspacing="2" border="4" width="95%">
+				<tr>
+					<td class="bright" colspan="2"><span class="abbr" title="<?php _e('Custom functions to (post-)process user input', 'cforms'); ?>"><?php _e('Available Functions', 'cforms'); ?></span></td>
+				</tr>
+				<tr>
+					<td class="bleft"><strong><code class="codehighlight">my_cforms_filter()</code></strong></td>
+					<td class="bright"><code><?php _e('function gets triggered <strong>after</strong> user input validation and cforms processing', 'cforms'); ?></code></td>
+				</tr>
+				<tr>
+					<td class="bleft"><strong><code class="codehighlight">my_cforms_ajax_filter()</code></strong></td>
+					<td class="bright"><code><?php _e('function gets called <strong>after</strong> input validation, but <strong>before	</strong> further processing', 'cforms'); ?> <?php _e('(nonAjax)', 'cforms'); ?></code></td>
+				</tr>
+				<tr>
+					<td class="bleft"><strong><code class="codehighlight">my_cforms_action()</code></strong></td>
+					<td class="bright"><code><?php _e('function gets called <strong>after</strong> input validation, but <strong>before</strong> further processing', 'cforms'); ?> <?php _e('(Ajax)', 'cforms'); ?></code></td>
+				</tr>
+			</table>
 		</div>
 
 
@@ -1120,6 +1091,19 @@ insert_custom_cform($fields,5);    //<?php _e('Call form #5 with new fields', 'c
 					<td class="bright"><code><?php _e('Inserts a unique and referenceable form ID (provided that DB Tracking is enabled!)', 'cforms'); ?></code></td>
 				</tr>
 				<tr>
+					<td class="bleft">{CurUserID}</td>
+					<td class="bright"><code><?php _e('Inserts the ID of the currently logged-in user.', 'cforms'); ?></code></td>
+				</tr>
+				<tr>
+					<td class="bleft">{CurUserName}</td>
+					<td class="bright"><code><?php _e('Inserts the Name of the currently logged-in user.', 'cforms'); ?></code></td>
+				</tr>
+				<tr>
+					<td class="bleft">{CurUserEmail}</td>
+					<td class="bright"><code><?php _e('Inserts the Email Address of the currently logged-in user.', 'cforms'); ?></code></td>
+				</tr>
+
+				<tr>
 					<td class="bleft"><em><?php _e('Special:', 'cforms'); ?></em></td>
 					<td class="bright"><code><?php echo sprintf(__('A single %s (period) on a line inserts a blank line.', 'cforms'),'"<code>.</code>"'); ?></code></td>
 				</tr>
@@ -1248,7 +1232,7 @@ insert_custom_cform($fields,5);    //<?php _e('Call form #5 with new fields', 'c
 		<div id="o24">
 			<p><?php echo sprintf(__('Please see the <a href="%s">Styling page</a> for theme selection and editing options.', 'cforms'),'?page=' . $plugindir . '/cforms-css.php'); ?></p>
 			<p><?php _e('cforms comes with a few theme examples (some of the may require adjustments to work with <strong>your</strong> forms!) but you can of course create your own theme file -based on the default <strong>cforms.css</strong> file- and put it in the <code>/styling</code> directory.', 'cforms'); ?></p>
-			<p><?php echo sprintf(__('You might also want to study the <a href="%s">PDF guide on cforms CSS & a web screencast</a> I put together to give you a head start.', 'cforms'),'http://www.deliciousdays.com/cforms-forum?forum=1&topic=428&page=1'); ?></p>
+			<p><?php echo sprintf(__('You might also want to study the <a href="%s">PDF guide on cforms CSS &amp; a web screencast</a> I put together to give you a head start.', 'cforms'),'http://www.deliciousdays.com/cforms-forum?forum=1&amp;topic=428&amp;page=1'); ?></p>
 			<p class="ex"><?php _e('Your form <strong>doesn\'t</strong> look like the preview image, or your individual changes don\'t take effect, check your global WP theme CSS! It may overwrite some or many cforms CSS declarations. If you don\'t know how to trouble shoot, take a look at the Firefox extension "Firebug" - an excellent CSS troubleshooting tool!', 'cforms'); ?></p>
 		</div>
 

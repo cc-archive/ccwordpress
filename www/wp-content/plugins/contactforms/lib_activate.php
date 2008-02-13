@@ -37,6 +37,11 @@
 		add_option('cforms_fromemail', get_bloginfo('admin_email') );
 		add_option('cforms_bcc', '');
 
+		add_option('cforms_commentsuccess', 'Thank you for leaving a comment.');
+		add_option('cforms_commentWait', '15');
+		add_option('cforms_commentParent', 'commentlist');
+		add_option('cforms_commentHTML', "<li id=\"comment-{id}\">\n<p>{usercomment}</p>\n<p>\n<cite>Comment by <a href=\"{url}\" rel=\"external nofollow\">{author}</a> &mdash; {date} @ <a href=\"#comment-{id}\">{time} pm</a></cite>\n</p>\n</li>");
+
 		add_option('cforms_header', __('A new submission (form: "{Form Name}")', 'cforms') . "\r\n============================================\r\n" . __('Submitted on: {Date}', 'cforms') . "\r\n" . __('Via: {Page}', 'cforms') . "\r\n" . __('By {IP} (visitor IP)', 'cforms') . ".\r\n" . ".\r\n" );		
 		add_option('cforms_header_html', '<p style="font:1em arial; font-weight:bold;">' . __('a form has been submitted on {Date}, via: {Page} [IP {IP}]', 'cforms') . '</p>' );		
 		add_option('cforms_formdata', '1111');

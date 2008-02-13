@@ -148,20 +148,20 @@ if(!empty($_POST['save_css'])){
 									<p class="ex"><?php _e('For comprehensive customization support you may choose to turn on <strong>label &amp; list element ID\'s</strong>. This way each input field &amp; label can be specifically addressed via CSS styles.', 'cforms') ?> </p>
 
 									<input type="submit" name="label-ids" id="label-ids" class="allbuttons" value="<?php if ( get_option('cforms_labelID')=='' || get_option('cforms_labelID')=='0' ) _e('Activate Label IDs', 'cforms'); else  _e('Deactivate Label IDs', 'cforms'); ?>" />
-									<?php if ( get_option('cforms_labelID')=='1' ) echo __('Currently turned on ', 'cforms') . '<img class="turnedon" src="' . $cforms_root.'/images/ok.gif" alt="">'; ?>
+									<?php if ( get_option('cforms_labelID')=='1' ) echo __('Currently turned on ', 'cforms') . '<img class="turnedon" src="' . $cforms_root.'/images/ok.gif" alt=""/>'; ?>
 									<br />
 									<input type="submit" name="li-ids" id="li-ids" class="allbuttons" value="<?php if ( get_option('cforms_liID')=='' || get_option('cforms_liID')=='0' ) _e('Activate List Element IDs', 'cforms'); else  _e('Deactivate List Element IDs', 'cforms'); ?>" />
-									<?php if ( get_option('cforms_liID')=='1' ) echo __('Currently turned on ', 'cforms') . '<img class="turnedon" src="' . $cforms_root.'/images/ok.gif" alt="">'; ?>
+									<?php if ( get_option('cforms_liID')=='1' ) echo __('Currently turned on ', 'cforms') . '<img class="turnedon" src="' . $cforms_root.'/images/ok.gif" alt=""/>'; ?>
 									<br />
 									<br />
 									<input type="submit" name="no-css" id="no-css" class="allbuttons deleteall" style="height:30px" value="<?php if ( get_option('cforms_no_css')=='' || get_option('cforms_no_css')=='0' ) _e('Deactivate CSS styling altogether!', 'cforms'); else  _e('Reactivate CSS styling!', 'cforms'); ?>" />
-									<?php if ( get_option('cforms_no_css')=='1' ) echo __('Theme is disabled', 'cforms') . '<img class="turnedon" src="' . $cforms_root.'/images/ok.gif" alt="">'; ?>
+									<?php if ( get_option('cforms_no_css')=='1' ) echo __('Theme is disabled', 'cforms') . '<img class="turnedon" src="' . $cforms_root.'/images/ok.gif" alt=""/>'; ?>
 
 								</td>
 							</tr>
 							<tr>
 								<td colspan="3">							
-										<p><?php echo sprintf(__('You might also want to study the <a href="%s">PDF guide on cforms CSS & a web screencast</a> I put together to give you a head start.', 'cforms'),'http://www.deliciousdays.com/cforms-forum?forum=1&topic=428&page=1'); ?></p>
+										<p><?php echo sprintf(__('You might also want to study the <a href="%s">PDF guide on cforms CSS & a web screencast</a> I put together to give you a head start.', 'cforms'),'http://www.deliciousdays.com/cforms-forum?forum=1&amp;topic=428&amp;page=1'); ?></p>
 								</td>
 							</tr>
 

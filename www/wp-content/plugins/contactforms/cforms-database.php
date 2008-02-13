@@ -240,7 +240,7 @@ if ( ($_POST['showid']<>'' || isset($_POST['showselected']) || isset($_POST['sql
 	$sql="SELECT * FROM {$wpdb->cformssubmissions} $WHERE ORDER BY $order $orderdir";
 	$entries = $wpdb->get_results($sql);
 
-	$formselect  = '<select align="right" type="text" name="filter_form" id="filter_form">';
+	$formselect  = '<select name="filter_form" id="filter_form">';
 	$formselect .= '<option value="*" '.( (!isset($_POST['filter_form']))?'selected="selected"':'' ).'>'.__('**all forms**','cforms').'</option>';
 
 	for ($i=1; $i <= get_option('cforms_formcount'); $i++){
@@ -258,9 +258,9 @@ if ( ($_POST['showid']<>'' || isset($_POST['showselected']) || isset($_POST['sql
 
 		<?php if ($entries) :?>
 
-		<p><?php _e('Keep track of all form submissions & data entered, view individual entries or a whole bunch and download as TAB or CSV formatted file. Attachments can be accessed in the details section. When deleting entries, associated attachments will be removed, too! ', 'cforms') ?></p>
+		<p><?php _e('Keep track of all form submissions &amp; data entered, view individual entries or a whole bunch and download as TAB or CSV formatted file. Attachments can be accessed in the details section. When deleting entries, associated attachments will be removed, too! ', 'cforms') ?></p>
 
-		<p><?php echo sprintf( __('Use the below filter fields <img src="%s" alt="Filter" title="Click to filter"> to narrow down the number of shown entries.', 'cforms'),$cforms_root.'/images/search_icon.gif') ?></p>
+		<p><?php echo sprintf( __('Use the below filter fields <img src="%s" alt="Filter" title="Click to filter"/> to narrow down the number of shown entries.', 'cforms'),$cforms_root.'/images/search_icon.gif') ?></p>
 
 		<form id="cformsdata" name="form" method="post" action="">
 				<input type="hidden" name="showid" value=""/>
@@ -281,7 +281,7 @@ if ( ($_POST['showid']<>'' || isset($_POST['showselected']) || isset($_POST['sql
 
 				<ul class="selectrow" style="margin:8px auto;">
 					<li>
-						<label for="allchktop"><input type="checkbox" id="allchktop" name="allchktop" onClick="javascript:checkonoff('form','entries[]');"/> <strong><?php _e('select/deselect all', 'cforms') ?></strong></label>
+						<label for="allchktop"><input type="checkbox" id="allchktop" name="allchktop" onclick="javascript:checkonoff('form','entries[]');"/> <strong><?php _e('select/deselect all', 'cforms') ?></strong></label>
 					</li>
 				</ul>
 
@@ -314,7 +314,7 @@ if ( ($_POST['showid']<>'' || isset($_POST['showselected']) || isset($_POST['sql
 				
 				<ul class="selectrow" style="margin:14px auto 8px auto;">
 					<li>
-						<label for="allchkbottom"><input type="checkbox" id="allchkbottom" name="allchkbottom" onClick="javascript:checkonoff('form','entries[]');"/> <strong><?php _e('select/deselect all', 'cforms') ?></strong></label>
+						<label for="allchkbottom"><input type="checkbox" id="allchkbottom" name="allchkbottom" onclick="javascript:checkonoff('form','entries[]');"/> <strong><?php _e('select/deselect all', 'cforms') ?></strong></label>
 					</li>
 				</ul>
 
