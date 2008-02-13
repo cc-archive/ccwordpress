@@ -52,8 +52,8 @@ ol.cf-ol li.newcaptionclass {
 }
 
 ol.cf-ol { 
-	margin:0; 
-	padding:0 0 0 0; 	/*  use this one if you have multiple fieldsets support !!!  */ 
+	margin:0!important; 
+	padding:0 0 0 0!important; 	/*  use this one if you have multiple fieldsets support !!!  */ 
 	background: url(../images/customform_dark_bg.jpg) repeat-y; 
 }
 ol.cf-ol li	{
@@ -102,15 +102,16 @@ label.cf-before {
 }
 
 label.cf-after 	{
-	margin:4px 0 0 6px;
-	width:200px;
+	margin:4px 15px 0pt 6px;
 	text-align:left;
+	width:115px;
 }
 
 label.cf-after span {
-	width:200px;
+	width:115px;
 	display:block;
 }
+
 
 label.cf-group-after {
 	margin:4px 0 0 2px;
@@ -231,19 +232,6 @@ p.cf-sb {
 	background:url(../images/customform_dark_submit.jpg) no-repeat; 
 }
 
-
-/*                                                    */
-/*   formatting for invalid user inputs               */
-/*                                                    */
-
-.cform .cf_error {
-	color:#ad2929;
-	border:2px solid #ad2929;
-}
-.cform .cf_errortxt,
-.mailerr {
-	color:#ad2929;
-}
 
 
 /*                                                    */
@@ -370,6 +358,21 @@ div.failure {
 	border-width:1px 0pt;
 }
 
+/*                                                    */
+/*   formatting for invalid user inputs               */
+/*                                                    */
+
+.cform .cf_error {
+	color:#ad2929;
+	border:2px solid #ad2929;
+}
+.cform .cf_errortxt,
+div.mailerr {
+	color:#ad2929;
+}
+div.mailerr {
+	display:block;
+}
 /*                                                    */
 /* disabled fields [disabled] does not work on IE!    */
 /*                                                    */

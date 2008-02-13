@@ -219,9 +219,9 @@ if( strlen($fd)<=2 ) {
 				'<input id="preset" type="submit" name="preset" class="allbuttons" value="'.__('Install Preset', 'cforms').'" onclick="javascript:document.mainform.action=\'#\';return confirm(\'' .__('Do you really want to *replace* all your input fields with this new preset?', 'cforms').'\');" />';
 	?>
 
-	<fieldset id="anchorfields">
-
 	<form enctype="multipart/form-data" id="cformsdata" name="mainform" method="post" action="#anchorfields">
+
+	<fieldset id="anchorfields">
 		<input type="hidden" name="noSub" value="<?php echo $noDISP; ?>" />
 
 		<p class="mainoptions">
@@ -318,7 +318,7 @@ if( strlen($fd)<=2 ) {
 
 							<div class="itemContent">
 																
-								<span class="itemHeader <?php echo ($alternate<>'')?'altmove':''; ?>" alt="<?php _e('Drag me','cforms')?>" title="<?php _e('Drag me','cforms')?>">&nbsp;</span>						
+								<span class="itemHeader<?php echo ($alternate<>'')?' altmove':''; ?>" title="<?php _e('Drag me','cforms')?>">&nbsp;</span>						
 								<strong class="fieldno"><?php echo (($i<10)?'0':'').$i; ?></strong>
 								<input class="inpfld" <?php echo $specialclass; ?> name="field_<?php echo($i); ?>_name" id="field_<?php echo($i); ?>_name" size="30" value="<?php echo ($field_type == 'fieldsetend')?'--':$field_name; ?>" /><a href="#" class="jqModal" title="<?php echo $cforms_root.'/js/include/'; ?>"><img class="wrench" src="<?php echo $cforms_root; ?>/images/wrench<?php echo ($alternate<>'')?'-alt':''; ?>.gif" alt="<?php _e('edit', 'cforms'); ?>" title="<?php _e('edit', 'cforms'); ?>"/></a><select class="fieldtype selfld" <?php echo $specialclass; ?> name="field_<?php echo($i); ?>_type" id="field_<?php echo($i); ?>_type">
 
@@ -366,7 +366,7 @@ if( strlen($fd)<=2 ) {
 
 									<?php if ( get_option('cforms'.$no.'_tellafriend')=='2' ) : ?>
 										<option value=""><?php _e('------------ special --------------', 'cforms'); ?></option>
-										<option value="author" <?php echo($field_type == 'author'?' selected="selected"':''); ?>><?php _e('Comment Author', 'cforms'); ?></option>
+										<option value="cauthor" <?php echo($field_type == 'cauthor'?' selected="selected"':''); ?>><?php _e('Comment Author', 'cforms'); ?></option>
 										<option value="email" <?php echo($field_type == 'email'?' selected="selected"':''); ?>><?php _e('Author\'s Email', 'cforms'); ?></option>
 										<option value="url" <?php echo($field_type == 'url'?' selected="selected"':''); ?>><?php _e('Author\'s URL', 'cforms'); ?></option>
 										<option value="comment" <?php echo($field_type == 'comment'?' selected="selected"':''); ?>><?php _e('Author\'s Comment', 'cforms'); ?></option>
@@ -619,7 +619,7 @@ if( strlen($fd)<=2 ) {
 				<p class="infotxt ex" id="it4"><?php _e('This feature replaces the default NAMEs/IDs (e.g. <strong>cf_field_12</strong>) with <em>custom ones</em>, derived from the field label you have provided. This will for instance help to feed data to third party systems (requiring certain input field names in the $_POST variable).', 'cforms') ?></p>
 
 				<div class="optionsbox" style="margin-top:20px;">
-					<div class="optionsboxL"><label for="cforms_customnames"><strong><?php _e('Use custom input<br />field NAMES & ID\'s', 'cforms') ?></strong></label></div>
+					<div class="optionsboxL"><label for="cforms_customnames"><strong><?php _e('Use custom input<br />field NAMES &amp; ID\'s', 'cforms') ?></strong></label></div>
 					<div class="optionsboxR"><input type="checkbox" id="cforms_customnames" name="cforms_customnames" <?php if(get_option('cforms'.$no.'_customnames')=='1') echo "checked=\"checked\""; ?>/> <a class="infobutton" href="#" name="it4"><?php _e('Please read note &raquo;', 'cforms'); ?></a></div>
 				</div>
 
@@ -629,7 +629,7 @@ if( strlen($fd)<=2 ) {
 				</p>
 
 				<div class="optionsbox" style="margin-top:10px;">
-					<div class="optionsboxL"><label for="cforms_taftrick"><strong><?php _e('Extra variables<br/ >e.g. {Title}', 'cforms') ?></strong></label></div>
+					<div class="optionsboxL"><label for="cforms_taftrick"><strong><?php _e('Extra variables<br />e.g. {Title}', 'cforms') ?></strong></label></div>
 					<div class="optionsboxR"><input type="checkbox" id="cforms_taftrick" name="cforms_taftrick" <?php if(get_option('cforms'.$no.'_tellafriend')=='3') echo "checked=\"checked\""; ?>/> <a class="infobutton" href="#" name="it5"><?php _e('Please read note &raquo;', 'cforms'); ?></a></div>
 				</div>
 
@@ -707,11 +707,14 @@ if( strlen($fd)<=2 ) {
 
 			<div id="o5">
 				<p><?php _e('These settings apply to an auto response/confirmation sent to the visitor. If enabled AND your form contains a "<code>CC me</code>" field <strong>AND</strong> the visitor selected it, no extra confirmation email is sent!', 'cforms') ?></p>
-				<p class="ex"><?php _e('For the <em>auto confirmation</em> feature to work, make sure to mark at least one field <code>Email</code>, otherwise <strong>NO</strong> auto confirmation email will be sent out! If multiple fields are checked "Email", only the first in the list will receive a notification.', 'cforms') ?></p>
 	
-				<div class="optionsbox" style="margin-top:15px;">
+				<div class="optionsbox">
 					<div class="optionsboxL"></div>
-					<div class="optionsboxR"><input type="checkbox" id="cforms_confirm" name="cforms_confirm" <?php if($o=get_option('cforms'.$no.'_confirm')=="1") echo "checked=\"checked\""; ?>/><label for="cforms_confirm"><strong><?php _e('Activate auto confirmation', 'cforms') ?></strong></label></div>
+					<div class="optionsboxR">
+						<input type="checkbox" id="cforms_confirm" name="cforms_confirm" <?php if($o=get_option('cforms'.$no.'_confirm')=="1") echo "checked=\"checked\""; ?>/><label for="cforms_confirm"><strong><?php _e('Activate auto confirmation', 'cforms') ?></strong></label>
+						<p style="margin:7px 0;"><a class="infobutton" href="#" name="it8"><?php _e('Please read note &raquo;', 'cforms'); ?></a></p>
+					</div>
+					<p class="infotxt ex" id="it8"><?php _e('For the <em>auto confirmation</em> feature to work, make sure to mark at least one field <code>Email</code>, otherwise <strong>NO</strong> auto confirmation email will be sent out! If multiple fields are checked "Email", only the first in the list will receive a notification.', 'cforms') ?></p>
 				</div>
 	
 	
@@ -772,14 +775,11 @@ if( strlen($fd)<=2 ) {
 					<div class="optionsboxR">
 						<input type="submit" title="<?php _e('This will add a T-A-F custom field per post/page.', 'cforms') ?>" name="addTAF" class="allbuttons" style="width:150px;" value="<?php _e('Enable', 'cforms') ?>" onclick="document.mainform.action='#tellafriend'; return confirm('<?php _e('Do you really want to enable all previous posts and pages for T-A-F?', 'cforms') ?>');"/>
 						<input type="submit" title="<?php _e('This will remove the T-A-F custom field on all posts/pages.', 'cforms') ?>" name="removeTAF" class="allbuttons" style="width:150px;" value="<?php _e('Disable', 'cforms') ?>" onclick="document.mainform.action='#tellafriend'; return confirm('<?php _e('Do you really want to disable all previous posts and pages for T-A-F?', 'cforms') ?>');"/>
+						<p style="margin:7px 0;"><a class="infobutton" href="#" name="it9"><?php _e('Please read note &raquo;', 'cforms'); ?></a></p>
 					</div>
+					<p class="infotxt ex" id="it9"><?php echo __('You will find a <strong>cforms Tell-A-Friend</strong> checkbox on your <strong>admin/edit page</strong> (typically under "Post/Author")! <br /><u>Check it</u> if you want to have the form appear for the given post or page.', 'cforms');?></p>
 				</div>
 	
-				<div class="optionsboxR">
-					<p class="ex">
-					<?php echo __('You will find a <strong>cforms Tell-A-Friend</strong> checkbox on your <strong>admin/edit page</strong> (typically under "Post/Author")! Check it if you want to have the form appear for the given post or page.', 'cforms');?>
-					</p>
-				</div>
 				<?php endif; ?>
 
 			</div>
@@ -791,20 +791,30 @@ if( strlen($fd)<=2 ) {
 
 			<div id="o7">
 			
-				<p><?php _e('Turned on, your current form will be transformed into a more powerful comment form, allowing your readers to either <strong>comment on the post</strong> or <strong>alternatively send the post author a note</strong>!', 'cforms') ?></p>
-				<p><?php echo sprintf(__('The forms\' functionality will be extended to cover and thus replace WP\'s comment feature. Check out the <strong><u>5</u></strong> new, comment specific <em>input field types</em> available. <strong>Please see the Help section</strong> for <a href="%s" %s>more details.</a>', 'cforms'),'?page='. $plugindir.'/cforms-help.php#commentrep','onclick="setshow(19)"'); ?></p>
+				<p><?php _e('cforms can be used to replace your <em>default Wordpress comment form</em> (on posts &amp; pages), allowing your readers to either <strong>comment on the post</strong> or <strong>alternatively send the post author a note</strong>!', 'cforms') ?></p>
+				<p><?php echo sprintf(__('There will be <strong><u>5</u></strong> additional, comment specific <em>input field types</em> available with this feature turned on, or use the <em>WP comment form preset</em> to get started. <a href="%s" %s>Configuration details.</a>', 'cforms'),'?page='. $plugindir.'/cforms-help.php#commentrep','onclick="setshow(19)"'); ?></p>
 	
 				<div class="optionsbox">
 					<div class="optionsboxL"></div>
-					<div class="optionsboxR"><input type="checkbox" id="cforms_commentrep" name="cforms_commentrep" <?php if( get_option('cforms'.$no.'_tellafriend')=='2' ) echo "checked=\"checked\""; ?>/><label for="cforms_commentrep"><strong><?php _e('Enable this form to optionally (user determined) act as a WP comment form', 'cforms') ?></strong></label></div>
-					<?php if( get_option('cforms'.$no.'_tellafriend')=='2' ) : ?>
-						<div class="optionsboxR">
-							<p class="ex">
-							<?php echo sprintf(__('This feature and T-A-F (above) are mutually exclusive.<br />Again, see the <a href="%s %s">help section</a> on proper use.', 'cforms'),'?page='. $plugindir.'/cforms-help.php#commentrep','onclick="setshow(19)"'); ?>
-							</p>
-						</div>
-					<?php endif; ?>
+					<div class="optionsboxR"><input type="checkbox" id="cforms_commentrep" name="cforms_commentrep" <?php if( get_option('cforms'.$no.'_tellafriend')=='2' ) echo "checked=\"checked\""; ?>/><label for="cforms_commentrep"><strong><?php _e('Enable this form to optionally (user determined) act as a WP comment form', 'cforms') ?></strong></label>
+						<?php if( get_option('cforms'.$no.'_tellafriend')=='2' ) : ?>
+							<br />
+							<p><a class="infobutton" href="#" name="it6"><?php _e('<em>Tell a friend</em> or <em>WP comment</em>? &raquo;', 'cforms'); ?></a></p>
+							<p><a class="infobutton" href="#" name="it7"><?php _e('Important additional configuration requirements &raquo;', 'cforms'); ?></a></p>
+						<?php endif; ?>
+					</div>
 				</div>
+				
+					<?php if( get_option('cforms'.$no.'_tellafriend')=='2' ) : ?>
+
+							<p class="infotxt ex" id="it6">
+							<?php echo sprintf(__('This feature and T-A-F (above) are mutually exclusive. If you need both features, please create a new form for T-A-F.<br />Again, see the <a href="%s" %s>help section</a> on proper use.', 'cforms'),'?page='. $plugindir.'/cforms-help.php#commentrep','onclick="setshow(19)"'); ?>
+							</p>
+							<p class="infotxt ex" id="it7">
+							<?php echo sprintf(__('Please see the extended <a href="%s" %s>WP comment options under <em>Global Settings</em></a> for additional configuration requirements. Especially concerning Ajax comment submission!', 'cforms'),'?page='. $plugindir.'/cforms-global-settings.php#wpcomment','onclick="setshow(19)"'); ?>
+							</p>
+						
+					<?php endif; ?>
 
 			</div>
 		</fieldset>	
@@ -842,7 +852,7 @@ if( strlen($fd)<=2 ) {
 function get_form_presets(){
 	$fullplugindir	= ABSPATH . 'wp-content/plugins/' . dirname(plugin_basename(__FILE__));
 	$presetsdir		= $fullplugindir.'/formpresets/';
-	$list = $title	= __('Not available','cforms');
+	$list = $title	= '';
 	$allfiles		= array();
 	
 	if ($handle = opendir($presetsdir)) {
@@ -861,6 +871,6 @@ function get_form_presets(){
 		}
 		$list .= '<option value="'.$file.'">' .$title. '</option>';
 	}
-    return $list;
+    return ($list=='')?'<li>'.__('Not available','cforms').'</li>':$list;
 }
 ?>

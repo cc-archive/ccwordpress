@@ -43,8 +43,8 @@
 }
 
 ol.cf-ol { 
-	margin:0; 
-	padding:0; 
+	margin:0!important; 
+	padding:0!important; 
 }
 ol.cf-ol li	{
 	background:none!important; 
@@ -91,13 +91,13 @@ label.cf-before {
 }
 
 label.cf-after 	{
-	margin:4px 0 0 6px;
-	width:200px;
+	margin:4px 2px 0 6px;
+	width:70px;
 	text-align:left;
 }
 
 label.cf-after span {
-	width:200px;
+	width:70px;
 	display:block;
 }
 
@@ -238,19 +238,6 @@ p.cf-sb {
 }
 
 
-
-/*                                                    */
-/*   formatting for invalid user inputs               */
-/*                                                    */
-.cform .cf_error { 
-	color:#ad2929; 
-	border:1px solid #ad2929; 
-}
-.mailerr,
-.cform .cf_errortxt {
-	color:#ad2929; 
-}
-
 /*                                                    */
 /*   FORM FIELDS enhanced error display               */
 /*                                                    */
@@ -367,6 +354,22 @@ div.failure {
 	border-style:solid;
 	border-width:1px 0pt;
 }
+
+/*                                                    */
+/*   formatting for invalid user inputs               */
+/*                                                    */
+.cform .cf_error { 
+	color:#ad2929; 
+	border:1px solid #ad2929; 
+}
+div.mailerr {
+	display:block;
+}
+.mailerr,
+.cform .cf_errortxt {
+	color:#ad2929; 
+}
+
 
 /*                                                    */
 /* disabled fields [disabled] does not work on IE!    */

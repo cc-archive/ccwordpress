@@ -35,8 +35,8 @@
 
 ol.cf-ol { 
 	border-top:2px dashed #e5e5e5;
-	margin:0pt;
-	padding:20px 0pt 0pt;
+	margin:0pt!important;
+	padding:20px 0pt 0pt!important;
 }
 ol.cf-ol li	{
 	background:none!important; 
@@ -91,13 +91,13 @@ label.cf-before span{
 label.cf-after 	{
 	display:-moz-inline-box; /*for mozilla*/
 	display:inline-block; /*for Opera & IE*/
-	margin:4px 0 0 4px;
-	width:200px;
+	margin:4px 2px 0 4px;
+	width:110px;
 	text-align:left;	
 }
 
 label.cf-after span {
-	width:200px;
+	width:110px;
 	display:block;
 }
 
@@ -246,18 +246,6 @@ p.cf-sb {
 
 
 /*                                                    */
-/*   formatting for invalid user inputs               */
-/*                                                    */
-.cform .cf_error { 
-	color:#ad2929; 
-	border:1px solid #ad2929; 
-}
-.mailerr,
-.cform .cf_errortxt {
-	color:#ad2929; 
-}
-
-/*                                                    */
 /*   FORM FIELDS enhanced error display               */
 /*                                                    */
 ol.cf-ol li.cf_li_err {
@@ -382,6 +370,21 @@ div.failure {
 	border-color:#DF7D7D;
 	border-style:solid;
 	border-width:1px 0pt;
+}
+
+/*                                                    */
+/*   formatting for invalid user inputs               */
+/*                                                    */
+.cform .cf_error { 
+	color:#ad2929; 
+	border:1px solid #ad2929; 
+}
+div.mailerr {
+	display:block;
+}
+.mailerr,
+.cform .cf_errortxt {
+	color:#ad2929; 
 }
 
 /*                                                    */

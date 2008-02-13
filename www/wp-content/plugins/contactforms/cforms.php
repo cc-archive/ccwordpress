@@ -4,26 +4,33 @@ Plugin Name: cforms II
 Plugin URI: http://www.deliciousdays.com/cforms-plugin
 Description: cforms II offers unparalleled flexibility in deploying contact forms across your blog. Features include: comprehensive SPAM protection, Ajax support, Backup & Restore, Multi-Recipients, Role Manager support, Database tracking and many more. Please see the <a href="http://www.deliciousdays.com/cforms-forum?forum=2&topic=2&page=1">VERSION HISTORY</a> for <strong>what's new</strong> and current <strong>bugfixes</strong>.
 Author: Oliver Seidel
-Version: 7.3b
+Version: 7.5
 Author URI: http://www.deliciousdays.com
 */
 
 /*
-Copyright 2006  Oliver Seidel   (email : oliver.seidel@deliciousdays.com)
+Copyright 2006-2008  Oliver Seidel   (email : oliver.seidel@deliciousdays.com)
 /*
 
 ***
 *** PLEASE NOTE UPDATED "WP comment feature" code snippet, check with the HELP page
 ***
 
-WHAT's NEW in cforms II - v7.3b
-*) bugfix: several related to multi-selectbox (quotes in values, 'required' flag etc., ajax submission broken)
-*) bugfix: new option 'Extra variables' was reset under certain circumstances
-*) bugfix: general formatting issue with escaped input characters, e.g. ", \ etc.  - no one noticed??
-*) bugfix: email validity check now accepts the + character
+WHAT's NEW in cforms II - v7.5
+
+*) feature: WP comments feature completely revised
+	+) no more dependency on wp-comments-post.php
+	+) fully supporting comment form validation (esp. nonAjax!)
+	+) Ajax'iefied
+
+*) bugfix: PHP regexp testing for '0' caused a false positive
+*) bugfix: T-A-F enable new posts/pages by default -> was broken if TAF form was your default (1st) form
+*) bugfix: a few CSS fixes (.mailerr and other)
+*) other: major admin UI clean-up, making it xHTML compliant again
+
 */
 
-$localversion = '7.3b';
+$localversion = '7.5';
 load_plugin_textdomain('cforms');
 
 ### http://trac.wordpress.org/ticket/3002
@@ -184,7 +191,7 @@ function get_current_page(){
 
 function check_default_vars($m,$no) {
 
-		global $subID, $Ajaxpid, $AjaxURL, $post, $wpdb;
+		global $subID, $Ajaxpid, $AjaxURL, $post, $wpdb, $wp_db_version;
 
 		if ( $_POST['comment_post_ID'.$no] )
 			$pid = $_POST['comment_post_ID'.$no];
@@ -208,15 +215,22 @@ function check_default_vars($m,$no) {
 		if ( get_option('cforms'.$no.'_tellafriend')=='2' ) // WP comment fix
 			$page = $permalink;
 
-		$find = $wpdb->get_row("SELECT p.post_title, p.post_excerpt, u.user_nicename FROM $wpdb->posts AS p LEFT JOIN ($wpdb->users AS u) ON p.post_author = u.ID WHERE p.ID='$pid'");
+		$find = $wpdb->get_row("SELECT p.post_title, p.post_excerpt, u.display_name FROM $wpdb->posts AS p LEFT JOIN ($wpdb->users AS u) ON p.post_author = u.ID WHERE p.ID='$pid'");
+
+		if ( $wp_db_version >= 3440 ) //&& function_exists( 'wp_get_current_user' )
+			$CurrUser = wp_get_current_user();
 		
 		$m 	= str_replace( '{Form Name}',	get_option('cforms'.$no.'_fname'), $m );
 		$m 	= str_replace( '{Page}',		$page, $m );
 		$m 	= str_replace( '{Date}',		$date, $m );
-		$m 	= str_replace( '{Author}',		$find->user_nicename, $m );
+		$m 	= str_replace( '{Author}',		$find->display_name, $m );
 		$m 	= str_replace( '{Time}',		$time, $m );
 		$m 	= str_replace( '{IP}',			cf_getip(), $m );
 		$m 	= str_replace( '{BLOGNAME}',	get_option('blogname'), $m );
+
+		$m 	= str_replace( '{CurUserID}',	$CurrUser->ID, $m );
+		$m 	= str_replace( '{CurUserName}',	$CurrUser->display_name, $m );
+		$m 	= str_replace( '{CurUserEmail}',$CurrUser->user_email, $m );
 		
 		$m 	= str_replace( '{Permalink}',	$permalink, $m );
 		$m 	= str_replace( '{Title}',		$find->post_title, $m );
@@ -261,24 +275,41 @@ function cforms_submitcomment($content) {
 
 	global $wpdb, $subID, $styles, $smtpsettings, $track, $Ajaxpid, $AjaxURL, $wp_locale;
 
-	$content = explode('+++', $content);
+	$isAjaxWPcomment = strpos($content,'***');// WP comment feature
+	$content = explode('***', $content);
+	$content = $content[0];
+
+	$content = explode('+++', $content); // Added special fields
 	$Ajaxpid = $content[1];
 	$AjaxURL = $content[2];
 
 	$segments = explode('$#$', $content[0]);
 	$params = array();
 
+	$sep = (strpos(__FILE__,'/')===false)?'\\':'/';
+	$WPpluggable = substr( dirname(__FILE__),0,strpos(dirname(__FILE__),'wp-content')) . 'wp-includes'.$sep.'pluggable.php';
+	if ( file_exists($WPpluggable) )
+		require_once($WPpluggable);
+	
+	$CFfunctions = dirname(__FILE__).$sep.'my-functions.php';
+	if ( file_exists($CFfunctions) )
+		include_once($CFfunctions);
 
+	if( $isAjaxWPcomment ){
+		$wpconfig = substr( dirname(__FILE__),0,strpos(dirname(__FILE__),'wp-content')) . 'wp-config.php';
+		require_once($wpconfig);
+	
+		if ( function_exists('wp_get_current_user') )	
+			$user = wp_get_current_user();
+	}
+	
+/*
 	$locale = get_locale();
 
-/* debug
 	$wplocale = substr( dirname(__FILE__),0,strpos(dirname(__FILE__),'wp-content')) . 'wp-includes/locale.php';
 	if ( file_exists($wplocale) )
 		include_once($wplocale);
 
-	$wpsettings = substr( dirname(__FILE__),0,strpos(dirname(__FILE__),'wp-content')) . 'wp-config.php';
-	if ( file_exists($wpsettings) )
-		include_once($wpsettings);
 
 	if ( class_exists('WP_Locale') )
 		$wp_locale =& new WP_Locale();
@@ -288,7 +319,13 @@ function cforms_submitcomment($content) {
 		$params['field_' . $i] = $segments[$i];
 
 	// fix reference to first form
-	if ( $segments[0]=='1' ) $no=''; else $no = $segments[0];
+	if ( $segments[0]=='1' ) $params['id'] = $no = ''; else $params['id'] = $no = $segments[0];
+
+
+	// user filter ?
+	if( function_exists('my_cforms_ajax_filter') )
+		$params = my_cforms_ajax_filter($params);
+
 
 	// init variables
 	$formdata = '';
@@ -316,12 +353,12 @@ function cforms_submitcomment($content) {
 	$customspace = (int)(get_option('cforms'.$no.'_space')>0)?get_option('cforms'.$no.'_space'):30;
 
 
-	for($i = 1; $i <= sizeof($params)-1; $i++) {
+	for($i = 1; $i <= sizeof($params)-2; $i++) {
 
 			$field_stat = explode('$#$', get_option('cforms'.$no.'_count_field_' . ((int)$i+(int)$off) ));
 
 			// filter non input fields
-			while ( $field_stat[1] == 'fieldsetstart' || $field_stat[1] == 'fieldsetend' || $field_stat[1] == 'textonly' ) {
+			while ( in_array($field_stat[1],array('fieldsetstart','fieldsetend','textonly')) ) {
 																				
 					if ( $field_stat[1] <> 'textonly' ){ // include and make only fieldsets pretty!
 
@@ -349,6 +386,24 @@ function cforms_submitcomment($content) {
 
 			}
 
+			// filter all redundant WP comment fields if user is logged in
+			while ( in_array($field_stat[1],array('cauthor','email','url')) && $user->ID ) {
+ 
+			 		switch( $field_stat[1] ){
+						case 'cauthor': $track['cauthor'] = $user->display_name; break; 
+						case 'email': $track['email'] = $field_email = $user->user_email; break; 
+						case 'url': $track['url'] = $user->user_url; break;
+					}					
+					$formdata .= stripslashes( $field_stat[1] ). ': '. $space . $track[$field_stat[1]] . "\n";
+					$htmlformdata .= '<tr><td class=3D"data-td">' . $field_stat[1] . '</td><td>' . $track[$field_stat[1]] . '</td></tr>';
+	
+					$off++;
+					$field_stat = explode('$#$', get_option('cforms'.$no.'_count_field_' . ((int)$i+(int)$off) ));
+					
+					if( $field_stat[1] == '')
+						break 2; // all fields searched, break both while & for
+			}
+
 			$field_name = $field_stat[0];
 			$field_type = $field_stat[1];
 
@@ -356,6 +411,9 @@ function cforms_submitcomment($content) {
 			if ( ($pos=strpos($field_name,'|')) )
 			    $field_name = substr($field_name,0,$pos);
 
+			// special WP comment fields
+			if( in_array($field_stat[1],array('cauthor','email','url','comment','send2author')) )
+				$field_name = $field_stat[1];
 
 			// special Tell-A-Friend fields
 			if ( $taf_friendsemail == '' && $field_type=='friendsemail' && $field_stat[3]=='1')
@@ -432,7 +490,7 @@ function cforms_submitcomment($content) {
 			$htmlfield_name = $field_name;
 
 			// just for looks: break for textarea
- 			if ( $field_type == "textarea" ) {
+ 			if ( $field_type == "textarea" || $field_type == "comment" ) {
 					$field_name = "\n" . $field_name;
 					$htmlvalue = str_replace(array("=","\n"),array("=3D","<br />\n"),$value);
 					$value = "\n" . $value . "\n";
@@ -455,6 +513,38 @@ function cforms_submitcomment($content) {
 	$htmlformdata = '<div class=3D"datablock"><table width=3D"100%" cellpadding=3D"2">' . stripslashes( $htmlformdata ) . '</table></div><span class=3D"cforms">powered by <a href=3D"http://www.deliciousdays.com/cforms-plugin">cformsII</a></span>';
 
 
+	//
+	// allow the user to use form data for other apps
+	//
+	$trackf['id'] = $no;
+	$trackf['data'] = $track;
+	if( function_exists('my_cforms_action') )
+		my_cforms_action($trackf);
+
+
+
+	// Catch WP-Comment function
+	if ( $isAjaxWPcomment!==false && $track['send2author']=='0' ){
+
+		require_once (dirname(__FILE__) . '/lib_WPcomment.php');
+
+		if ($WPsuccess){
+			$hide='';
+			// redirect to a different page on suceess?
+			if      ( get_option('cforms'.$no.'_redirect')==1 ) return get_option('cforms'.$no.'_redirect_page');
+			else if ( get_option('cforms'.$no.'_redirect')==2 )	$hide = '|~~~';
+	
+		    $pre = $segments[0].'*$#'.substr(get_option('cforms'.$no.'_popup'),0,1);
+		    return $pre . $WPresp . $hide;
+		} 
+		else {
+		    $pre = $segments[0].'*$#'.substr(get_option('cforms'.$no.'_popup'),1,1);
+		    return $pre . $WPresp .'|---';
+		}
+		
+	}
+
+
 	
 	//
 	//reply to all email recipients
@@ -472,13 +562,6 @@ function cforms_submitcomment($content) {
 	if ( $taf_youremail && $taf_friendsemail && substr(get_option('cforms'.$no.'_tellafriend'),0,1)=='1' )
 		$replyto = "\"{$taf_yourname}\" <{$taf_youremail}>";
 
-
-	//
-	// allow the user to use form data for other apps
-	//
-	$trackf['id'] = $no;
-	$trackf['data'] = $track;
-	do_action('cforms_data',$trackf);
 
 
 	//
@@ -661,7 +744,7 @@ function cforms_submitcomment($content) {
 					
 		  		if( $sent<>'1' ) {
 					$err = __('Error occurred while sending the auto confirmation message: ','cforms') . ($smtpsettings[0]?" ($sent)":'');
-				    $pre = $segments[0].'*$#'.substr(get_option('cforms'.$no.'_popup'),0,1);
+				    $pre = $segments[0].'*$#'.substr(get_option('cforms'.$no.'_popup'),1,1);
 				    return $pre . $err .'|!!!';
 		  			
 		  		}
@@ -685,7 +768,7 @@ function cforms_submitcomment($content) {
 
 		// return error msg
 		$err = __('Error occurred while sending the message: ','cforms') . ($smtpsettings[0]?'<br />'.$sentadmin:'');
-	    $pre = $segments[0].'*$#'.substr(get_option('cforms'.$no.'_popup'),0,1);
+	    $pre = $segments[0].'*$#'.substr(get_option('cforms'.$no.'_popup'),1,1);
 	    return $pre . $err .'|!!!';
 	}
 
@@ -913,31 +996,38 @@ function cforms($args = '',$no = '') {
 	$c_errflag=false;
 	$custom_error='';
 	$usermessage_class='';
+
+	//??? check for WP2.0.2
+	if ( $wp_db_version >= 3440 && function_exists('wp_get_current_user') )
+		$user = wp_get_current_user();
+
 	
-	if( isset($_POST['sendbutton'.$no]) ) {  /* alternative sending: both events r ok!  */
+	if( isset($_REQUEST['sendbutton'.$no]) ) {  /* alternative sending: both events r ok!  */
 
 		require_once (dirname(__FILE__) . '/lib_nonajax.php');
 
 		$usermessage_class = $all_valid?' success':' failure';
-			
+
 	}
 
 
-	if ( get_option('cforms'.$no.'_tellafriend')=='2' && $send2author )
-		return;
+	if ( get_option('cforms'.$no.'_tellafriend')=='2' && $send2author ) //called from lib_WPcomments ?
+		return $all_valid;
 
 
 	//
 	// paint form
 	//
 	$success=false;
-	if ( ((isset($_GET['email']) && $_GET['email']=='sent') || (isset($_GET['cfemail']) && $_GET['cfemail']=='sent'))
-			&& get_option('cforms'.$no.'_tellafriend')=='2' ){ // fix for WP Comment
+	if ( isset($_GET['cfemail']) && get_option('cforms'.$no.'_tellafriend')=='2' ){ // fix for WP Comment (loading after redirect)
 		$usermessage_class = ' success';
-		$usermessage_text = preg_replace ( '|\r\n|', '<br />', stripslashes(get_option('cforms'.$no.'_success')) );
 		$success=true;
-		echo"***WPCOMMENT";
+		if ( $_GET['cfemail']=='sent' )
+			$usermessage_text = preg_replace ( '|\r\n|', '<br />', stripslashes(get_option('cforms'.$no.'_success')) );
+		elseif ( $_GET['cfemail']=='posted' )	
+			$usermessage_text = preg_replace ( '|\r\n|', '<br />', stripslashes(get_option('cforms_commentsuccess')) );	
 	}
+
 	
 	$break='<br />';
 	$nl="\n";
@@ -955,7 +1045,7 @@ function cforms($args = '',$no = '') {
 
 
 	// redirect == 2 : hide form?    || or if max entries reached!
-	if ( (get_option('cforms'.$no.'_redirect')==2 && isset($_POST['sendbutton'.$no]) && $all_valid) )
+	if ( (get_option('cforms'.$no.'_redirect')==2 && isset($_REQUEST['sendbutton'.$no]) && $all_valid) )
 		return $content;
 	else if ( get_option('cforms'.$no.'_maxentries')<>'' && get_cforms_submission_left($no)==0 ){
 
@@ -973,7 +1063,7 @@ function cforms($args = '',$no = '') {
 		$alt_action=true;
 	}
 	else if( get_option('cforms'.$no.'_tellafriend')=='2' )
-		$action = get_option('siteurl').'/wp-comments-post.php'; // re-route and use WP comment processing
+		$action = $cforms_root . '/lib_WPcomment.php'; // re-route and use WP comment processing
  	else
 		$action = $_SERVER['REQUEST_URI'] . '#usermessage'. $no . $actiontarget;
 
@@ -990,10 +1080,6 @@ function cforms($args = '',$no = '') {
 	$fscount = 1;
 	$ol = false;
 	global $dpflag;
-
-	//??? check for WP2.0.2
-	if ( $wp_db_version >= 3440 )
-		$user = wp_get_current_user();
 
 	for($i = 1; $i <= $field_count; $i++) {
 
@@ -1012,10 +1098,8 @@ function cforms($args = '',$no = '') {
 
 
 		// ommit certain fields
-		if( in_array($field_type,array('author','url','email')) ){
-			if ( $user->ID )
-				continue;
-		}
+		if( in_array($field_type,array('cauthor','url','email')) && $user->ID )
+			continue;
 
 
 		// check for custom err message and split field_name
@@ -1038,7 +1122,7 @@ function cforms($args = '',$no = '') {
 							$custom_error .= 'cforms_q'. $no . '$#$'.$fielderr.'|';
 			    			break;
 
-				case "author":
+				case "cauthor":
 				case "url":
 				case "email":
 				case "comment":
@@ -1125,7 +1209,7 @@ function cforms($args = '',$no = '') {
 				break;
 			case "send2author":
 			case "email":
-			case "author":			
+			case "cauthor":			
 			case "url":
 				$input_id = $input_name = $field_type;
 			case "datepicker":
@@ -1160,13 +1244,14 @@ function cforms($args = '',$no = '') {
 		$field_value = ''; 
 		
 		//pre-populating fields...
-		if( !isset($_POST['sendbutton'.$no]) && isset($_GET[$input_name]) )
-			$field_value = $_GET[$input_name];
+		if( !isset($_REQUEST['sendbutton'.$no]) && isset($_GET[$input_name]) )
+			$field_value = $_REQUEST[$input_name];
 
 		// an error ocurred:
 		$liERR = $insertErr = '';
+
 		if(! $all_valid){
-		
+
 			if ( $validations[$i]==1 )
 				$field_class .= '';
 			else{
@@ -1181,10 +1266,10 @@ function cforms($args = '',$no = '') {
 			
 			
 			if ( $field_type == 'multiselectbox' || $field_type == 'checkboxgroup' ){
-				$field_value = $_POST[$input_name];  // in this case it's an array! will do the stripping later
+				$field_value = $_REQUEST[$input_name];  // in this case it's an array! will do the stripping later
 			}
 			else
-				$field_value = str_replace('"','&quot;',stripslashes($_POST[$input_name]));
+				$field_value = str_replace('"','&quot;',stripslashes($_REQUEST[$input_name]));
 
 		}
 
@@ -1257,7 +1342,7 @@ function cforms($args = '',$no = '') {
 		    	$captcha=true;
 				break;
 			
-			case "author":
+			case "cauthor":
 			case "url":
 			case "email":			
 			case "datepicker":
@@ -1448,7 +1533,7 @@ function cforms($args = '',$no = '') {
 						
 						$field .= $nttt . $tab .
 								  '<input' . $readonly.$disabled . ' type="radio" id="'. $input_id . $id . '" name="'.$input_name.'" value="'.$opt[1].'"'.$checked.' class="cf-box-b'.(($second)?' cformradioplus':'').'"/>'.
-								  '<label' . $labelIDx . ' for="'. $input_id . ($id++) . '" class="cf-after"><span>'.$opt[0] . "</span></label>$break";
+								  '<label' . $labelIDx . ' for="'. $input_id . ($id++) . '" class="cf-after"><span>'.$opt[0] . "</span></label>";
 											
 						$second = true;
 					}
@@ -1480,9 +1565,9 @@ function cforms($args = '',$no = '') {
 
 
 	// rest of the form
-	if ( get_option('cforms'.$no.'_ajax')=='1' && !$upload && !$custom && !$alt_action && !(get_option('cforms'.$no.'_tellafriend')=='2') )
+	if ( get_option('cforms'.$no.'_ajax')=='1' && !$upload && !$custom && !$alt_action )
 		$ajaxenabled = ' onclick="return cforms_validate(\''.$no.'\', false)"';
-	else if ( ($upload || $custom || $alt_action || get_option('cforms'.$no.'_tellafriend')=='2') && get_option('cforms'.$no.'_ajax')=='1' )
+	else if ( ($upload || $custom || $alt_action) && get_option('cforms'.$no.'_ajax')=='1' )
 		$ajaxenabled = ' onclick="return cforms_validate(\''.$no.'\', true)"';
 	else
 		$ajaxenabled = '';
@@ -1507,7 +1592,7 @@ function cforms($args = '',$no = '') {
 		$content .= $nttt . '<input type="hidden" name="comment_post_ID'.$nono.'" id="comment_post_ID'.$nono.'" value="' . ( isset($_GET['pid'])? $_GET['pid'] : get_the_ID() ) . '"/>' . 
 					$nttt . '<input type="hidden" name="cforms_pl'.$no.'" id="cforms_pl'.$no.'" value="' . ( isset($_GET['pid'])? get_permalink($_GET['pid']) : get_permalink() ) . '"/>';
 	}
-	
+
 	$content .= $nttt . '<input type="hidden" name="cf_working'.$no.'" id="cf_working'.$no.'" value="'.rawurlencode(get_option('cforms'.$no.'_working')).'"/>'.
 				$nttt . '<input type="hidden" name="cf_failure'.$no.'" id="cf_failure'.$no.'" value="'.rawurlencode(get_option('cforms'.$no.'_failure')).'"/>'.
 				$nttt . '<input type="hidden" name="cf_codeerr'.$no.'" id="cf_codeerr'.$no.'" value="'.rawurlencode(get_option('cforms_codeerr')).'"/>'.
@@ -1726,6 +1811,7 @@ function taf_admin() {
 		$tafenabled = ( substr(get_option('cforms'.(($i=='1')?'':$i).'_tellafriend'),0,1)=='1') ? true : false;
 		if ( $tafenabled ) break;
 	}
+	$i = ($i==1)?'':$i;
 	
 	if ( $tafenabled && function_exists('get_post_custom') ){
 

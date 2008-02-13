@@ -80,21 +80,26 @@ if( isset($_REQUEST['deleteall']) ) {  // erase all cforms data
 // Update Settings
 if( isset($_REQUEST['Submit1']) || isset($_REQUEST['Submit2']) || isset($_REQUEST['Submit3']) || 
 	isset($_REQUEST['Submit4']) || isset($_REQUEST['Submit5']) || isset($_REQUEST['Submit6']) ||
-	isset($_REQUEST['Submit7']) || isset($_REQUEST['Submit8']) ) {
+	isset($_REQUEST['Submit7']) || isset($_REQUEST['Submit8']) || isset($_REQUEST['Submit9']) ) {
 
 //	update_option('cforms_linklove', $_REQUEST['cforms_linklove']?'1':'0');
-	update_option('cforms_show_quicktag', $_REQUEST['cforms_show_quicktag']?'1':'0');
-	update_option('cforms_sec_qa', $_REQUEST['cforms_sec_qa'] );
-	update_option('cforms_codeerr', $_REQUEST['cforms_codeerr']);
-	update_option('cforms_database', $_REQUEST['cforms_database']?'1':'0');
-	update_option('cforms_showdashboard', $_REQUEST['cforms_showdashboard']?'1':'0');
-	update_option('cforms_datepicker', $_REQUEST['cforms_datepicker']?'1':'0');
-	update_option('cforms_dp_date', $_REQUEST['cforms_dp_date']);
-	update_option('cforms_dp_days', $_REQUEST['cforms_dp_days']);
-	update_option('cforms_dp_start', $_REQUEST['cforms_dp_start']);
-	update_option('cforms_dp_months', $_REQUEST['cforms_dp_months']);
-	update_option('cforms_dp_today', $_REQUEST['cforms_dp_today']);
-	update_option('cforms_include', $_REQUEST['cforms_include']);
+	update_option('cforms_show_quicktag', 	$_REQUEST['cforms_show_quicktag']?'1':'0');
+	update_option('cforms_sec_qa', 			$_REQUEST['cforms_sec_qa'] );
+	update_option('cforms_codeerr', 		$_REQUEST['cforms_codeerr']);
+	update_option('cforms_database', 		$_REQUEST['cforms_database']?'1':'0');
+	update_option('cforms_showdashboard', 	$_REQUEST['cforms_showdashboard']?'1':'0');
+	update_option('cforms_datepicker', 		$_REQUEST['cforms_datepicker']?'1':'0');
+	update_option('cforms_dp_date', 		$_REQUEST['cforms_dp_date']);
+	update_option('cforms_dp_days', 		$_REQUEST['cforms_dp_days']);
+	update_option('cforms_dp_start', 		$_REQUEST['cforms_dp_start']);
+	update_option('cforms_dp_months', 		$_REQUEST['cforms_dp_months']);
+	update_option('cforms_dp_today', 		$_REQUEST['cforms_dp_today']);
+	update_option('cforms_include', 		$_REQUEST['cforms_include']);
+
+	update_option('cforms_commentsuccess',	$_REQUEST['cforms_commentsuccess']);
+	update_option('cforms_commentWait',		$_REQUEST['cforms_commentWait']);
+	update_option('cforms_commentParent',	$_REQUEST['cforms_commentParent']);
+	update_option('cforms_commentHTML',		$_REQUEST['cforms_commentHTML']);
 
 	$smtpsettings[0]=$_REQUEST['cforms_smtp_onoff']?'1':'0';
 	$smtpsettings[1]=$_REQUEST['cforms_smtp_host'];
@@ -181,6 +186,56 @@ if( isset($_REQUEST['Submit1']) || isset($_REQUEST['Submit2']) || isset($_REQUES
 	<form id="cformsdata" name="mainform" method="post" action="">
 	 <input type="hidden" name="cforms_database_new" value="<?php if(get_option('cforms_database')=="0") echo 'true'; ?>"/>
 
+		<fieldset id="wpcomment" class="cformsoptions">
+			<p class="cflegend"><a class="helptop" href="#top"><?php _e('top', 'cforms'); ?></a><input type="submit" name="Submit9" class="allbuttons updbutton" value="<?php _e('Update Settings &raquo;', 'cforms'); ?>" onclick="javascript:document.mainform.action='#wpcomment';"/><a id="b28" class="blindminus" onfocus="this.blur()" onclick="toggleui(28);return false;" href="#" title="<?php _e('Expand/Collapse', 'cforms') ?>"></a><?php _e('WP Comment Feature Settings', 'cforms') ?></p>
+
+			<div id="o28">
+				<p><?php _e('Specific the ID(s) of <strong>pages or posts</strong> separated by comma on which you\'d like to show cforms. The cforms header will onlcy be included specifically on those pages, helping to maintain all other pages neat.', 'cforms') ?></p>
+				<div class="optionsbox">
+					<div class="optionsboxL"><label for="cforms_commentsuccess"><strong><?php _e('Comment Success Message', 'cforms'); ?></strong></label></div>
+					<div class="optionsboxR">
+						<div id="r16" class="rbox"><textarea rows="80px" cols="200px" name="cforms_commentsuccess" id="cforms_commentsuccess"><?php echo stripslashes(htmlspecialchars(get_option('cforms_commentsuccess'))); ?></textarea><div id="rh16"></div></div>
+					</div>
+				</div>
+			
+				<div class="optionsbox" style="margin-top:10px;margin-bottom:5px;">					
+					<div class="optionsboxL"></div><div class="optionsboxR"><strong><?php _e('Ajax Settings', 'cforms'); ?></strong></div>
+				</div>
+
+				<div class="optionsbox">
+					<div class="optionsboxL"><label for="cforms_commentWait"><strong><?php _e('Wait time for new comments (in seconds)', 'cforms'); ?></strong></label></div>
+					<div class="optionsboxR"><input type="text" id="cforms_commentWait" name="cforms_commentWait" value="<?php echo stripslashes(htmlspecialchars( get_option('cforms_commentWait') )); ?>"/></div>
+				</div>
+				<div class="optionsbox" style="margin-top:15px;">
+					<div class="optionsboxL"><label for="cforms_commentParent"><strong><?php _e('Parent Comment Container', 'cforms'); ?></strong></label></div>
+					<div class="optionsboxR"><input type="text" id="cforms_commentParent" name="cforms_commentParent" value="<?php echo stripslashes(htmlspecialchars( get_option('cforms_commentParent') )); ?>"/><a class="infobutton" href="#" name="it8"><?php _e('Note &raquo;', 'cforms'); ?></a></div>
+					<p class="infotxt ex" id="it8"><?php _e('The HTML <strong>element ID</strong> of the parent element containing<br />all comments, for example:', 'cforms'); ?><br />
+						<code>
+						&lt;/h2&gt;<br />
+						&lt;ol id="<u style="color:#f37891">commentlist</u>"&gt;<br />
+						&nbsp;&nbsp;&lt;li id="comment-126"&gt;<br />
+						</code>
+					</p>
+				</div>
+				<div class="optionsbox" style="margin-top:15px;">
+					<div class="optionsboxL"><label for="cforms_commentHTML"><strong><?php _e('New comment HTML template', 'cforms'); ?></strong></label></div>
+					<div class="optionsboxR">
+						<div id="r17" class="rbox"><textarea rows="80px" cols="200px" name="cforms_commentHTML" id="cforms_commentHTML"><?php echo stripslashes(htmlspecialchars(get_option('cforms_commentHTML'))); ?></textarea><div id="rh17"></div></div><a class="infobutton" href="#" name="it9"><?php _e('Supported Variables &raquo;', 'cforms'); ?></a>
+						<br />
+					</div>
+					<div class="infotxt ex" id="it9">
+						<table class="hf">
+							<tr><td class="bleft">{id}</td><td class="bright"><?php _e('New comment ID', 'cforms'); ?></td></tr>
+							<tr><td class="bleft">{usercomment}</td><td class="bright"><?php _e('Comment Text', 'cforms'); ?></td></tr>
+							<tr><td class="bleft">{author}</td><td class="bright"><?php _e('Comment Author', 'cforms'); ?></td></tr>
+							<tr><td class="bleft">{url}</td><td class="bright"><?php _e('The author\'s website', 'cforms'); ?></td></tr>
+							<tr><td class="bleft">{date}</td><td class="bright"><?php _e('Current date.', 'cforms'); ?></td></tr>
+							<tr><td class="bleft">{time}</td><td class="bright"><?php _e('Current time.', 'cforms'); ?></td></tr>
+						</table></div>
+				</div>
+			</div>
+		</fieldset>
+
 		<fieldset id="inandexclude" class="cformsoptions">
 			<p class="cflegend"><a class="helptop" href="#top"><?php _e('top', 'cforms'); ?></a><input type="submit" name="Submit8" class="allbuttons updbutton" value="<?php _e('Update Settings &raquo;', 'cforms'); ?>" onclick="javascript:document.mainform.action='#popupdate';"/><a id="b27" class="blindminus" onfocus="this.blur()" onclick="toggleui(27);return false;" href="#" title="<?php _e('Expand/Collapse', 'cforms') ?>"></a><?php _e('Enabling cforms for specific pages', 'cforms') ?></p>
 
@@ -201,15 +256,11 @@ if( isset($_REQUEST['Submit1']) || isset($_REQUEST['Submit2']) || isset($_REQUES
 	
 				<div class="optionsbox">
 					<div class="optionsboxL"></div>
-					<div class="optionsboxR"><input type="checkbox" id="cforms_datepicker" name="cforms_datepicker" <?php if(get_option('cforms_datepicker')=="1") echo "checked=\"checked\""; ?>/><label for="cforms_datepicker"><strong><?php _e('Enable Javascript date picker', 'cforms') ?></strong></label></div>
-				</div>
+					<div class="optionsboxR"><input type="checkbox" id="cforms_datepicker" name="cforms_datepicker" <?php if(get_option('cforms_datepicker')=="1") echo "checked=\"checked\""; ?>/><label for="cforms_datepicker"><strong><?php _e('Enable Javascript date picker', 'cforms') ?></strong></label> ** <a class="infobutton" href="#" name="it10"><?php _e('Note &raquo;', 'cforms'); ?></a></div>
+					<p class="infotxt ex" id="it10"><?php _e('Note that turning on this feature will result in loading an additional Javascript file to support the date picker.', 'cforms') ?></p>
+				</div>				
 	
-				<?php if ( get_option('cforms_datepicker')=='1' ) : ?>
-					<p class="ex"><?php _e('Note that turning on this feature will result in loading an additional Javascript file to support the date picker.', 'cforms') ?></p>
-				<?php endif; ?>
-				
-	
-				<div class="optionsbox">
+				<div class="optionsbox" style="margin-top:15px;">
 					<div class="optionsboxL"><label for="cforms_dp_date"><strong><?php _e('Date Format', 'cforms'); ?></strong></label></div>
 					<div class="optionsboxR"><input type="text" id="cforms_dp_date" name="cforms_dp_date" value="<?php echo stripslashes(htmlspecialchars( get_option('cforms_dp_date') )); ?>"/></div>
 				</div>
@@ -238,7 +289,7 @@ if( isset($_REQUEST['Submit1']) || isset($_REQUEST['Submit2']) || isset($_REQUES
 			<p class="cflegend"><a class="helptop" href="#top"><?php _e('top', 'cforms'); ?></a><input type="submit" name="Submit5" class="allbuttons updbutton" value="<?php _e('Update Settings &raquo;', 'cforms'); ?>" onclick="javascript:document.mainform.action='#smtp';"/><a id="b10" class="blindminus" onfocus="this.blur()" onclick="toggleui(10);return false;" href="#" title="<?php _e('Expand/Collapse', 'cforms') ?>"></a><?php _e('SMTP Server Settings', 'cforms') ?><span style="font-size:10px; margin-left:10px;"><?php _e('In a normal WP environment you do not need to configure these settings!', 'cforms') ?></span></p>
 
 			<div id="o10">
-				<p><img style="vertical-align:middle;margin-right:10px;" src="<?php echo $cforms_root; ?>/images/phpmailer.png"/><?php _e('In case your web hosting provider doesn\'t support the <strong>native PHP mail()</strong> command feel free to configure <strong>cforms</strong> to utilize an external <strong>SMTP mail server</strong> to deliver the emails.', 'cforms') ?></p>
+				<p><img style="vertical-align:middle;margin-right:10px;" src="<?php echo $cforms_root; ?>/images/phpmailer.png" alt="phpmailerV2"/><?php _e('In case your web hosting provider doesn\'t support the <strong>native PHP mail()</strong> command feel free to configure <strong>cforms</strong> to utilize an external <strong>SMTP mail server</strong> to deliver the emails.', 'cforms') ?></p>
 				<?php
 				$userconfirm = get_option('cforms_confirmerr');
 				if ( $smtpsettings[0]=='1' && $smtpsettings[4]<>'' && ($userconfirm&32)==0 ){
@@ -249,12 +300,12 @@ if( isset($_REQUEST['Submit1']) || isset($_REQUEST['Submit2']) || isset($_REQUES
 						echo '<div id="message32" class="updated fade"><p>'.$text.'</p><p><input class="rm_button" type="submit" name="confirm32" value="'.__('Remove Message','cforms').'"></p></div>';
 					}
 				}
-				?>
-				<p class="ex"><?php echo sprintf(__('To avoid additional sources of error, cformsII v6.4 and beyond includes the PHPmailer 2.0 scripts, now <strong>supporting</strong> both <strong>SSL</strong> and <strong>TLS</strong> for authentication.','cforms')); ?></p>
+				?>	
 					
 				<div class="optionsbox">
 					<div class="optionsboxL"></div>
-					<div class="optionsboxR"><input type="checkbox" id="cforms_smtp_onoff" name="cforms_smtp_onoff" <?php if($smtpsettings[0]=="1") echo "checked=\"checked\""; ?>/><label for="cforms_smtp_onoff"><strong><?php _e('Enable an external SMTP server', 'cforms') ?></strong></label></div>
+					<div class="optionsboxR"><input type="checkbox" id="cforms_smtp_onoff" name="cforms_smtp_onoff" <?php if($smtpsettings[0]=="1") echo "checked=\"checked\""; ?>/><label for="cforms_smtp_onoff"><strong><?php _e('Enable an external SMTP server', 'cforms') ?></strong></label> ** <a class="infobutton" href="#" name="it11"><?php _e('Note &raquo;', 'cforms'); ?></a></div>
+					<p class="infotxt ex" id="it11"><?php echo sprintf(__('To avoid additional sources of error, cformsII v6.4 and beyond includes the PHPmailer 2.0 scripts, now <strong>supporting</strong> both <strong>SSL</strong> and <strong>TLS</strong> for authentication.','cforms')); ?></p>
 				</div>
 	
 				<div class="optionsbox" style="margin-top:15px;">
@@ -264,9 +315,9 @@ if( isset($_REQUEST['Submit1']) || isset($_REQUEST['Submit2']) || isset($_REQUES
 				<div class="optionsbox">
 					<div class="optionsboxL"><label for="cforms_smtp_ssl"><strong><?php _e('Secure Connection', 'cforms'); ?></strong></label></div>
 					<div class="optionsboxR">						
-						<input type="radio" id="cforms_smtp_none" value="" name="cforms_smtp_ssltls" <?php echo ($smtpsettings[4]=='')?'checked="checked"':''; ?>/><label for="cforms_smtp_none"><strong><?php _e('No', 'cforms'); ?></strong><br />
-						<input type="radio" id="cforms_smtp_ssl" value="ssl" name="cforms_smtp_ssltls" <?php echo ($smtpsettings[4]=='ssl')?'checked="checked"':''; ?>/><label for="cforms_smtp_ssl"><strong><?php _e('SSL (e.g. gmail)', 'cforms'); ?></strong><br />
-						<input type="radio" id="cforms_smtp_tls" value="tls" name="cforms_smtp_ssltls" <?php echo ($smtpsettings[4]=='tls')?'checked="checked"':''; ?>/><label for="cforms_smtp_tls"><strong><?php _e('TLS', 'cforms'); ?></strong>
+						<input type="radio" id="cforms_smtp_none" value="" name="cforms_smtp_ssltls" <?php echo ($smtpsettings[4]=='')?'checked="checked"':''; ?>/><label for="cforms_smtp_none"><strong><?php _e('No', 'cforms'); ?></strong></label><br />
+						<input type="radio" id="cforms_smtp_ssl" value="ssl" name="cforms_smtp_ssltls" <?php echo ($smtpsettings[4]=='ssl')?'checked="checked"':''; ?>/><label for="cforms_smtp_ssl"><strong><?php _e('SSL (e.g. gmail)', 'cforms'); ?></strong></label><br />
+						<input type="radio" id="cforms_smtp_tls" value="tls" name="cforms_smtp_ssltls" <?php echo ($smtpsettings[4]=='tls')?'checked="checked"':''; ?>/><label for="cforms_smtp_tls"><strong><?php _e('TLS', 'cforms'); ?></strong></label>
 					</div>
 				</div>
 				<div class="optionsbox">
@@ -356,7 +407,7 @@ if( isset($_REQUEST['Submit1']) || isset($_REQUEST['Submit2']) || isset($_REQUES
 			<p class="cflegend"><a class="helptop" href="#top"><?php _e('top', 'cforms'); ?></a><input type="submit" name="Submit7" class="allbuttons updbutton" value="<?php _e('Update Settings &raquo;', 'cforms') ?>" onclick="javascript:document.mainform.action='#captcha';"/><a id="b26" class="blindminus" onfocus="this.blur()" onclick="toggleui(26);return false;" href="#" title="<?php _e('Expand/Collapse', 'cforms') ?>"></a><?php _e('CAPTCHA Image Settings', 'cforms') ?></p>
 
 			<div id="o26">						   
-				<p><?php _e('Below you can find a few switches and options to change the default look of the captcha image. Feel free to upload your own backgrounds and fonts to the respective directories (<em>contactforms/captchabg/</em> & <em>contactforms/captchafonts/</em>).', 'cforms') ?></p>
+				<p><?php _e('Below you can find a few switches and options to change the default look of the captcha image. Feel free to upload your own backgrounds and fonts to the respective directories (<em>contactforms/captchabg/</em> &amp; <em>contactforms/captchafonts/</em>).', 'cforms') ?></p>
 	
 				<?php 
 					$captcha = get_option('cforms_captcha_def'); 
@@ -376,7 +427,7 @@ if( isset($_REQUEST['Submit1']) || isset($_REQUEST['Submit2']) || isset($_REQUES
 
 					$_SESSION['turing_string_test'] = rc();
 
-					$img = "ts=test&w={$w}&h={$h}&c={$c}&l={$l}&f={$f}&a1={$a1}&a2={$a2}&f1={$f1}&f2={$f2}&b={$bg}";
+					$img = "ts=test&amp;w={$w}&amp;h={$h}&amp;c={$c}&amp;l={$l}&amp;f={$f}&amp;a1={$a1}&amp;a2={$a2}&amp;f1={$f1}&amp;f2={$f2}&amp;b={$bg}";
 					
 					$fonts = '<select name="cforms_cap_f" id="cforms_cap_f">'.cf_get_files('captchafonts',$f).'</select>';
 					$backgrounds = '<select name="cforms_cap_b" id="cforms_cap_b">'.cf_get_files('captchabg',$bg).'</select>';
@@ -396,8 +447,8 @@ if( isset($_REQUEST['Submit1']) || isset($_REQUEST['Submit2']) || isset($_REQUES
 					<div class="north"><span id="mHEX">FFFFFF</span><div onmousedown="$cfS('mini').display='none';">x</div></div>
 					<div class="south" id="mSpec" style="HEIGHT: 128px; WIDTH: 128px;" onmousedown="coreXY('mCur',event)">
 						<div id="mCur" style="TOP: 86px; LEFT: 68px;"></div>
-						<img src="<?php echo $cforms_root; ?>/images/circle.png" onmousedown="return false;" ondrag="return false;" onselectstart="return false;">
-						<img src="<?php echo $cforms_root; ?>/images/resize.gif" id="mSize" onmousedown="coreXY('mSize',event); return false;" ondrag="return false;" onselectstart="return false;">
+						<img src="<?php echo $cforms_root; ?>/images/circle.png" onmousedown="return false;" ondrag="return false;" onselectstart="return false;" alt=""/>
+						<img src="<?php echo $cforms_root; ?>/images/resize.gif" id="mSize" onmousedown="coreXY('mSize',event); return false;" ondrag="return false;" onselectstart="return false;" alt=""/>
 					</div>
 				</div>
 				</div>
@@ -410,12 +461,12 @@ if( isset($_REQUEST['Submit1']) || isset($_REQUEST['Submit2']) || isset($_REQUES
 						<label for="cforms_cap_h" class="second-l"><strong><?php _e('Height', 'cforms') ?></strong></label><input class="cap" type="text" id="cforms_cap_h" name="cforms_cap_h" value="<?php echo $h; ?>"/>
 					</div>
 					
-					<div class="optionsboxL"><label for="cforms_cap_l"><strong><?php _e('Border Color', 'cforms') ?></strong></label></div>
+					<div class="optionsboxL"><label for="inputID1"><strong><?php _e('Border Color', 'cforms') ?></strong></label></div>
 					<div class="optionsboxR">
 						<input class="cap" type="text" id="inputID1" name="cforms_cap_l" onclick="javascript:currentEL=1;" value="<?php echo $l; ?>"/><input type="button" name="col-border" class="colorswatch" style="background-color:#<?php echo $l; ?>" id="plugID1" onclick="this.blur(); currentEL=1; $cfS('mini').display='block';"/>
 					</div>
 					
-					<div class="optionsboxL"><label for="cforms_cap_bg"><strong><?php _e('Background Image', 'cforms') ?></strong></label></div>
+					<div class="optionsboxL"><label for="cforms_cap_b"><strong><?php _e('Background Image', 'cforms') ?></strong></label></div>
 					<div class="optionsboxR">
 						<?php echo $backgrounds; ?>
 					</div>
@@ -439,7 +490,7 @@ if( isset($_REQUEST['Submit1']) || isset($_REQUEST['Submit2']) || isset($_REQUES
 						<label for="cforms_cap_a2" class="second-l"><strong><?php _e('Max Angle', 'cforms') ?></strong></label><input class="cap" type="text" id="cforms_cap_a2" name="cforms_cap_a2" value="<?php echo $a2; ?>"/>
 					</div>
 
-					<div class="optionsboxL"><label for="cforms_cap_c"><strong><?php _e('Color', 'cforms') ?></strong></label></div>
+					<div class="optionsboxL"><label for="inputID2"><strong><?php _e('Color', 'cforms') ?></strong></label></div>
 					<div class="optionsboxR">
 						<input class="cap" type="text" id="inputID2" name="cforms_cap_c" onclick="javascript:currentEL=2;" value="<?php echo $c; ?>"/><input type="button" name="col-border" class="colorswatch" style="background-color:#<?php echo $c; ?>" id="plugID2" onclick="this.blur(); currentEL=2; $cfS('mini').display='block';"/>
 					</div>
@@ -466,9 +517,17 @@ if( isset($_REQUEST['Submit1']) || isset($_REQUEST['Submit2']) || isset($_REQUES
 
 			<div id="o13">
 				<p><?php _e('Getting a lot of <strong>SPAM</strong>? Use these Q&amp;A\'s to counteract spam and ensure it\'s a human submitting the form. To use in your form, add the corresponding input field "<code>Visitor verification</code>" preferably in its own FIELDSET!', 'cforms') ?></p>
-				<p class="ex"><strong><u><?php _e('Note:') ?></u></strong> <?php _e('The below error/failure message is also used for <strong>captcha</strong> verification!', 'cforms') ?></p>
-	
-				<div class="optionsbox" style="margin-top:25px;">
+		
+				<div class="optionsbox">
+					<div class="optionsboxL"></div>
+					<div class="optionsboxR"><a class="infobutton" href="#" name="it12"><?php _e('Note &raquo;', 'cforms'); ?></a></div>
+						<p class="infotxt ex" id="it12">
+							<?php _e('The below error/failure message is also used for <strong>captcha</strong> verification!', 'cforms') ?><br />
+							<?php echo sprintf(__('Depending on your personal preferences and level of SPAM security you intend to put in place, you can also use <a href="%s" %s>cforms\' CAPTCHA feature</a>!', 'cforms'),'?page='.$plugindir.'/cforms-help.php#captcha','onclick="setshow(19)"'); ?>
+						</p>
+				</div>
+					
+				<div class="optionsbox" style="margin-top:10px;">
 					<div class="optionsboxL"><label for="cforms_codeerr"><?php _e('<strong>Failure message</strong><br />(for a wrong answer)', 'cforms'); ?></label></div>
 					<div class="optionsboxR">
 						<div id="r13" class="rbox"><textarea rows="80px" cols="280px" name="cforms_codeerr" id="cforms_codeerr" ><?php echo stripslashes(htmlspecialchars(get_option('cforms_codeerr'))); ?></textarea><div id="rh13"></div></div>
@@ -483,9 +542,7 @@ if( isset($_REQUEST['Submit1']) || isset($_REQUEST['Submit2']) || isset($_REQUES
 						<div id="r14" class="rbox"><textarea rows="80px" cols="280px" name="cforms_sec_qa" id="cforms_sec_qa" ><?php echo $qa; ?></textarea><div id="rh14"></div></div>
 					</div>
 				</div>
-	
-				<p><?php echo sprintf(__('Depending on your personal preferences and level of SPAM security you intend to put in place, you can also use <a href="%s" %s>cforms\' CAPTCHA feature</a>!', 'cforms'),'?page='.$plugindir.'/cforms-help.php#captcha','onclick="setshow(19)"'); ?></p>
-	
+		
 			</div>
 		</fieldset>
 
@@ -496,9 +553,13 @@ if( isset($_REQUEST['Submit1']) || isset($_REQUEST['Submit2']) || isset($_REQUES
 			<div id="o14">
 				<p><?php _e('If you like to track your form submissions also via the database, please enable this feature below. If required, this will create two new tables and you\'ll see a new sub tab "<strong>Tracking</strong>" under the cforms menu.', 'cforms') ?></p>
 		
-				<p><?php echo sprintf(__('If you\'ve enabled the <a href="%s" %s>auto confirmation message</a> feature or have included a <code>CC: me</code> input field, you can optionally configure the subject line/message of the email to include the form tracking ID by using the variable <code>{ID}</code>.', 'cforms'),'?page=' . $plugindir . '/cforms-options.php#autoconf','onclick="setshow(5)"'); ?></p>
-		
 				<div class="optionsbox">
+					<div class="optionsboxL"></div>
+					<div class="optionsboxR"><a class="infobutton" href="#" name="it13"><?php _e('Note &raquo;', 'cforms'); ?></a></div>
+						<p class="infotxt ex" id="it13"><?php echo sprintf(__('If you\'ve enabled the <a href="%s" %s>auto confirmation message</a> feature or have included a <code>CC: me</code> input field, you can optionally configure the subject line/message of the email to include the form tracking ID by using the variable <code>{ID}</code>.', 'cforms'),'?page=' . $plugindir . '/cforms-options.php#autoconf','onclick="setshow(5)"'); ?></p>
+				</div>
+		
+				<div class="optionsbox" style="margin-top:10px;">
 					<div class="optionsboxL"></div>
 					<div class="optionsboxR"><input type="checkbox" id="cforms_database" name="cforms_database" <?php if(get_option('cforms_database')=="1") echo "checked=\"checked\""; ?>/><label for="cforms_database"><span class="abbr" title="<?php _e('Will create two new tables in your WP database.', 'cforms') ?>"><strong><?php _e('Enable Database Tracking', 'cforms') ?></strong></span></label></div>
 				</div>
@@ -511,7 +572,7 @@ if( isset($_REQUEST['Submit1']) || isset($_REQUEST['Submit2']) || isset($_REQUES
 				<?php if ( $wpdb->get_var("show tables like '$wpdb->cformssubmissions'") == $wpdb->cformssubmissions ) :?>
 				<div class="optionsbox" style="margin-top:25px;">
 					<div class="optionsboxL"><label for="deletetables"><?php _e('<strong>Wipe out</strong> all collected cforms submission data and drop tables.', 'cforms') ?></label></div>
-					<div class="optionsboxR"><input type="submit" title="<?php _e('Be careful with this one!', 'cforms') ?>" name="deletetables" class="allbuttons deleteall" value="<?php _e('Delete cforms Tracking Tables', 'cforms') ?>" onclick="return confirm('<?php _e('Do you really want to erase all collected data?', 'cforms') ?>');"/></div>
+					<div class="optionsboxR"><input id="deletetables" type="submit" title="<?php _e('Be careful with this one!', 'cforms') ?>" name="deletetables" class="allbuttons deleteall" value="<?php _e('Delete cforms Tracking Tables', 'cforms') ?>" onclick="return confirm('<?php _e('Do you really want to erase all collected data?', 'cforms') ?>');"/></div>
 				</div>
 				<?php endif; ?>
 
@@ -541,7 +602,7 @@ if( isset($_REQUEST['Submit1']) || isset($_REQUEST['Submit2']) || isset($_REQUES
 function cf_get_files($dir,$currentfile){
 	$fullplugindir	= ABSPATH . 'wp-content/plugins/' . dirname(plugin_basename(__FILE__));
 	$presetsdir		= $fullplugindir.'/'.$dir.'/';
-	$list = $title	= __('Not available','cforms');
+	$list 			= '';
 	$allfiles		= array();
 	
 	if ($handle = opendir($presetsdir)) {
@@ -553,8 +614,8 @@ function cf_get_files($dir,$currentfile){
 	}
 	sort($allfiles);
 	foreach( $allfiles as $file )
-		$list .= '<option value="'.$file.'"'.(($file==$currentfile)?'selected="selected"':'').'>' .$file. '</option>';
+		$list .= '<option value="'.$file.'"'.(($file==$currentfile)?' selected="selected"':'').'>' .$file. '</option>';
 		
-    return $list;
+    return ($list=='')?'<li>'.__('Not available','cforms').'</li>':$list;
 }
 ?>

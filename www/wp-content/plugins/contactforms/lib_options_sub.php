@@ -39,7 +39,7 @@
 					$emailtobox=true;
 				}
 						
-				if(isset($_REQUEST['field_' . $i . '_required']) && in_array($type,array('pwfield','textfield','datepicker','textarea','checkbox','multiselectbox','selectbox','emailtobox','upload','yourname','youremail','friendsname','friendsemail','email','author','url','comment')) ) {
+				if(isset($_REQUEST['field_' . $i . '_required']) && in_array($type,array('pwfield','textfield','datepicker','textarea','checkbox','multiselectbox','selectbox','emailtobox','upload','yourname','youremail','friendsname','friendsemail','email','cauthor','url','comment')) ) {
 					$required = 1;
 				}
 				
@@ -47,7 +47,7 @@
 					$emailcheck = 1;
 				}
 
-				if(isset($_REQUEST['field_' . $i . '_clear']) && in_array($type,array('pwfield','textfield','datepicker','textarea','yourname','youremail','friendsname','friendsemail','email','author','url','comment')) ) {
+				if(isset($_REQUEST['field_' . $i . '_clear']) && in_array($type,array('pwfield','textfield','datepicker','textarea','yourname','youremail','friendsname','friendsemail','email','cauthor','url','comment')) ) {
 					$clear = 1;
 				}
 
