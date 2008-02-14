@@ -8,16 +8,24 @@ Author: Alex Roberts <alex@creativecommons.org>
 Author URI: 
 */
 
+require_once "creativecommons-admin.php";
+
 /* As seen in http://freeculture.org:8080/svn/wordpress-theme/trunk/front_page/feeds_chapter.php */
-function cc_build_external_feed() {
+function cc_build_external_feed($feedid = 'Planet CC', $singlecat = false, $showcat = true, $entries = 8, $charcount = 300) {
   require_once "magpie/rss_fetch.inc";
+  global $cc_db_rss_table;
+  global $wpdb;
   
-  $feed = "http://planet.creativecommons.org/affiliates/rss20.xml";
- 	$entries = 8;
-	$wordcount = 25;
-	$charcount = 275;
+  $feed = $wpdb->get_var("SELECT url FROM $cc_db_rss_table WHERE name='" . $wpdb->escape($feedid) . "';");
+  if (!$feed) {
+    echo "<strong>Error:</strong> Feed id '$feedid' not found in db.";
+    return;
+  }
+  
   // fetch the rss file
 	$rss = fetch_rss($feed);
+	
+	$wordcount = 25;
 	
 	// parse through each entry
 	foreach($rss->items as $item) {
@@ -56,28 +64,31 @@ function cc_build_external_feed() {
 	    break; // get out of this loop so we can echo
 	  }
 	  
-	  $category = $item['category'];
-	  if (array_key_exists($category, $seen_categories)) {
-	    continue; // get next item
+	  if (!$singlecat) {
+  	  $category = $item['category'];
+  	  if (array_key_exists($category, $seen_categories)) {
+  	    continue; // get next item
+  	  }
+  	  
+  	  // The normal case: where we didn't skip the item because of
+  	  // category
+  	  $seen_categories[$category] = true;
+  	  $number_generated_so_far = $number_generated_so_far + 1;
 	  }
-	  
-	  // The normal case: where we didn't skip the item because of
-	  // category
-	  $seen_categories[$category] = true;
-	  $number_generated_so_far = $number_generated_so_far + 1;
 
+		$date = date('Y-m-d', $item['date']);
+		$description = strip_tags($item['description']);
 
-				$date = date('Y-m-d', $item['date']);
-				$description = strip_tags($item['description']);
+		if (strlen($description) > $charcount)
+			$description = substr ($description, 0, $charcount);
 
-				if (strlen($description) > $charcount)
-					$description = substr ($description, 0, $charcount);
-
-				$out .= "<div class=\"block blogged rss\">";
-				$out .= "<a href=\"/international/{$item['category']}\"><img src=\"/images/international/{$item['category']}.png\" alt=\"{$item['category']}\" class=\"country\"></a>";
-				$out .= "<div class=\"rss-title\"><h3><a href=\"{$item['link']}\">{$item['title']}</a></h3> <small>$date</small></div>";
-				$out .= "<p>$description<br/>[<a href=\"{$item['link']}\">Read More</a>]</p>";
-				$out .= "</div>";
+		$out .= "<div class=\"block blogged rss\">";
+		if ($showcat) {
+			$out .= "<a href=\"/international/{$item['category']}\"><img src=\"/images/international/{$item['category']}.png\" alt=\"{$item['category']}\" class=\"country\"></a>";
+		}
+		$out .= "<div class=\"rss-title\"><h3><a href=\"{$item['link']}\">{$item['title']}</a></h3> <small>$date</small></div>";
+		$out .= "<p>$description<br/>[<a href=\"{$item['link']}\">Read More</a>]</p>";
+		$out .= "</div>";
 	}
 
 	echo $out;
@@ -315,5 +326,9 @@ add_action('init', 'cc_verbose_rewrite');
 	$wp_rewrite->rules = $rules + $wp_rewrite->rules;
 }
 add_filter ('generate_rewrite_rules', 'cc_custom_rewrites');*/
+
+
+/* Plugin installation, set up DB table for rss feeding */
+register_activation_hook( __FILE__, 'cc_plugin_activate' );
 
 ?>
