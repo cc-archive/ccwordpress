@@ -268,12 +268,12 @@
 
 		#libre {
 			position: absolute;
-			right: 30px;
-			top: 50px;
+			right: 40px;
+			top: 30px;
 			width: 150px;
 			height: 250px;
 		}
-		#libre img {
+		#libre img, #libre a {
 			border: none !important;
 		}
 
