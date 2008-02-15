@@ -56,11 +56,14 @@
         </span>
         -->
       <div id="search-box">
+      <!--OERC_FORM-->
+      <!--
         <h4>Open Education Search</h4>
         <form method="get" action="http://www.oercommons.org/search?form.submitted=1&y=0&x=0&global_searchbox=1">
           <input type="text" name="SearchableText" size="20" />
           <input type="submit" value="Search" />
         </form>
+      -->
       </div>
         <span class="logo"><a href="<?php echo get_option('home'); ?>"><span><img src="<?php bloginfo('stylesheet_directory'); ?>/images/ccl-title-d.png" alt="cclearn" id="cc-title" border="0"/></span></a></span>
         

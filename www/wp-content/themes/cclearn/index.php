@@ -24,7 +24,7 @@
   $projects_query = array (
       'post_type' => 'page',
       'post_parent' => cc_id_from_page_name("Projects"),
-      'orderby' => 'post_name',
+      'orderby' => 'ID',
       'order' => 'asc'
       );
   $projects = get_posts($projects_query);
