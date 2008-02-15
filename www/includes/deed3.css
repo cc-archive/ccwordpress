@@ -264,3 +264,15 @@
 			margin-top:  1.75em;
 			margin-bottom:  0.7em;
 		}
+
+		#libre {
+			position: absolute;
+			right: 40px;
+			top: 30px;
+			width: 150px;
+			height: 250px;
+		}
+		#libre img, #libre a {
+			border: none !important;
+		}
+
