@@ -67,6 +67,7 @@
 		}
 		
 		#deed-main-content {
+			position: relative;
 			margin: 0 15px;
 		
 		}
