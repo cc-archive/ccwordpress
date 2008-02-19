@@ -5,7 +5,7 @@
 	}
 
 	#deed-main img {
-		float: left;
+		float: right;
 	}
 
 	li.license {
@@ -22,7 +22,14 @@
 		background-position: top right;
 	}
 
+	#deed-rights ul {
+		width: 80%;
+	}
+
 	#deed-conditions {
 		background-position: top right;
 	}
 
+	#libre {
+		left: 68px;
+	}
