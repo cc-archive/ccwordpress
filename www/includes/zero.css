@@ -101,3 +101,7 @@
 .indent {
 	margin-left: 15px;
 }
+
+strong {
+       font-weight: bold !important;
+}
