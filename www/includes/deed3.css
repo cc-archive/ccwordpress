@@ -273,6 +273,11 @@
 			width: 150px;
 			height: 250px;
 		}
+		#libre-pd {
+			width: 150px;
+			float: right;
+		}
+
 		#libre img, #libre a {
 			border: none !important;
 		}
