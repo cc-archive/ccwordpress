@@ -169,13 +169,16 @@ YAHOO.cc.zero.init = function() {
 	
     Ext.select(".reason").on("click",
 	YAHOO.cc.zero.enable_button_assertion);
-    if (Ext.get("enable_other_assertion_reason"))
+    if (Ext.get("enable_other_assertion_reason")) {
+
+	Ext.get("other_assertion_reason").dom.disabled = true;
 	Ext.get("enable_other_assertion_reason").on("click",
             function (e) {
-                Ext.get("other_assertion_reason").setVisible(
-							     e.target.checked, 
-							     true);
+                Ext.get("other_assertion_reason").dom.disabled = \
+		    !e.target.checked;
 						    });
+
+    }
 
     // add panel-show listeners
     YAHOO.cc.zero.chooser.items.get('page-results').on("show", 
