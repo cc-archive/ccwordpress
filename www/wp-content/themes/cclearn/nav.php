@@ -15,11 +15,12 @@ $nav = array (
        <?php foreach($nav as $i => $item) { 
           $klass = "inactive";
           
-          // dead easy to figure out where we are.
+	  // dead easy to figure out where we are.
           if (is_home() and $item["name"] == "Home") $klass = "active";
           if (is_page($item["name"])) $klass = "active";
-
-          if ($post) {
+	  if ($post->post_name == strtolower($item["name"])) $klass = "active";
+	  
+	  if ($post) {
             // check if we're a child page, highlight parent tab if applicable         
             if(get_the_title($post->post_parent) == $item["name"]) $klass = "active"; 
           
