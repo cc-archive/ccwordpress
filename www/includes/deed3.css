@@ -235,6 +235,9 @@
                 li.nolaw {
                                         background: url("/images/deed/nolaw.png") 0 0 no-repeat;
                 }
+                li.assertion {
+                                        background: url("/images/deed/devnations.png") 0 0 no-repeat;
+                }
                 li.scnorms{
                                         background: url("/images/deed/scnorms.png") 0 0 no-repeat;
                 }
