@@ -45,14 +45,26 @@ YAHOO.cc.zero._enable_button = function(e, btn_id) {
 
 YAHOO.cc.zero.enable_button_assertion = function(e) {
 
-   // enable the continue button if one or more of the reason checkboxes is selected.
+   // enable the continue button if one or more of the reason 
+   // checkboxes is selected.
    var disabled = true;
 
    function is_checked(el, scope, index) {
-      if (el.dom.checked) {
-	disabled = false;
-      }
-   }
+
+       // bail out if we've already found a reason to enable
+       if (!disabled) return;
+
+       // special case the "other" check box
+       if (el.dom.id == 'enable_other_assertion_reason') {
+
+	   if (Ext.get("other_assertion_reason").dom.value.trim() != '') {
+	       disabled = false;
+	   }
+
+       } else if (el.dom.checked) {
+	   disabled = false;
+       }
+   } // is_checked
 
    Ext.select(".reason").each(is_checked);
 
@@ -167,14 +179,16 @@ YAHOO.cc.zero.init = function() {
 							  ["details-submit"], 
 							  1));
 	
-    Ext.select(".reason").on("click",
-	YAHOO.cc.zero.enable_button_assertion);
+    Ext.select(".reason").on("click", YAHOO.cc.zero.enable_button_assertion);
+    Ext.get("other_assertion_reason").on("keyup", 
+					 YAHOO.cc.zero.enable_button_assertion);
+
     if (Ext.get("enable_other_assertion_reason")) {
 
 	Ext.get("other_assertion_reason").dom.disabled = true;
 	Ext.get("enable_other_assertion_reason").on("click",
             function (e) {
-                Ext.get("other_assertion_reason").dom.disabled = \
+                Ext.get("other_assertion_reason").dom.disabled =
 		    !e.target.checked;
 						    });
 
