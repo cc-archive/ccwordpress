@@ -273,12 +273,12 @@
 			width: 150px;
 			height: 250px;
 		}
-		#libre-pd {
+		#librepd {
 			width: 150px;
 			float: right;
 		}
 
-		#libre img, #libre a, #libre-pd img, #libre-pd a {
+		#libre img, #libre a, #librepd img, #librepd a {
 			border: none !important;
 		}
 
