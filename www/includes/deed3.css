@@ -278,7 +278,7 @@
 			float: right;
 		}
 
-		#libre img, #libre a {
+		#libre img, #libre a, #libre-pd img, #libre-pd a {
 			border: none !important;
 		}
 
