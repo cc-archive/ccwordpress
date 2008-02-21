@@ -180,11 +180,11 @@ YAHOO.cc.zero.init = function() {
 							  1));
 	
     Ext.select(".reason").on("click", YAHOO.cc.zero.enable_button_assertion);
-    Ext.get("other_assertion_reason").on("keyup", 
-					 YAHOO.cc.zero.enable_button_assertion);
 
     if (Ext.get("enable_other_assertion_reason")) {
 
+	Ext.get("other_assertion_reason").on("keyup", 
+				 YAHOO.cc.zero.enable_button_assertion);
 	Ext.get("other_assertion_reason").dom.disabled = true;
 	Ext.get("enable_other_assertion_reason").on("click",
             function (e) {
