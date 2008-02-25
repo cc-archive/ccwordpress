@@ -161,6 +161,7 @@
 		
 		#disclaimer {
 			float: right;
+			padding-right: 15px;
 		}
 		li strong {
 			color: #222;
