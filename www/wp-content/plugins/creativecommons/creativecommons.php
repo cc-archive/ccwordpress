@@ -12,7 +12,7 @@ require_once "creativecommons-admin.php";
 
 /* As seen in http://freeculture.org:8080/svn/wordpress-theme/trunk/front_page/feeds_chapter.php */
 function cc_build_external_feed($feedid = 'Planet CC', $singlecat = false, $showcat = true, $entries = 8, $charcount = 300) {
-  require_once "magpie/rss_fetch.inc";
+//  require_once "magpie/rss_fetch.inc";
   global $cc_db_rss_table;
   global $wpdb;
   
@@ -89,6 +89,7 @@ function cc_build_external_feed($feedid = 'Planet CC', $singlecat = false, $show
 		$out .= "<div class=\"rss-title\"><h3><a href=\"{$item['link']}\">{$item['title']}</a></h3> <small>$date</small></div>";
 		$out .= "<p>$description<br/>[<a href=\"{$item['link']}\">Read More</a>]</p>";
 		$out .= "</div>";
+
 	}
 
 	echo $out;

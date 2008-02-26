@@ -85,6 +85,8 @@ define('MAGPIE_VERSION', '0.72');
 
 $MAGPIE_ERROR = "";
 
+if ( !function_exists('fetch_rss') ) {
+
 function fetch_rss ($url) {
     // initialize constants
     init();
@@ -220,6 +222,8 @@ function fetch_rss ($url) {
     } // end if ( !MAGPIE_CACHE_ON ) {
 } // end fetch_rss()
 
+} //endif
+
 /*=======================================================================*\
     Function:   error
     Purpose:    set MAGPIE_ERROR, and trigger error
@@ -264,6 +268,8 @@ function magpie_error ($errormsg="") {
                 headers to send along with the request (optional)
     Output:     an HTTP response object (see Snoopy.class.inc)  
 \*=======================================================================*/
+if ( !function_exists('_fetch_remote_file') ) {
+
 function _fetch_remote_file ($url, $headers = "" ) {
     // Snoopy is an HTTP client in PHP
     $client = new Snoopy();
@@ -279,12 +285,15 @@ function _fetch_remote_file ($url, $headers = "" ) {
 
 }
 
+}
 /*=======================================================================*\
     Function:   _response_to_rss
     Purpose:    parse an HTTP response object into an RSS object
     Input:      an HTTP response object (see Snoopy)
     Output:     parsed RSS object (see rss_parse)
 \*=======================================================================*/
+if ( !function_exists('_response_to_rss') ) {
+
 function _response_to_rss ($resp) {
     $rss = new MagpieRSS( $resp->results, MAGPIE_OUTPUT_ENCODING, MAGPIE_INPUT_ENCODING, MAGPIE_DETECT_ENCODING );
     
@@ -325,11 +334,15 @@ function _response_to_rss ($resp) {
     } // end if ($rss and !$rss->error)
 }
 
+}
+
 /*=======================================================================*\
     Function:   init
     Purpose:    setup constants with default values
                 check for user overrides
 \*=======================================================================*/
+if ( !function_exists('init') ) {
+
 function init () {
     if ( defined('MAGPIE_INITALIZED') ) {
         return;
@@ -392,7 +405,7 @@ function init () {
         define('MAGPIE_USE_GZIP', true);    
     }
 }
-
+} //endif
 // NOTE: the following code should really be in Snoopy, or at least
 // somewhere other then rss_fetch!
 
@@ -411,48 +424,60 @@ function init () {
     Function:   is_info
     Purpose:    return true if Informational status code
 \*=======================================================================*/
+if ( !function_exists('is_info') ) {
+
 function is_info ($sc) { 
     return $sc >= 100 && $sc < 200; 
+}
+
 }
 
 /*=======================================================================*\
     Function:   is_success
     Purpose:    return true if Successful status code
 \*=======================================================================*/
+if (!function_exists('is_success')) {
 function is_success ($sc) { 
     return $sc >= 200 && $sc < 300; 
 }
-
+}
 /*=======================================================================*\
     Function:   is_redirect
     Purpose:    return true if Redirection status code
 \*=======================================================================*/
+if (!function_exists('is_redirect')) {
 function is_redirect ($sc) { 
     return $sc >= 300 && $sc < 400; 
+}
 }
 
 /*=======================================================================*\
     Function:   is_error
     Purpose:    return true if Error status code
 \*=======================================================================*/
+if (!function_exists('is_error')) {
 function is_error ($sc) { 
     return $sc >= 400 && $sc < 600; 
 }
-
+}
 /*=======================================================================*\
     Function:   is_client_error
     Purpose:    return true if Error status code, and its a client error
 \*=======================================================================*/
+if (!function_exists('is_client_error')) {
 function is_client_error ($sc) { 
     return $sc >= 400 && $sc < 500; 
+}
 }
 
 /*=======================================================================*\
     Function:   is_client_error
     Purpose:    return true if Error status code, and its a server error
 \*=======================================================================*/
+if (!function_exists('is_server_error')) {
 function is_server_error ($sc) { 
     return $sc >= 500 && $sc < 600; 
+}
 }
 
 ?>
