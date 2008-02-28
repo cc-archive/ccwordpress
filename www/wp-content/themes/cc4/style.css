@@ -75,7 +75,7 @@ a, a:link { text-decoration: none; color: #00b; }
 a:hover { text-decoration: underline; }
 h4 a:link, h4 a:visited { color: #773; }
 p { margin-bottom: 10px; }
-blockquote { padding: 5px; margin: 5px; }
+blockquote { padding: 5px 5px 5px 10px; margin: 5px 5px 5px 3px; font-style: italic; border-left: 1px solid #ddd; }
 
 #footer p { margin-top: 30px; }
 
