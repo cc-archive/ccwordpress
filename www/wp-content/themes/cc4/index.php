@@ -7,18 +7,17 @@
 
 	<div id="splash">
 	 <div class="splash-box">
-	 	<h2>Active Initiatives</h2>
 		<div class="splash-box-left">
-			<a href="/projects/ccplus">
-				<img src="/images/splash/left-ccp.png" alt="CC0" border="0" />
+			<a href="http://creativecommons.org/weblog/entry/8051">
+				<img src="/images/splash/left-fcw.png" alt="Free Cultural Works" border="0" />
 			</a>
-			<p class="info">A protocol providing a simple way for users to get rights beyond the rights granted by a CC license.</p>
+			<p class="info">A seal marking CC licenses that qualify as Free Culture Licenses according to the Definition of Free Cultural Works.</p>
 		</div>
 		<div class="splash-box-right">
-			<a href="/projects/cczero">
-				<img src="/images/splash/right-ccz.png" alt="CC0" border="0" />
+			<a href="http://creativecommons.org/weblog/entry/8091">
+				<img src="/images/splash/right-pcc.png" alt="Planet Creative Commons" border="0" />
 			</a>
-			<p class="info" >A protocol enabling people to ASSERT that a work has no copyright or WAIVE any rights associated with a work.</p>
+                        <p class="info" >Aggregating blogs from Creative Commons, CC jurisdiction projects, and the CC community.</p>
 		</div>
 	 </div>
 	</div>
