@@ -14,7 +14,7 @@
 			<p class="info">A seal marking CC licenses that qualify as Free Culture Licenses according to the Definition of Free Cultural Works.</p>
 		</div>
 		<div class="splash-box-right">
-			<a href="http://creativecommons.org/weblog/entry/8077">
+			<a href="http://creativecommons.org/weblog/entry/8091">
 				<img src="/images/splash/right-pcc.png" alt="Planet Creative Commons" border="0" />
 			</a>
                         <p class="info" >Aggregating blogs from Creative Commons, CC jurisdiction projects, and the CC community.</p>
