@@ -98,7 +98,7 @@ function cc_post_content_process($content) {
   return $content;
 }
 
-add_filter('the_content', 'cc_post_content_process');
+//add_filter('the_content', 'cc_post_content_process');
 
 
 /* theme options page */
