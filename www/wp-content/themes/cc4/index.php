@@ -29,7 +29,7 @@
             
           </div>
           <div id="alpha" class="content-box">
-            <a href='/weblog'><h4>CC News</h4></a>
+            <h4><a href='/weblog'>CC News</a></h4>
 <?php // Get the latest 5 posts that aren't in the worldwide category. ?>
 <?php 
   while (have_posts()) { 
@@ -59,7 +59,7 @@
 	    <li><h3><a href="/weblog/rss">RSS Feed</a></h3></li></ul>
 	    </div>
 	    <div id="beta" class="content-box">
-	     <a href='http://planet.creativecommons.org/jurisdictions/'><h4>Jurisdiction News</h4></a>
+	     <h4><a href='http://planet.creativecommons.org/jurisdictions/'>Jurisdiction News</a></h4>
 	     <?php cc_build_external_feed(); ?>
 	     <div style="margin-left: 1ex;"><a href="http://planet.creativecommons.org/jurisdictions/">[More jurisdiction news]</a></div>
 	    </div>
