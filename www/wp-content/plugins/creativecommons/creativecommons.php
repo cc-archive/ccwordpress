@@ -11,12 +11,14 @@ Author URI:
 require_once "creativecommons-admin.php";
 
 /* Use WP built-in version of magpie. - 29/2/08, ar */
-require_once (ABSPATH . WPINC . '/rss.php');
+//require_once (ABSPATH . WPINC . '/rss.php');
 
 /* As seen in http://freeculture.org:8080/svn/wordpress-theme/trunk/front_page/feeds_chapter.php */
 function cc_build_external_feed($feedid = 'Planet CC', $singlecat = false, $showcat = true, $entries = 8, $charcount = 300) {
   global $cc_db_rss_table;
   global $wpdb;
+
+  require_once ("magpie/rss_fetch.inc");
   
   $feed = $wpdb->get_var("SELECT url FROM $cc_db_rss_table WHERE name='" . $wpdb->escape($feedid) . "';");
   if (!$feed) {
