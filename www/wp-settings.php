@@ -96,7 +96,11 @@ function timer_stop($display = 0, $precision = 3) { //if called like timer_stop(
 timer_start();
 
 // Change to E_ALL for development/debugging
-error_reporting(E_ALL ^ E_NOTICE);
+// error_reporting(E_ALL ^ E_NOTICE);
+//
+// Set PHP error reporting level to 0.  We want to see errors and warnings
+// on staging but not on production (nkinkade 2008-02-29)
+error_reporting(0);
 
 // For an advanced caching plugin to use, static because you would only want one
 if ( defined('WP_CACHE') )
