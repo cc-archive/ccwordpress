@@ -171,6 +171,19 @@ a.cc-actions:hover, #header-main .active a:link { background: url('/images/heade
 .block .excerpt { margin-left:  170px; }
 .block .comments { margin: 35px 0; }
 
+.alt {
+  background-color: #eee;
+}
+
+.commentlist .comment {
+	padding: 10px !important;
+	padding-right: 20% !important;
+}
+
+.commentlist .comment .commentmetadata a {
+	color: #666;
+}
+
 img.mugshot {
 	border: 2px solid #cccccc; margin-right: 10px; margin-bottom: 10px;
 }
