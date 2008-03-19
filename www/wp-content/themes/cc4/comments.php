@@ -22,12 +22,12 @@
 <?php if ($comments) : ?>
 	<h3 id="comments"><?php comments_number('No Responses', 'One Response', '% Responses' );?> to &#8220;<?php the_title(); ?>&#8221;</h3> 
 
-	<ol class="commentlist">
+	<div class="commentlist">
 
 	<?php foreach ($comments as $comment) : ?>
 
-		<li class="<?php echo $oddcomment; ?>" id="comment-<?php comment_ID() ?>">
-			<cite><?php comment_author_link() ?></cite> Says:
+		<div class="comment <?php echo $oddcomment; ?>" id="comment-<?php comment_ID() ?>">
+			<strong><?php comment_author_link() ?></strong>
 			<?php if ($comment->comment_approved == '0') : ?>
 			<em>Your comment is awaiting moderation.</em>
 			<?php endif; ?>
@@ -37,7 +37,7 @@
 
 			<?php comment_text() ?>
 
-		</li>
+		</div>
 
 	<?php /* Changes every other comment to a different class */
 		if ('alt' == $oddcomment) $oddcomment = '';
@@ -46,7 +46,7 @@
 
 	<?php endforeach; /* end for each comment */ ?>
 
-	</ol>
+	</div>
 
  <?php else : // this is displayed if there are no comments so far ?>
 
@@ -62,7 +62,7 @@
 
 <?php if ('open' == $post->comment_status) : ?>
 
-<h3 id="respond">Leave a Reply</h3>
+<h3 id="respond">Leave a Comment</h3>
 
 <?php if ( get_option('comment_registration') && !$user_ID ) : ?>
 <p>You must be <a href="<?php echo get_option('siteurl'); ?>/wp-login.php?redirect_to=<?php the_permalink(); ?>">logged in</a> to post a comment.</p>
@@ -89,7 +89,7 @@
 
 <!--<p><small><strong>XHTML:</strong> You can use these tags: <?php echo allowed_tags(); ?></small></p>-->
 
-<p><textarea name="comment" id="comment" cols="100%" rows="10" tabindex="4"></textarea></p>
+<p><textarea name="comment" id="comment" cols="60" rows="12" tabindex="4"></textarea></p>
 
 <p><input name="submit" type="submit" id="submit" tabindex="5" value="Submit Comment" />
 <input type="hidden" name="comment_post_ID" value="<?php echo $id; ?>" />
