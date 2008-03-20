@@ -27,11 +27,11 @@
 	<?php foreach ($comments as $comment) : ?>
 
 		<div class="comment <?php echo $oddcomment; ?>" id="comment-<?php comment_ID() ?>">
-			<strong><?php comment_author_link() ?></strong>
+			<h4><?php comment_author_link() ?></h4>
 			<?php if ($comment->comment_approved == '0') : ?>
 			<em>&mdash; Your comment is awaiting moderation.</em>
-			<?php endif; ?>
 			<br />
+			<?php endif; ?>
 
 			<small class="commentmetadata"><a href="#comment-<?php comment_ID() ?>" title=""><?php comment_date('F jS, Y') ?> at <?php comment_time() ?></a> <?php edit_comment_link('e','',''); ?></small>
 
