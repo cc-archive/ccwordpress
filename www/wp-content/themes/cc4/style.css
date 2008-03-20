@@ -169,15 +169,31 @@ a.cc-actions:hover, #header-main .active a:link { background: url('/images/heade
 .block ol ol { list-style-type: lower-roman; }
 .block .publish-pics { float: left; margin-right: 10px; margin-bottom: 25px; padding: 3px; border: 1px solid #ccc; }
 .block .excerpt { margin-left:  170px; }
-.block .comments { margin: 35px 0; }
-
-.alt {
-  background-color: #eee;
-}
+.block .comments { margin: 75px 0; margin-right: 30%; font-size: 0.85em; }
 
 .commentlist .comment {
-	padding: 10px !important;
-	padding-right: 20% !important;
+	padding: 10px 0 !important;
+	border-bottom: 1px solid #ccc;
+}
+
+.commentlist .comment h4 {
+	color: #3a3a3a;
+	margin: 0 !important;
+	padding: 0 !important;
+	line-height: 1.5em;
+}
+
+.commentlist .comment h4 a {
+	color: #3a3a3a;
+	text-decoration: underline;
+}
+
+.commentlist .comment h4 a:hover {
+	text-decoration: none;
+}
+
+.commentlist .comment p {
+	color: #4f4f4f;
 }
 
 .commentlist .comment .commentmetadata a {
