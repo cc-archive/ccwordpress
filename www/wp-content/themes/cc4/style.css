@@ -172,7 +172,7 @@ a.cc-actions:hover, #header-main .active a:link { background: url('/images/heade
 .block .comments { margin: 75px 0; margin-right: 30%; font-size: 0.85em; }
 
 .commentlist .comment {
-	padding: 10px 20px 10px 15px !important;
+	padding: 10px 0 !important;
 	border-bottom: 1px solid #ccc;
 }
 
