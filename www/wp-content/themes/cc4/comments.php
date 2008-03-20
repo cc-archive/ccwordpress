@@ -29,7 +29,7 @@
 		<div class="comment <?php echo $oddcomment; ?>" id="comment-<?php comment_ID() ?>">
 			<h4><?php comment_author_link() ?></h4>
 			<?php if ($comment->comment_approved == '0') : ?>
-			<em>Your comment is awaiting moderation.</em>
+			<em>&mdash; Your comment is awaiting moderation.</em>
 			<br />
 			<?php endif; ?>
 
@@ -94,6 +94,9 @@
 <p><input name="submit" type="submit" id="submit" tabindex="5" value="Submit Comment" />
 <input type="hidden" name="comment_post_ID" value="<?php echo $id; ?>" />
 </p>
+
+<p><small>Your first comments will be held for moderation, until your email address is approved.</small></p>
+
 <?php do_action('comment_form', $post->ID); ?>
 
 </form>
