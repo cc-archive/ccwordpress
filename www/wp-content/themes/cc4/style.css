@@ -9,17 +9,17 @@ Version: 4.0
 
 * { margin: 0; padding: 0; }
 
-body { background-color: #fff; color: #333; font: 12px verdana, sans-serif !important; line-height:145% !important; text-align: center; }
+body { background-color: #fff; color: #333; font: 12px verdana, sans-serif !important; line-height: 1.5em !important; text-align: center; }
 
 .box { text-align: left; margin: 0 auto; width: 91%; min-width: 765px; max-width: 1000px; } /* replaces #wrapper */
-.content-box { float: left; padding-top: 15px;/* border-top: 1px solid #ddd;*/ margin-right: 1%; overflow: hidden; }
-.content-box-right { float: right; padding-top: 15px;/* border-top: 1px solid #ddd;*/ margin-left: 1%; overflow: hidden; }
+.content-box { float: left; padding-top: 1.5em;/* border-top: 1px solid #ddd;*/ margin-right: 1%; overflow: hidden; }
+.content-box-right { float: right; padding-top: 1.5em;/* border-top: 1px solid #ddd;*/ margin-left: 1%; overflow: hidden; }
 .clear { height: 0px !important; clear: both; }
 
 #wrapper-ie { width: auto; }
 
 #header-wrapper { background: url('http://creativecommons.org/images/header-main-b.png') repeat-x bottom left; background-color: #334438; }
-#header-main { position: relative; font-size: 11px !important; padding-bottom: 4px;} /* + .box */
+#header-main { position: relative; font-size: 0.9em !important; padding-bottom: 0.5em;} /* + .box */
 
   html>body #header-main .logo span {
     display: block;
@@ -52,7 +52,7 @@ body { background-color: #fff; color: #333; font: 12px verdana, sans-serif !impo
     display: none;
   }
 
-#body { margin: 4px 0 0 0; /* border-top: 1px solid #ddd;*/ }
+#body { margin: 0.5em 0 0 0; /* border-top: 1px solid #ddd;*/ }
 #splash {  position: relative; background-color: /*#0f2700*/ #fff; color: #707070; margin: 0px 0 3px 0; padding-bottom:  6px; overflow: hidden;}
 #splash #blurb { margin: 0 0 28px 0; padding: 0 15px; font-size: 65%; color: #505050; }
 #content { padding: 5px 0; margin-bottom: 20px;}
