@@ -40,9 +40,6 @@
       <li><img src="/images/commons/sc.png"> <a href="http://sciencecommons.org/">Science Commons</a></li>
       <li><img src="/images/commons/cci.png"> <a href="http://creativecommons.org/worldwide/">ccInternational</a></li>
       <li><img src="/images/commons/learn.png"> <a href="http://learn.creativecommons.org/">ccLearn</a></li>
-      <li><img src="/images/commons/labs.png"> <a href="http://labs.creativecommons.org/">ccLabs</a></li>
-      <li><img src="/images/commons/mix.png"> <a href="http://ccmixter.org/">ccMixter</a></li>
-      <li><img src="/images/commons/ic.png"> <a href="http://icommons.org/">iCommons</a></li>
     </ul>
   </div>
 
