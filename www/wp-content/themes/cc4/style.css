@@ -364,4 +364,19 @@ span.international {
 #footer #license img { float: left; margin-right: 10px; }
 #international { width: 95%;}
 
+/* Press Kit Specials */
+ul.presskit {
+	list-style:none;
+	clear: both;
+}
+ul.presskit li {
+	float: left;
+	width: 64px;
+	padding: 0 6px;
+	margin: 0 4px;
+	border:1px solid #e0e0e0;
+}
 
+p.presskit {
+	clear: both;
+}
