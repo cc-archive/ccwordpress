@@ -366,17 +366,31 @@ span.international {
 
 /* Press Kit Specials */
 ul.presskit {
+	margin-top: 1em;
 	list-style:none;
 	clear: both;
+	margin-left: 0;
 }
 ul.presskit li {
 	float: left;
-	width: 64px;
-	padding: 0 6px;
-	margin: 0 4px;
+	width: 7em;
+	padding: 0.3em 0.7em;
+	margin: 0 0.4em;
+	margin-bottom: 0.8em;
 	border:1px solid #e0e0e0;
+	text-align: center;
+}
+
+ul.presskit li a {
+	font-size: 0.9em;
+}
+
+ul.presskit li.wide {
+	width: 16.33em;
 }
 
 p.presskit {
 	clear: both;
+	margin-top: 1em;
+	margin-left: 0.4em;
 }
