@@ -10,7 +10,7 @@
   
   <div class="sideitem">
     <h4>Search</h4>
-    <?php $is_footer = true; include (TEMPLATEPATH . '/searchform.php'); ?>
+    <?php $is_sidebar = true; include (TEMPLATEPATH . '/searchform.php'); ?>
     <div class="clear"></div>
   </div>
   
