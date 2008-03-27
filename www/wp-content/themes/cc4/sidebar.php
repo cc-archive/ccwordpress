@@ -18,7 +18,7 @@
     <ul>
       <li><a href="/faq/">FAQ</a></li>
       <li><a href="/about/opportunities">Opportunities</a></li>
-      <li><a href="/presskit">Presskit</a></li>
+      <li><a href="/presskit">Press Kit</a></li>
     </ul>
   </div>
 
