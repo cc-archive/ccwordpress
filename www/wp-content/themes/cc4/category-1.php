@@ -27,7 +27,7 @@
               <h4 class="meta"><?php the_author() ?>, <?php the_time('F jS, Y')?></h4>
               <div class="clearer"></div>
               <?php the_content("Read More..."); ?>
-              <?php edit_post_link('Edit', '',''); ?>
+              <?php edit_post_link('Edit', '', ' |'); ?> <?php comments_popup_link('No Comments &#187;', '1 Comment &#187;', '% Comments &#187;'); ?>
             </div>
 <?php } }?>
 
