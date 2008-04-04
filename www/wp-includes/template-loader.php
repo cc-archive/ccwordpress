@@ -1,4 +1,8 @@
 <?php
+/**
+ * Loads the correct template based on the visitor's url
+ * @package WordPress
+ */
 if ( defined('WP_USE_THEMES') && constant('WP_USE_THEMES') ) {
 	do_action('template_redirect');
 	if ( is_robots() ) {
@@ -20,16 +24,13 @@ if ( defined('WP_USE_THEMES') && constant('WP_USE_THEMES') ) {
 		include($template);
 		return;
 	} else if ( is_attachment() && $template = get_attachment_template() ) {
+		remove_filter('the_content', 'prepend_attachment');
 		include($template);
 		return;
 	} else if ( is_single() && $template = get_single_template() ) {
-		if ( is_attachment() )
-			add_filter('the_content', 'prepend_attachment');
 		include($template);
 		return;
 	} else if ( is_page() && $template = get_page_template() ) {
-		if ( is_attachment() )
-			add_filter('the_content', 'prepend_attachment');
 		include($template);
 		return;
         # Workaround to make /international/xx/ get the right template
@@ -41,6 +42,9 @@ if ( defined('WP_USE_THEMES') && constant('WP_USE_THEMES') ) {
 		include($template);
 		return;
 	} else if ( is_tag() && $template = get_tag_template()) {
+		include($template);
+		return;
+	} else if ( is_tax() && $template = get_taxonomy_template()) {
 		include($template);
 		return;
 	} else if ( is_author() && $template = get_author_template() ) {
@@ -59,8 +63,6 @@ if ( defined('WP_USE_THEMES') && constant('WP_USE_THEMES') ) {
 		include($template);
 		return;
 	} else if ( file_exists(TEMPLATEPATH . "/index.php") ) {
-		if ( is_attachment() )
-			add_filter('the_content', 'prepend_attachment');
 		include(TEMPLATEPATH . "/index.php");
 		return;
 	}
