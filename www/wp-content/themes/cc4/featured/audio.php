@@ -10,6 +10,10 @@
 
 </p><br clear="all"/>
 
+<p><a href="/legalmusicforvideos"><strong>Legal Music For Remixing</strong></a><br />
+Information on finding and using CC-licensed music for remixing and sampling.
+</p>
+
 <p><a href="http://pumpaudio.com"><strong>Pump Audio</strong></a><br/>
 <a href="http://pumpaudio.com">Pump Audio</a> works with independent musicians to get their music licensed in commercial media projects. You submit your work to Pump, and if they can find someone who wants to use it in their project, Pump will handle the arrangements and pay you 50% of the resulting licensing fees and/or royalties. Pump offers a variety of Creative Commons license options on their site for musicians who want to allow non-commercial use of their work.
 </p>

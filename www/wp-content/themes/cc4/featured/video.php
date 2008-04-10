@@ -2,17 +2,20 @@
 
 <h4>Featured Video Sites</h4>
 <div class="post">
-<p><a href="http://www.archive.org/details/prelinger"><strong>Prelinger Archives</strong></a><br />
-Over 1,000 public domain films from the worlds of government and advertising
-</p>
-
-<p><a href="http://www.archive.org/details/opensource_movies"><strong>Open Source Movies at Internet Archive</strong></a><br />
-Hundreds of licensed films uploaded by users of the Internet Archive. If you'd like your video hosted free here as well, <a href="publish-internetarchive">check out our tutorial</a>.
-
-</p>
-
 <p><a href="http://www.channel4.com/learning/microsites/I/ideasfactory/pixnmix/candy_jar.html"><strong>CandyJar</strong></a><br />
 Hundreds of video clips put together for VJs by Channel 4 in the UK.</p>
+
+<p><a href="http://www.archive.org/details/opensource_movies"><strong>Open Source Movies at Internet Archive</strong></a><br />
+Hundreds of licensed films uploaded by users of the Internet Archive. If you'd like your video hosted free here as well, <a href="/video/publish-internetarchive">check out our tutorial</a>.
+</p>
+
+<p><a href="/legalmusicforvideos"><strong>Legal Music For Videos</strong></a><br />
+Information on finding and using legal, CC-licensed music for your videos.
+</p>
+
+<p><a href="http://www.archive.org/details/prelinger"><strong>Prelinger Archives</strong></a><br />
+Over 1,000 public domain films from the worlds of government and advertising.
+</p>
 
 </div>
 
