@@ -165,7 +165,8 @@ a.cc-actions:hover, #header-main .active a:link { background: url('/images/heade
 
 .rss img.country { float: right; width: 54px; margin: 0; padding: 0; border: 1px solid #555; }
 .rss .rss-title { margin-right: 64px; }
-.rss p { margin: 0; clear: both; }
+#beta .rss p { margin: 0; clear: both; }
+#alpha small.rss-date { display: none; }
 
 .page { padding-right: 5% !important; }
 
