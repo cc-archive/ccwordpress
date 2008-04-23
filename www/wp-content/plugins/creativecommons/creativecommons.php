@@ -44,7 +44,8 @@ function cc_build_external_feed($feedid = 'Planet CC', $singlecat = false, $show
 				'date'        => $item['date_timestamp'],
 				'title'       => $item['title'],
 				'link'        => $item['link'],
-				'description' =>	$item['description'],
+				'description' => $item['description'],
+				'content'     => $item['content']['encoded'],
 				'category'    => $item['category']
 			);
 
@@ -87,16 +88,17 @@ function cc_build_external_feed($feedid = 'Planet CC', $singlecat = false, $show
 	  }
 
 		$date = date('Y-m-d', $item['date']);
-		$description = $item['description'];
 		
 		// If we're forcing the display of an entire item, then presumably we'll
 		// want all the tags to remain.
 		if ($charcount > 0) {
-  		$description = strip_tags($description);
+  		$content = strip_tags($item['description']);
+  	} else {
+  	  $content = $item['content'];
   	}
 
-		if ((strlen($description) > $charcount) and ($charcount > 0)) {
-			$description = substr ($description, 0, $charcount);
+		if ((strlen($content) > $charcount) and ($charcount > 0)) {
+			$content = substr ($content, 0, $charcount);
 		}
 
 		$out .= "<div class=\"block blogged rss\">";
@@ -104,7 +106,7 @@ function cc_build_external_feed($feedid = 'Planet CC', $singlecat = false, $show
 			$out .= "<a href=\"/international/{$item['category']}\"><img src=\"/images/international/{$item['category']}.png\" alt=\"{$item['category']}\" class=\"country\"></a>";
 		}
 		$out .= "<div class=\"rss-title\"><h3><a href=\"{$item['link']}\">{$item['title']}</a></h3> <small>$date</small></div>";
-		$out .= "<p>$description<br/>[<a href=\"{$item['link']}\">Read More</a>]</p>";
+		$out .= "<p>$content<br/>[<a href=\"{$item['link']}\">Read More</a>]</p>";
 		$out .= "</div>";
 
 	}
