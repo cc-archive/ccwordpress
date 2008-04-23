@@ -105,7 +105,7 @@ function cc_build_external_feed($feedid = 'Planet CC', $singlecat = false, $show
 		if ($showcat) {
 			$out .= "<a href=\"/international/{$item['category']}\"><img src=\"/images/international/{$item['category']}.png\" alt=\"{$item['category']}\" class=\"country\"></a>";
 		}
-		$out .= "<div class=\"rss-title\"><h3><a href=\"{$item['link']}\">{$item['title']}</a></h3> <small>$date</small></div>";
+		$out .= "<div class=\"rss-title\"><h3><a href=\"{$item['link']}\">{$item['title']}</a></h3> <small class=\"rss-date\">$date</small></div>";
 		$out .= "<p>$content<br/>[<a href=\"{$item['link']}\">Read More</a>]</p>";
 		$out .= "</div>";
 
