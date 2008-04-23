@@ -10,9 +10,6 @@ Author URI:
 
 require_once "creativecommons-admin.php";
 
-/* Use WP built-in version of magpie. - 29/2/08, ar */
-require_once (ABSPATH . WPINC . '/rss.php');
-
 /* As seen in http://freeculture.org:8080/svn/wordpress-theme/trunk/front_page/feeds_chapter.php */
 /**
   cc_build_external_feed:
@@ -32,6 +29,8 @@ function cc_build_external_feed($feedid = 'Planet CC', $singlecat = false, $show
     return;
   }
   
+  require_once ("magpie/rss_fetch.inc");
+    
   // fetch the rss file
 	$rss = fetch_rss($feed);
 	
@@ -87,7 +86,7 @@ function cc_build_external_feed($feedid = 'Planet CC', $singlecat = false, $show
   	  $number_generated_so_far = $number_generated_so_far + 1;
 	  }
 
-		$date = date('Y-m-d', $item['date']);
+		$date = date('F dS, Y', $item['date']);
 		
 		// If we're forcing the display of an entire item, then presumably we'll
 		// want all the tags to remain.
