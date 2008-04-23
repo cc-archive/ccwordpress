@@ -11,12 +11,12 @@
         <div class="block" id="title">
           <div id="blurb">
             <img src="<?php bloginfo('stylesheet_directory'); ?>/images/apple.png" align="left" border="0" style="border:none;" />
-            <?= cc_intro_blurb() ?>
+            <?php echo cc_intro_blurb(); ?>
           </div>
         </div>
         <div class="cc_box">
           <h4>Projects</h4>
-<? /* Select all projects and loop through them, displaying their excerpts and images 
+<?php /* Select all projects and loop through them, displaying their excerpts and images 
        * Projects must be children of the "Projects" page; 
        * must have a 90px wide attached logo; 
        * must have a short excerpt/intro custom field 
@@ -43,32 +43,14 @@
               <?= get_post_meta($post->ID, "excerpt", true) ?>
             </p>
           </div>
-    <?
+    <?php
   }
    
 ?>
           <br clear="both"/>
         </div>
         <div id="alpha" class="content-box">
-          <?php // Get the latest 5 posts that aren't in the worldwide category. ?>
-<?php 
-  while (have_posts()) { 
-    the_post(); 
-?>
-    
-          <div class="block blogged" id="post-<?php the_ID(); ?>">
-            <h2 class="title">
-              <a href="<?php the_permalink() ?>">
-                <?php the_title(); ?>
-              </a>
-            </h2>
-            <small class="meta"><?php the_author() ?>, <?php the_time('F jS, Y')?></small>
-            <?php the_content("Read More..."); ?>
-            <?php edit_post_link('Edit', '', ''); ?>
-          </div>
-<?php } ?>
-
-
+          <?php cc_build_external_feed("ccLearn Features", false, false, 5, 0);?>
         </div>
   	    <div id="beta" class="content-box">
 	        <h4>Latest News</h4>
