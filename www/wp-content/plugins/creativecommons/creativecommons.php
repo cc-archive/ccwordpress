@@ -87,11 +87,12 @@ function cc_build_external_feed($feedid = 'Planet CC', $singlecat = false, $show
 	  }
 
 		$date = date('Y-m-d', $item['date']);
+		$description = $item['description'];
 		
 		// If we're forcing the display of an entire item, then presumably we'll
 		// want all the tags to remain.
 		if ($charcount > 0) {
-  		$description = strip_tags($item['description']);
+  		$description = strip_tags($description);
   	}
 
 		if ((strlen($description) > $charcount) and ($charcount > 0)) {
