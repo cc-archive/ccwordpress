@@ -14,6 +14,14 @@ require_once "creativecommons-admin.php";
 require_once (ABSPATH . WPINC . '/rss.php');
 
 /* As seen in http://freeculture.org:8080/svn/wordpress-theme/trunk/front_page/feeds_chapter.php */
+/**
+  cc_build_external_feed:
+  * $feedid: (string) Title of feed, as defined from the CC Settings admin page.
+  * $singlecat: (bool) if true, only display one item per category from feed.
+  * $showcat: (bool) Display category name with item.
+  * $entries: (int) # of entries to display in output.
+  * $charcount: (int) Max length of output. If '0' will display all item contents.
+*/
 function cc_build_external_feed($feedid = 'Planet CC', $singlecat = false, $showcat = true, $entries = 8, $charcount = 300) {
   global $cc_db_rss_table;
   global $wpdb;
@@ -79,10 +87,16 @@ function cc_build_external_feed($feedid = 'Planet CC', $singlecat = false, $show
 	  }
 
 		$date = date('Y-m-d', $item['date']);
-		$description = strip_tags($item['description']);
+		
+		// If we're forcing the display of an entire item, then presumably we'll
+		// want all the tags to remain.
+		if ($charcount > 0) {
+  		$description = strip_tags($item['description']);
+  	}
 
-		if (strlen($description) > $charcount)
+		if ((strlen($description) > $charcount) and ($charcount > 0)) {
 			$description = substr ($description, 0, $charcount);
+		}
 
 		$out .= "<div class=\"block blogged rss\">";
 		if ($showcat) {
