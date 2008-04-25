@@ -14,7 +14,7 @@
     RewriteEngine On
     RewriteBase /
 
-# Catch linkbacks to certain posts and feed them to Wordpress in a way that
+# Catch requests to certain posts and feed them to Wordpress in a way that
 # it knows how to handle
     RewriteRule ^weblog(/archive|)/entry/(\d+)/?$ /index.php?p=$2&roflcopter [L]
     RewriteRule ^press-releases/entry/(\d+)/?$ /index.php?p=$1&roflcopter [L]
