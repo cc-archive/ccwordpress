@@ -4,7 +4,7 @@
 
       <div id="content">
         <div id="main-content">
-
+<?php /* removing splash featured things for now - ar, 2008-04-25 
 	<div id="splash">
 	 <div class="splash-box">
 		<div class="splash-box-left">
@@ -21,6 +21,8 @@
 		</div>
 	 </div>
 	</div>
+*/ ?>
+	
 	<div class="block hero" id="title">
 <!--              <? /* cc_current_feature(); ?>
             
