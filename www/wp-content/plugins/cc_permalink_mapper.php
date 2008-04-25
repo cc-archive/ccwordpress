@@ -19,6 +19,7 @@ Author URI: http://creativecommons.org
  */
 $cc_pl_rewrites = array(
 	array("\/weblog\/\d{4}\/\d{2}\/\d{2}\/", "/weblog/entry/"),
+	array("\/weblog\/cclearn\/\d{4}\/\d{2}\/\d{2}\/", "/weblog/entry/"),
 	array("\/press-releases\/\d{4}\/\d{2}\/\d{2}\/", "/press-releases/entry/"),
 	array("\/commoners\/\d{4}\/\d{2}\/\d{2}\/", "/weblog/entry/")
 );
