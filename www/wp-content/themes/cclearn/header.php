@@ -9,23 +9,17 @@
   <title><?php wp_title(''); ?> - ccLearn</title>
   <? }?>
   <meta name="generator" content="WordPress <?php bloginfo('version'); ?>" />
-  <meta name="keywords" content="creative commons, commons, free culture, open source, attribution, non-commercial, share-alike, no derivatives, lessig" />
-  <meta name="description" content="Creative Commons licenses provide a flexible range of protections and freedoms for authors, artists, and educators." />
+  <meta name="keywords" content="creative commons, commons, free culture, open source, attribution, non-commercial, share-alike, no derivatives, lessig, learn, education, oer, resources" />
+  <meta name="description" content="ccLearn is a division of Creative Commons which is dedicated to realizing the full potential of the Internet to support open learning and open educational resources (OER)." />
+
   
-  
-  <? if (is_home() || ($category_name == "weblog")) { ?>
-  <link rel="alternate" type="application/rss+xml" title="RSS 2.0" href="<?php bloginfo('home')?>/weblog/rss">
-  <? } else if (is_category()) { ?>
-  <link rel="alternate" type="application/rss+xml" title="RSS 2.0" href="<?php echo get_settings('home') . "/" . $category_name; ?>/feed/rss">
-  <? } ?>
+  <link rel="alternate" type="application/rss+xml" title="RSS 2.0" href="http://creativecommons.org/category/cclearn/feed/">
 
   <?php if (is_single() or is_page()) { ?>
   <link rel="pingback" href="<?php bloginfo('pingback_url'); ?>" />
   <?php } ?>
   
   <link href="<?php bloginfo('stylesheet_directory'); ?>/style.css?4.0" rel="stylesheet" type="text/css" />
-  <link href="<?php bloginfo('stylesheet_directory'); ?>/support.css?4.0" rel="stylesheet" type="text/css" />
-  <link href="http://creativecommons.org/includes/progress.css?<?= rand() ?>" rel="stylesheet" type="text/css" />
 
   <!--[if IE]><link rel="stylesheet" type="text/css" media="screen" href="<?php bloginfo('stylesheet_directory'); ?>/style-ie.css" /><![endif]-->
   

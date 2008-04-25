@@ -141,7 +141,7 @@ a.cc-actions:hover, #header-main .active a:link { background: url('/images/heade
 #title #blurb { font-size: 60%; margin-bottom: 15px; margin-right: 70px; }
 
 .block .title, #title { font-size: 175%; }
-.block .title a:link, .block .title a:visited { color: #383838; }
+.block .title a:link, .block .title a:visited, .rss-title a { color: #383838; }
 .block h4.meta { color: #aaa; margin-bottom: 7px; font-variant: normal; font-size: 105%; padding-left: 0 !important; }
 .block img { border: 0; }
 .block img.feature { display: block; }
@@ -165,7 +165,8 @@ a.cc-actions:hover, #header-main .active a:link { background: url('/images/heade
 
 .rss img.country { float: right; width: 54px; margin: 0; padding: 0; border: 1px solid #555; }
 .rss .rss-title { margin-right: 64px; }
-.rss p { margin: 0; clear: both; }
+#beta .rss p { margin: 0; clear: both; }
+#alpha small.rss-date { display: none; }
 
 .page { padding-right: 5% !important; }
 
