@@ -170,6 +170,7 @@ function cc_get_cat_archives($category, $type='', $limit='', $format='html', $be
                         INNER JOIN wp_term_taxonomy ON wp_term_relationships.term_taxonomy_id = wp_term_taxonomy.term_taxonomy_id
                         INNER JOIN wp_terms on wp_term_taxonomy.term_id = wp_terms.term_id
                 WHERE wp_term_taxonomy.term_id = '%s'
+                        AND wp_term_taxonomy.taxonomy = 'category'
                         AND wp_posts.post_date < NOW()
                         AND wp_posts.post_date <> '0000-00-00 00:00:00'
                         AND wp_posts.post_status = 'publish'
