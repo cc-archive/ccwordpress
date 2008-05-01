@@ -286,8 +286,6 @@ ul.archives .gadgets { float:right; margin-left: 61%; }
 .icontainer { margin:14px; text-align: center; }
 .ispacer { clear: both; }
 
-.licensebox { background:#eee; border:1px solid #ccc; padding:6px; }
-
 /* nav tab-bar */
 #mainmenu {	position: relative; padding-top: 0.6em; background: url("/images/tabbar-bg.png") repeat-x bottom left #383e32 /*fafffa*/;/* height: 2.4em;*/ margin-bottom: 10px; }
 ul#navbar { list-style-type: none; }
