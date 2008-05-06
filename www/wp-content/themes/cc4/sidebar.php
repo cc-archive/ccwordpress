@@ -29,7 +29,6 @@
       <li ><a href="/video" >Video</a></li>
       <li ><a href="/image" >Images</a></li>
       <li ><a href="/text" >Text</a></li>
-      <li ><a href="/education" >Education</a></li>
       <li ><a href="/software" >Software</a></li>
     </ul>
   </div>  
