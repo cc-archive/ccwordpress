@@ -1,11 +1,11 @@
 <div id="sidebar" class="content-box-right">
   <div class="sideitem">
-    <h4><a href="http://creativecommons.org/international">International</a></h4>
+    <h4><a href="http://creativecommons.org/international/">International</a></h4>
     <select id="international" name="sortby" onchange="orderby(this)">
       <option value="">Select a jurisdiction</option>
       <script type="text/javascript" src="http://api.creativecommons.org/rest/dev/support/jurisdictions.js"></script>
     </select>
-    <span class="international"><a href="/international">More information</a></span>
+    <span class="international"><a href="/international/">More information</a></span>
   </div>
   
   <div class="sideitem">
@@ -37,7 +37,7 @@
     <h4>The Commons</h4>
     <ul>
       <li><img src="/images/commons/sc.png"> <a href="http://sciencecommons.org/">Science Commons</a></li>
-      <li><img src="/images/commons/cci.png"> <a href="http://creativecommons.org/worldwide/">ccInternational</a></li>
+      <li><img src="/images/commons/cci.png"> <a href="http://creativecommons.org/international/">ccInternational</a></li>
       <li><img src="/images/commons/learn.png"> <a href="http://learn.creativecommons.org/">ccLearn</a></li>
     </ul>
   </div>
