@@ -16,8 +16,8 @@
           <li><a href="/contact">Contact</a></li>
         </ul>
       </div>
-      <div id="license"><p class="box">
-<a rel="license" href="http://creativecommons.org/licenses/by/3.0/"><img src="http://i.creativecommons.org/l/by/3.0/88x31.png" alt="Creative Commons License" style="border: medium none ;" height="31" width="88"></a>
+      <div id="footlicense"><p class="box">
+<a rel="license" href="http://creativecommons.org/licenses/by/3.0/"><img src="http://i.creativecommons.org/l/by/3.0/88x31.png" alt="Creative Commons License" style="border:none;" height="31" width="88"></a>
 Except where otherwise <a class="subfoot" href="/policies#license">noted</a>, content on this site is<br/>
 licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/3.0/" class="subfoot">Creative Commons Attribution 3.0 License</a>
       <p></div>
