@@ -136,7 +136,7 @@ a.cc-actions:hover, #header-main .active a:link { background: url('/images/heade
 
 #main-content .blogged img { margin: 0 5px; }
 #main-content .feature { border-bottom:  1px solid #ddd; padding-bottom:  30px; margin-bottom: 25px; }
-#main-content h4 { padding-left: 1%; }
+#beta h4 { padding-left: 2%; }
 
 .block { clear: both; margin-bottom: 35px; padding-left: 1%; padding-right: 10%; }
 
@@ -228,6 +228,13 @@ a.cc-actions:hover, #header-main .active a:link { background: url('/images/heade
 
 img.mugshot {
 	border: 2px solid #cccccc; margin-right: 10px; margin-bottom: 10px;
+}
+
+img.alignleft {
+	float: left;
+}
+img.alignright {
+	float: right;
 }
 
 .rss img.country { float: right; width: 54px; margin: 0; padding: 0; border: 1px solid #555; }
