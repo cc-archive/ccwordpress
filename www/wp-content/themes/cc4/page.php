@@ -13,7 +13,7 @@
 			        <? if ($post->post_parent) { 
 			        $parent = cc_page_parent ($post); ?> 
 			        <h3 class="category">
-			          <a href="./../">
+			          <a href="<?php get_permalink($post->post_parent) ?>">
 			           <?= $parent->post_title ?>
 			          </a>
 			        </h3>
