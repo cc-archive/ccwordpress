@@ -25,11 +25,12 @@ YAHOO.cc.help.init_help_item = function(help_anchor) {
     YAHOO.cc.help.help_panels[item_idx].render();
 
     // connect the event handlers
-    YAHOO.util.Event.addListener(link_id, "click", 
-				 function(e) {
-				   YAHOO.cc.help.help_panels[item_idx].show();
-				   e.preventDefault();
-				 });
+    var on_click = function(e) {
+	YAHOO.cc.help.help_panels[item_idx].show();
+	e.preventDefault();
+    }; // on_click
+
+    YAHOO.util.Event.addListener(link_id, "click", on_click);
 
 
 } // init_help_text
