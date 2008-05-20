@@ -10,108 +10,97 @@ Author URI:
 
 require_once "creativecommons-admin.php";
 
-/* As seen in http://freeculture.org:8080/svn/wordpress-theme/trunk/front_page/feeds_chapter.php */
-/**
-  cc_build_external_feed:
-  * $feedid: (string) Title of feed, as defined from the CC Settings admin page.
-  * $singlecat: (bool) if true, only display one item per category from feed.
-  * $showcat: (bool) Display category name with item.
-  * $entries: (int) # of entries to display in output.
-  * $charcount: (int) Max length of output. If '0' will display all item contents.
-*/
 function cc_build_external_feed($feedid = 'Planet CC', $singlecat = false, $showcat = true, $entries = 8, $charcount = 300) {
-  global $cc_db_rss_table;
-  global $wpdb;
+
+	if ( ! function_exists('fetch_rss') ) {
+		include_once(ABSPATH . WPINC . '/rss.php');
+	}
+
+	global $cc_db_rss_table;
+	global $wpdb;
   
-  $feed = $wpdb->get_var("SELECT url FROM $cc_db_rss_table WHERE name='" . $wpdb->escape($feedid) . "';");
-  if (!$feed) {
-    echo "<strong>Error:</strong> Feed id '$feedid' not found in db.";
-    return;
-  }
-  
-  require_once ("magpie/rss_fetch.inc");
+	$sql = sprintf("
+		SELECT url FROM %s
+		WHERE name = '%s'
+		",
+		$cc_db_rss_table,
+		$wpdb->escape($feedid)
+	);
+
+	$feed = $wpdb->get_var($sql);
+	if ( ! $feed ) {
+		echo "<strong>No news.</strong>";
+		return;
+	}
     
-  // fetch the rss file
 	$rss = fetch_rss($feed);
-	
-	$wordcount = 25;
-	
-	// parse through each entry
-	foreach($rss->items as $item) {
-		
-		$items[] = array(
-				'date'        => $item['date_timestamp'],
-				'title'       => $item['title'],
-				'link'        => $item['link'],
-				'description' => $item['description'],
-				'content'     => $item['content']['encoded'],
-				'category'    => $item['category']
-			);
 
-	}
-	
-	// prepare an array of categories we have seen
-	// in the conversion of feed items to HTML to show,
-	// if the category appears in this array skip it.
+	$items = array();
 	$seen_categories = array();
-
-	// get the dates in order to sort the items by date
-	foreach ($items as $key => $row)
-		$dates[] = $items[$key]['date'];
-	
-	// sort the items by date
-	array_multisort($dates, SORT_DESC, $items);
-	
-	// Do not slice because we don't know in advance how much we'll need
-	// $items = array_slice($items, 0, $entries);
-
-	$out = "";
-	$number_generated_so_far = 0;
-
-	foreach ($items as $item) { 
-
-	  if ($number_generated_so_far >= $entries) {
-	    break; // get out of this loop so we can echo
-	  }
-	  
-	  if (!$singlecat) {
-  	  $category = $item['category'];
-  	  if (array_key_exists($category, $seen_categories)) {
-  	    continue; // get next item
-  	  }
-  	  
-  	  // The normal case: where we didn't skip the item because of
-  	  // category
-  	  $seen_categories[$category] = true;
-  	  $number_generated_so_far = $number_generated_so_far + 1;
-	  }
-
-		$date = date('F dS, Y', $item['date']);
-		
-		// If we're forcing the display of an entire item, then presumably we'll
-		// want all the tags to remain.
-		if ($charcount > 0) {
-  		$content = strip_tags($item['description']);
-  	} else {
-  	  $content = $item['content'];
-  	}
-
-		if ((strlen($content) > $charcount) and ($charcount > 0)) {
-			$content = substr ($content, 0, $charcount);
+	foreach( $rss->items as $item ) {
+		$new_items = array(
+			'date' => strtotime($item['pubdate']),
+			'title' => $item['title'],
+			'link'  => $item['link'],
+			'content' => strip_tags($item['summary']),
+			'category' => $item['category'],
+			'flag_code' => $item['category']
+		);
+		# We have a special case with Catalonia where they are not actually a
+		# jurisdiction, yet they have their own blog and flag.  In the future
+		# there may be others.  Unfortunately, MagpieRSS concatenates multiple
+		# <category> elements, so if there was a <category> with flag_code=
+		# in it then we need to separate it here.  I looked at the Magpie code
+		# but it wasn't readily apparent where it was happening.
+		if ( preg_match("/(.*?)flag_code=(.*)/", $item['category'], $matches) ) {
+			$new_items['category'] = $matches[1];
+			$new_items['flag_code'] = $matches[2];
 		}
-
-		$out .= "<div class=\"block blogged rss\">";
-		if ($showcat) {
-			$out .= "<a href=\"/international/{$item['category']}\"><img src=\"/images/international/{$item['category']}.png\" alt=\"{$item['category']}\" class=\"country\"></a>";
-		}
-		$out .= "<div class=\"rss-title\"><h3><a href=\"{$item['link']}\">{$item['title']}</a></h3> <small class=\"rss-date\">$date</small></div>";
-		$out .= "<p>$content<br/>[<a href=\"{$item['link']}\">Read More</a>]</p>";
-		$out .= "</div>";
-
+		# If we've already seen this category and $singlecat is false then
+		# skip this item.
+  		if ( !$singlecat && in_array($new_items['category'], $seen_categories) ) {
+  			continue;
+  		}
+		$seen_categories[] = $new_items['category'];
+		$items[] = $new_items;
 	}
 
-	echo $out;
-}
+	$items = array_slice($items, 0, $entries);
+	foreach ( $items as $item ) {
+		$date = date('F dS, Y', $item['date']);
+		if ( (strlen($item['content']) > $charcount) && ($charcount > 0) ) {
+			$content = substr($item['content'], 0, $charcount);
+			$content .= " ... ";
+		}
+
+		# Should we display the flag?
+		if ( $showcat ) {
+			$cat_html = <<<HTML
+	<a href="/international/{$item['category']}">
+		<img src="/images/international/{$item['flag_code']}.png" alt="{$item['flag_code']}" class="country">
+	</a>
+
+HTML;
+		} else {
+			$cat_html = "";
+		}
+
+		# Print the HTML for the entry
+		echo <<<HTML
+<div class='block blogged rss'>
+	$cat_html
+	<div class="rss-title">
+		<h3><a href="{$item['link']}">{$item['title']}</a></h3>
+		<small class="rss-date">$date</small>
+	</div>
+	<p>$content<br/>[<a href="{$item['link']}">Read More</a>]</p>
+</div>
+
+HTML;
+	} # end: foreach $items as $item
+
+} # end: cc_build_external_feed
+
 
 function cc_get_cat_archives($category, $type='', $limit='', $format='html', $before = '', $after = '', $show_post_count = false, $skip = '') {
 	global $month, $wpdb, $wp_db_version;
