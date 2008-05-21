@@ -10,7 +10,7 @@ Author URI:
 
 require_once "creativecommons-admin.php";
 
-function cc_build_external_feed($feedid = 'Planet CC', $singlecat = false, $showcat = true, $entries = 8, $charcount = 300) {
+function cc_build_external_feed($feedid = 'Planet CC', $groupby = "country_code", $entries = 8, $charcount = 300) {
 
 	if ( ! function_exists('fetch_rss') ) {
 		include_once(ABSPATH . WPINC . '/rss.php');
@@ -30,7 +30,7 @@ function cc_build_external_feed($feedid = 'Planet CC', $singlecat = false, $show
 	$feed = $wpdb->get_var($sql);
 	if ( ! $feed ) {
 		echo "<strong>No news.</strong>";
-		return;
+		return false;
 	}
     
 	$rss = fetch_rss($feed);
@@ -38,30 +38,23 @@ function cc_build_external_feed($feedid = 'Planet CC', $singlecat = false, $show
 	$items = array();
 	$seen_categories = array();
 	foreach( $rss->items as $item ) {
+		# It seems that MagpieRSS doesn't always create the ['content']['encoded']
+		# element, so if it's not there then use ['description']
+		$entry_content = isset($item['content']['encoded']) ? $item['content']['encoded'] : $item['description'];
 		$new_items = array(
 			'date' => strtotime($item['pubdate']),
 			'title' => $item['title'],
 			'link'  => $item['link'],
-			'content' => strip_tags($item['summary']),
-			'category' => $item['category'],
-			'flag_code' => $item['category']
+			'content' => strip_tags($el_content),
+			'country_code' => $item['ccplanet']['country_code'],
+			'flag_code' => $item['ccplanet']['flag_code']
 		);
-		# We have a special case with Catalonia where they are not actually a
-		# jurisdiction, yet they have their own blog and flag.  In the future
-		# there may be others.  Unfortunately, MagpieRSS concatenates multiple
-		# <category> elements, so if there was a <category> with flag_code=
-		# in it then we need to separate it here.  I looked at the Magpie code
-		# but it wasn't readily apparent where it was happening.
-		if ( preg_match("/(.*?)flag_code=(.*)/", $item['category'], $matches) ) {
-			$new_items['category'] = $matches[1];
-			$new_items['flag_code'] = $matches[2];
-		}
-		# If we've already seen this category and $singlecat is false then
-		# skip this item.
-  		if ( !$singlecat && in_array($new_items['category'], $seen_categories) ) {
+		# If $groupby is set, then check to see if we already have an entry
+		# with the specified $groupby, if so skip it.
+  		if ( $groupby && in_array($new_items[$groupby], $seen_categories) ) {
   			continue;
   		}
-		$seen_categories[] = $new_items['category'];
+		$seen_categories[] = $new_items[$groupby];
 		$items[] = $new_items;
 	}
 
@@ -73,22 +66,23 @@ function cc_build_external_feed($feedid = 'Planet CC', $singlecat = false, $show
 			$content .= " ... ";
 		}
 
-		# Should we display the flag?
-		if ( $showcat ) {
-			$cat_html = <<<HTML
-	<a href="/international/{$item['category']}">
+		# If we are processing the CC Planet feed then we want to also
+		# display the country's flag in the output
+		if ( $feedid == 'Planet CC' ) {
+			$flag_html = <<<HTML
+	<a href="/international/{$item['country_code']}/">
 		<img src="/images/international/{$item['flag_code']}.png" alt="{$item['flag_code']}" class="country">
 	</a>
 
 HTML;
 		} else {
-			$cat_html = "";
+			$flag_html = "";
 		}
 
 		# Print the HTML for the entry
 		echo <<<HTML
 <div class='block blogged rss'>
-	$cat_html
+	$flag_html
 	<div class="rss-title">
 		<h3><a href="{$item['link']}">{$item['title']}</a></h3>
 		<small class="rss-date">$date</small>
