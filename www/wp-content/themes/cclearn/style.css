@@ -122,11 +122,12 @@ a.cc-actions:hover, #header-main .active a:link { background: url('/images/heade
 #main-content h4 { padding-left: 1%; }
 
 .block { clear: both; margin-bottom: 35px; padding-left: 1%; padding-right: 10%; }
+.noclear { clear: none !important;}
 
 #blog .block, #alpha .block { margin-bottom: 33px; }
 #features .block, #beta .block, #beta h4 { padding: 0 5px; }
 
-#title { border-top: 1px solid #e6e6e6; border-bottom: 1px solid #e6e6e6; margin-right: 15px; margin-top: 15px; padding-top: 15px; padding-right: 1% !important;}
+#title { border-top: 1px solid #e6e6e6; border-bottom: 1px solid #e6e6e6; margin-right: 29%; margin-top: 15px; padding-top: 15px; padding-right: 1% !important; }
 #title.page { border-top: none; }
 #title h1 { margin-top: 15px; }
 #title h2, .title h1 { padding: 0px 15px 20px 0px;  margin: 0;}
@@ -139,6 +140,23 @@ a.cc-actions:hover, #header-main .active a:link { background: url('/images/heade
 #title h5 { margin-right: 5%; }
 #title img {  border: 1px solid #666; padding: 0 !important; margin-right: 15px; }
 #title #blurb { font-size: 60%; margin-bottom: 15px; margin-right: 70px; }
+
+.callout {
+	width: 27%;
+	margin-top: 15px;
+	padding-top: 15px;
+	float: right;
+	color: #666;
+	border-top: 1px solid #ddd;
+	border-bottom: 1px solid #ddd;
+}
+
+.callout p {
+		padding: 0 5px;
+}
+.callout strong {
+	color: #444;
+}
 
 .block .title, #title { font-size: 175%; }
 .block .title a:link, .block .title a:visited, .rss-title a { color: #383838; }
@@ -316,5 +334,3 @@ span.international {
 #footer #license p { margin-top: 0; padding-top: 0 !important; } 
 #footer #license img { float: left; margin-right: 10px; }
 #international { width: 95%;}
-
-

@@ -7,8 +7,12 @@
 
       <div id="content">
      	  <div class="clear">&nbsp;</div>
-
-        <div class="block" id="title">
+        
+        <div class="callout">
+          <?php echo cc_current_feature(); ?>
+        </div>
+        
+        <div class="block noclear" id="title">
           <div id="blurb">
             <img src="<?php bloginfo('stylesheet_directory'); ?>/images/apple.png" align="left" border="0" style="border:none;" />
             <?php echo cc_intro_blurb(); ?>
