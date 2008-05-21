@@ -1,6 +1,6 @@
 /* CC Deed CSS */
 /* Print */
-
+/*foo */
 body {
 	text-align: center;
 	font: 10pt/12pt Arial, "Trebuchet MS", Verdana, sans-serif;
@@ -83,6 +83,10 @@ body {
 	margin-top: 0.66in;
 }
 
+#deed-conditions ul li {
+	margin-bottom: 0.1in;
+}
+
 li.license {
 	list-style: none;
 	height: 50px;
@@ -137,4 +141,23 @@ blockquote {
 	margin: 0.25in 0.1in;
 	font-style: oblique;
 	clear: both;
+}
+
+#libre {
+	position: absolute;
+	top: 2in;
+	right: 1.75in;
+	padding-left: 0.25in;
+	/*
+	padding-top: 0.12in;
+	width: 150px;
+	height: 250px;
+	*/
+}
+#libre img, #libre a, #librepd img, #librepd a {
+	border: none !important;
+}
+
+#more-container {
+	list-style: none;
 }
