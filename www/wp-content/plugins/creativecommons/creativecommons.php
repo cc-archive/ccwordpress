@@ -63,7 +63,14 @@ function cc_build_external_feed($feedid = 'Planet CC', $groupby = "country_code"
 		$date = date('F dS, Y', $item['date']);
 		if ( (strlen($item['content']) > $charcount) && ($charcount > 0) ) {
 			$content = substr($item['content'], 0, $charcount);
-			$content .= " ... ";
+
+			/* Add basic formatting where newlines exist */
+			$content = str_replace("\n", "</p><p>", trim($content));
+			
+			/* Avoid single characters hanging on the end */
+			$content = preg_replace("/\s[a-zA-Z]$/", "", $content);
+			
+			$content .= "... ";
 		} else {
 			$content = $item['content'];
 		}
