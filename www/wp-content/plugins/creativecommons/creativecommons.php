@@ -10,7 +10,7 @@ Author URI:
 
 require_once "creativecommons-admin.php";
 
-function cc_build_external_feed($feedid = 'Planet CC', $groupby = "country_code", $entries = 8, $charcount = 300) {
+function cc_build_external_feed($feedid = 'Planet CC', $groupby = "country_code", $entries = 8, $charcount = 0) {
 
 	if ( ! function_exists('fetch_rss') ) {
 		include_once(ABSPATH . WPINC . '/rss.php');
@@ -45,7 +45,7 @@ function cc_build_external_feed($feedid = 'Planet CC', $groupby = "country_code"
 			'date' => strtotime($item['pubdate']),
 			'title' => $item['title'],
 			'link'  => $item['link'],
-			'content' => strip_tags($el_content),
+			'content' => $charcount ? strip_tags($entry_content) : $entry_content,
 			'country_code' => $item['ccplanet']['country_code'],
 			'flag_code' => $item['ccplanet']['flag_code']
 		);
@@ -64,6 +64,8 @@ function cc_build_external_feed($feedid = 'Planet CC', $groupby = "country_code"
 		if ( (strlen($item['content']) > $charcount) && ($charcount > 0) ) {
 			$content = substr($item['content'], 0, $charcount);
 			$content .= " ... ";
+		} else {
+			$content = $item['content'];
 		}
 
 		# If we are processing the CC Planet feed then we want to also
