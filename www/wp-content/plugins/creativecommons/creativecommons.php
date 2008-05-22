@@ -114,7 +114,7 @@ function cc_build_external_feed($feed_name, $entries = 0, $charcount = 0, $group
 
 		# If we are processing the CC Planet feed then we want to also
 		# display the country's flag in the output
-		if ( $feedid == 'Planet CC' ) {
+		if ( $feed_name == 'Planet CC' ) {
 			$flag_html = <<<HTML
 	<a href="/international/{$item['country_code']}/">
 		<img src="/images/international/{$item['flag_code']}.png" alt="{$item['flag_code']}" class="country">
