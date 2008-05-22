@@ -10,110 +10,134 @@ Author URI:
 
 require_once "creativecommons-admin.php";
 
-/* As seen in http://freeculture.org:8080/svn/wordpress-theme/trunk/front_page/feeds_chapter.php */
-/**
-  cc_build_external_feed:
-  * $feedid: (string) Title of feed, as defined from the CC Settings admin page.
-  * $singlecat: (bool) if true, only display one item per category from feed.
-  * $showcat: (bool) Display category name with item.
-  * $entries: (int) # of entries to display in output.
-  * $charcount: (int) Max length of output. If '0' will display all item contents.
-*/
-function cc_build_external_feed($feedid = 'Planet CC', $singlecat = false, $showcat = true, $entries = 8, $charcount = 300) {
-  global $cc_db_rss_table;
-  global $wpdb;
+# Plugin installation, set up DB table for rss feeding
+register_activation_hook( __FILE__, 'cc_plugin_activate');
 
-  require_once ("magpie/rss_fetch.inc");
-  
-  $feed = $wpdb->get_var("SELECT url FROM $cc_db_rss_table WHERE name='" . $wpdb->escape($feedid) . "';");
-  if (!$feed) {
-    echo "<strong>Error:</strong> Feed id '$feedid' not found in db.";
-    return;
-  }
-  
-  require_once ("magpie/rss_fetch.inc");
-    
-  // fetch the rss file
-	$rss = fetch_rss($feed);
-	
-	$wordcount = 25;
-	
-	// parse through each entry
-	foreach($rss->items as $item) {
-		
-		$items[] = array(
-				'date'        => $item['date_timestamp'],
-				'title'       => $item['title'],
-				'link'        => $item['link'],
-				'description' => $item['description'],
-				'content'     => $item['content']['encoded'],
-				'category'    => $item['category']
-			);
+function cc_plugin_activate() {
 
-	}
-	
-	// prepare an array of categories we have seen
-	// in the conversion of feed items to HTML to show,
-	// if the category appears in this array skip it.
-	$seen_categories = array();
+	global $wpdb;
 
-	// get the dates in order to sort the items by date
-	foreach ($items as $key => $row)
-		$dates[] = $items[$key]['date'];
-	
-	// sort the items by date
-	array_multisort($dates, SORT_DESC, $items);
-	
-	// Do not slice because we don't know in advance how much we'll need
-	// $items = array_slice($items, 0, $entries);
+	$cc_db_rss_table = $wpdb->prefix . "cc_rss_feeds";
 
-	$out = "";
-	$number_generated_so_far = 0;
-
-	foreach ($items as $item) { 
-
-	  if ($number_generated_so_far >= $entries) {
-	    break; // get out of this loop so we can echo
-	  }
-	  
-	  if (!$singlecat) {
-  	  $category = $item['category'];
-  	  if (array_key_exists($category, $seen_categories)) {
-  	    continue; // get next item
-  	  }
-  	  
-  	  // The normal case: where we didn't skip the item because of
-  	  // category
-  	  $seen_categories[$category] = true;
-  	  $number_generated_so_far = $number_generated_so_far + 1;
-	  }
-
-		$date = date('F dS, Y', $item['date']);
-		
-		// If we're forcing the display of an entire item, then presumably we'll
-		// want all the tags to remain.
-		if ($charcount > 0) {
-  		$content = strip_tags($item['description']);
-  	} else {
-  	  $content = $item['content'];
-  	}
-
-		if ((strlen($content) > $charcount) and ($charcount > 0)) {
-			$content = substr ($content, 0, $charcount);
-		}
-
-		$out .= "<div class=\"block blogged rss\">";
-		if ($showcat) {
-			$out .= "<a href=\"/international/{$item['category']}\"><img src=\"/images/international/{$item['category']}.png\" alt=\"{$item['category']}\" class=\"country\"></a>";
-		}
-		$out .= "<div class=\"rss-title\"><h3><a href=\"{$item['link']}\">{$item['title']}</a></h3> <small class=\"rss-date\">$date</small></div>";
-		$out .= "<p>$content<br/>[<a href=\"{$item['link']}\">Read More</a>]</p>";
-		$out .= "</div>";
-
+	# On first activation create rss feeds table
+	if ( $wpdb->get_var("SHOW TABLES LIKE '$cc_db_rss_table'") != $cc_db_rss_table ) {
+		$sql = sprintf("
+			CREATE TABLE %s (
+				id mediumint(9) NOT NULL AUTO_INCREMENT,
+				name varchar(255) NOT NULL,
+				url varchar(255) NOT NULL, 
+				entries tinyint,
+				charcount mediumint,
+				groupby varchar(255),
+				PRIMARY KEY (id)
+			)
+			",
+			$cc_db_rss_table
+		);
+		$result = $wpdb->query($sql);  
 	}
 
-	echo $out;
 }
+
+function cc_build_external_feed($feed_name, $entries = 0, $charcount = 0, $groupby = '') {
+
+	if ( ! function_exists('fetch_rss') ) {
+		include_once(ABSPATH . WPINC . '/rss.php');
+	}
+
+	global $cc_db_rss_table;
+	global $wpdb;
+
+  require_once ("magpie/rss_fetch.inc");
+  
+	$sql = sprintf("
+		SELECT * FROM %s
+		WHERE name = '%s'
+		",
+		$cc_db_rss_table,
+		$wpdb->escape($feed_name)
+	);
+
+
+	$results = $wpdb->get_results($sql, OBJECT);
+	if ( ! $results || ! $results[0]->url ) {
+		echo "<strong>No news.</strong>";
+		return false;
+	} else {
+		# If values were passed to the function override those
+		# in the database, else use the passed value
+		$feed_url = $results[0]->url;
+		$entries = $entries ? $entries : $results[0]->entries;
+		$charcount = $charcount ? $charcount : $results[0]->charcount;
+		$groupby = $groupby ? $groupby : $results[0]->groupby;
+	}
+    
+	$rss = fetch_rss($feed_url);
+
+	$items = array();
+	$seen_categories = array();
+	foreach( $rss->items as $item ) {
+		# It seems that MagpieRSS doesn't always create the ['content']['encoded']
+		# element, so if it's not there then use ['description']
+		$entry_content = isset($item['content']['encoded']) ? $item['content']['encoded'] : $item['description'];
+		$new_items = array(
+			'date' => strtotime($item['pubdate']),
+			'title' => $item['title'],
+			'link'  => $item['link'],
+			'content' => $charcount ? strip_tags($entry_content) : $entry_content,
+			'country_code' => $item['ccplanet']['country_code'],
+			'flag_code' => $item['ccplanet']['flag_code']
+		);
+		# If $groupby is set, then check to see if we already have an entry
+		# with the specified $groupby, if so skip it.
+  		if ( $groupby && in_array($new_items[$groupby], $seen_categories) ) {
+  			continue;
+  		}
+		$seen_categories[] = $new_items[$groupby];
+		$items[] = $new_items;
+	}
+
+	$items = array_slice($items, 0, $entries);
+	foreach ( $items as $item ) {
+		$date = date('F dS, Y', $item['date']);
+		if ( (strlen($item['content']) > $charcount) && ($charcount > 0) ) {
+			$content = substr($item['content'], 0, strpos($item['content'], ' ', $charcount));
+			/* Add basic formatting where newlines exist */
+			$content = str_replace("\n", "</p><p>", trim($content));
+			$content .= " ...";
+		} else {
+			$content = $item['content'];
+		}
+
+		# If we are processing the CC Planet feed then we want to also
+		# display the country's flag in the output
+		if ( "Planet CC" == $feed_name ) {
+			$flag_html = <<<HTML
+	<a href="/international/{$item['country_code']}/">
+		<img src="/images/international/{$item['flag_code']}.png" alt="{$item['flag_code']}" class="country">
+	</a>
+
+HTML;
+		} else {
+			$flag_html = "";
+		}
+
+		# Print the HTML for the entry
+		echo <<<HTML
+<div class='block blogged rss'>
+	$flag_html
+	<div class="rss-title">
+		<h3><a href="{$item['link']}">{$item['title']}</a></h3>
+		<small class="rss-date">$date</small>
+	</div>
+	<p>$content<br/>[<a href="{$item['link']}">Read More</a>]</p>
+</div>
+
+HTML;
+	} # end: foreach $items as $item
+
+} # end: cc_build_external_feed
+
 
 function cc_get_cat_archives($category, $type='', $limit='', $format='html', $before = '', $after = '', $show_post_count = false, $skip = '') {
 	global $month, $wpdb, $wp_db_version;
@@ -348,9 +372,5 @@ add_action('init', 'cc_verbose_rewrite');
 	$wp_rewrite->rules = $rules + $wp_rewrite->rules;
 }
 add_filter ('generate_rewrite_rules', 'cc_custom_rewrites');*/
-
-
-/* Plugin installation, set up DB table for rss feeding */
-register_activation_hook( __FILE__, 'cc_plugin_activate' );
 
 ?>
