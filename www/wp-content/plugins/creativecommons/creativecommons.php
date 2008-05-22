@@ -48,8 +48,6 @@ function cc_build_external_feed($feed_name, $entries = 0, $charcount = 0, $group
 	global $cc_db_rss_table;
 	global $wpdb;
 
-  require_once ("magpie/rss_fetch.inc");
-  
 	$sql = sprintf("
 		SELECT * FROM %s
 		WHERE name = '%s'
@@ -57,7 +55,6 @@ function cc_build_external_feed($feed_name, $entries = 0, $charcount = 0, $group
 		$cc_db_rss_table,
 		$wpdb->escape($feed_name)
 	);
-
 
 	$results = $wpdb->get_results($sql, OBJECT);
 	if ( ! $results || ! $results[0]->url ) {
