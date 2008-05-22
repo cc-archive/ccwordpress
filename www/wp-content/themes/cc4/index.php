@@ -46,7 +46,7 @@
 	    </div>
 	    <div id="beta" class="content-box">
 	     <h4><a href='http://planet.creativecommons.org/jurisdictions/'>Jurisdiction News</a></h4>
-	     <?php cc_build_external_feed(); ?>
+	     <?php cc_build_external_feed('Planet CC'); ?>
 	     <div style="margin-left: 1ex;"><a href="http://planet.creativecommons.org/jurisdictions/">[More jurisdiction news]</a></div>
 	    </div>
           </div>
