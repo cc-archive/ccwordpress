@@ -99,22 +99,17 @@ function cc_build_external_feed($feed_name, $entries = 0, $charcount = 0, $group
 	foreach ( $items as $item ) {
 		$date = date('F dS, Y', $item['date']);
 		if ( (strlen($item['content']) > $charcount) && ($charcount > 0) ) {
-			$content = substr($item['content'], 0, $charcount);
-
+			$content = substr($item['content'], 0, strpos($item['content'], ' ', $charcount));
 			/* Add basic formatting where newlines exist */
 			$content = str_replace("\n", "</p><p>", trim($content));
-			
-			/* Avoid single characters hanging on the end */
-			$content = preg_replace("/\s[a-zA-Z]$/", "", $content);
-			
-			$content .= "... ";
+			$content .= " ...";
 		} else {
 			$content = $item['content'];
 		}
 
 		# If we are processing the CC Planet feed then we want to also
 		# display the country's flag in the output
-		if ( $feed_name == 'Planet CC' ) {
+		if ( "Planet CC" == $feed_name ) {
 			$flag_html = <<<HTML
 	<a href="/international/{$item['country_code']}/">
 		<img src="/images/international/{$item['flag_code']}.png" alt="{$item['flag_code']}" class="country">
