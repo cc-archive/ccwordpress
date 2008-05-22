@@ -10,7 +10,36 @@ Author URI:
 
 require_once "creativecommons-admin.php";
 
-function cc_build_external_feed($feedid = 'Planet CC', $groupby = "country_code", $entries = 8, $charcount = 0) {
+# Plugin installation, set up DB table for rss feeding
+register_activation_hook( __FILE__, 'cc_plugin_activate');
+
+function cc_plugin_activate() {
+
+	global $wpdb;
+
+	$cc_db_rss_table = $wpdb->prefix . "cc_rss_feeds";
+
+	# On first activation create rss feeds table
+	if ( $wpdb->get_var("SHOW TABLES LIKE '$cc_db_rss_table'") != $cc_db_rss_table ) {
+		$sql = sprintf("
+			CREATE TABLE %s (
+				id mediumint(9) NOT NULL AUTO_INCREMENT,
+				name varchar(255) NOT NULL,
+				url varchar(255) NOT NULL, 
+				entries tinyint,
+				charcount mediumint,
+				groupby varchar(255),
+				PRIMARY KEY (id)
+			)
+			",
+			$cc_db_rss_table
+		);
+		$result = $wpdb->query($sql);  
+	}
+
+}
+
+function cc_build_external_feed($feed_name, $entries = 0, $charcount = 0, $groupby = '') {
 
 	if ( ! function_exists('fetch_rss') ) {
 		include_once(ABSPATH . WPINC . '/rss.php');
@@ -20,20 +49,28 @@ function cc_build_external_feed($feedid = 'Planet CC', $groupby = "country_code"
 	global $wpdb;
   
 	$sql = sprintf("
-		SELECT url FROM %s
+		SELECT * FROM %s
 		WHERE name = '%s'
 		",
 		$cc_db_rss_table,
-		$wpdb->escape($feedid)
+		$wpdb->escape($feed_name)
 	);
 
-	$feed = $wpdb->get_var($sql);
-	if ( ! $feed ) {
+
+	$results = $wpdb->get_results($sql, OBJECT);
+	if ( ! $results || ! $results[0]->url ) {
 		echo "<strong>No news.</strong>";
 		return false;
+	} else {
+		# If values were passed to the function override those
+		# in the database, else use the passed value
+		$feed_url = $results[0]->url;
+		$entries = $entries ? $entries : $results[0]->entries;
+		$charcount = $charcount ? $charcount : $results[0]->charcount;
+		$groupby = $groupby ? $groupby : $results[0]->groupby;
 	}
     
-	$rss = fetch_rss($feed);
+	$rss = fetch_rss($feed_url);
 
 	$items = array();
 	$seen_categories = array();
@@ -338,9 +375,5 @@ add_action('init', 'cc_verbose_rewrite');
 	$wp_rewrite->rules = $rules + $wp_rewrite->rules;
 }
 add_filter ('generate_rewrite_rules', 'cc_custom_rewrites');*/
-
-
-/* Plugin installation, set up DB table for rss feeding */
-register_activation_hook( __FILE__, 'cc_plugin_activate' );
 
 ?>

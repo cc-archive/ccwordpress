@@ -4,52 +4,12 @@
  * Admin pages for CC plugin
  */
 
-$cc_db_version = "1";
+
+# Declare varibles here
 $cc_db_rss_table = $wpdb->prefix . "cc_rss_feeds";
 
 # Hook for adding admin menus
 add_action('admin_menu', 'cc_plugin_add_pages');
-
-# On first activation create rss feeds table, insert International Planet CC
-function cc_plugin_activate () {
-
-	global $wpdb;
-	global $cc_db_version;
-	global $cc_db_rss_table;
-  
-	if ( $wpdb->get_var("SHOW TABLES LIKE '$cc_db_rss_table'") != $cc_db_rss_table ) {
-		$sql = sprintf("
-			CREATE TABLE %s (
-				id mediumint(9) NOT NULL AUTO_INCREMENT,
-				name varchar(255) NOT NULL,
-				url varchar(255) NOT NULL, 
-				entries tinyint,
-				charcount mediumint,
-				groupby varchar(255),
-				UNIQUE KEY (id)
-			",
-			$cc_db_rss_table
-		);
-    
-		require_once(ABSPATH . 'wp-admin/upgrade.php');
-		dbDelta($sql);  
-    
-		$sql = sprintf("
-			INSERT INTO %s (name, url, entries, charcount, groupby)
-			VALUES ('%s', '%s', '%s', '%s', '%s', '%s')
-			",
-			$cc_db_rss_table,
-			'Planet CC',
-			'http://planet.creativecommons.org/jurisdictions/rss20.xml',
-			'8',
-			'300',
-			'country_code'
-		);
-		$results = $wpdb->query($sql);
-    
-		add_option("cc_db_version", $cc_db_version);
-	}
-}
 
 
 function cc_plugin_add_pages() {
@@ -111,8 +71,13 @@ function cc_admin_get_feeds() {
 
 	global $wpdb;
 	global $cc_db_rss_table;
-  
+
 	$feeds = $wpdb->get_results("SELECT * FROM $cc_db_rss_table;");
+
+	if ( ! count($feeds) ) {
+		$feedlist = "<span style='color: red;'><strong>No feeds configured.</strong></span>\n";
+		return $feedlist;
+	}
 
 	$feedlist = <<< FEED_LIST
 <script type="text/javascript">
@@ -191,6 +156,10 @@ function cc_admin_edit_feed() {
 
 	global $wpdb;
 	global $cc_db_rss_table;
+
+	if ( ! isset($_REQUEST['feed_id']) ) {
+		return false;
+	}
 
 	$sql = sprintf("
 		UPDATE %s SET
