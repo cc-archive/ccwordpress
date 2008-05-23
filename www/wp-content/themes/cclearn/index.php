@@ -56,12 +56,12 @@
           <br clear="both"/>
         </div>
         <div id="alpha" class="content-box">
-          <?php cc_build_external_feed("ccLearn Features", false, false, 5, 0);?>
+          <?php cc_build_external_feed("ccLearn Features");?>
         </div>
   	    <div id="beta" class="content-box">
 	        <h4>Latest News</h4>
 	    
-<?php cc_build_external_feed("CC Education Weblog", true, false); ?>
+<?php cc_build_external_feed("ccLearn Weblog"); ?>
 
 <?php get_footer(); ?>
 
