@@ -108,13 +108,12 @@ FEED_LIST;
 		$feedlist .= <<< FEED_LIST
 		<tr>
 			<td>{$feed->id}</td>
-			<td><input type='text' name='feed_name' value='{$feed->name}' style="width: 15ex;"/></td>
-			<td><input type='text' name='feed_url' value='{$feed->url}' style="width: 40ex;"/></td>
-			<td><input type='text' name='entries' value='{$feed->entries}' style="width: 8ex;"/></td>
-			<td><input type='text' name='charcount' value='{$feed->charcount}' style="width: 6ex;"/></td>
-			<td><input type='text' name='groupby' value='{$feed->groupby}' style="width: 15ex;"/></td>
+			<td><input type='text' name='feed_name-{$feed->id}' value='{$feed->name}' style="width: 15ex;"/></td>
+			<td><input type='text' name='feed_url-{$feed->id}' value='{$feed->url}' style="width: 40ex;"/></td>
+			<td><input type='text' name='entries-{$feed->id}' value='{$feed->entries}' style="width: 8ex;"/></td>
+			<td><input type='text' name='charcount-{$feed->id}' value='{$feed->charcount}' style="width: 6ex;"/></td>
+			<td><input type='text' name='groupby-{$feed->id}' value='{$feed->groupby}' style="width: 15ex;"/></td>
 			<td>
-				<input type="hidden" name="feed_id" value="{$feed->id}"/>
 				<input type="submit" name="do_edit_feed" value="Edit" onclick="set_feedid({$feed->id});"/>&nbsp;
 				<input type="submit" name="do_delete_feed" value="Delete" onclick="set_feedid({$feed->id});"/>
 			</td>
@@ -161,6 +160,8 @@ function cc_admin_edit_feed() {
 		return false;
 	}
 
+	$feed_id = $_REQUEST['feed_id'];
+
 	$sql = sprintf("
 		UPDATE %s SET
 			name = '%s',
@@ -171,12 +172,12 @@ function cc_admin_edit_feed() {
 		WHERE id = '%s'
 		",
 		$cc_db_rss_table,
-		$wpdb->escape($_REQUEST['feed_name']),
-		$wpdb->escape($_REQUEST['feed_url']),
-		$wpdb->escape($_REQUEST['entries']),
-		$wpdb->escape($_REQUEST['charcount']),
-		$wpdb->escape($_REQUEST['groupby']),
-		$wpdb->escape($_REQUEST['feed_id'])
+		$wpdb->escape($_REQUEST["feed_name-$feed_id"]),
+		$wpdb->escape($_REQUEST["feed_url-$feed_id"]),
+		$wpdb->escape($_REQUEST["entries-$feed_id"]),
+		$wpdb->escape($_REQUEST["charcount-$feed_id"]),
+		$wpdb->escape($_REQUEST["groupby-$feed_id"]),
+		$wpdb->escape($feed_id)
 	);
 	$results = $wpdb->query($sql);
   
