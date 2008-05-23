@@ -101,7 +101,7 @@ function cc_build_external_feed($feed_name, $entries = 0, $charcount = 0, $group
 			$content = substr($item['content'], 0, strpos($item['content'], ' ', $charcount));
 			/* Add basic formatting where newlines exist */
 			$content = str_replace("\n", "</p><p>", trim($content));
-			$content .= " ...";
+			$content .= " [...]";
 		} else {
 			$content = $item['content'];
 		}
