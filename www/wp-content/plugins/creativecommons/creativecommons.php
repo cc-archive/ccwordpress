@@ -40,7 +40,7 @@ function cc_plugin_activate() {
 
 }
 
-function cc_build_external_feed($feed_name, $entries = 0, $charcount = 0, $groupby = false, $nl2br = false) {
+function cc_build_external_feed($feed_name, $entries = 0, $charcount = 0, $groupby = false, $nl2p = false) {
 
 	if ( ! function_exists('fetch_rss') ) {
 		include_once(ABSPATH . WPINC . '/rss.php');
@@ -68,6 +68,7 @@ function cc_build_external_feed($feed_name, $entries = 0, $charcount = 0, $group
 		$entries = $entries ? $entries : $results[0]->entries;
 		$charcount = $charcount ? $charcount : $results[0]->charcount;
 		$groupby = $groupby ? $groupby : $results[0]->groupby;
+		$nl2p = $nl2p ? $nl2p : $results[0]->nl2p;
 	}
     
 	$rss = fetch_rss($feed_url);
@@ -109,7 +110,7 @@ function cc_build_external_feed($feed_name, $entries = 0, $charcount = 0, $group
 			
 			# In the case where we are strip_tag()ing do we want to turn
 			# newslines into HTML <p>s for formatting?
-			if ( $nl2br ) {
+			if ( $nl2p ) {
 				$content = str_replace("\n", "</p><p>", trim($content));
 			}
 			$content .= " [...]";
