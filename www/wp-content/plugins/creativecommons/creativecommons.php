@@ -29,6 +29,7 @@ function cc_plugin_activate() {
 				entries tinyint,
 				charcount mediumint,
 				groupby varchar(255),
+				nl2p bool,
 				PRIMARY KEY (id)
 			)
 			",
@@ -39,7 +40,7 @@ function cc_plugin_activate() {
 
 }
 
-function cc_build_external_feed($feed_name, $entries = 0, $charcount = 0, $groupby = '') {
+function cc_build_external_feed($feed_name, $entries = 0, $charcount = 0, $groupby = false, $nl2br = false) {
 
 	if ( ! function_exists('fetch_rss') ) {
 		include_once(ABSPATH . WPINC . '/rss.php');
@@ -77,6 +78,7 @@ function cc_build_external_feed($feed_name, $entries = 0, $charcount = 0, $group
 		# It seems that MagpieRSS doesn't always create the ['content']['encoded']
 		# element, so if it's not there then use ['description']
 		$entry_content = isset($item['content']['encoded']) ? $item['content']['encoded'] : $item['description'];
+
 		$new_items = array(
 			'date' => strtotime($item['pubdate']),
 			'title' => $item['title'],
@@ -98,9 +100,18 @@ function cc_build_external_feed($feed_name, $entries = 0, $charcount = 0, $group
 	foreach ( $items as $item ) {
 		$date = date('F dS, Y', $item['date']);
 		if ( (strlen($item['content']) > $charcount) && ($charcount > 0) ) {
-			$content = substr($item['content'], 0, strpos($item['content'], ' ', $charcount));
-			/* Add basic formatting where newlines exist */
-			$content = str_replace("\n", "</p><p>", trim($content));
+			# Don't chop a word off at $charcount, but try to find the
+			# next space char after $charcount, if there isn't then make
+			# the dangerous assumption that we can use the whole string.
+			$strpos = strpos($item['content'], ' ', $charcount); 
+			$offset = $strpos ? $strpos : strlen($item['content']);
+			$content = substr($item['content'], 0, $offset);
+			
+			# In the case where we are strip_tag()ing do we want to turn
+			# newslines into HTML <p>s for formatting?
+			if ( $nl2br ) {
+				$content = str_replace("\n", "</p><p>", trim($content));
+			}
 			$content .= " [...]";
 		} else {
 			$content = $item['content'];

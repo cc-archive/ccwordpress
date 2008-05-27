@@ -56,6 +56,7 @@ function cc_manage_options() {
 				<td><input type='text' name='entries' style="width: 8ex;"/></td>
 				<td><input type='text' name='charcount' style="width: 6ex;"/></td>
 				<td><input type='text' name='groupby' style="width: 15ex;"/></td>
+				<td><input type='checkbox' name="nl2p" value="1"/></td>
 				<td><input type='submit' name="do_add_feed" value="Add"/></td>
 			</tr>
 		</table>
@@ -99,12 +100,14 @@ function set_feedid(feedid) {
 			<th># Entries</th>
 			<th>#Chars</th>
 			<th>Group by</th>
+			<th>\\n2&lt;p&gt;</th>
 			<th>Actions</th>
 		</tr>
 
 FEED_LIST;
 
 	foreach ( $feeds as $feed ) {
+		$nl2p = $feed->nl2p ? "checked='checked'" : "";
 		$feedlist .= <<< FEED_LIST
 		<tr>
 			<td>{$feed->id}</td>
@@ -113,6 +116,7 @@ FEED_LIST;
 			<td><input type='text' name='entries-{$feed->id}' value='{$feed->entries}' style="width: 8ex;"/></td>
 			<td><input type='text' name='charcount-{$feed->id}' value='{$feed->charcount}' style="width: 6ex;"/></td>
 			<td><input type='text' name='groupby-{$feed->id}' value='{$feed->groupby}' style="width: 15ex;"/></td>
+			<td><input type='checkbox' name='nl2p-{$feed->id}' $nl2p/></td>
 			<td>
 				<input type="submit" name="do_edit_feed" value="Edit" onclick="set_feedid({$feed->id});"/>&nbsp;
 				<input type="submit" name="do_delete_feed" value="Delete" onclick="set_feedid({$feed->id});"/>
@@ -136,15 +140,16 @@ function cc_admin_add_feed() {
 	global $cc_db_rss_table;
 
 	$sql = sprintf("
-		INSERT INTO %s (name, url, entries, charcount, groupby)
-		VALUES ('%s', '%s', '%s', '%s', '%s')
+		INSERT INTO %s (name, url, entries, charcount, groupby, nl2p)
+		VALUES ('%s', '%s', '%s', '%s', '%s', '%s')
 		",
 		$cc_db_rss_table,
 		$wpdb->escape($_REQUEST['feed_name']),
 		$wpdb->escape($_REQUEST['feed_url']),
 		$wpdb->escape($_REQUEST['entries']),
 		$wpdb->escape($_REQUEST['charcount']),
-		$wpdb->escape($_REQUEST['groupby'])
+		$wpdb->escape($_REQUEST['groupby']),
+		$wpdb->escape($_REQUEST['nl2p'])
 	);
 	$results = $wpdb->query($sql);
   
@@ -168,7 +173,8 @@ function cc_admin_edit_feed() {
 			url = '%s',
 			entries = '%s',
 			charcount = '%s',
-			groupby = '%s'
+			groupby = '%s',
+			nl2p = '%s'
 		WHERE id = '%s'
 		",
 		$cc_db_rss_table,
@@ -177,6 +183,7 @@ function cc_admin_edit_feed() {
 		$wpdb->escape($_REQUEST["entries-$feed_id"]),
 		$wpdb->escape($_REQUEST["charcount-$feed_id"]),
 		$wpdb->escape($_REQUEST["groupby-$feed_id"]),
+		isset($_REQUEST["nl2p-$feed_id"]) ? 1 : 0,
 		$wpdb->escape($feed_id)
 	);
 	$results = $wpdb->query($sql);
