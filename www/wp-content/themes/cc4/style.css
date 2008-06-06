@@ -364,9 +364,9 @@ span.international {
 }
 
 
-#footer #license, #footer #foot_license { clear: both; border-top: 1px solid #ddd; padding-top: 20px; padding-bottom: 1.5em; text-align: left; }
-#footer #license p, #footer #foot_license p { margin-top: 0; padding-top: 0 !important; } 
-#footer #license img, #footer #foot_license img { float: left; margin-right: 10px; }
+#footer #license, #footer #footlicense { clear: both; border-top: 1px solid #ddd; padding-top:20px; padding-bottom: 1.5em; text-align: left; }
+#footer #license p, #footer #footlicense p { margin-top: 0; padding-top: 0 !important; } 
+#footer #license img, #footer #footlicense img { float: left; margin-right: 10px; }
 #international { width: 95%;}
 
 /* Press Kit Specials */
