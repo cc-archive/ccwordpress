@@ -153,9 +153,6 @@ a.cc-actions:hover, #header-main .active a:link { background: url('/images/heade
 .callout p {
 		padding: 0 5px;
 }
-.callout strong {
-	color: #444;
-}
 
 .block .title, #title { font-size: 175%; }
 .block .title a:link, .block .title a:visited, .rss-title a { color: #383838; }
