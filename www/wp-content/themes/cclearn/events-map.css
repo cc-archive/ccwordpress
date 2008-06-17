@@ -12,6 +12,7 @@
 	background-color: #ccc;
 	width: 100%;
 	border: 1px solid #ccc;
+	padding-bottom: 2px;
 }
 
 #events_map_legend ul {
