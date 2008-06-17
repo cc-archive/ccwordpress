@@ -19,7 +19,7 @@
   <link rel="pingback" href="<?php bloginfo('pingback_url'); ?>" />
   <?php } ?>
   
-  <link href="<?php bloginfo('stylesheet_directory'); ?>/style.css?4.0" rel="stylesheet" type="text/css" />
+  <link href="<?php bloginfo('stylesheet_directory'); ?>/style.css?4.1" rel="stylesheet" type="text/css" />
 
   <!--[if IE]><link rel="stylesheet" type="text/css" media="screen" href="<?php bloginfo('stylesheet_directory'); ?>/style-ie.css" /><![endif]-->
 
