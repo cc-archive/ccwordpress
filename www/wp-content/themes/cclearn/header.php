@@ -22,7 +22,11 @@
   <link href="<?php bloginfo('stylesheet_directory'); ?>/style.css?4.2.2" rel="stylesheet" type="text/css" />
 
   <!--[if IE]><link rel="stylesheet" type="text/css" media="screen" href="<?php bloginfo('stylesheet_directory'); ?>/style-ie.css" /><![endif]-->
-  
+
+  <?php if (is_home()) { ?>
+  <link href="<?php bloginfo('stylesheet_directory'); ?>/events-map.css?1.0" rel="stylesheet" type="text/css" />
+  <?php } ?>
+
   <?php /* wp_get_archives('type=monthly&format=link'); */ ?>
   <script src="/includes/icommons.js" type="text/javascript"></script>
   <?php wp_head(); ?>

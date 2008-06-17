@@ -20,7 +20,18 @@
           </div>
           <div class="clear"></div>
         </div>
-        <div class="cc_box">
+        <div id="events_map">
+	  <h4>Events</h4>
+	  <iframe frameborder="0" src="/events-map/mvs.html?data=textfile.txt&amp;zoom=1&amp;center=30,0" ></iframe>
+	  <div id="events_map_legend">
+	  <ul>
+	    <li><img src="http://labs.creativecommons.org/~paulproteus/pins/pin_purple_h=20.png" alt="Purple Pin" title="Purple Pin" /> <span>Open Education Event</span></li>
+	    <li><img src="http://labs.creativecommons.org/~paulproteus/pins/pin_green_h=20.png" alt="Green Pin" title="Green Pin" /> <span>Open Education Event, CC attending</span></li>
+	    <li class="hint">Click a pin for more details on the event</li>
+	    <li class="attribution">Pin icons CC BY 3.0 Foo Bar</li>
+	  </div>
+	</div>
+	<div class="cc_box">
           <h4>Projects</h4>
 <?php /* Select all projects and loop through them, displaying their excerpts and images 
        * Projects must be children of the "Projects" page; 
