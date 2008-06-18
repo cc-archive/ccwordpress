@@ -28,8 +28,7 @@
 	    <li><img src="http://labs.creativecommons.org/~paulproteus/pins/pin_purple_h=20.png" alt="Purple Pin" title="Purple Pin" /> <span>Open Education Event</span></li>
 	    <li><img src="http://labs.creativecommons.org/~paulproteus/pins/pin_green_h=20.png" alt="Green Pin" title="Green Pin" /> <span>Open Education Event, CC attending</span></li>
 	    <li class="hint">Click a pin for more details on the event</li>
-	    <li class="attribution">Pushpin icon by <a href="http://pedrogordo.com">Pedro Gordo</a>, <a href="http://creativ
-      ecommons.org/licenses/by/3.0/">CC BY 3.0</a></li>
+	    <li class="attribution">Pushpin icon by <a href="http://pedrogordo.com">Pedro Gordo</a>, <a href="http://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a></li>
 	  </div>
 	</div>
 	<div class="cc_box">
