@@ -42,3 +42,11 @@
 	font-size: 0.75em;
 }
 
+#events_list {
+	padding: 5px;
+	margin-top: 4px;
+	background-color: #ddd;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+	float: left;
+}
