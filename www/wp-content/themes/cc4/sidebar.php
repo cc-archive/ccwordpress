@@ -16,6 +16,8 @@
   
   <div class="sideitem">
     <ul>
+      <li><a href="/projects/documentation">Documentation</a></li>
+      <li><a href="/projects/casestudies">Case Studies</a></li>
       <li><a href="/faq/">FAQ</a></li>
       <li><a href="/about/opportunities">Opportunities</a></li>
       <li><a href="/presskit">Press Kit</a></li>
@@ -32,7 +34,7 @@
       <li ><a href="/software" >Software</a></li>
     </ul>
   </div>  
-
+  
   <div class="sideitem">
     <h4>The Commons</h4>
     <ul>
@@ -41,5 +43,12 @@
       <li><img src="/images/commons/learn.png"> <a href="http://learn.creativecommons.org/">ccLearn</a></li>
     </ul>
   </div>
+
+  <div class="sideitem">
+    <ul>
+      <li ><a href="http://icommonssummit.org" >iSummit 2008</a></li>
+    </ul>
+  </div>
+
 
 </div>
