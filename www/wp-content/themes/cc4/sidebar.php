@@ -26,7 +26,7 @@
   <div class="sideitem">
     <ul>
       <li ><a href="/commoners" >Creative Commoners</a></li>
-      <li><a href="/press-releases">Press Releaes</a></li>
+      <li><a href="/press-releases">Press Releases</a></li>
 <?php /*
       <li ><a href="/audio" >Audio</a></li>
       <li ><a href="/video" >Video</a></li>
