@@ -4,33 +4,13 @@
 
       <div id="content">
         <div id="main-content">
-<?php /* removing splash featured things for now - ar, 2008-04-25 
-	<div id="splash">
-	 <div class="splash-box">
-		<div class="splash-box-left">
-			<a href="http://creativecommons.org/weblog/entry/8051">
-				<img src="/images/splash/left-fcw.png" alt="Free Cultural Works" border="0" />
-			</a>
-			<p class="info">A seal marking CC licenses that qualify as Free Culture Licenses according to the Definition of Free Cultural Works.</p>
-		</div>
-		<div class="splash-box-right">
-			<a href="http://creativecommons.org/weblog/entry/8091">
-				<img src="/images/splash/right-pcc.png" alt="Planet Creative Commons" border="0" />
-			</a>
-                        <p class="info" >Aggregating blogs from Creative Commons, CC jurisdiction projects, and the CC community.</p>
-		</div>
-	 </div>
-	</div>
-*/ ?>
-	
 	<div class="block hero" id="title">
-<!--              <? /* cc_current_feature(); ?>
             
-            <h2><?php bloginfo('description'); ?></h2> */?> -->
             <div id="blurb"><?= cc_intro_blurb() ?></div>
             
           </div>
-          <div id="alpha" class="content-box">
+          <?php echo cc_current_feature(); ?>
+	  <div id="alpha" class="content-box">
             <a href='/weblog'><h4>CC News</h4></a>
 <?php // Get the latest 5 posts that aren't in the worldwide category. ?>
 <?php 
