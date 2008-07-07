@@ -4,17 +4,13 @@
 
       <div id="content">
         <div id="main-content">
-<?php /* removing splash featured things for now - ar, 2008-04-25 
-*/ ?>
-	
 	<div class="block hero" id="title">
-<!--              <? /* cc_current_feature(); ?>
             
-            <h2><?php bloginfo('description'); ?></h2> */?> -->
             <div id="blurb"><?= cc_intro_blurb() ?></div>
             
           </div>
-          <div id="alpha" class="content-box">
+          <?php echo cc_current_feature(); ?>
+	  <div id="alpha" class="content-box">
             <h4><a href='/weblog'>CC News</a></h4>
 <?php // Get the latest 5 posts that aren't in the worldwide category. ?>
 <?php 
