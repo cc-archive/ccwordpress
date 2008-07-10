@@ -21,7 +21,6 @@
           <div class="clear"></div>
         </div>
         <div id="events_map">
-	  <h4>Events</h4>
 	  <iframe frameborder="0" src="/events-map/mvs.html?data=textfile.txt&amp;zoom=1&amp;center=30,0" ></iframe>
 	  <div id="events_map_legend">
 	   <ul>
@@ -30,7 +29,8 @@
 	    <li class="hint">Click a pin for more details on the event</li>
 	    <li class="attribution">Pushpin icon by <a href="http://pedrogordo.com">Pedro Gordo</a>, <a href="http://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a></li>
 	  </div>
-	  <div id="events_list"><a href="http://wiki.creativecommons.org/CcLearn_Events">View list of all events</a></div><br clear="all"/> 
+	  <div class="events_button"><a href="http://wiki.creativecommons.org/CcLearn_Events">View list of all events</a></div>
+	  <div class="events_button"><a href="http://wiki.creativecommons.org/Form:Event">Add event</a></div><br clear="all"/> 
 	</div>
 	<div class="cc_box">
           <h4>Projects</h4>
