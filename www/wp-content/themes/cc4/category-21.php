@@ -40,7 +40,7 @@ $is_international = true;
 
 <p>This work is lead by CCi director <a href="http://creativecommons.org/about/people#65">Catharina Maracke</a> (<a href="mailto:catharina@creativecommons.org">email</a>) and volunteer teams in each jurisdiction who are committed to introducing CC to their country and who consult extensively with members of the public and key stakeholders in an effort to adapt the CC licenses to their jurisdiction.</p>
 
-<p>A complete overview of the porting process can be found <a href="http://wiki.creativecommons.org/Worldwide_Overview">here</a>.</p>
+<p>A complete overview of the porting process can be found here: <a href="http://wiki.creativecommons.org/International_Overview">http://wiki.creativecommons.org/International_Overview</a>.</p>
 <h3>Completed Licenses</h3>
             <p>We have completed the process and developed licenses for the following jurisdictions:</p>
 <?php 
