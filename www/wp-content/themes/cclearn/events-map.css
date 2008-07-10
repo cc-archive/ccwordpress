@@ -42,11 +42,16 @@
 	font-size: 0.75em;
 }
 
-#events_list {
+.events_button {
 	padding: 5px;
 	margin-top: 4px;
+	margin-right: 10px;
 	background-color: #ddd;
 	-moz-border-radius: 5px;
 	border-radius: 5px;
 	float: left;
+}
+
+.events_button:hover {
+	background-color: #e5e5e5;
 }
