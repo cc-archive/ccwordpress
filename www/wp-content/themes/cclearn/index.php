@@ -30,7 +30,7 @@
 	    <li class="attribution">Pushpin icon by <a href="http://pedrogordo.com">Pedro Gordo</a>, <a href="http://creativ
       ecommons.org/licenses/by/3.0/">CC BY 3.0</a></li>
 	  </div>
-	  <div class="events_button"><a href="http://wiki.creativecommons.org/CcLearn_Events">View list of all events</a></div>
+	  <div class="events_button"><a href="http://wiki.creativecommons.org/Open_Education_Events">View list of all events</a></div>
 	  <div class="events_button"><a href="http://wiki.creativecommons.org/Form:Event">Add event</a></div><br clear="all"/> 
 	</div>
 	<div class="cc_box">
