@@ -1,3 +1,6 @@
+document.write('<select id="international" name="sortby" onchange="orderby(this)">');
+document.write('<option value="">Select a jurisdiction</option>');
+document.write('</select>');
 document.write('<option value="http://creativecommons.org/worldwide/ar/">Argentina</option>');
 document.write('<option value="http://www.creativecommons.org.au">Australia</option>');
 document.write('<option value="http://www.creativecommons.at">Austria</option>');
@@ -36,3 +39,4 @@ document.write('<option value="http://www.creativecommons.org.tw">Taiwan</option
 document.write('<option value="http://www.creativecommons.org.uk">UK: England & Wales</option>');
 document.write('<option value="http://www.creativecommons.org.uk">UK: Scotland</option>');
 document.write('<option value="http://creativecommons.org/worldwide/us/">United States</option>');
+document.write('</select>');
