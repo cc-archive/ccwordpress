@@ -1,6 +1,5 @@
 document.write('<select id="international" name="sortby" onchange="orderby(this)">');
 document.write('<option value="">Select a jurisdiction</option>');
-document.write('</select>');
 document.write('<option value="http://creativecommons.org/worldwide/ar/">Argentina</option>');
 document.write('<option value="http://www.creativecommons.org.au">Australia</option>');
 document.write('<option value="http://www.creativecommons.at">Austria</option>');
