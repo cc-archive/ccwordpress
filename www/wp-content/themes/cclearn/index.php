@@ -14,7 +14,7 @@
         
           <div class="block noclear" id="title">
             <div id="blurb">
-              <img src="<?php bloginfo('stylesheet_directory'); ?>/images/apple.png" align="left" border="0" style="border:none;" />
+              <img src="<?php bloginfo('stylesheet_directory'); ?>/images/book.png" align="left" border="0" style="border:none;" />
               <?php echo cc_intro_blurb(); ?>
             </div>
           </div>
