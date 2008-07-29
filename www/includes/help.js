@@ -16,7 +16,7 @@ YAHOO.cc.help.init_help_item = function(help_anchor) {
                             {close: true, 
 			     visible: false, 
 			     draggable: false, 
-			     width:250,
+			     width:'250px',
 			     context:[help_anchor.id,'bl','tl']
 			    } ); 
 
