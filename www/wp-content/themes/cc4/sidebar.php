@@ -18,7 +18,7 @@
     <ul>
       <li><a href="/projects/documentation">Documentation</a></li>
       <li><a href="/projects/casestudies">Case Studies</a></li>
-      <li><a href="/faq/">FAQ</a></li>
+      <li><a href="http://wiki.creativecommons.org/FFAQ">FAQ</a></li>
       <li><a href="/about/opportunities">Opportunities</a></li>
       <li><a href="/presskit">Press Kit</a></li>
     </ul>
