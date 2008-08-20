@@ -124,7 +124,7 @@ function cc_build_external_feed($feed_name, $entries = 0, $charcount = 0, $group
 		if ( "Planet CC" == $feed_name ) {
 			$flag_html = <<<HTML
 	<a href="/international/{$item['country_code']}/">
-		<img src="/images/international/{$item['flag_code']}.png" alt="{$item['flag_code']}" class="country">
+		<img src="/images/international/{$item['flag_code']}.png" alt="{$item['flag_code']}" class="country" />
 	</a>
 
 HTML;
