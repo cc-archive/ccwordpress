@@ -8,7 +8,7 @@
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
  <head>
   <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
   <? if (is_home() || is_404()) {?>
@@ -54,7 +54,7 @@
         <span class="publish">
           <a href="<?php echo get_option('home'); ?>/license/" class="cc-actions">
             <span class="img">
-              <img src="<?php bloginfo('stylesheet_directory'); ?>/images/license-8.png" border="0" class="publish"/>
+              <img src="<?php bloginfo('stylesheet_directory'); ?>/images/license-8.png" border="0" class="publish" alt="License your work" title="License your work" />
             </span> 
             <span class="option">License</span>Your Work
           </a>
@@ -62,7 +62,7 @@
         <span class="find">
           <a href="http://search.creativecommons.org/" class="cc-actions">
             <span class="img">
-              <img src="<?php bloginfo('stylesheet_directory'); ?>/images/find-8.png" border="0"/>
+              <img src="<?php bloginfo('stylesheet_directory'); ?>/images/find-8.png" border="0" alt="Find licensed works" title="Find licensed works" />
             </span>
             <span class="option">Search</span>CC Licensed Work
           </a>

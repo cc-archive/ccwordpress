@@ -294,25 +294,70 @@ ul.archives .gadgets { float:right; margin-left: 61%; }
 .ispacer { clear: both; }
 
 /* nav tab-bar */
-#mainmenu {	position: relative; padding-top: 0.6em; background: url("images/tabbar-bg.png") repeat-x bottom left #383e32 /*fafffa*/;/* height: 2.4em;*/ margin-bottom: 10px; }
-ul#navbar { list-style-type: none; }
-ul#navbar li {float: left; height: 2.4em;  margin: 0.2em 2px 0 2px; background: url("images/tab-bg.png") repeat-x bottom left #f0f4f1; }
+#mainmenu {	
+	position: relative; 
+	padding-top: 0.6em; 
+	background: url("images/tabbar-bg.png") repeat-x bottom left #383e32 /*fafffa*/;
+	/* height: 2.4em;*/ 
+	margin-bottom: 10px; 
+}
+ul#navbar { 
+	list-style-type: none; 
+
+	bottom: 0;
+	left: 0;
+	
+}
+ul#navbar li {
+	display: inline;
+	width: 10em;
+	background: url("images/tab-bg.png") repeat-x bottom left #f0f4f1; 
+}
+
 ul#navbar li.edit { margin-left: 15px; background: url("images/tab-bg.png") repeat-x bottom left #efe2e2; }
 ul#navbar li.active { margin-top: 0; font-weight: bold; height: 2.5em; }
 
-ul#navbar a {display: block; color: #333; background: url("images/tab-body-dark.png") no-repeat top right ;  }
-ul#navbar a span { display: block; padding: 0.5em 1.4em 0.2em; padding-top: 0.7em; background: url("images/tab-left-dark.png") no-repeat top left; }
+ul#navbar a {
+	display: block; 
+	float: left;
+	width: 9em;
+	margin-right: 0.25em;
+	color: #333; 
+	background: url("images/tab-body-dark.png") no-repeat top right #f0f4f1;  
+}
+ul#navbar a span { 
+	display: block; 
+	padding: 0.5em 1.4em 0.2em; 
+	padding-top: 0.7em; 
+	background: url("images/tab-left-dark.png") no-repeat top left; 
+}
 
-ul#navbar a:hover {text-decoration: none; color: #333;  background: url("images/tab-body-lit.png") no-repeat top right #fff; }
-ul#navbar a:hover span { background: url("images/tab-left-lit.png") no-repeat top left; }
+ul#navbar a:hover {
+	text-decoration: none; 
+	color: #333;  
+	background: url("images/tab-body-lit.png") no-repeat top right #fff; 
+}
+ul#navbar a:hover span { 
+	background: url("images/tab-left-lit.png") no-repeat top left; 
+}
 
-ul#navbar li.active a { background: url("images/tab-body-lit.png") no-repeat top right #fff; }
-ul#navbar li.active a span { background: url("images/tab-left-lit.png") no-repeat top left; padding-bottom: 0.4em; }
+ul#navbar li.active a { 
+	background: url("images/tab-body-lit.png") no-repeat top right #fff; 
+}
+ul#navbar li.active a span { 
+	background: url("images/tab-left-lit.png") no-repeat top left; 
+}
 
-ul#navbar li.edit a { background: url("images/tab-body-edit.png") no-repeat top right; }
-ul#navbar li.edit a span { background: url("images/tab-left-edit.png") no-repeat top left; }
+ul#navbar li.edit a { 
+	background: url("images/tab-body-edit.png") no-repeat top right; 
+}
+ul#navbar li.edit a span { 
+	background: url("images/tab-left-edit.png") no-repeat top left; 
+}
 
-ul#navbar li.edit a:hover { background: url("images/tab-body-edit.png") no-repeat top right #fff2f2; }
+ul#navbar li.edit a:hover { 
+	background: url("images/tab-body-edit.png") no-repeat top right #fff2f2; 
+}
 
 
 
