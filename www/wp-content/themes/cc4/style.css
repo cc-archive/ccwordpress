@@ -230,11 +230,22 @@ img.mugshot {
 	border: 2px solid #cccccc; margin-right: 10px; margin-bottom: 10px;
 }
 
-img.alignleft {
-	float: left;
+.alignleft {
+        float: left;
+        margin-right: 5px;
 }
-img.alignright {
-	float: right;
+.alignright {
+        float: right;
+        margin-left: 5px;
+}
+
+.wp-caption-text {
+        font-size: 85%;
+}
+
+.wp-caption img {
+	margin-left: 0 !important;
+	margin-right: 0 !important;
 }
 
 .rss img.country { float: right; width: 54px; margin: 0; padding: 0; border: 1px solid #555; }

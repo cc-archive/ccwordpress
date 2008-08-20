@@ -24,9 +24,9 @@
   
   
   <? if (is_home() || ($category_name == "weblog")) { ?>
-  <link rel="alternate" type="application/rss+xml" title="RSS 2.0" href="<?php bloginfo('home')?>/weblog/rss">
+  <link rel="alternate" type="application/rss+xml" title="RSS 2.0" href="<?php bloginfo('home')?>/weblog/rss" />
   <? } else if (is_category()) { ?>
-  <link rel="alternate" type="application/rss+xml" title="RSS 2.0" href="<?php echo get_settings('home') . "/" . $category_name; ?>/feed/rss">
+  <link rel="alternate" type="application/rss+xml" title="RSS 2.0" href="<?php echo get_settings('home') . "/" . $category_name; ?>/feed/rss" />
   <? } ?>
 
   <?php if (is_single() or is_page()) { ?>
