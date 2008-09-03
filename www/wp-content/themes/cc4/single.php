@@ -12,7 +12,7 @@ if (have_posts())  {
     <?php
      // check if this single is a commoner or blog post
      in_category(7) ? $is_commoner = true : $is_commoner = false;
-     in_category(1) ? $is_blog = true : $is_blog = false;
+     (in_category(1)  || in_category(128)) ? $is_blog = true : $is_blog = false;
 
      // check worldwide categories
      in_category(18) ? $is_worldwide_upcoming = true : $is_worldwide_upcoming = false;
