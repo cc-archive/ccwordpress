@@ -28,7 +28,14 @@ YAHOO.cc.help.init_help_item = function(help_anchor) {
     YAHOO.util.Event.addListener(link_id, "click", 
 				 function(e) {
 				   YAHOO.cc.help.help_panels[item_idx].show();
-				   e.preventDefault();
+                   // IE apparently doesn't support preventDefault
+                   // So we add something that will work for IE.
+                   // (nkinkade 2008-09-23)
+                   if ( e.preventDefault ) {
+				       e.preventDefault();
+                   } else {
+                       e.returnValue = false;
+                   }
 				 });
 
 
