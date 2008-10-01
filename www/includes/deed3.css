@@ -309,3 +309,19 @@ div.bd p {
    margin: 0;
    float: none;
 }
+
+/* This is for the GNU/GPL license: list must start at 0 and the attribute start='0' is not allowed in xhtml*/
+ol.gpl { counter-reset: item -1}
+li.gpl { list-style: none;}
+li.gpl:before {
+	content: counter(item) ". ";
+	counter-increment: item;
+	}
+
+/* CC Network Related */
+.network {
+	padding: 8px;
+	margin-top: 1em;
+	background-color: #d4efb9;
+}
+
