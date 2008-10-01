@@ -323,3 +323,10 @@ li.gpl:before {
 	content: counter(item) ". ";
 	counter-increment: item;
 	}
+
+/* CC Network Related */
+.network {
+	padding: 8px;
+	margin-top: 1em;
+	background-color: #d4efb9;
+}
