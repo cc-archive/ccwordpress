@@ -4,12 +4,12 @@
 
       <div id="content">
         <div id="main-content">
+         <?php echo cc_current_feature(); ?>
 	<div class="block hero" id="title">
             
             <div id="blurb"><?= cc_intro_blurb() ?></div>
             
           </div>
-          <?php echo cc_current_feature(); ?>
 	  <div id="alpha" class="content-box">
             <h4><a href='/weblog'>CC News</a></h4>
 <?php // Get the latest 5 posts that aren't in the worldwide category. ?>

@@ -39,6 +39,7 @@
 
 <? if (is_home()) { ?>
   <link href="/includes/splash.css?2281" rel="stylesheet" type="text/css" />
+  <link href="/includes/support-2008.css" rel="stylesheet" type="text/css" />
 <? } ?>
 
   <!--[if IE ]><link rel="stylesheet" type="text/css" media="screen" href="<?php bloginfo('stylesheet_directory'); ?>/style-ie.css" /><![endif]-->
