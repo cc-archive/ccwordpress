@@ -18,7 +18,7 @@
 				<div class="progress" onclick="window.location='http://support.creativecommons.org';">
 					<span>&nbsp;</span>
 				</div>
-				<div class="results"><a href="http://support.creativecommons.org/">$<?= cc_monetize(cc_progress_total()) ?> / $500,000 by Dec 31</a></div>
+				<div class="results"><a href="http://support.creativecommons.org/"><?php cc_progress_total() ?> / $500,000 by Dec 31</a></div>
    			</div>
 		</div>
 
