@@ -35,10 +35,11 @@
   <div class="sideitem">
     <h4>The Commons</h4>
     <ul>
-      <li><img src="/images/commons/sc.png"> <a href="http://sciencecommons.org/">Science Commons</a></li>
-      <li><img src="/images/commons/cci.png"> <a href="http://creativecommons.org/international/">ccInternational</a></li>
-      <li><img src="/images/commons/learn.png"> <a href="http://learn.creativecommons.org/">ccLearn</a></li>
-    </ul>
+	  <li><a href="https://creativecommons.net/">CC Network</a></li>
+      <li><!-- img src="/images/commons/sc.png" alt="Science Commons" /--> <a href="http://sciencecommons.org/">Science Commons</a></li>
+      <li><!-- img src="/images/commons/cci.png" alt="ccInternational" /--> <a href="http://creativecommons.org/international/">ccInternational</a></li>
+      <li><!-- img src="/images/commons/learn.png" alt="ccLearn" /--> <a href="http://learn.creativecommons.org/">ccLearn</a></li>
+	</ul>
   </div>
 
 
