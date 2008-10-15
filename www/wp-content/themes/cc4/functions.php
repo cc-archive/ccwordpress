@@ -3,9 +3,9 @@
 /* Alex Roberts, 2006 */
 
 function cc_progress_total() {
-  $campaign_total = file_get_contents('http://creativecommons.org/includes/total.txt');
+  $campaign_total = file_get_contents(__DIR__ . '../../includes/total.txt');
   
-  return $campaign_total;
+  print $campaign_total;
 }
 
 function cc_monetize($money, $delim = ",") {

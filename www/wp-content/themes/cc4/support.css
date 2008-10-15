@@ -1,10 +1,14 @@
 /* PROGRESS METER */
     #campaign {
-background-color: #333d33; 
+background-color: #103f5e; 
 height: 49px;
+max-width: 640px;
 padding-top: 5px;
+margin: 5px auto;
 margin-bottom: 10px;
 text-align: center;
+-moz-border-radius-bottomleft: 8px;
+-moz-border-radius-bottomright: 8px;
 }
 
 #campaign.wide { margin: 0; padding: 5px 35%; height: 25px; position: relative; }
@@ -21,14 +25,11 @@ color: #fff;
 #campaign .progress {
 position: relative;
 cursor:pointer; 
-margin-left: 2%; 
-margin-top: 2px; 
-margin-bottom: 3px;
-width: 94%; 
+margin: 2px auto 3px auto;
+width: 50%; 
 height: 20px;
 padding: 0 1%; 
-background-color: #ddd; 
-float: left;  
+background-color: #fff;   
 }
 
 #campaign .progress span {

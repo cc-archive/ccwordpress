@@ -16,6 +16,7 @@
   
   <div class="sideitem">
     <ul>
+      <li ><a href="/commoners" >Creative Commoners</a></li>
       <li><a href="/projects/documentation">Documentation</a></li>
       <li><a href="/projects/casestudies">Case Studies</a></li>
       <li><a href="http://wiki.creativecommons.org/FFAQ">FAQ</a></li>
@@ -25,17 +26,11 @@
   </div>
   <div class="sideitem">
     <ul>
-      <li ><a href="/commoners" >Creative Commoners</a></li>
       <li><a href="/press-releases">Press Releases</a></li>
-<?php /*
-      <li ><a href="/audio" >Audio</a></li>
-      <li ><a href="/video" >Video</a></li>
-      <li ><a href="/image" >Images</a></li>
-      <li ><a href="/text" >Text</a></li>
-      <li ><a href="/software" >Software</a></li>
-*/ ?>
+      <li><a href="/about/newsletter">Newsletter</a></li>
+      <li><a href="http://wiki.creativecommons.org/Events">Events</a></li>
     </ul>
-  </div>  
+  </div>
 
   <div class="sideitem">
     <h4>The Commons</h4>

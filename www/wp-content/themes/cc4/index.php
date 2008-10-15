@@ -4,12 +4,29 @@
 
       <div id="content">
         <div id="main-content">
+		 <?php /* echo cc_current_feature();*/ ?>
+		<div style="margin-right: 1.5em; margin-bottom: 1.5em;">
+ 			<div id="campaign08">
+   				<div class="campaign-block">
+	 				<h2>Help Build<br/>The Commons</h2>
+	 				<div id="join-today">
+	   					<a href="http://support.creativecommons.org/">Join Today</a>
+	 				</div>
+   				</div>
+ 			</div>
+   			<div id="campaign">  
+				<div class="progress" onclick="window.location='http://support.creativecommons.org';">
+					<span>&nbsp;</span>
+				</div>
+				<div class="results"><a href="http://support.creativecommons.org/"><?php cc_progress_total() ?> / $500,000 by Dec 31</a></div>
+   			</div>
+		</div>
+
 	<div class="block hero" id="title">
             
             <div id="blurb"><?= cc_intro_blurb() ?></div>
             
           </div>
-          <?php echo cc_current_feature(); ?>
 	  <div id="alpha" class="content-box">
             <a href='/weblog'><h4>CC News</h4></a>
 <?php // Get the latest 5 posts that aren't in the worldwide category. ?>
