@@ -13,7 +13,10 @@
 	   					<a href="http://support.creativecommons.org/">Join Today</a>
 	 				</div>
    				</div>
- 			</div>
+			</div>
+			<div id="campaign-hint">
+				Join Jesse Dylan in <a href="http://support.creativecommons.org/">supporting CC</a>. Watch his new video about us, <a href="/asharedculture/">A Shared Culture</a>.
+			</div>
    			<div id="campaign">  
 				<div class="progress" onclick="window.location='http://support.creativecommons.org';">
 					<span>&nbsp;</span>
