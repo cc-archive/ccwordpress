@@ -1,4 +1,4 @@
-#campaign-hint {
+#campaign-hint, #campaign-matching {
 		text-align: center;
 		margin: 5px auto;
 		background-color: #103859;
@@ -7,11 +7,16 @@
 		max-width: 640px;
 		font-size: 90%;
 }
-#campaign-hint a {
+
+#campaign-matching {
+		background-color: #104364;
+}
+
+#campaign-matching a, #campaign-hint a {
 		color: #fff;
 		text-decoration: underline;
 }
-#campaign-hint a:hover {
+#campaign-matching a:hover, #campaign-hint a:hover {
 		text-decoration: none;
 }
 
