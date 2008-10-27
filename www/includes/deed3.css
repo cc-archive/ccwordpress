@@ -5,6 +5,8 @@
 			font: 12px/16px arial, verdana, sans-serif;
 			text-align: center;
 			color: #ccc;
+			margin: 0;
+			padding: 0;
 		}
 		
 		h3 {
@@ -236,9 +238,6 @@
                 li.nolaw {
                                         background: url("/images/deed/nolaw.png") 0 0 no-repeat;
                 }
-                li.assertion {
-                                        background: url("/images/deed/devnations.png") 0 0 no-repeat;
-                }
                 li.scnorms{
                                         background: url("/images/deed/scnorms.png") 0 0 no-repeat;
                 }
@@ -286,9 +285,6 @@
 			border: none !important;
 		}
 
-
-
-
 div.bd p {
        color: #111;
        font-size: 
@@ -330,3 +326,46 @@ li.gpl:before {
 	margin-top: 1em;
 	background-color: #d4efb9;
 }
+
+/* CC Campaign */
+div#campaign {
+	background-color: #447DB4;
+	color: #fff;
+	margin: 0;
+	padding: 1px;
+	border-bottom: 1px solid #191919;
+	-moz-border-radius: 0;
+}
+
+div#campaign div {
+	margin: 0.5em;
+}
+
+div#campaign div a {
+	display: inline !important;
+	float: none !important;
+}
+
+/* Language translations box */
+div#languages {
+	width: 620px; 
+	margin-left: auto; 
+	margin-right: auto; 
+	margin-bottom: 3em;
+	text-align: center;
+	overflow: auto;
+	background-color: #373737;
+	padding: 1em;
+	-moz-border-radius: 4px;
+}
+div#languages a {
+	display: block;
+	width: 20%;
+	float: left;
+	text-align: left;
+}
+
+div#languages p {
+	margin-top: 0;
+}
+
