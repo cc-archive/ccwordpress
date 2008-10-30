@@ -20,12 +20,7 @@
 			<div id="campaign-matching">
 				<a href="http://support.creativecommons.org/join">Donate</a> by November 3rd and have the value of your gift doubled thanks to <a href="http://safecreative.org/">Safe Creative</a>.
 			</div>
-   			<div id="campaign">  
-				<div class="progress" onclick="window.location='http://support.creativecommons.org';">
-					<span>&nbsp;</span>
-				</div>
-				<div class="results"><a href="http://support.creativecommons.org/"><?php cc_progress_total() ?> / $500,000 by Dec 31</a></div>
-   			</div>
+			<?php include('progress.php'); ?>
 		</div>
 
 	<div class="block hero" id="title">

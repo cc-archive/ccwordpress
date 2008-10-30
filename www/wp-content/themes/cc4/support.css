@@ -84,27 +84,34 @@ margin-left: 7px;
 }
 
 #sidebar #campaign {
-  background-color: transparent !important;
-  padding-top: 0;
+ /* background-color: transparent !important;
+ */ padding: 1px;
   text-align: left;
   height: auto;
   position: relative;
-  margin-bottom: 30px;
+  -moz-border-radius-bottomleft: 3px;
+  -moz-border-radius-bottomright: 3px;
+  -webkit-border-radius-bottom-left: 3px;
+  -webkit-border-radius-bottom-right: 3px;
 }
 
 #sidebar #campaign .progress {
   margin-left: 0;
+  margin-top: 0;
+  width: 98%;
 }
 
 #sidebar #campaign .results {
-  position: absolute;
+  /*position: absolute;
   font-size: 1em;
   top: 3px;
   left: 8%;
+*/
+	text-align: center;
 }
 
 #sidebar #campaign .results a {
-  color: #333;
+  color: #fff;
 }
 
 #campaign.wide .results { position: absolute; top: 7px; left: 38%; }

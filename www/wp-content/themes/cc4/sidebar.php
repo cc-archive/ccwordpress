@@ -7,7 +7,12 @@
       </select>  
     <span class="international"><a href="/international/">More information</a></span>
   </div>
-  
+
+<?php if (!is_home()) { ?>
+  <div class="sideitem">
+  <?php include ('progress.php'); ?>
+  </div> <?php } ?>
+
   <div class="sideitem">
     <h4>Search</h4>
     <?php $is_sidebar = true; include (TEMPLATEPATH . '/searchform.php'); ?>
