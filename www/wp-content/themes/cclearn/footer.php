@@ -14,8 +14,7 @@
 <ul>
   <li><a href="http://creativecommons.org/">Creative Commons</a></li>
   <li><a href="http://sciencecommons.org/">Science Commons</a></li>
-  <li><a href="http://labs.creativecommons.org/">ccLabs</a></li>
-  <li><a href="http://ccmixter.org/">ccMixter</a></li>
+  <li><a href="https://creativecommons.net">CC Network</a></li>
   <li><a href="http://creativecommons.org/worldwide/">ccInternational</a></li>
   <li>
     <select name="sortby" onchange="orderby(this)">

@@ -1,10 +1,12 @@
 #events_map {
+	width: 62%;
+	margin: 0 ;
 	margin-bottom: 25px;
 }
 
 #events_map iframe {
 	width: 100%;
-	height: 220px;
+	height: 180px;
 	border: 1px solid #ccc;
 }
 
@@ -13,6 +15,11 @@
 	width: 100%;
 	border: 1px solid #ccc;
 	padding-bottom: 2px;
+
+	-moz-border-radius-bottomleft: 5px;
+	-moz-border-radius-bottomright: 5px;
+	-webkit-border-radius-bottom-left: 5px;
+	-webkit-border-radius-bottom-right: 5px;
 }
 
 #events_map_legend ul {
@@ -31,6 +38,11 @@
 	font-size: 0.9em;
 }
 
+#events_map_legend img {
+	border: none; 
+	margin-right: 0;
+}
+
 #events_map_legend ul li.hint {
 	font-size: 0.9em;
 	padding-left: 2em;
@@ -40,15 +52,17 @@
 	float: right;
 	padding-right: 0;
 	font-size: 0.75em;
+	opacity: 0.5;
 }
 
 .events_button {
-	padding: 5px;
+	padding: 3px 6px;
 	margin-top: 4px;
 	margin-right: 10px;
 	background-color: #ddd;
-	-moz-border-radius: 5px;
-	border-radius: 5px;
+	-moz-border-radius: 3px;
+	-webkit-border-radius: 3px;
+	border-radius: 3px;
 	float: left;
 }
 

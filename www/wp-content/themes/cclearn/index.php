@@ -7,34 +7,22 @@
 
       <div id="content">
      	  <div class="clear">&nbsp;</div>
-        <div id="splash">
-          <div class="callout">
-            <?php echo cc_current_feature(); ?>
-          </div>
-        
-          <div class="block noclear" id="title">
-            <div id="blurb">
-              <img src="<?php bloginfo('stylesheet_directory'); ?>/images/book.png" align="left" border="0" style="border:none;" />
-              <?php echo cc_intro_blurb(); ?>
-            </div>
-          </div>
-          <div class="clear"></div>
-        </div>
-        <div id="events_map">
-	  <iframe frameborder="0" src="/events-map/mvs.html?data=textfile.txt&amp;zoom=1&amp;center=30,0" ></iframe>
-	  <div id="events_map_legend">
-	   <ul>
-	    <li><img src="http://labs.creativecommons.org/~paulproteus/pins/pin_purple_h=20.png" alt="Purple Pin" title="Purple Pin" /> <span>Open Education Event</span></li>
-	    <li><img src="http://labs.creativecommons.org/~paulproteus/pins/pin_green_h=20.png" alt="Green Pin" title="Green Pin" /> <span>Open Education Event, CC attending</span></li>
-	    <li class="hint">Click a pin for more details on the event</li>
-	    <li class="attribution">Pushpin icon by <a href="http://pedrogordo.com">Pedro Gordo</a>, <a href="http://creativ
-      ecommons.org/licenses/by/3.0/">CC BY 3.0</a></li>
-	  </div>
-	  <div class="events_button"><a href="http://wiki.creativecommons.org/Open_Education_Events">View list of all events</a></div>
-	  <div class="events_button"><a href="http://wiki.creativecommons.org/Form:Event">Add event</a></div><br clear="all"/> 
-	</div>
-	<div class="cc_box">
-          <h4>Projects</h4>
+       <!-- <div id="splash">
+		-->	<?php /*echo cc_current_feature(); */?>
+		
+		<?php include "events-map.php" ?>
+
+		<div id="head-info">
+			<div id="mission">
+				<p>ccLearn is a division of Creative Commons dedicated to realizing the full potential of the internet to support open learning and open educational resources.</p><p>Our mission is to minimize legal, technical, and social barriers to sharing and reuse of educational materials.</p>
+			</div>
+			<div id="current">
+				<?php echo cc_current_feature(); ?>
+			</div>
+		</div>
+        <!--/div -->
+	<div id="projects_box" class="cc_box">
+         <!--  <h4>Projects</h4> -->
 <?php /* Select all projects and loop through them, displaying their excerpts and images 
        * Projects must be children of the "Projects" page; 
        * must have a 90px wide attached logo; 
@@ -44,7 +32,8 @@
       'post_type' => 'page',
       'post_parent' => cc_id_from_page_name("Projects"),
       'orderby' => 'ID',
-      'order' => 'asc'
+	  'order' => 'asc',
+	  'limit' => '6'
       );
   $projects = get_posts($projects_query);
   
@@ -53,28 +42,39 @@
     
     // grab logo attachment
     $image = cc_get_attachment ($post->ID);
-    
+	$title = str_replace(" ", "_", strtolower($post->post_title));
     ?>
-          <div class="floater w30 alt">
-            <a href="<? the_permalink() ?>"><img src="<?= $image->uri ?>" alt="<?= $image->descr ?>" align="left" border="0"/></a>
-            <p style="margin-left: 100px;">
-              <a href="<? the_permalink() ?>"><strong><? the_title() ?></strong></a><br/>
-              <?= get_post_meta($post->ID, "excerpt", true) ?>
-            </p>
-          </div>
+			<div class="floater w20 alt helpLink" id="project_<?php echo $title ?>">
+				<h3>
+					<a href="<? the_permalink() ?>"><strong><? the_title() ?></strong></a>
+				</h3>
+				<a href="<? the_permalink() ?>"><img src="<?= $image->uri ?>" alt="<?= $image->descr ?>" align="left" border="0"/></a>
+				<!-- <p><?=  get_post_meta($post->ID, "excerpt", true) ?></p> -->
+			</div>
+			<div class="popup" id="help_project_<?php echo $title ?>">
+				<div class="bd"><?=  get_post_meta($post->ID, "excerpt", true) ?></div>
+			</div>
     <?php
   }
-   
+
 ?>
-          <br clear="both"/>
         </div>
         <div id="alpha" class="content-box">
-          <?php cc_build_external_feed("ccLearn Features");?>
+		  <h4>Latest News</h4>
+		  <?php cc_build_external_feed("ccLearn Weblog"); /*Features");*/?>
         </div>
-  	    <div id="beta" class="content-box">
-	        <h4>Latest News</h4>
+  	    <div id="beta" class="content-box-right">
+	        <h4>Feature</h4>
 	    
-<?php cc_build_external_feed("ccLearn Weblog"); ?>
-
+<?php while(have_posts()) {
+		the_post();
+		$the_url = get_post_meta($post->ID, "url", true);
+?>
+		<div class="post">
+			<h2><a href="<?php echo $the_url ?>"><?php the_title() ?></a></h2>
+<?php the_content(); ?>
+			<p><a href="<?php echo $the_url?>">Read More</a></p>
+		</div>
+<?php } ?>
 <?php get_footer(); ?>
 
