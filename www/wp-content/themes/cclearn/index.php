@@ -51,7 +51,7 @@
 				<a href="<? the_permalink() ?>"><img src="<?= $image->uri ?>" alt="<?= $image->descr ?>" align="left" border="0"/></a>
 				<!-- <p><?=  get_post_meta($post->ID, "excerpt", true) ?></p> -->
 			</div>
-			<div id="help_project_<?php echo $title ?>">
+			<div class="popup" id="help_project_<?php echo $title ?>">
 				<div class="bd"><?=  get_post_meta($post->ID, "excerpt", true) ?></div>
 			</div>
     <?php
