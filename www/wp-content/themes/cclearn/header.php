@@ -29,9 +29,16 @@
 
   <?php /* wp_get_archives('type=monthly&format=link'); */ ?>
   <script src="/includes/icommons.js" type="text/javascript"></script>
+
+  <link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/2.5.2/build/container/assets/skins/sam/container.css" /> 
+  <script type="text/javascript" src="http://yui.yahooapis.com/2.5.2/build/yahoo-dom-event/yahoo-dom-event.js"></script> 
+  <script type="text/javascript" src="http://yui.yahooapis.com/2.5.2/build/animation/animation-min.js"></script> 
+  <script type="text/javascript" src="http://yui.yahooapis.com/2.5.2/build/container/container-min.js"></script> 
+  
+  <script src="<?php bloginfo('stylesheet_directory'); ?>/info.js" type="text/javascript"></script>
   <?php wp_head(); ?>
  </head>
- <body onload="">
+ <body class="yui-skin-sam">
   <a name="top"></a>
     <div id="header-wrapper">
       <div id="header-main" class="box">
@@ -64,12 +71,16 @@
       -->
       </div>
         <span class="logo"><a href="<?php echo get_option('home'); ?>"><span><img src="<?php bloginfo('stylesheet_directory'); ?>/images/ccl-title-e.png" alt="cclearn" id="cc-title" border="0"/></span></a></span>
-        
+
+		
+  		<?php if (is_home()) { ?>
+		<?php } ?>
+
 <?/*        <div id="strap">Share, Remix, Reuse &mdash; Legally</div> */?>
-      </div>
-    </div>
 
     <?php include_once( TEMPLATEPATH . "/nav.php" ); ?>
+      </div>
+    </div>
 <? /*
 	 <div id="campaign">
 	  <div class="box">
