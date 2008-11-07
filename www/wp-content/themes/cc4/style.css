@@ -294,7 +294,7 @@ ul.archives .gadgets { float:right; margin-left: 61%; }
 .ispacer { clear: both; }
 
 /* nav tab-bar */
-#mainmenu {	position: relative; padding-top: 0.6em; background: url("images/tabbar-bg.png") repeat-x bottom left #383e32 /*fafffa*/;/* height: 2.4em;*/ margin-bottom: 10px; }
+#mainmenu {	position: relative; padding-top: 0.6em; background: url("images/tabbar-bg.png") repeat-x bottom left #383e32 /*fafffa*/;/* height: 2.4em;*/ margin-bottom: 10px; overflow:hidden;}
 ul#navbar { list-style-type: none; }
 ul#navbar li {float: left; height: 2.4em;  margin: 0.2em 2px 0 2px; background: url("images/tab-bg.png") repeat-x bottom left #f0f4f1; }
 ul#navbar li.edit { margin-left: 15px; background: url("images/tab-bg.png") repeat-x bottom left #efe2e2; }
@@ -309,10 +309,10 @@ ul#navbar a:hover span { background: url("images/tab-left-lit.png") no-repeat to
 ul#navbar li.active a { background: url("images/tab-body-lit.png") no-repeat top right #fff; }
 ul#navbar li.active a span { background: url("images/tab-left-lit.png") no-repeat top left; padding-bottom: 0.4em; }
 
-ul#navbar li.edit a { background: url("images/tab-body-edit.png") no-repeat top right; }
-ul#navbar li.edit a span { background: url("images/tab-left-edit.png") no-repeat top left; }
+ul#navbar li.edit a, ul#navbar li.donate a { background: url("images/tab-body-edit.png") no-repeat top right; }
+ul#navbar li.edit a span, ul#navbar li.donate a span { background: url("images/tab-left-edit.png") no-repeat top left; }
 
-ul#navbar li.edit a:hover { background: url("images/tab-body-edit.png") no-repeat top right #fff2f2; }
+ul#navbar li.edit a:hover, ul#navbar li.donate a:hover { background: url("images/tab-body-edit.png") no-repeat top right #fff2f2; }
 
 
 
