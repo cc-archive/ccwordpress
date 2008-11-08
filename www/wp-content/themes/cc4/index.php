@@ -18,7 +18,7 @@
 				Join Jesse Dylan in <a href="http://support.creativecommons.org/">supporting CC</a>. Watch his new video about us, <a href="/asharedculture/">A Shared Culture</a>.
 			</div>
 			<div id="campaign-matching">
-				We met <a href="http://safecreative.org/">Safe Creative's</a> challenge ahead of schedule! Have your company <a href="mailto:melissa@creativecommons.org">issue a challenge</a>.
+				<a href="http://support.creativecommons.org/join">Donate</a> by November 21st and have the value of your gift doubled thanks to <a href="http://wikihow.com/">wikiHow</a>.
 			</div>
 			<?php include('progress.php'); ?>
 		</div>
