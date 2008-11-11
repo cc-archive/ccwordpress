@@ -324,8 +324,10 @@ ul#navbar li.active a span { background: url("images/tab-left-lit.png") no-repea
 ul#navbar li.edit a { background: url("images/tab-body-edit.png") no-repeat top right; }
 ul#navbar li.edit a span { background: url("images/tab-left-edit.png") no-repeat top left; }
 
+ul#navbar li.donate { background-color: #ececfa; }
 ul#navbar li.donate a span { background: url("images/tab-left-donate.png") no-repeat top left; }
-ul#navbar li.donate a, ul#navbar li.donate a:hover { background: url("images/tab-body-donate.png") no-repeat top right; }
+ul#navbar li.donate a { background: url("images/tab-body-donate.png") no-repeat top right; }
+ul#navbar li.donate a:hover { background-color: #fff; }
 
 ul#navbar li.edit a:hover { background: url("images/tab-body-edit.png") no-repeat top right #fff2f2; }
 
