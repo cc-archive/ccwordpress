@@ -19,14 +19,26 @@
     <div class="clear"></div>
   </div>
 
-<?php if (!is_home()) { ?>
-  <?php $pages_list = wp_list_pages('child_of='.$post->ID.'&title_li=&echo=0&exclude=7486,7476,7471,7472,7473,506,7474,7475,7487,7506,7682,7793,7794');  
+<?php if (!is_home()) { 
+	$exclude_list = "7486,7476,7471,7472,7473,7506,7474,7475,7487,7682,7793,7794";
+	$list_pages_query = "&title_li=&echo=0&exclude=".$exclude_list;
+	if ($post->post_parent) {
+		if ($root_post_id = get_post_meta($post->ID, "root", true)) {
+			$child_id = $root_post_id;
+		} else {
+			$child_id = $post->post_parent;
+		}
+	} else {
+		$child_id = $post->ID;
+	}
+	
+	if ($child_id) { $pages_list = wp_list_pages('child_of='.$child_id.$list_pages_query); }
+
     if ($pages_list) {
 		$pages_list = "<div class=\"sideitem\"><ul>" . $pages_list . "</ul></div>";
 		echo $pages_list;
 	}
-  ?>
-<?php } ?>
+ } ?>
   <div class="sideitem">
     <ul>
       <li ><a href="/commoners" >Creative Commoners</a></li>
