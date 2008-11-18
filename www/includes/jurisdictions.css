@@ -17,6 +17,11 @@
 	background: url("/images/deed/nc-eu.png") 0 0 no-repeat;
 }
 
+/* Guatemala */
+.gt .nc {
+	background: url("/images/deed/nc-gt.png") 0 0 no-repeat;
+}
+
 /* Italy */
 .it .nc {
 	background: url("/images/deed/nc-eu.png") 0 0 no-repeat;
