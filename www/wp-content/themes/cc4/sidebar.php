@@ -8,7 +8,7 @@
     <span class="international"><a href="/international/">More information</a></span>
   </div>
 
-<?php if (!is_home()) { ?>
+<?php if (!is_home() && 0 ) { ?>
   <div class="sideitem">
   <?php include ('progress.php'); ?>
   </div> <?php } ?>
@@ -18,7 +18,15 @@
     <?php $is_sidebar = true; include (TEMPLATEPATH . '/searchform.php'); ?>
     <div class="clear"></div>
   </div>
-  
+
+<?php if (!is_home()) { ?>
+  <?php $pages_list = wp_list_pages('child_of='.$post->ID.'&title_li=&echo=0&exclude=7486,7476,7471,7472,7473,506,7474,7475,7487,7506,7682,7793,7794');  
+    if ($pages_list) {
+		$pages_list = "<div class=\"sideitem\"><ul>" . $pages_list . "</ul></div>";
+		echo $pages_list;
+	}
+  ?>
+<?php } ?>
   <div class="sideitem">
     <ul>
       <li ><a href="/commoners" >Creative Commoners</a></li>
