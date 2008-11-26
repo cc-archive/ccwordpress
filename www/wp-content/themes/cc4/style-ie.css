@@ -77,8 +77,8 @@ margin-top: 0;
 }
 
 /* I Hate IE */
-#mainmenu { padding-bottom: 0; }
-ul#navbar { padding-bottom: 0; margin-bottom: -17px !important; }
+#mainmenu { padding-bottom: 0; height:2.3em; }
+ul#navbar { height:2.4em; padding-bottom: 0; margin-bottom: -17px !important; }
 ul#navbar li { height: 2.1em; margin-bottom: 0;}
 ul#navbar li.active { padding-bottom: 0px; margin-top: 0; height: 2.1em; }
 ul#navbar li.active a { padding-bottom: 2px; }
@@ -90,4 +90,9 @@ ul#navbar a span { padding-bottom: 0 !important; }
 #sidebar #campaign .results {
 	left: -88%;
 }
+
+#campaign08 .campaign-block h2, #campaign08 .campaign-block #join-today a  {
+		margin-left: 50% !important;
+}
+
 
