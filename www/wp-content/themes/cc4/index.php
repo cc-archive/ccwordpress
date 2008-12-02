@@ -18,7 +18,7 @@
 				Join Jesse Dylan in <a href="http://support.creativecommons.org/">supporting CC</a>. Watch his new video about us, <a href="/asharedculture/">A Shared Culture</a>.
 			</div>
 			<div id="campaign-matching">
-We met <a href="http://wikihow.com/">wikiHow's</a> challenge ahead of schedule! Have your company <a href="mailto:melissa@creativecommons.org">issue a challenge</a>.
+				We're conducting a study on defining "NonCommercial" &mdash; <a href="http://creativecommons.org/weblog/entry/11115">help by responding to this questionnaire</a>.
 			</div>
    			<div id="campaign">  
 				<div class="progress" onclick="window.location='http://support.creativecommons.org';">
@@ -43,7 +43,7 @@ We met <a href="http://wikihow.com/">wikiHow's</a> challenge ahead of schedule! 
     static $count = 0;
     if ($count == "5") { break; } else {
       if (!in_category(1) && !is_single()) { continue; }?>
-    
+<? print_r($post); ?>  
             <div class="block blogged" id="post-<?php the_ID(); ?>">
               <h1 class="title">
                 <a href="<?php the_permalink() ?>">
