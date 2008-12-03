@@ -45,8 +45,6 @@
 
           </div>
           <div id="beta" class="content-box">
-          <h4>Search</h4>
-          		<?php include (TEMPLATEPATH . '/searchform.php'); ?>
 	    <strong><a href="/weblog/rss">Subscribe to RSS</a></strong><br/><br/>
             <h4>Archives</h4>
             <ul class="archives">
