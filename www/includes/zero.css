@@ -50,8 +50,9 @@
 		width: 57%;
 		padding-left: 2%;
 	}
-	.yui-module .bd .form-answer input.form-field {
-		width: 100%;
+	.yui-module .bd .form-answer input.form-field,
+	.yui-module .bd .form-answer iframe.form-field {
+		width: 90%;
 	}
 
 .preview {
@@ -68,7 +69,8 @@
     padding-right: 0px;
 }
 
-.bd input {
+.bd input,
+.bd iframe {
     border: 1px #555 solid;
     padding: 2px;
 }
@@ -104,4 +106,19 @@
 
 strong {
        font-weight: bold !important;
+}
+
+.yui-nav {
+    display: none;
+}
+
+#yui-history-iframe {
+  position:absolute;
+  top:0; left:0;
+  width:1px; height:1px;
+  visibility:hidden;
+}
+
+.help_panel {
+display:none;
 }
