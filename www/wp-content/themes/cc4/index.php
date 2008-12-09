@@ -15,7 +15,7 @@
    				</div>
 			</div>
 			<div id="campaign-hint">
-				Join Jesse Dylan in <a href="http://support.creativecommons.org/">supporting CC</a>. Watch his new video about us, <a href="/asharedculture/">A Shared Culture</a>.
+				Join Jesse Dylan in <a href="http://support.creativecommons.org/">supporting CC</a>. Watch his new video about <a href="http://sciencecommons.org/about/science-commons-dylan-video/">Science Commons</a>.
 			</div>
 			<div id="campaign-matching">
 				We're conducting a study on defining "NonCommercial" &mdash; <a href="http://creativecommons.org/weblog/entry/11115">help by responding to this questionnaire</a>.
