@@ -6,11 +6,11 @@
       <div id="sub-footer" class="box">
         <ul>
           <li><a href="#top">Top</a>&nbsp;&nbsp;&nbsp;&nbsp;</li>
-          <li><a href="http://support.creativecommons.org/">Support</a></li>
+          <li><a href="http://support.creativecommons.org/">Donate</a></li>
           <li><a href="/weblog">Blog</a></li>
           <li><a href="/policies">Policies</a></li>
           <li><a href="/privacy">Privacy</a></li>
-          <li><a href="http://wiki.creativecommons.org/Developers">Developers</a></li>
+          <li><a href="/about/press">Press</a></li>
           <li><a href="http://wiki.creativecommons.org/Events">Events</a></li>
           <li><a href="/sitemap">Sitemap</a></li>
           <li><a href="/contact">Contact</a></li>
