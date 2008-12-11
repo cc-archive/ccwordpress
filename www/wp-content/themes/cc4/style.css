@@ -232,12 +232,12 @@ img.mugshot {
 
 .alignleft {
         float: left;
-        margin-right: 5px;
+        margin-right: 10px;
 }
 
 .alignright {
         float: right;
-        margin-left: 5px;
+        margin-left: 10px;
 }
  
 .wp-caption-text {
