@@ -230,11 +230,14 @@ img.mugshot {
 	border: 2px solid #cccccc; margin-right: 10px; margin-bottom: 10px;
 }
 
-img.alignleft {
-	float: left;
+.alignleft {
+        float: left;
+        margin-right: 10px;
 }
-img.alignright {
-	float: right;
+
+.alignright {
+        float: right;
+        margin-left: 10px;
 }
 
 .rss img.country { float: right; width: 54px; margin: 0; padding: 0; border: 1px solid #555; }
