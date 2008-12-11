@@ -176,7 +176,7 @@ a.cc-actions:hover, #header-main .active a:link { background: url('/images/heade
 
 #title { border-bottom: 1px solid #e0e0e0; margin-top: 0.8em; }
 #title h1 { margin-top: 1.5em; }
-#title h2, .title h1 { padding: 0 1.5em 0.27em 0;  margin: 0;}
+#title h2, .title h1 { padding: 0 0 0.27em 0;  margin: 0;}
 #title h2.tagline { /*  color: #92534e;*/ color: #b82e00;}
 #title h3.category { font-size: 90% !important; display: block; padding-top: 22px; margin: 0px 0px 10px; }
 #title h1.splash-title { padding-bottom: 0px; color: #777; font-size: 300%; }
@@ -405,13 +405,22 @@ p.presskit {
 	margin-left: 0.4em;
 }
 
+	.timeline {
+		width: 38%;
+		float: right;
+		margin-left: 1.25em;
+	}
+	.timeline h4 {
+			color: #333;
+	}
 
 	.attribute_blurb {
 	  overflow: auto;
 	  margin-bottom: 2.5em;
 	  padding: 10px;
-	  background-color: #f4f9e7;
-	  -moz-border-radius: 10px;
+	  background-color: #faffef;
+	  border: 1px solid #dadfcf;
+	  -moz-border-radius: 6px;
 	}
 	.attributes {
 	  width: 154px;
@@ -454,5 +463,35 @@ p.presskit {
 
 	.license_blurb .deed_links {
 		font-size: 90%;
+	}
+
+
+	.column-container {
+			clear: both;
+			overflow: auto;
+			border-top: 1px solid #e0e0e0;
+			padding-top: 1em;
+	}
+	.column {
+			float: left;
+			width: 32%;
+			padding-right: 1%;
+	}
+
+	.clear-tall {
+			clear: both;
+			margin: 0;
+			padding: 1.5em 0;
+	}
+
+
+	.video-container {
+			border-top: none;
+	}
+
+	.video {
+			width: 220px;
+			float: left;
+			margin-right: 10px;
 	}
 

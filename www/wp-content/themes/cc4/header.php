@@ -33,7 +33,7 @@
   <link rel="pingback" href="<?php bloginfo('pingback_url'); ?>" />
   <?php } ?>
   
-  <link href="<?php bloginfo('stylesheet_directory'); ?>/style.css?4.5" rel="stylesheet" type="text/css" />
+  <link href="<?php bloginfo('stylesheet_directory'); ?>/style.css?4.6" rel="stylesheet" type="text/css" />
   <link href="<?php bloginfo('stylesheet_directory'); ?>/support.css?5.1" rel="stylesheet" type="text/css" />
   <link href="/includes/total.css?<?= rand() ?>" rel="stylesheet" type="text/css" /> 
 
