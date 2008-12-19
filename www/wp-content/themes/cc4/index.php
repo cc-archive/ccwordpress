@@ -18,7 +18,7 @@
 				Join Jesse Dylan in <a href="http://support.creativecommons.org/">supporting CC</a>. Watch his new video about <a href="http://sciencecommons.org/about/science-commons-dylan-video/">Science Commons</a>.
 			</div>
 			<div id="campaign-matching">
-				<a href="http://support.creativecommons.org/join">Donate</a> by December 31st and have the value of your gift doubled thanks to <a href="http://fairshare.cc/">FairShare</a>.
+				Thanks to everyone who took advantage of <a href="http://fairshare.cc/">FairShare's</a> matching challenge!
 			</div> 
    			<div id="campaign">  
 				<div class="progress" onclick="window.location='http://support.creativecommons.org';">
