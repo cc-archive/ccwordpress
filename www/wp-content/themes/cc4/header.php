@@ -20,7 +20,7 @@
   <? }?>
   <meta name="generator" content="WordPress <?php bloginfo('version'); ?>" />
   <meta name="keywords" content="creative commons, commons, free culture, open source, attribution, non-commercial, share-alike, no derivatives, lessig" />
-<?php if (is_single() or is_page()) { ?>
+<?php if (is_single()) { ?>
 	<meta name="description" content="<?php cc_post_excerpt() ?>" />
 <?php } else { ?>
 	<meta name="description" content="Creative Commons licenses provide a flexible range of protections and freedoms for authors, artists, and educators." />
@@ -36,7 +36,7 @@
   <link rel="pingback" href="<?php bloginfo('pingback_url'); ?>" />
   <?php } ?>
   
-  <link href="<?php bloginfo('stylesheet_directory'); ?>/style.css?4.6" rel="stylesheet" type="text/css" />
+  <link href="<?php bloginfo('stylesheet_directory'); ?>/style.css?4.6.1" rel="stylesheet" type="text/css" />
   <link href="<?php bloginfo('stylesheet_directory'); ?>/support.css?5.1" rel="stylesheet" type="text/css" />
   <link href="/includes/total.css?<?= rand() ?>" rel="stylesheet" type="text/css" /> 
 

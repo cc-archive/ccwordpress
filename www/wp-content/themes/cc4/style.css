@@ -507,3 +507,16 @@ p.presskit {
 			margin-right: 10px;
 	}
 
+	.about-items {
+			width: 48%;
+			padding-right: 2%;
+			float: left;
+	}
+	.about-items-box {
+			clear: both;
+			padding-bottom: 3em; 
+			margin: 1em 0;  
+			border-bottom: 1px solid #e0e0e0;  
+			overflow: auto;
+	}
+
