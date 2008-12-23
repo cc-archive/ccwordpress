@@ -87,6 +87,17 @@ function cc_current_feature() {
   return stripslashes (get_option ('cc_current_feature'));
 }
 
+/* Equivalent to WP's the_excerpt()
+ * This version builds out excerpt sans html and entities, safe for use in meta tags.
+ */
+function cc_post_excerpt() {
+	global $post;
+
+	$excerpt = htmlentities(strip_tags($post->post_content));
+	$excerpt_a = array_slice (explode(" ", $excerpt), 0, 55);
+	echo implode(" ", $excerpt_a) . "...";
+}
+
 // Removes over-zealously placed <br/>'s and </p>'s from commented out html, and RDF blocks
 // Also removes <br/>'s from the end of </li>'s
 function cc_post_content_process($content) {
