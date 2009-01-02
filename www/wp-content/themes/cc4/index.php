@@ -4,29 +4,7 @@
 
       <div id="content">
         <div id="main-content">
-		 <?php /* echo cc_current_feature();*/ ?>
-		<div style="margin-right: 1.5em; margin-bottom: 1.5em;">
- 			<div id="campaign08">
-   				<div class="campaign-block">
-	 				<h2>Help Build<br/>The Commons</h2>
-	 				<div id="join-today">
-	   					<a href="http://support.creativecommons.org/">Join Today</a>
-	 				</div>
-   				</div>
-			</div>
-			<div id="campaign-hint">
-				Join Jesse Dylan in <a href="http://support.creativecommons.org/">supporting CC</a>. Watch his new video about <a href="http://sciencecommons.org/about/science-commons-dylan-video/">Science Commons</a>.
-			</div>
-			<div id="campaign-matching">
-				Thanks to everyone who took advantage of <a href="http://fairshare.cc/">FairShare's</a> matching challenge!
-			</div> 
-   			<div id="campaign">  
-				<div class="progress" onclick="window.location='http://support.creativecommons.org';">
-					<span>&nbsp;</span>
-				</div>
-				<div class="results"><a href="http://support.creativecommons.org/"><?php cc_progress_total() ?> / $500,000 by Dec 31</a></div>
-   			</div>
-		</div>
+		 <?php echo cc_current_feature(); ?>
 
 	<div class="block hero" id="title">
             
@@ -34,7 +12,7 @@
             
           </div>
 	  <div id="alpha" class="content-box">
-            <a href='/weblog'><h4>CC News</h4></a>
+            <h4><a href='/weblog'>CC News</a></h4>
 <?php // Get the latest 5 posts that aren't in the worldwide category. ?>
 <?php 
   while (have_posts()) { 
@@ -63,7 +41,7 @@
 	    <li><h3><a href="/weblog/rss">RSS Feed</a></h3></li></ul>
 	    </div>
 	    <div id="beta" class="content-box">
-	     <a href='http://planet.creativecommons.org/jurisdictions/'><h4>Jurisdiction News</h4></a>
+	     <h4><a href='http://planet.creativecommons.org/jurisdictions/'>Jurisdiction News</a></h4>
 	     <?php cc_build_external_feed('Planet CC'); ?>
 	     <div style="margin-left: 1ex;"><a href="http://planet.creativecommons.org/jurisdictions/">[More jurisdiction news]</a></div>
 	    </div>
