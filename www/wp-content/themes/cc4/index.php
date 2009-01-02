@@ -4,24 +4,7 @@
 
       <div id="content">
         <div id="main-content">
-		 <?php /* echo cc_current_feature();*/ ?>
-		<div style="margin-right: 1.5em; margin-bottom: 1.5em;">
- 			<div id="campaign08">
-   				<div class="campaign-block">
-	 				<h2>Help Build<br/>The Commons</h2>
-	 				<div id="join-today">
-	   					<a href="http://support.creativecommons.org/">Join Today</a>
-	 				</div>
-   				</div>
-			</div>
-			<div id="campaign-hint">
-				Join Jesse Dylan in <a href="http://support.creativecommons.org/">supporting CC</a>. Watch his new video about <a href="http://sciencecommons.org/about/science-commons-dylan-video/">Science Commons</a>.
-			</div>
-			<div id="campaign-matching">
-				Thanks to everyone who took advantage of <a href="http://fairshare.cc/">FairShare's</a> matching challenge!
-			</div> 
-			<?php include('progress.php'); ?>
-		</div>
+		 <?php echo cc_current_feature(); ?>
 
 	<div class="block hero" id="title">
             
