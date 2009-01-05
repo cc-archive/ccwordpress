@@ -32,7 +32,7 @@
   <link rel="alternate" type="application/rss+xml" title="RSS 2.0" href="<?php echo get_settings('home') . "/" . $category_name; ?>/feed/rss" />
   <? } ?>
 
-  <?php if (is_single() or is_page()) { ?>
+  <?php if (is_single()) { ?>
   <link rel="pingback" href="<?php bloginfo('pingback_url'); ?>" />
   <?php } ?>
   
