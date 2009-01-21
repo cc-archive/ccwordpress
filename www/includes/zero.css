@@ -122,3 +122,15 @@ strong {
 .help_panel {
 display:none;
 }
+
+div.success {
+    padding:.5em;
+    background-color: lightGreen;
+    font-size: 1em; !important
+}
+
+div.error {
+    padding:.5em;
+    background-color: lightCoral;
+    font-size: 1em; !important
+}
