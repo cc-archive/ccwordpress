@@ -50,9 +50,13 @@
 		width: 57%;
 		padding-left: 2%;
 	}
-	.yui-module .bd .form-answer input.form-field,
-	.yui-module .bd .form-answer iframe.form-field {
+
+	.yui-module .bd .form-answer input.form-field {
 		width: 90%;
+	}
+
+	.yui-module .bd .form-answer iframe.form-field {
+		width: 100%;
 	}
 
 .preview {
