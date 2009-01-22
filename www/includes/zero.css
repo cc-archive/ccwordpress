@@ -138,3 +138,7 @@ div.error {
     background-color: lightCoral;
     font-size: 1em; !important
 }
+
+h2 {
+    font-family: sans-serif;
+}
