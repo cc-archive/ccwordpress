@@ -16,20 +16,24 @@ YAHOO.cc.help.init_help_item = function(help_anchor) {
                             {close: true, 
 			     visible: false, 
 			     draggable: false, 
-			     width:250,
+			     width:'350px',
 			     context:[help_anchor.id,'bl','tl']
 			    } ); 
 
     var item_idx = YAHOO.cc.help.help_panels.push(new_panel) - 1;
 
+    // remove the initial class
+    YAHOO.util.Dom.removeClass(help_id, "help_panel");
+
     YAHOO.cc.help.help_panels[item_idx].render();
 
     // connect the event handlers
-    YAHOO.util.Event.addListener(link_id, "click", 
-				 function(e) {
-				   YAHOO.cc.help.help_panels[item_idx].show();
-                   YAHOO.util.Event.preventDefault(e);
-				 });
+    var on_click = function(e) {
+	YAHOO.cc.help.help_panels[item_idx].show();
+	e.preventDefault();
+    }; // on_click
+
+    YAHOO.util.Event.addListener(link_id, "click", on_click);
 
 
 } // init_help_text
