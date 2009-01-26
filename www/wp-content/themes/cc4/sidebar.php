@@ -20,7 +20,7 @@
   </div>
 
 <?php if (!is_home()) { 
-	$exclude_list = "7486,7476,7471,7472,7473,7506,7474,7475,7487,7505,7682,7793,7794";
+	$exclude_list = "7486,7476,7471,7472,7473,7506,7474,7475,7487,7505,7682,7793,7794,12354";
 	$list_pages_query = "&title_li=&echo=0&exclude=".$exclude_list;
 	if ($post->post_parent) {
 		if ($root_post_id = get_post_meta($post->ID, "root", true)) {
