@@ -17,7 +17,8 @@ YAHOO.cc.help.init_help_item = function(help_anchor) {
 			     visible: false, 
 			     draggable: false, 
 			     width:'350px',
-			     context:[help_anchor.id,'bl','tl']
+			     context:[help_anchor.id,'bl','tl'],
+			     constraintoviewport: true
 			    } ); 
 
     var item_idx = YAHOO.cc.help.help_panels.push(new_panel) - 1;
