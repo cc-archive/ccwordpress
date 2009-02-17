@@ -122,6 +122,10 @@
 			margin-top: 22px;
 		}
 		
+		#deed-conditions ul li ul {
+			margin-top: 8px;
+		}
+		
 		#deed-conditions div.fineprint {
 			padding: 15px;
 			border: 1px solid #ddd;
@@ -185,12 +189,14 @@
 		li {
 			margin-bottom: 8px;
 		}
+		li.license-properties {
+		    width: 490px;
+		}
 		li.license {
 			list-style: none;
 			padding-bottom: 25px;
 			padding-left: 70px;
 			padding-top: 10px;
-			width: 380px;
 		}
 		li.license p {
 			margin: 0;
