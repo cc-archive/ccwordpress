@@ -189,7 +189,7 @@
 		li {
 			margin-bottom: 8px;
 		}
-		li.license-properties {
+		ul.license-properties {
 		    width: 490px;
 		}
 		li.license {
