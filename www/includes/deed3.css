@@ -191,6 +191,9 @@
 		}
 		ul.license-properties {
 		    width: 490px;
+		    list-style-image: none;
+		    list-style-position: outside;
+		    list-style-type: none;
 		}
 		li.license {
 			list-style: none;
