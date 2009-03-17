@@ -3,11 +3,12 @@
 $nav = array (
 //  array("name" => "Home",           "path" => "/"),
   array("name" => "About",          "path" => "/about/"),
-  array("name" => "FAQ",			"path" => "/resources/faq/"),
+  array("name" => "FAQ",			      "path" => "/resources/faq/"),
   array("name" => "Projects",       "path" => "/projects/"),
+  array("name" => "Productions",    "path" => "/productions/"),
   array("name" => "Resources",      "path" => "/resources/"),
   array("name" => "Search",    	    "path" => "/search/"),
-  array("name" => "Contact",        "path" => "/contact/"),
+  array("name" => "Contact",        "path" => "/contact/")
 );
 
 ?>
