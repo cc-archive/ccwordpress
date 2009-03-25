@@ -141,7 +141,7 @@ a.cc-actions:hover, #header-main .active a:link { background: url('/images/heade
 #beta ul { list-style: disc; padding-left: 1.32em; }
 #beta ul li { padding-bottom: 0.66em; }
 
-.block { clear: both; margin-bottom: 35px; padding-left: 1%; }
+.block { clear: both; margin-bottom: 35px; padding-left: 10px; }
 
 #blog .block, #alpha .block { margin-bottom: 33px; }
 #features .block, #beta .block { padding: 0 5px; }
