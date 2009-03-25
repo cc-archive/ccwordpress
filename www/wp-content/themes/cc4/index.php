@@ -4,10 +4,12 @@
 
       <div id="content">
         <div id="main-content">
-		 <?php echo cc_current_feature(); ?>
+		 <?php /* echo cc_current_feature(); */ ?>
 
-	<div class="block hero" id="title">
-            
+			<div style="float: left; width: 365px; margin-right:15px;">
+				<a href="http://creativecommons.org/weblog/entry/12540"><img src="/images/splash/flickr100m-banner2.jpg" alt="100 million CC images on Flickr!" border="0" /></a>
+			</div>
+	<div class="block hero" style="clear: none; margin-left: 375px;" id="title">
             <div id="blurb"><?= cc_intro_blurb() ?></div>
             
           </div>
