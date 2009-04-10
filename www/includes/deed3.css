@@ -115,7 +115,7 @@
 		#deed-conditions {
 			background:  url("/images/deed/limitations-header.png") 0 0 no-repeat;
 			padding: 0 10px;
-			margin-bottom: 33px;
+			margin-bottom: 20px;
 		}
 
 		#deed-conditions ul {
@@ -128,7 +128,7 @@
 		
 		#deed-understanding {
 			padding: 0 10px;
-			margin-top: 40px;
+			margin-top: 0px;
 			margin-bottom: 33px;
 			background:  url("/images/deed/understanding-header.png") 0 0 no-repeat;
 
