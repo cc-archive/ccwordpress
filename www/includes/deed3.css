@@ -133,6 +133,11 @@
 			background:  url("/images/deed/understanding-header.png") 0 0 no-repeat;
 
 		}
+
+		#deed-understanding li.license {
+		    padding-left:0px;
+		    padding-bottom:0px;
+		}
 		#deed-understanding-zero {
 			padding: 0 10px;
 			margin-top: 0px;
