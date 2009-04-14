@@ -115,17 +115,28 @@
 		#deed-conditions {
 			background:  url("/images/deed/limitations-header.png") 0 0 no-repeat;
 			padding: 0 10px;
-			margin-bottom: 33px;
+			margin-bottom: 20px;
 		}
 
 		#deed-conditions ul {
 			margin-top: 22px;
 		}
 		
+		#deed-conditions ul li ul {
+			margin-top: 8px;
+		}
+		
 		#deed-understanding {
 			padding: 0 10px;
-			margin-top: 40px;
+			margin-top: 0px;
 			margin-bottom: 33px;
+			background:  url("/images/deed/understanding-header.png") 0 0 no-repeat;
+
+		}
+
+		#deed-understanding li.license {
+		    padding-left:0px;
+		    padding-bottom:0px;
 		}
 		#deed-understanding-zero {
 			padding: 0 10px;
@@ -218,7 +229,6 @@
 			padding-bottom: 25px;
 			padding-left: 70px;
 			padding-top: 10px;
-			width: 380px;
 		}
 		li.license p {
 			margin: 0;
@@ -484,8 +494,8 @@ div#languages {
 	width: 620px; 
 	margin-left: auto; 
 	margin-right: auto; 
-	margin-bottom: 3em;
-	margin-top: 3em;
+	margin-bottom: 1.5em;
+	margin-top: 1.5em;
 	text-align: center;
 	overflow: auto;
 	background-color: #373737;
@@ -506,5 +516,9 @@ div#languages a {
 
 div#languages p {
 	margin-top: 0;
+}
+
+.help_panel {
+    display:none;
 }
 
