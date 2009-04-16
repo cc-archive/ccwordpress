@@ -12,7 +12,10 @@
 	<div class="block hero" style="clear: none; margin-left: 375px;" id="title">
             <div id="blurb"><?= cc_intro_blurb() ?></div>
             
-          </div>
+		  </div>
+		<div id="banner">
+		 <a href="/weblog/entry/14023">Noncommercial Use Study, Round Two &mdash; Information &raquo;</a>
+		</div>
 	  <div id="alpha" class="content-box">
             <h4><a href='/weblog'>CC News</a></h4>
 <?php // Get the latest 5 posts that aren't in the worldwide category. ?>
