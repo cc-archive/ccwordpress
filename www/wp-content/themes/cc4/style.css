@@ -514,3 +514,16 @@ p.presskit {
 			overflow: auto;
 	}
 
+	#banner {
+			padding: 5px;
+			margin-top: -15px;
+			margin-bottom: 20px;
+			background-color: #e0e0c0;
+			text-align: center;
+			-moz-border-radius: 4px;
+			-webkit-border-radius: 4px;
+			border-radius: 4px;
+	}
+	#banner a {
+			color: #444;
+	}
