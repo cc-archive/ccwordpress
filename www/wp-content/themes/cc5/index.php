@@ -164,9 +164,11 @@ HTML;
         </div>
 
         <div id="ccLinks">
+          <?php /* Saving this for later. (09/04/23)
           <div id="donateBlock">
             <a href="http://support.creativecommons.org/">Help Build the Commons<br/><strong>Support CC</strong></a>
           </div>
+          */ ?>
           <div class="infoLinks">
             <h4 class="titleStrip subTitle">Information</h4>
             <ul class="ccContent">
