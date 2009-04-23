@@ -66,7 +66,10 @@ img.mugshot {
 /* --- */
 
 #headerWrapper { font-size: 1.5em;}
-#mainContent { font-size: 1.3em;}
+#mainContent { 
+	font-size: 1.3em;
+	overflow: auto;
+}
 #footer { font-size: 1.1em;}
 
 .box {
