@@ -89,23 +89,19 @@
       </div>
 
       <div id="triple" class="box">
-<!--         <div class="box"> -->
         <div id="ccContent" class="columnBox">
 	      <div id="ccTools" class="columnBox">
 	        <div class="stdColumn ccTool helpLink" id="search">
-            <!-- <a href="#"><img src="<?php bloginfo('stylesheet_directory'); ?>/images/search.png" alt="Search" /></a> -->
-	          <h2 class="find"><a href="http://search.creativecommons.org/">Find</a></h2>
+	          <h2 class="find"><a href="http://search.creativecommons.org/">Find &raquo;</a></h2>
 	          <p>Find <strong>licensed</strong> works you can share, remix, or&nbsp;reuse.</p>
 	        </div>
 	        <div class="stdColumn ccTool helpLink " id="license">
-            <!-- <a href="#"><img src="<?php bloginfo('stylesheet_directory'); ?>/images/share.png" alt="Share" height="90" /></a> -->
-	          <h2 class="license"><a href="/license/">License</a></h2>
+	          <h2 class="license"><a href="/license/">License &raquo;</a></h2>
 	          <p>Use our <strong>free</strong> tools to inform people how they can reuse and share your creative works.</p>
 	        </div>
 	        <div class="stdColumn ccTool helpLink lastColumn" id="network">
-            <!-- <a href="#"><img src="<?php bloginfo('stylesheet_directory'); ?>/images/join.png" alt="Search" /></a> -->
-	          <h2 class="join"><a href="http://support.creativecommons.org/join/">Join</a></h2>
-	          <p>Join the <strong>community</strong> dedicated to building the&nbsp;Commons.</p>
+	          <h2 class="join"><a href="http://support.creativecommons.org/join/">Donate &raquo;</a></h2>
+	          <p>Help <strong>support</strong> the&nbsp;Commons.</p>
 	        </div>
 	      </div>  
       </div>
@@ -210,7 +206,7 @@ HTML;
 	  </div>
 	  <div id="help_network">
 	    <div class="bd">
-	      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor</p>
+	      <p>Creative Commons needs your support to help build a participatory culture, in which everyone can actively engage in the creativity that surrounds us.</p>
 	    </div>
 	  </div>
 	  </div>	
