@@ -241,7 +241,9 @@
 }
 
 #ccINews ul li {
-	margin-bottom: 1.33em;
+	margin-bottom: 1em;
+	overflow: auto;
+	clear: both;
 }
 
 #ccINews ul p {
