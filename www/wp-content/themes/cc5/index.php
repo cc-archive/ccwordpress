@@ -134,7 +134,7 @@
                 }
               } ?>
             </ul>
-            <p><img src="<?php bloginfo('stylesheet_directory'); ?>/images/feed.png"/><a href="<?php echo get_category_link(1);?>"><strong>Read more...</strong></a></p>
+            <p><a href="/weblog/rss"><img src="<?php bloginfo('stylesheet_directory'); ?>/images/feed.png" border="0" alt="Feed" /></a><a href="<?php echo get_category_link(1);?>"><strong>Read more...</strong></a></p>
           </div>
           <div class="stdColumn">
             <h4 class="titleStrip subTitle">International Community News</h4>
@@ -158,7 +158,7 @@ HTML;
               }
               ?>
             </ul>
-            <p><img src="<?php bloginfo('stylesheet_directory'); ?>/images/feed.png"/><a href="http://planet.creativecommons.org/"><strong>Read more...</strong></a></p>
+            <p><a href="http://planet.creativecommons.org/atom.xml"><img src="<?php bloginfo('stylesheet_directory'); ?>/images/feed.png" border="0" alt="Feed" /></a><a href="http://planet.creativecommons.org/"><strong>Read more...</strong></a></p>
             
           </div>
         </div>
