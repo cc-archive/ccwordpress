@@ -169,7 +169,7 @@
 
 #latestNews li.notice {
 	background-color: #E0E0C0;
-	padding: 5px;
+	padding: 5px 8px;
 	-moz-border-radius: 4px;
 }
 #latestNews li.notice p {
