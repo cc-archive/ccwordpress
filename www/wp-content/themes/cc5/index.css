@@ -386,6 +386,7 @@
 }
 .ccTool h2 a {
 /*	color: #fff;*/
+	display: block;
 }
 .ccTool p {
 	margin: 0;
