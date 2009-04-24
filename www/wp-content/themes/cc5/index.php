@@ -71,10 +71,11 @@
         </div>
           <div id="splashBox">
           <div id="splash">
-            <?php if (have_posts()) { 
+            <?php 
+            while (have_posts()) { 
               the_post(); 
               
-              if (is_sticky()) { 
+              if (is_sticky() && in_category('splash')) { 
                 if ($image = cc_get_attachment_image ($post->ID, 630)) { 
                  
                 ?>
@@ -82,7 +83,12 @@
               <img src="<?php echo $image[0] ?>" alt="<?php the_title(); ?>" title="<?php the_title(); ?>" class="main" />
             </a>
             
-            <?php } } } ?>
+            <?php 
+                } // if get_attachment_image
+                break;
+              } // if is_sticky
+            } // while
+            ?>
           </div>
         </div>
         </div>
