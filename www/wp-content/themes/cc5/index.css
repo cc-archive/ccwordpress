@@ -167,6 +167,14 @@
 	width: 300px;
 }
 
+#latestNews li.notice {
+	background-color: #ddd;
+	padding: 5px;
+	-moz-border-radius: 4px;
+}
+#latestNews li.notice p {
+	display: none;
+}
 
 #ccTools {
 	padding-top: 0em;

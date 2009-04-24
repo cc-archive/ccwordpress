@@ -125,17 +125,25 @@
                 static $count = 0;
                 if ($count == "7") { break; } else {
                   if (!in_category(1) && !is_single()) { continue; }
+                  
+                  if (in_category('notice')) {
+                    $liClass = "notice";
+                    $noticeTitle = get_post_meta($post->ID, "notice_title", true);
+                  }
                   ?>
-                  <li>
+                  <li class="<?php echo $liClass ?>">
                     <h5 class="postTitle">
                       <a href="<?php the_permalink() ?>">
                         <?php if (in_category(4) || in_category(7)) { ?>Featured Commoner: <?php } ?>
-                        <?php the_title(); ?>
+                        
+                        <?php if (!$noticeTitle) { the_title(); } else { echo $noticeTitle; } ?>
                       </a>
                     </h5>
                     <p><small><?php the_time('F jS, Y')?></small></p>
                   </li>
               <?php
+                  $liClass = null;
+                  $noticeTitle = null;
                   $count++;
                 }
               } ?>
