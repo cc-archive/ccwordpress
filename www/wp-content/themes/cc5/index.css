@@ -167,6 +167,14 @@
 	width: 300px;
 }
 
+#latestNews li.notice {
+	background-color: #ddd;
+	padding: 5px;
+	-moz-border-radius: 4px;
+}
+#latestNews li.notice p {
+	display: none;
+}
 
 #ccTools {
 	padding-top: 0em;
@@ -241,7 +249,9 @@
 }
 
 #ccINews ul li {
-	margin-bottom: 1.33em;
+	margin-bottom: 1em;
+	overflow: auto;
+	clear: both;
 }
 
 #ccINews ul p {
@@ -355,7 +365,7 @@
 	background: url(images/find.png) no-repeat 97% 50%;
 }
 .ccTool h2.license {
-	background: url(images/member.png) no-repeat 97% 50%;
+	background: url(images/license.png) no-repeat 97% 50%;
 }
 .ccTool h2.join {
 	background: url(images/network.png) no-repeat 97% 50%;
@@ -382,6 +392,7 @@
 	/* font-size: 90%; */
 	padding: 0 6px 6px;
 	line-height: 1.5em;
+	height: 3em;
 }
 
 .ccTool img {

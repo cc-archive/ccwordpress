@@ -71,10 +71,11 @@
         </div>
           <div id="splashBox">
           <div id="splash">
-            <?php if (have_posts()) { 
+            <?php 
+            while (have_posts()) { 
               the_post(); 
               
-              if (is_sticky()) { 
+              if (is_sticky() && in_category('splash')) { 
                 if ($image = cc_get_attachment_image ($post->ID, 630)) { 
                  
                 ?>
@@ -82,30 +83,31 @@
               <img src="<?php echo $image[0] ?>" alt="<?php the_title(); ?>" title="<?php the_title(); ?>" class="main" />
             </a>
             
-            <?php } } } ?>
+            <?php 
+                } // if get_attachment_image
+                break;
+              } // if is_sticky
+            } // while
+            ?>
           </div>
         </div>
         </div>
       </div>
 
       <div id="triple" class="box">
-<!--         <div class="box"> -->
         <div id="ccContent" class="columnBox">
 	      <div id="ccTools" class="columnBox">
 	        <div class="stdColumn ccTool helpLink" id="search">
-            <!-- <a href="#"><img src="<?php bloginfo('stylesheet_directory'); ?>/images/search.png" alt="Search" /></a> -->
-	          <h2 class="find"><a href="http://search.creativecommons.org/">Find</a></h2>
+	          <h2 class="find"><a href="http://search.creativecommons.org/">Find &raquo;</a></h2>
 	          <p>Find <strong>licensed</strong> works you can share, remix, or&nbsp;reuse.</p>
 	        </div>
 	        <div class="stdColumn ccTool helpLink " id="license">
-            <!-- <a href="#"><img src="<?php bloginfo('stylesheet_directory'); ?>/images/share.png" alt="Share" height="90" /></a> -->
-	          <h2 class="license"><a href="/license/">License</a></h2>
+	          <h2 class="license"><a href="/license/">License &raquo;</a></h2>
 	          <p>Use our <strong>free</strong> tools to inform people how they can reuse and share your creative works.</p>
 	        </div>
 	        <div class="stdColumn ccTool helpLink lastColumn" id="network">
-            <!-- <a href="#"><img src="<?php bloginfo('stylesheet_directory'); ?>/images/join.png" alt="Search" /></a> -->
-	          <h2 class="join"><a href="http://support.creativecommons.org/join/">Join</a></h2>
-	          <p>Join the <strong>community</strong> dedicated to building the&nbsp;Commons.</p>
+	          <h2 class="join"><a href="https://support.creativecommons.org/donate/">Donate &raquo;</a></h2>
+	          <p>Help <strong>support</strong> the&nbsp;Commons.</p>
 	        </div>
 	      </div>  
       </div>
@@ -123,22 +125,30 @@
                 static $count = 0;
                 if ($count == "7") { break; } else {
                   if (!in_category(1) && !is_single()) { continue; }
+                  
+                  if (in_category('notice')) {
+                    $liClass = "notice";
+                    $noticeTitle = get_post_meta($post->ID, "notice_title", true);
+                  }
                   ?>
-                  <li>
+                  <li class="<?php echo $liClass ?>">
                     <h5 class="postTitle">
                       <a href="<?php the_permalink() ?>">
                         <?php if (in_category(4) || in_category(7)) { ?>Featured Commoner: <?php } ?>
-                        <?php the_title(); ?>
+                        
+                        <?php if (!$noticeTitle) { the_title(); } else { echo $noticeTitle; } ?>
                       </a>
                     </h5>
                     <p><small><?php the_time('F jS, Y')?></small></p>
                   </li>
               <?php
+                  $liClass = null;
+                  $noticeTitle = null;
                   $count++;
                 }
               } ?>
             </ul>
-            <p><img src="<?php bloginfo('stylesheet_directory'); ?>/images/feed.png"/><a href="<?php echo get_category_link(1);?>"><strong>Read more...</strong></a></p>
+            <p><a href="/weblog/rss"><img src="<?php bloginfo('stylesheet_directory'); ?>/images/feed.png" border="0" alt="Feed" /></a><a href="<?php echo get_category_link(1);?>"><strong>Read more...</strong></a></p>
           </div>
           <div class="stdColumn">
             <h4 class="titleStrip subTitle">International Community News</h4>
@@ -162,15 +172,17 @@ HTML;
               }
               ?>
             </ul>
-            <p><img src="<?php bloginfo('stylesheet_directory'); ?>/images/feed.png"/><a href="http://planet.creativecommons.org/"><strong>Read more...</strong></a></p>
+            <p><a href="http://planet.creativecommons.org/atom.xml"><img src="<?php bloginfo('stylesheet_directory'); ?>/images/feed.png" border="0" alt="Feed" /></a><a href="http://planet.creativecommons.org/"><strong>Read more...</strong></a></p>
             
           </div>
         </div>
 
         <div id="ccLinks">
+          <?php /* Saving this for later. (09/04/23)
           <div id="donateBlock">
             <a href="http://support.creativecommons.org/">Help Build the Commons<br/><strong>Support CC</strong></a>
           </div>
+          */ ?>
           <div class="infoLinks">
             <h4 class="titleStrip subTitle">Information</h4>
             <ul class="ccContent">
@@ -210,7 +222,7 @@ HTML;
 	  </div>
 	  <div id="help_network">
 	    <div class="bd">
-	      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor</p>
+	      <p>Creative Commons needs your support to help build a participatory culture, in which everyone can actively engage in the creativity that surrounds us.</p>
 	    </div>
 	  </div>
 	  </div>	
