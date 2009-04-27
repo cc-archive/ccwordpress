@@ -18,7 +18,7 @@ function cc_plugin_activate() {
 	global $wpdb;
 
 	$cc_db_rss_table = $wpdb->prefix . "cc_rss_feeds";
-
+print $cc_db_rss_table;
 	# On first activation create rss feeds table
 	if ( $wpdb->get_var("SHOW TABLES LIKE '$cc_db_rss_table'") != $cc_db_rss_table ) {
 		$sql = sprintf("
@@ -48,7 +48,7 @@ function cc_build_external_feed($feed_name, $entries = 0, $charcount = 0, $group
 
 	global $cc_db_rss_table;
 	global $wpdb;
-
+  
 	$sql = sprintf("
 		SELECT * FROM %s
 		WHERE name = '%s'
@@ -56,6 +56,7 @@ function cc_build_external_feed($feed_name, $entries = 0, $charcount = 0, $group
 		$cc_db_rss_table,
 		$wpdb->escape($feed_name)
 	);
+
 
 	$results = $wpdb->get_results($sql, OBJECT);
 	if ( ! $results || ! $results[0]->url ) {
@@ -98,52 +99,55 @@ function cc_build_external_feed($feed_name, $entries = 0, $charcount = 0, $group
 	}
 
 	$items = array_slice($items, 0, $entries);
-	foreach ( $items as $item ) {
-		$date = date('F dS, Y', $item['date']);
-		if ( (strlen($item['content']) > $charcount) && ($charcount > 0) ) {
-			# Don't chop a word off at $charcount, but try to find the
-			# next space char after $charcount, if there isn't then make
-			# the dangerous assumption that we can use the whole string.
-			$strpos = strpos($item['content'], ' ', $charcount); 
-			$offset = $strpos ? $strpos : strlen($item['content']);
-			$content = substr($item['content'], 0, $offset);
-			
-			# In the case where we are strip_tag()ing do we want to turn
-			# newslines into HTML <p>s for formatting?
-			if ( $nl2p ) {
-				$content = str_replace("\n", "</p><p>", trim($content));
-			}
-			$content .= " [...]";
-		} else {
-			$content = $item['content'];
-		}
+	return $items;
 
-		# If we are processing the CC Planet feed then we want to also
-		# display the country's flag in the output
-		if ( "Planet CC" == $feed_name ) {
-			$flag_html = <<<HTML
-	<a href="/international/{$item['country_code']}/">
-		<img src="/images/international/{$item['flag_code']}.png" alt="{$item['flag_code']}" class="country">
-	</a>
-
-HTML;
-		} else {
-			$flag_html = "";
-		}
-
-		# Print the HTML for the entry
-		echo <<<HTML
-<div class='block blogged rss'>
-	$flag_html
-	<div class="rss-title">
-		<h3><a href="{$item['link']}">{$item['title']}</a></h3>
-		<small class="rss-date">$date</small>
-	</div>
-	<p>$content<br/>[<a href="{$item['link']}">Read More</a>]</p>
-</div>
-
-HTML;
-	} # end: foreach $items as $item
+// All of this is implemented in theme index.php ~~Alex - 2009/03/12
+//  foreach ( $items as $item ) {
+//    $date = date('F dS, Y', $item['date']);
+//    if ( (strlen($item['content']) > $charcount) && ($charcount > 0) ) {
+//      # Don't chop a word off at $charcount, but try to find the
+//      # next space char after $charcount, if there isn't then make
+//      # the dangerous assumption that we can use the whole string.
+//      $strpos = strpos($item['content'], ' ', $charcount); 
+//      $offset = $strpos ? $strpos : strlen($item['content']);
+//      $content = substr($item['content'], 0, $offset);
+//      
+//      # In the case where we are strip_tag()ing do we want to turn
+//      # newslines into HTML <p>s for formatting?
+//      if ( $nl2p ) {
+//        $content = str_replace("\n", "</p><p>", trim($content));
+//      }
+//      $content .= " [...]";
+//    } else {
+//      $content = $item['content'];
+//    }
+// 
+//    # If we are processing the CC Planet feed then we want to also
+//    # display the country's flag in the output
+//    if ( "Planet CC" == $feed_name ) {
+//      $flag_html = <<<HTML
+//  <a href="/international/{$item['country_code']}/">
+//    <img src="/images/international/{$item['flag_code']}.png" alt="{$item['flag_code']}" class="country" />
+//  </a>
+// 
+// HTML;
+//    } else {
+//      $flag_html = "";
+//    }
+// 
+//    # Print the HTML for the entry
+//    echo <<<HTML
+// <div class='block blogged rss'>
+//  $flag_html
+//  <div class="rss-title">
+//    <h3><a href="{$item['link']}">{$item['title']}</a></h3>
+//    <small class="rss-date">$date</small>
+//  </div>
+//  <p>$content<br/>[<a href="{$item['link']}">Read More</a>]</p>
+// </div>
+// 
+// HTML;
+//  } # end: foreach $items as $item
 
 } # end: cc_build_external_feed
 
@@ -337,7 +341,7 @@ function cc_fix_permalink($content, $post){
 /* Filter for page title modifications */
 function cc_page_title($title, $sep) {
 	if (strstr($title, "Weblog")) {
-		return str_replace ("Weblog", "CC News", $title);
+		return str_replace ("Weblog", "Commons News", $title);
 	}
 	return $title;
 }
