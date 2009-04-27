@@ -1,14 +1,14 @@
-YAHOO.namespace("cc.help");
+YAHOO.namespace("cc.site");
 
 // convenience function for creating help tool tips
-YAHOO.cc.help.init_help_item = function(help_anchor) { 
+YAHOO.cc.site.init_help_item = function(help_anchor) { 
 
     var link_id = help_anchor.id;
     var help_id = 'help_' + link_id;
 
     // make sure we have an array to hold the list of panels
-    if (!YAHOO.cc.help.help_panels) {
-			YAHOO.cc.help.help_panels = new Array();
+    if (!YAHOO.cc.site.help_panels) {
+			YAHOO.cc.site.help_panels = new Array();
     }
 	
 	 /* Align to the bottom right of the last column, 
@@ -35,9 +35,9 @@ YAHOO.cc.help.init_help_item = function(help_anchor) {
 			   context: theContext
 			    } ); 
 
-    var item_idx = YAHOO.cc.help.help_panels.push(new_panel) - 1;
+    var item_idx = YAHOO.cc.site.help_panels.push(new_panel) - 1;
 
-    YAHOO.cc.help.help_panels[item_idx].render();
+    YAHOO.cc.site.help_panels[item_idx].render();
 
 	// hideTimeout code adapted from http://jqueryfordesigners.com/coda-popup-bubbles/
 	var hideDelay = 150;
@@ -55,7 +55,7 @@ YAHOO.cc.help.init_help_item = function(help_anchor) {
 		showTimeout = setTimeout(function() {
 			showTimeout = null;
 			
-		   YAHOO.cc.help.help_panels[item_idx].show();
+		   YAHOO.cc.site.help_panels[item_idx].show();
 		}, showDelay);
 
 	
@@ -69,7 +69,7 @@ YAHOO.cc.help.init_help_item = function(help_anchor) {
 		hideTimeout = setTimeout(function() {
 			hideTimeout = null;
 							
-		 	YAHOO.cc.help.help_panels[item_idx].hide();
+		 	YAHOO.cc.site.help_panels[item_idx].hide();
 		   
 			YAHOO.util.Event.preventDefault(e);			
 		}, hideDelay);
@@ -106,15 +106,15 @@ function resetSearch(e) {
 }
 
 
-YAHOO.cc.help.init = function() {
+YAHOO.cc.site.init = function() {
     // initialization for help pop-ups
 
 	YAHOO.util.Dom.getElementsByClassName('helpLink', null, null,
-											YAHOO.cc.help.init_help_item);
+											YAHOO.cc.site.init_help_item);
 	
 	document.getElementById("s").value = searchValue;
 	YAHOO.util.Event.addListener("s", "click", wakeSearch);
 	YAHOO.util.Event.addListener("s", "blur", resetSearch);
 } // init
 
-YAHOO.util.Event.onDOMReady(YAHOO.cc.help.init);
+YAHOO.util.Event.onDOMReady(YAHOO.cc.site.init);

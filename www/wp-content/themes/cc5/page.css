@@ -69,9 +69,7 @@
 #archives, #sideContent {
 	float: right;
 	margin-right: -5px;
-	width: 150px;
-	padding-left: 10px;
-	border-left: 1px dotted #ddd;
+	width: 160px;
 }
 
 #archives ul, #sideContent ul {
