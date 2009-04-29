@@ -5,6 +5,9 @@ YAHOO.cc.site.init_help_item = function(help_anchor) {
 
     var link_id = help_anchor.id;
     var help_id = 'help_' + link_id;
+	
+	// Make sure help_id doesn't have the sideitem class
+	YAHOO.util.Dom.removeClass(help_id, "sideitem");
 
     // make sure we have an array to hold the list of panels
     if (!YAHOO.cc.site.help_panels) {
@@ -24,7 +27,7 @@ YAHOO.cc.site.init_help_item = function(help_anchor) {
 	} else {
 		var panelWidth = "280px";
 	}
-	
+		
     // create the new panel and position it
     var new_panel = new YAHOO.widget.Panel(help_id, 
                             {close: false, title:false, 
