@@ -68,7 +68,7 @@ img.mugshot {
 #headerWrapper { font-size: 1.5em;}
 #mainContent { 
 	font-size: 1.3em;
-	overflow: hidden;
+	overflow: visible;
 }
 #footer { font-size: 1.1em;}
 
