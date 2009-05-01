@@ -118,13 +118,14 @@
           <div id="latestNews" class="stdColumn">
             <h4 class="titleStrip subTitle">Commons News</h4>
             <ul>
-              <?php
+<?php
+			  rewind_posts();
               while (have_posts()) {
                 the_post();
                 
                 static $count = 0;
                 if ($count == "7") { break; } else {
-                  if (!in_category(1) && !is_single()) { continue; }
+                  if ((!in_category(1) && !is_single()) || in_category('splash')) { continue; }
                   
                   if (in_category('notice')) {
                     $liClass = "notice";
