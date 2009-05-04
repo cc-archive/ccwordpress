@@ -3,7 +3,8 @@
 div.licensebox { 
 	background:#eee; 
 	border:1px solid #ccc; 
-	padding:1em; 
+	padding:1em;
+    width:543px; /* padding yields to 575px */ 
 }
 
 div.licensebox ul.choices {
