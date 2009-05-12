@@ -23,7 +23,7 @@ $category = get_category($cat); ?>
               <div class="block blog sideContentSpace" id="post-<?php the_ID(); ?>">
                 <h1 class="title">
                   <a href="<? the_permalink() ?>">
-                   <?php if (in_category(4) || in_category(7)) { ?>Featured Commoner: <?php } ?> 
+                   <?php if (in_category(4) || in_category(7)) { ?>CC Talks With: <?php } ?> 
                    <?php the_title() ?>
                   </a>
                 </h1>
