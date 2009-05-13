@@ -44,7 +44,7 @@
       </div>
       <div id="headerIntro">
         <h4>Share, Remix, Reuse &mdash; Legally</h4>
-        <p>Creative Commons is a nonprofit organization that works to reduce barriers to&nbsp;collaboration. <a href="http://creativecommons.org/about/what-is-cc">Learn More &raquo;</a></p>
+        <p>Creative Commons is a nonprofit organization that increases sharing and improves&nbsp;collaboration. <a href="http://creativecommons.org/about/what-is-cc">Learn More &raquo;</a></p>
       </div>
       <?php require_once "nav.php"; ?>
       <div id="headerSearch">
@@ -135,7 +135,7 @@
                   <li class="<?php echo $liClass ?>">
                     <h5 class="postTitle">
                       <a href="<?php the_permalink() ?>">
-                        <?php if (in_category(4) || in_category(7)) { ?>Featured Commoner: <?php } ?>
+                        <?php if (in_category(4) || in_category(7)) { ?>CC Talks With: <?php } ?>
                         
                         <?php if (!$noticeTitle) { the_title(); } else { echo $noticeTitle; } ?>
                       </a>

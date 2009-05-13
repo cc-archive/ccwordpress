@@ -29,7 +29,7 @@ $category = get_category($cat); ?>
                 <div class="excerpt">
                   <h1 class="title">
                     <a href="<? the_permalink() ?>">
-                     Featured Commoner: <?php the_title() ?>
+                     CC Talks With: <?php the_title() ?>
                     </a>
                   </h1>
                   <h4 class="meta"><?php the_author() ?>, <?php the_time('F jS, Y')?></h4>
