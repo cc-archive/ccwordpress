@@ -116,7 +116,7 @@
         <div id="ccFeatures" class="columnBox">
         <div id="ccINews">
           <div id="latestNews" class="stdColumn">
-            <h4 class="titleStrip subTitle">Commons News</h4>
+            <h4 class="titleStrip subTitle"><a href="<?php echo get_category_link(1);?>">Commons News</a></h4>
             <ul>
 <?php
 			  rewind_posts();
@@ -152,7 +152,7 @@
             <p><a href="/weblog/rss"><img src="<?php bloginfo('stylesheet_directory'); ?>/images/feed.png" border="0" alt="Feed" /></a><a href="<?php echo get_category_link(1);?>"><strong>Read more...</strong></a></p>
           </div>
           <div class="stdColumn">
-            <h4 class="titleStrip subTitle">International Community News</h4>
+            <h4 class="titleStrip subTitle"><a href="http://planet.creativecommons.org/">International Community News</a></h4> 
             <ul>
               <?php 
               $inews = cc_build_external_feed('CC Planet', 5, 0); 
