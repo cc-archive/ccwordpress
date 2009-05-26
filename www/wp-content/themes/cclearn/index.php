@@ -72,7 +72,7 @@ echo <<<HTML
           <h3><a href="{$item['link']}">{$item['title']}</a></h3>
           <small class="rss-date">$date</small>
         </div>
-        <p>$content<br/>[<a href="{$item['link']}">Read More</a>]</p>
+        <p>{$item['content']}<br/>[<a href="{$item['link']}">Read More</a>]</p>
       </div>
 HTML;
       }
