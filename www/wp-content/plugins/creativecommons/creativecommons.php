@@ -114,11 +114,9 @@ function cc_build_external_feed($feed_name, $entries = 0, $charcount = 0, $group
         # In the case where we are strip_tag()ing do we want to turn
         # newslines into HTML <p>s for formatting?
         if ( $nl2p ) {
-         $item['content'] = str_replace("\n", "</p><p>", trim($content));
+         $item['content'] = str_replace("\n", "</p><p>", trim($item['content']));
         }
-        $item['content'] .= " [...]";
-      } else {
-        $item['content'] = $item['content'];
+        $item['content'] .= "...";
       }
       $clean_items[] = $item;
     }
