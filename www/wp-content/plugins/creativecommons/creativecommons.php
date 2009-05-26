@@ -99,56 +99,34 @@ function cc_build_external_feed($feed_name, $entries = 0, $charcount = 0, $group
 	}
 
 	$items = array_slice($items, 0, $entries);
+	
+	if ($charcount || $nl2p) {
+	  $clean_items = array();
+    foreach ( $items as $item ) {
+      if ( (strlen($item['content']) > $charcount) && ($charcount > 0) ) {
+        # Don't chop a word off at $charcount, but try to find the
+        # next space char after $charcount, if there isn't then make
+        # the dangerous assumption that we can use the whole string.
+        $strpos = strpos($item['content'], ' ', $charcount); 
+        $offset = $strpos ? $strpos : strlen($item['content']);
+        $item['content'] = substr($item['content'], 0, $offset);
+        
+        # In the case where we are strip_tag()ing do we want to turn
+        # newslines into HTML <p>s for formatting?
+        if ( $nl2p ) {
+         $item['content'] = str_replace("\n", "</p><p>", trim($content));
+        }
+        $item['content'] .= " [...]";
+      } else {
+        $item['content'] = $item['content'];
+      }
+      $clean_items[] = $item;
+    }
+    
+    $items = $clean_items;
+	}
+	
 	return $items;
-
-// All of this is implemented in theme index.php ~~Alex - 2009/03/12
-//  foreach ( $items as $item ) {
-//    $date = date('F dS, Y', $item['date']);
-//    if ( (strlen($item['content']) > $charcount) && ($charcount > 0) ) {
-//      # Don't chop a word off at $charcount, but try to find the
-//      # next space char after $charcount, if there isn't then make
-//      # the dangerous assumption that we can use the whole string.
-//      $strpos = strpos($item['content'], ' ', $charcount); 
-//      $offset = $strpos ? $strpos : strlen($item['content']);
-//      $content = substr($item['content'], 0, $offset);
-//      
-//      # In the case where we are strip_tag()ing do we want to turn
-//      # newslines into HTML <p>s for formatting?
-//      if ( $nl2p ) {
-//        $content = str_replace("\n", "</p><p>", trim($content));
-//      }
-//      $content .= " [...]";
-//    } else {
-//      $content = $item['content'];
-//    }
-// 
-//    # If we are processing the CC Planet feed then we want to also
-//    # display the country's flag in the output
-//    if ( "Planet CC" == $feed_name ) {
-//      $flag_html = <<<HTML
-//  <a href="/international/{$item['country_code']}/">
-//    <img src="/images/international/{$item['flag_code']}.png" alt="{$item['flag_code']}" class="country" />
-//  </a>
-// 
-// HTML;
-//    } else {
-//      $flag_html = "";
-//    }
-// 
-//    # Print the HTML for the entry
-//    echo <<<HTML
-// <div class='block blogged rss'>
-//  $flag_html
-//  <div class="rss-title">
-//    <h3><a href="{$item['link']}">{$item['title']}</a></h3>
-//    <small class="rss-date">$date</small>
-//  </div>
-//  <p>$content<br/>[<a href="{$item['link']}">Read More</a>]</p>
-// </div>
-// 
-// HTML;
-//  } # end: foreach $items as $item
-
 } # end: cc_build_external_feed
 
 
