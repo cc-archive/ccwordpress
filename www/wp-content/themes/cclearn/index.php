@@ -61,7 +61,22 @@
         </div>
         <div id="alpha" class="content-box">
 		  <h4>Latest News</h4>
-		  <?php cc_build_external_feed("ccLearn Weblog"); /*Features");*/?>
+      <?php 
+      $feed = cc_build_external_feed("ccLearn Weblog"); 
+
+      foreach ($feed as $item) {
+        $date = date('F dS, Y', $item['date']);
+echo <<<HTML
+      <div class='block blogged rss'>
+        <div class="rss-title">
+          <h3><a href="{$item['link']}">{$item['title']}</a></h3>
+          <small class="rss-date">$date</small>
+        </div>
+        <p>$content<br/>[<a href="{$item['link']}">Read More</a>]</p>
+      </div>
+HTML;
+      }
+      ?>
         </div>
   	    <div id="beta" class="content-box-right">
 	        <h4>Feature</h4>
