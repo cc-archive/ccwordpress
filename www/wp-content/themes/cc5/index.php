@@ -60,14 +60,16 @@
         <div id="ccBlurb" >
           <div id="cc_mission">
           <!-- <p>Creative Commons is a <strong>nonprofit</strong> organization dedicated to making it easier for people to share and build upon the work of others, consistent with the rules of copyright.</p> -->
-          <h4 class="subTitle"><a href="/videos/a-shared-culture/">A Shared Culture &raquo;</a></h4>
-  		    <!-- <object type="application/x-shockwave-flash" data="http://blip.tv/play/goY6yZQBg9ky.m4v" style="width: 300px; height: 199px; margin-right: 10px;"> 
+			<h4 class="subTitle"><a href="/videos/"><small>CC Videos &raquo;</small></a></h4>
+				<!-- <object type="application/x-shockwave-flash" data="http://blip.tv/play/goY6yZQBg9ky.m4v" style="width: 300px; height: 199px; margin-right: 10px;"> 
   		                <param name="movie" value="http://blip.tv/play/goY6yZQBg9ky.m4v"> 
   		                <param name="quality" value="high"> 
   		                <param name="menu"> 
   		                <img src="test.gif" alt="Alternate image for non-flash browsers"> 
   		              </object> -->
-  		    <a href="/videos/a-shared-culture/"><img src="<?php bloginfo('stylesheet_directory'); ?>/images/failedsharing.jpg" style="border:none; border-bottom:1px solid #eee;"/></a>
+			<div id="quote">
+  		      <a href="/videos/a-shared-culture/" class="theQuote"><strong>&#147;</strong>Saving the world from failed sharing<strong>&#148;</strong> <!-- <img src="<?php bloginfo('stylesheet_directory'); ?>/images/play.png" alt="[play]" border="0"/> --></a>
+  		    </div>
         </div>
           <div id="splashBox">
           <div id="splash">
