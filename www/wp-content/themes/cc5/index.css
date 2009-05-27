@@ -168,7 +168,7 @@
 }
 
 #latestNews li.notice {
-	background-color: #E0E0C0;
+	background-color: #e7e7c6;
 	padding: 5px 8px;
 	-moz-border-radius: 4px;
 	-webkit-border-radius: 4px;
@@ -380,7 +380,7 @@
 .ccTool h2 {
 /*	background-color: #83B200;*/
 /*	background-color: #8BA000;*/
-	background-color: #ddd !important;
+	background-color: #d1d886 !important;
 	/*padding: 8px 6px 6px;*/
 	padding-left: 6px;
 	margin: 0.5em 0 ;
@@ -391,7 +391,7 @@
 	letter-spacing: 0.015em;
 }
 .ccTool h2 a {
-/*	color: #fff;*/
+	color: #304808;
 	display: block;
 }
 .ccTool p {
