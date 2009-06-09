@@ -59,7 +59,7 @@ img.mugshot {
         margin-left: 10px;
 }
 
-.subTitle {
+.subTitle, h4.subTitle a {
 	color: #487100;
 }
 
