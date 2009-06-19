@@ -264,7 +264,14 @@ p.presskit {
 }
 
 img.mugshot {
-	border: 2px solid #cccccc; margin-right: 10px; margin-bottom: 10px;
+	border: 2px solid #cccccc; margin-bottom: 10px;
+}
+
+#peoples p {
+	margin-left: 115px;
+}
+#peoples img {
+	margin-left: -115px;
 }
 
 .alignleft {
