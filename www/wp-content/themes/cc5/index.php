@@ -200,7 +200,7 @@ HTML;
               <li>
 				<div id="help_international_list" class="sideitem topright">
 				 <div class="bd">
-				   <select id="international" name="sortby" onchange="orderby(this)">    
+				   <select id="international" name="international" onchange="window.location = this.options[this.selectedIndex].value">    
 				     <option value="">Select a jurisdiction</option>
 				     <script type="text/javascript" src="http://api.creativecommons.org/rest/dev/support/jurisdictions.js"></script>
 				   </select>
