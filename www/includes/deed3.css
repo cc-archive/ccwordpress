@@ -226,6 +226,7 @@
 		}
 		li.license {
 			list-style: none;
+            min-height: 50px;
 			padding-bottom: 25px;
 			padding-left: 70px;
 			padding-top: 10px;
