@@ -98,7 +98,6 @@
 }
 
 #splash {
-	margin-top: 1em;
 	font-size: 1.2em;
 	position: relative;
 	width: 630px;
@@ -169,7 +168,7 @@
 	display: block;
 	width: 300px;
 	height: 200px;
-	background: url(images/splash-quote-bg.jpg) no-repeat top left;
+	background: url(images/videos-generic.jpg) no-repeat top left;
 	-moz-border-radius: 10px;
 }
 
@@ -180,18 +179,18 @@
 #quote a.theQuote {
 	font-family: Helvetica, Arial, sans-serif;
 	display: block;
-	padding: 15px 30px;
-	width: 240px;
-	height: 150px;
+	padding: 149px 0 0 30px;
+	width: 270px;
+	height: 45px;
 	text-indent: -0.5em;
-	font-size: 2.5em;
+	font-size: 1.75em;
 	line-height: 1.25em;
-	color: #333;
+	color: #fff;
 }
 
 #quote a.theQuote:hover {
 	text-decoration: none;
-	color: #555;
+	color: #f0c101;
 }
 
 #quote a.theQuote:hover img {
