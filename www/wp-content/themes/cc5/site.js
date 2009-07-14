@@ -95,6 +95,7 @@ function wakeSearch(e) {
 		if (search.value == searchValue) {
 			search.value = "";
 			YAHOO.util.Dom.replaceClass(search, "inactive", "active");
+			document.getElementById("searchsubmit").disabled = "";
 		}	
 	return false;
 }
@@ -103,11 +104,11 @@ function resetSearch(e) {
 	if (search.value == "") {
 		search.value = searchValue;
 		YAHOO.util.Dom.replaceClass(search, "active", "inactive");
+		document.getElementById("searchsubmit").disabled = "disabled";
 	}
 	
 	return false;
 }
-
 
 YAHOO.cc.site.init = function() {
     // initialization for help pop-ups
@@ -118,6 +119,7 @@ YAHOO.cc.site.init = function() {
 	document.getElementById("s").value = searchValue;
 	YAHOO.util.Event.addListener("s", "click", wakeSearch);
 	YAHOO.util.Event.addListener("s", "blur", resetSearch);
+	document.getElementById("searchsubmit").disabled = "disabled";
 } // init
 
 YAHOO.util.Event.onDOMReady(YAHOO.cc.site.init);

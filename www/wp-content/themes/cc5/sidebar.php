@@ -14,8 +14,8 @@
   }
 ?>
 
+<?php if (!is_search()) { ?>
 <div class="sideitem">
-    <!-- <h4>Search</h4> -->
     <form method="get" id="searchform" action="<?php bloginfo('url'); ?>/">
       <div>
         <input type="text" value="" name="s" id="s" class="inactive" /> <input type="submit" id="searchsubmit" value="Go" />
@@ -24,7 +24,7 @@
 
     <div class="clear"></div>
   </div>
-
+<?php } ?>
   <div class="sideitem">
     <ul>
       <li><img src="<?php bloginfo('stylesheet_directory'); ?>/images/license-alt.png" alt="License your work" />&nbsp;&nbsp;<a href="/license/">License your work</a></li>
