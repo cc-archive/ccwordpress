@@ -116,10 +116,9 @@ YAHOO.cc.site.init = function() {
 	YAHOO.util.Dom.getElementsByClassName('helpLink', null, null,
 											YAHOO.cc.site.init_help_item);
 	
-	document.getElementById("s").value = searchValue;
+	resetSearch();
 	YAHOO.util.Event.addListener("s", "click", wakeSearch);
 	YAHOO.util.Event.addListener("s", "blur", resetSearch);
-	document.getElementById("searchsubmit").disabled = "disabled";
 } // init
 
 YAHOO.util.Event.onDOMReady(YAHOO.cc.site.init);
