@@ -131,6 +131,7 @@ Visit the jurisdiction site <a href="<?=$jurisdiction_site?>">here</a>.
           </div>
           </div>
           <? }?>
+          </div>
 <?php get_sidebar(); ?>
 </div>
 <?php get_footer(); ?>
