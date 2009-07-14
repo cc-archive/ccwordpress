@@ -123,15 +123,7 @@ Visit the jurisdiction site <a href="<?=$jurisdiction_site?>">here</a>.
           </div>
           <? if ($is_commoner) { ?>
           </div>
-          <div id="beta" class="content-box">
-            <? if ($attach = cc_get_attachment ($post->ID)) { ?>
-            <img src="<?= $attach->uri ?>" alt="<?= $post->post_title ?>" title="<?= $post->post_title ?>" border="0" width="150" /><br/>
-            <h3><?= the_title() ?></h3>
-            <? } ?>
-          </div>
-          </div>
           <? }?>
-          </div>
-<?php get_sidebar(); ?>
 </div>
+<?php get_sidebar(); ?>
 <?php get_footer(); ?>
