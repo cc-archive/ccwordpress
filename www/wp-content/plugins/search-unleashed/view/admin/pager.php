@@ -1,4 +1,4 @@
-<div class="pager">
+<?php if (!defined ('ABSPATH')) die ('No direct access allowed'); ?><div class="pager">
 	<form method="get" action="<?php echo $pager->url ?>">
 		<input type="hidden" name="page" value="search-unleashed.php"/>
 		<input type="hidden" name="curpage" value="<?php echo $pager->current_page () ?>"/>

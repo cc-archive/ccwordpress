@@ -1,14 +1,14 @@
 # Advanced search engine that provides full text searching across posts, pages, comments, titles, and URLs.  Searches take into account any data added by other plugins, and all search results are contextually highlighted. You can also highlight incoming searches from popular search engines.
-# Copyright (C) 2007 John Godley
+# Copyright (C) 2009 John Godley
 # This file is distributed under the same license as the Search Unleashed package.
-# John Godley, http://urbangiraffe.com/, 2007.
+# John Godley, http://urbangiraffe.com/, 2009.
 #
 #, fuzzy
 msgid   ""
-msgstr  "Project-Id-Version: Search Unleashed 0.2.5\n"
+msgstr  "Project-Id-Version: Search Unleashed 1.0\n"
         "Report-Msgid-Bugs-To: \n"
-        "POT-Creation-Date: 2007-12-18 15:30+0800\n"
-        "PO-Revision-Date: 2007-MO-DA HO:MI+ZONE\n"
+        "POT-Creation-Date: 2009-06-15 08:37+0100\n"
+        "PO-Revision-Date: 2009-MO-DA HO:MI+ZONE\n"
         "Last-Translator: John Godley http://urbangiraffe.com/\n"
         "Language-Team: LANGUAGE <LL@li.org>\n"
         "MIME-Version: 1.0\n"
@@ -16,188 +16,348 @@ msgstr  "Project-Id-Version: Search Unleashed 0.2.5\n"
         "Content-Transfer-Encoding: 8bit\n"
         "Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
 
-#: ajax.php:75
+#: search-unleashed.php:574
+#, php-format
+msgid   " (page %d of %d)"
+msgstr  ""
+
+#: ajax.php:120
 #, php-format
 msgid   "%d of %d / %d%%"
 msgstr  ""
 
-#: view/admin/options.php:70
+#: models/pager.php:463
+#, php-format
+msgid   "%d per-page"
+msgstr  ""
+
+#: view/admin/options.php:121
 msgid   "(includes default theme)"
 msgstr  ""
 
-#: modules/comment_content.php:29 modules/comment_content.php:31
+#: modules/search-comment-content.php:41 modules/search-comment-content.php:43
 #, php-format
 msgid   "<p><strong>Comment by %s:</strong> %s</p>"
 msgstr  ""
 
-#: modules/comment_content.php:27
+#: modules/search-comment-content.php:39
 #, php-format
 msgid   "<p><strong>Comment:</strong> %s</p>"
 msgstr  ""
 
-#: view/admin/index.php:11
+#: view/admin/index.php:15
 #, php-format
-msgid   "<strong>%d search</strong> has been performed using this plugin. "
-msgid_plural    "<strong>%d searches</strong> have been performed using this "
+msgid   "<strong>%s search</strong> has been performed using this plugin. "
+msgid_plural    "<strong>%s searches</strong> have been performed using this "
         "plugin. "
 msgstr[0]       ""
 msgstr[1]       ""
 
-#: view/admin/index.php:15
-msgid   "All it takes is <strong>$8 to keep the kittens happy</strong> and "
-        "act as an incentive for me to carry on writing other free software."
+#: models/widget.php:62
+msgid   "Advanced"
 msgstr  ""
 
-#: search-unleashed.php:488
+#: models/widget.php:110
+msgid   "Advanced link:"
+msgstr  ""
+
+#: search-unleashed.php:841
 msgid   "All logs have been deleted."
 msgstr  ""
 
-#: modules/post_author.php:32
+#: view/admin/support.php:92
+msgid   "All translators will have a link to their website placed on the "
+        "plugin homepage at <a href=\"http://urbangiraffe.com/plugins/search-"
+        "unleashed/\">UrbanGiraffe</a> and <a href=\"http://wordpress.org/"
+        "extend/plugins/search-unleashed/\">WordPress.org</a>, in addition to "
+        "being an individual supporter."
+msgstr  ""
+
+#: models/incoming-search.php:89
+msgid   "Altavista"
+msgstr  ""
+
+#: models/widget.php:28
+msgid   "An extended search form"
+msgstr  ""
+
+#: view/admin/log.php:36
+msgid   "Apply"
+msgstr  ""
+
+#: modules/search-post-author.php:44
 msgid   "Author"
 msgstr  ""
 
-#: view/admin/index.php:68 view/admin/module_edit.php:8
+#: models/incoming-search.php:91
+msgid   "Baidu"
+msgstr  ""
+
+#: view/admin/log.php:32
+msgid   "Bulk Actions"
+msgstr  ""
+
+#: view/admin/index.php:44 view/admin/module_edit.php:17
 msgid   "Cancel"
 msgstr  ""
 
-#: view/admin/options.php:17
+#: view/admin/options.php:66
+msgid   "Categories to exclude"
+msgstr  ""
+
+#: models/widget.php:79 modules/search-post-category.php:30
+msgid   "Category"
+msgstr  ""
+
+#: view/admin/options.php:96
 msgid   "Change page title on search results to reflect the search condition"
 msgstr  ""
 
-#: view/admin/index.php:57
+#: view/admin/index.php:29
 msgid   "Changes to individual posts &amp; comments will be automatically re-"
         "indexed - <strong>you do not need to re-index after editing posts</"
         "strong>."
 msgstr  ""
 
-#: modules/comment_content.php:80 modules/post_content.php:48
-#: modules/post_excerpt.php:56
+#: view/admin/options.php:49
+msgid   "Changing any option in this section will require rebuilding the "
+        "search index."
+msgstr  ""
+
+#: modules/search-comment-content.php:92 modules/search-post-content.php:80
+#: modules/search-post-excerpt.php:72
 msgid   "Characters after first match"
 msgstr  ""
 
-#: modules/comment_content.php:74 modules/post_content.php:42
-#: modules/post_excerpt.php:50
+#: modules/search-comment-content.php:86 modules/search-post-content.php:74
+#: modules/search-post-excerpt.php:66
 msgid   "Characters before first match"
 msgstr  ""
 
-#: view/search-unleashed/incoming_local.php:15
+#: view/search-unleashed/incoming_local.php:16
 #, php-format
 msgid   "Click a phrase to jump to the first occurrence, or <a href=\"%s"
         "\">return to the search results</a>."
 msgstr  ""
 
-#: view/admin/options.php:40
-msgid   "Click this if you have supported the author and helped stop the "
-        "kittens from crying"
+#: view/admin/options.php:21
+#, php-format
+msgid   "Click this if you have <a href=\"%s\">supported</a> the author"
 msgstr  ""
 
-#: view/admin/options.php:12
+#: view/admin/options.php:68
+msgid   "Comma-separated list of category IDs"
+msgstr  ""
+
+#: view/admin/options.php:63
 msgid   "Comma-separated list of page/post IDs"
 msgstr  ""
 
-#: modules/comment_author.php:22 modules/comment_author.php:29
+#: modules/search-comment-author.php:32 modules/search-comment-author.php:44
 msgid   "Comment author"
 msgstr  ""
 
-#: modules/comment_url.php:21 modules/comment_url.php:28
+#: modules/search-comment-url.php:32 modules/search-comment-url.php:44
 msgid   "Comment author URL"
 msgstr  ""
 
-#: modules/comment_content.php:50
+#: modules/search-comment-content.php:62
 msgid   "Comment content"
 msgstr  ""
 
-#: modules/comment_content.php:90
+#: view/admin/support.php:57
+msgid   "Commercial<br/>Donation"
+msgstr  ""
+
+#: modules/search-comment-content.php:102
 msgid   "Content &amp; author's name"
 msgstr  ""
 
-#: modules/comment_content.php:91
+#: view/admin/options.php:111
+msgid   "Content &amp; titles"
+msgstr  ""
+
+#: modules/search-comment-content.php:103
 msgid   "Content, author's name, and link to author's site"
 msgstr  ""
 
-#: view/admin/log.php:41
+#: view/admin/options.php:111
+msgid   "Content, no titles"
+msgstr  ""
+
+#: search-unleashed.php:889
+msgid   "Default WordPress"
+msgstr  ""
+
+#: view/admin/log.php:33
+msgid   "Delete"
+msgstr  ""
+
+#: view/admin/log.php:87
+msgid   "Delete All Logs"
+msgstr  ""
+
+#: view/admin/log.php:82
 msgid   "Delete Logs"
 msgstr  ""
 
-#: view/admin/log.php:46
-msgid   "Delete logs"
-msgstr  ""
-
-#: modules/post_author.php:52
+#: modules/search-post-author.php:67
 msgid   "Display link to author page"
 msgstr  ""
 
-#: modules/post_excerpt.php:24
+#: models/pager.php:472
+#, php-format
+msgid   "Displaying %s&#8211;%s of %s"
+msgstr  ""
+
+#: modules/search-post-content.php:86
+msgid   "Do not index content, but show in results"
+msgstr  ""
+
+#: modules/search-post-excerpt.php:37
 msgid   "Excerpt"
 msgstr  ""
 
-#: ajax.php:75
-msgid   "Finished!  Click to return"
+#: view/admin/options.php:28
+msgid   "Expiry value in days. Enter 0 for no expiry and -1 for no logs"
 msgstr  ""
 
-#: view/admin/options.php:50
+#: view/admin/submenu.php:6
+msgid   "Filters"
+msgstr  ""
+
+#: ajax.php:122 view/admin/index.php:47
+msgid   "Finished!"
+msgstr  ""
+
+#: view/admin/options.php:87
 msgid   "Force content display"
 msgstr  ""
 
-#: view/admin/options.php:32
-msgid   "Full text with logical operations"
+#: view/admin/support.php:93
+msgid   "Full details of producing a translation can be found in this <a href="
+        "\"http://urbangiraffe.com/articles/translating-wordpress-themes-and-"
+        "plugins/\">guide to translating WordPress plugins</a>."
 msgstr  ""
 
-#: view/admin/options.php:7
+#: view/admin/options.php:14
 msgid   "General Options"
 msgstr  ""
 
-#: view/admin/options.php:90
+#: models/incoming-search.php:93
+msgid   "Google"
+msgstr  ""
+
+#: view/admin/kitten.php:4
+msgid   "Help to prevent remove this message by getting the site owner to "
+        "support this software."
+msgstr  ""
+
+#: view/admin/annoy_front.php:6
+msgid   "Help to remove this message by getting the site owner to support "
+        "this software."
+msgstr  ""
+
+#: view/admin/options.php:139
 msgid   "Highlight colour"
 msgstr  ""
 
-#: view/admin/options.php:57
+#: view/admin/options.php:108
 msgid   "Highlight incoming searches"
 msgstr  ""
 
-#: plugin.php:623
-msgid   "How many widgets would you like?"
+#: view/admin/options.php:101
+msgid   "Highlight searches"
 msgstr  ""
 
-#: view/admin/log.php:12
+#: view/admin/options.php:104
+msgid   "Highlight searches on search page or default to <code>the_excerpt</"
+        "code>"
+msgstr  ""
+
+#: view/admin/options.php:113
+msgid   "Highlighting phrases and display a help box on post pages after a "
+        "search has been performed. Note this will not work with caching "
+        "plugins."
+msgstr  ""
+
+#: view/admin/log.php:55
 msgid   "IP"
 msgstr  ""
 
-#: view/admin/index.php:42
-msgid   "If you 'mistakenly' said you supported the author without actually "
-        "doing so then not only are the kittens still crying, but their "
-        "stomachs ache and they all feel miserable."
+#: view/admin/support.php:13
+msgid   "If you are using this plugin in a commercial setup, or feel that "
+        "it's been particularly useful, then you may want to consider a "
+        "<strong>commercial donation</strong>.  If you really really want to "
+        "show your appreciation then there is the <strong>Super Smashing "
+        "Great</strong> donation which, along with making my day, will earn "
+        "you a badge of honour (125x125 image of your choosing + nofollow "
+        "link) to be displayed on the Search Unleashed page for a period of "
+        "two months."
 msgstr  ""
 
-#: view/admin/options.php:21
-msgid   "Include Posts"
+#: view/admin/support.php:84
+msgid   "If you're multi-lingual then you may want to consider donating a "
+        "translation:"
 msgstr  ""
 
-#: view/admin/options.php:85
+#: view/admin/options.php:71
+msgid   "Include"
+msgstr  ""
+
+#: view/admin/options.php:134
 msgid   "Include highlight CSS"
 msgstr  ""
 
-#: modules/comment_content.php:86
+#: modules/search-comment-content.php:98
 msgid   "Include in match"
 msgstr  ""
 
-#: modules/comment_content.php:89
+#: search-unleashed.php:890
+msgid   "Indexed WordPress"
+msgstr  ""
+
+#: view/admin/support.php:36
+msgid   "Individual<br/>Donation"
+msgstr  ""
+
+#: modules/search-comment-content.php:101
 msgid   "Just content"
 msgstr  ""
 
-#: view/admin/options.php:37
-msgid   "Kitten protection"
+#: models/incoming-search.php:95
+msgid   "Local"
 msgstr  ""
 
-#: view/admin/submenu.php:3
+#: view/admin/submenu.php:7
 msgid   "Log"
 msgstr  ""
 
-#: modules/post_meta.php:65
+#: view/admin/options.php:25
+msgid   "Log Expiry"
+msgstr  ""
+
+#: search-unleashed.php:892
+msgid   "Lucene"
+msgstr  ""
+
+#: models/incoming-search.php:90
+msgid   "Lycos"
+msgstr  ""
+
+#: models/incoming-search.php:88
+msgid   "MSN"
+msgstr  ""
+
+#: models/widget.php:73
+msgid   "Meta"
+msgstr  ""
+
+#: modules/search-post-meta.php:79
 msgid   "Meta fields"
 msgstr  ""
 
-#: modules/post_meta.php:42
+#: modules/search-post-meta.php:53
 msgid   "Meta-data"
 msgstr  ""
 
@@ -205,245 +365,395 @@ msgstr  ""
 msgid   "Modules"
 msgstr  ""
 
-#: view/admin/options.php:74
+#: view/admin/options.php:125
 msgid   "Most themes require a position of 1, but if you have incorrect "
         "highlighting in titles set this to another value"
 msgstr  ""
 
-#: models/pager.php:199
+#: search-unleashed.php:891
+msgid   "MySQL Fulltext"
+msgstr  ""
+
+#: models/pager.php:405
 msgid   "Next"
 msgstr  ""
 
-#: view/admin/options.php:2 view/admin/submenu.php:5
+#: view/admin/options.php:111
+msgid   "No highlighting"
+msgstr  ""
+
+#: models/widget.php:77
+msgid   "None"
+msgstr  ""
+
+#: view/admin/modules.php:21
+msgid   "Note that enabling or disabling a module will require you to re-"
+        "index the search database"
+msgstr  ""
+
+#: view/admin/filters.php:24
+msgid   "Note that this feature is experimental"
+msgstr  ""
+
+#: view/admin/submenu.php:5
 msgid   "Options"
 msgstr  ""
 
-#: view/admin/options.php:10
+#: view/admin/options.php:61
 msgid   "Pages to exclude"
 msgstr  ""
 
-#: view/admin/log.php:10
+#: modules/search-post-slug.php:34
+msgid   "Permalink"
+msgstr  ""
+
+#: view/admin/log.php:53
 msgid   "Phrase"
 msgstr  ""
 
-#: modules/post_author.php:38
-msgid   "Post author"
+#: search-unleashed.php:143
+msgid   "Please read the documentation and FAQ, and check the bug tracker, "
+        "before asking a question."
 msgstr  ""
 
-#: modules/post_content.php:25
-msgid   "Post content"
+#: view/admin/options.php:18
+msgid   "Plugin Support"
 msgstr  ""
 
-#: modules/post_excerpt.php:30
-msgid   "Post excerpt"
+#: modules/search-post-category.php:52
+msgid   "Post category"
 msgstr  ""
 
-#: modules/post_meta.php:49
-msgid   "Post meta-data"
+#: modules/search-post-author.php:52
+msgid   "Post/page author"
 msgstr  ""
 
-#: modules/post_slug.php:29
-msgid   "Post slug"
+#: modules/search-post-content.php:57
+msgid   "Post/page content"
 msgstr  ""
 
-#: modules/post_title.php:10
-msgid   "Post title"
+#: modules/search-post-excerpt.php:49
+msgid   "Post/page excerpt"
 msgstr  ""
 
-#: models/pager.php:198
+#: modules/search-post-meta.php:65
+msgid   "Post/page meta-data"
+msgstr  ""
+
+#: modules/search-post-slug.php:45
+msgid   "Post/page slug"
+msgstr  ""
+
+#: modules/search-post-title.php:29
+msgid   "Post/page title"
+msgstr  ""
+
+#: models/pager.php:404
 msgid   "Previous"
 msgstr  ""
 
-#: view/admin/index.php:48
+#: view/admin/module_edit.php:8
+msgid   "Priority"
+msgstr  ""
+
+#: view/admin/module.php:3
+#, php-format
+msgid   "Priority: %1.1f"
+msgstr  ""
+
+#: view/admin/index.php:32
+msgid   "Re-Index"
+msgstr  ""
+
+#: view/admin/index.php:20
 msgid   "Re-Index Search Unleashed"
 msgstr  ""
 
-#: view/admin/index.php:61
-msgid   "Re-index comments"
-msgstr  ""
-
-#: view/admin/index.php:60
-msgid   "Re-index posts"
-msgstr  ""
-
-#: view/admin/log.php:13
+#: view/admin/log.php:56
 msgid   "Referrer"
+msgstr  ""
+
+#: view/admin/options.php:32
+msgid   "Replace category archive"
+msgstr  ""
+
+#: view/admin/options.php:35
+msgid   "Replace category archive pages with a search based on the category "
+        "name"
+msgstr  ""
+
+#: view/admin/options.php:39
+msgid   "Replace tag archive"
+msgstr  ""
+
+#: view/admin/options.php:42
+msgid   "Replace tag archive pages with a search based on the tag name"
 msgstr  ""
 
 #: view/admin/pager.php:10
 msgid   "Results per page"
 msgstr  ""
 
-#: plugin.php:630 view/admin/module_edit.php:7 view/admin/options.php:102
+#: view/admin/module_edit.php:16
 msgid   "Save"
 msgstr  ""
 
+#: view/admin/filters.php:21
+msgid   "Save Filters"
+msgstr  ""
+
+#: view/admin/options.php:150
+msgid   "Save Options"
+msgstr  ""
+
+#: models/widget.php:58 view/admin/log.php:17 view/admin/log.php:24
 #: view/admin/pager.php:7
 msgid   "Search"
 msgstr  ""
 
-#: view/admin/submenu.php:2
+#: view/admin/options.php:53
+msgid   "Search Engine"
+msgstr  ""
+
+#: view/admin/submenu.php:3
 msgid   "Search Index"
 msgstr  ""
 
-#: view/admin/index.php:2
-msgid   "Search Index Information"
-msgstr  ""
-
-#: view/admin/log.php:2
-msgid   "Search Log"
-msgstr  ""
-
-#: view/admin/options.php:29
-msgid   "Search Mode"
-msgstr  ""
-
-#: view/search-unleashed/incoming_local.php:5
+#: view/search-unleashed/incoming_local.php:6
 msgid   "Search Results"
 msgstr  ""
 
-#: view/admin/options.php:82
+#: view/admin/options.php:131
 msgid   "Search Style"
 msgstr  ""
 
-#: search-unleashed.php:455
+#: models/widget.php:30 search-unleashed.php:756
 msgid   "Search Unleashed"
 msgstr  ""
 
-#: view/admin/modules.php:2
-msgid   "Search Unleashed Options"
+#: search-unleashed.php:141
+msgid   "Search Unleashed Bug Tracker"
 msgstr  ""
 
-#: search-unleashed.php:310
+#: search-unleashed.php:139
+msgid   "Search Unleashed Documentation"
+msgstr  ""
+
+#: search-unleashed.php:142
+msgid   "Search Unleashed FAQ"
+msgstr  ""
+
+#: search-unleashed.php:138
+msgid   "Search Unleashed Help"
+msgstr  ""
+
+#: search-unleashed.php:140
+msgid   "Search Unleashed Support Forum"
+msgstr  ""
+
+#: view/admin/support.php:9
+msgid   "Search Unleashed is free to use - life is wonderful and lovely!  "
+        "However, it has required a great deal of time and effort to develop "
+        "and if it has been useful you can help support this development by "
+        "<strong>making a small donation</strong>."
+msgstr  ""
+
+#: view/admin/filters.php:7
+msgid   "Search Unleashed | Active Filters"
+msgstr  ""
+
+#: view/admin/index.php:5
+msgid   "Search Unleashed | Index"
+msgstr  ""
+
+#: view/admin/log.php:7
+msgid   "Search Unleashed | Log"
+msgstr  ""
+
+#: view/admin/modules.php:7
+msgid   "Search Unleashed | Modules"
+msgstr  ""
+
+#: view/admin/options.php:7
+msgid   "Search Unleashed | Options"
+msgstr  ""
+
+#: view/admin/support.php:5
+msgid   "Search Unleashed | Support"
+msgstr  ""
+
+#: search-unleashed.php:577
 #, php-format
 msgid   "Search results for '%s'"
 msgstr  ""
 
-#: view/admin/options.php:15
+#: view/admin/options.php:94
 msgid   "Search results page title"
 msgstr  ""
 
-#: modules/post_meta.php:66
+#: modules/search-post-meta.php:80
 msgid   "Select the meta-data to search"
 msgstr  ""
 
-#: view/admin/modules.php:4
+#: view/admin/modules.php:11
 msgid   "Select what to include in the search"
 msgstr  ""
 
-#: view/admin/options.php:62
-msgid   "Show incoming search requests by highlighting phrases and displaying "
-        "a help box"
+#: search-unleashed.php:157
+msgid   "Settings"
 msgstr  ""
 
-#: modules/tags.php:65
+#: models/widget.php:107
+msgid   "Show categories:"
+msgstr  ""
+
+#: models/widget.php:109
+msgid   "Show meta:"
+msgstr  ""
+
+#: modules/search-post-tags.php:65
 msgid   "Show tag in results"
 msgstr  ""
 
-#: view/admin/options.php:32
-msgid   "Simple text matching"
+#: models/widget.php:108
+msgid   "Show tags:"
 msgstr  ""
 
-#: view/admin/options.php:53
+#: models/incoming-search.php:92
+msgid   "Sogou"
+msgstr  ""
+
+#: view/admin/options.php:90
 msgid   "Some themes don't display any search result content.  Enable this "
         "option to force the theme to display results"
 msgstr  ""
 
-#: view/admin/options.php:95
+#: view/admin/options.php:144
 msgid   "Specify colour as a hex value"
 msgstr  ""
 
-#: modules/tags.php:41 modules/tags.php:50
+#: view/admin/options.php:47
+msgid   "Spider Options"
+msgstr  ""
+
+#: view/admin/support.php:78
+msgid   "Super Smashing<br/>Great Donation"
+msgstr  ""
+
+#: view/admin/submenu.php:8
+msgid   "Support"
+msgstr  ""
+
+#: models/widget.php:69 modules/search-post-tags.php:42
+#: modules/search-post-tags.php:50
 msgid   "Tags"
 msgstr  ""
 
-#: view/admin/options.php:47
+#: view/admin/filters.php:10
+msgid   "The following filters will be active when Search Unleashed is "
+        "indexing posts or comments. If you wish to prevent a filter from "
+        "running during this indexing operation then disable it here. This "
+        "will not affect the running of the filter anywhere else."
+msgstr  ""
+
+#: view/admin/options.php:84
 msgid   "Theme Options"
 msgstr  ""
 
-#: view/admin/options.php:66
+#: view/admin/options.php:117
 msgid   "Theme title position"
 msgstr  ""
 
-#: view/admin/log.php:36
+#: view/admin/log.php:77
 msgid   "There is nothing to display"
 msgstr  ""
 
-#: view/admin/kitten.php:2
+#: view/admin/annoy_front.php:4 view/admin/kitten.php:2
 #, php-format
 msgid   "This great search was powered by <a href=\"%s\"><strong>Search "
         "Unleashed</strong></a>."
 msgstr  ""
 
-#: view/admin/log.php:43
+#: view/admin/log.php:84
 msgid   "This option will delete all search logs.  Please be sure this is "
         "what you want to do."
 msgstr  ""
 
-#: view/admin/log.php:11
+#: view/admin/support.php:10
+msgid   "This will act as an incentive for me to carry on developing, "
+        "providing countless hours of support, and including new features and "
+        "suggestions. You get some useful software and I get to carry on "
+        "making it.  Everybody wins."
+msgstr  ""
+
+#: view/admin/log.php:54
 msgid   "Time"
 msgstr  ""
 
-#: modules/post_slug.php:23
-msgid   "URL"
+#: models/widget.php:106
+msgid   "Title:"
 msgstr  ""
 
-#: view/search-unleashed/incoming_local.php:8
-msgid   "You arrived here after searching for the following phrase"
-msgid_plural    "You arrived here after searching for the following phrases"
-msgstr[0]       ""
-msgstr[1]       ""
-
-#: view/admin/index.php:14
-msgid   "You can help support the author by sending a donation.  Every search "
-        "that is made without support will cause a <strong>kitten to cry</"
-        "strong>."
+#: view/admin/support.php:82
+msgid   "Translations"
 msgstr  ""
 
-#: view/admin/index.php:53
+#: models/incoming-search.php:94
+msgid   "Yandex"
+msgstr  ""
+
+#: search-unleashed.php:784
+msgid   "You are not allowed access to this resource"
+msgstr  ""
+
+#: view/admin/index.php:25
 msgid   "You change what to include in the search"
 msgstr  ""
 
-#: view/admin/index.php:52
+#: view/admin/index.php:24
 msgid   "You first install this plugin"
 msgstr  ""
 
-#: view/admin/index.php:7
-#, php-format
-msgid   "You have <strong>%d</strong> item in the search index."
-msgid_plural    "You have <strong>%d</strong> items in the search index."
-msgstr[0]       ""
-msgstr[1]       ""
-
-#: view/admin/index.php:5
+#: view/admin/index.php:9
 msgid   "You have no items in the search index.  Please re-index soon!"
 msgstr  ""
 
-#: view/admin/index.php:54
+#: view/admin/index.php:26
 msgid   "You install another plugin that may alter posts or comments"
 msgstr  ""
 
-#: view/admin/index.php:50
+#: view/admin/index.php:22
 msgid   "You need to re-index the search database when"
 msgstr  ""
 
-#: view/admin/index.php:40
-msgid   "Your help stopping kittens from crying is appreciated!"
-msgstr  ""
-
-#: search-unleashed.php:517
+#: search-unleashed.php:885
 msgid   "Your options have been saved"
 msgstr  ""
 
-#: view/admin/kitten.php:4
-msgid   "Your search\tcaused a kitten to cry.  Help to prevent this by "
-        "getting the site owner to support this software."
+#: view/admin/options.php:78
+msgid   "draft"
 msgstr  ""
 
 #: view/admin/pager.php:17
 msgid   "go"
 msgstr  ""
 
-#: view/search-unleashed/incoming_local.php:3
+#: view/search-unleashed/incoming_local.php:4
 msgid   "hide"
+msgstr  ""
+
+#: view/admin/options.php:73
+msgid   "pages"
+msgstr  ""
+
+#: view/admin/options.php:76
+msgid   "password-protected"
+msgstr  ""
+
+#: view/admin/options.php:74
+msgid   "posts"
+msgstr  ""
+
+#: view/admin/options.php:77
+msgid   "private"
 msgstr  ""

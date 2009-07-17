@@ -1,34 +1,34 @@
-#outer
+#wrapper
 {
-border: 1px solid #444;
+border: 1px solid #666;
 height: 2em;
 position: relative;
-text-align: center;
 width: 70%;
+-moz-border-radius: 5px;
+-webkit-border-radius: 5px;
 margin: 0 auto;
 }
 
-#outer p
+#wrapper p
 {
 margin: 0;  
 padding: 0;
 padding-top: 0.3em;
+position: absolute;
+left: 0;
+top: 0;
+width: 100%;
+text-align: center;
+font-weight: bold;
 }
 
 #inner
 {
+-moz-border-radius: 5px;
+-webkit-border-radius: 5px;
 width: 10px;
 height: 2em;
 background-color: #ccc;
-position: relative;
-}
-
-#cancel
-{
-margin: 0 auto;
-text-align: center;
-display: block;
-margin-top: 1em;
 }
 
 #status
@@ -52,7 +52,8 @@ margin: 0; padding: 0;
 background-color: #C9F2C9;
 padding: 5px;
 padding-left: 10px;
--moz-border-radius: 10px;
+-moz-border-radius: 5px;
+-webkit-border-radius: 5px;
 list-style-type: none;
 }
 
@@ -101,106 +102,32 @@ color: #666;
 
 .sub input { font-size: 0.8em; }
 
-
-#subsubmenu li {
-	display: inline;
-	line-height: 170%;
-	list-style: none;
-	text-align: center;
-}
-
-#subsubmenu {
-  font-size: 0.9em;
-	background: #CDD9E2;
-	border-bottom: none;
-	margin: 0;
-	color: #4F5D69;
-	padding: 6px 2em 0 5em;
-}
-
-#subsubmenu .current {
-	background: #f9fcfe;
-	color: black;
-}
-
-#subsubmenu a {
-	border: none;
-	color: #4F5D69;
-	font-size: 12px;
-	padding: 3px 1em 2px 1em;
-}
-
-#subsubmenu a:hover {
-	background: #89A5BB;
-	color: #393939;
-}
-
-#subsubmenu li {
-	line-height: 150%;
-}
-
-
-fieldset.options
+.wrap h5
 {
-border: 1px solid #ddd;
-margin-bottom: 1em;
+font-size: 1em;
 }
 
-.options th
-{
-text-align: right;
-width: 200px;
+.bulleted li {
+list-style-type: square;
+margin-left: 20px;
 }
 
-.options td, .options th
+.donations li
 {
-padding: 3px;
-}
-
-.colour
-{
-height: 2em;
-width: 80px;
-margin-right: 3px;
-}
-
-.kitten
-{
-border: 1px solid #ccc;
-background-color: white;
-padding: 3px;
-margin: 0 auto;
-display: block;
+list-style-type: none;
+float: left;
 text-align: center;
+padding: 1em 2em;
 }
 
-.log
+.translators li
 {
-width: 100%;
+float: left;
+width: 300px;
+margin-left: 1.5em;
 }
 
-.log th, .log td
+div .supporter strong
 {
-padding: 3px;  
+background-color: yellow;
 }
-
-.log th
-{
-text-align: left;
-background-color: #444;
-color: white;
-}
-
-.log th a
-{
-color: white;
-text-decoration: underline;
-}
-
-.pager
-{
-font-size: 0.9em;
-text-align: right;
-}
-
-.pager select, .pager input { font-size: 0.9em }
