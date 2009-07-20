@@ -1,4 +1,8 @@
 <?php
+/**
+ * @author John Godley
+ * @copyright Copyright (C) John Godley
+ **/
 
 /*
 ============================================================================================================
@@ -13,117 +17,157 @@ this software, even if advised of the possibility of such damage.
 For full license details see license.txt
 ============================================================================================================ */
 
-include ('../../../wp-config.php');
-
-
-class SearchAJAX extends Search_Plugin
-{
-	function SearchAJAX ()
-	{
-		if (!current_user_can ('administrator'))
-			die ('<p style="color: red">You are not allowed access to this resource</p>');
+/**
+ * AJAX functionality for Search Unleashed
+ *
+ * @package default
+ **/
+class SearchUnleashedAjax extends Search_Plugin {
+	var $options;
+	var $plugin;
+	
+	/**
+	 * Constructor.  Register Ajax commands
+	 *
+	 * @param object $plugin Search Unleashed object
+	 * @param array $options Search Unleashed options
+	 * @return void
+	 **/
+	function SearchUnleashedAjax( $plugin, $options ) {
+		$this->options = $options;
+		$this->plugin  = $plugin;
 		
-		$command = $_GET['cmd'];
-		$_POST = stripslashes_deep ($_POST);
+		$this->register_plugin( 'search-unleashed', __FILE__ );
 		
-		include_once (dirname (__FILE__).'/models/spider.php');
-		$this->register_plugin ('headspace', __FILE__);
-		if (method_exists ($this, $command))
-			$this->$command ();
-		else
-			die ('<p style="color: red">That function is not defined</p>');
+		$this->register_ajax( 'su_module_off' );
+		$this->register_ajax( 'su_module_on' );
+		$this->register_ajax( 'su_module_edit' );
+		$this->register_ajax( 'su_module_load' );
+		$this->register_ajax( 'su_module_save' );
+		$this->register_ajax( 'su_index' );
 	}
 	
-	function index ()
-	{
-		$offset = intval ($_GET['offset']);
-		$type   = $_POST['type'];
+	/**
+	 * Displays a module
+   *   module ID - $_POST['id]
+	 *
+	 * @return void
+	 **/
+	function su_module_load() {
+		if ( current_user_can( 'administrator' ) && check_ajax_referer( 'searchunleashed-module' ) ) {
+			require dirname( __FILE__ ).'/models/search-module.php';
 
-		global $search_spider;
-
-		// Prevent bad plugins from screwing up the display
-//		ob_start ();
-		
-		// Create a spider
-		$spider  = new SearchSpider ($search_spider->get_options ());
-		if ($type == 'posts')
-		{
-			$offset += $spider->index_posts ($offset, 20);
-			$total   = $spider->total_posts_to_index ();
+			$this->render_admin( 'module', array( 'module' => Search_Module_Factory::get( $_POST['id'] ) ) );
+			die();
 		}
-		else
-		{
-			$offset += $spider->index_comments ($offset, 30);
-			$total   = $spider->total_comments_to_index ();
+	}
+	
+	/**
+	 * Save a module config
+	 *   module ID - $_POST['id]
+	 *
+	 * @return void
+	 **/
+	function su_module_save() {
+		if ( current_user_can( 'administrator' ) && check_ajax_referer( 'searchunleashed-module_save' ) ) {
+			require dirname( __FILE__ ).'/models/search-module.php';
+
+			$module = Search_Module_Factory::get( $_POST['id'] );
+
+			$this->options['modules'][$module->id()] = $module->save_options( $_POST );
+			update_option( 'search_unleashed', $this->options );
+
+			$module = Search_Module_Factory::get( $_POST['id'] );
+			$this->render_admin( 'module', array( 'module' => $module ) );
+			die();
 		}
-		
-		$newoffset = $offset;
-		if ($offset >= $total)
-			$newoffset = 'END';
+	}
+	
+	/**
+	 * Re-index
+	 *   Current index offset - $_POST['offset']
+	 *   Index limit          - $_POST['limit']
+	 *
+	 * @return void
+	 **/
+	function su_index() {
+		if ( current_user_can( 'administrator' ) && check_ajax_referer( 'searchunleashed-index' ) ) {
+			require dirname( __FILE__ ).'/models/spider.php';
+			require dirname( __FILE__ ).'/models/search-engine.php';
 
-		$percent = 100;
-		if ($total > 0)
-			$percent = ($offset / $total) * 100;
+			$spider = new SearchSpider( $this->options );
+			$engine = SearchEngine::get_engine( $this->options, $this->options['search_engine'] );
+			$offset = intval( $_POST['offset'] );
+		
+			if ( $offset == 0 )
+				$engine->reset();
 
-		// Capture bad plugin output
-		// $output = ob_get_contents ();
-		// ob_end_clean ();
-		?>
-		<div id="inner" style="width: <?php echo $percent ?>%">
-			<input type="hidden" name="offset" value="<?php echo $newoffset ?>" id="offset"/>
-		</div>
-		<p id="status"><?php if ($offset == $total) echo __ ('Finished!  Click to return', 'search-unleashed'); else printf (__ ('%d of %d / %d%%', 'search-unleashed'), $offset, $total, $percent)?></p>
-		<?php
-	}
+			$this->plugin->disable_filters( $this->options['disabled_filters'] );
+			
+			// Return string formatted: 0|1 Status
+			// Where 0 = more data to come
+			//       1 = finished
+			//       Status = Status message
+			list( $remaining, $total ) = $spider->index( $offset, intval( $_POST['limit'] ), $engine );
 
-	function edit_module ()
-	{
-		$module = $_POST['id'];
-		
-		global $search_spider;
-		
-		$spider = new SearchSpider ($search_spider->get_options ());
-		
-		$this->render_admin ('module_edit', array ('module' => $spider->get_module ($module)));
+			$percent = 100;
+			if ($total > 0)
+				$percent = ( ( $total - $remaining ) / $total ) * 100;
+
+			if ( $remaining > 0 )
+				echo sprintf('%d %d%% ', $remaining, $percent).sprintf( __( '%d of %d / %d%%', 'search-unleashed'), $total - $remaining, $total, $percent );
+			else {
+				echo '0 100% '.__('Finished!', 'search-unleashed');
+				$engine->flush( true );
+			}
+
+			die();
+		}
 	}
 	
-	function cancel_module ()
-	{
-		$module = $_POST['id'];
-		
-		global $search_spider;
-		$spider = new SearchSpider ($search_spider->get_options ());
-		
-		$this->render_admin ('module', array ('module' => $spider->get_module ($module), 'active' => $spider->is_engine_running ($module)));
+	/**
+	 * Display edit box for module
+	 *   module ID - $_POST['id]
+   *
+	 * @return void
+	 **/
+	function su_module_edit() {
+		if ( current_user_can( 'administrator' ) && check_ajax_referer( 'searchunleashed-module' ) ) {
+			require dirname( __FILE__ ).'/models/search-module.php';
+
+			$this->render_admin( 'module_edit', array( 'module' =>Search_Module_Factory::get( $_GET['id'] ) ) );
+			die();
+		}
 	}
 	
-	function save_module ()
-	{
-		$type = $_POST['id'];
+	/**
+	 * Enable a module
+	 *   module ID - $_POST['id]
+   *
+	 * @return void
+	 **/
+	function su_module_on() {
+		if ( current_user_can( 'administrator' ) && check_ajax_referer( 'searchunleashed-module' ) ) {
+			$this->options['active'][$_POST['module']] = $_POST['module'];
+			$this->options['active'] = array_filter( $this->options['active'] );
+			update_option ('search_unleashed', $this->options);
 		
-		global $search_spider;
-		$spider = new SearchSpider ($search_spider->get_options ());
-		
-		$module = $spider->get_module ($type);
-		$search_spider->save_module_options ($type, $module->save ($_POST));
-		
-		$this->render_admin ('module', array ('module' => $module, 'active' => $spider->is_engine_running ($type)));
+			$this->plugin->swap_engine( $this->options['search_engine'], $this->options['search_engine'] );
+		}
 	}
 	
-	function module_on ()
-	{
-		global $search_spider;
-		$search_spider->enable_module ($_POST['module']);
-	}
-	
-	function module_off ()
-	{
-		global $search_spider;
-		$search_spider->disable_module ($_POST['module']);
+	/**
+	 * Disable a module
+	 *   module ID - $_POST['id]
+	 *
+	 * @return void
+	 **/
+	function su_module_off() {
+		if ( current_user_can( 'administrator' ) && check_ajax_referer( 'searchunleashed-module' ) ) {
+			unset ($this->options['active'][$_POST['module']]);
+			update_option ('search_unleashed', $this->options);
+		
+			$this->plugin->swap_engine( $this->options['search_engine'], $this->options['search_engine'] );
+		}
 	}
 }
-
-
-$obj = new SearchAJAX ();
-
-?>
