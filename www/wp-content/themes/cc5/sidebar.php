@@ -27,7 +27,7 @@
 <?php } ?>
   <div class="sideitem">
     <ul>
-      <li><img src="<?php bloginfo('stylesheet_directory'); ?>/images/license-alt.png" alt="License your work" />&nbsp;&nbsp;<a href="/license/">License your work</a></li>
+      <li><img src="<?php bloginfo('stylesheet_directory'); ?>/images/license-alt.png" alt="License your work" />&nbsp;&nbsp;<a href="/choose">License your work</a></li>
       <li><img src="<?php bloginfo('stylesheet_directory'); ?>/images/find-alt.png" alt="License your work" width="12" height="12" />&nbsp;&nbsp;<a href="http://search.creativecommons.org/">Find licensed works</a></li>
     </ul>
   </div>

@@ -98,7 +98,7 @@ Visit the jurisdiction site <a href="<?=$jurisdiction_site?>">here</a>.
 <? if ($is_worldwide_completed) { ?>
               <div class="licensebox" style="margin:14px;">
                 <p>The <? echo $jurisdiction_name ?> license has now been integrated 
-                into <a href="/license/?jurisdiction=<?php echo $jurisdiction_code ?>">the Creative 
+                into <a href="/choose/?jurisdiction=<?php echo $jurisdiction_code ?>">the Creative 
                 Commons licensing process</a>, so you are able to license your works under this 
                 jurisdiction's law. </p> 
                 <p>The latest version of the licenses available for this jurisdiction are:</p>
