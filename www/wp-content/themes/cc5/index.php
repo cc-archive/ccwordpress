@@ -103,11 +103,11 @@
 	          <p>Find <strong>licensed</strong> works you can share, remix, or&nbsp;reuse.</p>
 	        </div>
 	        <div class="stdColumn ccTool helpLink " id="license">
-	          <h2 class="license"><a href="/license/">License &raquo;</a></h2>
+	          <h2 class="license"><a href="/choose">License &raquo;</a></h2>
 	          <p>Use our <strong>free</strong> tools to inform people how they can reuse and share your creative works.</p>
 	        </div>
 	        <div class="stdColumn ccTool helpLink lastColumn" id="network">
-	          <h2 class="join"><a href="https://support.creativecommons.org/donate/">Donate &raquo;</a></h2>
+	          <h2 class="join"><a href="https://support.creativecommons.org/donate">Donate &raquo;</a></h2>
 	          <p>Help <strong>support</strong> the&nbsp;Commons.</p>
 	        </div>
 	      </div>  
