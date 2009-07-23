@@ -9,6 +9,9 @@
           <li><a href="#top">Top</a>&nbsp;&nbsp;&nbsp;&nbsp;</li>
           <li><a href="/">Home</a></li>
           <li><a href="/contact">Contact</a></li>
+          <li><a href="http://creativecommons.org/policies">Policies</a></li>
+          <li><a href="http://creativecommons.org/privacy">Privacy</a></li>
+          <li><a href="http://creativecommons.org/terms">Terms of Use</a></li>
           <li>
           <h4><br/>The Commons</h4>
 <ul>
