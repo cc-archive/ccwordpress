@@ -7,6 +7,7 @@
           <li><a href="http://support.creativecommons.org/">Donate</a></li>
           <li><a href="/policies">Policies</a></li>
           <li><a href="/privacy">Privacy</a></li>
+          <li><a href="/terms">Terms of Use</a></li>
           <li><a href="/about/press">Press Room</a></li>
           <li><a href="/sitemap">Sitemap</a></li>
           <li><a href="/contact">Contact</a></li>
