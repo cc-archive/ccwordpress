@@ -11,9 +11,9 @@
 		-->	<?php /*echo cc_current_feature(); */?>
 		
 		<div id="events-map">
-		<img src="http://learn.creativecommons.org/wp-content/uploads/2009/07/opened-launch.png" />
+		<a href="http://creativecommons.org/weblog/entry/15467"><img src="http://learn.creativecommons.org/wp-content/uploads/2009/07/opened-launch.png" /></a>
 		</div>
-
+		<br />
 		<div id="head-info">
 			<div id="mission">
 				<p>ccLearn is a division of Creative Commons dedicated to realizing the full potential of the internet to support open learning and open educational resources.</p><p>Our mission is to minimize legal, technical, and social barriers to sharing and reuse of educational materials.</p>
