@@ -70,7 +70,7 @@
         </form>
       -->
       </div>
-        <span class="logo"><a href="<?php echo get_option('home'); ?>"><span><img src="<?php bloginfo('stylesheet_directory'); ?>/images/ccl-title-f.png" alt="cclearn" id="cc-title" border="0"/></span></a></span>
+        <div class="logo"><a href="<?php echo get_option('home'); ?>"><span><img src="<?php bloginfo('stylesheet_directory'); ?>/images/ccl-title-f.png" alt="cclearn" id="cc-title" border="0"/></span></a></div>
 
 		
   		<?php if (is_home()) { ?>
