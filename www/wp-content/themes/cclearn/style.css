@@ -88,6 +88,11 @@ body { background-color: #fff; color: #333; font: 12px verdana, sans-serif !impo
 }
 #search-box h4 { color: #fff; }
 
+#headerimage {
+  width: 60%;
+  overflow: hidden;
+}
+
 #body { margin: 4px 0 0 0; /* border-top: 1px solid #ddd;*/ }
 #splash {  position: relative; border-bottom: 1px solid #ddd; overflow:auto; }
 #content { position: relative; padding: 5px 0; margin-bottom: 20px; }
