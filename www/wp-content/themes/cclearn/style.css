@@ -21,7 +21,7 @@ body { background-color: #fff; color: #333; font: 12px verdana, sans-serif !impo
 #header-wrapper { padding-top:2px; background: #fff url('images/header-bar-thin.png') repeat-x top left;}
 #header-main { position: relative; font-size: 11px !important; width: 91.5% !important; max-width: 1003px; height: 60px;} /* + .box */
 
-#logo { top: 5px;}
+#header-main .logo { top: 5px;}
  
   /* only visible to FF */
   html>body #header-main .find span.img {
