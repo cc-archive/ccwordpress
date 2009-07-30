@@ -91,6 +91,7 @@ body { background-color: #fff; color: #333; font: 12px verdana, sans-serif !impo
 #headerimage {
   width: 60%;
   overflow: hidden;
+  margin: 0px 8px 0px 8px;
 }
 
 #body { margin: 4px 0 0 0; /* border-top: 1px solid #ddd;*/ }
