@@ -18,7 +18,7 @@ body { background-color: #fff; color: #333; font: 12px verdana, sans-serif !impo
 
 #wrapper-ie { width: auto; }
 
-#header-wrapper { padding-top:2px; background:url('images/header-main-b.png') bottom left repeat-x #8aaa1b /*6fa017*/; }
+#header-wrapper { padding-top:2px; background: #fff url('images/header-bar-thin.png') repeat-x top left;}
 #header-main { position: relative; font-size: 11px !important; width: 91.5% !important; max-width: 1003px; } /* + .box */
  
   /* only visible to FF */
