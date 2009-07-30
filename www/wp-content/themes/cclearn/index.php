@@ -10,7 +10,6 @@
        <!-- <div id="splash">
 		-->	<?php /*echo cc_current_feature(); */?>
 		
-		/* <?php include "events-map.php" ?> */
 		<div id="events-map">
 		<img src="http://learn.creativecommons.org/wp-content/uploads/2009/07/opened-launch.png" />
 		</div>
