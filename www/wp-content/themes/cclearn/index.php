@@ -10,7 +10,7 @@
        <!-- <div id="splash">
 		-->	<?php /*echo cc_current_feature(); */?>
 		
-		<div id="events-map">
+		<div id="events_map">
 		<a href="http://creativecommons.org/weblog/entry/15467"><img src="http://learn.creativecommons.org/wp-content/uploads/2009/07/opened-launch.png" style="border-style: none;" /></a>
 		</div>
 		<br />
