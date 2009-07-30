@@ -31,7 +31,7 @@
   $projects_query = array (
       'post_type' => 'page',
       'post_parent' => cc_id_from_page_name("Projects"),
-      'orderby' => 'ID',
+      'orderby' => 'menu_order',
 	  'order' => 'asc',
 	  'limit' => '5'
       );
