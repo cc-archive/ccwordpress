@@ -46,7 +46,7 @@
     ?>
 			<div class="floater w20 alt helpLink" id="project_<?php echo $title ?>">
 				<h3>
-					<a href="<? the_permalink() ?>"><strong><? the_title() ?></strong></a>
+					<a href="<? if ( get_post_meta($post->ID, 'redirecturl', true) )  {echo get_post_meta($post->ID, "redirecturl", $single = true); } else {the_permalink();} ?>"><strong><? the_title() ?></strong></a>
 				</h3>
 				<a href="<? the_permalink() ?>"><img src="<?= $image->uri ?>" alt="<?= $image->descr ?>" align="left" border="0"/></a>
 				<!-- <p><?=  get_post_meta($post->ID, "excerpt", true) ?></p> -->
