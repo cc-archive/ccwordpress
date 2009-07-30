@@ -33,7 +33,7 @@
       'post_parent' => cc_id_from_page_name("Projects"),
       'orderby' => 'ID',
 	  'order' => 'asc',
-	  'limit' => '6'
+	  'limit' => '5'
       );
   $projects = get_posts($projects_query);
   
