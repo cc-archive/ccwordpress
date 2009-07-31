@@ -108,7 +108,7 @@ body { background-color: #fff; color: #333; font: 12px arial, sans-serif !import
 #footer { background-color: #f2f4f2; clear: both; margin-top: 40px; padding: 10px 0; color: #555; font-size: 90%; }
 #sub-footer { } /* + .box */
 
-h1, h2, h3 { line-height: 1.5em; font-family: Helvetica, Arial, sans-serif; }
+h1, h2, h3 { line-height: 1.2em; font-family: Helvetica, Arial, sans-serif; }
 h1 { font-size: 180%; }
 h2 { margin-top: 25px; line-height: 1.4em; margin-bottom: 12px; font-size: 175% !important; }
 h3 { font-size: 150% !important; margin-top: 18px; }
