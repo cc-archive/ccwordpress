@@ -10,11 +10,13 @@
        <!-- <div id="splash">
 		-->	<?php /*echo cc_current_feature(); */?>
 		
-		<?php include "events-map.php" ?>
-
+		<div id="headerimage">
+		<a href="http://creativecommons.org/weblog/entry/15467"><img src="http://learn.creativecommons.org/wp-content/uploads/2009/07/opened-launch.png" style="border-style: none;" /></a>
+		</div>
+		<br />
 		<div id="head-info">
 			<div id="mission">
-				<p>ccLearn is a division of Creative Commons dedicated to realizing the full potential of the internet to support open learning and open educational resources.</p><p>Our mission is to minimize legal, technical, and social barriers to sharing and reuse of educational materials.</p>
+				<p><b>ccLearn</b> is a division of Creative Commons dedicated to realizing the full potential of the internet to support <b>open learning</b> and <b>open educational resources</b>.</p><p>Our mission is to minimize legal, technical, and social barriers to <b>sharing</b> and <b>reuse</b> of educational materials.</p>
 			</div>
 			<div id="current">
 				<?php echo cc_current_feature(); ?>
@@ -31,9 +33,9 @@
   $projects_query = array (
       'post_type' => 'page',
       'post_parent' => cc_id_from_page_name("Projects"),
-      'orderby' => 'ID',
+      'orderby' => 'menu_order',
 	  'order' => 'asc',
-	  'limit' => '6'
+	  'limit' => '5'
       );
   $projects = get_posts($projects_query);
   
@@ -45,10 +47,8 @@
 	$title = str_replace(" ", "_", strtolower($post->post_title));
     ?>
 			<div class="floater w20 alt helpLink" id="project_<?php echo $title ?>">
-				<h3>
-					<a href="<? the_permalink() ?>"><strong><? the_title() ?></strong></a>
-				</h3>
-				<a href="<? the_permalink() ?>"><img src="<?= $image->uri ?>" alt="<?= $image->descr ?>" align="left" border="0"/></a>
+				<h3><a href="<? if (get_post_meta($post->ID, 'redirecturl', true) !='' ) echo get_post_meta($post->ID, 'redirecturl', true); else the_permalink(); ?>"><strong><? the_title() ?></strong></a></h3>
+				<a href="<? if (get_post_meta($post->ID, 'redirecturl', true) !='' ) echo get_post_meta($post->ID, 'redirecturl', true); else the_permalink(); ?>"><img src="<?= $image->uri ?>" alt="<?= $image->descr ?>" align="center" border="0"/></a>
 				<!-- <p><?=  get_post_meta($post->ID, "excerpt", true) ?></p> -->
 			</div>
 			<div class="popup" id="help_project_<?php echo $title ?>">
