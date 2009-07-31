@@ -326,8 +326,8 @@ ul#navbar li {float: left; height: 2.4em;  margin: 0.2em 2px 0 2px; }
 ul#navbar li.edit { margin-left: 15px; }
 ul#navbar li.active { margin-top: 0; font-weight: bold; height: 2.5em; }
 
-ul#navbar a {display: block; color: #FFFFFF; }
-ul#navbar a span { display: block; padding: 0.5em 1.4em 0.2em; padding-top: 0.7em; color: #FFFFFF;}
+ul#navbar a { color: #FFFFFF; }
+ul#navbar a span { padding: 0.5em 1.5em; padding-top: 0.7em; color: #FFFFFF;}
 
 ul#navbar a:hover {text-decoration: underline;}
 ul#navbar a:hover span {text-decoration: underline;}
@@ -335,10 +335,10 @@ ul#navbar a:hover span {text-decoration: underline;}
 ul#navbar li.active a {font-weight: thick; }
 ul#navbar li.active a span {font-weight: thick; }
 
-ul#navbar li.edit a { background: url("/images/tab-body-edit.png") no-repeat top right; }
-ul#navbar li.edit a span { background: url("/images/tab-left-edit.png") no-repeat top left; }
+ul#navbar li.edit a { color: #FFFFFF; }
+ul#navbar li.edit a span {text-decoration: underline; }
 
-ul#navbar li.edit a:hover { background: url("/images/tab-body-edit.png") no-repeat top right #fff2f2; }
+ul#navbar li.edit a:hover {text-decoration: underline;}
 
 
 
