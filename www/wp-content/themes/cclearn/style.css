@@ -326,7 +326,7 @@ ul#navbar div.edit { position: absolute;  height: 30px; width: 100px; top: 70px;
 ul#navbar li.active {/*font-weight: bold;*/}
 ul#navbar a { color: #FFFFFF; }
 ul#navbar div { padding: 0.7em 1.5em; padding-top: 0.7em; font-size: 130%; display: table-cell; margin: 2px; width: 95%;}
-ul#navbar a:hover {text-decoration: underline;}
+/* ul#navbar a:hover {text-decoration: underline;} */
 
 .edit { position: relative; height: 20px; width: 100px; top: 25px; color: black; font-size: 130%; float: right;}
 
