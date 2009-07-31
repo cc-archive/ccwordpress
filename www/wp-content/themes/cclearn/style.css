@@ -319,7 +319,7 @@ ul.archives li .blocked { position: absolute; top: 6px; right: 6px; }
 		/*background: url("/images/tabbar-bg.png") repeat-x bottom left #383e32 /*fafffa*/;
 		/* height: 2.4em;*/ 
 		margin-bottom: 1px; 
-		width: 60%; }
+		/* width: 60%; */}
 ul#navbar { list-style-type: none; width:100%; }
 ul#navbar li {float: left; height: 2.4em;  margin: 0.2em 2px 0 2px; }
 ul#navbar li.edit { margin-left: 15px; }
