@@ -39,7 +39,7 @@ $nav = array (
 			if ("active" == $klass) $activated = true;
           }
 
-          print '      <li class="'.$klass.'"><a href="'. get_option('home') . $item["path"] .'" title="'.$item["name"].'"><span>'.$item["name"].'</span></a></li>';
+          print '      <li class="'.$klass.'"><a href="'. get_option('home') . $item["path"] .'" title="'.$item["name"].'"><div>'.$item["name"].'</div></a></li>';
         } 
         
         if (is_page() or is_single()) edit_post_link('<span>Edit this article</span>', '<li class="edit">', '</li>');

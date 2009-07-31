@@ -327,7 +327,7 @@ ul#navbar li.edit { margin-left: 15px; }
 ul#navbar li.active { margin-top: 0; font-weight: bold; height: 2.5em; }
 
 ul#navbar a { color: #FFFFFF; }
-ul#navbar a span { padding: 0.7em 1.5em; padding-top: 0.7em; color: #FFFFFF;}
+ul#navbar a div { padding: 0.7em 1.5em; padding-top: 0.7em; color: #FFFFFF;}
 
 ul#navbar a:hover {text-decoration: underline;}
 
