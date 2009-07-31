@@ -325,7 +325,7 @@ ul#navbar li {float: left; height: 2.5em;  margin: 0.2em 0.5em 0 0.2em; }
 ul#navbar div.edit { position: absolute;  height: 30px; width: 100px; top: 70px; color: black;}
 ul#navbar li.active {font-weight: bold;}
 ul#navbar a { color: #FFFFFF; }
-ul#navbar div { padding: 0.7em 1.5em; padding-top: 0.7em; font-size: 130%;}
+ul#navbar div { padding: 0.7em 1.5em; padding-top: 0.7em; font-size: 130%; display: table-cell;}
 ul#navbar a:hover {text-decoration: underline;}
 
 .edit { position: relative; height: 20px; width: 100px; top: 25px; color: black; font-size: 130%; float: right;}
