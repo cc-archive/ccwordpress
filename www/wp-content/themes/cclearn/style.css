@@ -330,15 +330,10 @@ ul#navbar a { color: #FFFFFF; }
 ul#navbar a span { padding: 0.5em 1.5em; padding-top: 0.7em; color: #FFFFFF;}
 
 ul#navbar a:hover {text-decoration: underline;}
-ul#navbar a:hover span {text-decoration: underline;}
 
 ul#navbar li.active a {font-weight: thick; }
-ul#navbar li.active a span {font-weight: thick; }
 
 ul#navbar li.edit a { color: #FFFFFF; }
-ul#navbar li.edit a span {text-decoration: underline; }
-
-ul#navbar li.edit a:hover {text-decoration: underline;}
 
 
 
