@@ -31,7 +31,20 @@
 	<meta name="generator" content="WordPress <?php bloginfo('version'); ?>" />
   <meta name="keywords" content="creative commons, commons, free culture, open source, attribution, non-commercial, share-alike, no derivatives, lessig" />
   <meta name="description" content="Creative Commons licenses provide a flexible range of protections and freedoms for authors, artists, and educators." />
-	
+
+	<!-- Google Website Optimizer tracking code -->
+	<script>_udn = ".creativecommons.org"; </script>
+	<script>
+function utmx_section(){}function utmx(){}
+(function(){var k='2263204650',d=document,l=d.location,c=d.cookie;function f(n){
+if(c){var i=c.indexOf(n+'=');if(i>-1){var j=c.indexOf(';',i);return c.substring(i+n.
+length+1,j<0?c.length:j)}}}var x=f('__utmx'),xx=f('__utmxx'),h=l.hash;
+d.write('<sc'+'ript src="'+
+'http'+(l.protocol=='https:'?'s://ssl':'://www')+'.google-analytics.com'
++'/siteopt.js?v=1&utmxkey='+k+'&utmx='+(x?x:'')+'&utmxx='+(xx?xx:'')+'&utmxtime='
++new Date().valueOf()+(h?'&utmxhash='+escape(h.substr(1)):'')+
+'" type="text/javascript" charset="utf-8"></sc'+'ript>')})();
+	</script>
 	
   <?php wp_head(); ?>
 </head>
@@ -106,9 +119,11 @@
 	          <h2 class="license"><a href="/choose">License &raquo;</a></h2>
 	          <p>Use our <strong>free</strong> tools to inform people how they can reuse and share your creative works.</p>
 	        </div>
-	        <div class="stdColumn ccTool helpLink lastColumn" id="network">
+			<div class="stdColumn ccTool helpLink lastColumn" id="network">
+<script>utmx_section("Donate Block")</script>
 	          <h2 class="join"><a href="https://support.creativecommons.org/donate">Donate &raquo;</a></h2>
-	          <p>Help <strong>support</strong> the&nbsp;Commons.</p>
+			  <p>Help <strong>support</strong> the&nbsp;Commons.</p>
+</noscript>
 	        </div>
 	      </div>  
       </div>
@@ -230,4 +245,19 @@ HTML;
 	  </div>	
     </div>
 
-<?php get_footer(); ?>
+<?php 
+$extra_footer = <<<SCRIPT
+<!-- Google Website Optimizer tracking code -->
+<script type="text/javascript">
+		  if(typeof(_gat)!='object')document.write('<sc'+'ript src="http'+
+		  (document.location.protocol=='https:'?'s://ssl':'://www')+
+		  '.google-analytics.com/ga.js"></sc'+'ript>')</script>
+ <script type="text/javascript">
+		  try {
+				  var pageTracker=_gat._getTracker("UA-9998295-1");
+				  pageTracker._setDomainName(".creativecommons.org");
+				  pageTracker._trackPageview("/2263204650/test");
+		  }catch(err){}</script>
+SCRIPT;
+			  include "footer.php";
+			  /*get_footer();*/ ?>
