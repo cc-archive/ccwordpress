@@ -322,12 +322,12 @@ ul.archives li .blocked { position: absolute; top: 6px; right: 6px; }
 		top: 5px; 
 		/* width: 60%; */}
 ul#navbar { list-style-type: none; width:100%; }
-ul#navbar li {float: left; height: 2.4em;  margin: 0.2em 2px 0 2px; }
+ul#navbar li {float: left; height: 2.5em;  margin: 0.2em 0.5em 0 0.2em; }
 ul#navbar li.edit { margin-left: 15px; }
 ul#navbar li.active { margin-top: 0; font-weight: bold; height: 2.5em; }
 
 ul#navbar a { color: #FFFFFF; }
-ul#navbar a span { padding: 0.5em 1.5em; padding-top: 0.7em; color: #FFFFFF;}
+ul#navbar a span { padding: 0.7em 1.5em; padding-top: 0.7em; color: #FFFFFF;}
 
 ul#navbar a:hover {text-decoration: underline;}
 
