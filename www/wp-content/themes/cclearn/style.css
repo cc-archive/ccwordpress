@@ -328,7 +328,7 @@ ul#navbar a { color: #FFFFFF; }
 ul#navbar div { padding: 0.7em 1.5em; padding-top: 0.7em; font-size: 130%;}
 ul#navbar a:hover {text-decoration: underline;}
 
-.edit { position: absolute;  height: 30px; width: 100px; top: 70px; color: black;}
+.edit { position: relative; height: 20px; width: 100px; top: 25px; color: black; font-size: 130%; float: right;}
 
 
 #splash .foogle {
