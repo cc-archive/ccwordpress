@@ -9,7 +9,7 @@ Version: 1.0
 
 * { margin: 0; padding: 0; }
 
-body { background-color: #fff; color: #333; font: 12px arial, sans-serif !important; line-height:145% !important; text-align: center; }
+body { background-color: #fff; color: #333; font: 12px arial, sans-serif !important; line-height:1.5em !important; text-align: center; }
 
 .box { text-align: left; margin: 0 auto; width: 91%; min-width: 765px; max-width: 1000px; } /* replaces #wrapper */
 .content-box { float: left; padding-top: 15px;/* border-top: 1px solid #ddd;*/ margin-right: 1%; overflow: hidden; }
@@ -56,7 +56,7 @@ body { background-color: #fff; color: #333; font: 12px arial, sans-serif !import
 	font-size: 130%;
 	font-family: Georgia;
 	font-style: oblique;
-	line-height: 1.3em;
+	line-height: 1.5em;
 	color: #120;
 	/*background-color: #e8f2c8;*/
 	-moz-border-radius: 5px;
@@ -108,12 +108,12 @@ body { background-color: #fff; color: #333; font: 12px arial, sans-serif !import
 #footer { background-color: #f2f4f2; clear: both; margin-top: 40px; padding: 10px 0; color: #555; font-size: 90%; }
 #sub-footer { } /* + .box */
 
-h1, h2, h3 { line-height: 120%; font-family: Helvetica, Arial, sans-serif; }
+h1, h2, h3 { line-height: 1.5em; font-family: Helvetica, Arial, sans-serif; }
 h1 { font-size: 180%; }
-h2 { margin-top: 25px; line-height: 140%; margin-bottom: 12px; font-size: 175% !important; }
+h2 { margin-top: 25px; line-height: 1.4em; margin-bottom: 12px; font-size: 175% !important; }
 h3 { font-size: 150% !important; margin-top: 18px; }
 h4, .jurisdiction a:link { color: #773; font-size: 105%; font-weight: bold;}
-h5 { font-size: 90%; line-height: 130%; margin-bottom: 20px; color: #aaa; }
+h5 { font-size: 90%; line-height: 1.3em; margin-bottom: 20px; color: #aaa; }
 
 .jurisdictions {
   padding: 5px;
@@ -173,7 +173,7 @@ a.cc-actions:hover, #header-main .active a:link { background: url('/images/heade
 #title.page { border-top: none; }
 #title h1 { margin-top: 15px; }
 #title h2, .title h1 { padding: 0px 15px 20px 0px;  margin: 0;}
-#title h2 { font-size: 200% !important; line-height:1.15em; }
+#title h2 { font-size: 200% !important; line-height:1.3em; }
 #title h2.tagline { /*  color: #92534e;*/ color: #b82e00;}
 #title h4.category { font-size: 13px !important; display: block; padding-top: 22px; margin: 0px 0px 0px; }
 #title h4.category a { color: #9a9; }
