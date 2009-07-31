@@ -321,11 +321,11 @@ ul.archives li .blocked { position: absolute; top: 6px; right: 6px; }
 		margin-bottom: 1px; 
 		width: 60%; }
 ul#navbar { list-style-type: none; width:100%; }
-ul#navbar li {float: left; height: 2.4em;  margin: 0.2em 2px 0 2px; background: url("http://search.creativecommons.org/images/tab-bg.png") repeat-x bottom left #f0f4f1; }
-ul#navbar li.edit { margin-left: 15px; background: url("http://search.creativecommons.org/images/tab-bg.png") repeat-x bottom left #efe2e2; }
+ul#navbar li {float: left; height: 2.4em;  margin: 0.2em 2px 0 2px; }
+ul#navbar li.edit { margin-left: 15px; }
 ul#navbar li.active { margin-top: 0; font-weight: bold; height: 2.5em; }
 
-ul#navbar a {display: block; color: #333; background: url("/images/tab-body-dark.png") no-repeat top right ;  }
+ul#navbar a {display: block; color: #FFFFFF; }
 ul#navbar a span { display: block; padding: 0.5em 1.4em 0.2em; padding-top: 0.7em; color: #FFFFFF;}
 
 ul#navbar a:hover {text-decoration: underline;}
