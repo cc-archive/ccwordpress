@@ -16,7 +16,7 @@
 		<br />
 		<div id="head-info">
 			<div id="mission">
-				<p>ccLearn is a division of Creative Commons dedicated to realizing the full potential of the internet to support open learning and open educational resources.</p><p>Our mission is to minimize legal, technical, and social barriers to sharing and reuse of educational materials.</p>
+				<p><b>ccLearn</b> is a division of Creative Commons dedicated to realizing the full potential of the internet to support <b>open learning</b> and <b>open educational resources</b>.</p><p>Our mission is to minimize legal, technical, and social barriers to <b>sharing</b> and <b>reuse</b> of educational materials.</p>
 			</div>
 			<div id="current">
 				<?php echo cc_current_feature(); ?>
