@@ -69,7 +69,7 @@ body { background-color: #fff; color: #333; font: 12px arial, sans-serif !import
 	margin-top: 0.5em;
 	/*background-color: #eee;
 	background: url(images/yellowbg.png) top left repeat-x;
-	*/padding: 1.5em 0 0 0;
+	*/padding: 1em 0 0 0;
 	border-top: 3px double #fbeac3;
 	-moz-border-radius: 3px;
 }
