@@ -312,9 +312,9 @@ ul.archives li .blocked { position: absolute; top: 6px; right: 6px; }
 
 /* nav tab-bar */
 #mainmenu {	
-		position: absolute;
+		position: relative;
 		bottom: 0;
-		left: 230px;
+		float: right;
 		padding-top: 0.6em; 
 		/*background: url("/images/tabbar-bg.png") repeat-x bottom left #383e32 /*fafffa*/;
 		/* height: 2.4em;*/ 
