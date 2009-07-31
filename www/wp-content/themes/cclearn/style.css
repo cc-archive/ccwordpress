@@ -66,7 +66,7 @@ body { background-color: #fff; color: #333; font: 12px arial, sans-serif !import
 }
 
 #current {
-	margin-top: 1em;
+	margin-top: 0.5em;
 	/*background-color: #eee;
 	background: url(images/yellowbg.png) top left repeat-x;
 	*/padding: 1.5em 0 0 0;
