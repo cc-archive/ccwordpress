@@ -40,13 +40,12 @@ $nav = array (
           }
 
           print '      <li class="'.$klass.'"><div><a href="'. get_option('home') . $item["path"] .'" title="'.$item["name"].'">'.$item["name"].'</a></div></li>';
-        } 
-        
-        if (is_page() or is_single()) edit_post_link('<div class="edit">Edit this article</div>', '<li class="edit">', '</li>');
-       
+        } ?>
+ 
+        </ul>
+	<?php
+        if (is_page() or is_single()) edit_post_link('<div class="edit">Edit this article</div>');
         ?>
-        
-    </ul>
     <div class="clear"></div>
   </div>
  
