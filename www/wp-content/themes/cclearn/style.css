@@ -69,7 +69,8 @@ body { background-color: #fff; color: #333; font: 12px Arial, sans-serif !import
 	margin-top: 0.5em;
 	/*background-color: #eee;
 	background: url(images/yellowbg.png) top left repeat-x;
-	*/padding: 1em 0 0 0;
+	*/padding-top: 0.5em;
+	padding-bottom: 1em;
 	border-top: 3px double #fbeac3;
 	-moz-border-radius: 3px;
 }
@@ -224,7 +225,7 @@ a.cc-actions:hover, #header-main .active a:link { background: url('/images/heade
 }
 
 .rss img.country { float: right; width: 54px; margin: 0; padding: 0; border: 1px solid #555; }
-.rss .rss-title { margin-right: 64px; }
+.rss .rss-title { margin-right: 64px; margin-bottom: 5px;}
 #beta .rss p { margin: 0; clear: both; }
 #alpha small.rss-date { display: none; }
 
@@ -326,7 +327,7 @@ ul#navbar div.edit { position: absolute;  height: 30px; width: 100px; top: 70px;
 ul#navbar li.active {/*font-weight: bold;*/}
 ul#navbar a { color: #FFFFFF; }
 ul#navbar div { padding: 0.7em 1.5em; padding-top: 0.7em; font-size: 130%; display: table-cell; margin: 2px; width: 95%;}
-/* ul#navbar a:hover {text-decoration: underline;} */
+ul#navbar a:hover {text-decoration: underline;}
 
 .edit { position: relative; height: 20px; width: 100px; top: 25px; color: black; font-size: 130%; float: right;}
 
