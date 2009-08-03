@@ -111,18 +111,18 @@ d.write('<sc'+'ript src="'+
       <div id="triple" class="box">
         <div id="ccContent" class="columnBox">
 	      <div id="ccTools" class="columnBox">
-	        <div class="stdColumn ccTool helpLink" id="search">
+	        <div class="stdColumn ccTool nohelpLink" id="search">
 	          <h2 class="find"><a href="http://search.creativecommons.org/">Find &raquo;</a></h2>
-	          <p>Find <strong>licensed</strong> works you can share, remix, or&nbsp;reuse.</p>
+	          <p><a href="http://search.creativecommons.org/">Find <strong>licensed</strong> works you can share, remix, or&nbsp;reuse.</a></p>
 	        </div>
-	        <div class="stdColumn ccTool helpLink " id="license">
+	        <div class="stdColumn ccTool nohelpLink " id="license">
 	          <h2 class="license"><a href="/choose">License &raquo;</a></h2>
-	          <p>Use our <strong>free</strong> tools to inform people how they can reuse and share your creative works.</p>
+	          <p><a href="/choose">Use our <strong>free</strong> tools to inform people how they can reuse and share your creative works.</a></p>
 	        </div>
-			<div class="stdColumn ccTool helpLink lastColumn" id="network">
+			<div class="stdColumn ccTool nohelpLink lastColumn" id="network">
 <script>utmx_section("Donate Block")</script>
 	          <h2 class="join"><a href="https://support.creativecommons.org/donate">Donate &raquo;</a></h2>
-			  <p>Help <strong>support</strong> the&nbsp;Commons.</p>
+			  <p><a href="https://support.creativecommons.org/donate">The future of Creative Commons depends on you &mdash; <strong>Donate&nbsp;Now!</strong></a></p>
 </noscript>
 	        </div>
 	      </div>  

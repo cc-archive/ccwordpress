@@ -443,12 +443,19 @@
 	color: #304808;
 	display: block;
 }
-.ccTool p {
+.ccTool p a {
+	display: block;
+	color: #333;
 	margin: 0;
 	/* font-size: 90%; */
 	padding: 0 6px 6px;
 	line-height: 1.5em;
 	height: 3em;
+}
+
+.ccTool p a:hover {
+	text-decoration: none;
+	color: #666;
 }
 
 .ccTool img {
