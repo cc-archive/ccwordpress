@@ -29,15 +29,7 @@
 
 <? wp_footer(); ?>
 
-<?php
-// Tracer script
-// http://tynt.com
-// Only have tracer available for blog posts
-if (is_single() || is_category() || is_home()) {
-?>
-<script type="text/javascript" src="http://tcr.tynt.com/javascripts/Tracer.js?user=aBgndMD7mr3Ovfab7jrHcU&s=61&cc=1"></script>
-<?php } 
-
+<?php 
 if ($extra_footer) { echo $extra_footer; }
 ?>
 
