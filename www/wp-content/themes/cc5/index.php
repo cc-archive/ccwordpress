@@ -21,7 +21,7 @@
   <script type="text/javascript" src="http://yui.yahooapis.com/2.6.0/build/container/container-min.js"></script> 
   <script type="text/javascript" src="http://yui.yahooapis.com/2.6.0/build/cookie/cookie-min.js"></script> 
   	
-	<link href="<?php bloginfo('stylesheet_directory'); ?>/index.css?20090622" rel="stylesheet" type="text/css" />
+	<link href="<?php bloginfo('stylesheet_directory'); ?>/index.css?20090803" rel="stylesheet" type="text/css" />
   <!-- <link href="<?php bloginfo('stylesheet_directory'); ?>/support.css?5.1" rel="stylesheet" type="text/css" /> -->
 	
 	<script type="text/javascript" charset="utf-8" src="<?php bloginfo('stylesheet_directory'); ?>/site.js"></script>
@@ -33,7 +33,10 @@
   <meta name="description" content="Creative Commons licenses provide a flexible range of protections and freedoms for authors, artists, and educators." />
 
 	<!-- Google Website Optimizer tracking code -->
-	<script>_udn = ".creativecommons.org"; </script>
+	<script>
+		_udn = ".creativecommons.org"; 
+		_ulink = "1";
+		_uhash = "off";	</script>
 	<script>
 function utmx_section(){}function utmx(){}
 (function(){var k='2263204650',d=document,l=d.location,c=d.cookie;function f(n){
@@ -115,15 +118,15 @@ d.write('<sc'+'ript src="'+
 	          <h2 class="find"><a href="http://search.creativecommons.org/">Find &raquo;</a></h2>
 	          <p><a href="http://search.creativecommons.org/">Find <strong>licensed</strong> works you can share, remix, or&nbsp;reuse.</a></p>
 	        </div>
-	        <div class="stdColumn ccTool nohelpLink " id="license">
-	          <h2 class="license"><a href="/choose">License &raquo;</a></h2>
-	          <p><a href="/choose">Use our <strong>free</strong> tools to inform people how they can reuse and share your creative works.</a></p>
-	        </div>
-			<div class="stdColumn ccTool nohelpLink lastColumn" id="network">
+			<div class="stdColumn ccTool nohelpLink" id="network">
 <script>utmx_section("Donate Block")</script>
 	          <h2 class="join"><a href="https://support.creativecommons.org/donate">Donate &raquo;</a></h2>
 			  <p><a href="https://support.creativecommons.org/donate">The future of Creative Commons depends on you &mdash; <strong>Donate&nbsp;Now!</strong></a></p>
 </noscript>
+	        </div>
+	        <div class="stdColumn ccTool nohelpLink lastColumn" id="license">
+	          <h2 class="license"><a href="/choose">License &raquo;</a></h2>
+	          <p><a href="/choose">Use our <strong>free</strong> tools to inform people how they can reuse and share your creative works.</a></p>
 	        </div>
 	      </div>  
       </div>
@@ -225,7 +228,7 @@ HTML;
           </div>
         </div>
       </div>
-
+<?php /*
       <!-- YUI -->
       <div id="help_license">
 	    <div class="bd">
@@ -242,6 +245,7 @@ HTML;
 	      <p>Creative Commons needs your support to help build a participatory culture, in which everyone can actively engage in the creativity that surrounds us.</p>
 	    </div>
 	  </div>
+ */ ?>
 	  </div>	
     </div>
 
