@@ -29,7 +29,8 @@ $category = get_category($cat); ?>
                 </h1>
                 <h4 class="meta"><?php the_author() ?>, <?php the_time('F jS, Y')?></h4>
                 <?php the_content("Read More..."); ?>
-                <?php edit_post_link('Edit', '', ' |'); ?> <?php comments_popup_link('No Comments &#187;', '1 Comment &#187;', '% Comments &#187;'); ?>
+                <?php edit_post_link('Edit', '', ' |'); ?> <?php comments_popup_link('No Comments &#187;', '1 Comment &#187;', '% Comments &#187;'); ?> 
+<?php if (get_the_tags()) the_tags(); ?> 
               </div>
             <?php } }?>
             
@@ -43,13 +44,22 @@ $category = get_category($cat); ?>
             }
             ?>
             </div>
+
             <div id="archives">
+
 			<strong><a href="/<?php echo $category->slug; ?>/rss">Subscribe to RSS</a></strong><br/><br/>
-			  <h4>Archives</h4> 
+<!--			  <h4>Archives</h4> 
               <ul class="archives">
                 <?php cc_get_cat_archives($cat, 'monthly', '', 'html', '', '', TRUE); ?>
               </ul>
+-->
+<?php if ( !function_exists('dynamic_sidebar')
+        || !dynamic_sidebar() ) ?>
+
+
             </div>
+
+
     </div>  
 <?php get_sidebar(); ?>
 <?php get_footer(); ?>

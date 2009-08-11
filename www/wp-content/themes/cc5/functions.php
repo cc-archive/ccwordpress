@@ -1,4 +1,6 @@
 <?php
+if ( function_exists('register_sidebar') )
+    register_sidebar();
 
 /* retrieve children pages, and parent breadcrumbs */
 /* FIXME: Bit of a hack at the moment. Needs a better memory of where teh user is */
