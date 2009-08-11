@@ -1,6 +1,6 @@
 <?php
 if ( function_exists('register_sidebar') )
-    register_sidebar();
+    register_sidebar(array('before_widget' => '<div class="widget">', 'after_widget' => '</div>'));
 
 /* retrieve children pages, and parent breadcrumbs */
 /* FIXME: Bit of a hack at the moment. Needs a better memory of where teh user is */
