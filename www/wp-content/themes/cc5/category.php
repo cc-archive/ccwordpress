@@ -30,8 +30,15 @@ $category = get_category($cat); ?>
                 <h4 class="meta"><?php the_author() ?>, <?php the_time('F jS, Y')?></h4>
                 <?php the_content("Read More..."); ?>
                 <?php edit_post_link('Edit', '', ' |'); ?> <?php comments_popup_link('No Comments &#187;', '1 Comment &#187;', '% Comments &#187;'); ?> 
-<?php if (get_the_tags()) the_tags(); ?> 
-              </div>
+<?php if (get_the_tags()) { ?>
+                <div class="postTags">
+<?php
+			        the_tags(); 
+			?>      
+                </div>
+<?php } ?>
+
+			</div>
             <?php } }?>
             
             <?php
