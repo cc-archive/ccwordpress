@@ -39,6 +39,15 @@
 	border-bottom: 1px solid #ddd;
 }
 
+.postTags {
+	padding: 1em;
+	margin-top: 1em;
+	background-color: #f2f2f2;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	border-radius: 5px;
+}
+
 .sideContentSpace {
 	overflow: hidden;
 /*	margin-right: 180px;*/
