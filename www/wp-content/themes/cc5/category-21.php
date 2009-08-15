@@ -37,7 +37,7 @@ $is_international = true;
 
 				<p>Creative Commons works to "port" the core Creative Commons Licenses to different copyright legislations around the world. The porting process involves both linguistically translating the licenses and legally adapting them to particular jurisdictions.</p>
 
-				<p>This work is lead by CC General Counsel <a href="http://creativecommons.org/about/people#95">Diane Peters</a> (<a href="mailto:catharina@creativecommons.org">email</a>) with Project Manger <a href="http://creativecommons.org/about/people#85">Michelle Thorne</a> (<a href="mailto:michelle@creativecommons.org">email</a>) and volunteer teams in each jurisdiction who are committed to introducing CC to their country and who consult extensively with members of the public and key stakeholders in an effort to adapt the CC licenses to their jurisdiction.</p>
+				<p>This work is led by CC General Counsel <a href="http://creativecommons.org/about/people#95">Diane Peters</a> (<a href="mailto:catharina@creativecommons.org">email</a>) with Project Manger <a href="http://creativecommons.org/about/people#85">Michelle Thorne</a> (<a href="mailto:michelle@creativecommons.org">email</a>) and volunteer teams in each jurisdiction who are committed to introducing CC to their country and who consult extensively with members of the public and key stakeholders in an effort to adapt the CC licenses to their jurisdiction.</p>
 
 				<p>A complete overview of the porting process can be found at <a href="http://wiki.creativecommons.org/International_Overview">http://wiki.creativecommons.org/International_Overview</a>.</p>
 
