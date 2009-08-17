@@ -21,7 +21,9 @@ $cc_pl_rewrites = array(
 	array("\/weblog\/\d{4}\/\d{2}\/\d{2}\/", "/weblog/entry/"),
 	array("\/weblog\/cclearn\/\d{4}\/\d{2}\/\d{2}\/", "/weblog/entry/"),
 	array("\/press-releases\/\d{4}\/\d{2}\/\d{2}\/", "/press-releases/entry/"),
-	array("\/commoners\/\d{4}\/\d{2}\/\d{2}\/", "/weblog/entry/")
+	array("\/commoners\/\d{4}\/\d{2}\/\d{2}\/", "/weblog/entry/"),
+	array("\/(\d{4})", "/weblog/\\1"),
+	array("\/(\d{4}\/\d{2})", "/weblog/\\1")
 );
 
 # Since we go changing it around, this variable will simply keep track
@@ -31,6 +33,8 @@ $cc_orginal_request_uri = $_SERVER['REQUEST_URI'];
 add_action("init", "cc_mangle_request");
 add_filter("wp_footer", "cc_rewrite_request_uri_notify");
 add_filter("post_link", "cc_rewrite_permalink");
+add_filter("year_link", "cc_rewrite_permalink");
+add_filter("month_link", "cc_rewrite_permalink");
 
 /**
  * Sometimes Wordpress decides what page to display based on both the query
