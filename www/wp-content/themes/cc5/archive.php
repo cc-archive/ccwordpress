@@ -1,8 +1,6 @@
 <?php get_header(); 
-
 // Setup category details for template
 $category = get_category($cat); ?>
-
   <div id="mainContent" class="box">
     <div id="contentPrimary">
           	<div class="block" id="title">
@@ -53,7 +51,7 @@ $category = get_category($cat); ?>
 
             <div id="archives">
 
-			<strong><a href="/<?php echo $category->slug; ?>/rss">Subscribe to RSS</a></strong><br/><br/>
+			<strong><a href="<?php echo 'http://' . $_SERVER['HTTP_HOST'] . parse_url($_SERVER['REQUEST_URI'],PHP_URL_PATH) . '/rss';?>">Subscribe to RSS</a></strong><br/><br/>
 <!--			  <h4>Archives</h4> 
               <ul class="archives">
                 <?php cc_get_cat_archives($cat, 'monthly', '', 'html', '', '', TRUE); ?>
