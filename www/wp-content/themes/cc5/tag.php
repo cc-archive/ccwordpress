@@ -3,8 +3,9 @@
 ?>
   <div id="mainContent" class="box">
     <div id="contentPrimary">
-          	<div class="block" id="title">
-              <h2>Tag: <? single_tag_title('') ?></h2>
+			<div class="block" id="title">
+			  <h3 class="category">Tag</h3>
+              <h2><?php single_tag_title('') ?></h2>
         		</div>
             <div id="blocks">            
             <?php if (have_posts())  { ?>

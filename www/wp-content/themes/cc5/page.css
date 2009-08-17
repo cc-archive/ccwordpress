@@ -9,7 +9,7 @@
 #title h1 { margin-top: 1.5em; }
 #title h2, .title h1 { padding: 0 0 0.45em 0; font-size: 43px; margin: 0 !important; line-height: 1em;}
 #title h2.tagline { /*  color: #92534e;*/ color: #b82e00;}
-#title h3.category { font-size: 90% !important; display: block; padding-top: 0; margin: 0; }
+#title h3.category { font-size: 90% !important; display: block; padding-top: 0; margin: 0; color: #999; line-height: 1em; }
 #title h1.splash-title { padding-bottom: 0px; color: #777; font-size: 300%; }
 #title h4 { font-size: 90%; padding-top: 1em;}
 #title img {  border: 1px solid #666; padding: 0 !important; margin-right: 15px; }
