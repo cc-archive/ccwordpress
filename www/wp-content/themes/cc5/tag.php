@@ -1,16 +1,9 @@
 <?php get_header(); 
 // Setup category details for template
-$category = get_category($cat); ?>
+?>
   <div id="mainContent" class="box">
     <div id="contentPrimary">
           	<div class="block" id="title">
-			        <? if (is_month() || is_year()) { ?> 
-              <h3 class="category">
-                <a href="<?php echo get_category_link($cat);?>">
-                 <?php echo $category->name; ?> 
-                </a>
-              </h3>
-              <? }?>
               <h2>Tag: <? single_tag_title('') ?></h2>
         		</div>
             <div id="blocks">            
