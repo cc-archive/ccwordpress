@@ -119,7 +119,15 @@ Visit the jurisdiction site <a href="<?=$jurisdiction_site?>">here</a>.
               </div>
               <? } ?>
               <?php the_content(); ?>
-              <div class="comments"><?php if ($is_blog) comments_template(); ?></div>
+<?php if (get_the_tags()) { ?>
+                <div class="postTags">
+<?php
+						          the_tags(); 
+						  ?>      
+                </div>
+<?php } ?>
+
+			  <div class="comments"><?php if ($is_blog) comments_template(); ?></div>
           </div>
           <? if ($is_commoner) { ?>
           </div>

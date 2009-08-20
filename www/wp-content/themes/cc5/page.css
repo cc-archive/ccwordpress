@@ -9,7 +9,7 @@
 #title h1 { margin-top: 1.5em; }
 #title h2, .title h1 { padding: 0 0 0.45em 0; font-size: 43px; margin: 0 !important; line-height: 1em;}
 #title h2.tagline { /*  color: #92534e;*/ color: #b82e00;}
-#title h3.category { font-size: 90% !important; display: block; padding-top: 0; margin: 0; }
+#title h3.category { font-size: 90% !important; display: block; padding-top: 0; margin: 0; color: #999; line-height: 1em; }
 #title h1.splash-title { padding-bottom: 0px; color: #777; font-size: 300%; }
 #title h4 { font-size: 90%; padding-top: 1em;}
 #title img {  border: 1px solid #666; padding: 0 !important; margin-right: 15px; }
@@ -37,6 +37,15 @@
 .blog {
 	padding-bottom: 25px;
 	border-bottom: 1px solid #ddd;
+}
+
+.postTags {
+	padding: 1em;
+	margin-top: 1em;
+	background-color: #f2f2f2;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	border-radius: 5px;
 }
 
 .sideContentSpace {
@@ -343,3 +352,19 @@ ul.archives .gadgets { float:right; margin-left: 61%; }
 	float: left;
 	margin: 0;
 }
+
+/* --- Widgets --- */
+.widget {
+	padding-bottom: 0.75em;
+	border-bottom: 1px solid #e0e0e0;
+	margin-bottom: 1em;
+}
+
+/* Simple Tags */
+ul.st-tag-cloud li {
+	display: inline;
+}
+ul.st-tag-cloud li:after {
+	content: ", ";
+}
+

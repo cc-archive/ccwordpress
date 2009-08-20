@@ -88,7 +88,20 @@ d.write('<sc'+'ript src="'+
         </div>
           <div id="splashBox">
           <div id="splash">
-            <?php 
+<?php
+		if ($sticky_page = cc_get_sticky_page()) {
+			// grab attached image from sticky page and display it in the #splash area
+			// this ignores any sticky blog posts
+			// WARNING: if multiple pages are set sticky (show_on_index) the most 
+			//          recently updated one will be used 
+			if ($image = cc_get_attachment_image ($sticky_page->ID, 630)) {
+			?>
+			<a href="<?php echo $sticky_page->guid ?>">
+				<img src="<?php echo $image[0] ?>" alt="<?php echo $sticky_page->post_title; ?>" title="<?php echo $sticky_page->post_title; ?>" class="main" />
+			</a>
+			<?php
+			}	
+		} else {
             while (have_posts()) { 
               the_post(); 
               
@@ -104,8 +117,9 @@ d.write('<sc'+'ript src="'+
                 } // if get_attachment_image
                 break;
               } // if is_sticky
-            } // while
-            ?>
+			} // while
+		}
+?>
           </div>
         </div>
         </div>

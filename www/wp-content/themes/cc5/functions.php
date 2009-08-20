@@ -1,4 +1,24 @@
 <?php
+if ( function_exists('register_sidebar') )
+    register_sidebar(array('before_widget' => '<div class="widget">', 'after_widget' => '</div>'));
+
+/* Requests the first available page with the 'show_on_index' custom field */
+function cc_get_sticky_page() {
+	global $wpdb;
+
+	$query = "
+		SELECT posts.*
+		FROM $wpdb->posts posts, $wpdb->postmeta postmeta
+		WHERE posts.ID = postmeta.post_id
+		AND postmeta.meta_key = 'show_on_index'
+		AND postmeta.meta_value = 'yes'
+		AND posts.post_status = 'publish'
+		AND posts.post_type = 'page'
+		ORDER BY posts.post_date ASC LIMIT 1";
+	$page = $wpdb->get_row ($query);
+
+	return $page;
+}
 
 /* retrieve children pages, and parent breadcrumbs */
 /* FIXME: Bit of a hack at the moment. Needs a better memory of where teh user is */

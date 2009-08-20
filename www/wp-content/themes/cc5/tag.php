@@ -1,21 +1,12 @@
 <?php get_header(); 
-
 // Setup category details for template
-$category = get_category($cat); ?>
-
+?>
   <div id="mainContent" class="box">
     <div id="contentPrimary">
-          	<div class="block" id="title">
-			        <? if (is_month() || is_year()) { ?> 
-              <h3 class="category">
-                <a href="<?php echo get_category_link($cat);?>">
-                 <?php echo $category->name; ?> 
-                </a>
-              </h3>
-              <? }?>
-              <h2><? wp_title('') ?></h2>
+			<div class="block" id="title">
+			  <h3 class="category">Tag</h3>
+              <h2><?php single_tag_title('') ?></h2>
         		</div>
-            
             <div id="blocks">            
             <?php if (have_posts())  { ?>
             <?php while (have_posts()) { 
@@ -31,14 +22,13 @@ $category = get_category($cat); ?>
                 <?php the_content("Read More..."); ?>
                 <?php edit_post_link('Edit', '', ' |'); ?> <?php comments_popup_link('No Comments &#187;', '1 Comment &#187;', '% Comments &#187;'); ?> 
 <?php if (get_the_tags()) { ?>
-                <div class="postTags">
+				<div class="postTags">
 <?php
-			        the_tags(); 
-			?>      
-                </div>
-<?php } ?>
-
-			</div>
+		the_tags(); 
+?>
+				</div>
+<?php } ?> 
+              </div>
             <?php } }?>
             
             <?php
@@ -54,7 +44,7 @@ $category = get_category($cat); ?>
 
             <div id="archives">
 
-			<strong><a href="/<?php echo $category->slug; ?>/rss">Subscribe to RSS</a></strong><br/><br/>
+			<strong><a href="<?php echo get_tag_link($tag_id) . '/rss';?>">Subscribe to RSS</a></strong><br/><br/>
 <!--			  <h4>Archives</h4> 
               <ul class="archives">
                 <?php cc_get_cat_archives($cat, 'monthly', '', 'html', '', '', TRUE); ?>
