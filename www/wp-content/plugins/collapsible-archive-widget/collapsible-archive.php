@@ -140,7 +140,7 @@ function ara_collapsiblearchive($before,$after)
 		{
 			?><script type="text/javascript">var visible_<?php echo $years[$x]->year ?> = <?php echo (($defaultexpand || ($expandcurryear && date("Y") == $years[$x]->year)) ? 'true' : 'false') ?>;</script><?php
 			$string_to_echo .= <<<EOB
-				<a style="cursor:pointer;" onclick="visible_{$years[$x]->year} = collapsiblearchive_toggle('ara_ca_mo{$years[$x]->year}',visible_{$years[$x]->year},'ara_ca_mosign{$years[$x]->year}')">
+				<a style="cursor:pointer;text-decoration:none" onclick="visible_{$years[$x]->year} = collapsiblearchive_toggle('ara_ca_mo{$years[$x]->year}',visible_{$years[$x]->year},'ara_ca_mosign{$years[$x]->year}')">
 EOB;
 		}
 		else
@@ -149,7 +149,8 @@ EOB;
 				<a style="cursor:pointer;" onclick="collapsiblearchive_toggle('ara_ca_mo{$years[$x]->year}','ara_ca_mosign{$years[$x]->year}')">
 EOB;
 		}
-		$string_to_echo .= "<span id=\"ara_ca_mosign{$years[$x]->year}\">$icon</span></a><a href=\"$year_link\">{$years[$x]->year}</a>";
+		
+		$string_to_echo .= "<span id=\"ara_ca_mosign{$years[$x]->year}\">$icon</span> {$years[$x]->year}</a><a href=\"#\"></a>";
 		if($count > 0) $string_to_echo .= '&nbsp;('.$years[$x]->posts.')';
 		$string_to_echo .= $childOpen.' id="ara_ca_mo'.$years[$x]->year.'" style="display:'.(($defaultexpand || ($expandcurryear && date("Y") == $years[$x]->year)) ? 'block' : 'none').'">';
 		$string_to_echo .= ara_collapsiblearchive_get_archivesbymonth($years[$x]->year,$count,$lineStart.$preappend,$lineEnd,$abbr);
@@ -425,9 +426,9 @@ function widget_ara_collapsiblearchive_control() {
 
 function ara_collapsiblearchive_getlisttype()
 {
-	$parentOpen	=	"\n\t<li>";
+	$parentOpen	=	"\n\t<li style='padding:3px;'>";
 	$parentClose=	"\n\t</li>";
-	$lineStart	=	"\n\t\t\t<li>";
+	$lineStart	=	"\n\t\t\t<li style='padding:3px;'>";
 	$lineEnd	=	"</li>";
 	$childOpen	=   "\n\t\t<ul";
 	$childClose	=	"\n\t\t</ul>";
@@ -447,8 +448,8 @@ function widget_ara_collapsiblearchive_init() {
 
 	global $ara_collapsible_icons;
 
-	$ara_collapsible_icons['plus'][0] = '<img src="'.WP_PLUGIN_URL.'/'.plugin_basename(dirname(__FILE__)).'/plus.png" alt="" />&nbsp;';
-	$ara_collapsible_icons['minus'][0] = '<img src="'.WP_PLUGIN_URL.'/'.plugin_basename(dirname(__FILE__)).'/minus.png" alt="" />&nbsp;';
+	$ara_collapsible_icons['plus'][0] = '<img src="'.WP_PLUGIN_URL.'/'.plugin_basename(dirname(__FILE__)).'/bullet_toggle_plus.png" alt="" style="vertical-align:bottom" />';
+	$ara_collapsible_icons['minus'][0] = '<img src="'.WP_PLUGIN_URL.'/'.plugin_basename(dirname(__FILE__)).'/bullet_toggle_minus.png" alt=""  style="vertical-align:bottom"/>';
 
 	$ara_collapsible_icons['plus'][1] = '&#9658;&nbsp;';
 	$ara_collapsible_icons['minus'][1] = '&#9660;&nbsp;';
