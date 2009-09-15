@@ -85,6 +85,10 @@
 <p><input type="text" name="url" id="url" value="<?php echo $comment_author_url; ?>" size="22" tabindex="3" />
 <label for="url"><small>Website</small></label></p>
 
+<p><input type="text" name="openid_identifier" id="openid_identifier" /><label for="openid_identifier"><small>OpenID URL</small></label></p>
+
+<p><small>Name and Mail are not required fields if you authenticate your comment with OpenID.</p>
+
 <?php endif; ?>
 
 <!--<p><small><strong>XHTML:</strong> You can use these tags: <?php echo allowed_tags(); ?></small></p>-->
