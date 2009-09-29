@@ -125,6 +125,8 @@
 #sidebar ul li, #features ul li { margin-bottom: 0.75em;  margin-left: 0 !important; }
 #sidebar img { margin-bottom: -3px; }
 
+#sidebar li ul { margin-top: 0.75em; }
+
 #sidebar .sideitem a.post-edit-link {
 	display: block;
 	padding: 3px;
