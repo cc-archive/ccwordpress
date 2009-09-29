@@ -96,7 +96,7 @@ d.write('<sc'+'ript src="'+
 			//          recently updated one will be used 
 			if ($image = cc_get_attachment_image ($sticky_page->ID, 630)) {
 			?>
-			<a href="<?php echo $sticky_page->guid ?>">
+			<a href="<?php echo get_permalink($sticky_page->ID); ?>">
 				<img src="<?php echo $image[0] ?>" alt="<?php echo $sticky_page->post_title; ?>" title="<?php echo $sticky_page->post_title; ?>" class="main" />
 			</a>
 			<?php
