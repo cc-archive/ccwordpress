@@ -2,6 +2,13 @@
 if ( function_exists('register_sidebar') )
     register_sidebar(array('before_widget' => '<div class="widget">', 'after_widget' => '</div>'));
 
+function cc_progress_total() {
+  $campaign_total = file_get_contents(__DIR__ . '../../includes/total.txt');
+
+  print $campaign_total;
+}
+
+
 /* Requests the first available page with the 'show_on_index' custom field */
 function cc_get_sticky_page() {
 	global $wpdb;

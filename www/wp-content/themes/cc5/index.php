@@ -14,16 +14,17 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 
 	<title>Creative Commons</title>
-	
+<?php /*
 	<link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/2.6.0/build/container/assets/skins/sam/container.css" /> 
   <script type="text/javascript" src="http://yui.yahooapis.com/2.6.0/build/yahoo-dom-event/yahoo-dom-event.js"></script> 
   <script type="text/javascript" src="http://yui.yahooapis.com/2.6.0/build/animation/animation-min.js"></script> 
   <script type="text/javascript" src="http://yui.yahooapis.com/2.6.0/build/container/container-min.js"></script> 
   <script type="text/javascript" src="http://yui.yahooapis.com/2.6.0/build/cookie/cookie-min.js"></script> 
-  	
+ */ ?>
 	<link href="<?php bloginfo('stylesheet_directory'); ?>/index.css?20090803" rel="stylesheet" type="text/css" />
-  <!-- <link href="<?php bloginfo('stylesheet_directory'); ?>/support.css?5.1" rel="stylesheet" type="text/css" /> -->
-	
+    <link href="<?php bloginfo('stylesheet_directory'); ?>/support.css?5.1" rel="stylesheet" type="text/css" /> 
+ 	<link href="/includes/total.css" rel="stylesheet" type="text/css" />
+
 	<script type="text/javascript" charset="utf-8" src="<?php bloginfo('stylesheet_directory'); ?>/site.js"></script>
 		
 	<link rel="alternate" type="application/rss+xml" title="RSS 2.0" href="<?php bloginfo('home')?>/weblog/rss" />
@@ -89,6 +90,8 @@ d.write('<sc'+'ript src="'+
           <div id="splashBox">
           <div id="splash">
 <?php
+/* Turned off auto banner for campaign related goodness.
+ * alex ~ 091001
 		if ($sticky_page = cc_get_sticky_page()) {
 			// grab attached image from sticky page and display it in the #splash area
 			// this ignores any sticky blog posts
@@ -119,7 +122,10 @@ d.write('<sc'+'ript src="'+
               } // if is_sticky
 			} // while
 		}
+ */
 ?>
+			<a href="http://support.creativecommons.org/donate"><img src="/images/support/2009/donate.jpg" border="0" align="center" alt="Invest in the future of creativity and knowledge. Donate Today." /></a>
+			<?php include ('progress.php'); ?> 
           </div>
         </div>
         </div>
