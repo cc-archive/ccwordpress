@@ -28,11 +28,19 @@
 	margin: 0;
 }
 
-#testimonial blockquote a {
-	font-size: 80%;
+#testimonial div.sig {
+	padding-left: 85px;
+	line-height: 1.1em;
+}
+
+#testimonial div.sig a {
 	color: #280048;
 	font-weight: bold;
 	font-style: normal;
+}
+
+#testimonial div.sig span {
+	font-size: 90%;
 }
 
 #testimonial p {
