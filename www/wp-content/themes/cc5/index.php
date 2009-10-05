@@ -76,7 +76,8 @@ d.write('<sc'+'ript src="'+
       <div id="topContent" class="box">
         <div id="ccBlurb" >
           <div id="cc_mission">
-          <!-- <p>Creative Commons is a <strong>nonprofit</strong> organization dedicated to making it easier for people to share and build upon the work of others, consistent with the rules of copyright.</p> -->
+<?php /*
+		  <!-- <p>Creative Commons is a <strong>nonprofit</strong> organization dedicated to making it easier for people to share and build upon the work of others, consistent with the rules of copyright.</p> -->
 				<!-- <object type="application/x-shockwave-flash" data="http://blip.tv/play/goY6yZQBg9ky.m4v" style="width: 300px; height: 199px; margin-right: 10px;"> 
   		                <param name="movie" value="http://blip.tv/play/goY6yZQBg9ky.m4v"> 
   		                <param name="quality" value="high"> 
@@ -85,7 +86,13 @@ d.write('<sc'+'ript src="'+
   		              </object> -->
 			<div id="quote">
   		      <a href="/videos/" class="theQuote">CC Video Library <!-- <img src="<?php bloginfo('stylesheet_directory'); ?>/images/play.png" alt="[play]" border="0"/> --></a>
-  		    </div>
+			</div>
+*/ ?>
+			<div id="testimonial">
+				<div class="photo"><img src="http://zupport.creativecommons.org/images/75/renataavila.jpg" alt="Renata Avila" /></div>
+				<blockquote>"Creative Commons gives voice to creativity,and allows us to share symbolic space within society, charting alternative routes to inclusion across the continents, in all languages."<br/><a href="https://support.creativecommons.org/testimonals">&mdash; Renata Avila</a></blockquote>
+				<p><a href="https://support.creativecommons.org/testimonals">More testimonials &raquo;</a></p>
+			</div>
         </div>
           <div id="splashBox">
           <div id="splash">
