@@ -136,7 +136,7 @@ d.write('<sc'+'ript src="'+
 		}
  */
 ?>
-			<a href="http://support.creativecommons.org/donate"><img src="/images/support/2009/donate.jpg" border="0" align="center" alt="Invest in the future of creativity and knowledge. Donate Today." /></a>
+			<a href="https://support.creativecommons.org/donate"><img src="/images/support/2009/donate.jpg" border="0" align="center" alt="Invest in the future of creativity and knowledge. Donate Today." /></a>
 			<?php include ('progress.php'); ?> 
           </div>
         </div>
