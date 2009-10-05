@@ -13,7 +13,9 @@
     edit_post_link('<span>Edit this article...</span>', '<div class="sideitem">', '</div>'); 
   }
 ?>
-
+<div class="sideitem">
+<?php include ("progress.php"); ?>
+</div>
 <?php if (!is_search()) { ?>
 <div class="sideitem">
     <form method="get" id="searchform" action="<?php bloginfo('url'); ?>/">

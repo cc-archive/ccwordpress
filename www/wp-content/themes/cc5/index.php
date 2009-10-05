@@ -14,16 +14,19 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 
 	<title>Creative Commons</title>
-	
+<?php /*
 	<link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/2.6.0/build/container/assets/skins/sam/container.css" /> 
   <script type="text/javascript" src="http://yui.yahooapis.com/2.6.0/build/yahoo-dom-event/yahoo-dom-event.js"></script> 
   <script type="text/javascript" src="http://yui.yahooapis.com/2.6.0/build/animation/animation-min.js"></script> 
   <script type="text/javascript" src="http://yui.yahooapis.com/2.6.0/build/container/container-min.js"></script> 
   <script type="text/javascript" src="http://yui.yahooapis.com/2.6.0/build/cookie/cookie-min.js"></script> 
-  	
+ */ ?>
 	<link href="<?php bloginfo('stylesheet_directory'); ?>/index.css?20090803" rel="stylesheet" type="text/css" />
-  <!-- <link href="<?php bloginfo('stylesheet_directory'); ?>/support.css?5.1" rel="stylesheet" type="text/css" /> -->
-	
+    <link href="<?php bloginfo('stylesheet_directory'); ?>/support.css?5.1" rel="stylesheet" type="text/css" /> 
+ 	<link href="/includes/total.css" rel="stylesheet" type="text/css" />
+
+	<!--[if IE 6]><link rel="stylesheet" type="text/css" media="screen" href="<?php bloginfo('stylesheet_directory'); ?>/style-ie.css" /><![endif]-->
+
 	<script type="text/javascript" charset="utf-8" src="<?php bloginfo('stylesheet_directory'); ?>/site.js"></script>
 		
 	<link rel="alternate" type="application/rss+xml" title="RSS 2.0" href="<?php bloginfo('home')?>/weblog/rss" />
@@ -75,7 +78,8 @@ d.write('<sc'+'ript src="'+
       <div id="topContent" class="box">
         <div id="ccBlurb" >
           <div id="cc_mission">
-          <!-- <p>Creative Commons is a <strong>nonprofit</strong> organization dedicated to making it easier for people to share and build upon the work of others, consistent with the rules of copyright.</p> -->
+<?php /*
+		  <!-- <p>Creative Commons is a <strong>nonprofit</strong> organization dedicated to making it easier for people to share and build upon the work of others, consistent with the rules of copyright.</p> -->
 				<!-- <object type="application/x-shockwave-flash" data="http://blip.tv/play/goY6yZQBg9ky.m4v" style="width: 300px; height: 199px; margin-right: 10px;"> 
   		                <param name="movie" value="http://blip.tv/play/goY6yZQBg9ky.m4v"> 
   		                <param name="quality" value="high"> 
@@ -84,11 +88,22 @@ d.write('<sc'+'ript src="'+
   		              </object> -->
 			<div id="quote">
   		      <a href="/videos/" class="theQuote">CC Video Library <!-- <img src="<?php bloginfo('stylesheet_directory'); ?>/images/play.png" alt="[play]" border="0"/> --></a>
-  		    </div>
+			</div>
+*/ ?>
+			<div id="testimonial">
+				<div class="photo"><img src="https://support.creativecommons.org/images/75/renataavila.jpg" alt="Renata Avila" /></div>
+				<blockquote>"Creative Commons gives voice to creativity,and allows us to share symbolic space within society, charting alternative routes to inclusion across the continents, in all languages."</blockquote>
+				<div class="sig">
+					<a href="https://support.creativecommons.org/testimonials">&mdash; Renata Avila</a><br/><span>CC Guatemala Project Lead</span>
+				</div>
+				<p><a href="https://support.creativecommons.org/testimonials">More testimonials &raquo;</a></p>
+			</div>
         </div>
           <div id="splashBox">
           <div id="splash">
 <?php
+/* Turned off auto banner for campaign related goodness.
+ * alex ~ 091001
 		if ($sticky_page = cc_get_sticky_page()) {
 			// grab attached image from sticky page and display it in the #splash area
 			// this ignores any sticky blog posts
@@ -119,7 +134,10 @@ d.write('<sc'+'ript src="'+
               } // if is_sticky
 			} // while
 		}
+ */
 ?>
+			<a href="https://support.creativecommons.org/donate"><img src="/images/support/2009/donate.jpg" border="0" align="center" alt="Invest in the future of creativity and knowledge. Donate Today." /></a>
+			<?php include ('progress.php'); ?> 
           </div>
         </div>
         </div>

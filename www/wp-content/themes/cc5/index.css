@@ -73,7 +73,7 @@
 }
 
 #topContent, #triple {
-	padding-bottom: 25px;
+	padding-bottom: 32px;
 /*	margin: 0 25px;*/
 	margin-bottom: 15px;
 	border-bottom: 1px solid #e4e4e4;
@@ -82,6 +82,7 @@
 }
 
 #triple {
+	padding-bottom: 5px;
 	margin-bottom: 30px;
 	border-bottom: 4px double #e4e4e4;
 }
@@ -414,7 +415,6 @@
 
 .ccTool {
 	height: 100%;
-	border-bottom: 1px dotted #ddd;
 }
 .ccTool h2.find {
 	background: url(images/find.png) no-repeat 97% 50%;
