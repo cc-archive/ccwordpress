@@ -1,13 +1,16 @@
 
    			<div id="campaign">  
-				<div class="progress" onclick="window.location='https://support.creativecommons.org/donate';">
+				<div class="progress <?php if (is_home()) {?>home<?}?>" onclick="window.location='https://support.creativecommons.org/donate';">
 					<span>&nbsp;</span>
 				</div>
-				<div class="results">
+				<?php if (is_home()) { ?><div class="homeGoal">$500,000</div><? } ?>
+				<div class="results<?php if (is_home()) {?>Home<?}?>">
 					<a href="https://support.creativecommons.org/donate">
+					<?php if (is_home()) { ?><strong><?php cc_progress_total() ?> Raised</strong> &mdash; Help us reach our goal by Dec 31!<?php } else { ?>
 						<?php cc_progress_total() ?> / $500,000 by&nbsp;Dec&nbsp;31 
-						<?php if (is_home()) { ?> &mdash; <?php } else { ?><br/><?php } ?>
+						<br/>
 						<em>Help us reach our goal!</em>
+					<?php } ?>
 					</a>
 				</div>
    			</div>
