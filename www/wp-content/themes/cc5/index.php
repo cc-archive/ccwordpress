@@ -91,12 +91,12 @@ d.write('<sc'+'ript src="'+
 			</div>
 */ ?>
 			<div id="testimonial">
-				<div class="photo"><img src="http://zupport.creativecommons.org/images/75/renataavila.jpg" alt="Renata Avila" /></div>
+				<div class="photo"><img src="https://support.creativecommons.org/images/75/renataavila.jpg" alt="Renata Avila" /></div>
 				<blockquote>"Creative Commons gives voice to creativity,and allows us to share symbolic space within society, charting alternative routes to inclusion across the continents, in all languages."</blockquote>
 				<div class="sig">
-					<a href="https://support.creativecommons.org/testimonals">&mdash; Renata Avila</a><br/><span>CC Guatemala Project Lead</span>
+					<a href="https://support.creativecommons.org/testimonials">&mdash; Renata Avila</a><br/><span>CC Guatemala Project Lead</span>
 				</div>
-				<p><a href="https://support.creativecommons.org/testimonals">More testimonials &raquo;</a></p>
+				<p><a href="https://support.creativecommons.org/testimonials">More testimonials &raquo;</a></p>
 			</div>
         </div>
           <div id="splashBox">
