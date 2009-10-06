@@ -246,7 +246,8 @@ HTML;
             <ul>
               <li><a href="http://sciencecommons.org/"><img src="<?php bloginfo('stylesheet_directory'); ?>/images/sciencecommonslogo.png" alt="Science Commons" border="0"/></a></li>
               <li><a href="http://learn.creativecommons.org/"><img src="<?php bloginfo('stylesheet_directory'); ?>/images/cclearnlogo.png" alt="ccLearn" border="0"/></a></li>
-              <li>
+<? /* Killing international dropdown from homepage for now...
+			  <li>
 				<div id="help_international_list" class="sideitem topright">
 				 <div class="bd">
 				   <select id="international" name="international" onchange="window.location = this.options[this.selectedIndex].value">    
@@ -255,7 +256,7 @@ HTML;
 				   </select>
 				 </div>
 				</div>
-              </li>
+				</li> */ ?>
             </ul>
           </div>
         </div>
