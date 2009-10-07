@@ -21,7 +21,7 @@
   <script type="text/javascript" src="http://yui.yahooapis.com/2.6.0/build/container/container-min.js"></script> 
   <script type="text/javascript" src="http://yui.yahooapis.com/2.6.0/build/cookie/cookie-min.js"></script> 
  */ ?>
-	<link href="<?php bloginfo('stylesheet_directory'); ?>/index.css?20090803" rel="stylesheet" type="text/css" />
+	<link href="<?php bloginfo('stylesheet_directory'); ?>/index.css?20091007" rel="stylesheet" type="text/css" />
     <link href="<?php bloginfo('stylesheet_directory'); ?>/support.css?5.1" rel="stylesheet" type="text/css" /> 
  	<link href="/includes/total.css" rel="stylesheet" type="text/css" />
 
@@ -89,7 +89,11 @@ d.write('<sc'+'ript src="'+
 			<div id="quote">
   		      <a href="/videos/" class="theQuote">CC Video Library <!-- <img src="<?php bloginfo('stylesheet_directory'); ?>/images/play.png" alt="[play]" border="0"/> --></a>
 			</div>
-*/ ?>
+ */ ?>
+			<div id="quote">
+			 	<a href="https://support.creativecommons.org/donate"><img src="/images/support/2009/shepard-fairey-banner-1.png" alt="Shepard Faiey Remixes CC Logo!" border="0" /></a>
+			</div>
+<?/*
 			<div id="testimonial">
 				<div class="photo"><img src="https://support.creativecommons.org/images/75/renataavila.jpg" alt="Renata Avila" /></div>
 				<blockquote>"Creative Commons gives voice to creativity,and allows us to share symbolic space within society, charting alternative routes to inclusion across the continents, in all languages."</blockquote>
@@ -98,7 +102,8 @@ d.write('<sc'+'ript src="'+
 				</div>
 				<p><a href="https://support.creativecommons.org/testimonials">More testimonials &raquo;</a></p>
 			</div>
-        </div>
+ */?>
+		</div>
           <div id="splashBox">
           <div id="splash">
 <?php
