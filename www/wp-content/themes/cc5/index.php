@@ -40,9 +40,10 @@
 		_udn = ".creativecommons.org"; 
 		_ulink = "1";
 		_uhash = "off";	</script>
-	<script>
+<!-- Google Website Optimizer Control Script -->
+<script>
 function utmx_section(){}function utmx(){}
-(function(){var k='2263204650',d=document,l=d.location,c=d.cookie;function f(n){
+(function(){var k='3422533296',d=document,l=d.location,c=d.cookie;function f(n){
 if(c){var i=c.indexOf(n+'=');if(i>-1){var j=c.indexOf(';',i);return c.substring(i+n.
 length+1,j<0?c.length:j)}}}var x=f('__utmx'),xx=f('__utmxx'),h=l.hash;
 d.write('<sc'+'ript src="'+
@@ -50,7 +51,8 @@ d.write('<sc'+'ript src="'+
 +'/siteopt.js?v=1&utmxkey='+k+'&utmx='+(x?x:'')+'&utmxx='+(xx?xx:'')+'&utmxtime='
 +new Date().valueOf()+(h?'&utmxhash='+escape(h.substr(1)):'')+
 '" type="text/javascript" charset="utf-8"></sc'+'ript>')})();
-	</script>
+</script>
+<!-- End of Google Website Optimizer Control Script -->
 	
   <?php wp_head(); ?>
 </head>
@@ -90,10 +92,12 @@ d.write('<sc'+'ript src="'+
   		      <a href="/videos/" class="theQuote">CC Video Library <!-- <img src="<?php bloginfo('stylesheet_directory'); ?>/images/play.png" alt="[play]" border="0"/> --></a>
 			</div>
  */ ?>
+<script>utmx_section("Header Area")</script>
+<!--
 			<div id="quote">
 			 	<a href="https://support.creativecommons.org/donate"><img src="/images/support/2009/shepard-fairey-banner-1.png" alt="Shepard Faiey Remixes CC Logo!" border="0" /></a>
 			</div>
-<?/*
+-->
 			<div id="testimonial">
 				<div class="photo"><img src="https://support.creativecommons.org/images/75/renataavila.jpg" alt="Renata Avila" /></div>
 				<blockquote>"Creative Commons gives voice to creativity,and allows us to share symbolic space within society, charting alternative routes to inclusion across the continents, in all languages."</blockquote>
@@ -102,7 +106,6 @@ d.write('<sc'+'ript src="'+
 				</div>
 				<p><a href="https://support.creativecommons.org/testimonials">More testimonials &raquo;</a></p>
 			</div>
- */?>
 		</div>
           <div id="splashBox">
           <div id="splash">
@@ -147,7 +150,7 @@ d.write('<sc'+'ript src="'+
         </div>
         </div>
       </div>
-
+</noscript>
       <div id="triple" class="box">
         <div id="ccContent" class="columnBox">
 	      <div id="ccTools" class="columnBox">
@@ -156,10 +159,8 @@ d.write('<sc'+'ript src="'+
 	          <p><a href="http://search.creativecommons.org/">Find <strong>licensed</strong> works you can share, remix, or&nbsp;reuse.</a></p>
 	        </div>
 			<div class="stdColumn ccTool nohelpLink" id="network">
-<script>utmx_section("Donate Block")</script>
 	          <h2 class="join"><a href="https://support.creativecommons.org/donate">Donate &raquo;</a></h2>
 			  <p><a href="https://support.creativecommons.org/donate">The future of Creative Commons depends on you &mdash; <strong>Donate&nbsp;Now!</strong></a></p>
-</noscript>
 	        </div>
 	        <div class="stdColumn ccTool nohelpLink lastColumn" id="license">
 	          <h2 class="license"><a href="/choose">License &raquo;</a></h2>
@@ -289,17 +290,18 @@ HTML;
 
 <?php 
 $extra_footer = <<<SCRIPT
-<!-- Google Website Optimizer tracking code -->
+<!-- Google Website Optimizer Tracking Script -->
 <script type="text/javascript">
-		  if(typeof(_gat)!='object')document.write('<sc'+'ript src="http'+
-		  (document.location.protocol=='https:'?'s://ssl':'://www')+
-		  '.google-analytics.com/ga.js"></sc'+'ript>')</script>
- <script type="text/javascript">
-		  try {
-				  var pageTracker=_gat._getTracker("UA-9998295-1");
-				  pageTracker._setDomainName(".creativecommons.org");
-				  pageTracker._trackPageview("/2263204650/test");
-		  }catch(err){}</script>
+if(typeof(_gat)!='object')document.write('<sc'+'ript src="http'+
+(document.location.protocol=='https:'?'s://ssl':'://www')+
+'.google-analytics.com/ga.js"></sc'+'ript>')</script>
+<script type="text/javascript">
+try {
+var gwoTracker=_gat._getTracker("UA-9998295-1");
+gwoTracker._setDomainName(".creativecommons.org");
+gwoTracker._trackPageview("/3422533296/test");
+}catch(err){}</script>
+<!-- End of Google Website Optimizer Tracking Script -->
 SCRIPT;
 			  include "footer.php";
 			  /*get_footer();*/ ?>
