@@ -274,16 +274,19 @@ p.presskit {
 		float: left;
 }
 
-img.mugshot {
-	border: 2px solid #cccccc; margin-bottom: 10px;
+#peoples img.mugshot {
+	border: 3px solid #ddd; margin-bottom: 10px;
+	-webkit-border-radius: 3px;
 }
 
 #peoples p {
 	margin-left: 115px;
 }
-#peoples img {
-	margin-left: -115px;
-}
+
+#peoples .person { margin-bottom: 2em;}
+#peoples .person span.email { display:inline-block; float: right; color:#777; } 
+#peoples .person span.smalldates { font-size:90%; color: #666; }
+
 
 .alignleft {
         float: left;
