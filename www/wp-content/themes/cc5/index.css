@@ -33,11 +33,11 @@
 
 #headerIntro {
 	position: absolute;
-	top: 56px;
+	top: 54px;
 	right: 0;
-	width: 473px;
+	width: 425px;
 	color: #fff /*263B13*/;
-	font-size:90%;
+	font-size:14px;
 }
 
 #headerIntro h2 {
@@ -284,7 +284,6 @@
 }
 
 #ccFeatures {
-	font-size: 0.95em;
 	margin-top: 1.75em;
 /*	border-top: 1px dotted #ccc;*/
 }
