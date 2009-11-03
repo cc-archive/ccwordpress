@@ -226,7 +226,6 @@
 		}
 		li.license {
 			list-style: none;
-            min-height: 50px;
 			padding-bottom: 25px;
 			padding-left: 70px;
 			padding-top: 10px;
@@ -382,8 +381,8 @@ li.gpl:before {
 
 /* CC Campaign */
 div#campaign {
-	background: url('../images/support/2008/deed-banner-1.png') top left no-repeat #2d2d2d;
-	height: 92px;
+	background: url('../images/support/2009/deed-banner.png') top left repeat-x #2d2d2d;
+	height: 80px;
 	color: #fff;
 	margin: 0;
 	margin-top: -6px;
@@ -396,7 +395,6 @@ div#campaign {
 
 div#campaign div {
 	margin: 0.5em;
-	padding-top: 25px;
 	font-weight: bold;
 }
 
@@ -408,8 +406,7 @@ div#campaign div a {
 
 div#campaign .donate-today {
 	position: absolute;
-	left: 160px;
-	top: 19px;
+	left: 33px;
 	padding: 0;
 }
 
@@ -448,7 +445,6 @@ div#campaign div a#sticker-link:hover {
 */
 #campaign .progress {
 	position: absolute;
-	top: 19px;
 	right: 15px;
 	height: 14px !important;
 	padding: 1px;
