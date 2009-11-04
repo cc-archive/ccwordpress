@@ -302,6 +302,8 @@ gwoTracker._setDomainName(".creativecommons.org");
 gwoTracker._trackPageview("/3422533296/test");
 }catch(err){}</script>
 <!-- End of Google Website Optimizer Tracking Script -->
+
+<script type="text/javascript" src="/wp-content/themes/cc5/heatmap.js"></script>
 SCRIPT;
 			  include "footer.php";
 			  /*get_footer();*/ ?>
