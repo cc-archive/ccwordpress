@@ -1,7 +1,7 @@
 <?php
 // via http://nevyan.blogspot.com/2006/12/free-website-click-heatmap-diy.html
 
-var $q = $REQUEST_URI;
+$q = $_SERVER['argv'][0];
 
 function save_file($message, $filename) {
 	trim($message);

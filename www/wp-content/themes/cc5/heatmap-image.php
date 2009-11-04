@@ -20,14 +20,12 @@ $splitted = explode ("\n", $file);
 for ($i = 0; $i < count ($splitted); $i++){
 	if (!is_string ($splitted[$i])) return false;
 	
-	$arr_query = NULL;
-	$url = parse_url ($splitted[$i]);
-	$url = $url['query'];
-	parse_str ($url,$vars);
+	parse_str ($splitted[$i], $vars);
 	
 	$x = $vars['x'];
 	$y = $vars['y'];
-	imagesetpixel ($im,$x,$y,$white);
+	imagesetpixel ($im, $x, $y, $white);
+	//echo "str: " . $splitted[$i] . " x: " . $vars['x'] . " y: " . $vars['y'] . "<br/>";
 }
 
 Imagepng ($im);
