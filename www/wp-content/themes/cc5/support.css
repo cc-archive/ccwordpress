@@ -169,7 +169,7 @@ margin-left: 7px;
 */
 }
 
-#campaign .resultsHome a {
+#campaign .resultsHome a, #campaign .homeGoal a {
 	/*color: #131313;*/
 	color: #280048;
 }
