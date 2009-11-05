@@ -32,6 +32,6 @@
 <?php 
 if ($extra_footer) { echo $extra_footer; }
 ?>
-
+<script type="text/javascript" charset="utf-8" src="<?php bloginfo('stylesheet_directory'); ?>/pageviewHelper.js"></script>
 </body>
 </html>
