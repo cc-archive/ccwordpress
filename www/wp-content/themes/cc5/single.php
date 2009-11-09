@@ -7,7 +7,6 @@ if (have_posts())  {
   require (TEMPLATEPATH . '/404.php');
   exit();
 } ?>
-
 <?php get_header(); ?>
     <?php
      // check if this single is a commoner or blog post
