@@ -1,5 +1,4 @@
 <?php /* License jurisdiction category page */ ?>
-
 <?php function get_the_jurisdiction($post_id) {
     $cats = get_the_category($post_id);
     $jurisdiction->code = '';
@@ -24,7 +23,6 @@
 $is_international = true;
 
 ?>
-
 <?php get_header(); ?>
 
     <div id="mainContent" class="box">
