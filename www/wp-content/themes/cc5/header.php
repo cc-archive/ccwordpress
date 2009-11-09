@@ -5,6 +5,12 @@
     $query = $_GET['s'];
     header("Location:http://www.google.com/custom?q=" . $query . "&sa=search&cof=GIMP%3Ablack%3BT%3A%23333333%3BLW%3A162%3BALC%3Ared%3BL%3Ahttp%3A%2F%2Fcreativecommons.org%2Fimages%2Flogo_trademark.gif%3BGFNT%3A%2399999%3BLC%3A%235e715e%3BLH%3A40%3BBGC%3Awhite%3BAH%3Aleft%3BVLC%3A%238EA48E%3BS%3Ahttp%3A%2F%2Fcreativecommons.org%2F%3BGALT%3A%23666666%3BAWFID%3Afad503ba397c7a7f%3B&domains=creativecommons.org&sitesearch=creativecommons.org");
   }
+
+// Cookie handling for the testimonial/thermometer test
+if (!isset($_COOKIE['cc_showtestimonial'])) {
+	$showTestimonial = rand(0, 1);
+	setcookie('cc_showtestimonial', $showTestimonial, time() + 60 * 60 * 24 * 30);
+}
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
 	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
@@ -26,7 +32,7 @@
   <script type="text/javascript" src="http://yui.yahooapis.com/2.5.2/build/animation/animation-min.js"></script> 
   <script type="text/javascript" src="http://yui.yahooapis.com/2.5.2/build/container/container-min.js"></script> 
   	
-	<link href="<?php bloginfo('stylesheet_directory'); ?>/style.css" rel="stylesheet" type="text/css" />
+	<link href="<?php bloginfo('stylesheet_directory'); ?>/style.css?20091109" rel="stylesheet" type="text/css" />
 	<link href="<?php bloginfo('stylesheet_directory'); ?>/print.css" rel="stylesheet" media="print" type="text/css" />
 
 	<link href="<?php bloginfo('stylesheet_directory'); ?>/support.css?5.1" rel="stylesheet" type="text/css" />

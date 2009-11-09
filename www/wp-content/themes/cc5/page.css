@@ -373,3 +373,27 @@ ul.st-tag-cloud li:after {
 	content: ", ";
 }
 
+
+/* Sidebar Testimonials */
+#sidebarTestimonial {
+	cursor: pointer;
+}
+
+#sidebarTestimonial h3 {
+	margin-bottom: 0;
+}
+#sidebarTestimonial p.quote {
+	margin-top: 0;
+}
+
+#sidebarTestimonial p.source {
+	margin-bottom: 0;
+}
+
+#sidebarTestimonial img {
+	margin-top: 3px;
+	margin-right: 3px;
+	width: 28%;
+	height: 28%;
+}
+
