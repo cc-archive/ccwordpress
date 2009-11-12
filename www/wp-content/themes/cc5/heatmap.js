@@ -35,6 +35,17 @@ if (IE) {
     yOffset = yOffset + marginTopExplorer;
 }
 
+// Attempting to normalize clicks for various browser widths
+// Since the content area is a consistent width we can always compensate for browser width
+if (window.innerWidth) {
+        browserWidth = Math.ceil((1024 - window.innerWidth) / 2);
+} else {
+        browserWidth = Math.ceil((1024 - document.documentElement.clientWidth) / 2);
+}
+
+xOffset -= browserWidth;
+
+
 // attach a handler to the onmousedown event that calls a function to store the values
 document.onmousedown = getMouseXY;
 
