@@ -98,15 +98,15 @@ d.write('<sc'+'ript src="'+
 			 	<a href="https://support.creativecommons.org/donate"><img src="/images/support/2009/shepard-fairey-banner-1.png" alt="Shepard Faiey Remixes CC Logo!" border="0" /></a>
 			</div>
 -->
-			<div id="testimonial">
-				<div class="photo"><img src="https://support.creativecommons.org/images/75/renataavila.jpg" alt="Renata Avila" /></div>
-				<blockquote>"Creative Commons gives voice to creativity,and allows us to share symbolic space within society, charting alternative routes to inclusion across the continents, in all languages."</blockquote>
-				<div class="sig">
-					<a href="https://support.creativecommons.org/testimonials">&mdash; Renata Avila</a><br/><span>CC Guatemala Project Lead</span>
-				</div>
-				<p><a href="https://support.creativecommons.org/testimonials">More testimonials &raquo;</a></p>
-			</div>
-		</div>
+		  <div id="testimonial">
+                <div class="photo"><img src="https://support.creativecommons.org/images/75/jonathancoulton.jpg" alt="Jonathan Coulton" /></div>
+                <blockquote>"With Creative Commons, the act of creation becomes not the end, but the beginning of a creative process that links complete strangers together in collaboration."</blockquote>
+                <div class="sig">
+                    <a href="https://support.creativecommons.org/testimonials">&mdash; Jonathan Coulton</a><br/><span>Musician</span>
+                </div>
+                <p><a href="https://support.creativecommons.org/testimonials">More testimonials &raquo;</a></p>
+            </div>
+		  </div>
           <div id="splashBox">
           <div id="splash">
 <?php
