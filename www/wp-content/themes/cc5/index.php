@@ -159,8 +159,8 @@ d.write('<sc'+'ript src="'+
 	          <p><a href="http://search.creativecommons.org/">Find <strong>licensed</strong> works you can share, remix, or&nbsp;reuse.</a></p>
 	        </div>
 			<div class="stdColumn ccTool nohelpLink" id="network">
-	          <h2 class="join"><a href="https://support.creativecommons.org/donate">Donate &raquo;</a></h2>
-			  <p><a href="https://support.creativecommons.org/donate">The future of Creative Commons depends on you &mdash; <strong>Donate&nbsp;Now!</strong></a></p>
+	          <h2 class="join"><a href="https://support.creativecommons.org/donate?utm_source=ccorg&utm_medium=homepage&utm_campaign=fall2009">Donate &raquo;</a></h2>
+			  <p><a href="https://support.creativecommons.org/donate?utm_source=ccorg&utm_medium=homepage&utm_campaign=fall2009">Invest in the <strong>future</strong> of creativity and knowledge &mdash; <strong>Donate&nbsp;Today!</strong></a></p>
 	        </div>
 	        <div class="stdColumn ccTool nohelpLink lastColumn" id="license">
 	          <h2 class="license"><a href="/choose">License &raquo;</a></h2>

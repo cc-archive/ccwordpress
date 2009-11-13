@@ -440,7 +440,8 @@
 .ccTool h2 {
 /*	background-color: #83B200;*/
 /*	background-color: #8BA000;*/
-	background-color: #e7e7b9 !important;
+	background-color: #D7E4BF !important;
+	border: 1px solid #C3D4A3;
 	/*padding: 8px 6px 6px;*/
 	padding-left: 6px;
 	margin: 0.5em 0 ;
@@ -451,8 +452,8 @@
 	letter-spacing: 0.015em;
 }
 .ccTool h2 a {
-	color: #304808;
-	display: block;
+/*	color: #304808;
+*/	display: block;
 }
 .ccTool p a {
 	display: block;
