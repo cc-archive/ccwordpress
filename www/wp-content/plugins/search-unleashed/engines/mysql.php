@@ -41,8 +41,8 @@ class MysqlEngine extends IndexedEngine {
 		$_GET['s'] = get_query_var( 's' );
 
 		// Extract search terms
-		$term = trim( $wpdb->escape( $_GET['s'] ) );
-		$term = preg_replace_callback( "/'(.*?)'/", array( &$this, 'exact_words' ), $term );
+		$term = trim( $_GET['s'] );
+		$term = preg_replace_callback( "/['\"](.*?)['\"]/", array( &$this, 'exact_words' ), $term );
 		
 		$term = preg_replace_callback( preg_encoding( '/(\w*)\s*AND\s*(\w*)/' ), array( &$this, 'logical_and' ), $term );
 		$term = preg_replace( preg_encoding( '/(\w*)\s*OR\s*(\w*)/' ), '$1 $2', $term );
@@ -211,15 +211,20 @@ class MysqlEngine extends IndexedEngine {
 		}
 		
 		$post    .= implode( ",\n", $post_sql );
-		$post    .= ",PRIMARY KEY (`post_id`),\n";
-		$post    .= "FULLTEXT KEY `fulltext` (".str_replace( ' text DEFAULT NULL', '', implode( ",", $post_sql ) )."))";
+		$post    .= ",PRIMARY KEY (`post_id`)";
 		
+		if ( count( $post_sql ) > 0 )
+			$post .= ",\nFULLTEXT KEY `fulltext` (".str_replace( ' text DEFAULT NULL', '', implode( ",", $post_sql ) ).")";
+			
+		$post .= ') ENGINE=MyISAM';
+		
+		$post = str_replace( ',,', ',', $post );
 		$wpdb->query( $post );
 
 		if ( count( $comment_sql ) > 0 ) {
 			$comment .= implode( ",\n", $comment_sql );
 			$comment .= ",PRIMARY KEY (`post_id`,`comment_id`),\n";
-			$comment .= "FULLTEXT KEY `fulltext` (".str_replace( ' text DEFAULT NULL', '', implode( ",", $comment_sql ) )."))";
+			$comment .= "FULLTEXT KEY `fulltext` (".str_replace( ' text DEFAULT NULL', '', implode( ",", $comment_sql ) ).")) ENGINE=MyISAM";
 			$wpdb->query( $comment );
 		}
 	}

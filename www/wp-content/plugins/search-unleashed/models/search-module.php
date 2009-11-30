@@ -29,9 +29,11 @@ class Search_Module_Factory {
 	 * @return array Array of modules
 	 **/
 	function running() {
+		global $search_spider;
+		
 		$modules = array();
-		$options = get_option( 'search_unleashed' );
-
+		$options = $search_spider->get_options();
+		
 		foreach ( $options['active'] AS $field ) {
 			$modules[$field] = Search_Module_Factory::get( $field );
 		}

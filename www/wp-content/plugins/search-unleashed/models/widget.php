@@ -52,7 +52,7 @@ if ( class_exists( 'WP_Widget' ) ) {
 			if ( $title )
 				echo $before_title.$title.$after_title;
 	?>
-		<form role="search" method="get" id="searchform" action="<?php echo get_option('home') ?>/" >
+		<form role="search" method="get" id="searchform" name="searchform" action="<?php echo get_option('home') ?>/" >
 			<div>
 				<input class="text" type="text" value="<?php echo htmlspecialchars( apply_filters('the_search_query', get_search_query() ) ) ?>" name="s" id="s" />
 				<input class="button-secondary" type="submit" id="searchsubmit" value="<?php _e('Search') ?>" />

@@ -49,6 +49,7 @@ The plugin is available in:
 * Danish by Georg S. Adamsen
 * Lithuanian by WordPress TVS - Audrius
 * Belorussian by Marcis Gasuns
+* Czech
 
 == Installation ==
 
@@ -200,3 +201,14 @@ Full documentation can be found on the [Search Unleashed](http://urbangiraffe.co
 = 1.0.2 =
 * Prevent problem with farbtastic
 * Message about no need for indexing with default search engine
+
+= 1.0.4 =
+* Remove error with some MySQLs
+* Forcing content display bug
+* Fix #661
+* Cron bug
+
+= 1.0.5 =
+* Add Czech translation
+* Fix #683
+* Fix #692

@@ -61,7 +61,7 @@ class IndexedEngine extends SearchEngine {
 
 		// Extract search terms
 		$_GET['s'] = trim( get_query_var( 's' ) );
-		$this->terms = array( $_GET['s'] );
+		$this->terms = get_query_var( 'search_terms' );
 
 		if ( strlen( $_GET['s'] ) > 0 ) {
 			// Form SQL
@@ -80,11 +80,14 @@ class IndexedEngine extends SearchEngine {
 					$prefix = $wpdb->prefix.'search_comment';
 				}
 			
-				$module_sql[] = $prefix.'.'.$module->field_name()." LIKE '%$term%'";
-				if ( isset( $_GET[$module->field_name()] ) ) {
-					$value = $module->field_value( $_GET[$module->field_name()] );
-					if ( $value !== false )
-						$and[] = $prefix.'.'.$module->field_name()." LIKE '%".$wpdb->escape( $value )."%'";
+				foreach ( $this->terms AS $term ) {
+					$module_sql[] = $prefix.'.'.$module->field_name()." LIKE '%$term%'";
+
+					if ( isset( $_GET[$module->field_name()] ) ) {
+						$value = $module->field_value( $_GET[$module->field_name()] );
+						if ( $value !== false )
+							$and[] = $prefix.'.'.$module->field_name()." LIKE '%".$wpdb->escape( $value )."%'";
+					}
 				}
 			}
 		
@@ -109,6 +112,7 @@ class IndexedEngine extends SearchEngine {
 			return $sql;
 		}
 
+		$this->terms = implode( ' ', $this->terms );
 		return str_replace( 'WHERE', 'WHERE 1=2 AND ', $request );
 	}
 	

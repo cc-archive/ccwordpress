@@ -223,7 +223,8 @@ class LuceneEngine extends SearchEngine {
 	public function store( $post_id, $details, $data ) {
 		$lucene = $this->open();
 
-		set_time_limit( 0 );
+		if ( ini_get('safe_mode') == 0 )
+			@set_time_limit( 0 );
 		
 		if ( $lucene ) {
 			try {
@@ -248,7 +249,7 @@ class LuceneEngine extends SearchEngine {
 					$doc->addField( $zend );
 				}
 
-				$lucene->addDocument( $doc );
+				@$lucene->addDocument( $doc );
 			} catch( Zend_Search_Lucene_Exception $e ) {
 				return false;
 			}
@@ -289,8 +290,8 @@ class LuceneEngine extends SearchEngine {
 				if ( $full )
 					$lucene->optimize();
 				else {
-					wp_clear_scheduled_hook( array( &$this, 'full_flush' ) );
-					wp_schedule_single_event( time() + 3600, array( &$this, 'full_flush' ) );
+					wp_clear_scheduled_hook( 'lucene_full_flush' );
+					wp_schedule_single_event( time() + 3600, 'lucene_full_flush' );
 				}
 					
 			} catch( Zend_Search_Lucene_Exception $e ) {
@@ -390,3 +391,9 @@ class LuceneEngine extends SearchEngine {
 	}
 }
 
+function lucene_full_flush() {
+	global $search_spider;
+	
+	$engine = $search_spider->get_engine();
+	$engine->full_flush();
+}

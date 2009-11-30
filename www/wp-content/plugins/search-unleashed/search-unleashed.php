@@ -3,7 +3,7 @@
 Plugin Name: Search Unleashed
 Plugin URI: http://urbangiraffe.com/plugins/search-unleashed/
 Description: Advanced search engine that provides full text searching across posts, pages, comments, titles, and URLs.  Searches take into account any data added by other plugins, and all search results are contextually highlighted. You can also highlight incoming searches from popular search engines.
-Version: 1.0.2
+Version: 1.0.5
 Author: John Godley
 Author URI: http://urbangiraffe.com/
 ============================================================================================================
@@ -18,6 +18,9 @@ this software, even if advised of the possibility of such damage.
 For full license details see license.txt
 ============================================================================================================ */
 
+if ( class_exists( 'SearchUnleashedPlugin' ) )
+	return;
+	
 require dirname( __FILE__ ).'/plugin.php';
 require dirname( __FILE__ ).'/models/widget.php';
 
@@ -294,17 +297,17 @@ class SearchUnleashedPlugin extends Search_Plugin {
 	function swap_engine( $new = '', $old = '' ) {
 		// Swap search engine
 		include_once dirname( __FILE__ ).'/models/search-engine.php';
-
+		
 		$options = $this->get_options();
 		
 		if ( $old ) {
 			$engine = SearchEngine::get_engine( $options, $old );
 			$engine->remove_engine();
 		}
-
+		
 		if ( $new ) {
 			$engine = SearchEngine::get_engine( $options, $new );
-			$engine->install_engine();
+		 	$engine->install_engine();
 		}
 	}
 
@@ -316,10 +319,10 @@ class SearchUnleashedPlugin extends Search_Plugin {
 	 **/
 	function activate() {
 		include_once dirname( __FILE__ ).'/models/database.php';
-
+		
 		$db = new SU_Database();
 		$db->install();
-
+		
 		$options = $this->get_options();
 		$this->swap_engine( $options['search_engine'] );
 	}
@@ -580,7 +583,7 @@ class SearchUnleashedPlugin extends Search_Plugin {
 	function the_time( $time ) {
 		if ( in_the_loop() ) {
 			global $post;
-			return $time.'</small>'.$this->the_content( $post->post_content ).'<small>';
+			return $time.'</small>'.$this->the_excerpt( $post->post_content ).'<small>';
 		}
 
 		return $time;
@@ -608,8 +611,10 @@ class SearchUnleashedPlugin extends Search_Plugin {
 			if ( $this->last_post_count - 1 != $options['theme_title_position'] )
 				return $title;
 
-			$high = new Highlighter( $text, $this->engine->get_terms() );
-			return $high->mark_words();
+			if ( $this->engine ) {
+				$high = new Highlighter( $text, $this->engine->get_terms() );
+				return $high->mark_words();
+			}
 		}
 
 		return $title;
@@ -863,6 +868,17 @@ class SearchUnleashedPlugin extends Search_Plugin {
 			update_option( 'search_unleashed', $options );
 			$this->render_message( __( 'Your options have been saved', 'search-unleashed' ) );
 		}
+		else if (isset ($_POST['delete']) && check_admin_referer( 'searchunleashed-delete_plugin' ) ) {
+			SU_Database::remove( __FILE__ );
+			
+			// Deactivate the plugin
+			$current = get_option('active_plugins');
+			array_splice ($current, array_search (basename (dirname (__FILE__)).'/'.basename (__FILE__), $current), 1 );
+			update_option('active_plugins', $current);
+			
+			$this->render_message( __( 'Search Unleashed has been removed', 'search-unleashed' ) );
+			return;
+		}
 
 		$engines = array(
 			'default' => __( 'Default WordPress', 'search-unleashed' ),
@@ -942,6 +958,8 @@ class SearchUnleashedPlugin extends Search_Plugin {
 			'pages'                => true,
 			'private'              => false,
 			'support'              => false,
+			'exclude'              => '',
+			'exclude_cat'          => '',
 			'search_engine'        => 'default',
 			'incoming'             => 'all',
 			'page_title'           => true,
@@ -984,6 +1002,7 @@ class SearchUnleashedPlugin extends Search_Plugin {
  * @global
  **/
 
+global $search_spider;
 $search_spider = new SearchUnleashedPlugin;
 
 /**

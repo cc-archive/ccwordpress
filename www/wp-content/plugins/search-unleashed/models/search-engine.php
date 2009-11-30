@@ -27,6 +27,7 @@ class SearchEngine {
 	var $fields  = null;
 	var $limits  = null;
 	var $orderby = null;
+	var $phrases = array();
 	
 	/**
 	 * Constructor. Hook into various WP db calls
@@ -45,6 +46,18 @@ class SearchEngine {
 		add_filter( 'posts_orderby', array( &$this, 'posts_orderby' ) );
 	}
 
+	function extract_phrases( $search ) {
+		$search = preg_replace_callback( "/['\"](.*?)['\"]/", array( &$this, 'exact_words' ), $search );
+		$phrases = explode( ' ', $search );
+		
+		return array_filter( array_merge( $this->phrases, $phrases ) );
+	}
+	
+	function exact_words( $matches ) {
+		$this->phrases[] = $matches[1];
+		return '';
+	}
+	
 	/**
 	 * Extract ORDER BY
 	 *

@@ -70,6 +70,15 @@ class SearchSpider {
 		$this->comment_sql .= "{$wpdb->comments}.comment_type='' AND {$wpdb->comments}.comment_approved='1' AND {$wpdb->comments}.comment_post_ID NOT IN(".implode( ', ', $this->exclude ).")";
 		$this->modules      = Search_Module_Factory::running();
 		
+		if ( $this->options['private'] == false )
+			$this->post_sql .= " AND {$wpdb->posts}.post_status!='private'";
+
+		if ( $this->options['draft'] == false )
+			$this->post_sql .= " AND {$wpdb->posts}.post_status!='draft'";
+
+		if ( $this->options['protected'] == false )
+			$this->post_sql .= " AND {$wpdb->posts}.post_password=''";
+
 		$this->blog_url     = get_option( 'home' );
 	}
 
@@ -90,6 +99,16 @@ class SearchSpider {
 					if ( in_array( $cat->cat_ID, $this->exclude_cats) )
 						return false;
 				}
+
+				// Check post status
+				if ( $this->options['private'] == false && $post->post_status == 'private' )
+					return false;
+
+				if ( $this->options['draft'] == false && $post->post_status == 'draft' )
+					return false;
+
+				if ( $this->options['protected'] == false && $post->post_password != '' )
+					return false;
 
 				return true;
 			}
@@ -239,7 +258,7 @@ class SearchSpider {
 		// Remove comments and JavaScript
 		$text = preg_replace( preg_encoding( '/<script(.*?)<\/script>/s' ), '', $text );
 		$text = preg_replace( preg_encoding( '/<!--(.*?)-->/s' ), '', $text );
-				
+
 		$text = str_replace( '<', ' <', $text );   // Insert a space before HTML so the strip will have seperate words
 		$text = preg_replace( '/&#\d*;/', '', $text );
 		$text = addslashes( wp_kses( stripslashes( strip_html( $text ) ), array() ) );
@@ -259,7 +278,8 @@ class SearchSpider {
 
 		while ( preg_match( preg_encoding( '/\s{2}/' ), $text, $matches ) > 0 )
 			$text = preg_replace( preg_encoding( '/\s{2}/' ), ' ', $text );
-			
+		
+		$text = str_replace( '"', '', $text );
 		$text = str_replace( $this->blog_url, '', $text );
 		return stripslashes( trim( $text ) );
 	}

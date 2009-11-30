@@ -151,3 +151,14 @@
 	</form>
 </div>
 
+<div class="wrap">
+	<h3><?php _e( 'Remove Search Unleashed', 'search-unleashed' )?></h3>
+	
+	<p><?php _e( 'This will delete all settings, database tables, and deactivate the plugin.', 'search-unleashed' )?></p>
+	
+	<form action="<?php echo $this->url ($_SERVER['REQUEST_URI']) ?>" method="post" accept-charset="utf-8">
+		<?php wp_nonce_field( 'searchunleashed-delete_plugin' ); ?>
+		
+		<input class="button-secondary" type="submit" name="delete" value="<?php _e ('Delete Search Unleashed', 'search-unleashed'); ?>" onclick="return confirm ('Are you sure you want to remove Search Unleashed and all settings?')"/>
+	</form>
+</div>
