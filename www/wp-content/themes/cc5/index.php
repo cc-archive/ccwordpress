@@ -104,7 +104,7 @@ d.write('<sc'+'ript src="'+
                 <div class="sig">
                     <a href="https://support.creativecommons.org/testimonials#mattcockerill">&mdash; Matt Cockerill</a><br/><span>Managing Director, BioMed Central Ltd.</span>
                 </div>
-                <p><a href="https://support.creativecommons.org/testimonials">More testimonials &raquo;</a></p>
+<? /*    <p><a href="https://support.creativecommons.org/testimonials">More testimonials &raquo;</a></p> */ ?>
 			</div>
 			<script type="text/javascript">
 				jQuery("#testimonial").click(function() { window.location="https://support.creativecommons.org/donate?utm_source=ccorg&utm_medium=homepage_testimonial_cockerill&utm_campaign=fall2009"; });
