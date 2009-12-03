@@ -49,7 +49,8 @@ $utm = "?utm_source=ccorg&utm_medium=thermometer&utm_campaign=fall2009"; ?>
 if (is_home()) {
 	showThermometer();
 } else {
-	if (isset($_COOKIE['cc_showtestimonial'])) {
+/*	Test killed - 09/12/02
+ 	if (isset($_COOKIE['cc_showtestimonial'])) {
 		$showTestimonial = $_COOKIE['cc_showtestimonial'];
 	} else {
 		$showTestimonial = rand(0, 1);
@@ -60,6 +61,8 @@ if (is_home()) {
 	} else {
 		showThermometer();
 	}
+ */
+	showThermometer();
 }
 ?>
 
