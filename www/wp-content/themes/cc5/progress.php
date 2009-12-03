@@ -22,8 +22,13 @@
 
 <?php 
 function showThermometer() { 	
-	
-$utm = "?utm_source=ccorg&utm_medium=thermometer&utm_campaign=fall2009"; ?>
+
+	if (is_home()) {
+		$utm = "?utm_source=ccorg&utm_medium=homepage_thermometer&utm_campaign=fall2009";
+	} else { 
+		$utm = "?utm_source=ccorg&utm_medium=thermometer&utm_campaign=fall2009"; 
+	} 
+?>
 
    			<div id="campaign">  
 				<div class="progress <?php if (is_home()) {?>home<?}?>" onclick="window.location='https://support.creativecommons.org/donate<?= $utm ?>';">
