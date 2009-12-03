@@ -7,10 +7,10 @@
   }
 
 // Cookie handling for the testimonial/thermometer test
-if (!isset($_COOKIE['cc_showtestimonial'])) {
-	$showTestimonial = rand(0, 1);
-	setcookie('cc_showtestimonial', $showTestimonial, time() + 60 * 60 * 24 * 30);
-}
+// if (!isset($_COOKIE['cc_showtestimonial'])) {
+//	$showTestimonial = rand(0, 1);
+// 	setcookie('cc_showtestimonial', $showTestimonial, time() + 60 * 60 * 24 * 30);
+// }
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
 	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
