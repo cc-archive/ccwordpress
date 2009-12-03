@@ -97,15 +97,19 @@ d.write('<sc'+'ript src="'+
 			 	<a href="https://support.creativecommons.org/donate"><img src="/images/support/2009/shepard-fairey-banner-1.png" alt="Shepard Faiey Remixes CC Logo!" border="0" /></a>
 			</div>
 -->
-<script>utmx_section("Testimonial")</script>
+			<script>utmx_section("Testimonial")</script>
 		  	<div id="testimonial">
-                <div class="photo"><img src="https://support.creativecommons.org/images/75/jonathancoulton.jpg" alt="Jonathan Coulton" /></div>
-                <blockquote>"With Creative Commons, the act of creation becomes not the end, but the beginning of a creative process that links complete strangers together in collaboration."</blockquote>
+                <div class="photo"><img src="https://support.creativecommons.org/images/75/mattcockerill.jpg" alt="Matt Cockerill" /></div>
+                <blockquote>"The widespread adoption of CC licenses by open access publishers means that open access articles are not only freely readable and downloadable, but they can also be freely redistributed, adapted and reused."</blockquote>
                 <div class="sig">
-                    <a href="https://support.creativecommons.org/testimonials">&mdash; Jonathan Coulton</a><br/><span>Musician</span>
+                    <a href="https://support.creativecommons.org/testimonials#mattcockerill">&mdash; Matt Cockerill</a><br/><span>Managing Director, BioMed Central Ltd.</span>
                 </div>
                 <p><a href="https://support.creativecommons.org/testimonials">More testimonials &raquo;</a></p>
-            </div>
+			</div>
+			<script type="text/javascript">
+				jQuery("#testimonial").click(function() { window.location="https://support.creativecommons.org/donate?utm_source=ccorg&utm_medium=homepage_testimonial_cockerill&utm_campaign=fall2009"; });
+				jQuery("#testimonial")[0].style.cursor = "pointer";
+			</script>
 </noscript>
 		  </div>
           <div id="splashBox">
@@ -145,7 +149,7 @@ d.write('<sc'+'ript src="'+
 		}
  */
 ?>
-			<a href="https://support.creativecommons.org/donate"><img src="/images/support/2009/donate.jpg" border="0" align="center" alt="Invest in the future of creativity and knowledge. Donate Today." /></a>
+			<a href="https://support.creativecommons.org/donate?utm_source=ccorg&utm_medium=homepage_banner&utm_campaign=fall2009"><img src="/images/support/2009/donate.jpg" border="0" align="center" alt="Invest in the future of creativity and knowledge. Donate Today." /></a>
 			<?php include ('progress.php'); ?> 
           </div>
         </div>
