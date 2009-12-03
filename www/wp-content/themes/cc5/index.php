@@ -43,7 +43,7 @@
 <!-- Google Website Optimizer Control Script -->
 <script>
 function utmx_section(){}function utmx(){}
-(function(){var k='3422533296',d=document,l=d.location,c=d.cookie;function f(n){
+(function(){var k='0661056067',d=document,l=d.location,c=d.cookie;function f(n){
 if(c){var i=c.indexOf(n+'=');if(i>-1){var j=c.indexOf(';',i);return c.substring(i+n.
 length+1,j<0?c.length:j)}}}var x=f('__utmx'),xx=f('__utmxx'),h=l.hash;
 d.write('<sc'+'ript src="'+
@@ -92,13 +92,13 @@ d.write('<sc'+'ript src="'+
   		      <a href="/videos/" class="theQuote">CC Video Library <!-- <img src="<?php bloginfo('stylesheet_directory'); ?>/images/play.png" alt="[play]" border="0"/> --></a>
 			</div>
  */ ?>
-<script>utmx_section("Header Area")</script>
 <!--
 			<div id="quote">
 			 	<a href="https://support.creativecommons.org/donate"><img src="/images/support/2009/shepard-fairey-banner-1.png" alt="Shepard Faiey Remixes CC Logo!" border="0" /></a>
 			</div>
 -->
-		  <div id="testimonial">
+<script>utmx_section("Testimonial")</script>
+		  	<div id="testimonial">
                 <div class="photo"><img src="https://support.creativecommons.org/images/75/jonathancoulton.jpg" alt="Jonathan Coulton" /></div>
                 <blockquote>"With Creative Commons, the act of creation becomes not the end, but the beginning of a creative process that links complete strangers together in collaboration."</blockquote>
                 <div class="sig">
@@ -106,6 +106,7 @@ d.write('<sc'+'ript src="'+
                 </div>
                 <p><a href="https://support.creativecommons.org/testimonials">More testimonials &raquo;</a></p>
             </div>
+</noscript>
 		  </div>
           <div id="splashBox">
           <div id="splash">
@@ -150,7 +151,6 @@ d.write('<sc'+'ript src="'+
         </div>
         </div>
       </div>
-</noscript>
       <div id="triple" class="box">
         <div id="ccContent" class="columnBox">
 	      <div id="ccTools" class="columnBox">
@@ -299,7 +299,7 @@ if(typeof(_gat)!='object')document.write('<sc'+'ript src="http'+
 try {
 var gwoTracker=_gat._getTracker("UA-9998295-1");
 gwoTracker._setDomainName(".creativecommons.org");
-gwoTracker._trackPageview("/3422533296/test");
+gwoTracker._trackPageview("/0661056067/test");
 }catch(err){}</script>
 <!-- End of Google Website Optimizer Tracking Script -->
 
