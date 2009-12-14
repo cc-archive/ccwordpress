@@ -11,6 +11,7 @@ Version: 5.0
 
 #globalWrapper {
 	background: #fff url('images/header-bar-thin.png') repeat-x top left;
+	min-width: 980px;
 }
 
 #headerNav {
