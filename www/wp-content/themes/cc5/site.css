@@ -87,6 +87,7 @@ img.mugshot {
 
 #globalWrapper {
 	background: #fff url('images/header-bar-full.png') repeat-x top left;
+	min-width: 980px;
 }
 
 #s.inactive {
