@@ -117,7 +117,11 @@ Visit the jurisdiction site <a href="<?=$jurisdiction_site?>">here</a>.
                 final license.</p>
               </div>
               <? } ?>
-              <?php the_content(); ?>
+			  <?php the_content(); ?>
+
+				<div class="twitter">
+					<a href="http://twitter.com/home?status=<?php the_title() ?> - <?php the_permalink() ?> via @creativecommons">Share on Twitter</a>
+				</div>
 <?php if (get_the_tags()) { ?>
                 <div class="postTags">
 <?php
