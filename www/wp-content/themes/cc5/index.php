@@ -99,10 +99,10 @@ d.write('<sc'+'ript src="'+
 -->
 			<script>utmx_section("Testimonial")</script>
 		  	<div id="testimonial">
-                <div class="photo"><img src="https://support.creativecommons.org/images/75/mattcockerill.jpg" alt="Matt Cockerill" /></div>
-                <blockquote>"The widespread adoption of CC licenses by open access publishers means that open access articles are not only freely readable and downloadable, but they can also be freely redistributed, adapted and reused."</blockquote>
+                <div class="photo"><img src="https://support.creativecommons.org/images/75/evanprodromou.jpg" alt="Evan Prodromou" /></div>
+                <blockquote style="font-size: 99%">"Within a generation we can open the world’s knowledge to all of its inhabitants and reduce or eliminate the misery caused by lack of access to information, and Creative Commons is a crucial part of the cultural compact that makes that revolution possible."</blockquote>
                 <div class="sig">
-                    <a href="https://support.creativecommons.org/testimonials#mattcockerill">&mdash; Matt Cockerill</a><br/><span>Managing Director, BioMed Central Ltd.</span>
+                    <a href="https://support.creativecommons.org/testimonials#evanprodromou">&mdash; Evan Prodromou</a><br/><span>Founder, Identi.ca</span>
                 </div>
 <? /*    <p><a href="https://support.creativecommons.org/testimonials">More testimonials &raquo;</a></p> */ ?>
 			</div>
