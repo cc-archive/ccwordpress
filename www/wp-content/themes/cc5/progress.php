@@ -1,6 +1,6 @@
 <?php function showTestimonial() { 
 	$url = "https://support.creativecommons.org/testimonials";
-	$utm = "?utm_source=ccorg&utm_medium=testimonial&utm_campaign=fall2009";
+	$utm = "?utm_source=ccorg&utm_medium=testimonial";
 ?>
 
 <div id="sidebarTestimonial">
@@ -24,9 +24,9 @@
 function showThermometer() { 	
 
 	if (is_home()) {
-		$utm = "?utm_source=ccorg&utm_medium=homepage_thermometer&utm_campaign=fall2009";
+		$utm = "?utm_source=ccorg&utm_medium=homepage_thermometer";
 	} else { 
-		$utm = "?utm_source=ccorg&utm_medium=thermometer&utm_campaign=fall2009"; 
+		$utm = "?utm_source=ccorg&utm_medium=thermometer"; 
 	} 
 ?>
 
@@ -37,7 +37,7 @@ function showThermometer() {
 				<?php if (is_home()) { ?><div class="homeGoal"><a href="https://support.creativecommons.org/donate<?= $utm ?>">$500,000</a></div><? } ?>
 				<div class="results<?php if (is_home()) {?>Home<?}?>">
 					<a href="https://support.creativecommons.org/donate<?= $utm ?>">
-					<?php if (is_home()) { ?><strong><?php cc_progress_total() ?> Raised</strong> &mdash; Thank you! Thank you!<?php } else { ?>
+					<?php if (is_home()) { ?><strong><?php cc_progress_total() ?> Raised</strong> &mdash; Thank you!<?php } else { ?>
 						<?php cc_progress_total() ?> / $500,000 by&nbsp;Dec&nbsp;31 
 						<br/>
 						<em>Help us reach our goal!</em>
