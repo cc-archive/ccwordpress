@@ -149,8 +149,8 @@ d.write('<sc'+'ript src="'+
 		}
  */
 ?>
-			<a href="https://support.creativecommons.org/donate?utm_source=ccorg&utm_medium=homepage_banner&utm_campaign=fall2009"><img src="/images/support/2009/donate.jpg" border="0" align="center" alt="Invest in the future of creativity and knowledge. Donate Today." /></a>
-			<?php include ('progress.php'); ?> 
+			<a href="https://support.creativecommons.org/donate?utm_source=ccorg&utm_medium=homepage_banner"><img src="/images/support/2009/donate-banner-done.jpg" border="0" align="center" alt="Invest in the future of creativity and knowledge. Donate Today." /></a>
+            <?php include ('progress.php'); ?>
           </div>
         </div>
         </div>
