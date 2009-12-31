@@ -1,6 +1,6 @@
 <?php function showTestimonial() { 
 	$url = "https://support.creativecommons.org/testimonials";
-	$utm = "?utm_source=ccorg&utm_medium=testimonial&utm_campaign=fall2009";
+	$utm = "?utm_source=ccorg&utm_medium=testimonial";
 ?>
 
 <div id="sidebarTestimonial">
@@ -24,9 +24,9 @@
 function showThermometer() { 	
 
 	if (is_home()) {
-		$utm = "?utm_source=ccorg&utm_medium=homepage_thermometer&utm_campaign=fall2009";
+		$utm = "?utm_source=ccorg&utm_medium=homepage_thermometer";
 	} else { 
-		$utm = "?utm_source=ccorg&utm_medium=thermometer&utm_campaign=fall2009"; 
+		$utm = "?utm_source=ccorg&utm_medium=thermometer"; 
 	} 
 ?>
 
