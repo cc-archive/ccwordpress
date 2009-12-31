@@ -37,7 +37,7 @@ function showThermometer() {
 				<?php if (is_home()) { ?><div class="homeGoal"><a href="https://support.creativecommons.org/donate<?= $utm ?>">$500,000</a></div><? } ?>
 				<div class="results<?php if (is_home()) {?>Home<?}?>">
 					<a href="https://support.creativecommons.org/donate<?= $utm ?>">
-					<?php if (is_home()) { ?><strong><?php cc_progress_total() ?> Raised</strong> &mdash; Thank you! Thank you!<?php } else { ?>
+					<?php if (is_home()) { ?><strong><?php cc_progress_total() ?> Raised</strong> &mdash; Thank you!<?php } else { ?>
 						<?php cc_progress_total() ?> / $500,000 by&nbsp;Dec&nbsp;31 
 						<br/>
 						<em>Help us reach our goal!</em>
