@@ -115,8 +115,6 @@ d.write('<sc'+'ript src="'+
           <div id="splashBox">
           <div id="splash">
 <?php
-/* Turned off auto banner for campaign related goodness.
- * alex ~ 091001
 		if ($sticky_page = cc_get_sticky_page()) {
 			// grab attached image from sticky page and display it in the #splash area
 			// this ignores any sticky blog posts
@@ -147,10 +145,8 @@ d.write('<sc'+'ript src="'+
               } // if is_sticky
 			} // while
 		}
- */
+ 
 ?>
-			<a href="https://support.creativecommons.org/donate?utm_source=ccorg&utm_medium=homepage_banner"><img src="/images/support/2009/donate-banner-done.jpg" border="0" align="center" alt="Invest in the future of creativity and knowledge. Donate Today." /></a>
-            <?php include ('progress.php'); ?>
           </div>
         </div>
         </div>

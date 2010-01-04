@@ -36,8 +36,6 @@
 	<link href="<?php bloginfo('stylesheet_directory'); ?>/print.css" rel="stylesheet" media="print" type="text/css" />
 
 	<link href="<?php bloginfo('stylesheet_directory'); ?>/support.css?5.1" rel="stylesheet" type="text/css" />
-	<link href="/includes/total.css" rel="stylesheet" type="text/css" /> 
-	
 	<script type="text/javascript" charset="utf-8" src="<?php bloginfo('stylesheet_directory'); ?>/site.js"></script>
 	
   <?php if (is_home() || ($category_name == "weblog")) { ?>
