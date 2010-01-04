@@ -3,7 +3,7 @@ body {
 	padding: 0;
 	color: #333;
 	font:  62.5% Arial, sans-serif;
-	line-height: 1.5em;
+	line-height: 1.5;
 	text-align: center;
 }
 
@@ -40,7 +40,7 @@ a:hover {
 	text-decoration: underline;
 }
 
-p { margin-bottom: 10px; line-height:1.5em;}
+p { margin-bottom: 10px; }
 
 blockquote { 
 	padding: 5px 5px 5px 10px; 
