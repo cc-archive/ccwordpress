@@ -25,9 +25,9 @@
 	
 	<!--
 	<div class="block hero" id="title">
-<!--              <? /* cc_current_feature(); ?>
+              <? /* cc_current_feature(); ?>
             
-            <h2><?php bloginfo('description'); ?></h2> */?> -->
+            <h2><?php bloginfo('description'); ?></h2> */?>
             <div id="blurb"><?= cc_intro_blurb() ?></div>
             
           </div>
