@@ -2,7 +2,7 @@
 Contributors: johnny5
 Tags: search, post, page, comment, lucene, widget, highlight
 Requires at least: 2.3
-Tested up to: 2.8.1
+Tested up to: 2.9
 Stable tag: trunk
 
 Advanced WordPress search with wildcards, highlighting, log, and ability to search all post data. Now with Lucene!
@@ -49,6 +49,8 @@ The plugin is available in:
 * Danish by Georg S. Adamsen
 * Lithuanian by WordPress TVS - Audrius
 * Belorussian by Marcis Gasuns
+* Czech by Pavel Soukenik
+* Slovenian by Rok
 
 == Installation ==
 
@@ -200,3 +202,18 @@ Full documentation can be found on the [Search Unleashed](http://urbangiraffe.co
 = 1.0.2 =
 * Prevent problem with farbtastic
 * Message about no need for indexing with default search engine
+
+= 1.0.4 =
+* Remove error with some MySQLs
+* Forcing content display bug
+* Fix #661
+* Cron bug
+
+= 1.0.5 =
+* Add Czech translation
+* Fix #683
+* Fix #692
+
+= 1.0.6 =
+* Prevent plugins interfering with reindex
+* Misc fixes

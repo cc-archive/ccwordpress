@@ -122,6 +122,10 @@ class DefaultEngine extends SearchEngine {
 			$request = str_replace('WHERE', implode( ' ', $join ).' WHERE', $request);
 
 		$request = str_replace( 'SELECT', 'SELECT DISTINCT', $request );
+		
+		if ( is_array( $this->terms ) )
+			$this->terms = implode( ' ', $this->terms );
+		
 		return $request;
 	}
 

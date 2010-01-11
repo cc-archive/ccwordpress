@@ -3,8 +3,8 @@ Contributors: Filippo Toso
 Donate link: http://www.masteringlandingpages.com/
 Tags: google website optimizer, landing page optimization
 Requires at least: 2.7.0
-Tested up to: 2.7.1
-Stable tag: 1.2
+Tested up to: 2.8.4
+Stable tag: 1.3
 
 Optimize your landing pages using the Google Website Optimizer
 

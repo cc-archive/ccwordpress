@@ -50,8 +50,10 @@ class Search_Module_Factory {
 		$available = get_declared_classes();
 		$files     = glob( implode( DIRECTORY_SEPARATOR, array( dirname( __FILE__ ), '..', 'modules', '*.php' ) ) );
 		
-		foreach ( (array)$files AS $file )
-			include_once $file;
+		foreach ( (array)$files AS $file ) {
+			if ( file_exists( $file ) )
+				include_once $file;
+		}
 
 		$modules   = array();
 		$available = array_diff( get_declared_classes(), $available );
