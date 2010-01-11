@@ -42,11 +42,10 @@ class Highlighter {
 
 		$this->matches     = 0;
 		$this->first_match = strlen( $text );
-		
+
 		// Find the first matched term
 		foreach ( (array)$words AS $word ) {
 			if ( preg_match( '/('.$word.')(?!=")/i', $this->text, $matches, PREG_OFFSET_CAPTURE ) > 0 )
-                $word = preg_replace('/\//', '\/', $word);
 				$this->first_match = min( $this->first_match, $matches[0][1] );
 				
 			$this->words[] = $word;

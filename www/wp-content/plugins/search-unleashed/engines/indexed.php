@@ -80,7 +80,7 @@ class IndexedEngine extends SearchEngine {
 					$prefix = $wpdb->prefix.'search_comment';
 				}
 			
-				foreach ( $this->terms AS $term ) {
+				foreach ( (array)$this->terms AS $term ) {
 					$module_sql[] = $prefix.'.'.$module->field_name()." LIKE '%$term%'";
 
 					if ( isset( $_GET[$module->field_name()] ) ) {

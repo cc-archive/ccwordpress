@@ -3,7 +3,7 @@
 Plugin Name: Search Unleashed
 Plugin URI: http://urbangiraffe.com/plugins/search-unleashed/
 Description: Advanced search engine that provides full text searching across posts, pages, comments, titles, and URLs.  Searches take into account any data added by other plugins, and all search results are contextually highlighted. You can also highlight incoming searches from popular search engines.
-Version: 1.0.5
+Version: 1.0.6
 Author: John Godley
 Author URI: http://urbangiraffe.com/
 ============================================================================================================
@@ -276,7 +276,7 @@ class SearchUnleashedPlugin extends Search_Plugin {
 	 * @return void
 	 **/
 	function database_upgrade() {
-		$version = get_option( 'search_unleashed_version' );
+		$version = intval( get_option( 'search_unleashed_version' ) );
 
 		if ( $version !== 3 ) {
 			include_once dirname( __FILE__ ).'/models/database.php';
@@ -370,8 +370,8 @@ class SearchUnleashedPlugin extends Search_Plugin {
 				if ( $options['incoming'] == 'all' )
 					$this->add_filter( 'the_title', 'highlight_incoming_title' );
 
-				$this->add_filter( 'get_comment_text',   'highlight_incoming_text' );
-				$this->add_filter( 'get_comment_author', 'highlight_incoming_text' );
+				$this->add_filter( 'get_comment_text',   'highlight_incoming_text', 8 );
+				$this->add_filter( 'get_comment_author', 'highlight_incoming_text', 8 );
 				$this->add_filter( 'the_tags',           'highlight_incoming_text' );
 			}
 		}
