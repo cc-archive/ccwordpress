@@ -154,6 +154,7 @@
 	color: #FF2000;
 	margin-right: 6px;
 	-moz-border-radius: 3px;
+	-webkit-border-radius: 3px;
 	font-weight: bold;
 }
 
@@ -203,10 +204,11 @@ p.presskit {
 	  padding: 10px;
 	  background-color: #faffef;
 	  border: 1px solid #dadfcf;
-	  -moz-border-radius: 6px;
+	  -moz-border-radius: 5px;
+	  -webkit-border-radius: 5px;
 	}
 	.attributes {
-	  width: 154px;
+	  width: 168px;
 	  padding: 0 2% 0 0;
 	  float: left;
 	  height: 200px;
@@ -235,9 +237,16 @@ p.presskit {
 		margin-left: 100px;
 		margin-bottom: 1em;
 		font-size: 150% !important;
+		line-height: 1;
 	}
 	
+	.license_blurb h2 em { 
+		font-weight: normal;
+		font-size: 70%;
+	}
+
 	.license_blurb img {
+		padding-top: 0.25em;
 		float: left;
 	}
 	.license_blurb p {
