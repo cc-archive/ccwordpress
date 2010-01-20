@@ -81,7 +81,7 @@ d.write('<sc'+'ript src="'+
         <div id="ccBlurb" >
           <div id="cc_mission">
 			<div id="quote">
-			 	<a href="https://support.creativecommons.org/store"><img src="/images/cc-visit-store.jpg" alt="Visit the CC Store!" border="0" /></a>
+			 	<a href="https://support.creativecommons.org/store?utm_campaign=10q1promo&utm_medium=store1&utm_source=ccorg"><img src="/images/cc-visit-store.jpg" alt="Visit the CC Store!" border="0" /></a>
 			</div>
 <?/* Commented out testimonial section, possible return later -- 2010/01/20 ~ Alex
 
