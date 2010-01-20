@@ -80,23 +80,11 @@ d.write('<sc'+'ript src="'+
       <div id="topContent" class="box">
         <div id="ccBlurb" >
           <div id="cc_mission">
-<?php /*
-		  <!-- <p>Creative Commons is a <strong>nonprofit</strong> organization dedicated to making it easier for people to share and build upon the work of others, consistent with the rules of copyright.</p> -->
-				<!-- <object type="application/x-shockwave-flash" data="http://blip.tv/play/goY6yZQBg9ky.m4v" style="width: 300px; height: 199px; margin-right: 10px;"> 
-  		                <param name="movie" value="http://blip.tv/play/goY6yZQBg9ky.m4v"> 
-  		                <param name="quality" value="high"> 
-  		                <param name="menu"> 
-  		                <img src="test.gif" alt="Alternate image for non-flash browsers"> 
-  		              </object> -->
 			<div id="quote">
-  		      <a href="/videos/" class="theQuote">CC Video Library <!-- <img src="<?php bloginfo('stylesheet_directory'); ?>/images/play.png" alt="[play]" border="0"/> --></a>
+			 	<a href="https://support.creativecommons.org/store"><img src="/images/cc-visit-store.jpg" alt="Visit the CC Store!" border="0" /></a>
 			</div>
- */ ?>
-<!--
-			<div id="quote">
-			 	<a href="https://support.creativecommons.org/donate"><img src="/images/support/2009/shepard-fairey-banner-1.png" alt="Shepard Faiey Remixes CC Logo!" border="0" /></a>
-			</div>
--->
+<?/* Commented out testimonial section, possible return later -- 2010/01/20 ~ Alex
+
 			<script>utmx_section("Testimonial")</script>
 		  	<div id="testimonial">
                 <div class="photo"><img src="https://support.creativecommons.org/images/75/evanprodromou.jpg" alt="Evan Prodromou" /></div>
@@ -104,14 +92,15 @@ d.write('<sc'+'ript src="'+
                 <div class="sig">
                     <a href="https://support.creativecommons.org/testimonials#evanprodromou">&mdash; Evan Prodromou</a><br/><span>Founder, Identi.ca</span>
                 </div>
-<? /*    <p><a href="https://support.creativecommons.org/testimonials">More testimonials &raquo;</a></p> */ ?>
+<? /*    <p><a href="https://support.creativecommons.org/testimonials">More testimonials &raquo;</a></p>  
 			</div>
 			<script type="text/javascript">
 				jQuery("#testimonial").click(function() { window.location="https://support.creativecommons.org/donate?utm_source=ccorg&utm_medium=homepage_testimonial_cockerill&utm_campaign=fall2009"; });
 				jQuery("#testimonial")[0].style.cursor = "pointer";
 			</script>
 </noscript>
-		  </div>
+ */ ?>
+</div>
           <div id="splashBox">
           <div id="splash">
 <?php
