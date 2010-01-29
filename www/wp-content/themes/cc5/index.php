@@ -233,14 +233,25 @@ HTML;
           <div class="infoLinks">
             <h4 class="titleStrip subTitle">Information</h4>
             <ul class="ccContent">
-				<?php include "sidelinks.php"; ?>
-            </ul>
+				<li><a href="/about/licenses/">The Licenses</a></li>
+				<li><a href="/about/newsletter">Newsletter</a></li>
+				<li><a href="/about/events">Events</a></li>
+				<li><a href="https://support.creativecommons.org/supporters">Supporters</a></li>
+				<li><a href="/about/opportunities">Jobs</a></li>
+				<li><a href="http://wiki.creativecommons.org/Developers">Developers</a></li>
+			</ul>
           </div>
-          <div class="infoLinks">
-            <h4 class="titleStrip subTitle">Programs</h4>
-            <ul>
-              <li><a href="http://sciencecommons.org/"><img src="<?php bloginfo('stylesheet_directory'); ?>/images/sciencecommonslogo.png" alt="Science Commons" border="0"/></a></li>
-              <li><a href="http://learn.creativecommons.org/"><img src="<?php bloginfo('stylesheet_directory'); ?>/images/cclearnlogo.png" alt="ccLearn" border="0"/></a></li>
+		  <div class="infoLinks">
+			<h4 class="titleStrip subTitle">&nbsp;</h4>
+			<ul class="ccContent">
+				<li><a href="http://wiki.creativecommons.org/Case_Studies">Case Studies</a></li>
+				<li><a href="/interviews">CC Talks With...</a></li>
+				<li><a href="/international">International</a></li>
+				<li><a href="http://learn.creativecommons.org/">Education</a></li>
+				<li><a href="http://sciencecommons.org/">Science</a></li>
+				<li><a href="/contact">Contact</a></li>
+			</ul>
+
 <? /* Killing international dropdown from homepage for now...
 			  <li>
 				<div id="help_international_list" class="sideitem topright">
