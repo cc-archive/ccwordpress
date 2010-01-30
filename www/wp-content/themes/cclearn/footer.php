@@ -8,23 +8,10 @@
         <ul>
           <li><a href="#top">Top</a>&nbsp;&nbsp;&nbsp;&nbsp;</li>
           <li><a href="/">Home</a></li>
-          <li><a href="/contact">Contact</a></li>
+          <li><a href="http://creativecommons.org/contact">Contact</a></li>
           <li><a href="http://creativecommons.org/policies">Policies</a></li>
           <li><a href="http://creativecommons.org/privacy">Privacy</a></li>
           <li><a href="http://creativecommons.org/terms">Terms of Use</a></li>
-          <li>
-          <h4><br/>The Commons</h4>
-<ul>
-  <li><a href="http://creativecommons.org/">Creative Commons</a></li>
-  <li><a href="http://sciencecommons.org/">Science Commons</a></li>
-  <li><a href="https://creativecommons.net">CC Network</a></li>
-  <li><a href="http://creativecommons.org/worldwide/">ccInternational</a></li>
-  <li>
-    <select name="sortby" onchange="orderby(this)">
-      <option value="">Select a jurisdiction</option>
-      <script type="text/javascript" src="http://api.creativecommons.org/rest/dev/support/jurisdictions.js"></script>
-    </select>
-  </li>
 </ul>
           </li>
         </ul>

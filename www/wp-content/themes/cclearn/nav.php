@@ -8,7 +8,7 @@ $nav = array (
   array("name" => "Productions",    "path" => "/productions/"),
   array("name" => "Resources",      "path" => "/resources/"),
   array("name" => "Search",    	    "path" => "/search/"),
-  array("name" => "Contact",        "path" => "/contact/")
+  array("name" => "Contact",        "path" => "http://creativecommons.org/contact/")
 );
 
 ?>
@@ -39,7 +39,7 @@ $nav = array (
 			if ("active" == $klass) $activated = true;
           }
 
-          print '      <li class="'.$klass.'"><div><a href="'. get_option('home') . $item["path"] .'" title="'.$item["name"].'">'.$item["name"].'</a></div></li>';
+          print '      <li class="'.$klass.'"><div><a href="'. $item["path"] .'" title="'.$item["name"].'">'.$item["name"].'</a></div></li>';
         } ?>
  
         </ul>

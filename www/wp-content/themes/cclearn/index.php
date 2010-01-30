@@ -10,18 +10,6 @@
        <!-- <div id="splash">
 		-->	<?php /*echo cc_current_feature(); */?>
 		
-		<div id="headerimage">
-		<a href="http://creativecommons.org/weblog/entry/15467"><img src="http://learn.creativecommons.org/wp-content/uploads/2009/07/opened-launch.png" style="border-style: none;" /></a>
-		</div>
-		<br />
-		<div id="head-info">
-			<div id="mission">
-				<p><b>ccLearn</b> is a division of Creative Commons dedicated to realizing the full potential of the internet to support <b>open learning</b> and <b>open educational resources</b>.</p><p>Our mission is to minimize legal, technical, and social barriers to <b>sharing</b> and <b>reuse</b> of educational materials.</p>
-			</div>
-			<div id="current">
-				<?php echo cc_current_feature(); ?>
-			</div>
-		</div>
         <!--/div -->
 	<div id="projects_box" class="cc_box">
          <!--  <h4>Projects</h4> -->
