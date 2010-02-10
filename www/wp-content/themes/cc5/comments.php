@@ -87,7 +87,7 @@
 
 <p><input type="text" name="openid_identifier" id="openid_identifier" /><label for="openid_identifier"><small>OpenID URL</small></label></p>
 
-<p><small>Name and Mail are not required fields if you authenticate your comment with OpenID.</p>
+<p><small>Name and Mail are not required fields if you authenticate your comment with OpenID.</small></p>
 
 <?php endif; ?>
 
