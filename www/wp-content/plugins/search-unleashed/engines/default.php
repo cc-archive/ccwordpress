@@ -140,7 +140,8 @@ class DefaultEngine extends SearchEngine {
 
 		$request = str_replace( 'SELECT', 'SELECT DISTINCT', $request );
 		
-		$this->terms = implode( ' ', $this->terms );
+		if ( is_array( $this->terms ) )
+			$this->terms = implode( ' ', $this->terms );
 		
 		return $request;
 	}

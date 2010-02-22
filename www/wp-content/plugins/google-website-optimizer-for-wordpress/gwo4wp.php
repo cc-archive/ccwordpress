@@ -4,7 +4,7 @@
 Plugin Name: Google Website Optimizer for WordPress
 Plugin URI: http://www.masteringlandingpages.com/gwo4wp
 Description: Test your WordPress Landing Pages with Google Website Optimizer for WordPress 
-Version: 1.2
+Version: 1.3
 Author: Filippo Toso
 Author URI: http://www.masteringlandingpages.com/
 */
