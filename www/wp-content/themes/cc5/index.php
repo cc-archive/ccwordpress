@@ -33,7 +33,7 @@
 	
 	<meta name="generator" content="WordPress <?php bloginfo('version'); ?>" />
   <meta name="keywords" content="creative commons, commons, free culture, open source, attribution, non-commercial, share-alike, no derivatives, lessig" />
-  <meta name="description" content="Creative Commons licenses provide a flexible range of protections and freedoms for authors, artists, and educators." />
+  <meta name="description" content="<?php _e('Creative Commons licenses provide a flexible range of protections and freedoms for authors, artists, and educators.', 'cc5'); ?>" />
 
 	<!-- Google Website Optimizer tracking code -->
 	<script>
@@ -64,8 +64,8 @@ d.write('<sc'+'ript src="'+
         <h1><a href="/"><span>Creative Commons</span></a></h1>
       </div>
       <div id="headerIntro">
-        <h4>Share, Remix, Reuse &mdash; Legally</h4>
-        <p>Creative Commons is a nonprofit organization that increases sharing and improves&nbsp;collaboration. <a href="http://creativecommons.org/about/what-is-cc">Learn More &raquo;</a></p>
+        <h4><?php _e('Share, Remix, Reuse &mdash; Legally', 'cc5'); ?></h4>
+        <p><?php _e('Creative Commons is a nonprofit organization that increases sharing and improves&nbsp;collaboration. <a href="http://creativecommons.org/about/what-is-cc">Learn More &raquo;', 'cc5'); ?></a></p>
       </div>
       <?php require_once "nav.php"; ?>
       <div id="headerSearch">
@@ -144,16 +144,16 @@ d.write('<sc'+'ript src="'+
         <div id="ccContent" class="columnBox">
 	      <div id="ccTools" class="columnBox">
 	        <div class="stdColumn ccTool nohelpLink" id="search">
-	          <h2 class="find"><a href="http://search.creativecommons.org/">Find &raquo;</a></h2>
-	          <p><a href="http://search.creativecommons.org/">Find <strong>licensed</strong> works you can share, remix, or&nbsp;reuse.</a></p>
+	          <h2 class="find"><a href="http://search.creativecommons.org/"><?php _e('Find', 'cc5'); ?> &raquo;</a></h2>
+	          <p><a href="http://search.creativecommons.org/"><?php _e('Find <strong>licensed</strong> works you can share, remix, or&nbsp;reuse.', 'cc5'); ?></a></p>
 	        </div>
 			<div class="stdColumn ccTool nohelpLink" id="network">
-	          <h2 class="join"><a href="https://support.creativecommons.org/donate?utm_source=ccorg&utm_medium=homepage&utm_campaign=fall2009">Donate &raquo;</a></h2>
-			  <p><a href="https://support.creativecommons.org/donate?utm_source=ccorg&utm_medium=homepage&utm_campaign=fall2009">Invest in the <strong>future</strong> of creativity and knowledge &mdash; <strong>Donate&nbsp;Today!</strong></a></p>
+	          <h2 class="join"><a href="https://support.creativecommons.org/donate?utm_source=ccorg&utm_medium=homepage&utm_campaign=fall2009"><?php _e('Donate', 'cc5'); ?> &raquo;</a></h2>
+			  <p><a href="https://support.creativecommons.org/donate?utm_source=ccorg&utm_medium=homepage&utm_campaign=fall2009"><?php _e('Invest in the <strong>future</strong> of creativity and knowledge &mdash; <strong>Donate&nbsp;Today!</strong>', 'cc5'); ?></a></p>
 	        </div>
 	        <div class="stdColumn ccTool nohelpLink lastColumn" id="license">
-	          <h2 class="license"><a href="/choose">License &raquo;</a></h2>
-	          <p><a href="/choose">Use our <strong>free</strong> tools to inform people how they can reuse and share your creative works.</a></p>
+	          <h2 class="license"><a href="/choose"><?php _e('License', 'cc5'); ?> &raquo;</a></h2>
+	          <p><a href="/choose"><?php _e('Use our <strong>free</strong> tools to inform people how they can reuse and share your creative works.', 'cc5'); ?></a></p>
 	        </div>
 	      </div>  
       </div>
@@ -162,7 +162,7 @@ d.write('<sc'+'ript src="'+
         <div id="ccFeatures" class="columnBox">
         <div id="ccINews">
           <div id="latestNews" class="stdColumn">
-            <h4 class="titleStrip subTitle"><a href="<?php echo get_category_link(1);?>">Commons News</a></h4>
+            <h4 class="titleStrip subTitle"><a href="<?php echo get_category_link(1);?>"><?php  _e('Commons News', 'cc5'); ?></a></h4>
             <ul>
 <?php
 			  rewind_posts();
@@ -181,7 +181,7 @@ d.write('<sc'+'ript src="'+
                   <li class="<?php echo $liClass ?>">
                     <h5 class="postTitle">
                       <a href="<?php the_permalink() ?>">
-                        <?php if (in_category(4) || in_category(7)) { ?>CC Talks With: <?php } ?>
+                        <?php if (in_category(4) || in_category(7)) { _e('CC Talks With: ', 'cc5'); } ?>
                         
                         <?php if (!$noticeTitle) { the_title(); } else { echo $noticeTitle; } ?>
                       </a>
@@ -195,10 +195,10 @@ d.write('<sc'+'ript src="'+
                 }
               } ?>
             </ul>
-            <p><a href="/weblog/rss"><img src="<?php bloginfo('stylesheet_directory'); ?>/images/feed.png" border="0" alt="Feed" /></a><a href="<?php echo get_category_link(1);?>"><strong>Read more...</strong></a></p>
+            <p><a href="/weblog/rss"><img src="<?php bloginfo('stylesheet_directory'); ?>/images/feed.png" border="0" alt="Feed" /></a><a href="<?php echo get_category_link(1);?>"><strong><?php _e('Read more...', 'cc5'); ?></strong></a></p>
           </div>
           <div class="stdColumn">
-            <h4 class="titleStrip subTitle"><a href="http://planet.creativecommons.org/">International Community News</a></h4> 
+            <h4 class="titleStrip subTitle"><a href="http://planet.creativecommons.org/"><?php _e('International Community News', 'cc5'); ?></a></h4> 
             <ul>
               <?php 
               $inews = cc_build_external_feed('CC Planet', 5, 0); 
@@ -219,7 +219,7 @@ HTML;
               }
               ?>
             </ul>
-            <p><a href="http://planet.creativecommons.org/atom.xml"><img src="<?php bloginfo('stylesheet_directory'); ?>/images/feed.png" border="0" alt="Feed" /></a><a href="http://planet.creativecommons.org/"><strong>Read more...</strong></a></p>
+            <p><a href="http://planet.creativecommons.org/atom.xml"><img src="<?php bloginfo('stylesheet_directory'); ?>/images/feed.png" border="0" alt="Feed" /></a><a href="http://planet.creativecommons.org/"><strong><?php _e('Read more...', 'cc5'); ?></strong></a></p>
             
           </div>
         </div>
@@ -233,23 +233,23 @@ HTML;
           <div class="infoLinks">
             <h4 class="titleStrip subTitle">Information</h4>
             <ul class="ccContent">
-				<li><a href="/about/licenses/">The Licenses</a></li>
-				<li><a href="/about/newsletter">Newsletter</a></li>
-				<li><a href="/about/events">Events</a></li>
-				<li><a href="https://support.creativecommons.org/supporters">Supporters</a></li>
-				<li><a href="/about/opportunities">Jobs</a></li>
-				<li><a href="http://wiki.creativecommons.org/Developers">Developers</a></li>
+				<li><a href="/about/licenses/"><?php _e('The Licenses', 'cc5'); ?></a></li>
+				<li><a href="/about/newsletter"><?php _e('Newsletter', 'cc5'); ?></a></li>
+				<li><a href="/about/events"><?php _e('Events', 'cc5'); ?></a></li>
+				<li><a href="https://support.creativecommons.org/supporters"><?php _e('Supporters', 'cc5'); ?></a></li>
+				<li><a href="/about/opportunities"><?php _e('Jobs', 'cc5'); ?></a></li>
+				<li><a href="http://wiki.creativecommons.org/Developers"><?php _e('Developers', 'cc5'); ?></a></li>
 			</ul>
           </div>
 		  <div class="infoLinks">
 			<h4 class="titleStrip subTitle">&nbsp;</h4>
 			<ul class="ccContent">
-				<li><a href="http://wiki.creativecommons.org/Case_Studies">Case Studies</a></li>
-				<li><a href="/interviews">CC Talks With...</a></li>
-				<li><a href="/international">International</a></li>
-				<li><a href="http://learn.creativecommons.org/">Education</a></li>
-				<li><a href="http://sciencecommons.org/">Science</a></li>
-				<li><a href="/contact">Contact</a></li>
+				<li><a href="http://wiki.creativecommons.org/Case_Studies"><?php _e('Case Studies', 'cc5'); ?></a></li>
+				<li><a href="/interviews"><?php _e('CC Talks With...', 'cc5'); ?></a></li>
+				<li><a href="/international"><?php _e('International', 'cc5'); ?></a></li>
+				<li><a href="http://learn.creativecommons.org/"><?php _e('Education', 'cc5'); ?></a></li>
+				<li><a href="http://sciencecommons.org/"><?php _e('Science', 'cc5'); ?></a></li>
+				<li><a href="/contact"><?php _e('Contact', 'cc5'); ?></a></li>
 			</ul>
 
 <? /* Killing international dropdown from homepage for now...
