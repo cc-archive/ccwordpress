@@ -59,8 +59,6 @@
 }
 
 .postTags, .block .widget {
-	width: 348px; 
-	float: left;
 	padding: 5px 9px;
 	margin-top: 14px;
 	margin-right: 10px;
@@ -68,6 +66,11 @@
 	-moz-border-radius: 5px;
 	-webkit-border-radius: 5px;
 	border-radius: 5px;
+}
+
+.single .postTags, .single .block .widget {
+	width: 348px; 
+	float: left;
 }
 
 .block .widget {

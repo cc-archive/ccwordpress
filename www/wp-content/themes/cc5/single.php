@@ -27,7 +27,7 @@ if (have_posts())  {
      }
     ?>
   
-    <div id="mainContent" class="box">
+    <div id="mainContent" class="box single">
       <div id="contentPrimary">
           <? if ($is_commoner) {?>
           <div id="alpha" class="content-box">
