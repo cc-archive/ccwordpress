@@ -58,7 +58,7 @@
 	text-decoration: none;
 }
 
-.postTags, .widget {
+.postTags, .block .widget {
 	width: 348px; 
 	float: left;
 	padding: 5px 9px;
