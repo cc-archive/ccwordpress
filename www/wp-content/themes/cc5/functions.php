@@ -1,6 +1,15 @@
 <?php
-if ( function_exists('register_sidebar') )
+if (function_exists('register_sidebar')) {
     register_sidebar(array('before_widget' => '<div class="widget">', 'after_widget' => '</div>'));
+
+    register_sidebar(array(
+    	'name' => 'Single Post',
+    	'description' => 'Widgets in this area will only appear on single posts',
+    	'before_widget' => '<div class="widget">',
+    	'after_widget' => '</div>',
+    	'before_title' => '<h2>',
+    	'after_title' => '</h2>'));
+}
 
 function cc_progress_total() {
   $campaign_total = file_get_contents(__DIR__ . '../../includes/total.txt');
