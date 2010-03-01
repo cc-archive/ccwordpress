@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Creative Commons 5.0\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/cc5\n"
-"POT-Creation-Date: 2010-03-01 16:51-0600\n"
+"POT-Creation-Date: 2010-03-01 16:57-0600\n"
 "PO-Revision-Date: 2010-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -44,43 +44,43 @@ msgstr ""
 msgid "ccSearch"
 msgstr ""
 
-#: archive.php:24 category-7.php:32 index.php:188
+#: archive.php:24 category-7.php:32 category.php:26 index.php:188
 msgid "CC Talks With: "
 msgstr ""
 
-#: archive.php:29
+#: archive.php:29 category.php:31
 msgid "Read More..."
 msgstr ""
 
-#: archive.php:30 category-7.php:37
+#: archive.php:30 category-7.php:37 category.php:32
 msgid "Edit"
 msgstr ""
 
-#: archive.php:30 category-7.php:37
+#: archive.php:30 category-7.php:37 category.php:32
 msgid "No Comments &#187;"
 msgstr ""
 
-#: archive.php:30 category-7.php:37
+#: archive.php:30 category-7.php:37 category.php:32
 msgid "1 Comment &#187;"
 msgstr ""
 
-#: archive.php:30 category-7.php:37
+#: archive.php:30 category-7.php:37 category.php:32
 msgid "% Comments &#187;"
 msgstr ""
 
-#: archive.php:47 category-7.php:48
+#: archive.php:47 category-7.php:48 category.php:50
 msgid "previous page"
 msgstr ""
 
-#: archive.php:47 category-7.php:48
+#: archive.php:47 category-7.php:48 category.php:50
 msgid "next page"
 msgstr ""
 
-#: archive.php:54 category-7.php:54
+#: archive.php:54 category-7.php:54 category.php:57
 msgid "Subscribe to RSS"
 msgstr ""
 
-#: archive.php:55 category-7.php:55
+#: archive.php:55 category-7.php:55 category.php:58
 msgid "Archives"
 msgstr ""
 
