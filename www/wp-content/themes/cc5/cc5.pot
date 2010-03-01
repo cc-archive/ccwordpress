@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Creative Commons 5.0\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/cc5\n"
-"POT-Creation-Date: 2010-03-01 16:03-0600\n"
+"POT-Creation-Date: 2010-03-01 16:51-0600\n"
 "PO-Revision-Date: 2010-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -44,7 +44,7 @@ msgstr ""
 msgid "ccSearch"
 msgstr ""
 
-#: archive.php:24 index.php:188
+#: archive.php:24 category-7.php:32 index.php:188
 msgid "CC Talks With: "
 msgstr ""
 
@@ -52,36 +52,91 @@ msgstr ""
 msgid "Read More..."
 msgstr ""
 
-#: archive.php:30
+#: archive.php:30 category-7.php:37
 msgid "Edit"
 msgstr ""
 
-#: archive.php:30
+#: archive.php:30 category-7.php:37
 msgid "No Comments &#187;"
 msgstr ""
 
-#: archive.php:30
+#: archive.php:30 category-7.php:37
 msgid "1 Comment &#187;"
 msgstr ""
 
-#: archive.php:30
+#: archive.php:30 category-7.php:37
 msgid "% Comments &#187;"
 msgstr ""
 
-#: archive.php:47
+#: archive.php:47 category-7.php:48
 msgid "previous page"
 msgstr ""
 
-#: archive.php:47
+#: archive.php:47 category-7.php:48
 msgid "next page"
 msgstr ""
 
-#: archive.php:54
+#: archive.php:54 category-7.php:54
 msgid "Subscribe to RSS"
 msgstr ""
 
-#: archive.php:55
+#: archive.php:55 category-7.php:55
 msgid "Archives"
+msgstr ""
+
+#: category-21.php:31 index.php:253 nav.php:12
+msgid "International"
+msgstr ""
+
+#: category-21.php:36
+msgid ""
+"Creative Commons works to \"port\" the core Creative Commons Licenses to "
+"different copyright legislations around the world. The porting process "
+"involves both linguistically translating the licenses and legally adapting "
+"them to particular jurisdictions."
+msgstr ""
+
+#: category-21.php:38
+msgid ""
+"This work is led by CC General Counsel <a href=\"http://creativecommons.org/"
+"about/people#95\">Diane Peters</a> (<a href=\"mailto:diane@creativecommons."
+"org\">email</a>) with Project Manager <a href=\"http://creativecommons.org/"
+"about/people#85\">Michelle Thorne</a> (<a href=\"mailto:"
+"michelle@creativecommons.org\">email</a>) and volunteer teams in each "
+"jurisdiction who are committed to introducing CC to their country and who "
+"consult extensively with members of the public and key stakeholders in an "
+"effort to adapt the CC licenses to their jurisdiction."
+msgstr ""
+
+#: category-21.php:40
+msgid ""
+"A complete overview of the porting process can be found at <a href=\"http://"
+"wiki.creativecommons.org/International_Overview\">http://wiki."
+"creativecommons.org/International_Overview</a>."
+msgstr ""
+
+#: category-21.php:42
+msgid "Completed Licenses"
+msgstr ""
+
+#: category-21.php:43
+msgid ""
+"We have completed the process and developed licenses for the following "
+"jurisdictions:"
+msgstr ""
+
+#: category-21.php:66
+msgid "Project Jurisdictions"
+msgstr ""
+
+#: category-21.php:68
+msgid ""
+"The process of developing licenses and discussing them are still in progress "
+"for the following jurisdictions:"
+msgstr ""
+
+#: category-21.php:89
+msgid "Upcoming Project Jurisdictions"
 msgstr ""
 
 #: footer.php:5
@@ -221,10 +276,6 @@ msgstr ""
 
 #: index.php:252
 msgid "CC Talks With..."
-msgstr ""
-
-#: index.php:253 nav.php:12
-msgid "International"
 msgstr ""
 
 #: index.php:254
