@@ -7,13 +7,43 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Creative Commons 5.0\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/cc5\n"
-"POT-Creation-Date: 2010-02-19 12:48-0600\n"
+"POT-Creation-Date: 2010-03-01 12:51-0600\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Leo Arias <yo@elopio.net>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+
+#: 404.php:5
+msgid "Sorry..."
+msgstr "Lo sentimos..."
+
+#: 404.php:7
+msgid "The page you were looking for was not found."
+msgstr "No encontramos la página que estaba buscando."
+
+#: 404.php:8
+msgid "Other Content"
+msgstr "Otro contenido"
+
+#: 404.php:10
+msgid "Home"
+msgstr "Inicio"
+
+#: 404.php:11
+#, fuzzy
+msgid "Weblog"
+msgstr "Blog"
+
+#: 404.php:12
+#: nav.php:9
+msgid "Wiki"
+msgstr "Wiki"
+
+#: 404.php:13
+msgid "ccSearch"
+msgstr "búsquedaCC"
 
 #: footer.php:5
 msgid "Top"
@@ -24,8 +54,8 @@ msgid "Blog"
 msgstr "Blog"
 
 #: footer.php:7
-#: index.php:151
-#: nav.php:6
+#: index.php:155
+#: nav.php:7
 msgid "Donate"
 msgstr "Donar"
 
@@ -50,7 +80,7 @@ msgid "Sitemap"
 msgstr "Mapa del sitio"
 
 #: footer.php:13
-#: index.php:252
+#: index.php:256
 msgid "Contact"
 msgstr "Contacto"
 
@@ -73,122 +103,118 @@ msgid "Search Creative Commons"
 msgstr "Búsqueda de Creative Commons"
 
 #: header.php:55
-#: index.php:36
+#: index.php:40
 msgid "Creative Commons licenses provide a flexible range of protections and freedoms for authors, artists, and educators."
 msgstr "Las licencias Creative Commons brindan un rango flexible de protecciones y libertades para autores, artistas y educadores."
 
-#: index.php:67
+#: index.php:71
 msgid "Share, Remix, Reuse &mdash; Legally"
 msgstr "Compartir, Mezclar, Reutilizar &mdash; Legalmente"
 
-#: index.php:68
+#: index.php:72
 msgid "Creative Commons is a nonprofit organization that increases sharing and improves&nbsp;collaboration. <a href=\"http://creativecommons.org/about/what-is-cc\">Learn More &raquo;"
 msgstr "Creative Commons es una organización sin fines de lucro que aumenta el intercambio y mejora la &nbsp; colaboración. <a href=\"http://creativecommons.org/about/what-is-cc\">Aprender más &raquo;"
 
-#: index.php:147
+#: index.php:151
 msgid "Find"
 msgstr "Encontrar"
 
-#: index.php:148
+#: index.php:152
 msgid "Find <strong>licensed</strong> works you can share, remix, or&nbsp;reuse."
 msgstr "Encuentre obras <strong>con licencia</strong> que puede compartir, mezclar o &nbsp;reusar."
 
-#: index.php:152
+#: index.php:156
 msgid "Invest in the <strong>future</strong> of creativity and knowledge &mdash; <strong>Donate&nbsp;Today!</strong>"
 msgstr "Invierta en el <strong>futuro</strong> de la creatividad y el conocimiento &mdash; <strong>¡Done&nbsp;hoy!</strong>"
 
-#: index.php:155
+#: index.php:159
 msgid "License"
 msgstr "Licenciar"
 
-#: index.php:156
+#: index.php:160
 msgid "Use our <strong>free</strong> tools to inform people how they can reuse and share your creative works."
 msgstr "Use nuestras herramientas <strong>gratuitas</strong> para informar a la gente de cómo pueden reutilizar y compartir sus trabajos creativos."
 
-#: index.php:165
+#: index.php:169
 msgid "Commons News"
 msgstr "Noticias de los procomunes"
 
-#: index.php:184
+#: index.php:188
 msgid "CC Talks With: "
 msgstr "Charlas CC con:"
 
-#: index.php:198
-#: index.php:222
+#: index.php:202
+#: index.php:226
 msgid "Read more..."
 msgstr "Leer más..."
 
-#: index.php:201
+#: index.php:205
 msgid "International Community News"
 msgstr "Noticias de la comunidad internacional"
 
-#: index.php:236
+#: index.php:240
 msgid "The Licenses"
 msgstr "Las Licencias"
 
-#: index.php:237
+#: index.php:241
 msgid "Newsletter"
 msgstr "Boletín"
 
-#: index.php:238
+#: index.php:242
 msgid "Events"
 msgstr "Eventos"
 
-#: index.php:239
+#: index.php:243
 #, fuzzy
 msgid "Supporters"
 msgstr "Partidarios"
 
-#: index.php:240
+#: index.php:244
 msgid "Jobs"
 msgstr "Empleos"
 
-#: index.php:241
+#: index.php:245
 msgid "Developers"
 msgstr "Desarrolladores"
 
-#: index.php:247
+#: index.php:251
 msgid "Case Studies"
 msgstr "Estudios de caso"
 
-#: index.php:248
+#: index.php:252
 msgid "CC Talks With..."
 msgstr "Charlas CC con..."
 
-#: index.php:249
-#: nav.php:11
+#: index.php:253
+#: nav.php:12
 msgid "International"
 msgstr "Internacional"
 
-#: index.php:250
+#: index.php:254
 msgid "Education"
 msgstr "Educación"
 
-#: index.php:251
+#: index.php:255
 msgid "Science"
 msgstr "Science"
 
-#: nav.php:4
+#: nav.php:5
 msgid "About"
 msgstr "Acerca de"
 
-#: nav.php:5
+#: nav.php:6
 msgid "News"
 msgstr "Noticias"
 
-#: nav.php:7
+#: nav.php:8
 msgid "FAQ"
 msgstr "FAQ"
 
-#: nav.php:8
-msgid "Wiki"
-msgstr "Wiki"
-
-#: nav.php:9
+#: nav.php:10
 msgid "Projects"
 msgstr "Proyectos"
 
-#: nav.php:10
+#: nav.php:11
 msgid "Store"
 msgstr "Tienda"
 
