@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Creative Commons 5.0\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/cc5\n"
-"POT-Creation-Date: 2010-03-01 16:57-0600\n"
+"POT-Creation-Date: 2010-03-01 17:36-0600\n"
 "PO-Revision-Date: 2010-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -137,6 +137,93 @@ msgstr ""
 
 #: category-21.php:89
 msgid "Upcoming Project Jurisdictions"
+msgstr ""
+
+#: comments.php:3
+msgid "Please do not load this page directly. Thanks!"
+msgstr ""
+
+#: comments.php:9
+msgid "This post is password protected. Enter the password to view comments."
+msgstr ""
+
+#: comments.php:23
+msgid "No Responses"
+msgstr ""
+
+#: comments.php:23
+msgid "One Response"
+msgstr ""
+
+#: comments.php:23
+msgid "% Responses"
+msgstr ""
+
+#: comments.php:23
+msgid "to"
+msgstr ""
+
+#: comments.php:32
+msgid "Your comment is awaiting moderation."
+msgstr ""
+
+#: comments.php:36
+msgctxt "time"
+msgid "at"
+msgstr ""
+
+#: comments.php:65
+msgid "Leave a Comment"
+msgstr ""
+
+#: comments.php:68
+#, php-format
+msgid "You must be <a href=\"%s\">logged in</a> to post a comment."
+msgstr ""
+
+#: comments.php:75
+#, php-format
+msgid "Logged in as <a href=\"%s\">%s</a>."
+msgstr ""
+
+#: comments.php:75
+msgid "Log out of this account"
+msgstr ""
+
+#: comments.php:75
+msgid "Logout &raquo;"
+msgstr ""
+
+#: comments.php:80
+msgid "Name"
+msgstr ""
+
+#: comments.php:80 comments.php:83
+msgid "(required)"
+msgstr ""
+
+#: comments.php:83
+msgid "Mail (will not be published)"
+msgstr ""
+
+#: comments.php:86
+msgid "Website"
+msgstr ""
+
+#: comments.php:88
+msgid "OpenID URL"
+msgstr ""
+
+#: comments.php:90
+msgid ""
+"Name and Mail are not required fields if you authenticate your comment with "
+"OpenID."
+msgstr ""
+
+#: comments.php:102
+msgid ""
+"Your first comments will be held for moderation, until your email address is "
+"approved."
 msgstr ""
 
 #: footer.php:5

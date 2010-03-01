@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Creative Commons 5.0\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/cc5\n"
-"POT-Creation-Date: 2010-03-01 16:57-0600\n"
+"POT-Creation-Date: 2010-03-01 17:36-0600\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Leo Arias <yo@elopio.net>\n"
 "Language-Team: \n"
@@ -143,6 +143,90 @@ msgstr "El proceso de desarrollar licencias y discutirlas está aún en progreso
 #: category-21.php:89
 msgid "Upcoming Project Jurisdictions"
 msgstr "Próximas jurisdicciones en proyecto"
+
+#: comments.php:3
+msgid "Please do not load this page directly. Thanks!"
+msgstr "Por favor no carge esta página directamente. ¡Gracias!"
+
+#: comments.php:9
+msgid "This post is password protected. Enter the password to view comments."
+msgstr "Esta entrada está protegica con contraseña. Ingrese la contraseña para ver los comentarios."
+
+#: comments.php:23
+msgid "No Responses"
+msgstr "No hay respuestas"
+
+#: comments.php:23
+msgid "One Response"
+msgstr "Una respuesta"
+
+#: comments.php:23
+msgid "% Responses"
+msgstr "% respuestas"
+
+#: comments.php:23
+msgid "to"
+msgstr "para"
+
+#: comments.php:32
+msgid "Your comment is awaiting moderation."
+msgstr "Su comentario está esperando moderación."
+
+#: comments.php:36
+msgctxt "time"
+msgid "at"
+msgstr "a las"
+
+#: comments.php:65
+msgid "Leave a Comment"
+msgstr "Deje un comentario"
+
+#: comments.php:68
+#, php-format
+msgid "You must be <a href=\"%s\">logged in</a> to post a comment."
+msgstr "Usted debe <a href=\"%s\">iniciar sesión</a> para enviar un comentario."
+
+#: comments.php:75
+#, php-format
+msgid "Logged in as <a href=\"%s\">%s</a>."
+msgstr "Sesión iniciada como <a href=\"%s\">%s</a>."
+
+#: comments.php:75
+msgid "Log out of this account"
+msgstr "Cerrar la sesión de esta cuenta"
+
+#: comments.php:75
+msgid "Logout &raquo;"
+msgstr "Cerrar sesión &raquo;"
+
+#: comments.php:80
+msgid "Name"
+msgstr "Nombre"
+
+#: comments.php:80
+#: comments.php:83
+msgid "(required)"
+msgstr "(requerido)"
+
+#: comments.php:83
+msgid "Mail (will not be published)"
+msgstr "Correo (no será publicado)"
+
+#: comments.php:86
+msgid "Website"
+msgstr "Sitio web"
+
+#: comments.php:88
+msgid "OpenID URL"
+msgstr "URL de OpenID"
+
+#: comments.php:90
+msgid "Name and Mail are not required fields if you authenticate your comment with OpenID."
+msgstr "El nombre y correo no son campos requeridos si usted autentica su comentario con OpenID."
+
+#: comments.php:102
+msgid "Your first comments will be held for moderation, until your email address is approved."
+msgstr "Sus primeros comentarios serán mantenidos en moderación, hasta que su dirección de correo electrónica sea aprobada."
 
 #: footer.php:5
 msgid "Top"
