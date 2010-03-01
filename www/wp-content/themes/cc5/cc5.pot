@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Creative Commons 5.0\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/cc5\n"
-"POT-Creation-Date: 2010-03-01 12:51-0600\n"
+"POT-Creation-Date: 2010-03-01 16:03-0600\n"
 "PO-Revision-Date: 2010-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -42,6 +42,46 @@ msgstr ""
 
 #: 404.php:13
 msgid "ccSearch"
+msgstr ""
+
+#: archive.php:24 index.php:188
+msgid "CC Talks With: "
+msgstr ""
+
+#: archive.php:29
+msgid "Read More..."
+msgstr ""
+
+#: archive.php:30
+msgid "Edit"
+msgstr ""
+
+#: archive.php:30
+msgid "No Comments &#187;"
+msgstr ""
+
+#: archive.php:30
+msgid "1 Comment &#187;"
+msgstr ""
+
+#: archive.php:30
+msgid "% Comments &#187;"
+msgstr ""
+
+#: archive.php:47
+msgid "previous page"
+msgstr ""
+
+#: archive.php:47
+msgid "next page"
+msgstr ""
+
+#: archive.php:54
+msgid "Subscribe to RSS"
+msgstr ""
+
+#: archive.php:55
+msgid "Archives"
 msgstr ""
 
 #: footer.php:5
@@ -141,10 +181,6 @@ msgstr ""
 
 #: index.php:169
 msgid "Commons News"
-msgstr ""
-
-#: index.php:188
-msgid "CC Talks With: "
 msgstr ""
 
 #: index.php:202 index.php:226

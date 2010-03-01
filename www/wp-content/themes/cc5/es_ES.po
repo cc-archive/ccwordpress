@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Creative Commons 5.0\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/cc5\n"
-"POT-Creation-Date: 2010-03-01 12:51-0600\n"
+"POT-Creation-Date: 2010-03-01 16:03-0600\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Leo Arias <yo@elopio.net>\n"
 "Language-Team: \n"
@@ -44,6 +44,48 @@ msgstr "Wiki"
 #: 404.php:13
 msgid "ccSearch"
 msgstr "búsquedaCC"
+
+#: archive.php:24
+#: index.php:188
+msgid "CC Talks With: "
+msgstr "Charlas CC con:"
+
+#: archive.php:29
+#, fuzzy
+msgid "Read More..."
+msgstr "Leer más..."
+
+#: archive.php:30
+msgid "Edit"
+msgstr "Editar"
+
+#: archive.php:30
+msgid "No Comments &#187;"
+msgstr "No hay comentarios &#187;"
+
+#: archive.php:30
+msgid "1 Comment &#187;"
+msgstr "1 comentario &#187;"
+
+#: archive.php:30
+msgid "% Comments &#187;"
+msgstr "% comentarios &#187;"
+
+#: archive.php:47
+msgid "previous page"
+msgstr "página anterior"
+
+#: archive.php:47
+msgid "next page"
+msgstr "página siguiente"
+
+#: archive.php:54
+msgid "Subscribe to RSS"
+msgstr "Suscribirse al RSS"
+
+#: archive.php:55
+msgid "Archives"
+msgstr "Archivos"
 
 #: footer.php:5
 msgid "Top"
@@ -139,10 +181,6 @@ msgstr "Use nuestras herramientas <strong>gratuitas</strong> para informar a la 
 msgid "Commons News"
 msgstr "Noticias de los procomunes"
 
-#: index.php:188
-msgid "CC Talks With: "
-msgstr "Charlas CC con:"
-
 #: index.php:202
 #: index.php:226
 msgid "Read more..."
@@ -233,4 +271,8 @@ msgstr "Tema para Wordpress de CC"
 #. Author of an extension
 msgid "Alex Roberts <alex@creativecommons.org>"
 msgstr "Alex Roberts <alex@creativecommons.org>"
+
+#, fuzzy
+#~ msgid "CC Talks With:"
+#~ msgstr "Charlas CC con:"
 
