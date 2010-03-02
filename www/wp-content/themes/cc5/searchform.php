@@ -1,6 +1,6 @@
 <form method="get" id="searchform" action="<?php bloginfo('url'); ?>/">
 <div>
 <input type="text" value="<?php the_search_query(); ?>" name="s" id="s" size="30" />
-<input type="submit" id="searchsubmit" value="Search" />
+<input type="submit" id="searchsubmit" value="<?php _e('Search', 'cc5'); ?>" />
 </div>
 </form>

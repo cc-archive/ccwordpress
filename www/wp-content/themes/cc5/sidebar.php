@@ -2,7 +2,7 @@
 <div id="help_international_list" class="sideitem">
  <div class="bd">
    <select id="international" name="sortby" onchange="orderby(this)">    
-     <option value="">Select a jurisdiction</option>
+     <option value=""><?php _e('Select a jurisdiction', 'cc5'); ?></option>
      <script type="text/javascript" src="http://api.creativecommons.org/rest/dev/support/jurisdictions.js"></script>
    </select>
  </div>
@@ -17,7 +17,7 @@
 <div class="sideitem">
     <form method="get" id="searchform" action="<?php bloginfo('url'); ?>/">
       <div>
-        <input type="text" value="" name="s" id="s" class="inactive" /> <input type="submit" id="searchsubmit" value="Go" />
+        <input type="text" value="" name="s" id="s" class="inactive" /> <input type="submit" id="searchsubmit" value="<?php _e('Go', 'cc5'); ?>" />
       </div>
     </form>
 
@@ -26,8 +26,8 @@
 <?php } ?>
   <div class="sideitem">
     <ul>
-      <li><img src="<?php bloginfo('stylesheet_directory'); ?>/images/license-alt.png" alt="License your work" />&nbsp;&nbsp;<a href="/choose">License your work</a></li>
-      <li><img src="<?php bloginfo('stylesheet_directory'); ?>/images/find-alt.png" alt="License your work" width="12" height="12" />&nbsp;&nbsp;<a href="http://search.creativecommons.org/">Find licensed works</a></li>
+      <li><img src="<?php bloginfo('stylesheet_directory'); ?>/images/license-alt.png" alt="<?php _e('License your work', 'cc5'); ?>" />&nbsp;&nbsp;<a href="/choose"><?php _e('License your work', 'cc5'); ?></a></li>
+      <li><img src="<?php bloginfo('stylesheet_directory'); ?>/images/find-alt.png" alt="<?php _e('License your work', 'cc5'); ?>" width="12" height="12" />&nbsp;&nbsp;<a href="http://search.creativecommons.org/"><?php _e('Find licensed works', 'cc5'); ?></a></li>
     </ul>
   </div>
   

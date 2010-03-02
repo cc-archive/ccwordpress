@@ -4,7 +4,7 @@
   <div id="contentPrimary">
         	<div class="block" id="title">
         <h2>
-          Search Results
+          <?php _e('Search Results', 'cc5'); ?>
         </h2>
           </div>
           <div  class="content-box" id="page">
@@ -18,13 +18,13 @@
     <div class="block blog sideContentSpace" id="post-<?php the_ID(); ?>">
       <h1 class="title">
         <a href="<? the_permalink() ?>">
-         <?php if (in_category(4) || in_category(7)) { ?>CC Talks With: <?php } ?> 
+         <?php if (in_category(4) || in_category(7)) { _e('CC Talks With: ', 'cc5'); } ?> 
          <?php the_title() ?>
         </a>
       </h1>
       <h4 class="meta"><?php the_author() ?>, <?php the_time('F jS, Y')?></h4>
       <?php the_excerpt(); ?>
-      <?php edit_post_link('Edit', '', ' |'); ?> <?php comments_popup_link('No Comments &#187;', '1 Comment &#187;', '% Comments &#187;'); ?>
+      <?php edit_post_link(__('Edit', 'cc5'), '', ' |'); ?> <?php comments_popup_link(__('No Comments &#187;', 'cc5'), __('1 Comment &#187;', 'cc5'), __('% Comments &#187;', 'cc5')); ?>
     </div>
 
 <?php } ?>
@@ -36,12 +36,12 @@
 	    if ( function_exists('wp_pagenavi') ) {
 	    	wp_pagenavi();
 	    } else {
-                posts_nav_link(' &mdash; ', 'previous page', 'next page');
+                posts_nav_link(' &mdash; ', __('previous page', 'cc5'), __('next page', 'cc5'));
 	    }
 	    ?>
 	    </div>
 <?php } else { ?>
-  <h2>No search results found.</h2>
+  <h2><?php _e('No search results found.', 'cc5'); ?></h2>
 
 <?php } ?>
           </div>

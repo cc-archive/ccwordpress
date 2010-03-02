@@ -75,7 +75,7 @@ d.write('<sc'+'ript src="'+
       <div id="headerSearch">
         <form method="get" id="searchform" action="<?php bloginfo('url'); ?>/">
           <input type="text" name="s" id="s" size="30" class="inactive" />
-          <input type="submit" id="searchsubmit" value="Search" />
+          <input type="submit" id="searchsubmit" value="<?php _e('Search', 'cc5'); ?>" />
         </form>
       </div>
     </div>

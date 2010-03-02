@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Creative Commons 5.0\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/cc5\n"
-"POT-Creation-Date: 2010-03-01 17:36-0600\n"
+"POT-Creation-Date: 2010-03-01 18:26-0600\n"
 "PO-Revision-Date: 2010-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -28,7 +28,7 @@ msgstr ""
 msgid "Other Content"
 msgstr ""
 
-#: 404.php:10
+#: 404.php:10 progress.php:38
 msgid "Home"
 msgstr ""
 
@@ -45,42 +45,43 @@ msgid "ccSearch"
 msgstr ""
 
 #: archive.php:24 category-7.php:32 category.php:26 index.php:188
+#: search.php:21 tag.php:17
 msgid "CC Talks With: "
 msgstr ""
 
-#: archive.php:29 category.php:31
+#: archive.php:29 category.php:31 page.php:23 tag.php:22
 msgid "Read More..."
 msgstr ""
 
-#: archive.php:30 category-7.php:37 category.php:32
+#: archive.php:30 category-7.php:37 category.php:32 search.php:27 tag.php:23
 msgid "Edit"
 msgstr ""
 
-#: archive.php:30 category-7.php:37 category.php:32
+#: archive.php:30 category-7.php:37 category.php:32 search.php:27 tag.php:23
 msgid "No Comments &#187;"
 msgstr ""
 
-#: archive.php:30 category-7.php:37 category.php:32
+#: archive.php:30 category-7.php:37 category.php:32 search.php:27 tag.php:23
 msgid "1 Comment &#187;"
 msgstr ""
 
-#: archive.php:30 category-7.php:37 category.php:32
+#: archive.php:30 category-7.php:37 category.php:32 search.php:27 tag.php:23
 msgid "% Comments &#187;"
 msgstr ""
 
-#: archive.php:47 category-7.php:48 category.php:50
+#: archive.php:47 category-7.php:48 category.php:50 search.php:39 tag.php:40
 msgid "previous page"
 msgstr ""
 
-#: archive.php:47 category-7.php:48 category.php:50
+#: archive.php:47 category-7.php:48 category.php:50 search.php:39 tag.php:40
 msgid "next page"
 msgstr ""
 
-#: archive.php:54 category-7.php:54 category.php:57
+#: archive.php:54 category-7.php:54 category.php:57 tag.php:47
 msgid "Subscribe to RSS"
 msgstr ""
 
-#: archive.php:55 category-7.php:55 category.php:58
+#: archive.php:55 category-7.php:55 category.php:58 tag.php:48
 msgid "Archives"
 msgstr ""
 
@@ -258,7 +259,7 @@ msgstr ""
 msgid "Sitemap"
 msgstr ""
 
-#: footer.php:13 index.php:256
+#: footer.php:13 index.php:256 sidelinks.php:12
 msgid "Contact"
 msgstr ""
 
@@ -294,6 +295,10 @@ msgid ""
 "Creative Commons is a nonprofit organization that increases sharing and "
 "improves&nbsp;collaboration. <a href=\"http://creativecommons.org/about/what-"
 "is-cc\">Learn More &raquo;"
+msgstr ""
+
+#: index.php:78 searchform.php:4
+msgid "Search"
 msgstr ""
 
 #: index.php:151
@@ -333,43 +338,43 @@ msgstr ""
 msgid "International Community News"
 msgstr ""
 
-#: index.php:240
+#: index.php:240 sidelinks.php:2
 msgid "The Licenses"
 msgstr ""
 
-#: index.php:241
+#: index.php:241 sidelinks.php:3
 msgid "Newsletter"
 msgstr ""
 
-#: index.php:242
+#: index.php:242 sidelinks.php:4
 msgid "Events"
 msgstr ""
 
-#: index.php:243
+#: index.php:243 sidelinks.php:5
 msgid "Supporters"
 msgstr ""
 
-#: index.php:244
+#: index.php:244 sidelinks.php:6
 msgid "Jobs"
 msgstr ""
 
-#: index.php:245
+#: index.php:245 sidelinks.php:7
 msgid "Developers"
 msgstr ""
 
-#: index.php:251
+#: index.php:251 sidelinks.php:8
 msgid "Case Studies"
 msgstr ""
 
-#: index.php:252
+#: index.php:252 sidelinks.php:9
 msgid "CC Talks With..."
 msgstr ""
 
-#: index.php:254
+#: index.php:254 sidelinks.php:10
 msgid "Education"
 msgstr ""
 
-#: index.php:255
+#: index.php:255 sidelinks.php:11
 msgid "Science"
 msgstr ""
 
@@ -377,7 +382,7 @@ msgstr ""
 msgid "About"
 msgstr ""
 
-#: nav.php:6
+#: nav.php:6 single.php:54
 msgid "News"
 msgstr ""
 
@@ -391,6 +396,104 @@ msgstr ""
 
 #: nav.php:11
 msgid "Store"
+msgstr ""
+
+#: progress.php:7
+msgid "Join Jonathan in supporting&nbsp;CC!"
+msgstr ""
+
+#: progress.php:10
+msgid ""
+"\"With Creative Commons, the act of creation becomes not the end, but the "
+"beginning of a creative process that links complete strangers together in "
+"collaboration\""
+msgstr ""
+
+#: progress.php:14
+msgid "Musician"
+msgstr ""
+
+#: progress.php:40
+msgid "Raised"
+msgstr ""
+
+#: progress.php:40
+msgid "Thank you!"
+msgstr ""
+
+#: progress.php:43
+msgid "Help us reach our goal!"
+msgstr ""
+
+#: search.php:7
+msgid "Search Results"
+msgstr ""
+
+#: search.php:44
+msgid "No search results found."
+msgstr ""
+
+#: sidebar.php:5
+msgid "Select a jurisdiction"
+msgstr ""
+
+#: sidebar.php:20
+msgid "Go"
+msgstr ""
+
+#: sidebar.php:29 sidebar.php:30
+msgid "License your work"
+msgstr ""
+
+#: sidebar.php:30
+msgid "Find licensed works"
+msgstr ""
+
+#: single.php:48
+msgid "Creative Commons International"
+msgstr ""
+
+#: single.php:60
+msgid "press-releases"
+msgstr ""
+
+#: single.php:90
+#, php-format
+msgid "Visit the jurisdiction site <a href=\"%s>\">here</a>."
+msgstr ""
+
+#: single.php:99
+#, php-format
+msgid ""
+"The %s license has now been integrated \n"
+"                into <a href=\"%s\">the Creative \n"
+"                Commons licensing process</a>, so you are able to license "
+"your works under this \n"
+"                jurisdiction's law."
+msgstr ""
+
+#: single.php:103
+msgid "The latest version of the licenses available for this jurisdiction are:"
+msgstr ""
+
+#: single.php:113
+msgid ""
+"Many thanks to all who contributed to the license-porting process. This "
+"page \n"
+"                remains for reference."
+msgstr ""
+
+#: single.php:115
+#, php-format
+msgid ""
+"Please take a look at the mailing-list archive if you are interested in "
+"the \n"
+"                academic discussion leading to the %s \n"
+"                final license."
+msgstr ""
+
+#: single.php:123
+msgid "Share on Twitter"
 msgstr ""
 
 #. Theme Name of an extension

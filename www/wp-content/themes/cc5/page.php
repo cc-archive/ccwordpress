@@ -20,7 +20,7 @@
 			        <h2><?php the_title(); ?></h2>
         		</div>
             <div class="block page" id="post-<?php the_ID(); ?>">
-              <?php the_content("Read More..."); ?>
+              <?php the_content(__('Read More...', 'cc5')); ?>
             </div>
 <?php } }?>
     </div>  

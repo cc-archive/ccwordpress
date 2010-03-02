@@ -45,19 +45,19 @@ if (have_posts())  {
 <? } else if ($is_worldwide) { ?>
 						<h3 class="category">
 							<a href="<?php echo get_settings('home') . "/" ?>international">
-								Creative Commons International 
+								<?php _e('Creative Commons International', 'cc5'); ?> 
 							</a>
 						</h3>
 <? } else if ($is_blog) { ?>
 						<h3 class="category">
 							<a href="<?php echo get_category_link(1);?>">
-								News
+								<?php _e('News', 'cc5'); ?>
 							</a>
 						</h3>
 <? } else if ($category_name == "press-releases") { ?>
 						<h3 class="category">
 							<a href="<?php echo get_settings('home') . "/" ?>press-releases/">
-								press-releases 
+								<?php _e('press-releases', 'cc5'); ?> 
 							</a>
 						</h3>
 <? } ?>
@@ -87,7 +87,7 @@ if (have_posts())  {
 ?>
 
 <div class="licensebox" style="margin:14px;">
-Visit the jurisdiction site <a href="<?=$jurisdiction_site?>">here</a>.
+<?php printf(__('Visit the jurisdiction site <a href="%s>">here</a>.', 'cc5'), $jurisdiction_site); ?>
 </div>
 <? 
      }
@@ -96,11 +96,11 @@ Visit the jurisdiction site <a href="<?=$jurisdiction_site?>">here</a>.
 
 <? if ($is_worldwide_completed) { ?>
               <div class="licensebox" style="margin:14px;">
-                <p>The <? echo $jurisdiction_name ?> license has now been integrated 
-                into <a href="/choose/?jurisdiction=<?php echo $jurisdiction_code ?>">the Creative 
+                <p><?php printf(__('The %s license has now been integrated 
+                into <a href="%s">the Creative 
                 Commons licensing process</a>, so you are able to license your works under this 
-                jurisdiction's law. </p> 
-                <p>The latest version of the licenses available for this jurisdiction are:</p>
+                jurisdiction\'s law.', 'cc5'), $jurisdiction_name, '/choose/?jurisdiction=' . $jurisdiction_code); ?></p> 
+                <p><?php _e('The latest version of the licenses available for this jurisdiction are:', 'cc5'); ?></p>
                 <ul>
                   <?php
                           $licenses = $license_xml->getLicensesCurrent($jurisdiction_code);
@@ -110,17 +110,17 @@ Visit the jurisdiction site <a href="<?=$jurisdiction_site?>">here</a>.
                           }
                       /* } */ ?>
                 </ul>
-                <p>Many thanks to all who contributed to the license-porting process. This page 
-                remains for reference.</p>
-                <p>Please take a look at the mailing-list archive if you are interested in the 
-                academic discussion leading to the <span><?php echo $jurisdiction_name ?></span> 
-                final license.</p>
+                <p><?php _e('Many thanks to all who contributed to the license-porting process. This page 
+                remains for reference.', 'cc5'); ?></p>
+                <p><?php printf(__('Please take a look at the mailing-list archive if you are interested in the 
+                academic discussion leading to the %s 
+                final license.', 'cc5'), '<span>' . $jurisdiction_name . '</span>'); ?></p>
               </div>
               <? } ?>
 			  <?php the_content(); ?>
 
 				<div class="twitter">
-					<a href="http://twitter.com/home?status=<?php the_title() ?> - <?php the_permalink() ?> via @creativecommons">Share on Twitter</a>
+					<a href="http://twitter.com/home?status=<?php the_title() ?> - <?php the_permalink() ?> via @creativecommons"><?php _e('Share on Twitter', 'cc5') ?></a>
 				</div>
 <?php if (get_the_tags()) { ?>
                 <div class="postTags">

@@ -4,14 +4,14 @@
 ?>
 
 <div id="sidebarTestimonial">
-	<h3>Join Jonathan in supporting&nbsp;CC!</h3>
+	<h3><?php _e('Join Jonathan in supporting&nbsp;CC!', 'cc5'); ?></h3>
 	<p class="quote">
 		<a href="<?= $url ?><?= $utm ?>"><img src="https://support.creativecommons.org/images/75/jonathancoulton.jpg" align="left" alt="Jonathan Coulton" border="0" /></a>
-		"With Creative Commons, the act of creation becomes not the end, but the beginning of a creative process that links complete strangers together in collaboration"
+		<?php _e('"With Creative Commons, the act of creation becomes not the end, but the beginning of a creative process that links complete strangers together in collaboration"', 'cc5'); ?>
 	</p>
 	<p class="source">
 		<a href="<?= $url?><?= $utm ?>">&mdash; Jonathan Coulton</a><br/>
-		<small>Musician</small><br/>
+		<small><?php _e('Musician', 'cc5'); ?></small><br/>
 	</p>
 </div>
 	<script>jQuery("#sidebarTestimonial").click(function() { window.location="https://support.creativecommons.org/donate<?= $utm ?>"; });</script>
@@ -35,12 +35,12 @@ function showThermometer() {
 					<span>&nbsp;</span>
 				</div>
 				<?php if (is_home()) { ?><div class="homeGoal"><a href="https://support.creativecommons.org/donate<?= $utm ?>">$500,000</a></div><? } ?>
-				<div class="results<?php if (is_home()) {?>Home<?}?>">
+				<div class="results<?php if (is_home()) { _e('Home', 'cc5'); }?>">
 					<a href="https://support.creativecommons.org/donate<?= $utm ?>">
-					<?php if (is_home()) { ?><strong><?php cc_progress_total() ?> Raised</strong> &mdash; Thank you!<?php } else { ?>
+					<?php if (is_home()) { ?><strong><?php cc_progress_total() ?> <?php _e('Raised', 'cc5'); ?></strong> &mdash; <?php _e('Thank you!', 'cc5'); ?><?php } else { ?>
 						<?php cc_progress_total() ?> / $500,000 by&nbsp;Dec&nbsp;31 
 						<br/>
-						<em>Help us reach our goal!</em>
+						<em><?php _e('Help us reach our goal!', 'cc5'); ?></em>
 					<?php } ?>
 					</a>
 				</div>
