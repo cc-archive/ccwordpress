@@ -27,7 +27,7 @@
 .block img { border: 0; }
 .block img.feature { display: block; }
 .block img.commoner { margin-right: 10px; margin-left: 0; padding: 3px; border: 1px solid #e3e3e3; }
-.block ul, .block ol { margin-left: 0px; padding-left:1em; margin-bottom: 15px; }
+.block ul, .block ol { margin-left: 0px; padding-left:1em; margin-bottom: 15px; margin-top: 0; }
 .block li { padding-bottom: 10px; }
 .block ol ol { list-style-type: lower-roman; }
 .block .publish-pics { float: left; margin-right: 10px; margin-bottom: 25px; padding: 3px; border: 1px solid #ccc; }
