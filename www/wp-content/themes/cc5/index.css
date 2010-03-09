@@ -304,7 +304,6 @@
 }
 
 #ccINews ul li {
-	margin-bottom: 1em;
 	overflow: auto;
 	clear: both;
 
@@ -484,7 +483,6 @@
 .titleStrip { 
 	font-weight:bold;
 	padding: 0px 3px 2px;
-	margin-bottom: 0.5em !important;
 	margin-left: -3px;
 }
 .wideTitleStrip {
