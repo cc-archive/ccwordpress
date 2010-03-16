@@ -102,7 +102,9 @@ function widget($args, $instance) {
 				<?php
 			}
 			echo "</ul>\n";
-			
+
+			wp_reset_query();
+
 			echo $after_widget;
 		}
 	}
