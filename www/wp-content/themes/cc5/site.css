@@ -46,9 +46,14 @@ p { margin-bottom: 10px; }
 blockquote { 
 	padding: 5px 5px 5px 10px; 
 	margin: 5px 5px 5px 3px; 
-	font-style: italic; 
+	font-style: oblique; 
 	border-left: 1px solid #ddd; 
 }
+
+blockquote em {
+	font-style: normal;
+}
+
 
 img.mugshot {
 	border: 2px solid #cccccc; 
