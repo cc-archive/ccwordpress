@@ -439,3 +439,28 @@ ul.st-tag-cloud li:after {
 	height: 28%;
 }
 
+/* /education */
+.eduUserGroup {
+	padding: 1em;
+	margin-bottom: 1.5em;
+	background-color: #e8f4e6; /*#e0f0e0;*/
+	overflow-y: auto;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+}
+.eduUser {
+	margin: 0 1%;
+	float: left;
+	width: 48%;
+}
+.eduUserImage {
+	width: 344px;
+	height: 71px;
+	background-color: #fff;
+	border: 2px solid #fff;
+}
+.eduUser h4 {
+	margin-top: 0.5em;
+}
+
+
