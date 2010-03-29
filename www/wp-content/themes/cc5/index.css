@@ -283,6 +283,15 @@
 	margin-top: 0;
 }
 
+#splashBox p.attribution {
+	margin: 0;
+	padding: 0 0 0 10px;
+	position: absolute;
+	bottom: 0;
+	font-size: 66%;
+	font-style: oblique;
+}
+
 #ccFeatures {
 	margin-top: 1.75em;
 /*	border-top: 1px dotted #ccc;*/

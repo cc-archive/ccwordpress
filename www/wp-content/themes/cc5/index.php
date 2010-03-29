@@ -81,7 +81,7 @@ d.write('<sc'+'ript src="'+
         <div id="ccBlurb" >
           <div id="cc_mission">
 			<div id="quote">
-			 	<a href="/weblog/entry/20329"><img src="/images/cc-oer-2010-mid.jpg" alt="CC & OER in 2010" border="0" /></a>
+			 	<a href="/education?utm_campaign=cc10q2&utm_source=homepage&utm_medium=ccedu"><img src="/images/cc-edu.png" alt="CC & Education" border="0" /></a>
 			</div>
 <?/* Commented out testimonial section, possible return later -- 2010/01/20 ~ Alex
 
@@ -126,9 +126,12 @@ d.write('<sc'+'ript src="'+
                 ?>
             <a href="<?php the_permalink() ?>">
               <img src="<?php echo $image[0] ?>" alt="<?php the_title(); ?>" title="<?php the_title(); ?>" class="main" />
-            </a>
-            
-            <?php 
+            </a>			
+<?php
+					$splash_attribution = get_post_meta($post->ID, "splash_attribution", true);
+					if ($splash_attribution) {
+						?><p class="attribution"><?php echo $splash_attribution ?></p><?php
+					}	
                 } // if get_attachment_image
                 break;
               } // if is_sticky
