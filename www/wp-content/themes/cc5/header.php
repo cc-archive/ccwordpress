@@ -57,6 +57,11 @@
   <?php } ?>
 
   <?php wp_head(); ?>
+
+  <?php if (is_page()) { ?>
+<script type="text/javascript">$ = jQuery.noConflict();</script>
+<script src="/includes/jquery/jquery.carousel.min.js" type="text/javascript"></script>
+  <?php } ?>
 </head>
 
 <body class="yui-skin-sam ccPage">

@@ -441,26 +441,62 @@ ul.st-tag-cloud li:after {
 
 /* /education */
 .eduUserGroup {
-	padding: 1em;
+	padding: 1em 0 1em 1em;
 	margin-bottom: 1.5em;
 	background-color: #e8f4e6; /*#e0f0e0;*/
 	overflow-y: auto;
 	-moz-border-radius: 5px;
 	-webkit-border-radius: 5px;
+	position: relative;
+	min-height: 370px;
 }
+
+.eduUserGroup ul { list-style: none; padding: 0; overflow: hidden; }
+.eduUserGroup ul li { margin: 0; padding: 0; float: left;}
+
 .eduUser {
-	margin: 0 1%;
-	float: left;
-	width: 48%;
+/*	margin: 0 1%;
+	float: left;*/
+/*	width: 48%;
+*/
+	width: 366px;
 }
 .eduUserImage {
-	width: 344px;
 	height: 71px;
 	background-color: #fff;
 	border: 2px solid #fff;
 }
+
+.eduUserImage, .eduUser p { width: 344px; }
+
 .eduUser h4 {
 	margin-top: 0.5em;
 }
 
+.eduUserGroup .carousel-control {
+	cursor:pointer;
+	display: block;
+	position: absolute;
+	bottom: 15px;
+	z-index: 999;
+	padding: 3px 5px;
+	background: #cae9c5;
+	-moz-border-radius: 4px;
+	-webkit-border-radius: 4px;
+	width: 60px;
+	text-align: center;
+	color: #222;
+	font-weight: bold;
+}
+.eduUserGroup .carousel-control:hover {
+	-moz-opacity:.7;
+	opacity:0.70;
+	filter:alpha(opacity=70);
+}
+.eduUserGroup .carousel-next {
+	right: 13px;
+}
+.eduUserGroup .carousel-previous {
+	left: 13px;
+}
 
