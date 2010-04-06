@@ -81,7 +81,7 @@ d.write('<sc'+'ript src="'+
         <div id="ccBlurb" >
           <div id="cc_mission">
 			<div id="quote">
-			 	<a href="/education?utm_campaign=cc10q2&utm_source=homepage&utm_medium=ccedu"><img src="/images/cc-edu.png" alt="CC & Education" border="0" /></a>
+			 	<a href="/education?utm_source=ccorg&utm_medium=ccedu"><img src="/images/cc-edu.png" alt="CC & Education" border="0" /></a>
 			</div>
 <?/* Commented out testimonial section, possible return later -- 2010/01/20 ~ Alex
 
@@ -111,7 +111,7 @@ d.write('<sc'+'ript src="'+
 			//          recently updated one will be used 
 			if ($image = cc_get_attachment_image ($sticky_page->ID, 630)) {
 			?>
-			<a href="<?php echo get_permalink($sticky_page->ID); ?>">
+			<a href="<?php echo get_permalink($sticky_page->ID); ?>?utm_source=ccorg&utm_medium=postbanner">
 				<img src="<?php echo $image[0] ?>" alt="<?php echo $sticky_page->post_title; ?>" title="<?php echo $sticky_page->post_title; ?>" class="main" />
 			</a>
 			<?php
@@ -124,7 +124,7 @@ d.write('<sc'+'ript src="'+
                 if ($image = cc_get_attachment_image ($post->ID, 630)) { 
                  
                 ?>
-            <a href="<?php the_permalink() ?>">
+            <a href="<?php the_permalink() ?>?utm_source=ccorg&utm_medium=postbanner">
               <img src="<?php echo $image[0] ?>" alt="<?php the_title(); ?>" title="<?php the_title(); ?>" class="main" />
             </a>			
 <?php
