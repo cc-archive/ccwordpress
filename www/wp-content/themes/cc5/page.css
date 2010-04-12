@@ -213,19 +213,18 @@ p.presskit {
 	}
 
 	.attribute_blurb {
-	  overflow: auto;
+	  overflow-y: auto;
 	  margin-bottom: 2.5em;
-	  padding: 10px;
+	  padding: 10px 0 10px 10px;
 	  background-color: #faffef;
 	  border: 1px solid #dadfcf;
 	  -moz-border-radius: 5px;
 	  -webkit-border-radius: 5px;
 	}
 	.attributes {
-	  width: 168px;
-	  padding: 0 2% 0 0;
+	  width: 175px;
+	  padding: 0 10px 0 0;
 	  float: left;
-	  height: 200px;
 	}
 	.attributes img {
 	  float: left;
@@ -235,6 +234,7 @@ p.presskit {
 	  clear:left;
 	  border-top:1px solid #ccc;
 	  padding-top: 0.5em;
+	  margin-bottom: 0 !important;
 	}
 
 	#license_blurbs {
