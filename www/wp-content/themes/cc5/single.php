@@ -119,9 +119,11 @@ Visit the jurisdiction site <a href="<?=$jurisdiction_site?>">here</a>.
               <? } ?>
 			  <?php the_content(); ?>
 
+			  <?php if (!$is_worldwide) { ?>
 				<div class="twitter">
 					<a href="http://twitter.com/home?status=<?php the_title() ?> - <?php the_permalink() ?> via @creativecommons">Share on Twitter</a>
 				</div>
+			  <?php } ?>
         <?php 
         	dynamic_sidebar('Single Post');
         ?>
