@@ -42,7 +42,9 @@
   <!--[if IE ]><link rel="stylesheet" type="text/css" media="screen" href="<?php bloginfo('stylesheet_directory'); ?>/style-ie.css" /><![endif]-->
   <!--[if gte IE 6]><link rel="stylesheet" type="text/css" media="screen" href="<?php bloginfo('stylesheet_directory'); ?>/style-ie7.css" /><![endif]--> 
   <?php /* wp_get_archives('type=monthly&format=link'); */ ?>
-  <script src="/includes/icommons.js" type="text/javascript"></script>
+	<script src="/includes/icommons.js" type="text/javascript"></script>
+	<script src="/includes/mv_embed/mv_embed.js" type="text/javascript"></script>
+
   <?php wp_head(); ?>
  </head>
  <body onload="">

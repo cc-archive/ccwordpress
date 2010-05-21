@@ -467,6 +467,7 @@ function fetch_rss ($url) {
 
 		$resp = _fetch_remote_file( $url, $request_headers );
 
+
 		if (isset($resp) and $resp) {
 			if ($resp->status == '304' ) {
 				// we have the most current copy
