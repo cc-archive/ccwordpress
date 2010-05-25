@@ -3,8 +3,8 @@ Contributors: cavemonkey50
 Donate link: http://ronaldheft.com/code/donate/
 Tags: stats, statistics, google, analytics, google analytics, tracking, widget
 Requires at least: 2.7
-Tested up to: 2.9
-Stable tag: 6.0.2
+Tested up to: 3.0
+Stable tag: 6.1
 
 Adds the necessary JavaScript code to enable Google Analytics. Includes widgets for Analytics data display.
 
@@ -48,6 +48,15 @@ Please visit [Google Analyticator's support forum](http://forums.ronaldheft.com/
 6. An example of a front-end widget configuration.
 
 == Changelog ==
+
+= 6.1 =
+* Prepares Google Analyticator for WordPress 3.0 compatibility.
+* Updates the async tracking snippet to the latest version provided by Google. This new update solves issues with IE7 and IE6, and fixes all problems related to the snippet being placed in the <head> section of a page. You can rest easy knowing that async tracking in the <head> is completely compatible with IE now.
+* Adds an html comment to the page header when tracking code is hidden due to the user admin level. This should make is less confusing for new Google Analyticator users, wondering if their tracking code is visible to the world.
+* Adds a setting to specify a specific profile ID. This will help users with multiple Analytics profiles, by allowing them to specify which profile to use with the dashboard widget.
+* Revamps the disable tracking settings. Now uses user roles and provides more fine grain control. If you use something other than the default, be sure to visit the settings page to ensure your settings are correct.
+* Adds a new setting providing fine grain control over who can see the dashboard widget.
+* Fixes the disappearing UID box bug when not authenticated.
 
 = 6.0.2 =
 * Updates the async tracking snippet to the latest version provided by Google.
@@ -284,3 +293,9 @@ Please visit [Google Analyticator's support forum](http://forums.ronaldheft.com/
 
 = 1.0 =
 * Initial release.
+
+== Upgrade Notice ==
+
+= 6.1 =
+
+Recommended update. Highlights include WordPress 3.0 support, updated async tracking code, dashboard stats by Analytics profile, more control over who gets tracked, and more control over who can see the dashboard widget. Settings have changed, so revisit the settings to verify.

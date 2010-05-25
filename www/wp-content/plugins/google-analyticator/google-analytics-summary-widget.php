@@ -27,7 +27,7 @@ class GoogleAnalyticsSummary
 	function addDashboardWidget()
 	{
 		# Check if the user is an admin
-		if ( current_user_can('level_' . get_option(key_ga_admin_level)) ) {
+		if ( ga_current_user_is(get_option(key_ga_dashboard_role)) ) {
 			wp_add_dashboard_widget('google-analytics-summary', __('Google Analytics Summary', 'google-analyticator'), array($this, 'widget'));
 		}
 	}
@@ -108,6 +108,9 @@ class GoogleAnalyticsSummary
 		
 		# Attempt to login and get the current account
 		$this->id = $this->getAnalyticsAccount();
+		$profile_id = get_option('ga_profileid');
+		if ( trim($profile_id) != '' )
+			$this->id = 'ga:' . $profile_id;
 		$this->api->setAccount($this->id);
 		
 		# Check that we can display the widget before continuing
@@ -211,7 +214,7 @@ class GoogleAnalyticsSummary
 	function getVisitsGraph()
 	{
 		# Get the value from the database
-		$cached = unserialize(get_option('google_stats_visitsGraph_' . $this->id));
+		$cached = maybe_unserialize(get_option('google_stats_visitsGraph_' . $this->id));
 		$updated = false;
 
 		# Check if the call has been made before
@@ -234,8 +237,7 @@ class GoogleAnalyticsSummary
 			$stats = $this->api->getMetrics('ga:visits', $before, $yesterday, 'ga:date', 'ga:date');
 			
 			# Store the serialized stats in the database
-			$newStats = serialize(array('stats'=>$stats, 'lastcalled'=>time()));
-			update_option('google_stats_visitsGraph_' . $this->id, $newStats);
+			update_option('google_stats_visitsGraph_' . $this->id, array('stats'=>$stats, 'lastcalled'=>time()));
 		
 		}
 		
@@ -278,7 +280,7 @@ class GoogleAnalyticsSummary
 	function getSiteUsage()
 	{
 		# Get the value from the database
-		$cached = unserialize(get_option('google_stats_siteUsage_' . $this->id));
+		$cached = maybe_unserialize(get_option('google_stats_siteUsage_' . $this->id));
 		$updated = false;
 
 		# Check if the call has been made before
@@ -301,8 +303,7 @@ class GoogleAnalyticsSummary
 			$stats = $this->api->getMetrics('ga:visits,ga:bounces,ga:entrances,ga:pageviews,ga:timeOnSite,ga:newVisits', $before, $yesterday);
 			
 			# Store the serialized stats in the database
-			$newStats = serialize(array('stats'=>$stats, 'lastcalled'=>time()));
-			update_option('google_stats_siteUsage_' . $this->id, $newStats);
+			update_option('google_stats_siteUsage_' . $this->id, array('stats'=>$stats, 'lastcalled'=>time()));
 		
 		}
 		
@@ -353,7 +354,7 @@ class GoogleAnalyticsSummary
 	function getTopPages()
 	{
 		# Get the value from the database
-		$cached = unserialize(get_option('google_stats_topPages_' . $this->id));
+		$cached = maybe_unserialize(get_option('google_stats_topPages_' . $this->id));
 		$updated = false;
 
 		# Check if the call has been made before
@@ -376,8 +377,7 @@ class GoogleAnalyticsSummary
 			$stats = $this->api->getMetrics('ga:pageviews', $before, $yesterday, 'ga:pageTitle,ga:pagePath', '-ga:pageviews', 'ga:pagePath!%3D%2F', '10');
 			
 			# Store the serialized stats in the database
-			$newStats = serialize(array('stats'=>$stats, 'lastcalled'=>time()));
-			update_option('google_stats_topPages_' . $this->id, $newStats);
+			update_option('google_stats_topPages_' . $this->id, array('stats'=>$stats, 'lastcalled'=>time()));
 		
 		}
 		
@@ -447,7 +447,7 @@ class GoogleAnalyticsSummary
 	function getTopReferrers()
 	{
 		# Get the value from the database
-		$cached = unserialize(get_option('google_stats_topReferrers_' . $this->id));
+		$cached = maybe_unserialize(get_option('google_stats_topReferrers_' . $this->id));
 		$updated = false;
 
 		# Check if the call has been made before
@@ -470,8 +470,7 @@ class GoogleAnalyticsSummary
 			$stats = $this->api->getMetrics('ga:visits', $before, $yesterday, 'ga:source,ga:medium', '-ga:visits', 'ga:medium%3D%3Dreferral', '5');
 			
 			# Store the serialized stats in the database
-			$newStats = serialize(array('stats'=>$stats, 'lastcalled'=>time()));
-			update_option('google_stats_topReferrers_' . $this->id, $newStats);
+			update_option('google_stats_topReferrers_' . $this->id, array('stats'=>$stats, 'lastcalled'=>time()));
 		
 		}
 		
@@ -498,7 +497,7 @@ class GoogleAnalyticsSummary
 	function getTopSearches()
 	{
 		# Get the value from the database
-		$cached = unserialize(get_option('google_stats_topSearches_' . $this->id));
+		$cached = maybe_unserialize(get_option('google_stats_topSearches_' . $this->id));
 		$updated = false;
 
 		# Check if the call has been made before
@@ -521,8 +520,7 @@ class GoogleAnalyticsSummary
 			$stats = $this->api->getMetrics('ga:visits', $before, $yesterday, 'ga:keyword', '-ga:visits', 'ga:keyword!%3D(not%20set)', '5');
 			
 			# Store the serialized stats in the database
-			$newStats = serialize(array('stats'=>$stats, 'lastcalled'=>time()));
-			update_option('google_stats_topSearches_' . $this->id, $newStats);
+			update_option('google_stats_topSearches_' . $this->id, array('stats'=>$stats, 'lastcalled'=>time()));
 		
 		}
 		

@@ -1,7 +1,7 @@
 <?php 
 /*
  * Plugin Name: Google Analyticator
- * Version: 6.0.2
+ * Version: 6.1
  * Plugin URI: http://ronaldheft.com/code/analyticator/
  * Description: Adds the necessary JavaScript code to enable <a href="http://www.google.com/analytics/">Google's Analytics</a>. After enabling this plugin visit <a href="options-general.php?page=google-analyticator.php">the settings page</a> and enter your Google Analytics' UID and enable logging.
  * Author: Ronald Heft
@@ -9,7 +9,7 @@
  * Text Domain: google-analyticator
  */
 
-define('GOOGLE_ANALYTICATOR_VERSION', '6.0.2');
+define('GOOGLE_ANALYTICATOR_VERSION', '6.1');
 
 // Constants for enabled/disabled state
 define("ga_enabled", "enabled", true);
@@ -20,7 +20,8 @@ define("key_ga_uid", "ga_uid", true);
 define("key_ga_status", "ga_status", true);
 define("key_ga_admin", "ga_admin_status", true);
 define("key_ga_admin_disable", "ga_admin_disable", true);
-define("key_ga_admin_level", "ga_admin_level", true);
+define("key_ga_admin_role", "ga_admin_role", true);
+define("key_ga_dashboard_role", "ga_dashboard_role", true);
 define("key_ga_adsense", "ga_adsense", true);
 define("key_ga_extra", "ga_extra", true);
 define("key_ga_extra_after", "ga_extra_after", true);
@@ -35,7 +36,6 @@ define("ga_uid_default", "XX-XXXXX-X", true);
 define("ga_status_default", ga_disabled, true);
 define("ga_admin_default", ga_enabled, true);
 define("ga_admin_disable_default", 'remove', true);
-define("ga_admin_level_default", 8, true);
 define("ga_adsense_default", "", true);
 define("ga_extra_default", "", true);
 define("ga_extra_after_default", "", true);
@@ -51,7 +51,8 @@ add_option(key_ga_status, ga_status_default, 'If Google Analytics logging in tur
 add_option(key_ga_uid, ga_uid_default, 'Your Google Analytics UID.');
 add_option(key_ga_admin, ga_admin_default, 'If WordPress admins are counted in Google Analytics.');
 add_option(key_ga_admin_disable, ga_admin_disable_default, '');
-add_option(key_ga_admin_level, ga_admin_level_default, 'The level to consider a user a WordPress admin.');
+add_option(key_ga_admin_role, array('administrator'), 'The level to consider a user a WordPress admin.');
+add_option(key_ga_dashboard_role, array('administrator'), 'The level to consider the dashboard widget available to users.');
 add_option(key_ga_adsense, ga_adsense_default, '');
 add_option(key_ga_extra, ga_extra_default, 'Addition Google Analytics tracking options');
 add_option(key_ga_extra_after, ga_extra_after_default, 'Addition Google Analytics tracking options');
@@ -60,6 +61,7 @@ add_option(key_ga_outbound, ga_outbound_default, 'Add tracking of outbound links
 add_option(key_ga_outbound_prefix, ga_outbound_prefix_default, 'Add tracking of outbound links');
 add_option(key_ga_downloads, ga_downloads_default, 'Download extensions to track with Google Analyticator');
 add_option(key_ga_downloads_prefix, ga_downloads_prefix_default, 'Download extensions to track with Google Analyticator');
+add_option('ga_profileid', '', 'The specific profile id');
 add_option(key_ga_widgets, ga_widgets_default, 'If the widgets are enabled or disabled');
 add_option('ga_google_token', '', 'The token used to authenticate with Google');
 add_option('ga_compatibility', 'off', 'Transport compatibility options');
@@ -163,10 +165,12 @@ function ga_options_page() {
 		update_option(key_ga_admin_disable, $ga_admin_disable);
 		
 		// Update the admin level
-		$ga_admin_level = $_POST[key_ga_admin_level];
-		if ( $ga_admin_level == '' )
-			$ga_admin_level = ga_admin_level_default;
-		update_option(key_ga_admin_level, $ga_admin_level);
+		$ga_admin_role = $_POST[key_ga_admin_role];
+		update_option(key_ga_admin_role, $ga_admin_role);
+		
+		// Update the dashboard level
+		$ga_dashboard_role = $_POST[key_ga_dashboard_role];
+		update_option(key_ga_dashboard_role, $ga_dashboard_role);
 
 		// Update the extra tracking code
 		$ga_extra = $_POST[key_ga_extra];
@@ -207,6 +211,9 @@ function ga_options_page() {
 		if ($ga_downloads_prefix == '')
 			$ga_downloads_prefix = ga_downloads_prefix_default;
 		update_option(key_ga_downloads_prefix, $ga_downloads_prefix);
+		
+		// Update the profile id
+		update_option('ga_profileid', $_POST['ga_profileid']);
 		
 		// Update the widgets option
 		$ga_widgets = $_POST[key_ga_widgets];
@@ -310,7 +317,7 @@ function ga_options_page() {
 						echo "id='".key_ga_uid."' ";
 						echo "value='".get_option(key_ga_uid)."' />\n";
 						?>
-						<p style="margin: 5px 10px;" class="setting-description"><?php _e('Enter your Google Analytics\' UID in this box (<a href="http://plugins.spiralwebconsulting.com/forums/viewtopic.php?f=5&amp;t=6">where can I find my UID?</a>). The UID is needed for Google Analytics to log your website stats.', 'google-analyticator'); ?> <strong><?php if ( function_exists('register_widget') ) _e('If you are having trouble finding your UID, authenticate with Google in the above field. After returning from Google, you will be able to select your account through a drop-down box.', 'google-analyticator'); ?></strong></p>
+						<p style="margin: 5px 10px;" class="setting-description"><?php _e('Enter your Google Analytics\' UID in this box (<a href="http://forums.ronaldheft.com/viewtopic.php?f=5&amp;t=6">where can I find my UID?</a>). The UID is needed for Google Analytics to log your website stats.', 'google-analyticator'); ?> <strong><?php if ( function_exists('register_widget') ) _e('If you are having trouble finding your UID, authenticate with Google in the above field. After returning from Google, you will be able to select your account through a drop-down box.', 'google-analyticator'); ?></strong></p>
 					</td>
 				</tr>
 			</table>
@@ -318,7 +325,7 @@ function ga_options_page() {
 				<table class="form-table" cellspacing="2" cellpadding="5" width="100%">
 				<tr>
 					<th width="30%" valign="top" style="padding-top: 10px;">
-						<label for="<?php echo key_ga_admin ?>"><?php _e('WordPress admin logging', 'google-analyticator'); ?>:</label>
+						<label for="<?php echo key_ga_admin ?>"><?php _e('Track all logged in WordPress users', 'google-analyticator'); ?>:</label>
 					</th>
 					<td>
 						<?php
@@ -327,51 +334,42 @@ function ga_options_page() {
 						echo "<option value='".ga_enabled."'";
 						if(get_option(key_ga_admin) == ga_enabled)
 							echo " selected='selected'";
-						echo ">" . __('Enabled', 'google-analyticator') . "</option>\n";
+						echo ">" . __('Yes', 'google-analyticator') . "</option>\n";
 						
 						echo "<option value='".ga_disabled."'";
 						if(get_option(key_ga_admin) == ga_disabled)
 							echo" selected='selected'";
-						echo ">" . __('Disabled', 'google-analyticator') . "</option>\n";
+						echo ">" . __('No', 'google-analyticator') . "</option>\n";
 						
 						echo "</select>\n";
 						
-						# Generate the user level box
-						$level = "<input type='text' size='2' ";
-						$level .= "name='".key_ga_admin_level."' ";
-						$level .= "id='".key_ga_admin_level."' ";
-						$level .= "value='".stripslashes(get_option(key_ga_admin_level))."' />\n";
-						
-						# Output the current user level
-						if ( current_user_can('level_10') )
-							$user = '10';
-						elseif ( current_user_can('level_9') )
-							$user = '9';
-						elseif ( current_user_can('level_8') )
-							$user = '8';
-						elseif ( current_user_can('level_7') )
-							$user = '7';
-						elseif ( current_user_can('level_6') )
-							$user = '6';
-						elseif ( current_user_can('level_5') )
-							$user = '5';
-						elseif ( current_user_can('level_4') )
-							$user = '4';
-						elseif ( current_user_can('level_3') )
-							$user = '3';
-						elseif ( current_user_can('level_2') )
-							$user = '2';
-						elseif ( current_user_can('level_1') )
-							$user = '1';
-						else
-							$user = '0';
 						?>
-						<p style="margin: 5px 10px;" class="setting-description"><?php printf(__('Disabling this option will prevent all logged in WordPress admins from showing up on your Google Analytics reports. A WordPress admin is defined as a user with a level %s or higher. Your user level is %d.', 'google-analyticator'), $level, $user); ?></p>
+						<p style="margin: 5px 10px;" class="setting-description"><?php _e('Selecting "no" to this option will prevent logged in WordPress users from showing up on your Google Analytics reports. This setting will prevent yourself or other users from showing up in your Analytics reports. Use the next setting to determine what user groups to exclude.', 'google-analyticator'); ?></p>
 					</td>
 				</tr>
 				<tr>
 					<th width="30%" valign="top" style="padding-top: 10px;">
-						<label for="<?php echo key_ga_admin_disable ?>"><?php _e('Admin tracking disable method', 'google-analyticator'); ?>:</label>
+						<label for="<?php echo key_ga_admin_role ?>"><?php _e('User roles to not track', 'google-analyticator'); ?>:</label>
+					</th>
+					<td>
+						<?php						
+						global $wp_roles;
+						$roles = $wp_roles->get_names();
+						
+						# Loop through the roles
+						foreach ( $roles AS $role => $name ) {
+							echo '<input type="checkbox" value="' . $role . '" name="' . key_ga_admin_role . '[]"';
+							if ( in_array($role, get_option(key_ga_admin_role)) )
+								echo " checked='checked'";
+							echo ' /> ' . $name . '<br />';
+						}
+						?>
+						<p style="margin: 5px 10px;" class="setting-description"><?php _e('Specifies the user roles to not include in your WordPress Analytics report. If a user is logged into WordPress with one of these roles, they will not show up in your Analytics report.', 'google-analyticator'); ?></p>
+					</td>
+				</tr>
+				<tr>
+					<th width="30%" valign="top" style="padding-top: 10px;">
+						<label for="<?php echo key_ga_admin_disable ?>"><?php _e('Method to prevent tracking', 'google-analyticator'); ?>:</label>
 					</th>
 					<td>
 						<?php
@@ -389,7 +387,7 @@ function ga_options_page() {
 						
 						echo "</select>\n";
 						?>
-						<p style="margin: 5px 10px;" class="setting-description"><?php _e('Selecting the "Remove" option will physically remove the tracking code from logged in admin users. Selecting the "Use \'admin\' variable" option will assign a variable called \'admin\' to logged in admin users. This option will allow Google Analytics\' site overlay feature to work, but you will have to manually configure Google Analytics to exclude tracking from hits with the \'admin\' variable.', 'google-analyticator'); ?></p>
+						<p style="margin: 5px 10px;" class="setting-description"><?php _e('Selecting the "Remove" option will physically remove the tracking code from logged in users. Selecting the "Use \'admin\' variable" option will assign a variable called \'admin\' to logged in users. This option will allow Google Analytics\' site overlay feature to work, but you will have to manually configure Google Analytics to exclude tracking from pageviews with the \'admin\' variable.', 'google-analyticator'); ?></p>
 					</td>
 				</tr>
 				<tr>
@@ -491,7 +489,7 @@ function ga_options_page() {
 						echo "id='".key_ga_adsense."' ";
 						echo "value='".get_option(key_ga_adsense)."' />\n";
 						?>
-						<p style="margin: 5px 10px;" class="setting-description"><?php _e('Enter your Google Adsense ID assigned by Google Analytics in this box. This enables Analytics tracking of Adsense information if your Adsense and Analytics accounts are linked. Note: Google recommends the Analytics tracking code is placed in the header with this option enabled, however, a fix is included in this plugin. To follow the official specs, do not enable footer tracking.', 'google-analyticator'); ?></p>
+						<p style="margin: 5px 10px;" class="setting-description"><?php _e('Enter your Google Adsense ID assigned by Google Analytics in this box. This enables Analytics tracking of Adsense information if your Adsense and Analytics accounts are linked.', 'google-analyticator'); ?></p>
 					</td>
 				</tr>
 				<tr>
@@ -526,6 +524,40 @@ function ga_options_page() {
 				# Check if we have a version of WordPress greater than 2.8
 				if ( function_exists('register_widget') ) {
 				?>
+				<tr>
+					<th valign="top" style="padding-top: 10px;">
+						<label for="ga_profileid"><?php _e('Google Analytics profile ID', 'google-analyticator'); ?>:</label>
+					</th>
+					<td>
+						<?php
+						echo "<input type='text' size='50' ";
+						echo "name='ga_profileid' ";
+						echo "id='ga_profileid' ";
+						echo "value='".get_option('ga_profileid')."' />\n";
+						?>
+						<p style="margin: 5px 10px;" class="setting-description"><?php _e('Enter your Google Analytics\' profile ID in this box. Entering your profile ID is optional, and is only useful if you have multiple profiles associated with a single UID. By entering your profile ID, the dashboard widget will display stats based on the profile ID you specify.', 'google-analyticator'); ?></p>
+					</td>
+				</tr>
+				<tr>
+					<th width="30%" valign="top" style="padding-top: 10px;">
+						<label for="<?php echo key_ga_dashboard_role ?>"><?php _e('User roles that can see the dashboard widget', 'google-analyticator'); ?>:</label>
+					</th>
+					<td>
+						<?php						
+						global $wp_roles;
+						$roles = $wp_roles->get_names();
+						
+						# Loop through the roles
+						foreach ( $roles AS $role => $name ) {
+							echo '<input type="checkbox" value="' . $role . '" name="' . key_ga_dashboard_role . '[]"';
+							if ( in_array($role, get_option(key_ga_dashboard_role)) )
+								echo " checked='checked'";
+							echo ' /> ' . $name . '<br />';
+						}
+						?>
+						<p style="margin: 5px 10px;" class="setting-description"><?php _e('Specifies the user roles that can see the dashboard widget. If a user is not in one of these role groups, they will not see the dashboard widget.', 'google-analyticator'); ?></p>
+					</td>
+				</tr>
 				<tr>
 					<th width="30%" valign="top" style="padding-top: 10px;">
 						<label for="<?php echo key_ga_widgets; ?>"><?php _e('Include widgets', 'google-analyticator'); ?>:</label>
@@ -594,33 +626,37 @@ function ga_options_page() {
 function ga_admin_ajax()
 {
 	if ( function_exists('register_widget') ) {
-	?>
-	<script type="text/javascript">
-	
-		jQuery(document).ready(function(){
-			
-			// Grab the widget data
-			jQuery.ajax({
-				type: 'post',
-				url: 'admin-ajax.php',
-				data: {
-					action: 'ga_ajax_accounts',
-					_ajax_nonce: '<?php echo wp_create_nonce("google-analyticator-accounts_get"); ?>'<?php if ( isset($_GET['token']) ) { ?>,
-					token: '<?php echo $_GET["token"]; ?>'
-					<?php } ?>
-				},
-				success: function(html) {
-					if ( html != '' )
-						jQuery('#ga_ajax_accounts').html(html);
-					else
-						jQuery('#ga_connect_error').show();
-				}
-			});
 		
-		});
+		# Only attempt to replace code if we're authenticated or attempting to authenticate
+		if ( ( isset($_REQUEST['token']) && $_REQUEST['token'] != '' ) || ( trim(get_option('ga_google_token')) != '' ) ) {
+		?>
+		<script type="text/javascript">
 	
-	</script>
-	<?php
+			jQuery(document).ready(function(){
+			
+				// Grab the widget data
+				jQuery.ajax({
+					type: 'post',
+					url: 'admin-ajax.php',
+					data: {
+						action: 'ga_ajax_accounts',
+						_ajax_nonce: '<?php echo wp_create_nonce("google-analyticator-accounts_get"); ?>'<?php if ( isset($_GET['token']) ) { ?>,
+						token: '<?php echo $_GET["token"]; ?>'
+						<?php } ?>
+					},
+					success: function(html) {
+						if ( html != '' )
+							jQuery('#ga_ajax_accounts').html(html);
+						else
+							jQuery('#ga_connect_error').show();
+					}
+				});
+		
+			});
+	
+		</script>
+		<?php
+		}
 	}
 }
 
@@ -740,7 +776,7 @@ function add_google_analytics()
 	if ( ( get_option(key_ga_status) != ga_disabled ) && ( $uid != "XX-XXXXX-X" ) )
 	{
 		# Determine if the user is an admin, and should see the tracking code
-		if ( ( get_option(key_ga_admin) == ga_enabled || !current_user_can('level_' . get_option(key_ga_admin_level)) ) && get_option(key_ga_admin_disable) == 'remove' || get_option(key_ga_admin_disable) != 'remove' )
+		if ( ( get_option(key_ga_admin) == ga_enabled || !ga_current_user_is(get_option(ga_admin_role)) ) && get_option(key_ga_admin_disable) == 'remove' || get_option(key_ga_admin_disable) != 'remove' )
 		{
 			# Add the notice that Google Analyticator tracking is enabled
 			echo "<!-- Google Analytics Tracking by Google Analyticator " . GOOGLE_ANALYTICATOR_VERSION . ": http://ronaldheft.com/code/analyticator/ -->\n";
@@ -786,7 +822,7 @@ function add_google_analytics()
 			echo "	_gaq.push(['_trackPageview']);\n";
 		
 			# Disable page tracking if admin is logged in
-			if ( ( get_option(key_ga_admin) == ga_disabled ) && ( current_user_can('level_' . get_option(key_ga_admin_level)) ) )
+			if ( ( get_option(key_ga_admin) == ga_disabled ) && ( ga_current_user_is(get_option(ga_admin_role)) ) )
 				echo "	_gaq.push(['_setVar', 'admin']);\n";
 		
 			# Add any tracking code after the trackPageview
@@ -799,10 +835,14 @@ function add_google_analytics()
 	(function() {
 		var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
 		ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-		(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(ga);
+		var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
 	})();
 </script>
 <?php
+		} else {
+			# Add the notice that Google Analyticator tracking is enabled
+			echo "<!-- Google Analytics Tracking by Google Analyticator " . GOOGLE_ANALYTICATOR_VERSION . ": http://ronaldheft.com/code/analyticator/ -->\n";
+			echo "	<!-- " . __('Tracking code is hidden, since the settings specify not to track admins. Tracking is occurring for non-admins.', 'google-analyticator') . " -->\n";
 		}
 	}
 }
@@ -825,7 +865,7 @@ function ga_outgoing_links()
 			if ( !is_admin() )
 			{
 				# Display page tracking if user is not an admin
-				if ( ( get_option(key_ga_admin) == ga_enabled || !current_user_can('level_' . get_option(key_ga_admin_level)) ) && get_option(key_ga_admin_disable) == 'remove' || get_option(key_ga_admin_disable) != 'remove' )
+				if ( ( get_option(key_ga_admin) == ga_enabled || !ga_current_user_is(get_option(ga_admin_role)) ) && get_option(key_ga_admin_disable) == 'remove' || get_option(key_ga_admin_disable) != 'remove' )
 				{
 					add_action('wp_print_scripts', 'ga_external_tracking_js');
 				}
@@ -840,6 +880,28 @@ function ga_outgoing_links()
 function ga_external_tracking_js()
 {
 	wp_enqueue_script('ga-external-tracking', plugins_url('/google-analyticator/external-tracking.min.js'), array('jquery'), GOOGLE_ANALYTICATOR_VERSION);
+}
+
+/**
+ * Determines if a specific user fits a role
+ **/
+function ga_current_user_is($roles)
+{
+	if ( !$roles ) return false;
+
+	global $current_user;
+	get_currentuserinfo();
+	$user_id = intval( $current_user->ID );
+
+	if ( !$user_id ) {
+		return false;
+	}
+	$user = new WP_User($user_id); // $user->roles
+	
+	foreach ( $roles as $role )
+		if ( in_array($role, $user->roles) ) return true;
+	
+	return false;
 }
 
 /**
