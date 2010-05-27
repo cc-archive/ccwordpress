@@ -1,3 +1,11 @@
+/* Catalyst Grants Landing page */
+#catalyst-options { width: 550px; margin: 25px auto; overflow-y: auto;} 
+#catalyst-options h3 { margin-top: 0; margin-bottom: 1em; } 
+#catalyst-options div { border: 1px solid #d3d3d3; padding: 5px 10px; background-color: #e1e1e1; text-shadow: 0 1px 0 #fff; color: #666; -webkit-border-radius: 5px; -moz-border-radius:5px; width: 230px; } 
+.catalyst-donate{ float:left; } 
+.catalyst-learn-more { float:right; } 
+#catalyst-options p { color: #777; text-align: center; margin-bottom:0; } 
+
 #testimonial {
 	height: 209px;
 	width: 292px;
@@ -123,12 +131,24 @@ color: #280048;
 position: relative;
 cursor:pointer; 
 margin: 2px auto 3px auto;
-width: 50%; 
+width: 350px; 
 height: 20px;
-padding: 0 1%; 
-background-color: #fff;   
+padding: 0; 
+background: #fff;
+border:1px solid #929292;
 -moz-border-radius: 4px;
--webkit-border-radius: 4px;
+-webkit-border-radius: 5px;
+-webkit-box-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
+}
+
+#campaign .progress .inner {
+	height: 18px;
+	margin: 1px;
+	background: #fff;
+	background: -webkit-gradient(linear, left top, left bottom, from(#cdcdcd), to(#fdfdfd));
+	background: -moz-linear-background(top, #cdcdcd, #fdfdfd);
+	-webkit-border-radius: 4px;
+	-moz-border-radius: 4px;
 }
 
 #campaign .home {
@@ -151,9 +171,11 @@ left: 1px;
 height: 18px;
 margin: 0; 
 background-color: #a3aaa3;
-background: url('/images/support/progress.png');
+background: url('/images/support/catalyst-progress.png') 0 -3px;
 -moz-border-radius: 4px;
 -webkit-border-radius: 4px;
+-moz-box-shadow: 1px 0 3px rgba(64, 64, 64, 0.45);
+-webkit-box-shadow: 1px 0 3px rgba(64, 64, 64, 0.45);
 }
 
 #campaign .resultsHome {
