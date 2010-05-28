@@ -32,13 +32,13 @@ function showThermometer() {
 
    			<div id="campaign">  
 				<div class="progress <?php if (is_home()) {?>home<?}?>" onclick="window.location='https://support.creativecommons.org/donate<?= $utm ?>';">
-					<span>&nbsp;</span>
+					<div class="inner"><span>&nbsp;</span></div>
 				</div>
-				<?php if (is_home()) { ?><div class="homeGoal"><a href="https://support.creativecommons.org/donate<?= $utm ?>">$500,000</a></div><? } ?>
+				<?php if (is_home()) { ?><div class="homeGoal"><a href="https://support.creativecommons.org/donate<?= $utm ?>">$100,000</a></div><? } ?>
 				<div class="results<?php if (is_home()) {?>Home<?}?>">
 					<a href="https://support.creativecommons.org/donate<?= $utm ?>">
 					<?php if (is_home()) { ?><strong><?php cc_progress_total() ?> Raised</strong> &mdash; Thank you!<?php } else { ?>
-						<?php cc_progress_total() ?> / $500,000 by&nbsp;Dec&nbsp;31 
+						<?php cc_progress_total() ?> / $100,000 by&nbsp;Dec&nbsp;31 
 						<br/>
 						<em>Help us reach our goal!</em>
 					<?php } ?>
