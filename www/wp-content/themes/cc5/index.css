@@ -35,7 +35,6 @@
 	position: absolute;
 	top: 54px;
 	right: 0;
-	width: 425px;
 	color: #fff /*263B13*/;
 	font-size:14px;
 }
@@ -88,20 +87,16 @@
 }
 
 #splashBox {
-	width: 630px;
 /*	background-color: #E6ECD0;
-*/	margin-right: 5px;
-	-moz-border-radius-bottomright: 5px;
+*/	-moz-border-radius-bottomright: 5px;
 	-moz-border-radius-bottomleft: 5px;
 	-webkit-border-bottom-right-radius: 5px;
 	-webkit-border-bottom-left-radius: 5px;
-	float: right;
 }
 
 #splash {
 	font-size: 1.2em;
 	position: relative;
-	width: 630px;
 	height: 200px;
 	overflow: hidden;
 	background-color: #e6ede2;
