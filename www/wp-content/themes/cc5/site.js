@@ -1,3 +1,15 @@
+window.addEventListener('load', function() {
+if ((location.href.match(/http\:(.*)?creativecommons.org\/$/) && !location.href.match(/pport.creativecommons.org\/$/)) || location.href.match(/creativecommons.org\/donate/)) return;
+
+var d = document.createElement("div");
+var mainContent = document.getElementById("globalWrapper");
+d.setAttribute('style', 'font-size: 22px; font-family: "helvetica neue", arial, sans-serif; line-height:1; text-shadow: 0 1px 0 #45c5ea; color: #ffff00; padding: 12px 0; border-bottom: 1px solid rgb(120, 159, 44); margin-top: -1px; background: #35afe3; z-index:1000;');
+d.innerHTML = '<a href="https://support.creativecommons.org/donate/" style="color:#ffff00; text-decoration:none;"><strong><span style="color:#000">Catalyst Grants:</span> <span style="text-shadow: 0 -1px 0 #258ab9">Ignite openness and innovation around the world.</span></strong> <span style="color:#000">&mdash; Donate Now</span></a>';
+mainContent.parentNode.insertBefore(d, mainContent);
+}, false);
+
+if (typeof YAHOO != "undefined") { 
+
 YAHOO.namespace("cc.site");
 
 // convenience function for creating help tool tips
@@ -119,6 +131,11 @@ YAHOO.cc.site.init = function() {
 	resetSearch();
 	YAHOO.util.Event.addListener("s", "click", wakeSearch);
 	YAHOO.util.Event.addListener("s", "blur", resetSearch);
+
+
 } // init
 
 YAHOO.util.Event.onDOMReady(YAHOO.cc.site.init);
+
+}
+
