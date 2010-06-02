@@ -19,7 +19,7 @@
 }
 .cse .gsc-control-cse,
 .gsc-control-cse {
-  font-family: "Trebuchet MS", sans-serif;
+  font-family: "Arial", sans-serif;
   background-color: #e1f3da;
   border: 1px solid;
   border-color: #e1f3da;
@@ -59,8 +59,8 @@ input.gsc-input {
 input.gsc-search-button {
   font-family: inherit;
   font-size: 13px;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.33);
   color: #303e2a;
-  text-shadow: 0 1px 2px #ffffff;
   padding: 3px 8px;
   background-color: #a9da92;
   border: 1px solid;
@@ -81,7 +81,6 @@ input.gsc-search-button {
 .cse .gsc-tabHeader,
 .gsc-tabHeader {
   display:none;
-  text-shadow: 0 1px 2px #ffffff;
   padding: 2px 8px 0 8px;
   border-top-right-radius: 4px;
   -moz-border-radius-topright: 4px;
@@ -216,7 +215,7 @@ a.gsc-trailing-more-results:link {
 .cse .gsc-results .gsc-cursor-page.gsc-cursor-current-page,
 .gsc-results .gsc-cursor-page.gsc-cursor-current-page {
   color: #333333;
-  text-shadow: 0 1px 2px #ffffff;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.33);
   background-color: #a9da92;
 }
 /*Promotion Settings*/
@@ -265,7 +264,7 @@ a.gsc-trailing-more-results:link {
   background: #E1F3DA;
 }
 .gsc-completion-container {
-  font-family: "Trebuchet MS", sans-serif;
+  font-family: "Arial", sans-serif;
   font-size: 13px;
   position: absolute;
   background: white;
@@ -273,7 +272,6 @@ a.gsc-trailing-more-results:link {
   margin-left: 0;
   margin-right: 0;
   padding: 4px;
-  text-shadow: 0 1px 2px #ffffff;
   border-radius: 4px;
   -moz-border-radius: 4px;
   -webkit-border-radius: 4px;
