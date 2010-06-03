@@ -8,42 +8,24 @@
         </h2>
           </div>
           <div  class="content-box" id="page">
-           <div class="block hero">
-          		<?php include (TEMPLATEPATH . '/searchform.php'); ?>
-           </div>
-          
-<?php if (have_posts())  { ?>
-<?php while (have_posts()) { the_post(); ?>
-  
-    <div class="block blog sideContentSpace" id="post-<?php the_ID(); ?>">
-      <h1 class="title">
-        <a href="<? the_permalink() ?>">
-         <?php if (in_category(4) || in_category(7)) { ?>CC Talks With: <?php } ?> 
-         <?php the_title() ?>
-        </a>
-      </h1>
-      <h4 class="meta"><?php the_author() ?>, <?php the_time('F jS, Y')?></h4>
-      <?php the_excerpt(); ?>
-      <?php edit_post_link('Edit', '', ' |'); ?> <?php comments_popup_link('No Comments &#187;', '1 Comment &#187;', '% Comments &#187;'); ?>
-    </div>
+<?php /* Google Custom Search Engine */ ?>
 
-<?php } ?>
+<div id="cse" style="width: 100%;"><h3><img src="/wp-content/themes/cc5/images/loading.gif" alt="Loading" style="margin-bottom:-6px;" /> Loading search...</h3></div>
+<script src="http://www.google.com/jsapi" type="text/javascript"></script>
+<script type="text/javascript">
+  google.load('search', '1', {language : 'en'});
+  google.setOnLoadCallback(function() {
+	      var customSearchControl = new google.search.CustomSearchControl('010316592082702087679:vmxqegqb1uy');
+		      customSearchControl.setResultSetSize(google.search.Search.FILTERED_CSE_RESULTSET);
+		  	  customSearchControl.draw('cse');
+			  customSearchControl.execute('<?php echo $_GET['s']; ?>');
+			    }, true);
+</script>
+<link rel="stylesheet" href="/wp-content/themes/cc5/google-cse.css" type="text/css" />
 
-	    <div style="margin: 1ex;">
-	    <?php
-	    # Add pretty pagination if the plugin PageNavi is installed,
-	    # otherwise just use the boring stuff.  nkinkade 2008-01-02
-	    if ( function_exists('wp_pagenavi') ) {
-	    	wp_pagenavi();
-	    } else {
-                posts_nav_link(' &mdash; ', 'previous page', 'next page');
-	    }
-	    ?>
-	    </div>
-<?php } else { ?>
-  <h2>No search results found.</h2>
 
-<?php } ?>
+<?php /* End of Google CSE */ ?>
+
           </div>
         </div>  
 <?php get_sidebar(); ?>
