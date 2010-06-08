@@ -4,7 +4,7 @@ function thundercats() {
     var d = document.createElement("div");
     var mainContent = document.getElementById("globalWrapper");
     d.setAttribute('style', 'font-size: 22px; font-family: "helvetica neue", arial, sans-serif; line-height:1; text-shadow: 0 1px 0 #45c5ea; color: #ffff00; padding: 12px 0; border-bottom: 1px solid rgb(120, 159, 44); margin-top: -1px; background: #35afe3; z-index:1000;');
-    d.innerHTML = '<a href="http://creativecommons.org/catalyst/" style="color:#ffff00; text-decoration:none;"><strong><span style="color:#000">Catalyst Grants:</span> <span style="text-shadow: 0 -1px 0 #258ab9">Help the world harness the power of Creative Commons.</span></strong> <span style="color:#000">&mdash; Donate Now</span></a>';
+    d.innerHTML = '<a href="https://support.creativecommons.org/donate/?utm_campaign=catalyst&utm_medium=banner&utm_source=ccorg" style="color:#ffff00; text-decoration:none;"><strong><span style="color:#000">Catalyst Grants:</span> <span style="text-shadow: 0 -1px 0 #258ab9">Help the world harness the power of Creative Commons.</span></strong> <span style="color:#000">&mdash; Donate Now</span></a>';
     mainContent.parentNode.insertBefore(d, mainContent);
 }
 
