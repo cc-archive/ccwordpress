@@ -1,7 +1,7 @@
 <?php 
 /*
  * Plugin Name: Google Analyticator
- * Version: 6.1
+ * Version: 6.1.1
  * Plugin URI: http://ronaldheft.com/code/analyticator/
  * Description: Adds the necessary JavaScript code to enable <a href="http://www.google.com/analytics/">Google's Analytics</a>. After enabling this plugin visit <a href="options-general.php?page=google-analyticator.php">the settings page</a> and enter your Google Analytics' UID and enable logging.
  * Author: Ronald Heft
@@ -9,7 +9,7 @@
  * Text Domain: google-analyticator
  */
 
-define('GOOGLE_ANALYTICATOR_VERSION', '6.1');
+define('GOOGLE_ANALYTICATOR_VERSION', '6.1.1');
 
 // Constants for enabled/disabled state
 define("ga_enabled", "enabled", true);
@@ -355,13 +355,17 @@ function ga_options_page() {
 						<?php						
 						global $wp_roles;
 						$roles = $wp_roles->get_names();
+						$selected_roles = get_option(key_ga_admin_role);
+						if ( !is_array($selected_roles) ) $selected_roles = array();
 						
 						# Loop through the roles
 						foreach ( $roles AS $role => $name ) {
 							echo '<input type="checkbox" value="' . $role . '" name="' . key_ga_admin_role . '[]"';
-							if ( in_array($role, get_option(key_ga_admin_role)) )
+							if ( in_array($role, $selected_roles) )
 								echo " checked='checked'";
-							echo ' /> ' . $name . '<br />';
+							$name_pos = strpos($name, '|');
+							$name = ( $name_pos ) ? substr($name, 0, $name_pos) : $name;
+							echo ' /> ' . _x($name, 'User role') . '<br />';
 						}
 						?>
 						<p style="margin: 5px 10px;" class="setting-description"><?php _e('Specifies the user roles to not include in your WordPress Analytics report. If a user is logged into WordPress with one of these roles, they will not show up in your Analytics report.', 'google-analyticator'); ?></p>
@@ -546,13 +550,17 @@ function ga_options_page() {
 						<?php						
 						global $wp_roles;
 						$roles = $wp_roles->get_names();
+						$selected_roles = get_option(key_ga_dashboard_role);
+						if ( !is_array($selected_roles) ) $selected_roles = array();
 						
 						# Loop through the roles
 						foreach ( $roles AS $role => $name ) {
 							echo '<input type="checkbox" value="' . $role . '" name="' . key_ga_dashboard_role . '[]"';
-							if ( in_array($role, get_option(key_ga_dashboard_role)) )
+							if ( in_array($role, $selected_roles) )
 								echo " checked='checked'";
-							echo ' /> ' . $name . '<br />';
+							$name_pos = strpos($name, '|');
+							$name = ( $name_pos ) ? substr($name, 0, $name_pos) : $name;
+							echo ' /> ' . _x($name, 'User role') . '<br />';
 						}
 						?>
 						<p style="margin: 5px 10px;" class="setting-description"><?php _e('Specifies the user roles that can see the dashboard widget. If a user is not in one of these role groups, they will not see the dashboard widget.', 'google-analyticator'); ?></p>
@@ -815,6 +823,7 @@ function add_google_analytics()
 <?php
 		
 			# Add any tracking code before the trackPageview
+			do_action('google_analyticator_extra_js_before');
 			if ( '' != $extra )
 				echo "	$extra\n";
 			
@@ -826,6 +835,7 @@ function add_google_analytics()
 				echo "	_gaq.push(['_setVar', 'admin']);\n";
 		
 			# Add any tracking code after the trackPageview
+			do_action('google_analyticator_extra_js_after');
 			if ( '' != $extra_after )
 				echo "	$extra_after\n";
 		

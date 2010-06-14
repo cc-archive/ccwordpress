@@ -3,7 +3,7 @@
 Plugin Name: Subscribe2 Counter Widget
 Plugin URI: http://subscribe2.wordpress.com
 Description: Adds a sidebar widget to easily customize and display your Subscribe2 subscribers stats.
-Version: 5.2
+Version: 5.8
 Author: Matthew Robinson
 Author URI: http://subscribe2.wordpress.com
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&amp;hosted_button_id=2387904
@@ -24,10 +24,10 @@ function widget_s2counter_init() {
 		$options = get_option('widget_s2counter');
 		$title = empty($options['title']) ? 'Subscriber Count' : $options['title'];
 		$s2w_bg = $options['s2w_bg'];
-	    $s2w_fg = $options['s2w_fg'];
-	    $s2w_width = $options['s2w_width'];
-	    $s2w_height = $options['s2w_height'];
-	    $s2w_font = $options['s2w_font'];
+		$s2w_fg = $options['s2w_fg'];
+		$s2w_width = $options['s2w_width'];
+		$s2w_height = $options['s2w_height'];
+		$s2w_font = $options['s2w_font'];
 		echo $before_widget;
 		echo $before_title . $title . $after_title;
 		global $wpdb, $table;
@@ -117,7 +117,7 @@ function assignSize(theSize, theStyle) {
 		}
 	}
 }
-</script>  
+</script>
 
 <div>
 	<fieldset>

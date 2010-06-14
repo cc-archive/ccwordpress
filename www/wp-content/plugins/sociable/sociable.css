@@ -1,4 +1,4 @@
-div .sociable { margin: 16px 0 !important; padding-right:20px; text-align:right; }
+div.sociable { margin: 16px 0; }
 
 span.sociable_tagline { position: relative; }
 span.sociable_tagline span { display: none; width: 14em; }
@@ -11,7 +11,6 @@ span.sociable_tagline:hover span {
 	color: black;
 	line-height: 1.25em;
 }
-
 .sociable span {
 	display: block;
 }
@@ -20,12 +19,12 @@ span.sociable_tagline:hover span {
 	margin: 0 !important;
 	padding: 0 !important;
 }
-.sociable li {
+.sociable ul li {
 	background: none;
-	display: inline;
+	display: inline !important;
 	list-style-type: none;
 	margin: 0;
-	padding: 2px;
+	padding: 1px;
 }
 .sociable ul li:before { content: ""; }
 .sociable img {

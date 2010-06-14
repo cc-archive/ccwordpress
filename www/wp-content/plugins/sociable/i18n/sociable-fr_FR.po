@@ -15,6 +15,14 @@ msgstr ""
 "X-Poedit-Basepath: /home/malaprop/proj/sociable\n"
 "X-Poedit-SearchPath-0: .\n"
 
+#: sociable.php:172
+msgid "E-mail this story to a friend!"
+msgstr "Envoyez cette page à un ami par courriel!"
+
+#: sociable.php:368
+msgid "Print this article!"
+msgstr "Imprimez cet article!"
+
 #: sociable.php:302
 msgid "These icons link to social bookmarking sites where readers can share and discover new web pages."
 msgstr "Ces icônes sont des liens vers des sites de partage de signet sociaux où les lecteurs peuvent partager et découvrir de nouveaux liens."
