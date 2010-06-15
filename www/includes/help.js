@@ -12,9 +12,9 @@ function thundercats() {
     var banners = bannerHtml();
 
     var d = document.createElement("div");
-    var mainContent = document.getElementById("globalWrapper");
+    var mainContent = document.getElementById("header");
     d.setAttribute('style', 'font-size: 22px; font-family: "helvetica neue", arial, sans-serif; line-height:1; text-shadow: 0 1px 0 #45c5ea; color: #ffff00; padding: 12px 0; border-bottom: 1px solid rgb(120, 159, 44); margin-top: -1px; background: #35afe3; z-index:1000;');
-    d.innerHTML = '<a href="https://support.creativecommons.org/donate/?utm_campaign=catalyst' + banners[i][0] + '&utm_source=ccorg" style="color:#ffff00; text-decoration:none;"><strong><span style="color:#000">Catalyst Grants:</span> <span style="text-shadow: 0 -1px 0 #258ab9">' + banners[i][1] + '</span></strong> <span style="color:#000">&mdash; Donate Now</span></a>';
+    d.innerHTML = '<a href="https://support.creativecommons.org/donate/?utm_campaign=catalyst' + banners[i][0] + '&utm_source=deed" style="color:#ffff00; text-decoration:none;"><strong><span style="color:#000">Catalyst Grants:</span> <span style="text-shadow: 0 -1px 0 #258ab9">' + banners[i][1] + '</span></strong> <span style="color:#000">&mdash; Donate Now</span></a>';
     mainContent.parentNode.insertBefore(d, mainContent);
 }
 
