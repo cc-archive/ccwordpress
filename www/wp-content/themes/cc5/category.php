@@ -1,7 +1,17 @@
-<?php get_header(); 
+<?php 
+// Check if we're actually an international page in disguise, 
+// and call up the correct template
+$category = get_category($cat);
+
+if ($category->category_parent == 21) {
+  require (TEMPLATEPATH . '/international-page.php');
+  exit();
+}
+
+get_header(); 
 
 // Setup category details for template
-$category = get_category($cat); ?>
+ ?>
 
   <div id="mainContent" class="box">
     <div id="contentPrimary">
