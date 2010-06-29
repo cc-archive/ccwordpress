@@ -41,9 +41,17 @@
      <option  <?php if($inExcludePage=='include') echo 'selected'; ?> id="<?php echo $this->get_field_id(''); ?>" value='include'><?php _e('Include', 'collapsArch');?></option>
      <option  <?php if($inExcludePage=='exclude') echo 'selected'; ?> id="<?php echo $this->get_field_id(''); ?>" value='exclude'><?php _e('Exclude', 'collapsArch');?></option>
      </select>
-     <?php _e('these years (input slug or ID separated by commas):', 'collapsArch');?><br />
+     <?php _e('these years (separated by commas):', 'collapsArch');?><br />
     <input type="text" name="<?php echo $this->get_field_name('inExcludeYears'); ?>" value="<?php echo $inExcludeYears ?>"  
     id="<?php echo $this->get_field_id('inExcludeYears'); ?>"></input> 
+    </p>
+    <p> 
+     <select name="<?php echo $this->get_field_name('inExcludeCat'); ?>">
+     <option  <?php if($inExcludeCat=='include') echo 'selected'; ?> id="<?php echo $this->get_field_id('inExcludeCatInclude') ?>" value='include'>Include</option>
+     <option  <?php if($inExcludeCat=='exclude') echo 'selected'; ?> id="<?php echo $this->get_field_id('inExcludeCatExclude') ?>" value='exclude'>Exclude</option>
+     </select>
+     <?php _e('these categories (input slug or ID separated by commas):', 'collapsArch') ?><br />
+    <input type="text" name="<?php echo $this->get_field_name('inExcludeCats'); ?>" value="<?php echo $inExcludeCats ?>" id="<?php echo $this->get_field_id('inExcludeCats') ?>"</input> 
     </p>
     <p><?php _e('Clicking on year/month', 'collapsArch'); ?>:<br />
      <input type="radio" name="<?php echo $this->get_field_name('linkToArch'); ?>"
@@ -96,9 +104,13 @@
    <input type="checkbox" name="<?php echo $this->get_field_name('showPostDate'); ?>" <?php if ($showPostDate) echo
    'checked'; ?> id="<?php echo $this->get_field_id('showPostDate'); ?>"></input> <label
    for="showPostDate"><?php _e('Show Post Date', 'collapsArch'); ?></label> | 
+     <select name="<?php echo $this->get_field_name('postDateAppend'); ?>">
+     <option  <?php if($postDateAppend=='before') echo 'selected'; ?> id="<?php echo $this->get_field_id('postDateAppendBefore') ?>" value='before'><?php _e('Before post title', 'collapsArch') ?></option>
+     <option  <?php if($postDateAppend=='after') echo 'selected'; ?> id="<?php echo $this->get_field_id('postDateAppendAfter') ?>" value='after'><?php _e('After post title', 'collapsArch') ?></option>
+     </select>
    <label for="postDateFormat"><a href='http://php.net/date'
     title='information about date formatting syntax' target='_blank'>
-    <?php _e('Post Date Format', 'collapsArch'); ?></a>:</label>
+    <?php _e('as', 'collapsArch'); ?></a>:</label>
    <input type="text" size='8' name="<?php echo $this->get_field_name('postDateFormat'); ?>" value="<?php echo $postDateFormat; ?>" 
    id="<?php echo $this->get_field_id('postDateFormat'); ?>"></input> 
    </p>

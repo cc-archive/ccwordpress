@@ -1,4 +1,4 @@
-/*  Collapse Functions, version 1.6
+/*  Collapse Functions, version 1.7
  *
  *--------------------------------------------------------------------------*/
 String.prototype.trim = function() {
@@ -132,7 +132,6 @@ function expandCollapse( e, expand,collapse, animate, collapsClass ) {
   var theId= childList.getAttribute('id');
   if (theSpan.className!='sym') {
     theSpan = theSpan.childNodes[0];
-    //alert(childList.getAttribute('id'));
     theId = childList.childNodes[0].getAttribute('id');
   }
   if( src.getAttribute( 'class' ) == hide ) {
@@ -141,18 +140,23 @@ function expandCollapse( e, expand,collapse, animate, collapsClass ) {
     src.setAttribute('title','click to expand');
     theSpan.innerHTML=expand;
     if (animate==1) {
-      //Effect.BlindUp(childList, {duration: 0.5});
       jQuery(childList).hide('blind', '', 500);
     } else {
       childList.style.display = 'none';
+    }
+    if (collapsItems[theId]) {
+      childList.innerHTML='<li></li>';
     }
   } else {
     createCookie(theId,1,7);
     src.setAttribute('class',hide);
     src.setAttribute('title','click to collapse');
     theSpan.innerHTML=collapse;
+      //alert(collapsItems[theId]);
+    if (collapsItems[theId]) {
+      childList.innerHTML=collapsItems[theId];
+    }
     if (animate==1) {
-      //Effect.BlindDown(childList, {duration: 0.5});
       jQuery(childList).show('blind', '', 500);
     } else {
       childList.style.display = 'block';
@@ -165,3 +169,4 @@ function expandCollapse( e, expand,collapse, animate, collapsClass ) {
 
   return false;
 }
+
