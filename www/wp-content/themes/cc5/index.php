@@ -79,7 +79,6 @@ d.write('<sc'+'ript src="'+
     <div id="mainContent">
       <div id="topContent" class="box">
 		<div id="ccBlurb" >
-<?php /* Removed left banner for duration of catalyst camaign -- 2010/05/28 ~ Alex
           <div id="cc_mission">
 			<div id="quote">
 			 	<a href="/education?utm_source=ccorg&utm_medium=ccedu"><img src="/images/cc-edu.png" alt="CC & Education" border="0" /></a>
@@ -101,12 +100,10 @@ d.write('<sc'+'ript src="'+
 			</script>
 </noscript>
 </div>
- */ ?>
+ */ ?></div>
           <div id="splashBox">
           <div id="splash">
 <?php
-/* Turned off auto banner for campaign related goodness.
- * alex ~ 100521
 		if ($sticky_page = cc_get_sticky_page()) {
 			// grab attached image from sticky page and display it in the #splash area
 			// this ignores any sticky blog posts
@@ -140,12 +137,7 @@ d.write('<sc'+'ript src="'+
               } // if is_sticky
 			} // while
 		}
- */ 
 ?>
-			<a href="/catalyst?utm_source=ccorg&utm_medium=homepage_banner&utm_campaign=catalyst"><img src="/images/support/2010/donate.png" border="0" align="center" alt="Invest in the future of creativity and knowledge. Donate Today." /></a>
- 			<div style="position:absolute; left: 109px; bottom: 49px; width: 175px; height: 70px;"><a href="http://wiki.creativecommons.org/Grants?utm_source=ccorg&utm_medium=homepage_banner_lm&utm_campaign=catalyst"><img src="/images/support/2010/donate-lm.png" border="0" /></a></div> 
-             <?php include ('progress.php'); ?> 
-          </div>
         </div>
         </div>
       </div>
