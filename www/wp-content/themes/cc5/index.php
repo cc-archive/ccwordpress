@@ -166,13 +166,13 @@ d.write('<sc'+'ript src="'+
             <h4 class="titleStrip subTitle"><a href="<?php echo get_category_link(1);?>">Commons News</a></h4>
             <ul>
 <?php
-			  rewind_posts();
+			  query_posts('cat=1');
               while (have_posts()) {
                 the_post();
                 
                 static $count = 0;
                 if ($count == "7") { break; } else {
-                  if ((!in_category(1) && !is_single()) || in_category('splash')) { continue; }
+                  if ((!in_category(1) && !is_single()) ) { continue; }
                   
                   if (in_category('notice')) {
                     $liClass = "notice";
