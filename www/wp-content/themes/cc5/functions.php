@@ -1,4 +1,9 @@
 <?php
+// Remove link rel="start" from blog pages
+remove_action( 'wp_head', 'start_post_rel_link'); // Removes the start link
+
+
+
 if (function_exists('register_sidebar')) {
     register_sidebar(array('before_widget' => '<div class="widget">', 'after_widget' => '</div>'));
 
