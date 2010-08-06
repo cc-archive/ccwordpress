@@ -31,7 +31,7 @@ if ( $is_worldwide_completed ) {
     $jurisdiction_dom->loadXML( file_get_contents($api_url . $jurisdiction_code) );
 
     $jurisdiction_dom_root = $jurisdiction_dom->documentElement;
-    $jurisdiction_site = $jurisdiction_dom_root->getAttribute('local_url');
+    $jurisdiction_site = $jurisdiction_dom_root->getAttribute('local_url'); 
     $license_elements = $jurisdiction_dom->getElementsByTagName('license');
     $licenses = array();
 
@@ -73,7 +73,8 @@ if ( $jurisdiction_code != '' ) {
 HTML;
 }
 
-if ( $jurisdiction_site ) {
+$jurisdiction_site_url_parts = parse_url($jurisdiction_site);
+if ( $jurisdiction_site_url_parts['host'] != 'creativecommons.org' ) {
     echo <<<HTML
         <div class="licensebox" style="margin:14px;">
             Visit the <a href="{$jurisdiction_site}">jurisdiction's site</a>.
