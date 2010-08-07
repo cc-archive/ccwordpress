@@ -112,14 +112,14 @@ HTML;
             </p>
         </div>
 HTML;
-
-    the_content();
-
-    dynamic_sidebar('Single Post');
-
-    echo "  </div>";
-    echo "</div>";
 }
+
+the_content();
+
+dynamic_sidebar('Single Post');
+
+echo "  </div>";
+echo "</div>";
 
 get_sidebar();
 get_footer();
