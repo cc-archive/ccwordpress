@@ -74,7 +74,8 @@ HTML;
 }
 
 $jurisdiction_site_url_parts = parse_url($jurisdiction_site);
-if ( $jurisiction_site_url_parts && $jurisdiction_site_url_parts['host'] != 'creativecommons.org' ) {
+
+if ( $jurisdiction_site_url_parts && $jurisdiction_site_url_parts['host'] != 'creativecommons.org' ) {
     echo <<<HTML
         <div class="licensebox" style="margin:14px;">
             Visit the <a href="{$jurisdiction_site}">jurisdiction's site</a>.
