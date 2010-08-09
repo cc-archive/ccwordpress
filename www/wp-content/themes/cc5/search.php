@@ -18,7 +18,7 @@
 	      var customSearchControl = new google.search.CustomSearchControl('010316592082702087679:vmxqegqb1uy');
 		      customSearchControl.setResultSetSize(google.search.Search.FILTERED_CSE_RESULTSET);
 		  	  customSearchControl.draw('cse');
-			  customSearchControl.execute('<?php echo $_GET['s']; ?>');
+			  customSearchControl.execute('<?php echo htmlspecialchars($_GET['s']); ?>');
 			    }, true);
 </script>
 <link rel="stylesheet" href="/wp-content/themes/cc5/google-cse.css" type="text/css" />
