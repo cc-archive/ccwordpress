@@ -1,13 +1,4 @@
 <div id="sidebar">
-<div id="help_international_list" class="sideitem">
- <div class="bd">
-   <select id="international" name="sortby" onchange="orderby(this)">    
-     <option value="">Select a jurisdiction</option>
-     <script type="text/javascript" src="http://api.creativecommons.org/rest/dev/support/jurisdictions.js"></script>
-   </select>
- </div>
-</div>
-
 <?php  
   if (is_page() or is_single()) {
     edit_post_link('<span>Edit this article...</span>', '<div class="sideitem">', '</div>'); 
