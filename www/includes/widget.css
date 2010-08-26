@@ -56,14 +56,14 @@ cc_widget_dialog_premiums {
 
 #cc_widget_dialog button span { display: none; }
 #cc_widget_dialog #cc_widget_dialog_paypal_button {
-    background: url("https://support.creativecommons.org/sites/default/themes/cc/css/paypalCheckout.gif") no-repeat scroll 0 0 transparent;
+    background: url("https://support.creativecommons.org/sites/default/themes/cc/images/paypalCheckout.gif") no-repeat scroll 0 0 transparent;
     border: none;
     height: 42px;
     width: 145px;
 }
 
 #cc_widget_dialog #cc_widget_dialog_google_button {
-    background: url("https://support.creativecommons.org/sites/default/themes/cc/css/googleCheckout.gif") no-repeat scroll 0 0 transparent;
+    background: url("https://support.creativecommons.org/sites/default/themes/cc/images/googleCheckout.gif") no-repeat scroll 0 0 transparent;
     border: none;
     height: 43px;
     width: 160px;
