@@ -6,7 +6,7 @@
 /* Main CSS Continues */
 		body {
 			background-color: #2d2d2d;
-			font: 12px/16px arial, verdana, sans-serif;
+			font: 13px/16px arial, verdana, sans-serif;
 			text-align: center;
 			color: #ccc;
 			margin: 0;
@@ -14,7 +14,7 @@
 		}
 		
 		h3 {
-			font-size: 1.45em;
+			font-size: 1.25em;
 		}
 		
 		#cc-logo { display: none; }
@@ -22,6 +22,27 @@
 		#deed-bg {
 
 		}
+		
+		.mockup-badge {
+			position: fixed;
+			background-color: #eee;
+			color: #060606;
+			padding: 0 1em;
+			top: 0;
+			opacity: 0.50;
+			font-size: 70%;
+		}
+		.left { 
+			left: 0;
+			-webkit-border-bottom-right-radius: 10px;
+			-moz-border-radius-bottomright: 10px;
+		}
+		.right { 
+			right: 0;
+			-webkit-border-bottom-left-radius: 10px;
+			-moz-border-radius-bottomleft: 10px;
+		}
+		
 		
 		#deed {
 			background: url("/images/deed/deed-bg-head.png") 0 0 no-repeat #424242;
@@ -43,7 +64,7 @@
 			margin: 0;
 		}
 		
-		#deed-head span {
+		#deed-head span, #deed-foot span {
 			display: none;
 		}	
 		
@@ -54,6 +75,18 @@
 			left: 0;
 			width: 750px;
 			height: 80px;
+		}
+		
+		.pd #cc-link {
+			display: block;
+			position: absolute;
+			top: 40px;
+			height: 35px;
+			width: 200px;
+		}
+		.pd #cc-link a {
+			height: 35px;
+			width: 200px;
 		}
 
 		.red #deed-head {
@@ -68,6 +101,23 @@
 			background: url("/images/deed/deed-head-green.png") 0 0 no-repeat;
 		}
 		
+		.pd #deed-head {
+			background: url("/images/deed/deed-head-tan.png") 0 -34px no-repeat;
+			-webkit-border-top-left-radius: 5px;
+			-webkit-border-top-right-radius: 5px;
+			-moz-border-radius-topleft: 5px;
+			-moz-border-radius-topright: 5px;
+			height: 100px;
+		}
+		
+		.pd-grey #deed-head {
+			background: url("/images/deed/deed-head-grey.png") 0 0px no-repeat;
+		}
+		
+		.pd-green #deed-head {
+			background: url("/images/deed/deed-head-apple.png") 0 0px no-repeat;
+		}
+		
 		#deed-main {
 			background-color: #fff;
 			
@@ -80,6 +130,10 @@
 			text-align: left;
 			
 			border-bottom: 1px solid #505050;
+		}
+		
+		.pd #deed-main {
+			border-color: #bbc0ab;
 		}
 		
 		#deed-main-content {
@@ -100,6 +154,27 @@
 			font-size: 1.46em;
 			padding-top: 100px;
 		}
+		
+		.pd #deed-license {
+			position: relative;
+			height: 100px;
+		}
+		
+		.pd #deed-license h2 {
+			position: absolute;
+			bottom: 20px;
+			color: #333;
+/*			padding-top: 90px;*/
+/*			padding-top: 50px;*/
+			font-size: 2em;
+/*			font-size: 300%;*/
+			text-shadow: 0 1px 0 #fff;
+			line-height: 1.2;
+			margin: 0;
+			padding: 0;
+			width: 100%;
+		}
+		
 		#deed-main img {
 			float: right;
 			border: 1px solid #888;
@@ -108,8 +183,8 @@
 		
 		#deed-rights {
 			background:  url("/images/deed/freedoms-header.png") 0 0 no-repeat;
-			padding: 0 10px;
-			margin-bottom: 20px;
+			padding: 0;
+			margin-bottom: 30px;
 		}
 		
 		#deed-conditions {
@@ -139,8 +214,8 @@
 		    padding-bottom:0px;
 		}
 		#deed-understanding-zero {
-			padding: 0 10px;
-			margin-top: 0px;
+/*			padding: 0 10px;*/
+			margin-top: -20px;
 			margin-bottom: 0px;
 		}
 		#deed-understanding ul, #deed-understanding-zero ul {
@@ -174,6 +249,12 @@
 			font-weight: bold;
 		}
 		
+		#deed-main a.inline-help {
+			text-decoration: none;
+			font-weight: inherit;
+			border-bottom: 1px dashed #333;
+		}
+		
 		#deed-foot {
 			width: 750px;
 			padding: 10px 0;
@@ -196,6 +277,10 @@
 			text-decoration: underline;
 		}
 		
+		.pd a {
+			color: #4A4902;
+		}
+		
 		.red #deed-foot {
 			background: url("/images/deed/deed-foot-red.png") 0 0;
 		}
@@ -206,6 +291,19 @@
 		
 		.green #deed-foot {
 			background: url("/images/deed/deed-foot-green.png") 0 0;
+		}
+		
+		.pd #deed-foot {
+			height: 70px;
+			background: url('/images/deed/deed-foot-tag.png') 0 0 no-repeat;
+		}
+		
+		.pd-grey #deed-foot {
+			background: url('/images/deed/deed-foot-grey.png') 0 0 no-repeat;
+		}
+		
+		.pd-green #deed-foot {
+			background: url('/images/deed/deed-foot-apple.png') 0 0 no-repeat;
 		}
 		
 		#disclaimer {
@@ -230,6 +328,11 @@
 			padding-left: 70px;
 			padding-top: 10px;
 		}
+		
+		li.license ul.license-properties {
+			padding-left: 0;
+		}
+		
 		li.license p {
 			margin: 0;
 			padding: 0;
@@ -288,12 +391,29 @@
                                         background: url("/images/deed/src.png") 0 0 no-repeat;
                 }
                 li.nolaw {
-                                        background: url("/images/deed/nolaw.png") 0 0 no-repeat;
+                                        background: url("/images/deed/nolaw.png") 0 8px no-repeat;
                 }
+					 li ul li.nolaw {
+						background: url("/images/deed/nolaw-small.png") 0 8px no-repeat;
+						padding-left: 32px;
+					}
                 li.scnorms{
                                         background: url("/images/deed/scnorms.png") 0 0 no-repeat;
                 }
-		
+				  li.norms {
+								background: url("/images/deed/norms.png") 0 0 no-repeat;
+								margin-bottom: 25px;
+					}
+					li ul li.norms {
+						background: url("/images/deed/norms-small.png") 0 6px no-repeat;
+						padding-left: 32px;
+						margin-bottom: 0;
+					}
+					
+					li.publicdomain {
+					   background: url("/images/deed/noc.png") 0 3px no-repeat;
+					}
+					
 		li a {
 			color: #0000ff;
 			text-decoration: none;
@@ -358,7 +478,7 @@ div.bd p {
    height: 1.9em;
 }
 
-#attribution_help img {
+#attribution_help img, #citation_help img {
    border: 0;
    margin: 0;
    float: none;
