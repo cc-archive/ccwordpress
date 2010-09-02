@@ -45,7 +45,11 @@
 		
 		
 		#deed {
-			background: url("/images/deed/deed-bg-head.png") 0 0 no-repeat #424242;
+			background: #424242;
+			-webkit-border-top-left-radius: 10px;
+			-webkit-border-top-right-radius: 10px;
+			-moz-border-radius-topleft: 10px;
+			-moz-border-radius-topright: 10px;
 			width: 768px;
 			padding: 10px 0;
 			color: #333;
@@ -202,7 +206,8 @@
 		}
 		
 		#deed-understanding {
-			padding: 0 10px;
+			padding: 0px 10px;
+		        padding-left: 70px;
 			margin-top: 0px;
 			margin-bottom: 33px;
 			background:  url("/images/deed/understanding-header.png") 0 0 no-repeat;
@@ -256,14 +261,19 @@
 		}
 		
 		#deed-foot {
+			position: relative;
 			width: 750px;
 			padding: 10px 0;
-			padding-bottom: 20px;
 			margin: 0 auto;
 			color: #fff;
 			text-align: left;
-			border-top: 1px solid #555;
+			overflow-y: auto;
 		}
+		
+		.pd #deed-foot {
+			color: #333;
+		}
+		
 		#deed-foot p {
 			margin: 0 20px;
 			padding: 0;
@@ -317,7 +327,7 @@
 			margin-bottom: 8px;
 		}
 		ul.license-properties {
-		    width: 490px;
+		    width: 550px;
 		    list-style-image: none;
 		    list-style-position: outside;
 		    list-style-type: none;
@@ -437,8 +447,9 @@
 
 		h3 {
 			padding-top: 10px;
+			padding-left: 10px;
 			margin-top:  1.75em;
-			margin-bottom:  0.7em;
+			margin-bottom:  1.25em;
 		}
 
 		#libre {
@@ -616,8 +627,9 @@ div#languages {
 	text-align: center;
 	overflow: auto;
 	background-color: #373737;
-	padding: 1em;
-	-moz-border-radius: 4px;
+	padding: 0.5em;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
 	font-size: 0.9em;
 }
 
