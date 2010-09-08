@@ -33,7 +33,7 @@
           </div>
 	  -->
           <div id="alpha" class="content-box">
-            <a href='/weblog'><h4>Labs News</h4></a>
+            <h4>Labs News</h4>
 <?php 
   while (have_posts()) { 
     the_post(); 
