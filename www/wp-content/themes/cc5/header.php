@@ -41,7 +41,7 @@
   <?php if (is_home() || ($category_name == "weblog")) { ?>
   <link rel="alternate" type="application/rss+xml" title="RSS 2.0" href="<?php bloginfo('home')?>/weblog/rss" />
   <?php } else if (is_category()) { ?>
-  <link rel="alternate" type="application/rss+xml" title="RSS 2.0" href="<?php echo get_settings('home') . "/" . $category_name; ?>/feed/rss" />
+  <link rel="alternate" type="application/rss+xml" title="RSS 2.0" href="<?php echo get_settings('home') . "/category/" . $category_name; ?>/feed/rss" />
   <?php } ?>
   	
 	<meta name="generator" content="WordPress <?php bloginfo('version'); ?>" />
