@@ -1,3 +1,21 @@
+/* For hiding the regular Donate option and replacing with Superhero */
+#network { visibility: hidden; }
+#superhero {
+  position: absolute;
+	z-index: 1000;
+	left: 315px;
+	top: 229px;
+	width: 327px;
+	height: 122px;
+/*	background:url(/images/support/2010/speech-bubble-home.png) no-repeat transparent;
+*/}
+
+#superheroCard {
+  width: 327px;
+  display: inline-block;
+  text-align: center;
+}
+
 /* Catalyst Grants Landing page */
 #catalyst-options { width: 550px; margin: 25px auto; overflow-y: auto;} 
 #catalyst-options h3 { margin-top: 0; margin-bottom: 1em; } 
@@ -134,7 +152,7 @@ height: 20px;
 padding: 0; 
 background: #fff;
 border:1px solid #929292;
--moz-border-radius: 4px;
+-moz-border-radius: 5px;
 -webkit-border-radius: 5px;
 -webkit-box-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
 }
@@ -168,8 +186,9 @@ top: 1px;
 left: 1px;
 height: 18px;
 margin: 0; 
-background-color: #a3aaa3;
-background: url('/images/support/catalyst-progress.png') 0 -3px;
+background: #ed1c24;
+background: -webkit-gradient(linear, left top, left bottom, from(#ed1c24), to(#b2151b));
+background: -moz-linear-gradient(center top, #ed1c24, #b2151b);
 -moz-border-radius: 4px;
 -webkit-border-radius: 4px;
 -moz-box-shadow: 1px 0 3px rgba(64, 64, 64, 0.45);
