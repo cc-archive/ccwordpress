@@ -55,6 +55,7 @@ d.write('<sc'+'ript src="'+
 <!-- End of Google Website Optimizer Control Script -->
 	
   <?php wp_head(); ?>
+	<script type="text/javascript">$ = jQuery.noConflict();</script>
 </head>
 
 <body class="yui-skin-sam">
