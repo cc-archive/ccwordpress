@@ -26,12 +26,14 @@
   <?php } else { ?>  
   <title><?php wp_title(''); ?> - Creative Commons</title>
   <?php }?>
-	
+
+<?php /*  Not using any YUI stuff afaik - alex
 	<link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/2.5.2/build/container/assets/skins/sam/container.css" /> 
   <script type="text/javascript" src="http://yui.yahooapis.com/2.5.2/build/yahoo-dom-event/yahoo-dom-event.js"></script> 
   <script type="text/javascript" src="http://yui.yahooapis.com/2.5.2/build/animation/animation-min.js"></script> 
   <script type="text/javascript" src="http://yui.yahooapis.com/2.5.2/build/container/container-min.js"></script> 
-  	
+ */ ?>
+
 	<link href="<?php bloginfo('stylesheet_directory'); ?>/style.css?20091109" rel="stylesheet" type="text/css" />
 	<link href="<?php bloginfo('stylesheet_directory'); ?>/print.css" rel="stylesheet" media="print" type="text/css" />
 
@@ -58,8 +60,8 @@
 
   <?php wp_head(); ?>
 
+	<script type="text/javascript">$ = jQuery.noConflict();</script>
   <?php if (is_page()) { ?>
-<script type="text/javascript">$ = jQuery.noConflict();</script>
 <script src="/includes/jquery/jquery.carousel.min.js" type="text/javascript"></script>
   <?php } ?>
 </head>
