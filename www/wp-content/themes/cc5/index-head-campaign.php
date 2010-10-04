@@ -5,7 +5,7 @@
 	</div>
 	<div id="superhero">
 		<div id="superheroCard">
-			<a href="https://creativecommons.net/superheroes/robin-sloan"><img src="/images/support/2010/superheroes/superhero-home-robin.png" alt="Robin Sloan" border="0"/></a>
+			<a href="https://creativecommons.net/superheroes/neeru-khosla/"><img src="/images/support/2010/superheroes/superhero-home-neeru.png" alt="Neeru Khosla" border="0"/></a>
 		</div>
 	</div>
 </div>
