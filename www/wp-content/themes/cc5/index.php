@@ -90,8 +90,8 @@ d.write('<sc'+'ript src="'+
 	          <p><a href="http://search.creativecommons.org/">Find <strong>licensed</strong> works you can share, remix, or&nbsp;reuse.</a></p>
 	        </div>
 			<div class="stdColumn ccTool nohelpLink" id="network">
-	          <h2 class="join"><a href="https://support.creativecommons.org/donate?utm_source=ccorg&utm_medium=homepage&utm_campaign=fall2009">Donate &raquo;</a></h2>
-			  <p><a href="https://support.creativecommons.org/donate?utm_source=ccorg&utm_medium=homepage&utm_campaign=fall2009">Invest in the <strong>future</strong> of creativity and knowledge &mdash; <strong>Donate&nbsp;Today!</strong></a></p>
+	          <h2 class="join"><a href="https://creativecommons.net/donate?utm_source=ccorg&utm_medium=homepage&utm_campaign=fall2009">Donate &raquo;</a></h2>
+			  <p><a href="https://creativecommons.net/donate?utm_source=ccorg&utm_medium=homepage&utm_campaign=fall2009">Invest in the <strong>future</strong> of creativity and knowledge &mdash; <strong>Donate&nbsp;Today!</strong></a></p>
 	        </div>
 	        <div class="stdColumn ccTool nohelpLink lastColumn" id="license">
 	          <h2 class="license"><a href="/choose">License &raquo;</a></h2>
@@ -169,17 +169,17 @@ HTML;
         <div id="ccLinks">
           <?php /* Saving this for later. (09/04/23)
           <div id="donateBlock">
-            <a href="http://support.creativecommons.org/">Help Build the Commons<br/><strong>Support CC</strong></a>
+            <a href="http://creativecommons.net/">Help Build the Commons<br/><strong>Support CC</strong></a>
           </div>
           */ ?>
-		  <p style="text-align: center;"><a href="http://support.creativecommons.org/store"><img src="<?php bloginfo('stylesheet_directory'); ?>/images/store-btn.png" alt="store" border="0" /></a></p>
+		  <p style="text-align: center;"><a href="http://creativecommons.net/store"><img src="<?php bloginfo('stylesheet_directory'); ?>/images/store-btn.png" alt="store" border="0" /></a></p>
 		  <div class="infoLinks">
             <h4 class="titleStrip subTitle">Information</h4>
             <ul class="ccContent">
 				<li><a href="/about/licenses/">The Licenses</a></li>
 				<li><a href="http://wiki.creativecommons.org/Newsletter">Newsletter</a></li>
 				<li><a href="/about/events">Events</a></li>
-				<li><a href="https://support.creativecommons.org/supporters">Supporters</a></li>
+				<li><a href="https://creativecommons.net/supporters">Supporters</a></li>
 				<li><a href="/about/opportunities">Jobs</a></li>
 				<li><a href="http://wiki.creativecommons.org/Developers">Developers</a></li>
 			</ul>
@@ -230,7 +230,7 @@ HTML;
  */ ?>
 	  </div>	
     </div>
-
+ </div>
 <?php 
 $extra_footer = <<<SCRIPT
 <!-- Google Website Optimizer Tracking Script -->
