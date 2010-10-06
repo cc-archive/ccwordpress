@@ -37,13 +37,13 @@
 
 	<!-- Google Website Optimizer tracking code -->
 	<script>
-		_udn = ".creativecommons.org"; 
+		_udn = "none"; 
 		_ulink = "1";
 		_uhash = "off";	</script>
 <!-- Google Website Optimizer Control Script -->
 <script>
 function utmx_section(){}function utmx(){}
-(function(){var k='0661056067',d=document,l=d.location,c=d.cookie;function f(n){
+(function(){var k='4106174143',d=document,l=d.location,c=d.cookie;function f(n){
 if(c){var i=c.indexOf(n+'=');if(i>-1){var j=c.indexOf(';',i);return c.substring(i+n.
 length+1,j<0?c.length:j)}}}var x=f('__utmx'),xx=f('__utmxx'),h=l.hash;
 d.write('<sc'+'ript src="'+
@@ -239,14 +239,15 @@ if(typeof(_gat)!='object')document.write('<sc'+'ript src="http'+
 (document.location.protocol=='https:'?'s://ssl':'://www')+
 '.google-analytics.com/ga.js"></sc'+'ript>')</script>
 <script type="text/javascript">
-try {
-var gwoTracker=_gat._getTracker("UA-9998295-1");
-gwoTracker._setDomainName(".creativecommons.org");
-gwoTracker._trackPageview("/0661056067/test");
-}catch(err){}</script>
-<!-- End of Google Website Optimizer Tracking Script -->
+ try {
+		 var gwoTracker=_gat._getTracker("UA-9998295-1");
+		 gwoTracker._setDomainName("none");
+		 gwoTracker._setAllowLinker(true);
+		 gwoTracker._trackPageview("/4106174143/test");
+ }catch(err){}</script>
+		 <!-- End of Google Website Optimizer Tracking Script -->
 
-<script type="text/javascript" src="/wp-content/themes/cc5/heatmap.js"></script>
+
 SCRIPT;
 			  include "footer.php";
 			  /*get_footer();*/ ?>
