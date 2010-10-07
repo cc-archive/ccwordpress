@@ -106,7 +106,6 @@
 		}
 		
 		.pd #deed-head {
-			background: url("/images/deed/deed-head-tan.png") 0 -34px no-repeat;
 			-webkit-border-top-left-radius: 5px;
 			-webkit-border-top-right-radius: 5px;
 			-moz-border-radius-topleft: 5px;
@@ -116,10 +115,6 @@
 		
 		.pd-grey #deed-head {
 			background: url("/images/deed/deed-head-grey.png") 0 0px no-repeat;
-		}
-		
-		.pd-green #deed-head {
-			background: url("/images/deed/deed-head-apple.png") 0 0px no-repeat;
 		}
 		
 		#deed-main {
@@ -193,7 +188,7 @@
 		
 		#deed-conditions {
 			background:  url("/images/deed/limitations-header.png") 0 0 no-repeat;
-			padding: 0 10px;
+			padding: 0;
 			margin-bottom: 20px;
 		}
 
@@ -206,13 +201,22 @@
 		}
 		
 		#deed-understanding {
-			padding: 0px 10px;
-		        padding-left: 70px;
+			padding: 0;
 			margin-top: 0px;
 			margin-bottom: 33px;
 			background:  url("/images/deed/understanding-header.png") 0 0 no-repeat;
 
 		}
+    
+    .pd #deed-understanding {
+        padding-left: 10px;
+    }
+    .pd #deed-understanding ul {
+        padding-left: 0;
+    }
+    .pd #deed-understanding ul ul {
+        margin-left: 100px;
+    }
 
 		#deed-understanding li.license {
 		    padding-left:0px;
@@ -267,11 +271,11 @@
 			margin: 0 auto;
 			color: #fff;
 			text-align: left;
-			overflow-y: auto;
 		}
 		
 		.pd #deed-foot {
 			color: #333;
+                        overflow-y: inherit;
 		}
 		
 		#deed-foot p {
@@ -305,15 +309,10 @@
 		
 		.pd #deed-foot {
 			height: 70px;
-			background: url('/images/deed/deed-foot-tag.png') 0 0 no-repeat;
 		}
 		
 		.pd-grey #deed-foot {
 			background: url('/images/deed/deed-foot-grey.png') 0 0 no-repeat;
-		}
-		
-		.pd-green #deed-foot {
-			background: url('/images/deed/deed-foot-apple.png') 0 0 no-repeat;
 		}
 		
 		#disclaimer {
@@ -495,6 +494,25 @@ div.bd p {
    float: none;
 }
 
+#work-details-block div {
+   margin-top: 0px;
+   padding-top:15px;
+   padding-bottom: 0px;
+   border-top: 1px solid #ddd;
+}
+
+#work-details-block div ul {
+   list-style: none;
+}
+
+#work-details-item-title {
+    display: inline-block;
+    width: 6em;
+    text-align: right;
+    margin-right: 0.5em;
+}
+
+
 /* This is for the GNU/GPL license: list must start at 0 and the attribute start='0' is not allowed in xhtml*/
 ol.gpl { counter-reset: item -1}
 li.gpl { list-style: none;}
@@ -619,7 +637,7 @@ div#campaign div a#sticker-link:hover {
 
 /* Language translations box */
 div#languages {
-	width: 620px; 
+	width: 90%; 
 	margin-left: auto; 
 	margin-right: auto; 
 	margin-bottom: 1.5em;
