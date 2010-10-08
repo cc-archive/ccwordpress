@@ -406,15 +406,12 @@
 						background: url("/images/deed/nolaw-small.png") 0 8px no-repeat;
 						padding-left: 32px;
 					}
-                li.scnorms{
-                                        background: url("/images/deed/scnorms.png") 0 0 no-repeat;
-                }
-				  li.norms {
-								background: url("/images/deed/norms.png") 0 0 no-repeat;
+				  li.usage-guidelines {
+								background: url("/images/deed/usage-guidelines.png") 0 0 no-repeat;
 								margin-bottom: 25px;
 					}
-					li ul li.norms {
-						background: url("/images/deed/norms-small.png") 0 6px no-repeat;
+					li ul li.usage-guidelines {
+						background: url("/images/deed/usage-guidelines-small.png") 0 6px no-repeat;
 						padding-left: 32px;
 						margin-bottom: 0;
 					}
