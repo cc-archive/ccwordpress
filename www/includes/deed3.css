@@ -6,7 +6,7 @@
 /* Main CSS Continues */
 		body {
 			background-color: #2d2d2d;
-			font: 12px/16px arial, verdana, sans-serif;
+			font: 13px/16px arial, verdana, sans-serif;
 			text-align: center;
 			color: #ccc;
 			margin: 0;
@@ -14,7 +14,7 @@
 		}
 		
 		h3 {
-			font-size: 1.45em;
+			font-size: 1.25em;
 		}
 		
 		#cc-logo { display: none; }
@@ -23,8 +23,33 @@
 
 		}
 		
+		.mockup-badge {
+			position: fixed;
+			background-color: #eee;
+			color: #060606;
+			padding: 0 1em;
+			top: 0;
+			opacity: 0.50;
+			font-size: 70%;
+		}
+		.left { 
+			left: 0;
+			-webkit-border-bottom-right-radius: 10px;
+			-moz-border-radius-bottomright: 10px;
+		}
+		.right { 
+			right: 0;
+			-webkit-border-bottom-left-radius: 10px;
+			-moz-border-radius-bottomleft: 10px;
+		}
+		
+		
 		#deed {
-			background: url("/images/deed/deed-bg-head.png") 0 0 no-repeat #424242;
+			background: #424242;
+			-webkit-border-top-left-radius: 10px;
+			-webkit-border-top-right-radius: 10px;
+			-moz-border-radius-topleft: 10px;
+			-moz-border-radius-topright: 10px;
 			width: 768px;
 			padding: 10px 0;
 			color: #333;
@@ -43,7 +68,7 @@
 			margin: 0;
 		}
 		
-		#deed-head span {
+		#deed-head span, #deed-foot span {
 			display: none;
 		}	
 		
@@ -54,6 +79,18 @@
 			left: 0;
 			width: 750px;
 			height: 80px;
+		}
+		
+		.pd #cc-link {
+			display: block;
+			position: absolute;
+			top: 40px;
+			height: 35px;
+			width: 200px;
+		}
+		.pd #cc-link a {
+			height: 35px;
+			width: 200px;
 		}
 
 		.red #deed-head {
@@ -68,6 +105,18 @@
 			background: url("/images/deed/deed-head-green.png") 0 0 no-repeat;
 		}
 		
+		.pd #deed-head {
+			-webkit-border-top-left-radius: 5px;
+			-webkit-border-top-right-radius: 5px;
+			-moz-border-radius-topleft: 5px;
+			-moz-border-radius-topright: 5px;
+			height: 100px;
+		}
+		
+		.pd-grey #deed-head {
+			background: url("/images/deed/deed-head-grey.png") 0 0px no-repeat;
+		}
+		
 		#deed-main {
 			background-color: #fff;
 			
@@ -80,6 +129,10 @@
 			text-align: left;
 			
 			border-bottom: 1px solid #505050;
+		}
+		
+		.pd #deed-main {
+			border-color: #bbc0ab;
 		}
 		
 		#deed-main-content {
@@ -100,6 +153,27 @@
 			font-size: 1.46em;
 			padding-top: 100px;
 		}
+		
+		.pd #deed-license {
+			position: relative;
+			height: 100px;
+		}
+		
+		.pd #deed-license h2 {
+			position: absolute;
+			bottom: 20px;
+			color: #333;
+/*			padding-top: 90px;*/
+/*			padding-top: 50px;*/
+			font-size: 2em;
+/*			font-size: 300%;*/
+			text-shadow: 0 1px 0 #fff;
+			line-height: 1.2;
+			margin: 0;
+			padding: 0;
+			width: 100%;
+		}
+		
 		#deed-main img {
 			float: right;
 			border: 1px solid #888;
@@ -108,13 +182,13 @@
 		
 		#deed-rights {
 			background:  url("/images/deed/freedoms-header.png") 0 0 no-repeat;
-			padding: 0 10px;
-			margin-bottom: 20px;
+			padding: 0;
+			margin-bottom: 30px;
 		}
 		
 		#deed-conditions {
 			background:  url("/images/deed/limitations-header.png") 0 0 no-repeat;
-			padding: 0 10px;
+			padding: 0;
 			margin-bottom: 20px;
 		}
 
@@ -127,20 +201,30 @@
 		}
 		
 		#deed-understanding {
-			padding: 0 10px;
+			padding: 0;
 			margin-top: 0px;
 			margin-bottom: 33px;
 			background:  url("/images/deed/understanding-header.png") 0 0 no-repeat;
 
 		}
+    
+    .pd #deed-understanding {
+        padding-left: 10px;
+    }
+    .pd #deed-understanding ul {
+        padding-left: 0;
+    }
+    .pd #deed-understanding ul ul {
+        margin-left: 100px;
+    }
 
 		#deed-understanding li.license {
 		    padding-left:0px;
 		    padding-bottom:0px;
 		}
 		#deed-understanding-zero {
-			padding: 0 10px;
-			margin-top: 0px;
+/*			padding: 0 10px;*/
+			margin-top: -20px;
 			margin-bottom: 0px;
 		}
 		#deed-understanding ul, #deed-understanding-zero ul {
@@ -174,15 +258,26 @@
 			font-weight: bold;
 		}
 		
+		#deed-main a.inline-help {
+			text-decoration: none;
+			font-weight: inherit;
+			border-bottom: 1px dashed #333;
+		}
+		
 		#deed-foot {
+			position: relative;
 			width: 750px;
 			padding: 10px 0;
-			padding-bottom: 20px;
 			margin: 0 auto;
 			color: #fff;
 			text-align: left;
-			border-top: 1px solid #555;
 		}
+		
+		.pd #deed-foot {
+			color: #333;
+                        overflow-y: inherit;
+		}
+		
 		#deed-foot p {
 			margin: 0 20px;
 			padding: 0;
@@ -194,6 +289,10 @@
 		}
 		a:hover {
 			text-decoration: underline;
+		}
+		
+		.pd a {
+			color: #4A4902;
 		}
 		
 		.red #deed-foot {
@@ -208,6 +307,14 @@
 			background: url("/images/deed/deed-foot-green.png") 0 0;
 		}
 		
+		.pd #deed-foot {
+			height: 70px;
+		}
+		
+		.pd-grey #deed-foot {
+			background: url('/images/deed/deed-foot-grey.png') 0 0 no-repeat;
+		}
+		
 		#disclaimer {
 			float: right;
 			padding-right: 15px;
@@ -219,7 +326,7 @@
 			margin-bottom: 8px;
 		}
 		ul.license-properties {
-		    width: 490px;
+		    width: 550px;
 		    list-style-image: none;
 		    list-style-position: outside;
 		    list-style-type: none;
@@ -230,6 +337,11 @@
 			padding-left: 70px;
 			padding-top: 10px;
 		}
+		
+		li.license ul.license-properties {
+			padding-left: 0;
+		}
+		
 		li.license p {
 			margin: 0;
 			padding: 0;
@@ -288,12 +400,29 @@
                                         background: url("/images/deed/src.png") 0 0 no-repeat;
                 }
                 li.nolaw {
-                                        background: url("/images/deed/nolaw.png") 0 0 no-repeat;
+                                        background: url("/images/deed/nolaw.png") 0 8px no-repeat;
                 }
+					 li ul li.nolaw {
+						background: url("/images/deed/nolaw-small.png") 0 8px no-repeat;
+						padding-left: 32px;
+					}
                 li.scnorms{
                                         background: url("/images/deed/scnorms.png") 0 0 no-repeat;
                 }
-		
+				  li.norms {
+								background: url("/images/deed/norms.png") 0 0 no-repeat;
+								margin-bottom: 25px;
+					}
+					li ul li.norms {
+						background: url("/images/deed/norms-small.png") 0 6px no-repeat;
+						padding-left: 32px;
+						margin-bottom: 0;
+					}
+					
+					li.publicdomain {
+					   background: url("/images/deed/noc.png") 0 3px no-repeat;
+					}
+					
 		li a {
 			color: #0000ff;
 			text-decoration: none;
@@ -317,8 +446,9 @@
 
 		h3 {
 			padding-top: 10px;
+			padding-left: 10px;
 			margin-top:  1.75em;
-			margin-bottom:  0.7em;
+			margin-bottom:  1.25em;
 		}
 
 		#libre {
@@ -358,11 +488,30 @@ div.bd p {
    height: 1.9em;
 }
 
-#attribution_help img {
+#attribution_help img, #citation_help img {
    border: 0;
    margin: 0;
    float: none;
 }
+
+#work-details-block div {
+   margin-top: 0px;
+   padding-top:15px;
+   padding-bottom: 0px;
+   border-top: 1px solid #ddd;
+}
+
+#work-details-block div ul {
+   list-style: none;
+}
+
+#work-details-item-title {
+    display: inline-block;
+    width: 6em;
+    text-align: right;
+    margin-right: 0.5em;
+}
+
 
 /* This is for the GNU/GPL license: list must start at 0 and the attribute start='0' is not allowed in xhtml*/
 ol.gpl { counter-reset: item -1}
@@ -488,7 +637,7 @@ div#campaign div a#sticker-link:hover {
 
 /* Language translations box */
 div#languages {
-	width: 620px; 
+	width: 90%; 
 	margin-left: auto; 
 	margin-right: auto; 
 	margin-bottom: 1.5em;
@@ -496,8 +645,9 @@ div#languages {
 	text-align: center;
 	overflow: auto;
 	background-color: #373737;
-	padding: 1em;
-	-moz-border-radius: 4px;
+	padding: 0.5em;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
 	font-size: 0.9em;
 }
 

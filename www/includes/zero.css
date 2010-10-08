@@ -142,3 +142,15 @@ div.error {
 h1 {
     font-family: sans-serif;
 }
+
+.form-section {
+    margin-bottom: 7px;
+}
+
+.form-section h3 {
+    margin-left: 30px;
+}
+
+.form-field-description {
+    font-style: italic;
+}
