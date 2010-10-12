@@ -21,13 +21,13 @@
   <script type="text/javascript" src="http://yui.yahooapis.com/2.6.0/build/container/container-min.js"></script> 
   <script type="text/javascript" src="http://yui.yahooapis.com/2.6.0/build/cookie/cookie-min.js"></script> 
  */ ?>
-	<link href="<?php bloginfo('stylesheet_directory'); ?>/index.css?20091007" rel="stylesheet" type="text/css" />
-    <link href="<?php bloginfo('stylesheet_directory'); ?>/support.css?20091104" rel="stylesheet" type="text/css" /> 
+	<link href="<?php bloginfo('stylesheet_directory'); ?>/index.css?20101012" rel="stylesheet" type="text/css" />
+    <link href="<?php bloginfo('stylesheet_directory'); ?>/support.css?20101012" rel="stylesheet" type="text/css" /> 
  	<link href="/includes/total.css" rel="stylesheet" type="text/css" />
 
 	<!--[if IE 6]><link rel="stylesheet" type="text/css" media="screen" href="<?php bloginfo('stylesheet_directory'); ?>/style-ie.css" /><![endif]-->
 
-	<script type="text/javascript" charset="utf-8" src="<?php bloginfo('stylesheet_directory'); ?>/site.js"></script>
+	<script type="text/javascript" charset="utf-8" src="<?php bloginfo('stylesheet_directory'); ?>/site.js?20101012"></script>
 		
 	<link rel="alternate" type="application/rss+xml" title="RSS 2.0" href="<?php bloginfo('home')?>/weblog/rss" />
 	

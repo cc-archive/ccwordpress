@@ -34,11 +34,11 @@
   <script type="text/javascript" src="http://yui.yahooapis.com/2.5.2/build/container/container-min.js"></script> 
  */ ?>
 
-	<link href="<?php bloginfo('stylesheet_directory'); ?>/style.css?20091109" rel="stylesheet" type="text/css" />
+	<link href="<?php bloginfo('stylesheet_directory'); ?>/style.css?20101012" rel="stylesheet" type="text/css" />
 	<link href="<?php bloginfo('stylesheet_directory'); ?>/print.css" rel="stylesheet" media="print" type="text/css" />
 
-	<link href="<?php bloginfo('stylesheet_directory'); ?>/support.css?5.1" rel="stylesheet" type="text/css" />
-	<script type="text/javascript" charset="utf-8" src="<?php bloginfo('stylesheet_directory'); ?>/site.js"></script>
+	<link href="<?php bloginfo('stylesheet_directory'); ?>/support.css?20101012" rel="stylesheet" type="text/css" />
+	<script type="text/javascript" charset="utf-8" src="<?php bloginfo('stylesheet_directory'); ?>/site.js?20101012"></script>
 	
   <?php if (is_home() || ($category_name == "weblog")) { ?>
   <link rel="alternate" type="application/rss+xml" title="RSS 2.0" href="<?php bloginfo('home')?>/weblog/rss" />
