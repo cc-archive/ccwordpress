@@ -180,10 +180,11 @@ ul.presskit {
 	margin-left: 0;
 }
 ul.presskit li {
-	float: left;
+  display: inline-block;
+  vertical-align: top;  
 	width: 7em;
 	padding: 0.3em 0.7em;
-	margin: 0 0.4em;
+	margin: 0 0.4em 0 0;
 	margin-bottom: 0.8em;
 	border:1px solid #e0e0e0;
 	text-align: center;
