@@ -34,7 +34,7 @@
   <script type="text/javascript" src="http://yui.yahooapis.com/2.5.2/build/container/container-min.js"></script> 
  */ ?>
 
-	<link href="<?php bloginfo('stylesheet_directory'); ?>/style.css?20101012" rel="stylesheet" type="text/css" />
+	<link href="<?php bloginfo('stylesheet_directory'); ?>/style.css?20101013" rel="stylesheet" type="text/css" />
 	<link href="<?php bloginfo('stylesheet_directory'); ?>/print.css" rel="stylesheet" media="print" type="text/css" />
 
 	<link href="<?php bloginfo('stylesheet_directory'); ?>/support.css?20101012" rel="stylesheet" type="text/css" />
