@@ -21,7 +21,7 @@ $i = rand(0, count($hero));
 	</div>
 	<div id="superhero">
 		<div id="superheroCard">
-		<a href="https://creativecommons.net/superheroes/<?= $hero[i][0] ?>/?utm_campaign=superhero&utm_source=ccorg&utm_medium=<?= $hero[i][1] ?>"><img src="/images/support/2010/superheroes/superhero-home-<?= $hero[i][1] ?>.png" alt="<?= $hero[i][0] ?>" border="0"/></a>
+		<a href="https://creativecommons.net/superheroes/<?= $hero[$i][0] ?>/?utm_campaign=superhero&utm_source=ccorg&utm_medium=<?= $hero[$i][1] ?>"><img src="/images/support/2010/superheroes/superhero-home-<?= $hero[$i][1] ?>.png" alt="<?= $hero[$i][0] ?>" border="0"/></a>
 		</div>
 	</div>
 </div>
