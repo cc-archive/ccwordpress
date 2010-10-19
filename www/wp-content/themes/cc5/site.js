@@ -3,19 +3,20 @@ function bannerHtml() {
     banner[0][0] = "&utm_medium=sbanner_1"; banner[0][1] = "Help the world harness the power of Creative Commons.";
     banner[1][0] = "&utm_medium=sbanner_2"; banner[1][1] = "Help the world harness the amazing strength of Creative Commons!";
     banner[2][0] = "&utm_medium=sbanner_3"; banner[2][1] = "Creative Commons, saving the world from failed sharing!";
-    return banner;
+    banner[3][0] = "&utm_medium=sbanner_3"; banner[3][1] = "Creative Commons is a nonprofit organization. We need your support, donate today!";
+
+	return banner;
 }
 function thundercats() {
     if ((location.href.match(/http\:(.*)?creativecommons.org\/$/) && !location.href.match(/pport.creativecommons.org\/$/)) || location.href.match(/creativecommons.org\/donate/)) return;
 
-    var i = Math.floor(Math.random() * 3);
-    var i = 1;
+    var i = Math.floor(Math.random() * 4);
     var banners = bannerHtml();
 
     var d = document.createElement("div");
     var mainContent = document.getElementById("globalWrapper");
     d.setAttribute('style', 'font-size: 22px; font-family: "helvetica neue", arial, sans-serif; line-height:1; text-shadow: 0 1px 0 rgba(255, 255, 255, 0.4); color: #ffff00; padding: 7px 0 2px 0; border-bottom: 1px solid rgb(120, 159, 44); margin-top: -1px; background: #c5deed; background:-webkit-gradient(linear, left top, left bottom, from(#c6e1f2), to(#84bddf)); background:-moz-linear-gradient(center top, #c5deed, #91b6cd); z-index:1000;');
-    d.innerHTML = '<a href="https://creativecommons.net/donate?utm_campaign=superhero&utm_source=deed' + banners[i][0] + '" style="color:#000; text-decoration:none;"><img src="https://creativecommons.net/sites/default/themes/cc/images/superhero/supercc-banner.png" style="vertical-align:middle; padding-right: 10px;" border="0"/> <strong><span style="">' + banners[i][1] + '</span></strong> &mdash; <em style="color:#c01100;">Donate Now</em></a>';
+    d.innerHTML = '<a href="https://creativecommons.net/donate?utm_campaign=superhero&utm_source=ccorg' + banners[i][0] + '" style="color:#000; text-decoration:none;"><img src="https://creativecommons.net/sites/default/themes/cc/images/superhero/supercc-banner.png" style="vertical-align:middle; padding-right: 10px;" border="0"/> <strong><span style="">' + banners[i][1] + '</span></strong> &mdash; <em style="color:#c01100;">Donate Now</em></a>';
     mainContent.parentNode.insertBefore(d, mainContent);
 }
 
