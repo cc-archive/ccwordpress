@@ -154,3 +154,10 @@ h1 {
 .form-field-description {
     font-style: italic;
 }
+
+.pd-explain-differences {
+    background-color: #f5e8aa;
+    border: 2px #c5b464 solid;
+    margin-bottom: 12px;
+    padding: 8px;
+}
