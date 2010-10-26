@@ -74,6 +74,11 @@ img.mugshot {
         margin-left: 10px;
 }
 
+.aligncenter {
+  display: block;
+  text-align: center;
+}
+
 .subTitle, h4.subTitle a {
 	color: #487100;
 }
