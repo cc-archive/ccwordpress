@@ -7,8 +7,10 @@ $hero[2][0] = "mitchell-baker"; $hero[2][1] = "mitchell";
 $hero[3][0] = "neeru-khosla"; $hero[3][1] = "neeru";
 $hero[4][0] = "gautam-john"; $hero[4][1] = "gautam";
 $hero[5][0] = "andrew-rens"; $hero[5][1] = "andrew";
+$hero[6][0] = "cern"; $hero[6][1] = "cern";
+$hero[7][0] = "delia-browne"; $hero[7][1] = "delia";
 
-$i = rand(0, count($hero));
+$i = rand(0, count($hero)-1);
 
 ?>
 
