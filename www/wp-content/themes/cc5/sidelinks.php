@@ -2,7 +2,7 @@
 <li><a href="/about/licenses/">The Licenses</a></li>
 <li><a href="http://wiki.creativecommons.org/Newsletter">Newsletter</a></li>
 <li><a href="/about/events">Events</a></li>
-<li><a href="https://support.creativecommons.org/supporters">Supporters</a></li>
+<li><a href="https://creativecommons.net/supporters">Supporters</a></li>
 <li><a href="/about/opportunities">Jobs</a></li>
 <li><a href="http://wiki.creativecommons.org/Developers">Developers</a></li>
 <li><a href="http://wiki.creativecommons.org/Case_Studies">Case Studies</a></li>
