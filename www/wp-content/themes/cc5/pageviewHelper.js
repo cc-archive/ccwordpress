@@ -14,11 +14,11 @@ if (typeof(_gat) == "object") {
 	});
 
 
-	jQuery("a[href ^= 'https://support.creativecommons.org']").click(function() { 
+	jQuery("a[href ^= 'https://creativecommons.net']").click(function() { 
 		var pageTracker = _gat._getTracker(analytics);
 		var supportPage = this.href.slice(35);
 
-		pageTracker._trackPageview("/support.creativecommons.org" + supportPage);
+		pageTracker._trackPageview("/creativecommons.net" + supportPage);
 		return true;
 	});
 
@@ -26,13 +26,6 @@ if (typeof(_gat) == "object") {
 	jQuery("a[href ^= 'http://planet.creativecommons.org']").click(function() { 
 		var pageTracker = _gat._getTracker(analytics);
 		pageTracker._trackPageview("/planet.creativecommons.org");
-		return true;
-	});
-
-
-	jQuery("a[href ^= 'http://learn.creativecommons.org']").click(function() { 
-		var pageTracker = _gat._getTracker(analytics);
-		pageTracker._trackPageview("/learn.creativecommons.org");
 		return true;
 	});
 
