@@ -324,6 +324,7 @@
 		#disclaimer {
 			float: right;
 			padding-right: 15px;
+			padding-left: 20px;
 		}
 		li strong {
 			color: #222;
