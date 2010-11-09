@@ -3,12 +3,12 @@ function bannerHtml() {
     banner[0][0] = "&utm_medium=sbanner_1"; banner[0][1] = "Help the world harness the power of Creative Commons.";
     banner[1][0] = "&utm_medium=sbanner_2"; banner[1][1] = "Help the world harness the amazing strength of Creative Commons!";
     banner[2][0] = "&utm_medium=sbanner_3"; banner[2][1] = "Creative Commons, saving the world from failed sharing!";
-    banner[3][0] = "&utm_medium=sbanner_3"; banner[3][1] = "Creative Commons is a nonprofit organization. We need your support, donate today!";
+    banner[3][0] = "&utm_medium=sbanner_4"; banner[3][1] = "Creative Commons is a nonprofit organization. We need your support, donate today!";
 
 	return banner;
 }
 function thundercats() {
-    if ((location.href.match(/http\:(.*)?creativecommons.org\/$/) && !location.href.match(/pport.creativecommons.org\/$/)) || location.href.match(/creativecommons.org\/donate/)) return;
+    if (location.href.match(/http\:(.*)?creativecommons.org\/$/) ) return;
 
     var i = Math.floor(Math.random() * 5);
     var banners = bannerHtml();
@@ -24,6 +24,21 @@ function thundercats() {
 		d.innerHTML = '<div id="campaign" style="vertical-align:middle; color:#111; background:transparent; height: auto;"><div class="progress" style="width: 300px; vertical-align:middle; display:inline-block; margin: 0;" onclick="window.location=\'https://creativecommons.net/donate'+utm+'\'"><div class="inner"><span>&nbsp;</span></div></div> <span style="padding-left:10px; vertical-align:middle;"><span id="campaignRaised">&nbsp;</span> &mdash; <a href="https://creativecommons.net/donate'+utm+'"><em style="color:#c01100">Donate Now</em></a></span></div>';
 		d.style.display = "none";
 		mainContent.parentNode.insertBefore(d, mainContent);
+
+		if (location.href.match(/^http\:(.*)?creativecommons.org\/choose/)) {
+			var c = document.createElement("link");
+			c.setAttribute("type", "text/css");
+			c.setAttribute("rel", "stylesheet");
+			c.setAttribute("href", "/wp-content/themes/cc5/support.css");
+			document.getElementsByTagName("head")[0].appendChild(c);
+			
+			var c = document.createElement("link");
+			c.setAttribute("type", "text/css");
+			c.setAttribute("rel", "stylesheet");
+			c.setAttribute("href", "/includes/total.css");
+			document.getElementsByTagName("head")[0].appendChild(c);
+
+		}
 
 		var r = new XMLHttpRequest();
 		r.open('GET', '/includes/total.txt', true);
