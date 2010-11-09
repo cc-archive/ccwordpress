@@ -33,14 +33,35 @@ $is_international = true;
         	<div id="blocks">
             <div class="block page sideContentSpace">
 
-				<p>Creative Commons works to "port" the core Creative Commons Licenses to different copyright legislations around the world. The porting process involves both linguistically translating the licenses and legally adapting them to particular jurisdictions.</p>
+            <p>This page provides an overview of the Creative Commons Affiliate 
+            Teams and the work they do together with CC to build and support communities 
+            who use CC legal tools.</p>
+ 
+            <p>Affiliate Teams adapt the licenses and other legal tools to the 
+            languages of a jurisdiction and local copyright legislation, if 
+            necessary.  Currently, there are over 50 jurisdictions with official Affiliate 
+            Teams, with several more in process. The Affiliate Teams have a wide range of 
+            responsibilities, including building communities, translating materials and 
+            tools, maintaining resources for CC users, and in general, promoting legal 
+            sharing. They serve as the hub for CC activity in their jurisdictions.</p>
 
-				<p>This work is led by CC General Counsel <a href="http://creativecommons.org/about/people#95">Diane Peters</a> (<a href="mailto:diane@creativecommons.org">email</a>) with Project Manager <a href="http://creativecommons.org/about/people#85">Michelle Thorne</a> (<a href="mailto:michelle@creativecommons.org">email</a>) and volunteer teams in each jurisdiction who are committed to introducing CC to their country and who consult extensively with members of the public and key stakeholders in an effort to adapt the CC licenses to their jurisdiction.</p>
+            <p>If you would like to contribute to a jurisdiction's Affiliate 
+            Team, you'll find contact information for the team by clicking on the flags 
+            below. If you don't see your jurisdiction listed, or wish to contribute to or 
+            comment on CC's international efforts in another way, please email 
+            affiliate-program@creativecmmons.org. Please note that CC has established a 
+            policy against porting of its licenses in jurisdictions prior to the 
+            establishment of a robust, local community outreach program. CC approves such 
+            proposals only after a thorough review of the rationale and need for that 
+            localization.</p>
 
-				<p>A complete overview of the porting process can be found at <a href="http://wiki.creativecommons.org/International_Overview">http://wiki.creativecommons.org/International_Overview</a>.</p>
+            <p>More information about the CC Affiliate Network can be found at 
+            <a href="http://wiki.creativecommons.org/Affiliates">http://wiki.creativecommons.org/Affiliates</a>.
+            </p>
 
               <h3>Completed Licenses</h3>
-              <p>We have completed the process and developed licenses for the following jurisdictions:</p>
+              <p>The CC licensing suite has been adapted in the following jurisdictions:</p>
+
 <?php 
     query_posts("cat=21&orderby=title&order=ASC&posts_per_page=-1");
     if (have_posts())  { ?>
@@ -63,9 +84,9 @@ $is_international = true;
               </div>
               <br clear="all" />
 
-              <h3>Project Jurisdictions</h3>
+              <h3>In Progress Jurisdictions</h3>
 
-              <p>The process of developing licenses and discussing them are still in progress for the following jurisdictions:</p>
+              <p>The process of adapting the licenses is still in progress for the following jurisdictions:</p>
 
               <div class="icontainer">
 <?php rewind_posts(); while (have_posts()) { the_post();
