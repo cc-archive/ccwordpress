@@ -296,6 +296,8 @@ p.cf-sb {
 	text-align:center;
 	background: #F9F1E6;
 }
+.cform input.backbutton,
+.cform input.resetbutton,
 .cform input.sendbutton	{ 
 	width:300px;  
 	padding:4px 2px; 
@@ -308,6 +310,14 @@ p.cf-sb {
 	border:2px solid #663300!important;
 	padding:3px 1px; 
 	background-color:#E8C79B;
+}
+.cform input.resetbutton {
+	width: auto;
+	padding:5px 1em;
+}
+.cform input.backbutton {
+	width: auto;
+	padding:5px 1em;
 }
 
 /*                                                    */
@@ -431,7 +441,11 @@ div.failure {
 	border-style:solid;
 	border-width:1px 0pt;
 }
-
+div.waiting {
+	background:#F9F9F9;
+	color:#AAAAAA;
+	display:block;
+}
 /*                                                    */
 /*   formatting for invalid user inputs               */
 /*                                                    */

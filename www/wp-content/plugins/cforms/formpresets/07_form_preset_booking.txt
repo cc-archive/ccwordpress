@@ -1,4 +1,5 @@
-Advanced: Online booking form
+_("Advanced: Online booking form")
+_("Features a quite impressive number of fields, useful for online booking forms. Including custom inline styles, 'must-agree' disclaimers with external link to disclaimer text & anti spam field. <br /><em>Note: Please use this preset with your first form as it does some nifty things with its CSS.</em>")
 ff~~~Guest Information$#$fieldsetstart$#$0$#$0$#$0$#$0
 ff~~~Guest Information|newlegend$#$textonly$#$0$#$0$#$0$#$0
 ff~~~<font face=\"arial\" color=\"#663300\" size=\"4\">I</font>Mandatory fields <font face=\"arial\" color=\"#D56A00\" size=\"4\">I</font>A valid email is required||font-size:9px;$#$textonly$#$0$#$0$#$0$#$0

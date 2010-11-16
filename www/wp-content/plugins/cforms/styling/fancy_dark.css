@@ -208,16 +208,21 @@ span.emailreqtxt {
 
 p.cf-sb {
 	padding: 0!important;
-	margin: 0;
+	margin: 0 0 5px 0;
 }
+.cform input.backbutton,
+.cform input.resetbutton,
 .cform input.sendbutton	{ 
 	width:166px;
 	height:30px;  
-	padding:0px; 
-	margin: 0 0 20px 171px;
+	margin: 0 0 5px 171px;
 	font-size:14px;
 	background:url(fancy_dark_submit.gif) no-repeat; 
 	border:none!important;
+}
+.cform input.resetbutton {
+}
+.cform input.backbutton {
 }
 
 /*                                                    */
@@ -337,7 +342,11 @@ div.failure {
 	border-style:solid;
 	border-width:1px 0pt;
 }
-
+div.waiting {
+	background:#F9F9F9;
+	color:#AAAAAA;
+	display:block;
+}
 /*                                                    */
 /*   formatting for invalid user inputs               */
 /*                                                    */

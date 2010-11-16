@@ -1,4 +1,5 @@
-Reset to *default* contact form
+_("Default: Reset to *default* contact form")
+_("Does what it says, it'll reset all input fields to the default setup.")
 ff~~~My Fieldset$#$fieldsetstart$#$0$#$0$#$0$#$0
 ff~~~Your Name|Your Name$#$textfield$#$1$#$0$#$1$#$0
 ff~~~Email$#$textfield$#$1$#$1$#$0$#$0

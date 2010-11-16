@@ -222,20 +222,26 @@ ol.cf-ol li.cf-box-group {
 
 p.cf-sb {
 	padding: 0!important;
-	text-align:left;
+	text-align:right;
 	margin:0;
 	background: #CAE4A7 url(../images/customform_green_bg_bottom.jpg) no-repeat bottom left;
 }
+.cform input.backbutton,
+.cform input.resetbutton,
 .cform input.sendbutton	{ 
 	color:#BFD062;
 	border:0; 
 	height:25px; 
-	width:251px;
+	width:auto;
 	font-size:1.2em;
 	font-weight:bold;
 	background: white;
-	margin:5px 0 20px 120px;
-	padding:0;
+	margin:5px 0px 20px 0;
+	padding:0 1em;
+}
+.cform input.resetbutton {
+}
+.cform input.backbutton {
 }
 
 
@@ -361,7 +367,11 @@ div.failure {
 	border-style:solid;
 	border-width:1px 0pt;
 }
-
+div.waiting {
+	background:#F9F9F9;
+	color:#AAAAAA;
+	display:block;
+}
 /*                                                    */
 /*   formatting for invalid user inputs               */
 /*                                                    */

@@ -130,6 +130,9 @@ label.cf-group-after span {
 	color:#000000;
 	width:230px;
 }
+.cform .cf_date {
+	width:210px!important;
+}
 
 .cform select,
 .cform select:hover {
@@ -218,6 +221,8 @@ p.cf-sb {
 	margin: 0;
 	text-align:right!important;
 }
+.cform input.backbutton,
+.cform input.resetbutton,
 .cform input.sendbutton	{ 	
 	border:none!important;
 	background:transparent url(../images/grey_block_submit.jpg) no-repeat 0 0;
@@ -232,6 +237,10 @@ p.cf-sb {
 }
 .cform input.sendbutton:hover	{ 
 	background-position:0 -31px;
+}
+.cform input.resetbutton {
+}
+.cform input.backbutton {
 }
 
 
@@ -338,7 +347,11 @@ div.failure {
 	border-style:solid;
 	border-width:1px 0pt;
 }
-
+div.waiting {
+	background:#F9F9F9;
+	color:#AAAAAA;
+	display:block;
+}
 /*                                                    */
 /*   formatting for invalid user inputs               */
 /*                                                    */

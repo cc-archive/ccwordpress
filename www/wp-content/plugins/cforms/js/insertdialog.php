@@ -1,47 +1,35 @@
 <?php
-$filedir = dirname(__FILE__);
-if ( strpos($filedir,'/wp-content/') )
-	$IIS = '/';
+
+### supporting WP2.6 wp-load & custom wp-content / plugin dir
+if ( file_exists('../abspath.php') )
+	require_once('../abspath.php');
 else
-	$IIS = '\\';
+	$abspath='../../../../';
 
-$blogroot = substr($filedir,0,strpos($filedir,"wp-content{$IIS}"));
-require_once($blogroot.'wp-blog-header.php');
+require_once($abspath.'wp-blog-header.php');
 
-//IIS hack
-if (!isset($_SERVER['REQUEST_URI'])){
-    if(isset($_SERVER['SCRIPT_NAME']))
-        $_SERVER['REQUEST_URI'] = $_SERVER['SCRIPT_NAME'];
-    else
-        $_SERVER['REQUEST_URI'] = $_SERVER['PHP_SELF'];
-}
+### new global settings container, will eventually be the only one!
+$cformsSettings = get_option('cforms_settings');
 
-$wwwURI = $_SERVER['REQUEST_URI'];
-$x = strpos($wwwURI,'/wp-content/');
-$tinyURI = substr($wwwURI,0,$x) . '/wp-includes/js/tinymce';
-
-$a = substr($filedir, strpos($filedir,"{$IIS}wp-content{$IIS}plugins{$IIS}"));
-$plugindir = substr($a , 0, strpos($a,"{$IIS}js") );
-$pluginURL = get_settings('siteurl') . str_replace('\\','/',$plugindir);
 ?>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 	<title>cforms</title>
-	<link type="text/css" rel="stylesheet" href="<?php echo $pluginURL; ?>/js/insertdialog.css"></link>
-	<script language="javascript" type="text/javascript" src="<?php echo $tinyURI; ?>/tiny_mce_popup.js"></script>
-	<script language="javascript" type="text/javascript" src="<?php echo $tinyURI; ?>/utils/mctabs.js"></script>
-	<script language="javascript" type="text/javascript" src="<?php echo $tinyURI; ?>/utils/form_utils.js"></script>
+	<link type="text/css" rel="stylesheet" href="<?php echo $cformsSettings['global']['cforms_root']; ?>/js/insertdialog.css"></link>
+	<script language="javascript" type="text/javascript" src="<?php echo $cformsSettings['global']['tinyURI']; ?>/tiny_mce_popup.js"></script>
+	<script language="javascript" type="text/javascript" src="<?php echo $cformsSettings['global']['tinyURI']; ?>/utils/mctabs.js"></script>
+	<script language="javascript" type="text/javascript" src="<?php echo $cformsSettings['global']['tinyURI']; ?>/utils/form_utils.js"></script>
 	<script language="javascript" type="text/javascript">
 	<!--
 	<?php
 	$fns = ''; $options = '';
-	$forms = get_option('cforms_formcount');	
+	$forms = $cformsSettings['global']['cforms_formcount'];
 	for ($i=0;$i<$forms;$i++) {
 		$no = ($i==0)?'':($i+1);
-		$options .= '<option value="'.($i+1).'">'.stripslashes(get_option('cforms'.$no.'_fname')).'</option>';
-		$fns .= '"'.get_option('cforms'.$no.'_fname').'",';
+		$options .= '<option value="'.($i+1).'">'.stripslashes($cformsSettings['form'.$no]['cforms'.$no.'_fname']).'</option>';
+		$fns .= '"'.$cformsSettings['form'.$no]['cforms'.$no.'_fname'].'",';
 	}
-	$fns = substr($fns,0,-1);		
+	$fns = substr($fns,0,-1);
 	echo 'var formnames=new Array('.$fns.');';
 	?>
 
@@ -49,14 +37,14 @@ $pluginURL = get_settings('siteurl') . str_replace('\\','/',$plugindir);
 		mcTabs.displayTab('tab', 'panel');
 		tinyMCE.setWindowArg('mce_windowresize', false);
 	}
-	
+
 	function insertSomething() {
 		var inst = tinyMCE.selectedInstance;
 		var elm = inst.getFocusElement();
-	
-		no  = document.forms[0].nodename.value;		
-		html = '<p id="cf'+no+'" class="mce_plugin_cforms_img">'+formnames[no-1]+'</p>';
-	
+
+		no  = document.forms[0].nodename.value;
+		html = '<p title="'+formnames[no-1]+'" class="mce_plugin_cforms_img">'+formnames[no-1]+'</p>';
+
 		tinyMCEPopup.execCommand("mceBeginUndoLevel");
 		tinyMCEPopup.execCommand('mceInsertContent', false, '<p>'+html+'</p>');
 	 	tinyMCEPopup.execCommand("mceEndUndoLevel");
@@ -66,7 +54,7 @@ $pluginURL = get_settings('siteurl') . str_replace('\\','/',$plugindir);
 	</script>
 	<base target="_self" />
 </head>
-<body id="cforms" onLoad="tinyMCEPopup.executeOnLoad('init();');" style="display: none"> 
+<body id="cforms" onLoad="tinyMCEPopup.executeOnLoad('init();');" style="display: none">
 	<form onSubmit="insertSomething();" action="#">
 	<div class="tabs">
 		<ul>
@@ -93,5 +81,5 @@ $pluginURL = get_settings('siteurl') . str_replace('\\','/',$plugindir);
 		</div>
 	</div>
 </form>
-</body> 
-</html> 
+</body>
+</html>

@@ -147,7 +147,7 @@ label.cf-group-after span {
 	width:175px; 
 }
 .cform select {
-	width:183	px; /* attempt to have equal length */
+	width:183px; /* attempt to have equal length */
 }  
 
 .cform select.cfselectmulti	{ 
@@ -221,6 +221,8 @@ p.cf-sb {
 	margin:0;
 	background: url(../images/customform_shiny_bg_bottom.jpg) no-repeat bottom left;
 }
+.cform input.backbutton,
+.cform input.resetbutton,
 .cform input.sendbutton	{ 
 	color:#FFFFFF;
 	cursor:pointer;
@@ -235,6 +237,10 @@ p.cf-sb {
 }
 .cform input.sendbutton:hover	{ 
 	background-position:0 -31px;
+}
+.cform input.resetbutton {
+}
+.cform input.backbutton {
 }
 
 
@@ -354,7 +360,11 @@ div.failure {
 	border-style:solid;
 	border-width:1px 0pt;
 }
-
+div.waiting {
+	background:#F9F9F9;
+	color:#AAAAAA;
+	display:block;
+}
 /*                                                    */
 /*   formatting for invalid user inputs               */
 /*                                                    */

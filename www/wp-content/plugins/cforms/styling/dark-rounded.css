@@ -34,7 +34,7 @@ ol.cf-ol li.newcaptionclass {
 
 .cform fieldset	{ 
 	margin:10px 0 0 0; 
-	padding:9px 0 0 0; 
+	padding:11px 0 0 0; 
 	border:none;
 	background: url(../images/customform_dark_bg_top.jpg) no-repeat top left;
 	}
@@ -220,16 +220,26 @@ span.emailreqtxt {
 /*                                                    */
 
 p.cf-sb {
+	background: url(../images/customform_dark_button_bg.jpg) no-repeat bottom left;
 	padding: 0!important;
 	margin: 0;
+	text-align:right;
 }
+.cform input.backbutton,
+.cform input.resetbutton,
 .cform input.sendbutton	{ 
-	width:410px; 
+	width:105px; 
 	height:26px; 
 	padding:0; 
-	margin:0;
+	margin:0 8px 0 0;
 	border:none!important;
 	background:url(../images/customform_dark_submit.jpg) no-repeat; 
+}
+.cform input.resetbutton {
+	background:url(../images/customform_dark_reset.jpg) no-repeat; 
+}
+.cform input.backbutton {
+	background:url(../images/customform_dark_back.jpg) no-repeat; 
 }
 
 
@@ -357,7 +367,11 @@ div.failure {
 	border-style:solid;
 	border-width:1px 0pt;
 }
-
+div.waiting {
+	background:#F9F9F9;
+	color:#AAAAAA;
+	display:block;
+}
 /*                                                    */
 /*   formatting for invalid user inputs               */
 /*                                                    */
@@ -421,6 +435,7 @@ div.mailerr {
 * html span.emailreqtxt { 
 	display: inline-block;  /*for ie6*/
 }
+*+html ol.cf-ol,
 *+html .cform label,
 *+html span.reqtxt,
 *+html span.emailreqtxt {

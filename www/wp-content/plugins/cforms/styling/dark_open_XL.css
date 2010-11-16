@@ -209,16 +209,24 @@ p.cf-sb {
 	margin: 0;
 	text-align:left;
 }
+.cform input.backbutton,
+.cform input.resetbutton,
 .cform input.sendbutton	{
 	background:#191D28 url(../images/dark_open_XL_submit.jpg) repeat-x left bottom; 
 	border:1px solid #333D51;
 	color:#A0ABBF;
 	font-size:14px;
-	margin:5px 0pt 0pt;
+	margin:5px 5px 0 0;
 	text-align:center;
 	text-transform:uppercase;
 	width:140px;
 	padding:2px;	 
+}
+.cform input.resetbutton {
+	width: auto;
+}
+.cform input.backbutton {
+	width: auto;
 }
 
 /*                                                    */
@@ -361,7 +369,11 @@ div.failure {
 	border-style:solid;
 	border-width:1px 0pt;
 }
-
+div.waiting {
+	background:#F9F9F9;
+	color:#AAAAAA;
+	display:block;
+}
 /*                                                    */
 /* disabled fields [disabled] does not work on IE!    */
 /*                                                    */

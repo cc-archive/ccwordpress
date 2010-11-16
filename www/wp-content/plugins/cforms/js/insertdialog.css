@@ -1,12 +1,12 @@
 .mce_plugin_cforms_img{
-	background:url(../images/cformsmce.gif) no-repeat 5px center; 
-	border:0; 
-	border-top: 1px dotted #cccccc; 
-	border-bottom: 1px dotted #cccccc; 
-	width:100%; 
+	background:url(../images/cformsmce.gif) no-repeat 5px center;
+	border:0;
+	border-top: 1px dotted #cccccc;
+	border-bottom: 1px dotted #cccccc;
+	width:80%;
 	padding:0.3em 0 0.3em 120px;
 }
-div.panel_wrapper{
+#cforms div.panel_wrapper{
 	display:block;
 	height:52px;
 	overflow:visible;
@@ -14,30 +14,30 @@ div.panel_wrapper{
 	padding:0;
 	background:white url(../images/cfii.gif) no-repeat right 1px;
 }
-div.panel_wrapper div.current{
+#cforms div.panel_wrapper div.current{
 	display:block;
 	height:52px;
 	overflow:visible;
 	width:100%;
 	padding:15px 0 0 10px;
 }
-div.panel_wrapper div.current table {
+#cforms div.panel_wrapper div.current table {
 	font-size:13px;
 }
-td.cflabel{
+#cforms td.cflabel{
 	font-size:12px;
 
 }
-td.cfinput{
+#cforms td.cfinput{
 	padding-left:10px;
 }
-td.cfinput select {
+#cforms td.cfinput select {
 	font-size:12px;
-	width:210px;	
+	width:210px;
 }
-div.mceActionPanel{
+#cforms div.mceActionPanel{
 }
-#cancel,
-#insert{
+#cforms #cancel,
+#cforms #insert{
 	width:120px!important;
 }
