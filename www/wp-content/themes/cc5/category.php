@@ -64,7 +64,7 @@ get_header();
 
             <div id="archives">
 
-			<strong><a href="/<?php echo $category->slug; ?>/rss">Subscribe to RSS</a></strong><br/><br/>
+			<strong><a href="<?php echo get_category_link($category_id); ?>/feed/rss">Subscribe to RSS</a></strong><br/><br/>
 <!--			  <h4>Archives</h4> 
               <ul class="archives">
                 <?php cc_get_cat_archives($cat, 'monthly', '', 'html', '', '', TRUE); ?>

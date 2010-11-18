@@ -2,6 +2,7 @@
 // Remove link rel="start" from blog pages
 remove_action( 'wp_head', 'start_post_rel_link'); // Removes the start link
 
+remove_action( 'wp_head', 'feed_links_extra', 3); // remove default feed links
 
 
 if (function_exists('register_sidebar')) {

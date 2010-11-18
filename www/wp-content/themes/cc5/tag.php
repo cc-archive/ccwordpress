@@ -44,7 +44,7 @@
 
             <div id="archives">
 
-			<strong><a href="<?php echo get_tag_link($tag_id) . '/rss';?>">Subscribe to RSS</a></strong><br/><br/>
+			<strong><a href="<?php echo get_tag_link($tag_id) . '/feed/rss';?>">Subscribe to RSS</a></strong><br/><br/>
 <!--			  <h4>Archives</h4> 
               <ul class="archives">
                 <?php cc_get_cat_archives($cat, 'monthly', '', 'html', '', '', TRUE); ?>
