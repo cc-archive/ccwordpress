@@ -44,7 +44,7 @@
   <?php if (is_home() || ($category_name == "weblog")) { ?>
   <link rel="alternate" type="application/rss+xml" title="RSS 2.0" href="<?php bloginfo('home')?>/weblog/rss" />
   <?php } else if (is_category()) { ?>
-  <link rel="alternate" type="application/rss+xml" title="RSS 2.0" href="<?php echo get_category_link($category_id); ?>/feed/rss" />
+  <link rel="alternate" type="application/rss+xml" title="RSS 2.0" href="<?php echo get_settings('home') . '/categories/' . $category->slug ?>/feed/rss" />
   <?php } else if (is_tag()) { ?>
   <link rel="alternate" type="application/rss+xml" title="RSS 2.0" href="<?php echo get_tag_link($tag_id); ?>/feed/rss" />
   <?php } ?>
