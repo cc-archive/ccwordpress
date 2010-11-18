@@ -44,7 +44,9 @@
   <?php if (is_home() || ($category_name == "weblog")) { ?>
   <link rel="alternate" type="application/rss+xml" title="RSS 2.0" href="<?php bloginfo('home')?>/weblog/rss" />
   <?php } else if (is_category()) { ?>
-  <link rel="alternate" type="application/rss+xml" title="RSS 2.0" href="<?php echo get_settings('home') . "/category/" . $category_name; ?>/feed/rss" />
+  <link rel="alternate" type="application/rss+xml" title="RSS 2.0" href="<?php echo get_category_link($category_id); ?>/feed/rss" />
+  <?php } else if (is_tag()) { ?>
+  <link rel="alternate" type="application/rss+xml" title="RSS 2.0" href="<?php echo get_tag_link($tag_id); ?>/feed/rss" />
   <?php } ?>
   	
 	<meta name="generator" content="WordPress <?php bloginfo('version'); ?>" />
@@ -74,7 +76,7 @@
         <h1><a href="<?php echo get_option('home'); ?>"><span>Creative Commons</span></a></h1>
       </div>
       <?php require_once "nav.php"; ?>
-      
+<?php echo $tag_link; ?>    
       <!-- <div id="headerSearch">
         <form method="get" id="searchform" action="http://creativecommons.org/">
           <input type="text" name="s" id="s" size="30" class="inactive" />
