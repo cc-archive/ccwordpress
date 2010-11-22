@@ -7,7 +7,7 @@ function bannerHtml() {
 	
 	banner[0][0] = "&utm_medium=sbanner_1_elizabeth"; banner[0][1] = "elizabeth-stark.jpg"; banner[0][2] = "Creative Commons exemplifies the potential<br/>for making knowledge available to the world."; banner[0][3] = "Elizabeth Stark, founder of the Open Video Alliance";
 	
-	banner[1][0] = "&utm_medium=sbanner_1_cern"; banner[1][1] = "cern.png"; banner[1][2] = "We aim to unravel the mysteries of the universe<br/>through the kind of sharing advocated by CC."; banner[1][3] = "CERN";
+	banner[1][0] = "&utm_medium=sbanner_1_cern"; banner[1][1] = "cern.png"; banner[1][2] = "Through the kind of sharing advocated by CC,<br/>we aim to unravel the mysteries of the universe."; banner[1][3] = "CERN";
 
 	banner[2][0] = "&utm_medium=sbanner_1_mitchell"; banner[2][1] = "mitchellbaker.jpg"; banner[2][2] = "Creative Commons provides an easy way for people<br/> to choose to collaborate in creative activities."; banner[2][3] = "Mitchell Baker, chair of the Mozilla Foundation";
 	
