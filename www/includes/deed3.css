@@ -528,8 +528,8 @@ li.gpl:before {
 
 /* CC Network Related */
 .network {
-	padding: 8px;
-	margin-top: 1em;
+	padding: 8px !important;
+	margin-top: 1em !important;
 	background-color: #d4efb9;
 }
 
