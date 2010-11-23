@@ -1,15 +1,11 @@
 function bannerHtml() {
-    var banner = new Array(3); for (i = 0; i < banner.length; ++i) banner[i] = new Array(4);
-    //banner[0][0] = "&utm_medium=sbanner_1"; banner[0][1] = "Help the world harness the power of Creative Commons.";
-    //banner[1][0] = "&utm_medium=sbanner_2"; banner[1][1] = "Help the world harness the amazing strength of Creative Commons!";
-    //banner[2][0] = "&utm_medium=sbanner_3"; banner[2][1] = "Creative Commons, saving the world from failed sharing!";
-    //banner[3][0] = "&utm_medium=sbanner_4"; banner[3][1] = "Creative Commons is a nonprofit organization. We need your support, donate today!";
+    var banner = new Array(3); for (i = 0; i < banner.length; ++i) banner[i] = new Array(5);
 	
-	banner[0][0] = "&utm_medium=sbanner_1_elizabeth"; banner[0][1] = "elizabeth-stark.jpg"; banner[0][2] = "Creative Commons exemplifies the potential<br/>for making knowledge available to the world."; banner[0][3] = "Elizabeth Stark, founder of the Open Video Alliance";
+	banner[0][0] = "&utm_medium=sbanner_1_elizabeth"; banner[0][1] = "elizabeth-stark.jpg"; banner[0][2] = "Creative Commons exemplifies the potential<br/>for making knowledge available to the world."; banner[0][3] = "Elizabeth Stark, founder of the Open Video Alliance"; banner[0][4] = "elizabeth-stark";
 	
-	banner[1][0] = "&utm_medium=sbanner_1_cern"; banner[1][1] = "cern.png"; banner[1][2] = "Through the kind of sharing advocated by CC,<br/>we aim to unravel the mysteries of the universe."; banner[1][3] = "CERN";
+	banner[1][0] = "&utm_medium=sbanner_1_neeru"; banner[1][1] = "neerukhosla.jpg"; banner[1][2] = "To make a difference in education, we have to ensure that all students<br/>have access to information that is relevant to them."; banner[1][3] = "Neeru Khosla, founder of CK12 Foundation"; banner[1][4] = "neeru-khosla";
 
-	banner[2][0] = "&utm_medium=sbanner_1_mitchell"; banner[2][1] = "mitchellbaker.jpg"; banner[2][2] = "Creative Commons provides an easy way for people<br/> to choose to collaborate in creative activities."; banner[2][3] = "Mitchell Baker, chair of the Mozilla Foundation";
+	banner[2][0] = "&utm_medium=sbanner_1_mitchell"; banner[2][1] = "mitchellbaker.jpg"; banner[2][2] = "Creative Commons provides an easy way for people<br/> to choose to collaborate in creative activities."; banner[2][3] = "Mitchell Baker, chair of the Mozilla Foundation"; banner[2][4] = "mitchell-baker";
 	
 	return banner;
 }
@@ -21,38 +17,13 @@ function thundercats() {
 
     var d = document.createElement("div");
     var mainContent = document.getElementById("globalWrapper");
-    d.setAttribute('style', 'font-size: 22px; font-family: "helvetica neue", arial, sans-serif; line-height:1; text-shadow: 0 1px 0 rgba(255, 255, 255, 0.4); color: #000; padding: 7px 0 2px 0; border-bottom: 1px solid rgb(120, 159, 44); margin-top: -1px; background: #c5deed; background:-webkit-gradient(linear, left top, left bottom, from(#d5eefd), to(#a1c6dd)); background:-moz-linear-gradient(center top, #c5deed, #91b6cd); z-index:1000;');
-	if (i < 4) {
-    	d.innerHTML = '<div style="display:inline-block;"><a href="https://creativecommons.net/donate?utm_campaign=superhero&utm_source=ccorg' + banners[i][0] + '" style="color:#000; text-decoration:none;"><img src="https://creativecommons.net/sites/default/files/' + banners[i][1] +'" height="85" style="vertical-align:middle; margin: 5px; -webkit-border-radius:5px; -moz-border-radius:5px;" border="0"/></div> <div style="display:inline-block; text-align:left; line-height:1.25; vertical-align:middle; margin-left: 15px;"><strong><span style=""><span style="display:inline-block; text-indent:-0.5em;">&#8220;</span>'+ banners[i][2] +'&#8221;</span></strong> &mdash; <em style="color:#c01100;">Donate Now</em></a><br/><em style="font-size:75%;">&mdash; '+ banners[i][3] +'</em></div>';
-    	mainContent.parentNode.insertBefore(d, mainContent);
-	} else {
-		var utm="?utm_campaign=superhero&utm_source=ccorg&utm_medium=sbanner_progress";
-		d.innerHTML = '<div id="campaign" style="vertical-align:middle; color:#111; background:transparent; height: auto;"><div class="progress" style="width: 300px; vertical-align:middle; display:inline-block; margin: 0;" onclick="window.location=\'https://creativecommons.net/donate'+utm+'\'"><div class="inner"><span>&nbsp;</span></div></div> <span style="padding-left:10px; vertical-align:middle;"><span id="campaignRaised">&nbsp;</span> &mdash; <a href="https://creativecommons.net/donate'+utm+'"><em style="color:#c01100">Donate Now</em></a></span></div>';
-		d.style.display = "none";
-		mainContent.parentNode.insertBefore(d, mainContent);
-		
-		var c = document.createElement("link");
-		c.setAttribute("type", "text/css");
-		c.setAttribute("rel", "stylesheet");
-		c.setAttribute("href", "/wp-content/themes/cc5/support.css");
-		document.getElementsByTagName("head")[0].appendChild(c);
 
-		var c = document.createElement("link");
-		c.setAttribute("type", "text/css");
-		c.setAttribute("rel", "stylesheet");
-		c.setAttribute("href", "/includes/total.css");
-		document.getElementsByTagName("head")[0].appendChild(c);
+	var href = '<a href="https://creativecommons.net/superheroes/'+ banners[i][4] +'?utm_campaign=superhero&utm_source=deed' + banners[i][0] + '" style="color:#000; text-decoration:none;">';
 
-		var r = new XMLHttpRequest();
-		r.open('GET', '/includes/total.txt', true);
-		r.onreadystatechange = function(e) { 
-			if (r.readyState == 4) { 
-				document.getElementById("campaignRaised").innerHTML = r.responseText + ' <small>of $550,000</small> raised'; 
-				d.style.display = "block"; 
-			} 
-		};
-		r.send(null);
-	}
+	d.setAttribute('style', 'font-size: 22px; font-family: "helvetica neue", arial, sans-serif; line-height:1; text-shadow: 0 1px 0 rgba(255, 255, 255, 0.4); color: #000; padding: 7px 0 2px 0; border-bottom: 1px solid rgb(120, 159, 44); margin-top: -1px; background: #c5deed; background:-webkit-gradient(linear, left top, left bottom, from(#d5eefd), to(#a1c6dd)); background:-moz-linear-gradient(center top, #c5deed, #91b6cd); z-index:1000;');
+
+   	d.innerHTML = '<div style="display:inline-block;">'+ href +'<img src="https://creativecommons.net/sites/default/files/' + banners[i][1] +'" height="85" style="vertical-align:middle; margin: 5px; -webkit-border-radius:5px; -moz-border-radius:5px;" border="0"/></a></div> <div style="display:inline-block; text-align:left; line-height:1.25; vertical-align:middle; margin-left: 15px;"><strong><span>'+ href +'<span style="display:inline-block; text-indent:-0.5em;">&#8220;</span>'+ banners[i][2] +'&#8221;</span></strong> &mdash; <em style="color:#c01100;">Read More</em></a><br/><em style="font-size:75%;">&mdash; '+ banners[i][3] +'</em></div>';
+   	mainContent.parentNode.insertBefore(d, mainContent);
 }
 
 if (typeof window.addEventListener !== 'undefined') {
