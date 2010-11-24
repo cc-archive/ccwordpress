@@ -9,7 +9,7 @@ body {
 	margin-top: 0.35in;
 	}
 
-#header, #footer {
+#header, #footer, #campaignBanner {
 	display: none;
 }
 
