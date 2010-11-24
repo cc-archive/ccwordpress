@@ -9,6 +9,11 @@ body {
 	margin-top: 0.35in;
 	}
 
+h3 {
+  padding: 0;
+  margin: 0 !important;
+}
+
 #header, #footer, #campaignBanner {
 	display: none;
 }
@@ -39,7 +44,7 @@ body {
 }
 
 #deed-main, #deed-rights, #deed-conditions, #deed-foot {
-	margin-top: 0.5in;
+	margin:0.5in 0 0 0;
 }
 
 #deed-main img {
@@ -87,23 +92,30 @@ body {
 	margin-bottom: 0.1in;
 }
 
+ul.license-properties  {
+  margin-top: 0.125in !important;
+  margin-bottom: 0.25in;
+}
+
 li.license {
 	list-style: none;
-	height: 50px;
 	width: 4.5in;
+  min-height: 0.3in;
 
-	padding-bottom: 10px;
-	margin-bottom: 0.25in;
-	
+  padding: 0;
+  margin: 0;
+    
 	margin-left: 0.33in;
-	
-	border:  1px solid #fff;
+  margin-bottom: 0.125in; 
+
+  position: relative;
 }
 
 li.license p {
 	margin: 0;
 	padding: 0;
-	margin-top: -0.25in;
+  position: absolute;
+  top: -0;
 }
 
 li.share {
@@ -146,7 +158,7 @@ blockquote {
 #libre {
 	position: absolute;
 	top: 2in;
-	right: 1.75in;
+	right: 0in;
 	padding-left: 0.25in;
 	/*
 	padding-top: 0.12in;
