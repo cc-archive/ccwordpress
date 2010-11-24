@@ -16,11 +16,12 @@ function thundercats() {
     var banners = bannerHtml();
 
     var d = document.createElement("div");
-    var mainContent = document.getElementById("globalWrapper");
+    var mainContent = document.getElementById("deed");
 
 	var href = '<a href="https://creativecommons.net/superheroes/'+ banners[i][4] +'?utm_campaign=superhero&utm_source=deed' + banners[i][0] + '" style="color:#000; text-decoration:none;">';
 
 	d.setAttribute('style', 'font-size: 22px; font-family: "helvetica neue", arial, sans-serif; line-height:1; text-shadow: 0 1px 0 rgba(255, 255, 255, 0.4); color: #000; padding: 7px 0 2px 0; border-bottom: 1px solid rgb(120, 159, 44); margin-top: -1px; background: #c5deed; background:-webkit-gradient(linear, left top, left bottom, from(#d5eefd), to(#a1c6dd)); background:-moz-linear-gradient(center top, #c5deed, #91b6cd); z-index:1000;');
+	d.id = "campaignBanner";
 
    	d.innerHTML = '<div style="display:inline-block;">'+ href +'<img src="https://creativecommons.net/sites/default/files/' + banners[i][1] +'" height="85" style="vertical-align:middle; margin: 5px; -webkit-border-radius:5px; -moz-border-radius:5px;" border="0"/></a></div> <div style="display:inline-block; text-align:left; line-height:1.25; vertical-align:middle; margin-left: 15px;"><strong><span>'+ href +'<span style="display:inline-block; text-indent:-0.5em;">&#8220;</span>'+ banners[i][2] +'&#8221;</span></strong> &mdash; <em style="color:#c01100;">Read More</em></a><br/><em style="font-size:75%;">&mdash; '+ banners[i][3] +'</em></div>';
    	mainContent.parentNode.insertBefore(d, mainContent);
