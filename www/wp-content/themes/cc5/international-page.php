@@ -87,12 +87,8 @@ if ( $is_worldwide_completed ) {
     echo <<<HTML
         <div class="licensebox" style="margin:14px;">
             <p>
-                The Creative Commons {$jurisdiction_name} licenses have now been integrated into
-                <a href="/choose/?jurisdiction={$jurisdiction_code}">the Creative Commons
-                licensing process</a>, so you are able to license your works under this
-                jurisdiction's law.
+               The Creative Commons $jurisdiction_name license suite is available in the following version. <a href='/choose/?jurisdiction=$jurisdiction_code'>License your work</a> under these licenses, or <a href='/choose'>choose</a> the international licenses. <a href='http://wiki.creativecommons.org/FAQ#Should_I_choose_an_international_license_or_a_ported_license.3F'>More info</a>.
             </p> 
-            <p>The latest version of the licenses available for this jurisdiction are:</p>
             <ul>
 HTML;
 
@@ -103,13 +99,14 @@ HTML;
     echo <<<HTML
             </ul>
             <p>
-                Many thanks to all who contributed to the license-porting process. This page 
-                remains for reference.
+		Many thanks to all who contributed to the localization of the
+                license suite. The information below remains for reference.
             </p>
             <p>
-                Please take a look at the mailing-list archive if you are interested in the 
-                academic discussion leading to the <span>{$jurisdiction_name}</span> 
-                final license.
+		Please take a look at the mailing-list archive and <a
+		href='http://wiki.creativecommons.org/Jurisdiction_Database'>Jurisdiction
+		Database</a> if you are interested in the discussion leading to the most recent
+		localization effort and other activities in this jurisdiction.
             </p>
         </div>
 HTML;

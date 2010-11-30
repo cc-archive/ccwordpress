@@ -28,39 +28,67 @@ $is_international = true;
     <div id="mainContent" class="box">
       <div id="contentPrimary">
         	<div class="block" id="title">
-        		<h2>International</h2>
+        		<h2>CC Affiliate Network</h2>
         	</div>
         	<div id="blocks">
             <div class="block page sideContentSpace">
 
-            <p>This page provides an overview of the Creative Commons Affiliate 
-            Teams and the work they do together with CC to build and support communities 
-            who use CC legal tools.</p>
- 
-            <p>Affiliate Teams adapt the licenses and other legal tools to the 
-            languages of a jurisdiction and local copyright legislation, if 
-            necessary.  Currently, there are over 50 jurisdictions with official Affiliate 
-            Teams, with several more in process. The Affiliate Teams have a wide range of 
-            responsibilities, including building communities, translating materials and 
-            tools, maintaining resources for CC users, and in general, promoting legal 
-            sharing. They serve as the hub for CC activity in their jurisdictions.</p>
+	<p>
+		The CC Affiliate Network consists of affiliate teams in over 70
+jurisdictions working together with us to build and support communities who use
+CC legal tools.
+	</p>
 
-            <p>If you would like to contribute to a jurisdiction's Affiliate 
-            Team, you'll find contact information for the team by clicking on the flags 
-            below. If you don't see your jurisdiction listed, or wish to contribute to or 
-            comment on CC's international efforts in another way, please email 
-            affiliate-program@creativecmmons.org. Please note that CC has established a 
-            policy against porting of its licenses in jurisdictions prior to the 
-            establishment of a robust, local community outreach program. CC approves such 
-            proposals only after a thorough review of the rationale and need for that 
-            localization.</p>
+	<p>
+		The teams have a wide range of responsibilities, including
+public outreach, community building, translating materials and tools, fielding
+inquiries, conducting research, maintaining resources for CC users, and in
+general, promoting sharing. They serve as the hub for CC activity in their
+jurisdictions. Unaffiliated volunteers can also organize
+<a href='http://wiki.creativecommons.org/Events'>events</a>. and promote Creative Commons
+locally.
+	</p>
 
-            <p>More information about the CC Affiliate Network can be found at 
-            <a href="http://wiki.creativecommons.org/Affiliates">http://wiki.creativecommons.org/Affiliates</a>.
-            </p>
+	<p>
+		Please note that CC has established a policy against porting of
+its licenses in jurisdictions prior to the establishment of a robust, local
+community outreach program. CC approves such proposals only after a thorough
+review of the rationale and need for that localization.
+	</p>
 
-              <h3>Completed Licenses</h3>
-              <p>The CC licensing suite has been adapted in the following jurisdictions:</p>
+	<p>
+		If you would like to contribute to a jurisdiction's affiliate
+team or otherwise support CC in your jurisdiction, you may start by by clicking
+on the flags below. If you don't see your jurisdiction listed, or wish to
+contribute to or comment on CC's global efforts in another way, please email
+affiliate-program@creativecommons.org.
+	</p>
+
+	<p>
+		More information about the CC Affiliate Network, including
+regional activities and other ways to contribute, can be found on the <a
+href='http://wiki.creativecommons.org/Affiliates'>Affiliates page</a> of the CC
+wiki.
+	</p>
+
+<h3>The Licensing Suite</h3>
+
+
+	<p>
+		<a href='/about/licenses'>
+		<img style='float: left; padding: 0 5px 0 5px;' src='http://creativecommons.org/images/international/unported.png' alt='CC License' />
+		</a>
+		Creative Commons offers a core suite of six copyright licenses
+written to conform to international treaties governing copyright. These
+international licenses (formerly known as the “Unported” suite) are ready and
+intended for use around the world in their current form, without further
+modification. You can think of the international license suite as appropriate
+for use in all of the countries that are signatories to established
+international copyright treaties. The most recent international license suite
+available is <a href='http://wiki.creativecommons.org/Version_3'>version 3.0</a>.
+	</p>
+
+              <h3>CC Affiliate Network</h3>
 
 <?php 
     query_posts("cat=21&orderby=title&order=ASC&posts_per_page=-1");
@@ -84,6 +112,7 @@ $is_international = true;
               </div>
               <br clear="all" />
 
+<!--
               <h3>In Progress Jurisdictions</h3>
 
               <p>The process of adapting the licenses is still in progress for the following jurisdictions:</p>
@@ -100,12 +129,14 @@ $is_international = true;
 <?php } ?>
               </div>
               <br clear="all" />
+-->
               <a name="more"></a>
 
               <?php echo $block_content['more-information']; ?>
             </div>
           </div>
 
+<!--
           <div id="sideContent">
             <h4>Upcoming Project Jurisdictions</h4>
             <ul>
@@ -123,6 +154,7 @@ $is_international = true;
             <?php echo $block_content['upcoming-launch-dates']; ?>
 
           </div>
+-->
         </div>  
 <?php } ?>
 
