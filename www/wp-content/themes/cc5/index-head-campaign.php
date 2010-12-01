@@ -9,6 +9,8 @@ $hero[4][0] = "gautam-john"; $hero[4][1] = "gautam";
 $hero[5][0] = "andrew-rens"; $hero[5][1] = "andrew";
 $hero[6][0] = "cern"; $hero[6][1] = "cern";
 $hero[7][0] = "delia-browne"; $hero[7][1] = "delia";
+$hero[8][0] = "josh-sommer"; $hero[8][1] = "josh";
+
 
 $i = rand(0, count($hero)-1);
 

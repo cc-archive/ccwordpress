@@ -1,5 +1,5 @@
 function bannerHtml() {
-    var banner = new Array(3); for (i = 0; i < banner.length; ++i) banner[i] = new Array(5);
+    var banner = new Array(4); for (i = 0; i < banner.length; ++i) banner[i] = new Array(5);
 	
 	banner[0][0] = "&utm_medium=sbanner_1_elizabeth"; banner[0][1] = "elizabeth-stark.jpg"; banner[0][2] = "Creative Commons exemplifies the potential<br/>for making knowledge available to the world."; banner[0][3] = "Elizabeth Stark, founder of the Open Video Alliance"; banner[0][4] = "elizabeth-stark";
 	
@@ -7,12 +7,14 @@ function bannerHtml() {
 
 	banner[2][0] = "&utm_medium=sbanner_1_mitchell"; banner[2][1] = "mitchellbaker.jpg"; banner[2][2] = "Creative Commons provides an easy way for people<br/> to choose to collaborate in creative activities."; banner[2][3] = "Mitchell Baker, chair of the Mozilla Foundation"; banner[2][4] = "mitchell-baker";
 	
+	banner[3][0] = "&utm_medium=sbanner_1_josh"; banner[3][1] = "joshsommer.jpg"; banner[3][2] = "Creative Commons is grease to the wheels of science.<br/>It is a source of hope to me in the race to outrun my disease."; banner[3][3] = "Josh Sommer, executive director of the Chordoma Foundation"; banner[3][4] = "josh-sommer";
+	
 	return banner;
 }
 function thundercats() {
-	if (location.href.match(/http\:(.*)?creativecommons.org\/$/) ) return;
+	if (location.href.match(/http\:(.*)?creativecommons.org\/$/)  || (navigator.userAgent.indexOf("MSIE 7") > -1) || (navigator.userAgent.indexOf("MSIE 6") > -1)) return;
 
-    var i = Math.floor(Math.random() * 3);
+    var i = Math.floor(Math.random() * 4);
     var banners = bannerHtml();
 
     var d = document.createElement("div");
