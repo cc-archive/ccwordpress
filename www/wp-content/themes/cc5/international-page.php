@@ -54,7 +54,7 @@ echo <<<HTML
         <div class="block" id="title">
             <h3 class="category">
                 <a href="{$home_settings}/international">
-                    Creative Commons International 
+                    CC Affiliate Network
                 </a>
             </h3>
 HTML;
