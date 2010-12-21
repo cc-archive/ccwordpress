@@ -83,7 +83,7 @@ $jurisdiction_site_url_parts = parse_url($jurisdiction_site);
 if ( $jurisdiction_site && $jurisdiction_site_url_parts['host'] != 'creativecommons.org' ) {
     echo <<<HTML
         <div class="licensebox">
-					Visit the <a href="{$jurisdiction_site}">jurisdiction's site</a>.
+					Visit the <a href="{$jurisdiction_site}">jurisdiction's website</a> and <a href="http://wiki.creativecommons.org/$jurisdiction_name">wiki page</a>.
         </div>
 HTML;
 }
@@ -116,13 +116,7 @@ HTML;
 			<div class="grid_12">
             <p>
 							Many thanks to all who contributed to the localization of the
-							license suite. The information below remains for reference.
-            </p>
-            <p>
-							Please take a look at the mailing-list archive and <a
-							href='http://wiki.creativecommons.org/Jurisdiction_Database'>Jurisdiction
-							Database</a> if you are interested in the discussion leading to the most recent
-							localization effort and other activities in this jurisdiction.
+							license suite.
             </p>
 HTML;
 }
