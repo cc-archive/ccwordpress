@@ -89,7 +89,7 @@ available is <a href='http://wiki.creativecommons.org/Version_3'>version 3.0</a>
        // Store post content for placement elsewhere in site
        $block_content[$post->post_name] = $post->post_content;
        continue;
-    } else if ($jurisdiction->status != 'completed') {
+    } else if ($jurisdiction->status != 'completed' && $jurisdiction->status != 'in-progress') {
        continue;
     }
     $img = "/images/international/$jurisdiction->code.png";
@@ -99,49 +99,21 @@ available is <a href='http://wiki.creativecommons.org/Version_3'>version 3.0</a>
               </div>
               <br clear="all" />
 
-<!--
-              <h3>In Progress Jurisdictions</h3>
-
-              <p>The process of adapting the licenses is still in progress for the following jurisdictions:</p>
-
-              <div class="icontainer">
-<?php rewind_posts(); while (have_posts()) { the_post();
-    $jurisdiction = get_the_jurisdiction($post->ID);
-    if ($jurisdiction->code == '' || $jurisdiction->status != 'in-progress') {
-        continue;
-    }
-    $img = "/images/international/$jurisdiction->code.png";
-?>
-                <div class="ifloat"><a href="/international/<?= $jurisdiction->code ?>/"><img class="flag" border="1" src="<?= $img ?>" alt="<?= $jurisdiction->name ?>" /></a><br /><p><a href="/international/<?= $jurisdiction->code ?>/"><?= $jurisdiction->name ?></a></p></div>
-<?php } ?>
-              </div>
-              <br clear="all" />
--->
               <a name="more"></a>
 
               <?php echo $block_content['more-information']; ?>
             </div>
           </div>
 
-<!--
-          <div id="sideContent">
-            <h4>Upcoming Project Jurisdictions</h4>
-            <ul>
-<?php rewind_posts(); while (have_posts()) { the_post();
-    $jurisdiction = get_the_jurisdiction($post->ID);
-    if ($jurisdiction->code == '' || $jurisdiction->status != 'upcoming') {
-       continue;
-    }
-?>
-              <li><strong><?= $jurisdiction->name ?></strong>: <?= $post->post_excerpt ?></li>
-<?php } ?>
-            </ul>
-            <br />
+	<div id="sideContent">
+                        <h4>Jurisdiction Database</h4>
+                        <p>The <a href="http://wiki.creativecommons.org/Jurisdiction_Database">Jurisdiction Database</a> contains further information about the international licenses and each jurisdiction with a Creative Commons affiliate team (e.g. <a href="http://wiki.creativecommons.org/Germany">Germany</a>, <a href="http://wiki.creativecommons.org/Estonia">Estonia</a>). On these pages you may add or edit data about the jurisdiction or data about the jurisdiction’s 3.0 license porting process. You can also <a href="http://wiki.creativecommons.org/Special:RunQuery/Jurisdiction_Query">query the database</a> for the full text of the international licenses and/or one or more ported licenses.</p>
 
-            <?php echo $block_content['upcoming-launch-dates']; ?>
+                        <h4>CC Affiliate Teams: a Brazilian Case Study</h4>
+                        <a href="/videos/cc-brasil"><img src="/images/front/ccbrasil.jpg" alt="Gilberto Gil" style="border: 2px solid #cccccc" align="center" height="136" width="136" /></a>
+                        <p>One of the best ways to learn about Creative Commons and the CC Affiliate Network is to watch one of our videos. <a href="/videos/cc-brasil">This ten-minute video</a> covers a significant CC event in Brazil, the impact on the country, and the people behind the project. It's a great look at how a jurisdiction can benefit from localizing CC tools.</p>
+	</div>
 
-          </div>
--->
         </div>  
 <?php } ?>
 
