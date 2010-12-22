@@ -34,41 +34,28 @@ $is_international = true;
             <div class="block page sideContentSpace">
 
 	<p>
-		The CC Affiliate Network consists of affiliate teams in over 70
-jurisdictions working together with us to build and support communities who use
-CC legal tools.
+        The CC Affiliate Network consists of affiliate teams in over 70
+jurisdictions working together with us to serve as a hub for CC activity in 
+their jurisdictions.
 	</p>
 
 	<p>
 		The teams have a wide range of responsibilities, including
 public outreach, community building, translating materials and tools, fielding
 inquiries, conducting research, maintaining resources for CC users, and in
-general, promoting sharing. They serve as the hub for CC activity in their
-jurisdictions. Unaffiliated volunteers can also organize
-<a href='http://wiki.creativecommons.org/Events'>events</a>. and promote Creative Commons
-locally.
+general, promoting sharing. Unaffiliated volunteers can also organize
+<a href='http://wiki.creativecommons.org/Events'>events</a> and promote 
+Creative Commons locally.
 	</p>
 
 	<p>
-		Please note that CC has established a policy against porting of
-its licenses in jurisdictions prior to the establishment of a robust, local
-community outreach program. CC approves such proposals only after a thorough
-review of the rationale and need for that localization.
+        If you would like to contribute or learn more click on the flags below 
+or email affiliate-program@creativecommons.org.
 	</p>
 
 	<p>
-		If you would like to contribute to a jurisdiction's affiliate
-team or otherwise support CC in your jurisdiction, you may start by by clicking
-on the flags below. If you don't see your jurisdiction listed, or wish to
-contribute to or comment on CC's global efforts in another way, please email
-affiliate-program@creativecommons.org.
-	</p>
-
-	<p>
-		More information about the CC Affiliate Network, including
-regional activities and other ways to contribute, can be found on the <a
-href='http://wiki.creativecommons.org/Affiliates'>Affiliates page</a> of the CC
-wiki.
+        The <a href='http://wiki.creativecommons.org/Affiliates'>Affiliates page</a> of the CC
+wiki contains more information, including regional activities and history of our work.
 	</p>
 
 <h3>The Licensing Suite</h3>
