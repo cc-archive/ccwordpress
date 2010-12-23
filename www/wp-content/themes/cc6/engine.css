@@ -54,6 +54,7 @@ div.licensebox input.submit {
 	font-size: 1.15em;
 }
 
+ul.no-bullets li { padding:5px 0; margin:0; list-style:none; }
 
 /* Donation block */
 #chooserDonate {
