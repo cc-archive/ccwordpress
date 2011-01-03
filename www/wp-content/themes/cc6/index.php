@@ -6,8 +6,6 @@
   <meta name="keywords" content="creative commons, commons, free culture, open source, attribution, non-commercial, share-alike, no derivatives, lessig" />
   <meta name="description" content="Creative Commons licenses provide a flexible range of protections and freedoms for authors, artists, and educators." />
 
-
-	<!-- <link rel="shortcut icon" href="favicon.ico"><link rel="icon" type="image/gif" href="animated_favicon1.gif"> -->
 	<meta http-equiv="Content-Type" content="<?php bloginfo('html_type'); ?>; charset=<?php bloginfo('charset'); ?>" />
 
 	<?php if (is_home() || is_404()) {?>
@@ -30,11 +28,11 @@
 
 	<?php wp_head(); ?>
 </head>
-	<body>
+	<body class="home">
 		<a id="top"></a>
-		<div id="header">
+		<div id="header" class="container_16">
 			<div class="container_16">
-				<div class="grid_16 alpha">
+				<div class="grid_16">
 					<h1 id="logo"><a href="<?php echo get_settings('home'); ?>"><span>Creative Commons</span></a></h1>
 
 					<ul class="nav">
@@ -60,7 +58,7 @@
 							<input type="submit" class="search_submit" value="Search"/>
 						</form>
 					</div>
-					<div><a class="grid_3 alpha button" href="/about/">Learn More</a></div>
+					<div><a class="grid_3 alpha button" href="/about/">Learn More...</a></div>
 					<div style=""><a class="grid_3 omega button" href="/license/">Choose License</a></div>
 				</div>
 			</div>
@@ -76,39 +74,46 @@
 
 			<div id="content">
 				<div class="container_16">
-					<div class="grid_4">
+					<div class="grid_4" style="width:230px;">
 						<h5>What is Creative Commons?</h5>
-						<p>The idea of universal access to research, education, and culture is made possible by the internet, but our legal and social systems don’t always allow that idea to be realized. Copyright was created long before the emergence of the internet, and can make it hard to legally perform actions we take for granted on the network: copy, paste, edit source, and post to the Web.</p>
+						<p>
+Our vision is to realize the full potential of the Internet through universal access to scientific research, education, and culture.
+						<br/>
+						<a href="/about/">Learn More...</a></p>
 					</div>
 					<div class="grid_4">
 						<div class="auto">
 							<div class="grid_1 alpha omega"><div class="icon">&nbsp;</div></div>
 							<div class="grid_3">
-								<h5>Something useful</h5>
-								<p>The default setting of copyright law requires all of these actions to have explicity permission granted in advance, whether you're an</p>
+								<h5>Licenses</h5>
+								<p>Creative Commons licenses provide simple, standardized alternatives to the "all rights reserved" paradigm of traditional copyright.<br/>
+								<a href="/licenses/">Learn More...</a></p>
 							</div>
 						</div>
 						<div class="auto">
 							<div class="grid_1 alpha omega"><div class="icon">&nbsp;</div></div>
 							<div class="grid_3">
-								<h5>Something useful</h5>
-								<p>The default setting of copyright law requires all of these actions to have explicity permission granted in advance, whether you're an</p>
+								<h5>Culture</h5>
+								<p>Whether you're a photographer, writer, filmmaker, or DJ, our licenses help make your work part of the cultural innovation that's multiplying on the Internet.<br/>
+								<a href="/culture/">Learn More...</a></p>
 							</div>
 						</div>
 					</div>
-					<div class="grid_4">
+					<div class="grid_4 omega">
 						<div class="auto">
 							<div class="grid_1 alpha omega"><div class="icon">&nbsp;</div></div>
 							<div class="grid_3">
-								<h5>Something useful</h5>
-								<p>The default setting of copyright law requires all of these actions to have explicity permission granted in advance, whether you're an</p>
+								<h5>Education</h5>
+								<p>We make access to education easy and universal by making textbooks, lectures, and lesson plans freely available over the Internet.<br/>
+								<a href="/education/">Learn More...</a></p>
 							</div>
 						</div>
 						<div class="auto">
 							<div class="grid_1 alpha omega"><div class="icon">&nbsp;</div></div>
 							<div class="grid_3">
-								<h5>Something useful</h5>
-								<p>The default setting of copyright law requires all of these actions to have explicity permission granted in advance, whether you're an</p>
+								<h5>Science</h5>
+								<p>We believe that scientific research, journals, and data should be available to everyone, and have legal tools that help make this happen.<br/>
+								<a href="/science/">Learn More...</a></p>
 							</div>
 						</div>
 					</div>

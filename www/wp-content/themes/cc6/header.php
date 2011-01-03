@@ -11,7 +11,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" <?php language_attributes(); ?>>
 <head profile="http://gmpg.org/xfn/11">
-	<?php if is_404()) {?>
+	<?php if (is_404()) {?>
   <title>Creative Commons</title>
   <?php } else if (is_search()) { ?>
   <title>Search Creative Commons</title>
@@ -19,7 +19,7 @@
   <title><?php wp_title(''); ?> - Creative Commons</title>
   <?php }?>
 
-	<link rel="stylesheet" href="<?php bloginfo('stylesheet_url'); ?>" type="text/css" media="screen" />
+	<link rel="stylesheet" href="<?php bloginfo('stylesheet_url'); ?>?20110103" type="text/css" media="screen" />
 
   <?php if ($category_name == "weblog") { ?>
   <link rel="alternate" type="application/rss+xml" title="RSS 2.0" href="<?php bloginfo('home')?>/weblog/rss" />
@@ -61,9 +61,9 @@
 	<div class="clear">&nbsp;</div>
 
 	<a id="top"></a>
-	<div id="header">
+	<div id="header" class="container_16">
 		<div class="container_16">
-			<div class="grid_16 alpha">
+			<div class="grid_16 ">
 				<h1 id="logo"><a href="<?php echo get_settings('home'); ?>"><span>Creative Commons</span></a></h1>
 
 				<ul class="nav">

@@ -30,8 +30,8 @@
 					<div class="grid_2 prefix_1">
 						<h4>Licensing</h4>
 						<ul class="grid_2 alpha omega">
-							<li><a href="/about-the-licenses/">The Licenses</a></li>
-							<li><a href="/licence/">License Work</a></li>
+							<li><a href="/licenses/">The Licenses</a></li>
+							<li><a href="/choose/">License Work</a></li>
 							<li><a href="http://wiki.creativecommons.org/FAQ">FAQ</a></li>
 							<li><a href="http://search.creativecommons.org/">Find Content</a></li>
 							<li><a href="http://wiki.creativecommons.org/Developers">Developers</a></li>
