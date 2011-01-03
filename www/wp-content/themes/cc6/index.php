@@ -74,13 +74,18 @@
 
 			<div id="content">
 				<div class="container_16">
-					<div class="grid_4" style="width:230px;">
-						<h5>What is Creative Commons?</h5>
+					<div class="grid_8 suffix_3 prefix_1 alpha">
+						<h3>What is Creative Commons?</h3>
 						<p>
 Our vision is to realize the full potential of the Internet through universal access to scientific research, education, and culture.
 						<br/>
 						<a href="/about/">Learn More...</a></p>
 					</div>
+					<div class="grid_4 ">
+						<h3><a href="https://creativecommons.net/donate/">Donate</a></h3>
+						<p>Creative Commons is a non-profit organization, we need your support.</p>
+					</div>
+					<div class="clear"></div>
 					<div class="grid_4">
 						<div class="auto">
 							<div class="grid_1 alpha omega"><div class="icon">&nbsp;</div></div>
@@ -90,6 +95,8 @@ Our vision is to realize the full potential of the Internet through universal ac
 								<a href="/licenses/">Learn More...</a></p>
 							</div>
 						</div>
+					</div>
+					<div class="grid_4">
 						<div class="auto">
 							<div class="grid_1 alpha omega"><div class="icon">&nbsp;</div></div>
 							<div class="grid_3">
@@ -108,6 +115,8 @@ Our vision is to realize the full potential of the Internet through universal ac
 								<a href="/education/">Learn More...</a></p>
 							</div>
 						</div>
+					</div>
+					<div class="grid_4">
 						<div class="auto">
 							<div class="grid_1 alpha omega"><div class="icon">&nbsp;</div></div>
 							<div class="grid_3">
@@ -116,10 +125,6 @@ Our vision is to realize the full potential of the Internet through universal ac
 								<a href="/science/">Learn More...</a></p>
 							</div>
 						</div>
-					</div>
-					<div class="grid_4">
-						<h5><a href="https://creativecommons.net/donate/">Donate</a></h5>
-						<p>Creative Commons is a non-profit organization that needs your support to provide tools.</p>
 					</div>
 				</div>
 			</div>
