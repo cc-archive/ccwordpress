@@ -65,8 +65,6 @@
 		</div>
 
 		<div id="page">
-
-			<?php include "index-head.php"; ?>
 			<?php the_post(); the_content(); ?>
 			<?php edit_post_link("Edit This Page", '<p class="edit">', '</p>'); ?>
 		</div>
