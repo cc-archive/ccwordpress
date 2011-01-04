@@ -30,9 +30,9 @@
 </head>
 	<body class="home">
 		<a id="top"></a>
-		<div id="header" class="container_16">
+		<div id="header">
 			<div class="container_16">
-				<div class="grid_16">
+				<div class="grid_16 alpha">
 					<h1 id="logo"><a href="<?php echo get_settings('home'); ?>"><span>Creative Commons</span></a></h1>
 
 					<ul class="nav">
@@ -65,16 +65,12 @@
 		</div>
 
 		<div id="page">
-			<div id="features">
-				<div class="container_16">
-					<?php include "index-head-campaign.php"; ?>
-				</div>
-			</div>
 
+			<?php include "index-head.php"; ?>
 
 			<div id="content">
 				<div class="container_16">
-					<div class="grid_8 suffix_3 prefix_1 alpha">
+					<div class="grid_8 suffix_4">
 						<h3>What is Creative Commons?</h3>
 						<p>
 Our vision is to realize the full potential of the Internet through universal access to scientific research, education, and culture.
@@ -88,7 +84,7 @@ Our vision is to realize the full potential of the Internet through universal ac
 					<div class="clear"></div>
 					<div class="grid_4">
 						<div class="auto">
-							<div class="grid_1 alpha omega"><div class="icon">&nbsp;</div></div>
+							<div class="grid_1 alpha omega"><div class="icon"><img src="/images/projects/sciencecommons.png"/></div></div>
 							<div class="grid_3">
 								<h5>Licenses</h5>
 								<p>Creative Commons licenses provide simple, standardized alternatives to the "all rights reserved" paradigm of traditional copyright.<br/>
@@ -98,7 +94,7 @@ Our vision is to realize the full potential of the Internet through universal ac
 					</div>
 					<div class="grid_4">
 						<div class="auto">
-							<div class="grid_1 alpha omega"><div class="icon">&nbsp;</div></div>
+							<div class="grid_1 alpha omega"><div class="icon"><img src="/images/projects/sciencecommons.png"/></div></div>
 							<div class="grid_3">
 								<h5>Culture</h5>
 								<p>Whether you're a photographer, writer, filmmaker, or DJ, our licenses help make your work part of the cultural innovation that's multiplying on the Internet.<br/>
@@ -108,7 +104,7 @@ Our vision is to realize the full potential of the Internet through universal ac
 					</div>
 					<div class="grid_4 omega">
 						<div class="auto">
-							<div class="grid_1 alpha omega"><div class="icon">&nbsp;</div></div>
+							<div class="grid_1 alpha omega"><div class="icon"><img src="/images/projects/sciencecommons.png"/></div></div>
 							<div class="grid_3">
 								<h5>Education</h5>
 								<p>We make access to education easy and universal by making textbooks, lectures, and lesson plans freely available over the Internet.<br/>
@@ -118,7 +114,7 @@ Our vision is to realize the full potential of the Internet through universal ac
 					</div>
 					<div class="grid_4">
 						<div class="auto">
-							<div class="grid_1 alpha omega"><div class="icon">&nbsp;</div></div>
+							<div class="grid_1 alpha omega"><div class="icon"><img src="/images/projects/sciencecommons.png"/></div></div>
 							<div class="grid_3">
 								<h5>Science</h5>
 								<p>We believe that scientific research, journals, and data should be available to everyone, and have legal tools that help make this happen.<br/>

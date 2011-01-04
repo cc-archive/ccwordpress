@@ -1,5 +1,20 @@
+
+			<div id="features" style="background:url(/images/splash/cc-org-banner-Thanks-widebg.jpg) no-repeat 50% 50% #d4eaed; height: 220px;">
+				<div class="container_16">
+					<div class="grid_10 prefix_3">
+						<div class="feature_text">
+						<h1>A big thank you to all of our supporters in 2010!</h1>
+						<h3>We need your continued support for the year ahead.</h3>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="clear"></div>
 <?php
-		if ($sticky_page = cc_get_sticky_page()) {
+
+return;
+
+if ($sticky_page = cc_get_sticky_page()) {
 			// grab attached image from sticky page and display it in the #splash area
 			// this ignores any sticky blog posts
 			// WARNING: if multiple pages are set sticky (show_on_index) the most 
