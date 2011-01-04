@@ -28,6 +28,7 @@
 
 	<?php wp_head(); ?>
 </head>
+<?php the_post(); ?>
 	<body class="home">
 		<a id="top"></a>
 		<div id="header">
@@ -47,8 +48,7 @@
 			</div>
 			<div class="container_16" id="intro">
 				<div class="grid_9" id="mission">
-					<h1>Share, Remix, Reuse &mdash; Legally</h1>
-					<h4>Creative Commons is a nonprofit organization that develops, supports, and stewards legal and technical infrastructure that maximizes digital creativity, sharing, and innovation.</h4>
+					<?php echo get_post_meta(get_the_ID(), "cc_mission", true); ?>
 				</div>
 				<div id="search_and_buttons" class="grid_6 prefix_1 ">
 					<div class="search_container">
@@ -65,7 +65,7 @@
 		</div>
 
 		<div id="page">
-			<?php the_post(); the_content(); ?>
+			<?php the_content(); ?>
 			<?php edit_post_link("Edit This Page", '<p class="edit">', '</p>'); ?>
 		</div>
 
