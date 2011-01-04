@@ -1,14 +1,3 @@
-<?php
-/* !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
- * THIS FILE IS DEPRECATED
- * !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
- *
- * Wordpress is configured to use a page, with the slug "home", as the index 
- * page-home.php is the homepage template 
- *
- */
-?>
-
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" <?php language_attributes(); ?>>
 <head profile="http://gmpg.org/xfn/11">
@@ -19,7 +8,7 @@
 
 	<meta http-equiv="Content-Type" content="<?php bloginfo('html_type'); ?>; charset=<?php bloginfo('charset'); ?>" />
 
-	<?php if (is_home() || is_404()) {?>
+	<?php if (is_front_page() || is_404()) {?>
   <title>Creative Commons</title>
   <?php } else if (is_search()) { ?>
   <title>Search Creative Commons</title>
@@ -78,63 +67,9 @@
 		<div id="page">
 
 			<?php include "index-head.php"; ?>
-
-			<div id="content">
-				<div class="container_16">
-					<div class="grid_8 suffix_4">
-						<h3>What is Creative Commons?</h3>
-						<p>
-Our vision is to realize the full potential of the Internet through universal access to scientific research, education, and culture.
-						<br/>
-						<a href="/about/">Learn More...</a></p>
-					</div>
-					<div class="grid_4 ">
-						<h3><a href="https://creativecommons.net/donate/">Donate</a></h3>
-						<p>Creative Commons is a non-profit organization, we need your support.</p>
-					</div>
-					<div class="clear"></div>
-					<div class="grid_4">
-						<div class="auto">
-							<div class="grid_1 alpha omega"><div class="icon"><img src="/images/projects/sciencecommons.png"/></div></div>
-							<div class="grid_3">
-								<h5><a href="/licenses/">Licenses</a></h5>
-								<p>Creative Commons licenses provide simple, standardized alternatives to the "all rights reserved" paradigm of traditional copyright.<br/>
-								<a href="/licenses/">Learn More...</a></p>
-							</div>
-						</div>
-					</div>
-					<div class="grid_4">
-						<div class="auto">
-							<div class="grid_1 alpha omega"><div class="icon"><img src="/images/projects/sciencecommons.png"/></div></div>
-							<div class="grid_3">
-								<h5><a href="/culture/">Culture</a></h5>
-								<p>Whether you're a photographer, writer, filmmaker, or DJ, our licenses help make your work part of the cultural innovation that's multiplying on the Internet.<br/>
-								<a href="/culture/">Learn More...</a></p>
-							</div>
-						</div>
-					</div>
-					<div class="grid_4 omega">
-						<div class="auto">
-							<div class="grid_1 alpha omega"><div class="icon"><img src="/images/projects/sciencecommons.png"/></div></div>
-							<div class="grid_3">
-								<h5><a href="/education/">Education</a></h5>
-								<p>We make access to education easy and universal by making textbooks, lectures, and lesson plans freely available over the Internet.<br/>
-								<a href="/education/">Learn More...</a></p>
-							</div>
-						</div>
-					</div>
-					<div class="grid_4">
-						<div class="auto">
-							<div class="grid_1 alpha omega"><div class="icon"><img src="/images/projects/sciencecommons.png"/></div></div>
-							<div class="grid_3">
-								<h5><a href="/science/">Science</a></h5>
-								<p>We believe that scientific research, journals, and data should be available to everyone, and have legal tools that help make this happen.<br/>
-								<a href="/science/">Learn More...</a></p>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
+			<?php the_post(); the_content(); ?>
+			<?php edit_post_link("Edit This Page", '<p class="edit">', '</p>'); ?>
+		</div>
 
 <?php get_footer(); ?>
 

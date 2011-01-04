@@ -716,12 +716,34 @@ ul.nav li:last-child {
 	margin-right: 0;
 }
 
+#page {
+  position: relative;
+}
+
 .home #page {
 /*  border-top: 1px solid rgba(255, 255, 255, 0.3);
 */	-webkit-box-shadow: 0 -1px 4px rgba(0, 0, 0, 0.18);
 	-moz-box-shadow: 0 -1px 4px rgba(0, 0, 0, 0.18);
 }	
 
+#page .edit {
+  position: absolute;
+  bottom: 10px;
+  width: 960px;
+  left: 50%;
+  margin-left: -470px;
+}
+
+#page .edit a {
+  display: inline-block;
+  padding: 2px 5px;
+  background-color: #eee;
+  border: 1px solid #ccc;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  color: #666;
+}
 #breadcrumb {
 	border-bottom: 1px solid #ddd;
 	padding: 10px 0;
@@ -805,7 +827,8 @@ ul.nav li:last-child {
 }
 
 #footer {
-	margin-top: 100px;
+  position: relative;
+  margin-top: 100px;
 	padding-top: 10px;
 	color: #999;
 	background-color: #eee;
