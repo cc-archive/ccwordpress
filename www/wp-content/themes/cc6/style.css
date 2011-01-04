@@ -728,10 +728,16 @@ ul.nav li:last-child {
 
 #page .edit {
   position: absolute;
-  bottom: 10px;
-  width: 960px;
+  width: 100px;
   left: 50%;
+  margin-left: 370px;
+  top: 42px;
+}
+
+.home #page .edit {
+  bottom: 10px;
   margin-left: -470px;
+  top: inherit;
 }
 
 #page .edit a {
@@ -1211,6 +1217,10 @@ p.presskit {
 	width: 960px;
 	position: absolute;
 	bottom: 5px;
+}
+
+.carousel .carousel-pagination p {
+  margin-bottom: 0px;
 }
 
 .carousel .carousel-pagination a {
