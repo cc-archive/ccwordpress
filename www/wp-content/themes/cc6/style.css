@@ -661,10 +661,6 @@ h1, h2, h3, h4, h5, h6 {
   position: relative;
 }
 
-#logo a {
-  margin-left: 10px;
-}
-
 #header .container_16 {
 	position: relative;	
 }	
@@ -1357,3 +1353,9 @@ p.presskit {
 .timeline li {
 	margin-left: 16px;
 }
+
+/* /licenses page */
+#licenses img {
+  margin-top: 5px;
+}
+
