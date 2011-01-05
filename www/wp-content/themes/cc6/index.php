@@ -43,7 +43,7 @@
 		<a id="top"></a>
 		<div id="header">
 			<div class="container_16">
-				<div class="grid_16 alpha">
+				<div class="grid_16">
 					<h1 id="logo"><a href="<?php echo get_settings('home'); ?>"><span>Creative Commons</span></a></h1>
 
 					<ul class="nav">
