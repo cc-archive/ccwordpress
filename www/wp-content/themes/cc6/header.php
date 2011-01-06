@@ -21,6 +21,8 @@
 
 	<link rel="stylesheet" href="<?php bloginfo('stylesheet_url'); ?>?20110103" type="text/css" media="screen" />
 	<link rel="stylesheet" href="/stylesheet" type="text/css" />
+	<!--[if IE ]><link rel="stylesheet" type="text/css" media="screen" href="<?php bloginfo('stylesheet_directory'); ?>/style-ie.css" /><![endif]--> 
+
 
   <?php if ($category_name == "weblog") { ?>
   <link rel="alternate" type="application/rss+xml" title="RSS 2.0" href="<?php bloginfo('home')?>/weblog/rss" />
