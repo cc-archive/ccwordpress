@@ -69,12 +69,12 @@
 				<h1 id="logo"><a href="<?php echo get_settings('home'); ?>"><span>Creative Commons</span></a></h1>
 
 				<ul class="nav">
-					<li><a href="/about/">About</a></li>
+					<li><a href="/about">About</a></li>
 					<li><a href="/weblog/">Blog</a></li>
 					<li><a href="https://creativecommons.net/donate">Donate</a></li>
 					<li><a href="http://wiki.creativecommons.org/FAQ">FAQ</a></li>
 					<li><a href="http://wiki.creativecommons.org/">Wiki</a></li>
-					<li><a href="/international/">International</a></li>
+					<li><a href="/affiliates">International</a></li>
 				</ul>
 			</div>
 		</div>

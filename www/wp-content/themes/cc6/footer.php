@@ -6,32 +6,32 @@
 					<div class="grid_6">
 						<h4>Creative Commons</h4>
 						<dl class="grid_2 alpha">
-							<dt><a href="/about/">About</a></li>
-							<dt><a href="/who-uses-cc/">Who Uses CC?</a></li>
-							<dt><a href="/culture/">Culture</a></li>
-							<dt><a href="/education/">Education</a></li>
-							<dt><a href="/science/">Science</a></li>
+							<dt><a href="/about">About</a></li>
+							<dt><a href="/who-uses-cc">Who Uses CC?</a></li>
+							<dt><a href="/culture">Culture</a></li>
+							<dt><a href="/education">Education</a></li>
+							<dt><a href="/science">Science</a></li>
 						</dl>
 						<dl class="grid_2">
-							<dt><a href="/weblog/">Blog</a></li>
-							<dt><a href="">Case Studies</a></li>
-							<dt><a href="/cc-talks-with/">CC Talks With...</a></li>
-							<dt><a href="/newsletter/">Newsletters</a></li>
-							<dt><a href="/about/downloads/">Downloads</a></li>
+							<dt><a href="/weblog">Blog</a></li>
+							<dt><a href="http://wiki.creativecommons.org/Case_Studies">Case Studies</a></li>
+							<dt><a href="/cc-talks-with">CC Talks With...</a></li>
+							<dt><a href="/newsletter">Newsletters</a></li>
+							<dt><a href="/about/downloads">Downloads</a></li>
 						</dl>
 						<dl class="grid_2 omega">
-							<dt><a href="/affiliates/">International</a></li>
+							<dt><a href="/affiliates">International</a></li>
 							<dt><a href="http://wiki.creativecommons.org/Events">Events</a></li>
-							<dt><a href="/about/staff/">Staff</a></li>
-							<dt><a href="/about/press/">Press Room</a></li>
-							<dt><a href="/contact/">Contact</a></li>
+							<dt><a href="/about/staff">Staff</a></li>
+							<dt><a href="/about/press">Press Room</a></li>
+							<dt><a href="/contact">Contact</a></li>
 						</dl>
 					</div>
 					<div class="grid_2 prefix_1">
 						<h4>Licensing</h4>
 						<dl class="grid_2 alpha omega">
-							<dt><a href="/licenses/">The Licenses</a></li>
-							<dt><a href="/choose/">Choose License</a></li>
+							<dt><a href="/licenses">The Licenses</a></li>
+							<dt><a href="/choose">Choose License</a></li>
 							<dt><a href="http://wiki.creativecommons.org/FAQ">FAQ</a></li>
 							<dt><a href="http://search.creativecommons.org/">Find Content</a></li>
 							<dt><a href="http://wiki.creativecommons.org/Developers">Developers</a></li>
@@ -40,11 +40,11 @@
 					<div class="grid_2 prefix_1 suffix_1">
 						<h4>Supporting CC</h4>
 						<dl class="grid_2 alpha omega">
-							<dt><a href="https://creativecommons.net/donate/">Donate</a></li>
-							<dt><a href="https://creativecommons.net/store/">Store</a></li>
-							<dt><a href="https://creativecommons.net/supporters/">Supporters</a></li>
-							<dt><a href="https://creativecommons.net/corporate/">Corporate Giving</a></li>
-							<dt><a href="https://creativecommons.net/figures/">Facts &amp; Figures</a></li>
+							<dt><a href="https://creativecommons.net/donate">Donate</a></li>
+							<dt><a href="https://creativecommons.net/store">Store</a></li>
+							<dt><a href="https://creativecommons.net/supporters">Supporters</a></li>
+							<dt><a href="https://creativecommons.net/corporate">Corporate Giving</a></li>
+							<dt><a href="https://creativecommons.net/figures">Facts &amp; Figures</a></li>
 						</dl>
 					</div>
 					<div class="grid_3 social alpha omega">
