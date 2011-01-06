@@ -697,6 +697,10 @@ h1, h2, h3, h4, h5, h6 {
 	text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.35);
 }
 
+#logo a:focus {
+  outline: none;
+}
+
 ul.nav {
 	list-style: none;
 	vertical-align: bottom;
