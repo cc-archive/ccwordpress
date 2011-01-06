@@ -6,8 +6,8 @@
 					<div class="grid_6">
 						<h4>Creative Commons</h4>
 						<dl class="grid_2 alpha">
-							<dt><a href="/about">About</a></li>
-							<dt><a href="/who-uses-cc">Who Uses CC?</a></li>
+							<dt><a href="/about/">About</a></li>
+							<dt><a href="/who-uses-cc/">Who Uses CC?</a></li>
 							<dt><a href="/culture/">Culture</a></li>
 							<dt><a href="/education/">Education</a></li>
 							<dt><a href="/science/">Science</a></li>
@@ -16,11 +16,11 @@
 							<dt><a href="/weblog/">Blog</a></li>
 							<dt><a href="">Case Studies</a></li>
 							<dt><a href="/cc-talks-with/">CC Talks With...</a></li>
-							<dt><a href="/newsletters/">Newsletters</a></li>
+							<dt><a href="/newsletter/">Newsletters</a></li>
 							<dt><a href="/about/downloads/">Downloads</a></li>
 						</dl>
 						<dl class="grid_2 omega">
-							<dt><a href="/international/">International</a></li>
+							<dt><a href="/affiliates/">International</a></li>
 							<dt><a href="http://wiki.creativecommons.org/Events">Events</a></li>
 							<dt><a href="/about/staff/">Staff</a></li>
 							<dt><a href="/about/press/">Press Room</a></li>
