@@ -23,7 +23,6 @@
 <!-- You can start editing here. -->
 
 <div class="box">
-<h2><a href="##">Comment Form (Show / Hide)</a></h2>
 <div id="forms" class="block" style="margin: 0px;">
 
 <?php if ( have_comments() ) : ?>
