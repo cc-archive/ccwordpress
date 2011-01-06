@@ -47,10 +47,10 @@
 				</div>
 			</div>
 			<div class="container_16" id="intro">
-				<div class="grid_9" id="mission">
+				<div class="grid_10" id="mission">
 					<?php echo get_post_meta(get_the_ID(), "cc_mission", true); ?>
 				</div>
-				<div id="search_and_buttons" class="grid_6 prefix_1 ">
+				<div id="search_and_buttons" class="grid_6">
 					<div class="search_container">
 						<div><strong>Search for licensed content:</strong></div>
 						<form method="get" action="http://search.creativecommons.org" id="search_form">
