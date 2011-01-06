@@ -91,6 +91,10 @@ h6 {
 	font-size: 15px;
 }
 
+.light {
+  font-weight: normal;
+}
+
 /* `Spacing
 ----------------------------------------------------------------------------------------------------*/
 
@@ -640,7 +644,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 #header {
-	background: #7ab032;
+	background: #6fb900;
 	background: -webkit-gradient(linear, left top, left bottom, from(#6fb900), to(#477600));
 	/*background: -webkit-gradient(linear, left top, left bottom, from(#72c12d), to(#3d881c));
 	*/background: -moz-linear-gradient(center top, #6fb900, #477600);
@@ -706,6 +710,9 @@ ul.nav li {
 	margin-right: 10px;
 	font-weight: bold;
 	font-size: 14px;
+  zoom:1;
+  _height: 1em;
+  *display: inline;
 }
 
 ul.nav li:last-child {
@@ -759,7 +766,7 @@ ul.nav li:last-child {
 #title {
 	padding: 15px 0;
 	border-bottom: 1px solid #ddd;
-	margin-bottom: 20px;
+	margin-bottom: 25px;
 }
 #title h1 {
 	font-size: 45px;
@@ -817,6 +824,8 @@ ul.nav li:last-child {
 	border-right: 1px solid #fff;
 	padding: 0;
 	margin: 0;
+  zoom:1;
+  *display:inline;
 }
 
 .subnav ul li:last-child {
@@ -849,12 +858,12 @@ ul.nav li:last-child {
 	padding-bottom: 5px;
 }
 
-#footer ul {
-	list-style: none;
+#footer dt, #footer dl {
+  margin-left: 0 ;
+  padding-left: 0;
 }
 
-#footer ul li {
-	margin-left: 0;
+#footer dt{
 	margin-bottom: 0.5em;
 }
 
@@ -941,6 +950,7 @@ h2.subhead {
 	margin-bottom: 20px;
 }
 .search_container {
+  background:#467500;
   background:rgba(0, 0, 0, 0.15);
   -webkit-border-radius: 5px;
 	-moz-border-radius: 5px;
@@ -1024,6 +1034,18 @@ h2.subhead {
 	border-bottom: 1px solid #ddd;
 }
 
+.blog .meta {
+  color: #666;
+  margin-top: -20px;
+}
+
+h4.meta {
+  color: #666;
+  font-family: arial, sans-serif;
+  font-weight: normal;
+  font-size: 95%;
+}
+
 .twitter a {
 	display: block;
 	display: inline-block;
@@ -1050,6 +1072,32 @@ h2.subhead {
 	-moz-border-radius: 5px;
 	-webkit-border-radius: 5px;
 	border-radius: 5px;
+}
+
+.comments {
+  border-top: 1px solid #ccc;
+  margin-top: 30px;
+}
+
+ol.commentlist {
+  list-style: none;
+}
+ol.commentlist li {
+  margin-left: 0;
+  padding-left: 0;
+  border-bottom: 1px solid #ddd;
+}
+
+.comment-author img {
+  float: left;
+  margin-right: 10px;
+}
+.comment-meta {
+  float: right;
+}
+.comment p{
+  clear: both;
+  margin-left: 58px;
 }
 
 .wp-pagenavi span.pages {
@@ -1084,6 +1132,9 @@ ul.presskit li {
 	margin-bottom: 0.8em;
 	border:1px solid #e0e0e0;
 	text-align: center;
+
+  zoom:1;
+  *display: inline;
 }
 
 ul.presskit li a {
@@ -1131,6 +1182,8 @@ p.presskit {
 .carousel .carousel-wrap {
 	display: inline-block;
 	width: 820px;
+  zoom:1;
+  *display: inline;
 }
 
 .carousel ul { list-style: none; padding: 0; overflow:hidden; zoom:1;}
@@ -1140,7 +1193,11 @@ p.presskit {
 	position: relative;
 	width: 790px;
 	display:inline-block;
-	float: left;}
+	float: left;
+
+  zoom:1;
+  *display:inline;
+}
 
 .eduUser {
 /*	margin: 0 1%;
@@ -1170,6 +1227,7 @@ p.presskit {
 	-webkit-border-radius: 5px;
 	-moz-border-radius: 5px;
 	border-radius: 5px;
+
 }
 
 /*
@@ -1191,6 +1249,7 @@ p.presskit {
 
 .carousel .carousel-control:hover {
 	background-color: rgba(0, 0, 0, 0.15);
+  text-indent: -99999px;
 }
 .carousel .carousel-next {
 	float: right;
@@ -1227,11 +1286,11 @@ p.presskit {
 	-webkit-border-radius: 5px;
 	-moz-border-radius: 5px;
 	border-radius: 5px;
-	border: 2px solid #aaa;
+	border: 2px solid #888;
 }
 
 .carousel .carousel-pagination a.active {
-	background-color: #aaa;
+	background-color: #888;
 }
 
 .carousel .carousel-pagination span { 
