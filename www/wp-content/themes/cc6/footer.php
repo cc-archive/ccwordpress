@@ -5,55 +5,55 @@
 					<div class="clear"></div>
 					<div class="grid_6">
 						<h4>Creative Commons</h4>
-						<ul class="grid_2 alpha">
-							<li><a href="/about">About</a></li>
-							<li><a href="/who-uses-cc">Who Uses CC?</a></li>
-							<li><a href="/culture/">Culture</a></li>
-							<li><a href="/education/">Education</a></li>
-							<li><a href="/science/">Science</a></li>
-						</ul>
-						<ul class="grid_2">
-							<li><a href="/weblog/">Blog</a></li>
-							<li><a href="">Case Studies</a></li>
-							<li><a href="/cc-talks-with/">CC Talks With...</a></li>
-							<li><a href="/newsletters/">Newsletters</a></li>
-							<li><a href="/downloads/">Downloads</a></li>
-						</ul>
-						<ul class="grid_2 omega">
-							<li><a href="/international/">International</a></li>
-							<li><a href="http://wiki.creativecommons.org/Events">Events</a></li>
-							<li><a href="/about/staff/">Staff</a></li>
-							<li><a href="/about/press/">Press Room</a></li>
-							<li><a href="/contact/">Contact</a></li>
-						</ul>
+						<dl class="grid_2 alpha">
+							<dt><a href="/about">About</a></li>
+							<dt><a href="/who-uses-cc">Who Uses CC?</a></li>
+							<dt><a href="/culture/">Culture</a></li>
+							<dt><a href="/education/">Education</a></li>
+							<dt><a href="/science/">Science</a></li>
+						</dl>
+						<dl class="grid_2">
+							<dt><a href="/weblog/">Blog</a></li>
+							<dt><a href="">Case Studies</a></li>
+							<dt><a href="/cc-talks-with/">CC Talks With...</a></li>
+							<dt><a href="/newsletters/">Newsletters</a></li>
+							<dt><a href="/about/downloads/">Downloads</a></li>
+						</dl>
+						<dl class="grid_2 omega">
+							<dt><a href="/international/">International</a></li>
+							<dt><a href="http://wiki.creativecommons.org/Events">Events</a></li>
+							<dt><a href="/about/staff/">Staff</a></li>
+							<dt><a href="/about/press/">Press Room</a></li>
+							<dt><a href="/contact/">Contact</a></li>
+						</dl>
 					</div>
 					<div class="grid_2 prefix_1">
 						<h4>Licensing</h4>
-						<ul class="grid_2 alpha omega">
-							<li><a href="/licenses/">The Licenses</a></li>
-							<li><a href="/choose/">Choose License</a></li>
-							<li><a href="http://wiki.creativecommons.org/FAQ">FAQ</a></li>
-							<li><a href="http://search.creativecommons.org/">Find Content</a></li>
-							<li><a href="http://wiki.creativecommons.org/Developers">Developers</a></li>
-						</ul>
+						<dl class="grid_2 alpha omega">
+							<dt><a href="/licenses/">The Licenses</a></li>
+							<dt><a href="/choose/">Choose License</a></li>
+							<dt><a href="http://wiki.creativecommons.org/FAQ">FAQ</a></li>
+							<dt><a href="http://search.creativecommons.org/">Find Content</a></li>
+							<dt><a href="http://wiki.creativecommons.org/Developers">Developers</a></li>
+						</dl>
 					</div>
 					<div class="grid_2 prefix_1 suffix_1">
 						<h4>Supporting CC</h4>
-						<ul class="grid_2 alpha omega">
-							<li><a href="https://creativecommons.net/donate/">Donate</a></li>
-							<li><a href="https://creativecommons.net/store/">Store</a></li>
-							<li><a href="https://creativecommons.net/supporters/">Supporters</a></li>
-							<li><a href="https://creativecommons.net/corporate/">Corporate Giving</a></li>
-							<li><a href="https://creativecommons.net/figures/">Facts &amp; Figures</a></li>
-						</ul>
+						<dl class="grid_2 alpha omega">
+							<dt><a href="https://creativecommons.net/donate/">Donate</a></li>
+							<dt><a href="https://creativecommons.net/store/">Store</a></li>
+							<dt><a href="https://creativecommons.net/supporters/">Supporters</a></li>
+							<dt><a href="https://creativecommons.net/corporate/">Corporate Giving</a></li>
+							<dt><a href="https://creativecommons.net/figures/">Facts &amp; Figures</a></li>
+						</dl>
 					</div>
 					<div class="grid_3 social alpha omega">
-						<ul class="social_links">
-							<li><a href="https://creativecommons.net/civicrm/mailing/subscribe?reset=1&gid=121">Subscribe to Newsletter</a></li>
-							<li class="fb"><iframe src="http://www.facebook.com/plugins/like.php?href=http%3A%2F%2Fcreativecommons.org&amp;layout=button_count&amp;show_faces=false&amp;width=150&amp;action=like&amp;colorscheme=light&amp;height=21" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:150px; height:21px;" allowTransparency="true"></iframe></li>
-							<li><a href="http://twitter.com/creativecommons">Follow on Twitter</a></li>
-							<li><a href="http://identi.ca/creativecommons">Follow on Identi.ca</a></li>
-						</ul>
+						<dl class="social_links">
+							<dt><a href="https://creativecommons.net/civicrm/mailing/subscribe?reset=1&gid=121">Subscribe to Newsletter</a></li>
+							<dt class="fb"><iframe src="http://www.facebook.com/plugins/like.php?href=http%3A%2F%2Fcreativecommons.org&amp;layout=button_count&amp;show_faces=false&amp;width=150&amp;action=like&amp;colorscheme=light&amp;height=21" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:150px; height:21px;" allowTransparency="true"></iframe></li>
+							<dt><a href="http://twitter.com/creativecommons">Follow on Twitter</a></li>
+							<dt><a href="http://identi.ca/creativecommons">Follow on Identi.ca</a></li>
+						</dl>
 					</div>
 				</div>
 				<div class="container_16" id="footer_license">
