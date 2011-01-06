@@ -15,7 +15,7 @@
 						<dl class="grid_2">
 							<dt><a href="/weblog">Blog</a></li>
 							<dt><a href="http://wiki.creativecommons.org/Case_Studies">Case Studies</a></li>
-							<dt><a href="/cc-talks-with">CC Talks With...</a></li>
+							<dt><a href="/interviews">CC Talks With...</a></li>
 							<dt><a href="/newsletter">Newsletters</a></li>
 							<dt><a href="/about/downloads">Downloads</a></li>
 						</dl>
