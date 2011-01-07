@@ -22,7 +22,7 @@
 						<dl class="grid_2 omega">
 							<dt><a href="/affiliates">International</a></li>
 							<dt><a href="http://wiki.creativecommons.org/Events">Events</a></li>
-							<dt><a href="/about/staff">Staff</a></li>
+							<dt><a href="/about/people">People</a></li>
 							<dt><a href="/about/press">Press Room</a></li>
 							<dt><a href="/contact">Contact</a></li>
 						</dl>
