@@ -53,7 +53,7 @@ $is_international = true;
 			$jurisdiction = get_the_jurisdiction($post->ID);
 
 			// Only include affiliates categorized as completed or in-progress
-			if ( ! $jurisdiction->code && $jurisdiction->status != 'completed' && $jurisdiction->status != 'in-progress' ) {
+			if ( ! $jurisdiction->code || ( $jurisdiction->status != 'completed' && $jurisdiction->status != 'in-progress') ) {
 				continue;
 			}
 
