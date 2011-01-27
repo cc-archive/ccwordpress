@@ -52,11 +52,10 @@ $is_international = true;
 
 			$jurisdiction = get_the_jurisdiction($post->ID);
 
-			// Only include affiliates categorized as completed or in-progress
-			if ( ! $jurisdiction->code || ( $jurisdiction->status != 'completed' && $jurisdiction->status != 'in-progress') ) {
+			// Include all posts in category 21 ("Affiliate Network")
+			if ( ! $jurisdiction->code ) {
 				continue;
 			}
-
 
 			$img = "/images/international/$jurisdiction->code.png";
 			$affiliate_list .= "<div class='ifloat'><a href='/international/$jurisdiction->code/'><img class='flag' border='1' src='$img' alt='$jurisdiction->name' /></a><br /><p><a href='/international/$jurisdiction->code/'>$jurisdiction->name</a></p></div>\n";
