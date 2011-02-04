@@ -22,7 +22,8 @@ foreach (get_the_category() as $cat) {
 ?>
 
 <div id="title" class="container_16">
-	<div class="grid_12">
+
+	<?php edit_post_link("Edit This Post", '<p class="alignright edit">', '</p>'); ?>
 	<? if ($is_commoner) { ?>
 	<h3 class="category">
 		<? $cat = get_the_category(); (count($cat) > 1) ? $cat = $cat[0] : $cat = $cat[0]; ?>
@@ -43,7 +44,7 @@ foreach (get_the_category() as $cat) {
 		</a>
 	</h3>
 	<? } ?>
-	</div>
+
 	<h1 class="grid_16">
 		<?php the_title(); ?>
 	</h1>
