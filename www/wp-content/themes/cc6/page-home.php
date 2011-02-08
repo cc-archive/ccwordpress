@@ -1,3 +1,14 @@
+<?php
+// search handler
+if ($_GET['stype']) {
+	if ($_GET['stype'] == "content") {
+		header("Location: http://search.creativecommons.org/?q=" . $_GET['q']);
+	} else {
+		header("Location: /?s=" . $_GET['q']);
+	}
+}
+?>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" <?php language_attributes(); ?>>
 <head profile="http://gmpg.org/xfn/11">
@@ -24,7 +35,7 @@
 	<link rel="alternate" type="application/rss+xml" title="RSS 2.0" href="<?php bloginfo('home')?>/weblog/rss" />
 
 	<script type="text/javascript" charset="utf-8" src="<?php bloginfo('stylesheet_directory'); ?>/jquery.min.js"></script>
-	<script type="text/javascript" charset="utf-8" src="<?php bloginfo('stylesheet_directory'); ?>/site.js"></script>
+	<script type="text/javascript" charset="utf-8" src="<?php bloginfo('stylesheet_directory'); ?>/site.js?20110208"></script>
 
 	<?php wp_head(); ?>
 </head>
@@ -52,8 +63,14 @@
 				</div>
 				<div id="search_and_buttons" class="grid_6">
 					<div class="search_container">
-						<div><strong>Search for licensed content:</strong></div>
-						<form method="get" action="http://search.creativecommons.org" id="search_form">
+						<form method="get" action="/" id="search_form">
+							<div>
+								<strong>
+									<input type="radio" checked name="stype" value="content" id="find_content" /> <label for="find_content">Find licensed content</label>
+									&nbsp;&nbsp;&nbsp;
+									<input type="radio" name="stype" value="site" id="find_site" /> <label for="find_site">Search site</label> 
+								</strong>
+							</div>
 							<input type="text" class="search_text" name="q" />
 							<input type="submit" class="search_submit" value="Search"/>
 						</form>
