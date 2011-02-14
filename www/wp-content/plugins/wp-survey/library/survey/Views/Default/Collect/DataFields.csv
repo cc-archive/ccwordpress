@@ -1,0 +1,6 @@
+"Name","Type","Mandatory","Values","Default"
+"WebSite","text",,,
+"Subject","text",,,
+"Message","textarea","yes",,
+"Receive Copy?","cc",,,
+,"number captcha","yes",,

@@ -1,0 +1,4 @@
+"Name","Type","Mandatory","Values","Default"
+"Link","link","yes",,
+"Description","textarea","yes",,
+,"number captcha","yes",,

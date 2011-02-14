@@ -1,0 +1,16 @@
+<?php
+foreach($this->data as $key=>$value)
+{
+	if(is_array($value))
+	{
+		if(!in_array($key,array('usersettings','captcha','extended_info')))
+		{
+			echo "\n".urldecode($key).":\n".implode(', ',$value)."\n";
+		}
+	}
+	else
+	{
+		echo "\n".urldecode($key).":\n".$value."\n";
+	}
+}
+?>

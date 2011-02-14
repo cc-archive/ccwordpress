@@ -1,0 +1,79 @@
+<div class='s9v_<?php echo $this->application()->Settings()->slug ?>'>
+<form action="<?php echo $this->url;?>" method="post">
+<span class=vis_info><small>Icons and fields with a blue border have help available by hovering over them.</small></span>
+<br/><br/>
+<table class="widefat" cellspacing="0">
+	<thead> 
+		<tr>
+			<th class="delete" style='width:25px;'><span title='Delete Form<?php if($this->show_tables):?>. This will not delete any tables<?php endif;?>' class=delete>&nbsp;</span></th>
+			<th class="name" style='width:100px;' >Name</th>
+			<th class="bbcode" style='width:150px;' title='The code to place in your post/page to display the form.'><span class=info title='Place this code in your post to display the form'>BBCode</span></th>
+			<th class="edit" style='width:150px;'><?php if($this->show_tables):?><span title='Delete Table' class=delete>&nbsp;</span><span class=info title='Data can be accessed directly in MySQL with the given name, or click to download as a cvs'>Table</span><?php endif?></th>
+			<th class="edit"></th>
+			<th class="source" style='width:60px;'><span class=info title='New forms will be created by copying the source form'>Source</span></th>
+		</tr>
+	</thead>
+	<tbody>
+<?php
+	foreach($this->forms as $form):
+?>
+	<tr class='<?php echo $this->alternate();?>'>
+		<td >
+		<?php if($form['name']!=''):?>
+		<span	<?php if($form['name']=='default'):?>
+		class=info title='The default form cannot be deleted only reset to its initial settings'
+		<?php endif;?>>
+		<input type = 'checkbox' name='delete[<?php echo $form['name'];?>]' value='' /></span>		
+		<?php endif;?>
+		</td>
+		<td ><?php echo $form['name'];?></td>
+		<td>
+		<?php if($form['name']!=''):?>
+		[<?php
+		echo $this->type; 
+		if($form['name']!='default')
+		{
+				echo  " form='{$form['name']}'";
+		}
+		?>]
+		<?php endif;?>
+		</td>
+		<td>
+		<?php
+		if(isset($form['table']))
+		{?>
+			<span style='width:25px'><input type = 'checkbox' name='delete_table[<?php echo $form['table'];?>]' value='' /></span>
+			<a title="Download <?php echo $form['records']?> Records" href="<?php echo $form['url']?>"><?php echo $form['table']?> (<?php echo $form['records']?>)</a>
+		<?php
+		}
+		?>
+		</td>
+		<td align=right>
+		<?php if($form['name']!=''):?>
+			<a href = '<?php echo $this->url.'&page2=FormsEdit&edit='.urlencode($form['name']);?>'>Manage</a>
+		&nbsp;
+			<a title='Diagnosis file for help with problem forms' target='_blank' href = '<?php echo $this->action()->save_url($form['name']);?>'>Diags</a>
+		<?php endif;?>
+		</td>
+		<td >
+		<?php if($form['name']!=''):?>
+		<input type = 'radio' name='source' value='<?php echo $form['name'];?>' <?php if($form['name']=='default'){echo ' checked ';}?>/>
+		<?php endif;?>
+		</td>
+	</tr>
+<?php endforeach;
+if($this->options['new_forms']):?>	
+	<tr class='<?php echo $this->alternate();?>'>
+		<td></td>
+		<td><input class="admin_text" name='new' type='text'/></td>
+		<td >New Form</td>
+		<td colspan=3></td>
+	</tr>
+<?php endif;?>
+	</tbody>
+</table>
+<input type='submit' class='button' value='Apply' />
+</form>
+<span class=vis_info><small>If you are experiencing problems with your form, copy and paste the 'Diags' for the form into <a href="http://wordpress.org/tags/<?php echo $this->application()->Settings()->wpslug;?>?forum_id=10">the WordPress forum for <?php echo $this->application()->Settings()->name;?></a>, along with a description of the problem.
+</small></span>
+</div>

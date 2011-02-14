@@ -1,0 +1,27 @@
+<?php
+if (!empty($this->updated)):?>
+<div id='setting-error-settings_updated' class='<?php echo $this->updated_class;?> settings-error'> 
+<p><strong><?php echo $this->updated;?></strong></p></div> 
+<?php endif;?>
+<form class='s9v_<?php echo $this->application()->Settings()->slug ?>' action="" method="post">
+<table class="widefat" cellspacing="0">
+	<thead> 
+		<tr>
+			<th colspan=2>Akismet Key</th>
+		</tr>
+	</thead>
+	<tbody>
+	<tr class='<?php echo $this->alternate();?>'>
+		<td colspan = 2><span class=vis_info>Akismet requires an API key. You can sign up for a <a href="http://akismet.com/get/">free Akismet key</a>.</span></td>
+	</tr>
+	<tr class='<?php echo $this->alternate();?>'>
+		<td style='width:45px'>API Key:</td>
+		<td><input style='width:350px' name='api_key' type='text' value='<?php echo $this->data['api_key']?>' /></td>
+	</tr>
+	</tbody>
+</table>
+<input type='submit' class='button' value='Apply' />
+</form>
+
+
+

@@ -1,0 +1,6 @@
+"Name","Type","Mandatory","Values","Default","Answer"
+"Question 1","radio","yes","Option A\nOption B\nOption C\nOption D\nOption E","","Option A"
+"Question 2","radio","yes","Option A\nOption B\nOption C\nOption D\nOption E","","Option B"
+"Question 3","radio","yes","Option A\nOption B\nOption C\nOption D\nOption E","","Option C"
+"Question 4","radio","yes","Option A\nOption B\nOption C\nOption D\nOption E","","Option D"
+"Question 5","radio","yes","Option A\nOption B\nOption C\nOption D\nOption E","","Option E"
