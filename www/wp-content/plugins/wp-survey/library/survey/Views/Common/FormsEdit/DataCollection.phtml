@@ -1,0 +1,53 @@
+<div id="normal-sortables" class="meta-box-sortables">
+<div id="collectdata" class="postbox " > 
+<div class="handlediv" title="Click to toggle"><br /></div><h3 class='hndle'><span class='info' title="How the data is to be used.">Data Collection</span></h3> 
+<div class="inside"> 
+<div id="collectdatastuff">
+<table class="widefat" cellspacing="0">
+	<thead> 
+		<tr>
+			<th style = "width:100px;">Collect Data as</th>
+			<th>Target</th>
+		</tr>
+	</thead>
+	<tbody>
+	<?php if($this->options['show_table']):?>
+	<tr class='<?php echo $this->alternate();?>'>
+		<th valign=top>
+			<input type = 'hidden' name='table' value='<?php echo $this->options['fix_table']?>' />		
+			<input <?php if($this->options['fix_table']){echo 'disabled';} ?> type = 'checkbox' id='table' name='table' value='1' <?php if($this->options['table']) {echo 'checked';}?> />		
+			&nbsp;<label for='table'>Table</label>
+		</th>
+		<td>
+			<input style='width:185px' type = 'text' disabled value='<?php echo $this->table_name;?>' />
+			</td>
+	</tr>
+	<?php endif;if($this->options['email']):?>
+	<tr class='<?php echo $this->alternate();?>'>
+		<th valign=top>
+			<input type = 'hidden' name='email' value='<?php echo $this->options['fix_email']?>' />		
+			<input <?php if($this->options['fix_email']){echo 'disabled';} ?> type = 'checkbox' id='email' name='email' value='1' <?php if($this->options['email']) {echo 'checked';}?> />		
+			&nbsp;<label for='email'>Email</label>
+		</th>
+		<td>
+			<input class="info"title="Leave blank and emails with be sent to the author of the post/page the form is on." style='width:185px' type = 'text' name='target_email' value='<?php echo $this->options['target_email']?>' />
+		</td>
+	</tr>
+	<?php endif;if($this->options['submit']):?>
+	<tr class='<?php echo $this->alternate();?>'>
+		<th valign=top>
+			<input type = 'hidden' name='submit' value='<?php echo $this->options['fix_submit']?>' />		
+			<input <?php if($this->options['fix_submit']){echo 'disabled';} ?> type = 'checkbox' id='submit' name='submit' value='1' <?php if($this->options['submit']) {echo 'checked';}?> />		
+			&nbsp;<label for='submit'>Post</label>
+		</th>
+		<td>
+			<input style='width:185px' class="info" title="Override by adding post='{postname}' to the BBCode when entered in the post."type = 'text' name='post' value='<?php echo $this->options['post']?>' />
+		</td>
+	</tr>
+	<?php endif;?>
+  	</tbody>
+</table>
+</div> 
+</div> 
+</div> 
+</div>

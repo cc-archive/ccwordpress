@@ -1,0 +1,5 @@
+<?php if(!($this->settings['privacy']=='private' && $this->info()->wp_user('ID')==0)):?>
+<input class='submit' id='<?php echo $this->field->html_id()?>' type='submit' value='<?php echo $this->field->html_value()?>'/>
+<?php else:
+	echo $this->private;
+endif;?>

@@ -1,0 +1,31 @@
+<?php
+if ($_SERVER ['REQUEST_METHOD'] == 'POST'):?>
+<div id='setting-error-settings_updated' class='updated settings-error'> 
+<p><strong>Settings saved.</strong></p></div> 
+<?php endif;?>
+<form class='s9v_<?php echo $this->application()->Settings()->slug ?>' action="" method="post">
+<table class="widefat" cellspacing="0">
+	<thead> 
+		<tr>
+			<th colspan=2>reCAPTCHA Keys</th>
+		</tr>
+	</thead>
+	<tbody>
+	<tr class='<?php echo $this->alternate();?>'>
+		<td colspan = 2><span class='vis_info'>reCaptcha requires an API key, consisting of a `public` and a `private` key. You can sign up for a <a href="<?php echo $this->signup_url;?>">free reCAPTCHA key</a>.</span></td>
+	</tr>
+	<tr class='<?php echo $this->alternate();?>'>
+		<td style='width:70px'>Public Key:</td>
+		<td><input style='width:350px' name='public' type='text' value='<?php echo $this->data['public']?>' /></td>
+	</tr>
+	<tr class='<?php echo $this->alternate();?>'>
+		<td>Private Key:</td>
+		<td><input style='width:350px' name='private' type='text' value='<?php echo $this->data['private']?>' /></td>
+	</tr>
+	</tbody>
+</table>
+<input type='submit' class='button' value='Apply' />
+</form>
+
+
+

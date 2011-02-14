@@ -1,0 +1,18 @@
+= Can I change the collection form after the survey has started =
+
+Yes. Each time the data is saved any new fields will be added to the end of the table, no fields will be deleted.
+
+= How to I change the size of the fields =
+
+This can be done in CSS.
+Each field on the form is assigned a HTML id base on its name or function. To find out a fields ID the best way is to view the page source after creating the form.
+You can override any default CSS to set the style of a field by adding to your stylesheet :
+
+&#35;fieldID
+{
+	// your style goes here
+}
+
+= Where can I get more help =
+
+The settings screen contain inbuilt help boxes however you can post support your questions at http://wordpress.org/tags/<?php echo $this->options['wpslug']?>?forum_id=10  

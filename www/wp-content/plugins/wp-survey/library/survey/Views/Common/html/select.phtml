@@ -1,0 +1,11 @@
+<select  class='text' type='<?php echo $this->field->html_type()?>' id='<?php echo $this->field->html_id()?>' name='<?php echo $this->field->html_name()?>' value='<?php echo $this->field->html_value()?>' <?php echo $this->field->html_checked()?> />>	
+<?php foreach($this->field->values() as $value):
+	$selected = "";
+	if($this->field->html_value()==$value)
+	{
+		$selected=" selected";
+	}
+?>
+	<option <?php echo $selected?>><?php echo $value?></option>
+<?php endforeach;?>
+</select>

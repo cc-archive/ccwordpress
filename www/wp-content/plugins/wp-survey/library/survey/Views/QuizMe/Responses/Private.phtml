@@ -1,0 +1,6 @@
+<small>You must be logged in to 'answer'<br/>
+<a href='<?php echo get_option('siturl')?>/wp-login.php'>Login</a>
+<?php if(get_option('users_can_register')==1):?>
+ | <a href='<?php echo get_option('siturl')?>/wp-login.php?action=register'>Register</a>
+<?php endif;?>
+</small>
