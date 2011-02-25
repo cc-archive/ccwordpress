@@ -394,7 +394,7 @@ if ( !function_exists('fetch_rss') ) :
 /**
  * Build Magpie object based on RSS from URL.
  *
- * @since unknown
+ * @since 1.5.0
  * @package External
  * @subpackage MagpieRSS
  *
@@ -533,7 +533,7 @@ endif;
 /**
  * Retrieve URL headers and content using WP HTTP Request API.
  *
- * @since unknown
+ * @since 1.5.0
  * @package External
  * @subpackage MagpieRSS
  *
@@ -577,7 +577,7 @@ function _fetch_remote_file($url, $headers = "" ) {
 /**
  * Retrieve
  *
- * @since unknown
+ * @since 1.5.0
  * @package External
  * @subpackage MagpieRSS
  *
@@ -627,7 +627,7 @@ function _response_to_rss ($resp) {
 /**
  * Set up constants with default values, unless user overrides.
  *
- * @since unknown
+ * @since 1.5.0
  * @package External
  * @subpackage MagpieRSS
  */
@@ -872,7 +872,7 @@ if ( !function_exists('wp_rss') ) :
 /**
  * Display all RSS items in a HTML ordered list.
  *
- * @since unknown
+ * @since 1.5.0
  * @package External
  * @subpackage MagpieRSS
  *
@@ -892,7 +892,7 @@ function wp_rss( $url, $num_items = -1 ) {
 				'<li><a href="%1$s" title="%2$s">%3$s</a></li>',
 				esc_url( $item['link'] ),
 				esc_attr( strip_tags( $item['description'] ) ),
-				htmlentities( $item['title'] )
+				esc_html( $item['title'] )
 			);
 		}
 
@@ -912,7 +912,7 @@ if ( !function_exists('get_rss') ) :
  * to display. You can't display all of them like you can with wp_rss()
  * function.
  *
- * @since unknown
+ * @since 1.5.0
  * @package External
  * @subpackage MagpieRSS
  *
@@ -927,7 +927,7 @@ function get_rss ($url, $num_items = 5) { // Like get posts, but for RSS
 		foreach ( (array) $rss->items as $item ) {
 			echo "<li>\n";
 			echo "<a href='$item[link]' title='$item[description]'>";
-			echo htmlentities($item['title']);
+			echo esc_html($item['title']);
 			echo "</a><br />\n";
 			echo "</li>\n";
 		}
