@@ -58,7 +58,7 @@ $is_international = true;
 			}
 
 			$img = "/images/international/$jurisdiction->code.png";
-			$affiliate_list .= "<div class='ifloat'><a href='http://wiki.creativecommons.org/$jurisdiction->name'><img class='flag' border='1' src='$img' alt='$jurisdiction->name' /></a><br /><p><a href='/international/$jurisdiction->code/'>$jurisdiction->name</a></p></div>\n";
+			$affiliate_list .= "<div class='ifloat'><a href='http://wiki.creativecommons.org/$jurisdiction->name'><img class='flag' border='1' src='$img' alt='$jurisdiction->name' /></a><br /><p><a href='http://wiki.creativecommons.org/$jurisdiction->name'>$jurisdiction->name</a></p></div>\n";
 		}
 		
 		$affiliate_list .= "</div>\n";
