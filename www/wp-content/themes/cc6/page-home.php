@@ -53,7 +53,7 @@ if ($_GET['stype']) {
 						<li><a href="https://creativecommons.net/donate">Donate</a></li>
 						<li><a href="http://wiki.creativecommons.org/FAQ">FAQ</a></li>
 						<li><a href="http://wiki.creativecommons.org/">Wiki</a></li>
-						<li><a href="/affiliates">International</a></li>
+						<li><a href="http://wiki.creativecommons.org/CC_Affiliate_Network">International</a></li>
 					</ul>
 				</div>
 			</div>
