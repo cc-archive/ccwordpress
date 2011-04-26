@@ -655,18 +655,22 @@ h1, h2, h3, h4, h5, h6 {
 	padding-bottom: 2px;
 	color: #fff;
   margin-bottom: 20px;
+  -webkit-box-shadow: 0 1px 0 rgba(0, 0, 0, 0.1);
+  -moz-box-shadow: 0 1px 0 rgba(0, 0, 0, 0.1);
+  position: relative;
+  width: 100%;
+}
+
+.home #header {
+  width: 960px;
+  margin-left: auto;
+  margin-right: auto;
   -webkit-border-bottom-left-radius: 5px;
   -webkit-border-bottom-right-radius: 5px;
   -moz-border-radius-bottomleft: 5px;
   -moz-border-radius-bottomright: 5px;
   border-bottom-left-radius: 5px;
   border-bottom-right-radius: 5px;
-  -webkit-box-shadow: 0 1px 0 rgba(0, 0, 0, 0.1);
-  -moz-box-shadow: 0 1px 0 rgba(0, 0, 0, 0.1);
-  width: 960px;
-  margin-left: auto;
-  margin-right: auto;
-  position: relative;
 }
 
 #header .container_16 {
