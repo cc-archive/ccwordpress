@@ -693,3 +693,18 @@ div#languages p {
     display:none;
 }
 
+#help_publicity_rights, #help_endorsement, #help_citation_help, #help_who_is_affirmer, #help_disclaimer {
+  visibility: hidden;
+  height: 0;  
+}
+
+#help_publicity_rights_c > #help_publicity_rights,
+#help_endorsement_c > #help_endorsement,
+#help_citation_ehlp_c > #help_citation_help,
+#help_who_is_affirmer_c > #help_who_is_affirmer_c,
+#help_disclaimer_c > #help_disclaimer {
+  height: auto;
+}
+
+
+
