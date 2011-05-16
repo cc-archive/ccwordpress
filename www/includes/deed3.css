@@ -145,6 +145,24 @@
 			border-color: #bbc0ab;
 		}
 		
+		#deed-newer {
+			border: 1px solid #e0adad;
+			background-color: #f0f0f0;
+			padding: 15px;
+			margin-top: 25px;
+		}
+		#deed-newer a, #deed-main a {
+			color: #111;
+ 			text-decoration:underline;
+			font-weight: bold;
+		}
+		
+		#deed-main a.inline-help {
+			text-decoration: none;
+			font-weight: inherit;
+			border-bottom: 1px dashed #333;
+		}
+		
 		#deed-main-content {
 			position: relative;
 			margin: 0 15px;
@@ -189,11 +207,41 @@
 			border: 1px solid #888;
 			margin-bottom:  5px;
 		}
-		
+	  
+    #deed-disclaimer {
+      position: relative;
+      width: 500px;
+      margin: 5px auto 0;
+      border: 1px solid #cacab5;
+      background: #fffde5;
+      -moz-border-radius: 5px;
+      -webkit-border-radius: 5px;
+      border-radius: 5px;
+      color: #7f7f72;
+      overflow-y: auto; 
+    }
+
+    #deed-disclaimer .summary {
+      display: inline-block;
+      padding: 4px 10px 7px;
+      margin-right:90px;
+      border-right: 1px solid #CACAB0;
+      float: left;
+    }
+    #deed-disclaimer .disclaimer {
+      position: absolute;
+      right: 0;
+      padding: 4px 10px 5px;
+    }
+    #deed-disclaimer a {
+      color: #66665c;
+    }
+
 		#deed-rights {
 			background:  url("/images/deed/freedoms-header.png") 0 0 no-repeat;
 			padding: 0;
 			margin-bottom: 30px;
+      min-height: 11em;
 		}
 		
 		#deed-conditions {
@@ -230,7 +278,6 @@
 
 		#deed-understanding li.license {
 		    padding-left:0px;
-		    padding-bottom:0px;
 		}
 		#deed-understanding-zero {
 /*			padding: 0 10px;*/
@@ -256,24 +303,6 @@
 			font-size: 0.92em;
 		}
 
-		#deed-newer {
-			border: 1px solid #e0adad;
-			background-color: #f0f0f0;
-			padding: 15px;
-			margin-top: 25px;
-		}
-		#deed-newer a, #deed-main a {
-			color: #111;
- 			text-decoration:underline;
-			font-weight: bold;
-		}
-		
-		#deed-main a.inline-help {
-			text-decoration: none;
-			font-weight: inherit;
-			border-bottom: 1px dashed #333;
-		}
-		
 		#deed-foot {
 			position: relative;
 			width: 750px;
@@ -328,7 +357,7 @@
 		.pd-grey #deed-foot {
 			background: url('/images/deed/deed-foot-grey.png') 0 0 no-repeat;
 		}
-		
+	/*	
 		#disclaimer {
 			float: right;
 			padding-right: 15px;
@@ -343,7 +372,7 @@
 		body.rtl .summary {
 			text-align: right;
 		}
-
+*/
 		li strong {
 			color: #222;
 		}
@@ -351,7 +380,7 @@
 			margin-bottom: 8px;
 		}
 		ul.license-properties {
-		    width: 550px;
+		    width: 600px;
 		    list-style-image: none;
 		    list-style-position: outside;
 		    list-style-type: none;
@@ -361,9 +390,14 @@
 			padding-bottom: 25px;
 			padding-left: 70px;
 			padding-top: 5px;
-      min-height: 4em;
+      min-height: 3.5em;
 		}
-		
+	  
+    ul.understanding li.license {
+      min-height: inherit;
+      padding-bottom: 15px;
+    }
+
 		li.license ul.license-properties {
 			padding-left: 0;
 		}
@@ -376,17 +410,16 @@
 			list-style: none;
 		}
 	
-                li.free {
-                                        background: url("http://mirrors.creativecommons.org/tmp/freedomdefined-50x50.png") 0 0 no-repeat;
-                }
-                li.share {
-                                        background: url("/images/deed/share.png") 0 0 no-repeat;
-                }
+    li.free {
+          background: url("http://mirrors.creativecommons.org/tmp/freedomdefined-50x50.png") 0 0 no-repeat;
+    }
+    
+    li.share, li.remix {
+        padding-left: 0;
+        padding-bottom: 0;
+        min-height: 1em;
+    }
 	
-                li.remix {
-                                        background: url("/images/deed/remix.png") 0 0 no-repeat;
-                }
-
 		li.devnations {
 					background: url("/images/deed/devnations.png") 0 0 no-repeat;
 		}
@@ -412,48 +445,48 @@
 		li.nd {
 					background: url("/images/deed/nd.png") 0 0 no-repeat;
 		}
-	        li.sampling, li.samplingplus{
-                                        background: url("/images/deed/sampling.png") 0 0 no-repeat;
-                }	
+	  li.sampling, li.samplingplus{
+          background: url("/images/deed/sampling.png") 0 0 no-repeat;
+    }	
 		li.more {
 					background: url("/images/deed/more.png") 0 0 no-repeat;
 		}
 
-                li.notice {
-                                        background: url("/images/deed/notice.png") 0 0 no-repeat;
-                }
-                li.src {
-                                        background: url("/images/deed/src.png") 0 0 no-repeat;
-                }
-                li.nolaw {
-                                        background: url("/images/deed/nolaw.png") 0 8px no-repeat;
-                }
-					 li ul li.nolaw {
-						background: url("/images/deed/nolaw-small.png") 0 8px no-repeat;
-						padding-left: 32px;
-					}
-				  li.usage-guidelines {
-								background: url("/images/deed/usage-guidelines.png") 0 0 no-repeat;
-								margin-bottom: 25px;
-					}
-					li ul li.usage-guidelines {
-						background: url("/images/deed/usage-guidelines-small.png") 0 6px no-repeat;
-						padding-left: 32px;
-						margin-bottom: 0;
-					}
+    li.notice {
+          background: url("/images/deed/notice.png") 0 0 no-repeat;
+    }
+    li.src {
+          background: url("/images/deed/src.png") 0 0 no-repeat;
+    }
+    li.nolaw {
+          background: url("/images/deed/nolaw.png") 0 8px no-repeat;
+    }
+		li ul li.nolaw {
+					background: url("/images/deed/nolaw-small.png") 0 8px no-repeat;
+					padding-left: 32px;
+		}
+	  li.usage-guidelines {
+					background: url("/images/deed/usage-guidelines.png") 0 0 no-repeat;
+					margin-bottom: 25px;
+		}
+		li ul li.usage-guidelines {
+					background: url("/images/deed/usage-guidelines-small.png") 0 6px no-repeat;
+					padding-left: 32px;
+					margin-bottom: 0;
+		}
 					
-					li.publicdomain {
-					   background: url("/images/deed/noc.png") 0 3px no-repeat;
-					}
+		li.publicdomain {
+				  background: url("/images/deed/noc.png") 0 3px no-repeat;
+		}
 					
 		li a {
 			color: #0000ff;
 			text-decoration: none;
 		}
-                #referrer-metadata {
-                        padding: 20px;
-                        border-style: dotted;
-                }
+    #referrer-metadata {
+          padding: 20px;
+          border-style: dotted;
+    }
 		#referrer-metadata a {
 			color: #0000FF;
 			text-decoration: none;
