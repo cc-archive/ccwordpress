@@ -179,7 +179,8 @@
 		#deed-license h2 {
 			margin: 0;
 			font-size: 1.46em;
-			padding-top: 100px;
+			padding-top: 90px;
+      line-height: 1.1;
 		}
 		
 		.pd #deed-license {
@@ -212,12 +213,12 @@
       position: relative;
       width: 500px;
       margin: 5px auto 0;
-      border: 1px solid #cacab5;
-      background: #fffde5;
+      border: 1px solid #ccc;
+      background: #f1f1f1;
       -moz-border-radius: 5px;
       -webkit-border-radius: 5px;
       border-radius: 5px;
-      color: #7f7f72;
+      color: #777;
       overflow-y: auto; 
     }
 
@@ -225,7 +226,7 @@
       display: inline-block;
       padding: 4px 10px 7px;
       margin-right:90px;
-      border-right: 1px solid #CACAB0;
+      border-right: 1px solid #ccc;
       float: left;
     }
     #deed-disclaimer .disclaimer {
@@ -234,7 +235,7 @@
       padding: 4px 10px 5px;
     }
     #deed-disclaimer a {
-      color: #66665c;
+      color: #5a5a5a;
     }
 
 		#deed-rights {
@@ -357,13 +358,13 @@
 		.pd-grey #deed-foot {
 			background: url('/images/deed/deed-foot-grey.png') 0 0 no-repeat;
 		}
-	/*	
+		
 		#disclaimer {
 			float: right;
 			padding-right: 15px;
 			padding-left: 20px;
 		}
-
+/*
 		.summary {
 		  text-align: left;
 		  width: 72%;
