@@ -223,12 +223,11 @@
     }
 
     #deed-disclaimer .summary {
-      display: inline-block;
-      padding: 4px 10px 7px;
+      padding: 10px;
       border-bottom: 1px solid #ccc;
     }
     #deed-disclaimer .disclaimer {
-      padding: 4px 5px;
+      padding: 4px 6px;
       text-align: right;
     }
     #deed-disclaimer a {
