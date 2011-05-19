@@ -3,22 +3,23 @@
 # This file is distributed under the same license as the WP-PageNavi package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2010.
 #
-#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: WP-PageNavi 2.73\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/wp-pagenavi\n"
 "POT-Creation-Date: 2010-08-17 17:28+0300\n"
-"PO-Revision-Date: 2010-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
+"PO-Revision-Date: 2010-09-19 20:50+0100\n"
+"Last-Translator: Yngve Egseth Stein <yngvestein@gmail.com>\n"
+"Language-Team: stein84.net <yngvestein@gmail.com>\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=utf-8\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-Language: Norwegian Bokmal\n"
+"X-Poedit-Country: NORWAY\n"
 
 #: admin.php:9
 msgid "PageNavi Settings"
-msgstr ""
+msgstr "Innstillinger for PageNavi"
 
 #: admin.php:10
 msgid "PageNavi"
@@ -26,153 +27,154 @@ msgstr ""
 
 #: admin.php:28
 msgid "Text For Number Of Pages"
-msgstr ""
+msgstr "Tekst for antall sider"
 
 #: admin.php:33
 msgid "The current page number."
-msgstr ""
+msgstr "Viser aktivt sidenummer."
 
-#: admin.php:34 admin.php:58 admin.php:66
+#: admin.php:34
+#: admin.php:58
+#: admin.php:66
 msgid "The total number of pages."
-msgstr ""
+msgstr "Viser totalt antall sider."
 
 #: admin.php:38
 msgid "Text For Current Page"
-msgstr ""
+msgstr "Tekst for aktiv side"
 
-#: admin.php:42 admin.php:50
+#: admin.php:42
+#: admin.php:50
 msgid "The page number."
-msgstr ""
+msgstr "Viser sidenummer."
 
 #: admin.php:46
 msgid "Text For Page"
-msgstr ""
+msgstr "Tekst for side"
 
 #: admin.php:54
 msgid "Text For First Page"
-msgstr ""
+msgstr "Tekst for første side"
 
 #: admin.php:62
 msgid "Text For Last Page"
-msgstr ""
+msgstr "Tekst for siste side"
 
 #: admin.php:70
 msgid "Text For Previous Page"
-msgstr ""
+msgstr "Tekst for forrige side"
 
 #: admin.php:76
 msgid "Text For Next Page"
-msgstr ""
+msgstr "Tekst for neste side"
 
 #: admin.php:82
 msgid "Text For Previous ..."
-msgstr ""
+msgstr "Tekst for forrige..."
 
 #: admin.php:88
 msgid "Text For Next ..."
-msgstr ""
+msgstr "Tekst for neste..."
 
 #: admin.php:95
 msgid "Page Navigation Text"
-msgstr ""
+msgstr "Alternativer for visning"
 
 #: admin.php:96
 msgid "Leaving a field blank will hide that part of the navigation."
-msgstr ""
+msgstr "Hvis du lar et felt være blankt, vil det automatisk skjules på fremsiden."
 
 #: admin.php:102
 msgid "Use pagenavi-css.css"
-msgstr ""
+msgstr "Bruk pagenavi-css.css"
 
 #: admin.php:108
 msgid "Page Navigation Style"
-msgstr ""
+msgstr "Utseende for navigasjon"
 
 #: admin.php:111
 msgid "Normal"
-msgstr ""
+msgstr "Normal"
 
 #: admin.php:111
 msgid "Drop-down List"
-msgstr ""
+msgstr "Rullegardin"
 
 #: admin.php:116
 msgid "Always Show Page Navigation"
-msgstr ""
+msgstr "Vis alltid"
 
 #: admin.php:119
 msgid "Show navigation even if there's only one page."
-msgstr ""
+msgstr "Vis navigasjonsfeltet selv om det bare er en side."
 
 #: admin.php:123
 msgid "Number Of Pages To Show"
-msgstr ""
+msgstr "Antall sider å vise"
 
 #: admin.php:130
 msgid "Number Of Larger Page Numbers To Show"
-msgstr ""
+msgstr "Antall avrundinger som skal vises"
 
 #: admin.php:135
-msgid ""
-"Larger page numbers are in addition to the normal page numbers. They are "
-"useful when there are many pages of posts."
-msgstr ""
+msgid "Larger page numbers are in addition to the normal page numbers. They are useful when there are many pages of posts."
+msgstr "Avrundinger kommer i tillegg til vanlige sidenummer. Dette er meget kjekt om du har fryktelig mange sider."
 
 #: admin.php:136
-msgid ""
-"For example, WP-PageNavi will display: Pages 1, 2, 3, 4, 5, 10, 20, 30, 40, "
-"50."
-msgstr ""
+msgid "For example, WP-PageNavi will display: Pages 1, 2, 3, 4, 5, 10, 20, 30, 40, 50."
+msgstr "Et eksempel på dette, er at det vil vises side 1, 2, 3, 4, 5, 10, 20, 30, 40, 50."
 
 #: admin.php:137
 msgid "Enter 0 to disable."
-msgstr ""
+msgstr "Bruk 0 for å deaktivere."
 
 #: admin.php:141
 msgid "Show Larger Page Numbers In Multiples Of"
-msgstr ""
+msgstr "Avrund oppover med"
 
 #: admin.php:146
 msgid "For example, if mutiple is 5, it will show: 5, 10, 15, 20, 25"
-msgstr ""
+msgstr "Hvis du for eksempel velger 5, vil det da bli vist 5, 10, 15, 20, 25 osv."
 
 #: admin.php:151
 msgid "Page Navigation Options"
-msgstr ""
+msgstr "Innstillinger"
 
 #: scb/AdminPage.php:167
 msgid "Settings <strong>saved</strong>."
-msgstr ""
+msgstr "Endringer er lagret."
 
-#: scb/AdminPage.php:179 scb/AdminPage.php:189
+#: scb/AdminPage.php:179
+#: scb/AdminPage.php:189
 msgid "Save Changes"
-msgstr ""
+msgstr "Lagre endringer"
 
 #: scb/AdminPage.php:371
 msgid "Settings"
-msgstr ""
+msgstr "Innstillinger"
 
 #: wp-pagenavi.php:37
 msgid "Page %CURRENT_PAGE% of %TOTAL_PAGES%"
-msgstr ""
+msgstr "Side %CURRENT_PAGE% av %TOTAL_PAGES%"
 
 #: wp-pagenavi.php:40
 msgid "&laquo; First"
-msgstr ""
+msgstr "&laquo; Første"
 
 #: wp-pagenavi.php:41
 msgid "Last &raquo;"
-msgstr ""
+msgstr "Siste &raquo;"
 
 #: wp-pagenavi.php:42
 msgid "&laquo;"
-msgstr ""
+msgstr "&laquo;"
 
 #: wp-pagenavi.php:43
 msgid "&raquo;"
-msgstr ""
+msgstr "&raquo;"
 
-#: wp-pagenavi.php:44 wp-pagenavi.php:45
+#: wp-pagenavi.php:44
+#: wp-pagenavi.php:45
 msgid "..."
 msgstr ""
 
@@ -186,8 +188,9 @@ msgstr ""
 
 #. Description of the plugin/theme
 msgid "Adds a more advanced paging navigation to your WordPress blog"
-msgstr ""
+msgstr "Gir deg en mer avansert måte å navigere mellom sider på. Men du kan selvsagt også gjøre det enkelt og rent!"
 
 #. Author of the plugin/theme
 msgid "Lester 'GaMerZ' Chan & scribu"
 msgstr ""
+
