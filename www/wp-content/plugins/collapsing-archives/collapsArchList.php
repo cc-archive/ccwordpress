@@ -1,6 +1,6 @@
 <?php
 /*
-Collapsing Archives version: 1.3.1
+Collapsing Archives version: 1.3.2
 
 Copyright 2007-2010 Robert Felty
 
@@ -202,7 +202,7 @@ function list_archives($options) {
           $monthStyle = '';
         }
         
-        if($i>=2 && $allPosts[$i-2]->year != $archPost->year ) {
+        if($i>=1 && $allPosts[$i-1]->year != $archPost->year ) {
           if( $expandYears ) {
             if( $expandMonths ) {
               $archives .= "        </ul>\n      </li> <!-- close expanded month --> \n";
