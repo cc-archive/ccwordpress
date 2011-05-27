@@ -223,20 +223,16 @@
       -webkit-border-radius: 5px;
       border-radius: 5px;
       color: #777;
-      overflow-y: auto; 
+      overflow-y: hidden; 
     }
 
     #deed-disclaimer .summary {
-      display: inline-block;
-      padding: 4px 10px 7px;
-      margin-right:90px;
-      border-right: 1px solid #ccc;
-      float: left;
+      padding: 10px;
+      border-bottom: 1px solid #ccc;
     }
     #deed-disclaimer .disclaimer {
-      position: absolute;
-      right: 0;
-      padding: 4px 10px 5px;
+      padding: 4px 6px;
+      text-align: right;
     }
     #deed-disclaimer a {
       color: #5a5a5a;
