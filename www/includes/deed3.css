@@ -522,6 +522,7 @@
 
 		#libre img, #libre a, #librepd img, #librepd a {
 			border: none !important;
+			margin-top: 2px;
 		}
 
 div.bd p {
