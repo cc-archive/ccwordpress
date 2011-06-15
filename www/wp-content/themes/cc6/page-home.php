@@ -76,7 +76,7 @@ if ($_GET['stype']) {
 						</form>
 					</div>
 					<div><a class="grid_3 alpha button" href="/about/">Learn More...</a></div>
-					<div style=""><a class="grid_3 omega button" href="/license/">Choose License</a></div>
+					<div style=""><a class="grid_3 omega button" href="/choose/">Choose License</a></div>
 				</div>
 			</div>
 		</div>
