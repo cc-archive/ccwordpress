@@ -16,7 +16,7 @@
 
 # Catch requests to certain posts and feed them to Wordpress in a way that
 # it knows how to handle
-    RewriteRule ^weblog(/archive|)/entry/(\d+)/?$ /index.php?p=$2&roflcopter [L]
+    RewriteRule ^weblog(/archive|)/entry/(\d+)/?$ /index.php?p=$2&%{QUERY_STRING}&roflcopter [L]
     RewriteRule ^press-releases/entry/(\d+)/?$ /index.php?p=$1&roflcopter [L]
 
 # Catch any requests for the general /weblog/archive and also to the
