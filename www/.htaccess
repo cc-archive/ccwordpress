@@ -38,6 +38,10 @@
 # requests for '<some path>/rss' return an RSS 2 feed.
     RewriteRule ^(.*?)rss/?$ /index.php/$1?feed=rss2 [L]
 
+# Needed so that WP-multisite will display uploaded files linked to in posts.
+# For CC this is needed for labs.CC.org and jurisdiction blogs.
+RewriteRule ^([_0-9a-zA-Z-]+/)?files/(.+) wp-includes/ms-files.php?file=$2 [L]
+
 </IfModule>
 
 ##############################################################################
