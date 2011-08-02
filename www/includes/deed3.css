@@ -741,5 +741,9 @@ div#languages p {
   height: auto;
 }
 
+ol.arabic-markers {
+    list-style-type: none;
+}
+
 
 
