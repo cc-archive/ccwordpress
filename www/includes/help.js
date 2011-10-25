@@ -28,13 +28,13 @@ function thundercats() {
    	d.innerHTML = '<div style="display:inline-block;">'+ href +'<img src="https://creativecommons.net/sites/default/files/' + banners[i][1] +'" height="85" style="vertical-align:middle; margin: 5px; -webkit-border-radius:5px; -moz-border-radius:5px;" border="0"/></a></div> <div style="display:inline-block; text-align:left; line-height:1.25; vertical-align:middle; margin-left: 15px;"><strong><span>'+ href +'<span style="display:inline-block; text-indent:-0.5em;">&#8220;</span>'+ banners[i][2] +'&#8221;</span></strong> &mdash; <em style="color:#c01100;">Read More</em></a><br/><em style="font-size:75%;">&mdash; '+ banners[i][3] +'</em></div>';
    	mainContent.parentNode.insertBefore(d, mainContent);
 }
-
+/*
 if (typeof window.addEventListener !== 'undefined') {
     window.addEventListener('load', thundercats, false);
 } else {
     window.attachEvent('onload', thundercats);
 }
-
+*/
 YAHOO.namespace("cc.help");
 
 // convenience function for creating help tool tips
