@@ -147,6 +147,7 @@ input#cc_widget_donation_amount {
 	padding: 2px;
 	font-size: 110%;
 	font-weight: bold;
+	width: 7ex;
 }
 
 input#cc_widget_donation_donate {
