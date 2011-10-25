@@ -364,4 +364,13 @@ add_action('init', 'cc_verbose_rewrite');
 }
 add_filter ('generate_rewrite_rules', 'cc_custom_rewrites');*/
 
+# START CC THEME HELPER 
+# added 2011-10-25
+remove_all_filters('pre_link_notes');
+remove_all_filters('edit_link_notes');
+
+remove_all_filters('pre_link_description');
+remove_all_filters('edit_link_description');
+# END CC THEME HELPER
+
 ?>
