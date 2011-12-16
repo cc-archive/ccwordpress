@@ -1,8 +1,0 @@
-"Name","Type","Mandatory","Values","Default"
-"Select one answer","radio","yes","Answer A\nAnswer B\nAnswer C\nAnswer D\nAnswer E",""
-"Select one more answer","text","yes","Answer A\nAnswer B\nAnswer C\nAnswer D\nAnswer E",""
-"Check this box","checkbox","yes","",""
-"Enter a small sentence","text","yes","",""
-"Enter a bigger sentence","textarea","yes","",""
-"","number captcha","yes","",""
-"MultiCheckbox","checkbox","","Answer 1\nAnswer 2\nAnswer 3",""

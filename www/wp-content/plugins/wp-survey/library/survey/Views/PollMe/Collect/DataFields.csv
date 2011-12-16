@@ -1,3 +1,0 @@
-"Name","Type","Mandatory","Values","Default"
-"Question","radio","yes","Option A\nOption B\nOption C\nOption D\nOption E",""
-"Vote","submit", "yes", "",""
