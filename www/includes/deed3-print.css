@@ -170,4 +170,24 @@ blockquote {
 	list-style: none;
 }
 
+/* ========== for RLT Printing ========== */
 
+.rtl {
+	direction:rtl;
+}
+
+.rtl #deed {
+	text-align:right;
+}
+
+.rtl blockquote {
+	font-family:Tahoma, Geneva, sans-serif;
+}
+
+.rtl ol.arabic-markers, .rtl li.arabic-markers, .rtl p{
+	list-style-type:none;
+}
+
+.rtl li, .rtl ol li, .rtl ol ol li{
+	margin: 10px 0px;
+}
