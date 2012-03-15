@@ -1,6 +1,6 @@
 /* CC Deed CSS */
 /* Print */
-/*foo */
+
 body {
 	text-align: center;
 	font: 10pt/12pt Arial, "Trebuchet MS", Verdana, sans-serif;
@@ -88,10 +88,6 @@ h3 {
 	margin-top: 0.66in;
 }
 
-#deed-conditions ul li {
-	margin-bottom: 0.1in;
-}
-
 ul.license-properties  {
   margin-top: 0.125in !important;
   margin-bottom: 0.25in;
@@ -173,3 +169,26 @@ blockquote {
 #more-container {
 	list-style: none;
 }
+
+/* ========== for RLT Printing ========== */
+
+.rtl {
+	direction:rtl;
+}
+
+.rtl #deed {
+	text-align:right;
+}
+
+.rtl blockquote {
+	font-family:Tahoma, Geneva, sans-serif;
+}
+
+.rtl ol.arabic-markers, .rtl li.arabic-markers, .rtl p{
+	list-style-type:none;
+}
+
+.rtl li, .rtl ol li, .rtl ol ol li{
+	margin: 10px 0px;
+}
+
