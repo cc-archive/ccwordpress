@@ -380,6 +380,9 @@
 		li {
 			margin-bottom: 8px;
 		}
+                .green #deed-rights ul.license-properties {
+                    width: 520px!important;
+                }
 		ul.license-properties {
 		    width: 600px;
 		    list-style-image: none;
