@@ -123,7 +123,7 @@ class Mvied_Plugin {
 						$modules[] = $module;
 						if ( is_dir($this->getModuleDirectory() . $module) && $sub_module_directory = opendir($this->getModuleDirectory() . $module) ) {
 							while ( false !== ($entry = readdir($sub_module_directory)) ) {
-								if ( $entry != '.' && $entry != '..' ) {
+								if ( strpos($entry, '.') !== 0 ) {
 									$sub_module = str_replace('.php', '', $entry);
 									$modules[] = $module . '\\' . $sub_module;
 								}
