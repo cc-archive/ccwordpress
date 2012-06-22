@@ -31,10 +31,12 @@ $cc_pl_rewrites = array(
 $cc_orginal_request_uri = $_SERVER['REQUEST_URI'];
 
 add_action("init", "cc_mangle_request");
+add_filter("rewrite_rules_array", "cc_add_rewrites");
 add_filter("wp_footer", "cc_rewrite_request_uri_notify");
 add_filter("post_link", "cc_rewrite_permalink");
 add_filter("year_link", "cc_rewrite_permalink");
 add_filter("month_link", "cc_rewrite_permalink");
+
 
 /**
  * Sometimes Wordpress decides what page to display based on both the query
@@ -138,4 +140,21 @@ function cc_get_post_by_name($post_name) {
 
 }
 
+/**
+ * This wasn't necessary until the upgrade to WP 3.4.  It appears that
+ * something changed in 3.4 whereby certain URL patterns were failing to
+ * resolve to any page.  To correct this we just add a few rewrite rules to
+ * catch and redirect these URLs which are used through the CC weblog and
+ * archive listings.
+ */
+function cc_add_rewrites ( $wp_rewrites ) {
+
+	$cc_rewrites = array(
+		'(.*?)/(\d{4})$' => 'index.php?category_name=$matches[1]&year=$matches[2]',
+		'(.*?)/(\d{4})/(\d{2})$' => 'index.php?category_name=$matches[1]&year=$matches[2]&monthnum=$matches[3]',
+	);
+
+	return $wp_rewrites + $cc_rewrites;
+
+}
 ?>
