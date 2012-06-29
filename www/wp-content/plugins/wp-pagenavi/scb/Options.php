@@ -43,7 +43,7 @@ class scbOptions {
 	public function get( $field = '' ) {
 		$data = get_option( $this->key, array() );
 
-		$data = array_merge( $this->defaults, $data );
+		$data = array_merge( $this->defaults, (array)$data );
 
 		return $this->_get( $field, $data );
 	}
