@@ -35,6 +35,7 @@ add_filter("wp_footer", "cc_rewrite_request_uri_notify");
 add_filter("post_link", "cc_rewrite_permalink");
 add_filter("year_link", "cc_rewrite_permalink");
 add_filter("month_link", "cc_rewrite_permalink");
+add_filter("rewrite_rules_array", "cc_bare_category_rewrite_rules");
 
 
 /**
@@ -136,6 +137,41 @@ function cc_get_post_by_name($post_name) {
 	} else {
 		return false;
 	}
+
+}
+
+/**
+ * WordPress doesn't technically allow bare category slugs i.e., URLs of the
+ * form /catname.  Technically all category archive pages should be preceeded
+ * by a category base, which is by default /category/catname.  However, on the
+ * CC blog we've been using bare category slugs for years, and this has worked
+ * just fine up until WP 3.4.  In 3.4 bare category archives work like
+ * /catname, but pagination does not work.  This adds a few rewrite rules to WP
+ * to force pagination to work.
+ */
+function cc_bare_category_rewrite_rules($rules) {
+
+	$cc_rules = array();
+
+	# We unset this existing rule so that we can later re-append it to the
+	# list of rewrite rules, else it will match before the more specific
+	# ones do.
+	unset($rules['(.+?)/?$']);
+
+	# Handles pagination for URLs like /catname/year/month/page/#
+	$cc_rules['(.+?)/([0-9]{4})/([0-9]{1,2})/page/?([0-9]{1,})/?$'] = 'index.php?category_name=$matches[1]&year=$matches[2]&monthnum=$matches[3]&paged=$matches[4]';
+
+	# Handles pagination for URLs like /catname/year/page/#
+	$cc_rules['(.+?)/([0-9]{4})/page/?([0-9]{1,})/?$'] = 'index.php?category_name=$matches[1]&year=$matches[2]&paged=$matches[3]';
+
+	# Handles pagination for URLs like /catname/page/#
+	$cc_rules['(.+?)/page/?([0-9]{1,})/?$'] = 'index.php?category_name=$matches[1]&paged=$matches[2]';
+
+	# Handles the basic bare category for URLs like /catname
+	$cc_rules['(.+?)/?$'] = 'index.php?category_name=$matches[1]';
+
+	# Now append our rules to the ones WP generated
+	return $rules + $cc_rules;
 
 }
 
