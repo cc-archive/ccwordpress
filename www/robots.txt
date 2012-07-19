@@ -2,3 +2,7 @@ User-agent: *
 Disallow: /wp-admin
 Disallow: /wp-includes
 Disallow: /wp-content
+
+# Disallow the 80legs: http://80legs.com/
+User-agent: 008
+Disallow: /
