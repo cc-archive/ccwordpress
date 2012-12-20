@@ -1,12 +1,11 @@
 <?php
 /**
- * Base class for a WordPress plugin.
+ * Base class for a WordPress theme.
  *
  * @author Mike Ems
  * @package Mvied
  */
-class Mvied_Plugin {
-
+class Mvied_Theme {
 	/**
 	 * Base directory
 	 *
@@ -20,46 +19,35 @@ class Mvied_Plugin {
 	 * @var string
 	 */
 	protected $_module_directory;
-
 	/**
 	 * Loaded Modules
 	 *
 	 * @var array
 	 */
 	protected $_modules = array();
-
 	/**
 	 * Logger
 	 *
 	 * @var Mvied_Logger_Interface
 	 */
 	protected $_logger;
-	
 	/**
-	 * Plugin URL
-	 *
-	 * @var string
-	 */
-	protected $_plugin_url;
-	
-	/**
-	 * Plugin Settings
+	 * Theme Settings
 	 *
 	 * @var array
 	 */
 	protected $_settings = array();
-
 	/**
-	 * Plugin Slug
+	 * Theme Slug
 	 *
-	 * Used as a unqiue identifier for the plugin.
+	 * Used as a unqiue identifier for the theme.
 	 *
 	 * @var string
 	 */
 	protected $_slug;
 	
 	/**
-	 * Plugin Version
+	 * Theme Version
 	 *
 	 * @var string
 	 */
@@ -117,7 +105,7 @@ class Mvied_Plugin {
 		$modules = array();
 		if ( is_dir($this->getModuleDirectory()) && $module_directory = opendir($this->getModuleDirectory()) ) {
 			while ( false !== ($entry = readdir($module_directory)) ) {
-				if ( strpos($entry, '.') !== 0 && strpos($entry, '.php') !== false ) {
+				if ( $entry != '.' && $entry != '..' ) {
 					$module = str_replace('.php', '', $entry);
 					if ( $module != 'Interface' ) {
 						$modules[] = $module;
@@ -135,7 +123,6 @@ class Mvied_Plugin {
 		}
 		return $modules;
 	}
-
 	/**
 	 * Get Module
 	 *
@@ -152,7 +139,6 @@ class Mvied_Plugin {
 		
 		die('Module not found: \'' . $module . '\'.');
 	}
-
 	/**
 	 * Get Modules
 	 * 
@@ -180,7 +166,6 @@ class Mvied_Plugin {
 		$this->_modules[$module] = $object;
 		return $this;
 	}
-
 	/**
 	 * Set Logger
 	 * 
@@ -205,30 +190,8 @@ class Mvied_Plugin {
 		
 		return $this->_logger->getInstance();
 	}
-	
 	/**
-	 * Set Plugin Url
-	 * 
-	 * @param string $plugin_url
-	 * @return object $this
-	 */
-	public function setPluginUrl( $plugin_url ) {
-		$this->_plugin_url = $plugin_url;
-		return $this;
-	}
-	
-	/**
-	 * Get Plugin Url
-	 * 
-	 * @param none
-	 * @return string
-	 */
-	public function getPluginUrl() {
-		return $this->_plugin_url;
-	}
-	
-	/**
-	 * Get Plugin Setting
+	 * Get Theme Setting
 	 *
 	 * @param string $setting
 	 * @param int $setting_blog_id
@@ -241,9 +204,8 @@ class Mvied_Plugin {
 		} else {
 			$value = get_option($setting_full);
 		}
-
 		// Load default option
-		if ( $value === false && array_key_exists($setting, $this->_settings) ) {
+		if ( $value === false ) {
 			$value = $this->_settings[$setting];
 		}
 		// Convert 1's and 0's to boolean
@@ -257,9 +219,8 @@ class Mvied_Plugin {
 		}
 		return $value;
 	}
-
 	/**
-	 * Get Plugin Settings
+	 * Get Theme Settings
 	 *
 	 * @param none
 	 * @return array
@@ -346,7 +307,6 @@ class Mvied_Plugin {
 		}
 		return $this;
 	}
-
 	/**
 	 * Is Module Loaded?
 	 *
@@ -360,7 +320,6 @@ class Mvied_Plugin {
 			return false;
 		}
 	}
-
 	/**
 	 * Load Module
 	 *
@@ -378,21 +337,18 @@ class Mvied_Plugin {
 		$filename = $filename . '.php';
 		
 		require_once($this->getModuleDirectory() . $filename);
-
 		$class = $base_class . '_' . str_replace('\\', '_', $module_full);
 		if ( ! isset($this->_modules[$class]) || ! is_object($this->_modules[$class]) || get_class($this->_modules[$class]) != $class ) {
 			try {
 				$object = new $class;
 				$this->setModule($module_full, $object);
-				$this->getModule($module)->setPlugin($this);
+				$this->getModule($module)->setTheme($this);
 			} catch ( Exception $e ) {
 				die('Unable to load module: \'' . $module . '\'. ' . $e->getMessage());
 			}
 		}
-
 		return $this;
 	}
-	
 	/**
 	 * Load Modules
 	 * 
@@ -405,13 +361,11 @@ class Mvied_Plugin {
 		if ( sizeof($modules) == 0 ) {
 			$modules = $this->getAvailableModules();
 		}
-
 		foreach( $modules as $module ) {
 			$this->loadModule( $module );
 		}
 		return $this;
 	}
-
 	/**
 	 * Unload Module
 	 *
@@ -425,14 +379,11 @@ class Mvied_Plugin {
 			$base_class = get_class($this);
 		}
 		$module = 'Module\\' . $module;
-
 		$modules = $this->getModules();
 		
 		unset($modules[$module]);
 		
 		$this->_modules = $modules;
-
 		return $this;
 	}
-
 }
