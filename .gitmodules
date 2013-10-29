@@ -1,3 +1,16 @@
+[submodule "www/legalcode"]
+        path = www/legalcode
+        url = https://github.com/creativecommons/legalcode.git
+	branch = master
+[submodule "www/includes/i18n"]
+        path = www/includes/i18n
+        url = https://github.com/creativecommons/svn-i18n
+	branch = master
+[submodule "www/wp-content/themes/creativecommons.org"]
+        path = www/wp-content/themes/creativecommons.org
+        url = https://github.com/creativecommons/theme-creativecommons.org.git
+	branch = master
 [submodule "www/license.rdf"]
 	path = www/license.rdf
 	url = https://github.com/creativecommons/license.rdf.git
+	branch = master
